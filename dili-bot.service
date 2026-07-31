@@ -1,0 +1,24 @@
+# File systemd cho VPS Linux — chạy bot 24/7, tự khởi động lại khi lỗi.
+#
+# Cách cài (chạy với quyền root, sửa đường dẫn cho đúng máy bạn):
+#   1. Chép mã nguồn lên VPS, ví dụ vào /opt/dili-bot , tạo file .env trong đó
+#   2. pip install -r /opt/dili-bot/requirements.txt
+#   3. cp dili-bot.service /etc/systemd/system/
+#   4. systemctl daemon-reload && systemctl enable --now dili-bot
+#   5. Xem log: journalctl -u dili-bot -f
+
+[Unit]
+Description=DiLi Supplement - Telegram bot check trung don
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/dili-bot
+ExecStart=/usr/bin/python3 /opt/dili-bot/bot.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
