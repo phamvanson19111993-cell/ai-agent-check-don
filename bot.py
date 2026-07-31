@@ -80,13 +80,44 @@ async def process_phone(app: Application, key: str, source: str, fallback_chat_i
 
 # ---------------------------------------------------------------- handlers
 
+def _save_report_chat_id(chat_id: int) -> None:
+    """Ghi REPORT_CHAT_ID vào file .env để lần sau khởi động vẫn nhớ."""
+    import os
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    lines: list[str] = []
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            lines = f.read().splitlines()
+    replaced = False
+    for i, line in enumerate(lines):
+        if line.strip().startswith("REPORT_CHAT_ID="):
+            lines[i] = f"REPORT_CHAT_ID={chat_id}"
+            replaced = True
+            break
+    if not replaced:
+        lines.append(f"REPORT_CHAT_ID={chat_id}")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+
+
 async def cmd_id(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat = update.effective_chat
-    await update.effective_message.reply_text(
-        f"🆔 Chat ID của {'nhóm' if chat.type != 'private' else 'chat'} này là:\n"
-        f"`{chat.id}`\n\nDán số này vào REPORT_CHAT_ID trong file .env rồi khởi động lại bot.",
-        parse_mode=ParseMode.MARKDOWN,
-    )
+    is_group = chat.type != "private"
+    text = f"🆔 Chat ID của {'nhóm' if is_group else 'chat'} này là:\n`{chat.id}`"
+
+    # Chưa cấu hình nơi nhận báo cáo + gõ /id trong NHÓM → tự nhận nhóm này luôn
+    if is_group and not config.REPORT_CHAT_ID:
+        config.REPORT_CHAT_ID = str(chat.id)
+        try:
+            _save_report_chat_id(chat.id)
+            text += "\n\n✅ Đã TỰ ĐỘNG chọn nhóm này làm nơi nhận báo cáo (đã lưu vào .env). Không cần làm gì thêm!"
+        except Exception as e:  # noqa: BLE001
+            log.error("Không ghi được .env: %s", e)
+            text += f"\n\n⚠️ Đã dùng nhóm này làm nơi nhận báo cáo, nhưng không ghi được vào .env ({e}) — hãy điền tay REPORT_CHAT_ID={chat.id}"
+    else:
+        text += "\n\nDán số này vào REPORT_CHAT_ID trong file .env rồi khởi động lại bot."
+
+    await update.effective_message.reply_text(text, parse_mode=ParseMode.MARKDOWN)
 
 
 async def cmd_check(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:

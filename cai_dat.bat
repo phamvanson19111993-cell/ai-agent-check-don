@@ -50,10 +50,11 @@ notepad .env
 
 echo.
 echo ============================================================
-echo  CAI DAT XONG!
-echo  Tiep theo: bam dup file  run_bot.bat  de chay bot.
-echo  Sau do vao nhom Telegram, them bot vao nhom, go /id
-echo  de lay REPORT_CHAT_ID roi dien vao .env (mo lai Notepad),
-echo  tat bot va bam dup run_bot.bat lan nua.
+echo  CAI DAT XONG! Bot se tu chay ngay bay gio.
+echo  Viec cuoi cung cua ban:
+echo   1. Them @dili_supplement_tr_bot vao nhom Telegram
+echo   2. Go  /id  trong nhom
+echo   -^> Bot TU DONG chon nhom do lam noi nhan bao cao. XONG!
+echo  Test:  /check 0976486366  (phai ra TRUNG - Tran Loan)
 echo ============================================================
-pause
+call run_bot.bat
