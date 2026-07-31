@@ -7,6 +7,12 @@ rem =====================================================
 cd /d %~dp0
 title DiLi Bot - Check trung don
 
+if not exist .env (
+    echo [!] Chua co file .env — hay bam dup file cai_dat.bat truoc!
+    pause
+    exit /b 1
+)
+
 :loop
 echo [%date% %time%] Dang khoi dong bot...
 python bot.py

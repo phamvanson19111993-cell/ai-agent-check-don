@@ -18,6 +18,14 @@ Google Sheet đơn hàng (mọi tab), rồi báo **TRÙNG / KHÔNG TRÙNG** lên
 | `dili-bot.service` | Chạy 24/7 trên VPS Linux (systemd) |
 | `selftest.py` | Tự kiểm tra logic, không cần token |
 
+## Cài đặt trên Windows — CÁCH NHANH NHẤT
+
+1. Bấm đúp **`cai_dat.bat`** — tự kiểm tra Python, cài thư viện, mở Notepad cho bạn dán `BOT_TOKEN`.
+2. Bấm đúp **`run_bot.bat`** — chạy bot (tự khởi động lại nếu lỗi).
+3. Thêm bot vào nhóm Telegram → gõ `/id` → điền số vào `REPORT_CHAT_ID=` trong `.env` → chạy lại `run_bot.bat`.
+
+Chi tiết từng bước thủ công ở dưới (nếu cần).
+
 ## Cài đặt trên Windows (5 bước)
 
 ### 1. Cài thư viện
