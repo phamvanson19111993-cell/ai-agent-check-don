@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- File launchd cho macOS: cho bot tu chay khi mo may, tu khoi dong lai khi loi.
+     Cach cai (chay trong Terminal, sua duong dan cho dung thu muc bot cua ban):
+       cp com.dili.checkbot.plist ~/Library/LaunchAgents/
+       launchctl load ~/Library/LaunchAgents/com.dili.checkbot.plist
+     Go bo:
+       launchctl unload ~/Library/LaunchAgents/com.dili.checkbot.plist
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.dili.checkbot</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>bot.py</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/mac/Desktop/ai-agent-check-don-claude-telegram-duplicate-order-bot-ayyubm</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/tmp/dili-bot.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/dili-bot.err</string>
+</dict>
+</plist>

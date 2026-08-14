@@ -18,6 +18,13 @@ Google Sheet đơn hàng (mọi tab), rồi báo **TRÙNG / KHÔNG TRÙNG** lên
 | `dili-bot.service` | Chạy 24/7 trên VPS Linux (systemd) |
 | `selftest.py` | Tự kiểm tra logic, không cần token |
 
+## Cài đặt trên macOS — CÁCH NHANH NHẤT
+
+1. Bấm đúp **`cai_dat_mac.command`** trong Finder (lần đầu bị chặn thì chuột phải → Open → Open) — tự cài thư viện, mở TextEdit cho bạn dán `BOT_TOKEN`.
+2. Bấm đúp **`chay_bot.command`** — chạy bot (tự khởi động lại nếu lỗi).
+3. Thêm bot vào nhóm Telegram → gõ `/id` (bot tự lưu nhóm) → `/check 0976486366` để test.
+4. Muốn bot tự chạy khi mở máy: xem hướng dẫn trong file `com.dili.checkbot.plist` (launchd, KeepAlive).
+
 ## Cài đặt trên Windows — CÁCH NHANH NHẤT
 
 1. Bấm đúp **`cai_dat.bat`** — tự kiểm tra Python, cài thư viện, mở Notepad cho bạn dán `BOT_TOKEN`.
