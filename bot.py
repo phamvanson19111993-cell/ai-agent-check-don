@@ -9,6 +9,8 @@ Luồng hoạt động:
 
 Lệnh: /id (lấy chat id) · /check <số> (kiểm tra tay) · /reload (nạp lại Sheet)
 """
+from __future__ import annotations
+
 import asyncio
 import logging
 import time

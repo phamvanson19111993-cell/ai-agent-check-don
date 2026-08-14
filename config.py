@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Đọc cấu hình từ file .env"""
+from __future__ import annotations
+
 import os
 
 from dotenv import load_dotenv

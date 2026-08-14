@@ -5,6 +5,8 @@
 - SĐT trong Sheet có thể mất số 0 đầu (Google lưu thành số) → chuẩn hoá về 9 số cuối.
 - Nếu không tìm thấy cột SĐT theo tên, tự dò cột nào chứa nhiều số điện thoại nhất.
 """
+from __future__ import annotations
+
 import csv
 import io
 import logging

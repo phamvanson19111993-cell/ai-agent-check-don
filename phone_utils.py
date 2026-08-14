@@ -6,6 +6,8 @@ Nguyên tắc:
 - KHÔNG nhận nhầm số tiền kiểu 3.290.000 (không bắt đầu bằng 0/84, không đủ cấu trúc)
 - Chuẩn hoá về "khoá" = 9 chữ số cuối để so sánh (0378415411 ~ +84378415411 ~ 378415411)
 """
+from __future__ import annotations
+
 import re
 
 # Bắt đầu bằng +84 / 84 / 0, theo sau đúng 9 chữ số (cho phép ngăn cách . - hoặc khoảng trắng)

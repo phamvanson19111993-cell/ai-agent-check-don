@@ -6,6 +6,8 @@ POST /intake
   Body:    {"text": "..."}  hoặc  {"phone": "0976486366"}
 GET /health → {"ok": true}
 """
+from __future__ import annotations
+
 import hmac
 import logging
 
