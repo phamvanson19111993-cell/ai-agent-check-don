@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DiLi - Bắt SĐT nhóm "Xử lý trùng đơn" (Messenger → Bot)
 // @namespace    dili-supplement
-// @version      1.0
+// @version      1.1
 // @description  Theo dõi khung chat "Xử lý trùng đơn DiLi Supplement" trên Facebook/Messenger, bắt số điện thoại mới và gửi tới bot Telegram qua cổng HTTP nội bộ. Có nút bật/tắt.
 // @match        https://www.facebook.com/*
 // @match        https://www.messenger.com/*
@@ -96,8 +96,12 @@
 
   // ================== QUÉT KHUNG CHAT ==================
   function inTargetChat() {
-    // Tiêu đề tab trình duyệt của Messenger/Facebook chứa tên đoạn chat đang mở
-    return (document.title || "").includes(CHAT_TITLE_KEYWORD);
+    // messenger.com: tiêu đề tab chứa tên đoạn chat.
+    // facebook.com/messages: tiêu đề tab chỉ là "Facebook" → phải dò tên nhóm
+    // trong vùng hội thoại đang mở ([role=main]).
+    if ((document.title || "").includes(CHAT_TITLE_KEYWORD)) return true;
+    const main = document.querySelector('[role="main"]');
+    return !!main && (main.innerText || "").includes(CHAT_TITLE_KEYWORD);
   }
 
   function scan() {
