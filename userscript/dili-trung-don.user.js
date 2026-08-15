@@ -24,7 +24,7 @@
   const MAX_REMEMBERED = 500;                     // nhớ tối đa N số đã gửi (chống gửi lặp)
 
   // ================== TIỆN ÍCH SĐT (giống bot Python) ==================
-  const PHONE_RE = /(?<!\d)(?:\+?84|0)(?:[\s.\-]?\d){9}(?![\s.\-]?\d)/g;
+  const PHONE_RE = /(?<!\d)(?:\+?84|0)(?:[\s.\-]?\d){9}(?![.\-]?\d)/g;
   const VALID_FIRST = new Set(["3", "5", "7", "8", "9"]);
 
   function normalize(raw) {

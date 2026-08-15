@@ -10,8 +10,10 @@ from __future__ import annotations
 
 import re
 
-# Bắt đầu bằng +84 / 84 / 0, theo sau đúng 9 chữ số (cho phép ngăn cách . - hoặc khoảng trắng)
-_PHONE_RE = re.compile(r"(?<![\d])(?:\+?84|0)(?:[\s.\-]?\d){9}(?![\s.\-]?\d)")
+# Bắt đầu bằng +84 / 84 / 0, theo sau đúng 9 chữ số (cho phép ngăn cách . - hoặc khoảng trắng).
+# Lookahead chỉ chặn nối tiếp bằng chữ số hoặc .- (không chặn khoảng trắng,
+# để bắt được nhiều số viết liền nhau kiểu "0822485959 0966611104").
+_PHONE_RE = re.compile(r"(?<![\d])(?:\+?84|0)(?:[\s.\-]?\d){9}(?![.\-]?\d)")
 
 # Đầu số di động VN hợp lệ (chữ số đầu của 9 số cuối): 03x,05x,07x,08x,09x
 _VALID_FIRST = set("35789")
