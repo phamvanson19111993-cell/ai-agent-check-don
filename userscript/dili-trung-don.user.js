@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         DiLi - Bắt SĐT nhóm "Xử lý trùng đơn" (Messenger → Bot)
 // @namespace    dili-supplement
-// @version      1.1
+// @version      1.2
 // @description  Theo dõi khung chat "Xử lý trùng đơn DiLi Supplement" trên Facebook/Messenger, bắt số điện thoại mới và gửi tới bot Telegram qua cổng HTTP nội bộ. Có nút bật/tắt.
 // @match        https://www.facebook.com/*
 // @match        https://www.messenger.com/*
@@ -95,24 +95,31 @@
   }
 
   // ================== QUÉT KHUNG CHAT ==================
-  function inTargetChat() {
-    // messenger.com: tiêu đề tab chứa tên đoạn chat.
-    // facebook.com/messages: tiêu đề tab chỉ là "Facebook" → phải dò tên nhóm
-    // trong vùng hội thoại đang mở ([role=main]).
-    if ((document.title || "").includes(CHAT_TITLE_KEYWORD)) return true;
-    const main = document.querySelector('[role="main"]');
-    return !!main && (main.innerText || "").includes(CHAT_TITLE_KEYWORD);
+  function targetContainers() {
+    // Nhóm chat có thể đang mở ở: khung to (role=main trên messenger.com /
+    // facebook.com/messages) HOẶC cửa sổ chat nhỏ (popup/dialog/aside trên
+    // facebook.com). Chỉ quét những vùng có chứa tên nhóm mục tiêu.
+    if ((document.title || "").includes(CHAT_TITLE_KEYWORD)) {
+      const main = document.querySelector('[role="main"]');
+      if (main) return [main];
+    }
+    const cands = document.querySelectorAll(
+      '[role="main"], [role="dialog"], [role="complementary"], aside'
+    );
+    return [...cands].filter(
+      (el) => (el.innerText || "").includes(CHAT_TITLE_KEYWORD)
+    );
   }
 
   function scan() {
-    if (!enabled || !inTargetChat()) return;
-    // Lấy toàn bộ chữ trong vùng hội thoại đang hiển thị
-    const main = document.querySelector('[role="main"]') || document.body;
-    const phones = extractPhones(main.innerText || "");
-    for (const key of phones) {
-      if (sent.includes(key)) continue;
-      remember(key);
-      sendToBot(key);
+    if (!enabled) return;
+    for (const box of targetContainers()) {
+      const phones = extractPhones(box.innerText || "");
+      for (const key of phones) {
+        if (sent.includes(key)) continue;
+        remember(key);
+        sendToBot(key);
+      }
     }
   }
 
