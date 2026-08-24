@@ -39,6 +39,25 @@ Xem trước danh sách nhãn của page để chắc chắn tên nhãn đúng:
 python3 -m pancake_export --list-tags
 ```
 
+## Chạy tự động mỗi ngày
+
+Không phải bấm tay. Cài 1 lần, sau đó máy tự chạy và tự ghi lên Google Sheet.
+
+**Windows:** mở *Task Scheduler* → *Create Basic Task* → *Daily* → chọn giờ (vd 8:00)
+→ *Start a program* → trỏ tới file `chay_hang_ngay.bat`.
+
+**macOS / Linux:**
+
+```bash
+chmod +x chay_hang_ngay.sh
+crontab -e
+# dán dòng này -> 8h sáng mỗi ngày:
+0 8 * * * /duong/dan/toi/ai-agent-check-don/chay_hang_ngay.sh >> /tmp/pancake.log 2>&1
+```
+
+Mỗi lần chạy quét 2 ngày gần nhất (phòng hội thoại cập nhật muộn) và chỉ thêm số
+mới — chạy lại bao nhiêu lần cũng không sinh dòng trùng.
+
 ## Không có API key thì làm sao?
 
 Xuất danh sách hội thoại/khách hàng từ Pancake ra file rồi đưa cho công cụ đọc —
