@@ -1,0 +1,117 @@
+{
+  "bo_ba": {
+    "ten": "Bộ 3 tuần hoàn - thần kinh - năng lượng tế bào",
+    "cau_chuyen_ket_hop": "Ba sản phẩm giải quyết ba mắt xích khác nhau của cùng một vấn đề: máu có lưu thông tốt không, mạch và tế bào thần kinh có được nuôi dưỡng không, và tế bào có đủ năng lượng để hoạt động không.",
+    "vi_von_de_nho": {
+      "ten": "Đường thông - Xe tốt - Xăng đủ",
+      "nattokinase": "ĐƯỜNG THÔNG: hỗ trợ dòng máu lưu thông trong lòng mạch",
+      "dha_epa_sq": "XE TỐT: DHA/EPA là nguyên liệu cấu tạo màng tế bào thần kinh và hỗ trợ chuyển hoá mỡ máu",
+      "coenzyme_q10": "XĂNG ĐỦ: CoQ10 tham gia tạo năng lượng ATP trong ty thể của tế bào tim và não"
+    },
+    "cach_noi_trong_video": "Máu lưu thông tốt mà tế bào không có năng lượng thì vẫn mệt. Tế bào đủ năng lượng mà đường đi của máu kém thì dưỡng chất không tới nơi. Vì vậy 3 sản phẩm hỗ trợ nhau chứ không thay thế nhau.",
+    "canh_bao_cach_ban": "KHÔNG nói bộ 3 chữa được bệnh, KHÔNG nói phải mua đủ 3 mới có tác dụng, KHÔNG ép combo. Hãy trình bày như 3 lựa chọn theo nhu cầu."
+  },
+
+  "san_pham": [
+    {
+      "id": "coenzyme-q10",
+      "ten": "Rich Coenzyme Q10",
+      "vai_tro": "Năng lượng tế bào - tim mạch",
+      "thanh_phan_chinh": ["Coenzyme Q10 (ubiquinone/ubiquinol)"],
+      "co_che_noi_don_gian": [
+        "CoQ10 là một chất có sẵn trong cơ thể, nằm trong ty thể - 'nhà máy điện' của tế bào.",
+        "Tim và não là hai cơ quan tiêu tốn năng lượng nhiều nhất nên cũng là nơi có mật độ ty thể cao nhất.",
+        "Lượng CoQ10 nội sinh có xu hướng giảm dần theo tuổi, thường rõ hơn sau tuổi 40.",
+        "Người đang dùng nhóm thuốc hạ mỡ máu statin thường được ghi nhận có mức CoQ10 trong máu thấp hơn."
+      ],
+      "loi_ich_duoc_phep_noi": [
+        "Hỗ trợ tăng cường sức khoẻ tim mạch",
+        "Hỗ trợ giảm mệt mỏi, uể oải",
+        "Hỗ trợ chống oxy hoá"
+      ],
+      "phu_hop_voi": ["Người trên 40 tuổi", "Người hay mệt, hụt hơi, uể oải kéo dài", "Người quan tâm sức khoẻ tim mạch", "Người đang dùng statin (cần hỏi ý kiến bác sĩ)"],
+      "luu_y_an_toan": [
+        "Người đang dùng thuốc chống đông máu cần hỏi ý kiến bác sĩ",
+        "Phụ nữ có thai, cho con bú cần hỏi ý kiến bác sĩ",
+        "Nên uống cùng bữa ăn có chất béo để hấp thu tốt hơn"
+      ],
+      "goc_quay_b_roll": ["Ảnh sản phẩm xoay 360", "Hình minh hoạ ty thể/tế bào", "Người trung niên leo cầu thang thở dốc"],
+      "CAN_DIEN_THEM": {
+        "ham_luong_mg_moi_vien": "",
+        "dang_bao_che": "",
+        "quy_cach_dong_goi": "",
+        "so_cong_bo_san_pham": "",
+        "nha_san_xuat_xuat_xu": "",
+        "lieu_dung_theo_nhan": "",
+        "gia_ban_le": ""
+      }
+    },
+    {
+      "id": "dha-epa-sq",
+      "ten": "DHA EPA SQ",
+      "vai_tro": "Não bộ - thị lực - mỡ máu",
+      "thanh_phan_chinh": ["DHA (omega-3)", "EPA (omega-3)", "Squalene (SQ)"],
+      "co_che_noi_don_gian": [
+        "DHA là thành phần cấu trúc chiếm tỉ lệ lớn trong màng tế bào thần kinh và võng mạc.",
+        "EPA thiên về hỗ trợ chuyển hoá mỡ máu và đáp ứng viêm của cơ thể.",
+        "Squalene là một lipid tự nhiên, thường được nói tới với vai trò hỗ trợ vận chuyển oxy và chống oxy hoá.",
+        "Cơ thể không tự tổng hợp đủ DHA/EPA nên phải lấy từ thức ăn hoặc bổ sung."
+      ],
+      "loi_ich_duoc_phep_noi": [
+        "Hỗ trợ tăng cường sức khoẻ não bộ, hỗ trợ trí nhớ",
+        "Hỗ trợ sức khoẻ tim mạch",
+        "Hỗ trợ giảm mỡ máu",
+        "Hỗ trợ sức khoẻ thị lực"
+      ],
+      "phu_hop_voi": ["Người hay quên, khó tập trung", "Người ít ăn cá biển", "Người mỡ máu cao", "Người làm việc trí óc, nhìn màn hình nhiều"],
+      "luu_y_an_toan": [
+        "Người dị ứng hải sản/cá cần đọc kỹ thành phần",
+        "Người đang dùng thuốc chống đông máu cần hỏi ý kiến bác sĩ",
+        "Ngưng trước phẫu thuật theo hướng dẫn của bác sĩ"
+      ],
+      "goc_quay_b_roll": ["Cá biển sâu, dầu cá nhỏ giọt", "Hình minh hoạ tế bào thần kinh", "Người ngồi làm việc dụi mắt"],
+      "CAN_DIEN_THEM": {
+        "ham_luong_dha_mg": "",
+        "ham_luong_epa_mg": "",
+        "ham_luong_squalene_mg": "",
+        "nguon_nguyen_lieu": "",
+        "so_cong_bo_san_pham": "",
+        "nha_san_xuat_xuat_xu": "",
+        "lieu_dung_theo_nhan": "",
+        "gia_ban_le": ""
+      }
+    },
+    {
+      "id": "nattokinase",
+      "ten": "Nattokinase",
+      "vai_tro": "Tuần hoàn máu",
+      "thanh_phan_chinh": ["Nattokinase (enzyme từ đậu nành lên men natto)"],
+      "co_che_noi_don_gian": [
+        "Natto là món đậu nành lên men truyền thống của Nhật Bản.",
+        "Nattokinase là enzyme được chiết từ quá trình lên men đó.",
+        "Được biết tới với vai trò hỗ trợ tuần hoàn máu, hỗ trợ duy trì độ lưu thông của dòng máu.",
+        "Máu lưu thông tốt thì oxy và dưỡng chất tới não, tới bàn tay bàn chân thuận lợi hơn."
+      ],
+      "loi_ich_duoc_phep_noi": [
+        "Hỗ trợ tuần hoàn máu",
+        "Hỗ trợ tăng cường lưu thông máu não",
+        "Hỗ trợ giảm nguy cơ hình thành huyết khối"
+      ],
+      "phu_hop_voi": ["Người hay tê bì chân tay", "Người hay đau đầu, chóng mặt do tuần hoàn kém", "Người cao tuổi ít vận động", "Người có tiền sử gia đình về tim mạch"],
+      "luu_y_an_toan": [
+        "KHÔNG dùng cho người đang dùng thuốc chống đông (warfarin, aspirin liều điều trị) nếu chưa hỏi bác sĩ",
+        "KHÔNG dùng cho người rối loạn đông máu, đang chảy máu, chuẩn bị phẫu thuật hoặc nhổ răng",
+        "Phụ nữ có thai, cho con bú cần hỏi ý kiến bác sĩ",
+        "Người dị ứng đậu nành không dùng"
+      ],
+      "goc_quay_b_roll": ["Món natto kéo sợi", "Hình minh hoạ dòng máu trong lòng mạch", "Người bóp tay tê"],
+      "CAN_DIEN_THEM": {
+        "ham_luong_fu_moi_vien": "",
+        "so_cong_bo_san_pham": "",
+        "nha_san_xuat_xuat_xu": "",
+        "lieu_dung_theo_nhan": "",
+        "gia_ban_le": ""
+      }
+    }
+  ]
+}

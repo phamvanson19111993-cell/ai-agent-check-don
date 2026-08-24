@@ -1,0 +1,173 @@
+{
+  "cau_bat_buoc": {
+    "khuyen_cao": "Thực phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh.",
+    "vi_tri": "Phải đọc thành lời hoặc hiện chữ rõ ràng trong video, và luôn có trong phần mô tả (caption).",
+    "can_cu": "Nghị định 15/2018/NĐ-CP và Thông tư 09/2015/TT-BYT về quảng cáo thực phẩm bảo vệ sức khoẻ."
+  },
+  "tu_cam_va_tu_thay_the": [
+    {
+      "cam": "chữa khỏi",
+      "thay_bang": "hỗ trợ cải thiện"
+    },
+    {
+      "cam": "điều trị",
+      "thay_bang": "hỗ trợ"
+    },
+    {
+      "cam": "đặc trị",
+      "thay_bang": "hỗ trợ cho người có biểu hiện"
+    },
+    {
+      "cam": "chữa bệnh",
+      "thay_bang": "chăm sóc sức khoẻ"
+    },
+    {
+      "cam": "dứt điểm",
+      "thay_bang": "cải thiện dần"
+    },
+    {
+      "cam": "khỏi hẳn",
+      "thay_bang": "dễ chịu hơn"
+    },
+    {
+      "cam": "tiêu tan",
+      "thay_bang": "giảm bớt"
+    },
+    {
+      "cam": "thay thế thuốc",
+      "thay_bang": "dùng kèm theo chỉ định của bác sĩ"
+    },
+    {
+      "cam": "cam kết khỏi",
+      "thay_bang": "nhiều người dùng phản hồi tích cực"
+    },
+    {
+      "cam": "hiệu quả 100%",
+      "thay_bang": "hiệu quả tuỳ cơ địa mỗi người"
+    },
+    {
+      "cam": "đảm bảo khỏi",
+      "thay_bang": "được nhiều người tin dùng"
+    },
+    {
+      "cam": "thần dược",
+      "thay_bang": "sản phẩm hỗ trợ sức khoẻ"
+    },
+    {
+      "cam": "thuốc tiên",
+      "thay_bang": "sản phẩm hỗ trợ sức khoẻ"
+    },
+    {
+      "cam": "công dụng thần kỳ",
+      "thay_bang": "công dụng hỗ trợ"
+    },
+    {
+      "cam": "tan cục máu đông",
+      "thay_bang": "hỗ trợ tuần hoàn máu"
+    },
+    {
+      "cam": "làm tan huyết khối",
+      "thay_bang": "hỗ trợ giảm nguy cơ hình thành huyết khối"
+    },
+    {
+      "cam": "phòng chống đột quỵ",
+      "thay_bang": "hỗ trợ sức khoẻ tim mạch và tuần hoàn"
+    },
+    {
+      "cam": "ngăn ngừa đột quỵ",
+      "thay_bang": "hỗ trợ sức khoẻ tim mạch và tuần hoàn"
+    },
+    {
+      "cam": "khỏi sau 3 ngày",
+      "thay_bang": "thời gian cảm nhận khác nhau ở mỗi người"
+    },
+    {
+      "cam": "khỏi sau 1 tuần",
+      "thay_bang": "thời gian cảm nhận khác nhau ở mỗi người"
+    },
+    {
+      "cam": "hết bệnh",
+      "thay_bang": "cải thiện tình trạng"
+    },
+    {
+      "cam": "trị dứt",
+      "thay_bang": "hỗ trợ giảm"
+    },
+    {
+      "cam": "bác sĩ khuyên dùng",
+      "thay_bang": "được nhiều người quan tâm sức khoẻ lựa chọn"
+    },
+    {
+      "cam": "bệnh viện khuyên dùng",
+      "thay_bang": "được nhiều người quan tâm sức khoẻ lựa chọn"
+    }
+  ],
+  "quy_tac_bat_buoc": [
+    "Không dùng hình ảnh, danh nghĩa, thư cảm ơn của bác sĩ, dược sĩ, nhân viên y tế, cơ sở y tế để quảng cáo.",
+    "Không dùng lời cảm ơn của người bệnh để quảng cáo sản phẩm.",
+    "Không khẳng định sản phẩm có tác dụng như thuốc chữa bệnh.",
+    "Không so sánh sản phẩm của mình tốt hơn sản phẩm của đơn vị khác.",
+    "Không cam kết kết quả hoặc hoàn tiền nếu không khỏi bệnh.",
+    "Không doạ nạt quá mức về bệnh tật để bán hàng.",
+    "Không dựng cảnh giả mạo phòng khám, kết quả xét nghiệm, giấy chứng nhận.",
+    "Không nhắm quảng cáo tới trẻ em.",
+    "Mọi công dụng nêu trong video phải nằm trong công dụng đã được công bố trên nhãn sản phẩm.",
+    "Nếu có nhân vật chia sẻ trải nghiệm thì phải là trải nghiệm thật, có sự đồng ý, và phải kèm dòng chữ hiệu quả tuỳ cơ địa mỗi người.",
+    "Luôn hướng người có dấu hiệu nặng đi khám bác sĩ."
+  ],
+  "cau_an_toan_nen_dung": [
+    "Sản phẩm hỗ trợ, không thay thế việc thăm khám và điều trị.",
+    "Hiệu quả tuỳ thuộc cơ địa từng người.",
+    "Nếu đang dùng thuốc điều trị, hãy hỏi ý kiến bác sĩ trước khi bổ sung.",
+    "Đọc kỹ hướng dẫn sử dụng trước khi dùng."
+  ],
+  "luu_y_nen_tang": {
+    "tiktok": "Hạn chế nói tên bệnh trực tiếp và các từ về thuốc trong 3 giây đầu. Ưu tiên mô tả cảm giác thay vì tên bệnh. Không để link bán hàng trong lời thoại nếu chưa đủ điều kiện.",
+    "facebook": "Tài khoản quảng cáo dễ bị hạn chế nếu nhắm vào tình trạng sức khoẻ cá nhân. Viết theo hướng 'nhiều người ở tuổi này' thay vì 'bạn đang bị'.",
+    "youtube": "Được nói dài hơn nhưng cần trích dẫn nguồn rõ ràng, tránh khẳng định y khoa tuyệt đối.",
+    "shopee_tiktokshop": "Nội dung phải khớp với thông tin công bố trên trang sản phẩm, tránh sai lệch công dụng."
+  },
+  "ngoai_le_khong_tinh_la_vi_pham": [
+    "Thực phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh",
+    "không phải là thuốc",
+    "không thay thế thuốc",
+    "không có tác dụng thay thế thuốc chữa bệnh",
+    "không thay thế việc thăm khám và điều trị",
+    "thăm khám và điều trị",
+    "thuốc điều trị",
+    "bác sĩ điều trị",
+    "phác đồ điều trị",
+    "đang điều trị",
+    "cơ sở điều trị",
+    "quá trình điều trị",
+    "hỏi ý kiến bác sĩ",
+    "theo chỉ định của bác sĩ",
+    "đi khám bác sĩ",
+    "khám bác sĩ",
+    "hãy tới cơ sở y tế",
+    "tới bệnh viện",
+    "đi bệnh viện",
+    "vào bệnh viện",
+    "tốt nhất là đi khám",
+    "cách tốt nhất là đi khám",
+    "tốt nhất cô chú nên đi khám"
+  ],
+  "ghi_chu_ngoai_le": "Đây là những cụm HỢP LỆ, được bỏ qua trước khi soát từ cấm, vì bản thân câu khuyến cáo bắt buộc và các lời khuyên đi khám đều chứa từ nằm trong danh sách cấm.",
+  "mau_cam_regex": [
+    {
+      "ten": "Tự xưng số 1",
+      "mau": "(sản phẩm|thương hiệu|loại|dòng|hàng)\\s+(\\w+\\s+){0,2}số\\s*1|số\\s*1\\s+(việt nam|thị trường|thế giới|nhật bản|hiện nay)",
+      "thay_bang": "được nhiều người lựa chọn"
+    },
+    {
+      "ten": "Tự xưng tốt nhất",
+      "mau": "(sản phẩm|thương hiệu|loại|dòng|hàng)\\s+(\\w+\\s+){0,2}tốt nhất|tốt nhất\\s+(trên\\s+)?thị trường",
+      "thay_bang": "phù hợp với"
+    },
+    {
+      "ten": "Tự xưng duy nhất",
+      "mau": "(sản phẩm|thương hiệu|loại|dòng|công nghệ)\\s+(\\w+\\s+){0,2}duy nhất",
+      "thay_bang": "một trong những"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "dinh_dang": [
+    {
+      "id": "hook-noi-dau-giai-phap",
+      "ten": "Hook - Nỗi đau - Giải pháp - CTA",
+      "thoi_luong_goi_y": 45,
+      "nen_tang": ["tiktok", "reels", "shorts"],
+      "khi_nao_dung": "Video bán hàng ngắn, chạy quảng cáo, mục tiêu ra đơn.",
+      "cau_truc": [
+        {"giay": "0-3", "muc_tieu": "Hook giữ chân", "yeu_cau": "Một câu chạm đúng cảm giác của người xem. Không giới thiệu tên kênh."},
+        {"giay": "3-12", "muc_tieu": "Gọi tên nỗi đau", "yeu_cau": "Mô tả 2-3 biểu hiện cụ thể để người xem gật đầu."},
+        {"giay": "12-25", "muc_tieu": "Giải thích vì sao", "yeu_cau": "Một cơ chế đơn giản, dễ hình dung, có ví von."},
+        {"giay": "25-38", "muc_tieu": "Giới thiệu giải pháp", "yeu_cau": "2 việc tự làm được + vai trò hỗ trợ của sản phẩm."},
+        {"giay": "38-45", "muc_tieu": "CTA + khuyến cáo", "yeu_cau": "Một hành động duy nhất + câu khuyến cáo bắt buộc."}
+      ]
+    },
+    {
+      "id": "ke-chuyen",
+      "ten": "Kể chuyện khách hàng",
+      "thoi_luong_goi_y": 75,
+      "nen_tang": ["tiktok", "facebook", "reels"],
+      "khi_nao_dung": "Xây niềm tin, tiếp cận người xem lạnh.",
+      "cau_truc": [
+        {"giay": "0-5", "muc_tieu": "Vào thẳng cảnh", "yeu_cau": "Một chi tiết đời thường rất cụ thể."},
+        {"giay": "5-25", "muc_tieu": "Diễn biến", "yeu_cau": "Nhân vật đã thử gì, thất bại ra sao."},
+        {"giay": "25-45", "muc_tieu": "Bước ngoặt", "yeu_cau": "Nhận ra nguyên nhân gốc, đi khám, thay đổi thói quen."},
+        {"giay": "45-65", "muc_tieu": "Hiện tại", "yeu_cau": "Mô tả thay đổi một cách chừng mực, không tuyệt đối hoá."},
+        {"giay": "65-75", "muc_tieu": "CTA + khuyến cáo", "yeu_cau": "Mời người xem kể chuyện của họ ở phần bình luận."}
+      ],
+      "canh_bao": "Chỉ dùng câu chuyện có thật và được người trong cuộc đồng ý. Luôn hiện chữ hiệu quả tuỳ cơ địa mỗi người."
+    },
+    {
+      "id": "giai-thich-co-che",
+      "ten": "Giải thích cơ chế bằng ví von",
+      "thoi_luong_goi_y": 70,
+      "nen_tang": ["tiktok", "youtube", "facebook"],
+      "khi_nao_dung": "Xây dựng chuyên môn, giáo dục thị trường, chuẩn bị cho video bán hàng sau đó.",
+      "cau_truc": [
+        {"giay": "0-5", "muc_tieu": "Đặt câu hỏi", "yeu_cau": "Một câu hỏi mà người xem thật sự thắc mắc."},
+        {"giay": "5-20", "muc_tieu": "Ví von đời thường", "yeu_cau": "Đường ống, giao thông, nhà máy điện - chọn một."},
+        {"giay": "20-50", "muc_tieu": "Nối ví von với cơ thể", "yeu_cau": "Từng bước một, mỗi bước một câu."},
+        {"giay": "50-62", "muc_tieu": "Rút ra bài học", "yeu_cau": "Người xem làm được gì từ hôm nay."},
+        {"giay": "62-70", "muc_tieu": "CTA nhẹ + khuyến cáo", "yeu_cau": "Lưu lại video hoặc theo dõi kênh."}
+      ]
+    },
+    {
+      "id": "hoi-dap",
+      "ten": "Hỏi đáp nhanh",
+      "thoi_luong_goi_y": 35,
+      "nen_tang": ["tiktok", "shorts"],
+      "khi_nao_dung": "Tận dụng câu hỏi thật từ bình luận, dễ lên xu hướng.",
+      "cau_truc": [
+        {"giay": "0-4", "muc_tieu": "Đọc câu hỏi", "yeu_cau": "Hiện chữ câu hỏi trên màn hình."},
+        {"giay": "4-25", "muc_tieu": "Trả lời thẳng", "yeu_cau": "Trả lời ngay ở câu đầu, sau đó mới giải thích."},
+        {"giay": "25-35", "muc_tieu": "Mời hỏi tiếp + khuyến cáo", "yeu_cau": "Mời để lại câu hỏi ở bình luận."}
+      ]
+    },
+    {
+      "id": "dap-tan-hieu-lam",
+      "ten": "Đập tan hiểu lầm",
+      "thoi_luong_goi_y": 55,
+      "nen_tang": ["tiktok", "facebook", "shorts"],
+      "khi_nao_dung": "Tạo tranh luận lành mạnh, tăng bình luận.",
+      "cau_truc": [
+        {"giay": "0-5", "muc_tieu": "Nêu hiểu lầm", "yeu_cau": "Bắt đầu bằng câu nhiều người hay nói."},
+        {"giay": "5-15", "muc_tieu": "Bác bỏ", "yeu_cau": "Nói rõ điều đó đúng một phần ở đâu, sai ở đâu."},
+        {"giay": "15-45", "muc_tieu": "Sự thật", "yeu_cau": "Đưa cách hiểu đúng, đơn giản."},
+        {"giay": "45-55", "muc_tieu": "CTA + khuyến cáo", "yeu_cau": "Hỏi người xem có từng tin điều này không."}
+      ]
+    },
+    {
+      "id": "bo-ba-san-pham",
+      "ten": "Giải thích bộ 3 sản phẩm",
+      "thoi_luong_goi_y": 90,
+      "nen_tang": ["youtube", "facebook", "tiktok"],
+      "khi_nao_dung": "Video trụ cột, ghim trang, gửi cho khách đang cân nhắc.",
+      "cau_truc": [
+        {"giay": "0-8", "muc_tieu": "Hook", "yeu_cau": "Vì sao ba sản phẩm chứ không phải một."},
+        {"giay": "8-25", "muc_tieu": "Ví von đường thông - xe tốt - xăng đủ", "yeu_cau": "Dựng hình minh hoạ đơn giản."},
+        {"giay": "25-45", "muc_tieu": "Nattokinase", "yeu_cau": "Vai trò tuần hoàn + lưu ý an toàn."},
+        {"giay": "45-62", "muc_tieu": "DHA EPA SQ", "yeu_cau": "Vai trò não bộ và mỡ máu."},
+        {"giay": "62-78", "muc_tieu": "Rich Coenzyme Q10", "yeu_cau": "Vai trò năng lượng tế bào và tim mạch."},
+        {"giay": "78-90", "muc_tieu": "Ai nên bắt đầu từ đâu + CTA + khuyến cáo", "yeu_cau": "Nói rõ không bắt buộc dùng cả ba."}
+      ]
+    },
+    {
+      "id": "livestream",
+      "ten": "Khung kịch bản livestream",
+      "thoi_luong_goi_y": 900,
+      "nen_tang": ["facebook", "tiktok"],
+      "khi_nao_dung": "Bán hàng trực tiếp, chốt đơn.",
+      "cau_truc": [
+        {"giay": "0-120", "muc_tieu": "Chào và nêu chủ đề", "yeu_cau": "Nói rõ tối nay giải đáp về vấn đề gì."},
+        {"giay": "120-420", "muc_tieu": "Nội dung giá trị", "yeu_cau": "Giải thích cơ chế, trả lời câu hỏi thật."},
+        {"giay": "420-660", "muc_tieu": "Giới thiệu sản phẩm", "yeu_cau": "Từng sản phẩm một, kèm lưu ý an toàn."},
+        {"giay": "660-840", "muc_tieu": "Giải đáp phản đối", "yeu_cau": "Giá, thời gian dùng, đang uống thuốc có dùng được không."},
+        {"giay": "840-900", "muc_tieu": "Chốt và nhắc lại khuyến cáo", "yeu_cau": "Hướng dẫn cách đặt hàng rõ ràng."}
+      ]
+    },
+    {
+      "id": "youtube-dai",
+      "ten": "Video YouTube dài",
+      "thoi_luong_goi_y": 360,
+      "nen_tang": ["youtube"],
+      "khi_nao_dung": "Nội dung trụ cột, SEO dài hạn.",
+      "cau_truc": [
+        {"giay": "0-20", "muc_tieu": "Hook và hứa hẹn", "yeu_cau": "Nói rõ video này trả lời được gì."},
+        {"giay": "20-60", "muc_tieu": "Bối cảnh", "yeu_cau": "Vấn đề phổ biến tới mức nào."},
+        {"giay": "60-200", "muc_tieu": "Nguyên nhân", "yeu_cau": "Phân tích 4-5 nguyên nhân, mỗi nguyên nhân một đoạn."},
+        {"giay": "200-300", "muc_tieu": "Giải pháp", "yeu_cau": "Thói quen, dinh dưỡng, vận động, rồi mới tới bổ sung."},
+        {"giay": "300-345", "muc_tieu": "Khi nào cần đi khám", "yeu_cau": "Liệt kê dấu hiệu nguy hiểm."},
+        {"giay": "345-360", "muc_tieu": "Tổng kết + CTA + khuyến cáo", "yeu_cau": "Tóm tắt 3 ý chính."}
+      ]
+    }
+  ]
+}

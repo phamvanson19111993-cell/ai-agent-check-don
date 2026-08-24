@@ -1,0 +1,114 @@
+{
+  "trieu_chung": [
+    {
+      "id": "dau-dau",
+      "ten": "Đau đầu",
+      "mo_ta_dan_da": "Đau âm ỉ vùng trán, thái dương hoặc sau gáy. Nặng hơn khi căng thẳng, thiếu ngủ, thay đổi thời tiết.",
+      "nguyen_nhan_thuong_gap": [
+        "Thiếu máu lên não / tuần hoàn não kém",
+        "Căng cơ vùng cổ vai gáy do ngồi lâu",
+        "Thoái hoá đốt sống cổ chèn ép mạch máu",
+        "Thiếu ngủ, stress kéo dài",
+        "Huyết áp không ổn định",
+        "Mất nước, bỏ bữa, thiếu vi chất"
+      ],
+      "noi_dau_cam_xuc": [
+        "Uống thuốc giảm đau hoài rồi cũng sợ hại dạ dày, hại gan",
+        "Đang họp, đang chăm cháu mà đầu đau nhói thì không tập trung được gì",
+        "Đi khám thì bác sĩ bảo không sao, nhưng người thì vẫn khó chịu"
+      ],
+      "san_pham_lien_quan": ["nattokinase", "coenzyme-q10"],
+      "goc_noi_dung": [
+        "Vì sao đau đầu hay đi kèm mỏi vai gáy?",
+        "4 kiểu đau đầu và kiểu nào cần đi khám",
+        "Thói quen buổi sáng khiến đầu đau cả ngày"
+      ]
+    },
+    {
+      "id": "chong-mat",
+      "ten": "Chóng mặt",
+      "mo_ta_dan_da": "Đứng lên ngồi xuống thấy xây xẩm, trần nhà quay, phải vịn tường một lúc mới đi được.",
+      "nguyen_nhan_thuong_gap": [
+        "Rối loạn tiền đình",
+        "Tuần hoàn máu não kém",
+        "Hạ huyết áp tư thế",
+        "Thiếu máu, thiếu sắt",
+        "Tác dụng phụ của thuốc",
+        "Rối loạn lo âu, mất ngủ kéo dài"
+      ],
+      "noi_dau_cam_xuc": [
+        "Sợ nhất là đang đi ngoài đường mà xây xẩm",
+        "Con cháu ở xa, ở nhà một mình mà chóng mặt thì rất lo",
+        "Không dám lái xe, không dám leo cầu thang"
+      ],
+      "san_pham_lien_quan": ["nattokinase", "dha-epa-sq"],
+      "goc_noi_dung": [
+        "Chóng mặt do tiền đình và do thiếu máu não khác nhau chỗ nào",
+        "3 động tác đứng dậy an toàn cho người hay xây xẩm",
+        "Vì sao chóng mặt hay nặng hơn vào buổi sáng"
+      ]
+    },
+    {
+      "id": "mat-ngu",
+      "ten": "Mất ngủ",
+      "mo_ta_dan_da": "Trằn trọc tới 1-2 giờ sáng, hoặc ngủ được vài tiếng là tỉnh và không ngủ lại được. Sáng dậy người rã rời.",
+      "nguyen_nhan_thuong_gap": [
+        "Stress, suy nghĩ nhiều",
+        "Rối loạn nội tiết tuổi tiền mãn kinh",
+        "Tuần hoàn máu não kém khiến giấc ngủ chập chờn",
+        "Dùng điện thoại, cà phê, rượu bia buổi tối",
+        "Đau nhức xương khớp làm gián đoạn giấc ngủ"
+      ],
+      "noi_dau_cam_xuc": [
+        "Đêm nào cũng nhìn đồng hồ đếm giờ, càng cố ngủ càng tỉnh",
+        "Ngủ không được nên hôm sau cáu gắt với chồng con rồi lại thấy có lỗi",
+        "Sợ phải phụ thuộc thuốc ngủ"
+      ],
+      "san_pham_lien_quan": ["dha-epa-sq", "nattokinase", "coenzyme-q10"],
+      "goc_noi_dung": [
+        "Quy tắc 10-3-2-1 trước giờ đi ngủ",
+        "Mất ngủ tuổi 45+ không chỉ do suy nghĩ nhiều",
+        "Ngủ đủ 7 tiếng mà vẫn mệt là do đâu"
+      ]
+    },
+    {
+      "id": "te-bi-chan-tay",
+      "ten": "Tê bì chân tay",
+      "mo_ta_dan_da": "Cảm giác kiến bò, châm chích ở đầu ngón tay ngón chân. Ngủ dậy tay tê cứng, phải vẩy một lúc mới hết.",
+      "nguyen_nhan_thuong_gap": [
+        "Tuần hoàn máu ngoại vi kém",
+        "Thoái hoá cột sống cổ, thắt lưng chèn ép dây thần kinh",
+        "Hội chứng ống cổ tay ở người dùng máy tính, làm việc tay nhiều",
+        "Đái tháo đường gây biến chứng thần kinh ngoại vi",
+        "Thiếu vitamin nhóm B",
+        "Ngồi lâu một tư thế, ít vận động"
+      ],
+      "noi_dau_cam_xuc": [
+        "Cầm đũa, cài cúc áo cũng run",
+        "Ban đêm tê tới mức tỉnh giấc",
+        "Sợ đây là dấu hiệu báo trước của đột quỵ"
+      ],
+      "san_pham_lien_quan": ["nattokinase", "dha-epa-sq"],
+      "goc_noi_dung": [
+        "Tê bì kiểu nào là bình thường, kiểu nào cần đi khám",
+        "5 phút vận động cổ tay cho dân văn phòng",
+        "Vì sao tê bì hay nặng về đêm"
+      ]
+    }
+  ],
+
+  "dau_hieu_can_di_kham_ngay": {
+    "tieu_de": "Dừng bán hàng - khuyên đi viện ngay",
+    "danh_sach": [
+      "Đau đầu dữ dội đột ngột, chưa từng đau như vậy bao giờ",
+      "Méo miệng, nói khó, đột ngột yếu hoặc liệt nửa người",
+      "Đột ngột mất thị lực hoặc nhìn đôi",
+      "Tê bì kèm mất cảm giác lan nhanh trong vài giờ",
+      "Đau đầu kèm sốt cao, cứng gáy, nôn vọt",
+      "Đau ngực, khó thở, tim đập nhanh bất thường",
+      "Chóng mặt kèm ngất xỉu"
+    ],
+    "cau_phai_noi_trong_video": "Nếu có những dấu hiệu này, xin đừng chờ đợi và đừng tự bổ sung gì cả - hãy tới cơ sở y tế gần nhất ngay, vì đây có thể là dấu hiệu của đột quỵ.",
+    "ly_do": "Vừa đúng về mặt y tế, vừa xây dựng uy tín, vừa giảm rủi ro pháp lý cho kênh."
+  }
+}

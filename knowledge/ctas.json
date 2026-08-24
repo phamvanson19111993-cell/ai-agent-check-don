@@ -1,0 +1,32 @@
+{
+  "nguyen_tac": [
+    "Một video chỉ có MỘT lời kêu gọi hành động.",
+    "Video giáo dục dùng CTA mềm, video bán hàng mới dùng CTA mạnh.",
+    "Tỉ lệ khuyến nghị: 7 video CTA mềm cho 3 video CTA mạnh."
+  ],
+  "cta_mem": [
+    "Cô chú thấy đúng chỗ nào thì để lại một chữ CÓ ở bình luận nhé.",
+    "Lưu video này lại để tối đọc cho bố mẹ nghe.",
+    "Bạn đang bị triệu chứng nào trong 4 cái trên, gõ số ở bình luận.",
+    "Theo dõi kênh, mai tôi nói tiếp phần vì sao tê bì hay nặng về đêm.",
+    "Gửi video này cho người mà bạn hay lo cho sức khoẻ nhất."
+  ],
+  "cta_trung_binh": [
+    "Ai muốn nhận bảng hướng dẫn 7 ngày cải thiện giấc ngủ thì bình luận chữ NGỦ.",
+    "Cô chú muốn biết mình nên bắt đầu từ sản phẩm nào thì nhắn tin cho tôi, tôi tư vấn miễn phí.",
+    "Bình luận TUẦN HOÀN để tôi gửi bảng so sánh 3 sản phẩm."
+  ],
+  "cta_manh": [
+    "Bấm vào giỏ hàng để xem thông tin chi tiết sản phẩm.",
+    "Nhắn tin trực tiếp cho trang để được tư vấn liều dùng phù hợp.",
+    "Link sản phẩm ở phần bình luận đầu tiên."
+  ],
+  "cau_ket_bat_buoc": "Thực phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh.",
+  "hashtag_goi_y": {
+    "chung": ["#suckhoe", "#chamsocsuckhoe", "#suckhoenguoicaotuoi", "#tuanhoanmau"],
+    "dau-dau": ["#dauđau", "#daudaukeodai", "#thieumaunao"],
+    "chong-mat": ["#chongmat", "#roiloantiendinh", "#xayxammatmay"],
+    "mat-ngu": ["#matngu", "#khongungduoc", "#giacngu", "#matngutuoi45"],
+    "te-bi-chan-tay": ["#tebichantay", "#tetay", "#tuanhoanmaukem"]
+  }
+}

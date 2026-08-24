@@ -1,0 +1,54 @@
+{
+  "chan_dung_khach_hang": [
+    {
+      "id": "phu-nu-45-55",
+      "ten": "Phụ nữ 45-55 tuổi, giai đoạn tiền mãn kinh",
+      "hoan_canh": "Vừa lo công việc vừa lo gia đình. Bắt đầu mất ngủ, bốc hoả, hay quên, dễ cáu.",
+      "ngon_ngu_nen_dung": "Gần gũi, đồng cảm, xưng 'mình' hoặc 'chị em mình'. Tránh giọng chuyên gia bề trên.",
+      "noi_so_lon_nhat": "Sợ già đi nhanh, sợ trở thành gánh nặng cho con cái",
+      "dieu_ho_muon_nghe": "Rằng chuyện này là bình thường ở tuổi này, và có cách để cải thiện dần",
+      "kenh_manh": ["Facebook", "TikTok"],
+      "khung_gio_dang": "20h30 - 22h30"
+    },
+    {
+      "id": "dan-van-phong-30-45",
+      "ten": "Dân văn phòng 30-45 tuổi",
+      "hoan_canh": "Ngồi máy tính 8-10 tiếng, đau vai gáy, tê tay, đau đầu cuối ngày, ngủ muộn.",
+      "ngon_ngu_nen_dung": "Nhanh, gọn, có số liệu, có mẹo áp dụng ngay. Xưng 'bạn'.",
+      "noi_so_lon_nhat": "Sợ mất phong độ làm việc, sợ trẻ mà đã bệnh người già",
+      "dieu_ho_muon_nghe": "Giải pháp trong 5 phút, không cần thay đổi cả cuộc sống",
+      "kenh_manh": ["TikTok", "YouTube Shorts", "Threads"],
+      "khung_gio_dang": "12h - 13h và 21h - 23h"
+    },
+    {
+      "id": "nguoi-cao-tuoi-60",
+      "ten": "Người cao tuổi từ 60",
+      "hoan_canh": "Tê bì chân tay, chóng mặt khi đổi tư thế, huyết áp và mỡ máu không ổn định.",
+      "ngon_ngu_nen_dung": "Chậm, rõ, câu ngắn. Xưng 'cô chú', 'ông bà'. Chữ trên màn hình phải to.",
+      "noi_so_lon_nhat": "Sợ đột quỵ, sợ nằm một chỗ làm phiền con cháu",
+      "dieu_ho_muon_nghe": "Lời khuyên đơn giản, dễ nhớ, an toàn, không quá tốn kém",
+      "kenh_manh": ["Facebook", "YouTube", "Zalo"],
+      "khung_gio_dang": "5h30 - 7h và 19h - 21h"
+    },
+    {
+      "id": "con-cai-mua-cho-bo-me",
+      "ten": "Con cái 28-40 tuổi mua biếu bố mẹ",
+      "hoan_canh": "Ở xa bố mẹ, thấy bố mẹ hay kêu đau đầu tê tay, muốn mua gì đó bổ sung.",
+      "ngon_ngu_nen_dung": "Rõ ràng, có căn cứ, nhấn vào an toàn và nguồn gốc. Xưng 'bạn'.",
+      "noi_so_lon_nhat": "Sợ mua nhầm hàng kém chất lượng, sợ bố mẹ dùng chung với thuốc đang uống",
+      "dieu_ho_muon_nghe": "Cách chọn đúng, cách dùng an toàn khi bố mẹ đang có thuốc điều trị",
+      "kenh_manh": ["TikTok", "Facebook", "Shopee Video"],
+      "khung_gio_dang": "20h - 23h"
+    },
+    {
+      "id": "nguoi-mo-mau-huyet-ap",
+      "ten": "Người đã có chỉ số mỡ máu / huyết áp bất thường",
+      "hoan_canh": "Đã đi khám, có kết quả xét nghiệm, đang uống thuốc và muốn hỗ trợ thêm.",
+      "ngon_ngu_nen_dung": "Nghiêm túc, có kiến thức, luôn nhắc phối hợp với bác sĩ điều trị.",
+      "noi_so_lon_nhat": "Sợ biến chứng, sợ uống thuốc cả đời",
+      "dieu_ho_muon_nghe": "Bổ sung thế nào cho an toàn khi đang dùng thuốc",
+      "kenh_manh": ["YouTube", "Facebook"],
+      "khung_gio_dang": "19h - 21h"
+    }
+  ]
+}

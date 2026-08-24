@@ -1,0 +1,35 @@
+{
+  "nguyen_tac": [
+    "3 giây đầu quyết định 80% lượt xem hết video.",
+    "Hook phải mô tả CẢM GIÁC của người xem, không giới thiệu bản thân hay sản phẩm.",
+    "Một hook chỉ nói một ý.",
+    "Tránh tên bệnh và từ ngữ y tế mạnh ngay câu đầu trên TikTok."
+  ],
+  "mau_hook": [
+    {"kieu": "cau-hoi", "cau": "Ngủ đủ 7 tiếng mà sáng dậy vẫn rã rời - cô chú có bị vậy không?", "trieu_chung": "mat-ngu"},
+    {"kieu": "cau-hoi", "cau": "Có ai ngủ dậy mà bàn tay tê cứng, phải vẩy một lúc mới hết không?", "trieu_chung": "te-bi-chan-tay"},
+    {"kieu": "cau-hoi", "cau": "Vì sao đứng lên là xây xẩm, mà đi khám bác sĩ lại bảo không sao?", "trieu_chung": "chong-mat"},
+    {"kieu": "phan-de", "cau": "Đau đầu không phải lúc nào cũng do suy nghĩ nhiều đâu ạ.", "trieu_chung": "dau-dau"},
+    {"kieu": "phan-de", "cau": "Mất ngủ tuổi 45 không đơn giản là do stress.", "trieu_chung": "mat-ngu"},
+    {"kieu": "phan-de", "cau": "Tê tay không phải cứ nằm sai tư thế là xong.", "trieu_chung": "te-bi-chan-tay"},
+    {"kieu": "con-so", "cau": "3 kiểu đau đầu - kiểu thứ 3 là kiểu cần đi khám ngay.", "trieu_chung": "dau-dau"},
+    {"kieu": "con-so", "cau": "4 dấu hiệu cho thấy máu lên não đang kém đi.", "trieu_chung": "chong-mat"},
+    {"kieu": "con-so", "cau": "5 phút mỗi sáng, cho người hay tê bì chân tay.", "trieu_chung": "te-bi-chan-tay"},
+    {"kieu": "ke-chuyen", "cau": "Mẹ tôi ba năm nay đêm nào cũng thức tới 2 giờ sáng.", "trieu_chung": "mat-ngu"},
+    {"kieu": "ke-chuyen", "cau": "Bác hàng xóm nhà tôi cầm đũa cũng run, mà cứ bảo là do tuổi già.", "trieu_chung": "te-bi-chan-tay"},
+    {"kieu": "ke-chuyen", "cau": "Hôm qua có một chị nhắn tin cho tôi lúc 1 giờ sáng.", "trieu_chung": "mat-ngu"},
+    {"kieu": "sai-lam-thuong-gap", "cau": "Đau đầu là uống thuốc giảm đau - đây là điều nhiều người làm sai.", "trieu_chung": "dau-dau"},
+    {"kieu": "sai-lam-thuong-gap", "cau": "Chóng mặt mà cứ nằm nghỉ là xong - chưa chắc đâu ạ.", "trieu_chung": "chong-mat"},
+    {"kieu": "sai-lam-thuong-gap", "cau": "Nhiều người bổ sung sai thứ tự nên uống mãi không thấy khác.", "trieu_chung": "chung"},
+    {"kieu": "canh-bao-nhe", "cau": "Nếu cô chú có 1 trong 3 dấu hiệu này thì xin đừng chờ tới mai.", "trieu_chung": "chung"},
+    {"kieu": "canh-bao-nhe", "cau": "Tê bì kiểu này là bình thường, còn tê bì kiểu kia thì phải đi viện.", "trieu_chung": "te-bi-chan-tay"},
+    {"kieu": "so-sanh", "cau": "Cùng là mệt, nhưng mệt do thiếu ngủ khác hẳn mệt do tế bào thiếu năng lượng.", "trieu_chung": "chung"},
+    {"kieu": "so-sanh", "cau": "Chóng mặt do tiền đình và chóng mặt do thiếu máu não - hai chuyện khác nhau.", "trieu_chung": "chong-mat"},
+    {"kieu": "vi-von", "cau": "Cơ thể mình giống một thành phố: đường tắc thì hàng không tới nơi được.", "trieu_chung": "chung"},
+    {"kieu": "vi-von", "cau": "Tế bào cũng cần xăng. Hết xăng thì xe tốt mấy cũng nằm im.", "trieu_chung": "chung"},
+    {"kieu": "dong-cam", "cau": "Đêm nằm đếm từng tiếng chuông đồng hồ - mệt lắm phải không ạ.", "trieu_chung": "mat-ngu"},
+    {"kieu": "dong-cam", "cau": "Con cái ở xa, ở nhà một mình mà chóng mặt thì lo lắm.", "trieu_chung": "chong-mat"},
+    {"kieu": "thoi-su-doi-song", "cau": "Trời trở lạnh là lượng người kêu đau đầu, tê tay lại tăng lên.", "trieu_chung": "chung"},
+    {"kieu": "danh-cho-con-cai", "cau": "Nếu bố mẹ bạn hay kêu tê tay, xin bạn xem hết video này.", "trieu_chung": "te-bi-chan-tay"}
+  ]
+}

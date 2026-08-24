@@ -1,0 +1,3 @@
+# Chỉ cần cho lệnh `generate` và `batch`.
+# Các lệnh list / check / plan chạy được mà không cần thư viện nào.
+anthropic>=1.0.0
