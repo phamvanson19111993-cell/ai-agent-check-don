@@ -12,6 +12,7 @@ tin nhắn và script tính lịch nhắn tin cho từng khách.
 | [`docs/huong-dan-thao-tac-tren-zalo.md`](docs/huong-dan-thao-tac-tren-zalo.md) | Thao tác thật trên Zalo PC: đặt tên hội thoại, thẻ phân loại, tin nhắn nhanh, quy trình 15 phút/sáng, lưu ý pháp lý ngành TPCN |
 | [`data/mau_tin_nhan.json`](data/mau_tin_nhan.json) | Mẫu tin dạng dữ liệu để tự động hoá |
 | [`data/danh_sach_khach_mau.csv`](data/danh_sach_khach_mau.csv) | File theo dõi khách mẫu (chép ra rồi điền khách thật) |
+| [`docs/dang-ky-zalo-oa-zns.md`](docs/dang-ky-zalo-oa-zns.md) | Checklist hồ sơ đăng ký Zalo OA + ZBS (ZNS), 5 mẫu tin soạn sẵn để nộp duyệt, và phân định việc nào nhắn tay việc nào dùng ZNS |
 | [`scripts/lich_cskh.py`](scripts/lich_cskh.py) | Script in ra khách đến hạn nhắn hôm nay + gợi ý tin nhắn |
 
 ## Cách dùng nhanh
