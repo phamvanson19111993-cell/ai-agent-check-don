@@ -1,0 +1,131 @@
+{
+  "chu_ky_ngay": 10,
+  "gio_gui_khuyen_nghi": [
+    "08:30-11:00",
+    "14:00-17:00",
+    "19:30-21:00"
+  ],
+  "nhom_chu_de": [
+    {
+      "ma": "HOI_THAM",
+      "ten": "Hỏi thăm",
+      "mau": [
+        "Dạ em chào {xung_ho} {ten} ạ. Đầu tuần mới em chúc {xung_ho} thật nhiều sức khoẻ và mọi việc hanh thông ạ 🌿 {xung_ho} có gì cần hỗ trợ cứ nhắn em nha, bận thì {xung_ho} không cần rep đâu ạ.",
+        "{xung_ho} {ten} ơi, mấy hôm nay thời tiết thất thường quá, {xung_ho} nhớ giữ gìn sức khoẻ nha ạ. Em chỉ nhắn hỏi thăm {xung_ho} chút thôi ạ 😊",
+        "Dạ em chào {xung_ho} {ten}, em {ten_nv} bên {shop} đây ạ. Lâu rồi em chưa được nói chuyện với {xung_ho}, dạo này công việc {xung_ho} ổn không ạ? Em chúc {xung_ho} luôn nhiều năng lượng nha ạ ❤️",
+        "Dạ {xung_ho} {ten}, cuối tuần rồi ạ. Em chúc {xung_ho} và gia đình có những ngày nghỉ thật vui và thư giãn ạ 🌸",
+        "{xung_ho} {ten} ơi, sắp hết tháng rồi, chắc {xung_ho} bận lắm ạ. Em chúc {xung_ho} chốt tháng thật thuận lợi, mọi việc suôn sẻ nha ạ 💪"
+      ]
+    },
+    {
+      "ma": "SAU_MUA",
+      "ten": "Chăm sóc sau mua",
+      "mau": [
+        "Dạ em chào {xung_ho} {ten}, đơn {san_pham} bên em giao hôm {ngay_mua}, {xung_ho} dùng thấy ổn không ạ? Nếu có chỗ nào chưa vừa ý, {xung_ho} cứ nói thẳng giúp em, em hỗ trợ xử lý ngay ạ 🙏",
+        "{xung_ho} {ten} ơi, {san_pham} dùng được một thời gian rồi, {xung_ho} thấy hợp không ạ? Em muốn nghe thật lòng để lần sau tư vấn cho {xung_ho} chuẩn hơn ạ 😊",
+        "Dạ {xung_ho} {ten}, em tính theo lịch thì {san_pham} của {xung_ho} chắc sắp hết rồi ạ. Em nhắn nhắc {xung_ho} thôi, khi nào cần {xung_ho} nhắn em chuẩn bị trước cho kịp nha ạ."
+      ]
+    },
+    {
+      "ma": "MEO_HUU_ICH",
+      "ten": "Mẹo hữu ích",
+      "mau": [
+        "{xung_ho} {ten} ơi, em chia sẻ {xung_ho} một mẹo nhỏ để {san_pham} dùng bền lâu hơn nè: [nội dung mẹo]. {xung_ho} thử xem có tiện không ạ 😊",
+        "Dạ {xung_ho} {ten}, dạo này trên mạng có nhiều hàng nhái {san_pham} lắm ạ. Em nhắn để {xung_ho} lưu ý khi mua chỗ khác, tránh mua nhầm ạ.",
+        "{xung_ho} {ten} ơi, mùa này thời tiết đổi nhiều nên [mẹo phù hợp sản phẩm]. Em gửi {xung_ho} tham khảo cho tiện ạ 🌿"
+      ]
+    },
+    {
+      "ma": "HANG_MOI",
+      "ten": "Giới thiệu hàng mới",
+      "mau": [
+        "Dạ chào {xung_ho} {ten}, bên em vừa về mẫu {san_pham_moi}. Em thấy hợp gu {xung_ho} nên gửi {xung_ho} xem trước ạ. {xung_ho} thích thì em giữ hàng, không thì cũng không sao đâu ạ 😊",
+        "{xung_ho} {ten} ơi, tháng này bên em có ưu đãi dành riêng cho khách cũ. Em đăng ký sẵn phần của {xung_ho} rồi ạ, {xung_ho} dùng hay không cũng được nha ạ ❤️"
+      ]
+    },
+    {
+      "ma": "TRI_AN",
+      "ten": "Tri ân",
+      "mau": [
+        "{xung_ho} {ten} ơi, cảm ơn {xung_ho} đã tin tưởng ủng hộ shop em thời gian qua ạ 🙏 Nếu {xung_ho} thấy hài lòng, {xung_ho} dành 1 phút đánh giá giúp em nha, đó là động lực lớn cho tụi em ạ.",
+        "Dạ {xung_ho} {ten}, nếu {xung_ho} có người quen đang cần {san_pham}, {xung_ho} giới thiệu giúp em nha ạ. Em xin gửi {xung_ho} một phần ưu đãi để cảm ơn ạ ❤️"
+      ]
+    },
+    {
+      "ma": "NGU_DONG",
+      "ten": "Khách ngủ đông",
+      "mau": [
+        "Dạ em chào {xung_ho} {ten}, lâu quá rồi shop chưa được phục vụ {xung_ho} ạ. Em nhắn hỏi thăm xem dạo này {xung_ho} vẫn khoẻ chứ ạ? Em không có ý làm phiền {xung_ho} đâu ạ 😊",
+        "{xung_ho} {ten} ơi, không biết lần trước {san_pham} {xung_ho} dùng có chỗ nào chưa ưng không ạ? {xung_ho} góp ý thẳng giúp em để em rút kinh nghiệm nha ạ 🙏",
+        "Dạ {xung_ho} {ten}, bên em vẫn giữ ưu đãi khách cũ cho {xung_ho} nha ạ. Khi nào cần {xung_ho} cứ nhắn em, còn không thì em vẫn chúc {xung_ho} thật nhiều sức khoẻ ạ ❤️"
+      ]
+    }
+  ],
+  "dip_le": [
+    {
+      "ngay": "01-01",
+      "ten": "Tết Dương lịch",
+      "mau": "Dạ em chào {xung_ho} {ten}, năm mới đã sang rồi ạ 🎉 Em chúc {xung_ho} và gia đình một năm thật nhiều sức khoẻ, an vui và mọi dự định đều thành ạ!"
+    },
+    {
+      "ngay": "14-02",
+      "ten": "Valentine",
+      "mau": "{xung_ho} {ten} ơi, chúc {xung_ho} một ngày Valentine thật ngọt ngào bên người thương nha ạ 💝"
+    },
+    {
+      "ngay": "08-03",
+      "ten": "Quốc tế Phụ nữ",
+      "mau": "Dạ chị {ten}, nhân ngày 8/3 em chúc chị luôn xinh đẹp, rạng rỡ và được yêu thương thật nhiều ạ 🌷 Cảm ơn chị đã luôn ủng hộ shop em nha chị!",
+      "chi_xung_ho": [
+        "chị",
+        "cô",
+        "em"
+      ]
+    },
+    {
+      "ngay": "30-04",
+      "ten": "Giải phóng miền Nam",
+      "mau": "{xung_ho} {ten} ơi, sắp nghỉ lễ 30/4 – 1/5 rồi ạ. Em chúc {xung_ho} có kỳ nghỉ thật vui, đi chơi nhớ giữ sức khoẻ nha {xung_ho} 🌞"
+    },
+    {
+      "ngay": "01-06",
+      "ten": "Quốc tế Thiếu nhi",
+      "mau": "Dạ {xung_ho} {ten}, chúc bé nhà mình ngày 1/6 thật vui và nhận nhiều quà nha ạ 🎈 Chúc {xung_ho} luôn nhiều sức khoẻ để đồng hành cùng bé ạ!"
+    },
+    {
+      "ngay": "02-09",
+      "ten": "Quốc khánh",
+      "mau": "Dạ {xung_ho} {ten}, chúc {xung_ho} và gia đình kỳ nghỉ lễ 2/9 thật vui vẻ và bình an ạ 🇻🇳"
+    },
+    {
+      "ngay": "20-10",
+      "ten": "Phụ nữ Việt Nam",
+      "mau": "Dạ chị {ten}, nhân ngày Phụ nữ Việt Nam 20/10, em chúc chị luôn khoẻ mạnh, xinh đẹp và mỗi ngày đều có lý do để mỉm cười ạ 🌹",
+      "chi_xung_ho": [
+        "chị",
+        "cô",
+        "em"
+      ]
+    },
+    {
+      "ngay": "20-11",
+      "ten": "Nhà giáo Việt Nam",
+      "mau": "Dạ em chào cô/thầy {ten}, nhân ngày 20/11 em kính chúc cô/thầy thật nhiều sức khoẻ, luôn vững vàng và hạnh phúc với nghề ạ 🌻",
+      "thu_cong": true
+    },
+    {
+      "ngay": "24-12",
+      "ten": "Giáng sinh",
+      "mau": "{xung_ho} {ten} ơi, Giáng sinh an lành nha {xung_ho} 🎄 Chúc {xung_ho} và gia đình một mùa Noel thật ấm áp và nhiều niềm vui ạ!"
+    }
+  ],
+  "sinh_nhat": "Dạ chúc mừng sinh nhật {xung_ho} {ten} 🎂🎉 Em chúc {xung_ho} tuổi mới thật nhiều sức khoẻ, gặp nhiều may mắn và luôn vui vẻ ạ. Bên em có gửi {xung_ho} một phần quà nhỏ, khi nào tiện {xung_ho} nhắn em nha ạ 🎁",
+  "quy_tac_gian_tan_suat": {
+    "0": 10,
+    "1": 10,
+    "2": 10,
+    "3": 30,
+    "4": 30,
+    "5": 90
+  }
+}
