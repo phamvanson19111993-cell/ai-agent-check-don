@@ -172,6 +172,39 @@ def cmd_batch(args: argparse.Namespace) -> int:
     return 1 if that_bai else 0
 
 
+# --------------------------------------------------------------------------- hooks
+def cmd_hooks(args: argparse.Namespace) -> int:
+    """Tra ngân hàng hook, lọc theo triệu chứng hoặc kiểu hook."""
+    kho = kb.hooks()
+    items = kho["mau_hook"]
+    if args.trieu_chung:
+        items = [h for h in items if h["trieu_chung"] in (args.trieu_chung, "chung")]
+    if args.kieu:
+        items = [h for h in items if h["kieu"] == args.kieu]
+    if args.doi_tuong:
+        items = [h for h in items if h.get("doi_tuong") in (args.doi_tuong, "chung")]
+    items = items[: args.so_luong] if args.so_luong else items
+
+    if not items:
+        print("Không có hook nào khớp bộ lọc.", file=sys.stderr)
+        print("Các kiểu hook có sẵn: " + ", ".join(sorted({h["kieu"] for h in kho["mau_hook"]})))
+        return 1
+
+    print("NGUYÊN TẮC VIẾT HOOK")
+    for n in kho["nguyen_tac"]:
+        print(f"  - {n}")
+    print(f"\n{len(items)} HOOK")
+    for i, h in enumerate(items, start=1):
+        print(f"\n{i:>3}. {h['cau']}")
+        meta = f"     [{h['kieu']}] {h['trieu_chung']}"
+        if h.get("doi_tuong") and h["doi_tuong"] != "chung":
+            meta += f" / {h['doi_tuong']}"
+        print(meta)
+        if h.get("ghi_chu"):
+            print(f"     {h['ghi_chu']}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="agent.cli",
@@ -204,6 +237,13 @@ def build_parser() -> argparse.ArgumentParser:
     pl.add_argument("--tu-ngay", default=None, help="YYYY-MM-DD")
     pl.add_argument("--luu", default=None)
     pl.set_defaults(func=cmd_plan)
+
+    h = sub.add_parser("hooks", help="Tra ngân hàng hook (không cần API)")
+    h.add_argument("--trieu-chung", default=None, help="Lọc theo triệu chứng")
+    h.add_argument("--kieu", default=None, help="cau-hoi | phan-de | con-so | ke-chuyen | dong-cam ...")
+    h.add_argument("--doi-tuong", default=None, help="Lọc theo chân dung khách hàng")
+    h.add_argument("--so-luong", type=int, default=None, help="Chỉ lấy N hook đầu")
+    h.set_defaults(func=cmd_hooks)
 
     b = sub.add_parser("batch", help="Viết hàng loạt kịch bản theo lịch nội dung")
     b.add_argument("--so-ngay", type=int, default=7)

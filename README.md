@@ -26,6 +26,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 python -m agent.cli list                      # xem các lựa chọn có sẵn
 python -m agent.cli generate --trieu-chung mat-ngu --doi-tuong phu-nu-45-55
 python -m agent.cli plan --so-ngay 30         # lịch nội dung 30 ngày
+python -m agent.cli hooks --trieu-chung mat-ngu   # tra ngân hàng 60 hook
 python -m agent.cli check scripts/*.md        # soát tuân thủ, không cần API
 ```
 
@@ -95,6 +96,7 @@ tests/             18 kiểm thử, gồm cả việc soát lại các kịch b�
 
 ## Tài liệu
 
+- [10 hook mạnh nhất, dùng ngay được](docs/10-hook-manh-nhat.md)
 - [Hướng dẫn sử dụng chi tiết](docs/huong-dan-su-dung.md)
 - [Quy tắc tuân thủ](docs/quy-tac-tuan-thu.md)
 - [Tài liệu bộ 3 sản phẩm](docs/bo-3-san-pham.md)
