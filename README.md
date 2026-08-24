@@ -15,6 +15,7 @@ tin nhắn và script tính lịch nhắn tin cho từng khách.
 | [`docs/dang-ky-zalo-oa-zns.md`](docs/dang-ky-zalo-oa-zns.md) | Checklist hồ sơ đăng ký Zalo OA + ZBS (ZNS), 5 mẫu tin soạn sẵn để nộp duyệt, và phân định việc nào nhắn tay việc nào dùng ZNS |
 | [`docs/quy-trinh-chot-don-qua-tin-nhan.md`](docs/quy-trinh-chot-don-qua-tin-nhan.md) | Quy trình 6 bước chốt đơn qua tin nhắn theo hướng cảm xúc, xử lý 6 lời từ chối, hội thoại mẫu hoàn chỉnh |
 | [`docs/cham-soc-theo-san-pham.md`](docs/cham-soc-theo-san-pham.md) | Kịch bản chăm sóc riêng cho từng dòng sản phẩm DILI: chân dung khách, câu hỏi khai thác, mốc chăm sóc, cảnh báo tuân thủ |
+| [`docs/kich-ban-upsell-crosssell.md`](docs/kich-ban-upsell-crosssell.md) | Ma trận ghép sản phẩm, kịch bản upsell liệu trình và cross-sell theo cặp, quy tắc 3 đúng và cảnh báo an toàn khi bán chồng sản phẩm |
 | [`scripts/lich_cskh.py`](scripts/lich_cskh.py) | Script in ra khách đến hạn nhắn hôm nay + gợi ý tin nhắn |
 
 ## Cách dùng nhanh
