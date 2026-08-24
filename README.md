@@ -8,7 +8,8 @@ tin nhắn và script tính lịch nhắn tin cho từng khách.
 | Tệp | Mô tả |
 |---|---|
 | [`docs/playbook-cskh-zalo-10-ngay.md`](docs/playbook-cskh-zalo-10-ngay.md) | Quy trình đầy đủ: nguyên tắc, lịch 36 lượt/năm, phân khúc khách, xử lý phản hồi, chống spam |
-| [`docs/thu-vien-tin-nhan.md`](docs/thu-vien-tin-nhan.md) | 40+ mẫu tin nhắn tiếng Việt theo 7 nhóm chủ đề + mẫu trả lời nhanh |
+| [`docs/thu-vien-tin-nhan.md`](docs/thu-vien-tin-nhan.md) | 50+ mẫu tin nhắn tiếng Việt theo 8 nhóm chủ đề + mẫu trả lời nhanh |
+| [`docs/huong-dan-thao-tac-tren-zalo.md`](docs/huong-dan-thao-tac-tren-zalo.md) | Thao tác thật trên Zalo PC: đặt tên hội thoại, thẻ phân loại, tin nhắn nhanh, quy trình 15 phút/sáng, lưu ý pháp lý ngành TPCN |
 | [`data/mau_tin_nhan.json`](data/mau_tin_nhan.json) | Mẫu tin dạng dữ liệu để tự động hoá |
 | [`data/danh_sach_khach_mau.csv`](data/danh_sach_khach_mau.csv) | File theo dõi khách mẫu (chép ra rồi điền khách thật) |
 | [`scripts/lich_cskh.py`](scripts/lich_cskh.py) | Script in ra khách đến hạn nhắn hôm nay + gợi ý tin nhắn |

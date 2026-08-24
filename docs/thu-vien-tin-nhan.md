@@ -171,6 +171,51 @@
 
 ---
 
+## NHÓM 8 — KHÁCH DÙNG THỰC PHẨM CHỨC NĂNG (theo tuần liệu trình)
+
+> Dành cho khách lớn tuổi, xưng **"em – cô/chú"**.
+> ⚠️ Tuyệt đối không hứa chữa khỏi bệnh, không nói thay thế thuốc. Xem
+> [`huong-dan-thao-tac-tren-zalo.md`](./huong-dan-thao-tac-tren-zalo.md) mục 5.
+
+**8.1 — Ngày thứ 3 sau khi nhận hàng**
+> Dạ cô {ten} ơi, cô nhận được hàng rồi đúng không ạ? Cô uống có thấy dễ uống không cô?
+> Nếu cô thấy khó uống hay quên giờ thì cô nói em, em nhắc cô mỗi ngày cũng được ạ 😊
+
+**8.2 — Hết tuần 1**
+> Dạ cô {ten}, cô dùng được một tuần rồi ạ. Cô có uống đều đặn không cô?
+> Giai đoạn đầu cơ thể còn đang làm quen nên cô cứ kiên trì giúp em nha ạ 🌿
+
+**8.3 — Hết tuần 2**
+> Cô {ten} ơi, hai tuần rồi đó cô. Cô thấy người mình thế nào ạ, ăn ngủ có khá hơn chút nào không cô?
+> Cô kể em nghe với ạ, để em biết đường theo dõi cho cô 😊
+
+**8.4 — Nhắc uống đều**
+> Dạ cô {ten}, em nhắc cô nhớ uống đủ và uống đúng giờ nha cô.
+> Cô nhớ uống nhiều nước trong ngày nữa ạ. Em chúc cô luôn khoẻ ❤️
+
+**8.5 — Sắp hết hộp / hết liệu trình**
+> Dạ cô {ten}, em tính thì hộp của cô còn khoảng một tuần nữa là hết ạ.
+> Em nhắn để cô chủ động, tránh bị ngắt quãng giữa chừng. Cô cần thì nhắn em chuẩn bị trước nha cô 😊
+
+**8.6 — Hết liệu trình, hỏi cảm nhận**
+> Cô {ten} ơi, cô dùng xong đợt vừa rồi cô thấy thế nào ạ?
+> Cô cứ nói thật lòng giúp em, hợp thì mình duy trì, chưa hợp thì em xem lại để tư vấn cô cho đúng ạ 🙏
+
+**8.7 — Nhắc khám định kỳ / phối hợp với bác sĩ**
+> Dạ cô {ten}, cô nhớ vẫn uống thuốc bác sĩ kê bình thường nha cô, bên em chỉ là hỗ trợ thêm thôi ạ.
+> Đến lịch cô đi khám lại cho yên tâm nha cô ạ 🙏
+
+**8.8 — Chuyển mùa (khách lớn tuổi)**
+> Dạ cô {ten}, mấy hôm nay trở trời, người lớn tuổi hay bị mỏi người lắm ạ.
+> Cô nhớ giữ ấm, ăn uống đủ bữa nha cô. Em chúc cô và cả nhà luôn mạnh khoẻ ạ 🌿
+
+**8.9 — Khách than chưa thấy hiệu quả**
+> Dạ em cảm ơn cô đã nói thẳng với em ạ 🙏 Cô cho em hỏi mấy hôm nay cô uống vào giờ nào,
+> và có bỏ buổi nào không cô? Em xem lại cách dùng cho cô rồi mình điều chỉnh nha cô.
+> Cái này cần thời gian chứ không nhanh được, em không dám hứa trước với cô đâu ạ.
+
+---
+
 ## PHỤ LỤC — Mẫu trả lời nhanh
 
 | Tình huống | Câu trả lời |
