@@ -1,0 +1,9 @@
+# Công cụ chạy được với Python chuẩn, KHÔNG cần cài gì.
+# Chỉ cài thêm khi cần các tính năng dưới đây:
+
+# Đẩy kết quả thẳng lên Google Sheet (tuỳ chọn --drive)
+google-api-python-client>=2.100.0
+google-auth>=2.23.0
+
+# Đọc file Pancake xuất ra dạng .xlsx (tuỳ chọn --from-file file.xlsx)
+openpyxl>=3.1.0
