@@ -41,6 +41,12 @@ Không cần khoá API, mở ra là quay. Đây cũng là mẫu chuẩn cho agen
 | [scripts/04](scripts/04-bo-3-san-pham.md) | Bộ 3 sản phẩm khác nhau chỗ nào | Video trụ cột, 90s |
 | [scripts/05](scripts/05-livestream-15-phut.md) | Khung livestream bán hàng | Live, 15 phút |
 
+### Thêm 10 nội dung bán hàng (CTA mạnh)
+
+Xem [scripts/ban-hang/](scripts/ban-hang/) - 10 kịch bản bán hàng trải đều 4 triệu chứng và cả
+3 sản phẩm, kèm thứ tự đăng gợi ý cho 2 tuần: quiz chọn sản phẩm, xử lý phản đối "đang uống
+thuốc có dùng được không", quà biếu bố mẹ, đọc tờ xét nghiệm mỡ máu...
+
 Mỗi kịch bản gồm: 3 phương án hook, bảng lời thoại theo từng giây kèm B-roll và chữ trên màn hình,
 ghi chú quay dựng, caption và hashtag, ba bình luận hay gặp kèm câu trả lời.
 

@@ -88,9 +88,14 @@ _TIME_PROMISE = re.compile(
 )
 
 # Nhân viên y tế đứng ra quảng cáo
+# Chỉ tính là vi phạm khi lời chứng thực nhắm vào SẢN PHẨM.
+# "bác sĩ kê thuốc", "hỏi ý kiến bác sĩ" là câu hợp lệ, không được bắt nhầm.
 _MEDICAL_ENDORSE = re.compile(
     r"(bác sĩ|dược sĩ|y tá|điều dưỡng|bệnh viện|phòng khám|chuyên gia y tế)"
-    r"[^.!?\n]{0,30}?(khuyên dùng|khuyến cáo dùng|tin dùng|chứng nhận|kê|giới thiệu sản phẩm)"
+    r"[^.!?\n]{0,30}?(khuyên dùng|khuyến cáo dùng|tin dùng|chứng nhận|"
+    r"kê đơn sản phẩm|kê sản phẩm|giới thiệu sản phẩm|đảm bảo chất lượng)"
+    r"|sản phẩm[^.!?\n]{0,25}?(bác sĩ|dược sĩ|bệnh viện|phòng khám)"
+    r"[^.!?\n]{0,15}?(kê đơn|khuyên dùng|tin dùng|giới thiệu|chứng nhận)"
 )
 
 _ABSOLUTE = re.compile(r"\b(100%|tuyệt đối|chắc chắn khỏi|hoàn toàn khỏi|vĩnh viễn)\b")
