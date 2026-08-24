@@ -41,19 +41,28 @@ python3 -m pancake_export --list-tags
 
 ## Chạy tự động mỗi ngày
 
-Không phải bấm tay. Cài 1 lần, sau đó máy tự chạy và tự ghi lên Google Sheet.
+Cài 1 lệnh, sau đó máy tự chạy và tự ghi lên Google Sheet, không phải bấm tay.
 
-**Windows:** mở *Task Scheduler* → *Create Basic Task* → *Daily* → chọn giờ (vd 8:00)
-→ *Start a program* → trỏ tới file `chay_hang_ngay.bat`.
+**Windows** — nháy đúp `caidat.bat` (hoặc `caidat.bat 07:00` để đổi giờ).
 
 **macOS / Linux:**
 
 ```bash
-chmod +x chay_hang_ngay.sh
-crontab -e
-# dán dòng này -> 8h sáng mỗi ngày:
-0 8 * * * /duong/dan/toi/ai-agent-check-don/chay_hang_ngay.sh >> /tmp/pancake.log 2>&1
+chmod +x caidat.sh
+./caidat.sh          # 8h sáng mỗi ngày
+./caidat.sh 7        # đổi sang 7h sáng
+./caidat.sh 8 --go   # cài xong chạy thử luôn
 ```
+
+Lần đầu chạy, nó tạo file `.env` và dừng lại nhắc anh dán API key Pancake vào —
+dán xong chạy lại là chạy được. Cài lại nhiều lần cũng không bị trùng lịch.
+
+| Việc | macOS / Linux | Windows |
+|---|---|---|
+| Xem lịch | `crontab -l` | `schtasks /query /tn "PancakeChuaChot"` |
+| Chạy thử ngay | `./chay_hang_ngay.sh` | `schtasks /run /tn "PancakeChuaChot"` |
+| Xem nhật ký | `tail -f data/nhat_ky.log` | mở `data\nhat_ky.log` |
+| Gỡ lịch | `crontab -e` rồi xoá dòng | `schtasks /delete /tn "PancakeChuaChot" /f` |
 
 Mỗi lần chạy quét 2 ngày gần nhất (phòng hội thoại cập nhật muộn) và chỉ thêm số
 mới — chạy lại bao nhiêu lần cũng không sinh dòng trùng.
