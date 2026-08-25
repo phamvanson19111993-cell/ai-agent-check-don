@@ -54,6 +54,7 @@ a{color:var(--red)}
 .wrap{width:min(1080px,100% - 2.4rem);margin-inline:auto}
 .col{width:min(660px,100%);margin-inline:auto}
 .sec{padding-block:clamp(3rem,7vw,5.25rem);border-top:1px solid var(--line2)}
+.sec.no-rule{border-top:0;padding-top:clamp(1.5rem,3vw,2.25rem)}
 .head{display:flex;flex-direction:column;gap:.85rem;margin-bottom:2.25rem}
 .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);display:flex;align-items:center;gap:.6rem}
 .eyebrow::before{content:"";width:22px;height:1px;background:var(--red);flex:none}
@@ -139,13 +140,74 @@ a{color:var(--red)}
 .spec-row dt{margin:0;font-size:.8rem;color:var(--ink3);min-width:112px;flex:none}
 .spec-row dd{margin:0;font-size:.92rem;font-weight:500}
 
+/* bien giai doan */
+.stage{display:flex;gap:1.4rem;align-items:flex-start;padding:1.6rem 0 .3rem;border-top:2px solid var(--red)}
+.stage-n{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--red);padding-top:.5rem;flex:none;min-width:98px}
+.stage-tx{display:flex;flex-direction:column;gap:.4rem}
+.stage-tx h2{font-size:clamp(1.5rem,3.2vw,2.1rem)}
+.stage-tx p{color:var(--ink2);font-size:.98rem;max-width:62ch}
+@media(max-width:620px){.stage{flex-direction:column;gap:.5rem}.stage-n{padding-top:0}}
+.stage + .sec, .stage + * .sec{border-top:0}
+
+/* hero jump */
+.hero-jump{display:inline-flex;align-self:flex-start;align-items:center;gap:.5rem;font:600 .95rem/1 "Be Vietnam Pro",sans-serif;color:var(--red);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:.3rem;margin-top:.3rem}
+.hero-jump:hover{gap:.75rem}
+.prod-art{margin-bottom:1.5rem}
+
 /* symptom list */
 .symptoms{display:grid;gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--r);overflow:hidden}
 @media(min-width:680px){.symptoms{grid-template-columns:1fr 1fr}}
-.sym{background:var(--card);padding:1.05rem 1.15rem;display:flex;gap:.8rem;align-items:flex-start}
+.sym{background:var(--card);padding:1.05rem 1.15rem;display:flex;gap:.8rem;align-items:flex-start;cursor:pointer;transition:background .15s ease}
+.sym:hover{background:color-mix(in srgb,var(--red-soft) 30%,var(--card))}
+.sym-cb{position:absolute;opacity:0;width:0;height:0}
+.sym-tx{font-size:.94rem}
+.sym .bx::after{opacity:0;transition:opacity .12s ease}
+.sym:has(.sym-cb:checked){background:color-mix(in srgb,var(--red-soft) 55%,var(--card))}
+.sym:has(.sym-cb:checked) .bx{background:var(--red)}
+.sym:has(.sym-cb:checked) .bx::after{opacity:1;border-color:#fff}
+.sym-cb:focus-visible ~ .bx{outline:2px solid var(--red);outline-offset:2px}
+.sym.on{background:color-mix(in srgb,var(--red-soft) 55%,var(--card))}
+.sym.on .bx{background:var(--red)}
+.sym.on .bx::after{opacity:1;border-color:#fff}
 .sym .bx{width:17px;height:17px;border:1.5px solid var(--red);border-radius:2px;flex:none;margin-top:.3rem;position:relative}
 .sym .bx::after{content:"";position:absolute;left:3px;top:4px;width:8px;height:4px;border-left:1.5px solid var(--red);border-bottom:1.5px solid var(--red);transform:rotate(-45deg)}
 .sym p{font-size:.94rem}
+
+/* quiz */
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.4rem 1.45rem;display:flex;flex-direction:column;gap:1.15rem;box-shadow:var(--shadow)}
+.quiz-head{display:flex;flex-direction:column;gap:.55rem}
+.quiz-step{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.quiz-step b{color:var(--red);font-weight:500}
+.quiz-body{display:flex;flex-direction:column;gap:1rem;min-height:190px}
+.quiz-body h3{font-family:"Newsreader",serif;font-size:1.4rem;font-weight:600;line-height:1.25}
+.quiz-opts{display:flex;flex-direction:column;gap:.55rem}
+.qopt{text-align:left;font:500 .95rem/1.4 "Be Vietnam Pro",sans-serif;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:.8rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.75rem;transition:border-color .14s ease,background .14s ease,transform .1s ease}
+.qopt:hover{border-color:var(--red);background:color-mix(in srgb,var(--red-soft) 35%,var(--paper));transform:translateX(2px)}
+.qopt .k{font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--ink3);border:1px solid var(--line);border-radius:3px;width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex:none}
+.qopt:hover .k{border-color:var(--red);color:var(--red)}
+.qopt.picked{border-color:var(--red);background:color-mix(in srgb,var(--red-soft) 55%,var(--paper))}
+.quiz-foot{display:flex;align-items:center;gap:1rem;border-top:1px solid var(--line2);padding-top:.9rem}
+.quiz-hint{font-size:.78rem;color:var(--ink3);margin-left:auto}
+.qbtn-back{font:500 .82rem/1 "Be Vietnam Pro",sans-serif;color:var(--ink2);background:none;border:1px solid var(--line);border-radius:var(--r);padding:.5rem .85rem;cursor:pointer}
+.qbtn-back:hover{border-color:var(--red);color:var(--red)}
+@media (prefers-reduced-motion: reduce){.qopt:hover{transform:none}}
+
+/* ket qua test */
+.result{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.35rem 1.4rem;display:flex;flex-direction:column;gap:1rem;box-shadow:var(--shadow)}
+.result-top{display:flex;gap:1.1rem;align-items:center}
+.score{font-family:"Newsreader",serif;line-height:1;color:var(--red);flex:none;display:flex;align-items:baseline;font-variant-numeric:tabular-nums}
+.score b{font-size:2.9rem;font-weight:700}
+.score span{font-size:1.15rem;color:var(--ink3)}
+.result-tx{display:flex;flex-direction:column;gap:.25rem}
+.result-tx h3{font-size:1.08rem}
+.result-tx p{font-size:.9rem;color:var(--ink2)}
+.bar{height:6px;border-radius:3px;background:var(--sunk);overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:var(--red);border-radius:3px;transition:width .35s ease}
+.result-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem;border-top:1px solid var(--line2);padding-top:.9rem}
+.result-list li{display:flex;gap:.6rem;align-items:baseline;font-size:.89rem;color:var(--ink2)}
+.result-list li::before{content:"—";color:var(--red);font-family:"IBM Plex Mono",monospace;flex:none}
+.result-cta{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+@media (prefers-reduced-motion: reduce){.bar span{transition:none}}
 
 /* chain */
 .chain{display:grid;gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--r);overflow:hidden}
@@ -270,6 +332,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 @media(min-width:660px){.form{grid-template-columns:1fr 1fr}.form .full{grid-column:1/-1}}
 .field{display:flex;flex-direction:column;gap:.3rem}
 .field label{font-size:.78rem;font-weight:600;color:var(--ink2)}
+.field input[readonly]{background:var(--sunk);color:var(--ink2)}
 .field input,.field select{font:400 .95rem/1.4 "Be Vietnam Pro",sans-serif;padding:.65rem .8rem;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);color:var(--ink)}
 .form-note{font-size:.8rem;color:var(--ink3)}
 .fgroup{grid-column:1/-1;font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line2);padding-bottom:.4rem;margin-top:.5rem}
@@ -309,7 +372,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="#top"><b>AFC</b><span>Nhật Bản · từ 1969</span></a>
-    <a class="btn" href="#dat-hang">Nhận tư vấn</a>
+    <a class="btn btn-ghost" href="#van-de">Làm bài kiểm tra</a>
   </div>
 </header>
 
@@ -317,25 +380,280 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 
   <!-- HERO -->
   <section class="wrap hero">
-    <div class="hero-grid">
-      <div class="stack">
+    <div class="col stack">
       <span class="aud">Dành cho người 40 – 60 tuổi, mệt mỏi kéo dài</span>
       <h1>Ngủ đủ tám tiếng mà sáng dậy <em>vẫn thấy cạn pin</em></h1>
       <svg class="ecg" viewBox="0 0 600 54" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0 34 H80 l10 -4 l8 8 l9 -26 l10 40 l9 -22 l8 4 H240 l10 -3 l8 6 l9 -20 l10 32 l9 -17 l8 2 H420 l10 -4 l8 8 l9 -26 l10 40 l9 -22 l8 4 H600"></path>
       </svg>
       <p class="lede">Không phải anh chị lười, cũng chưa hẳn là tuổi tác. Sau tuổi 40, lượng Coenzyme Q10 — chất mà mỗi tế bào cần để đốt thức ăn thành năng lượng — tụt nhanh. Tim là cơ quan cần nhiều nhất, nên nó cũng là nơi chịu trận đầu tiên.</p>
-      <div class="hero-cta">
-        <a class="btn btn-lg" href="#dat-hang">Nhận tư vấn miễn phí</a>
-        <a class="btn btn-lg btn-ghost" href="#co-che">Xem thành phần &amp; cơ chế</a>
-      </div>
+      <a class="hero-jump" href="#van-de">Bắt đầu bài kiểm tra <span aria-hidden="true">↓</span></a>
       <div class="trustline">
         <span>Sản xuất tại <b>Shizuoka, Nhật Bản</b></span>
         <span>Số công bố <b class="mono">4107/2024/ĐKSP</b></span>
         <span>AFC niêm yết sàn Tokyo, mã <b class="mono">2927</b></span>
       </div>
+    </div>
+  </section>
+
+  <!-- 01 VẤN ĐỀ -->
+  <div class="wrap">
+    <div class="stage">
+      <span class="stage-n">Giai đoạn 1</span>
+      <div class="stage-tx"><h2>Phân tích</h2><p>Trước hết xem anh chị đang ở đâu. Bài kiểm tra dưới đây không hỏi tên, không hỏi số điện thoại, làm xong là có kết quả ngay.</p></div>
+    </div>
+  </div>
+
+  <section class="sec no-rule" id="van-de">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Phần 01 · Vấn đề</span>
+        <h2>Tự kiểm tra trong 30 giây</h2>
+        <p class="lede">Sáu câu hỏi ngắn về những dấu hiệu của người đang cạn năng lượng ở mức tế bào. Trả lời xong là có ngay kết quả, không cần để lại thông tin gì.</p>
       </div>
-      <div class="hero-art">
+      <div class="col">
+        <div class="quiz" id="quiz">
+          <div class="quiz-head">
+            <span class="quiz-step">Câu <b id="q-i">1</b> / 6</span>
+            <div class="bar"><span id="q-bar"></span></div>
+          </div>
+          <div class="quiz-body">
+            <h3 id="q-text">&nbsp;</h3>
+            <div class="quiz-opts" id="q-opts"></div>
+          </div>
+          <div class="quiz-foot">
+            <button type="button" class="qbtn-back" id="q-back" hidden>← Câu trước</button>
+            <span class="quiz-hint" id="q-hint">Chọn đáp án đúng nhất với anh chị</span>
+          </div>
+        </div>
+
+        <div class="result" id="q-result" hidden aria-live="polite">
+          <div class="result-top">
+            <span class="score"><b id="score-n">0</b><span>/12</span></span>
+            <div class="result-tx">
+              <h3 id="result-h">&nbsp;</h3>
+              <p id="result-p">&nbsp;</p>
+            </div>
+          </div>
+          <div class="bar"><span id="bar-fill"></span></div>
+          <ul class="result-list" id="result-list"></ul>
+          <div class="result-cta">
+            <a class="btn" href="#dat-hang">Nhận tư vấn theo kết quả này</a>
+            <button type="button" class="qbtn-back" id="q-again">Làm lại</button>
+          </div>
+        </div>
+
+        <noscript>
+          <div class="result">
+            <div class="result-tx">
+              <h3>Sáu dấu hiệu của người đang cạn năng lượng ở mức tế bào</h3>
+              <p>Ngủ đủ vẫn mệt · đuối sớm từ ba giờ chiều · leo hai tầng cầu thang đã thở dốc · nặng đầu về chiều · mỡ máu cao hoặc đang uống statin · tập xong ê ẩm mấy ngày. Đúng từ ba dấu hiệu trở lên thì phần bên dưới viết đúng cho anh chị.</p>
+            </div>
+          </div>
+        </noscript>
+      </div>
+      <div class="col">
+        <p class="lede">Mấy dấu hiệu này thường bị gán cho hai chữ “tuổi tác” rồi bỏ qua. Nhưng chúng có một điểm chung rất cụ thể: <b>tế bào không sản xuất đủ năng lượng nữa.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 NGUYÊN NHÂN GỐC RỄ -->
+  <div class="wrap">
+    <div class="stage">
+      <span class="stage-n">Giai đoạn 2</span>
+      <div class="stage-tx"><h2>Hỗ trợ</h2><p>Giờ nói cho hết ngọn ngành: vì sao lại mệt, những cách anh chị từng thử hụt ở đâu, và ba việc nên làm ngay mà không tốn đồng nào. Phần này không bán gì cả.</p></div>
+    </div>
+  </div>
+
+  <section class="sec no-rule" id="nguyen-nhan">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Phần 02 · Nguyên nhân gốc rễ</span>
+        <h2>Nhà máy điện trong tế bào đang thiếu nguyên liệu</h2>
+        <p class="lede">Trong mỗi tế bào có ty thể — cỗ máy biến thức ăn và oxy thành năng lượng. Coenzyme Q10 là mắt xích bắt buộc trong dây chuyền đó. Thiếu nó, dây chuyền chạy chậm lại.</p>
+      </div>
+      <div class="chain">
+        <div class="link">
+          <span class="k">MẮT XÍCH 1</span>
+          <h3>Sau tuổi 40, cơ thể tự tổng hợp ít dần</h3>
+          <p>Khả năng tự sản xuất Coenzyme Q10 bắt đầu giảm từ tuổi 20 và tụt đặc biệt nhanh sau tuổi 40, dù ăn uống vẫn đầy đủ.</p>
+        </div>
+        <div class="link">
+          <span class="k">MẮT XÍCH 2</span>
+          <h3>Ăn uống gần như không bù nổi</h3>
+          <p>Thực phẩm giàu Coenzyme Q10 rất ít và khó hấp thu. Muốn nạp 100mg phải ăn khoảng 1,56kg cá mòi Nhật hoặc 3kg thịt bò.</p>
+        </div>
+        <div class="link hot">
+          <span class="k">MẮT XÍCH 3</span>
+          <h3>Thuốc hạ mỡ máu lấy đi thêm</h3>
+          <p>Nhóm statin ức chế một enzyme ở gan. Enzyme đó vừa tạo cholesterol, vừa tạo Coenzyme Q10 — nên chặn cái này là mất luôn cái kia.</p>
+        </div>
+        <div class="link">
+          <span class="k">MẮT XÍCH 4</span>
+          <h3>Stress đốt nhanh phần còn lại</h3>
+          <p>Căng thẳng và thiếu ngủ làm tăng quá trình oxy hóa, tiêu thụ nhiều hơn lượng Coenzyme Q10 vốn đã ít đi.</p>
+        </div>
+      </div>
+      <div class="col stack">
+        <p><b>Vì sao tim chịu trận đầu tiên?</b> Vì tim là khối cơ không bao giờ nghỉ. Cơ quan nào tiêu thụ nhiều năng lượng nhất thì cũng cần nhiều Coenzyme Q10 nhất, và thiếu hụt sẽ lộ ra ở đó sớm nhất — dưới dạng mệt, hụt hơi, kém chịu gắng sức.</p>
+        <p class="note">Nguồn: tài liệu sản phẩm Rich Coenzyme Q10 do Công ty Cổ phần Jinsei Vietnam phát hành.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 CÂU CHUYỆN -->
+  <section class="sec" id="cau-chuyen">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Phần 03 · Câu chuyện</span>
+        <h2>Hành trình của một người đi vòng bốn năm</h2>
+      </div>
+      <div class="col">
+        <div class="story">
+          <div class="who"><b>Anh Tuấn, 54 tuổi</b><span>Quản lý kho · Hải Phòng</span></div>
+          <p>Năm 50 tuổi, anh Tuấn bắt đầu thấy chiều nào cũng đuối. Anh nghĩ do công việc ca kíp, ngủ bù cuối tuần là xong.</p>
+          <p>Ngủ bù mãi vẫn không lại sức. Anh chuyển sang cà phê đặc, ngày ba cốc. Tỉnh được đến trưa, rồi tim đập nhanh, đêm khó ngủ, sáng hôm sau lại mệt hơn hôm trước.</p>
+          <p>Đi khám tổng quát, mỡ máu cao. Bác sĩ kê statin. Chỉ số mỡ máu về đẹp, nhưng cái mệt thì nặng thêm — anh không hiểu vì sao.</p>
+          <p>Anh mua vitamin tổng hợp, sâm, nước tăng lực dạng ống. Mỗi thứ đỡ được một tuần đầu rồi đâu lại vào đấy.</p>
+          <p class="turn">Đến khi con trai anh đọc tờ hướng dẫn của chính hộp thuốc statin, mới thấy dòng chữ: nhóm thuốc này làm giảm Coenzyme Q10 trong cơ thể. Suốt bốn năm, anh bổ sung đủ thứ — trừ đúng cái thứ đang bị lấy đi mỗi ngày.</p>
+          <p class="note">Nhân vật minh hoạ, dựng lại từ tình huống thường gặp. Không phải lời chứng thực về hiệu quả sản phẩm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 GIẢI PHÁP TRƯỚC -->
+  <section class="sec" id="giai-phap-cu">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Phần 04 · Giải pháp trước đây</span>
+        <h2>Vì sao mấy cách cũ chỉ đỡ được một đoạn</h2>
+        <p class="lede">Không cách nào dưới đây là sai. Chúng chỉ đang chạm vào những mắt xích khác, không phải mắt xích thiếu hụt.</p>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>Cách đã thử</th><th>Có đỡ không</th><th>Đỡ được bao lâu</th><th>Vì sao chưa tới gốc</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="w">Cà phê, nước tăng lực</td><td><span class="mark part">Đỡ nhanh</span></td><td>2 – 4 tiếng</td><td>Vay năng lượng bằng cách kích thích thần kinh, không tạo thêm năng lượng cho tế bào. Hết thuốc là sụp.</td></tr>
+            <tr><td class="w">Ngủ bù cuối tuần</td><td><span class="mark part">Đỡ ít</span></td><td>1 – 2 ngày</td><td>Bù được giấc, không bù được nguyên liệu mà ty thể đang thiếu.</td></tr>
+            <tr><td class="w">Vitamin tổng hợp</td><td><span class="mark part">Đỡ nhẹ</span></td><td>Không rõ</td><td>Vitamin nhóm B hỗ trợ chuyển hoá, nhưng hầu như không chứa Coenzyme Q10.</td></tr>
+            <tr><td class="w">Ăn nhiều cá, thịt đỏ</td><td><span class="mark no">Gần như không</span></td><td>—</td><td>Muốn đủ 100mg phải ăn 1,56kg cá mòi hoặc 3kg thịt bò mỗi ngày. Không ai ăn nổi.</td></tr>
+            <tr><td class="w">CoQ10 giá rẻ dạng ubiquinone</td><td><span class="mark part">Tuỳ người</span></td><td>Chậm</td><td>Đây là dạng oxy hoá, vào cơ thể còn phải chuyển hoá thêm một bước — bước mà người lớn tuổi làm càng lúc càng kém.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 GIẢI PHÁP GỐC RỄ -->
+  <section class="sec" id="giai-phap-goc">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Phần 05 · Giải pháp gốc rễ</span>
+        <h2>Muốn tới gốc, phải đúng cả ba điều</h2>
+      </div>
+      <div class="col stack">
+        <p class="lede">Bổ sung Coenzyme Q10 nghe thì đơn giản, nhưng thiếu một trong ba điều kiện sau là uống bao nhiêu cũng phí:</p>
+        <div class="symptoms">
+          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Đúng dạng cơ thể dùng được ngay.</b> Ubiquinol là dạng khử, hấp thu tốt hơn và không cần cơ thể chuyển hoá thêm bước nào.</p></div>
+          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Đủ liều mỗi ngày.</b> Liều lắt nhắt vài miligam không tạo được khác biệt nào đáng kể.</p></div>
+          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Có chất dẫn đi kèm.</b> Coenzyme Q10 tan trong dầu; cần môi trường dầu và chất tăng hấp thu thì mới vào được máu.</p></div>
+          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Có lớp chống oxy hoá bảo vệ.</b> Nếu gốc tự do vẫn hoành hành thì phần vừa bổ sung cũng bị đốt sạch.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="tu-lam">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Khép lại giai đoạn 2</span>
+        <h2>Ba việc nên làm ngay, không tốn đồng nào</h2>
+        <p class="lede">Trước khi nghĩ tới chuyện mua gì, đây là ba việc anh chị làm được từ hôm nay. Không có cái nào cần tới em cả.</p>
+      </div>
+      <div class="chain">
+        <div class="link">
+          <span class="k">VIỆC 1</span>
+          <h3>Ngủ đúng giờ trong hai tuần</h3>
+          <p>Thiếu ngủ và căng thẳng kéo dài làm tăng quá trình oxy hoá, tiêu tốn thêm phần Coenzyme Q10 vốn đã ít đi. Ngủ đủ không tạo thêm được nhiều, nhưng ít nhất là ngừng đốt.</p>
+        </div>
+        <div class="link">
+          <span class="k">VIỆC 2</span>
+          <h3>Đi bộ nhanh 30 phút mỗi ngày</h3>
+          <p>Không cần tập nặng. Đi bộ đều giúp tuần hoàn tốt hơn và giữ cân nặng hợp lý — hai thứ ảnh hưởng trực tiếp tới tim mạch mà không tốn tiền.</p>
+        </div>
+        <div class="link hot">
+          <span class="k">VIỆC 3</span>
+          <h3>Mang đơn thuốc đi hỏi bác sĩ</h3>
+          <p>Nếu anh chị đang uống thuốc hạ mỡ máu nhóm statin, hãy hỏi thẳng bác sĩ về việc thuốc làm giảm Coenzyme Q10 và có nên bổ sung không. Bác sĩ đang theo dõi anh chị mới là người trả lời đúng nhất.</p>
+        </div>
+      </div>
+      <div class="col">
+        <p>Làm ba việc trên một tháng mà vẫn thấy đúng những dấu hiệu trong bài kiểm tra đầu trang, lúc đó mới tính tới chuyện bổ sung. Phần dưới đây em nói về sản phẩm.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="stage">
+      <span class="stage-n">Giai đoạn 3</span>
+      <div class="stage-tx"><h2>Sản phẩm và báo giá</h2><p>Đọc tới đây rồi thì em mới giới thiệu sản phẩm. Anh chị xem thành phần, giấy tờ, giá cả rồi tự quyết, không ai giục.</p></div>
+    </div>
+  </div>
+
+  <!-- 06 CƠ CHẾ SẢN PHẨM -->
+  <section class="sec" id="co-che">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Phần 06 · Cơ chế sản phẩm</span>
+        <h2>Rich Coenzyme Q10 xử lý cả bốn điều đó ra sao</h2>
+        <p class="lede">Ba thành phần chính trong mỗi viên nang mềm, mỗi thành phần giữ một vai trò. Số liệu dưới đây lấy đúng theo bản công bố sản phẩm số 4107/2024/ĐKSP.</p>
+      </div>
+      <div class="ings">
+        <div class="ing">
+          <span class="role">Nguyên liệu chính</span>
+          <span class="dose">50<small>mg</small></span>
+          <h3>Coenzym Q10</h3>
+          <p>Bù đúng thứ đang thiếu ở ty thể. Uống 2 viên mỗi ngày là 100mg — đủ liều chứ không lắt nhắt. AFC dùng dạng Ubiquinol, dạng cơ thể sử dụng được ngay.</p>
+        </div>
+        <div class="ing">
+          <span class="role">Lớp bảo vệ</span>
+          <span class="dose">10<small>mg</small></span>
+          <h3>Tảo Haematococcus pluvialis</h3>
+          <p>Nguồn astaxanthin — chất chống oxy hoá mạnh, giúp bảo vệ tế bào khỏi gốc tự do để phần Coenzyme Q10 vừa bổ sung không bị đốt mất.</p>
+        </div>
+        <div class="ing">
+          <span class="role">Chất dẫn</span>
+          <span class="dose">2,5<small>mg</small></span>
+          <h3>Chiết xuất hạt tiêu đen</h3>
+          <p>Piperine trong hạt tiêu đen giúp tăng hấp thu nhiều dưỡng chất, trong đó có Coenzyme Q10. Nang mềm dạng dầu ăn lo nốt phần tan trong dầu.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="equiv">
+          <span class="big">100mg<small>trong 2 viên mỗi ngày</small></span>
+          <p>Để nạp được chừng đó Coenzyme Q10 từ bữa ăn, anh chị phải ăn khoảng <b>1,56kg cá mòi Nhật</b> hoặc <b>3kg thịt bò</b> — mỗi ngày. Hai viên nang mềm sau bữa sáng là xong.</p>
+        </div>
+      </div>
+      <div class="col stack">
+        <p><b>Công dụng đã được Cục An toàn thực phẩm xác nhận:</b> hỗ trợ bổ sung Coenzyme Q10 cho cơ thể; hỗ trợ chống oxy hoá, hỗ trợ giảm mệt mỏi; hỗ trợ giảm nguy cơ xơ vữa động mạch, tốt cho tim mạch.</p>
+        <p><b>Cách dùng:</b> người lớn uống 2 viên mỗi ngày với nước, sau bữa ăn chính — tốt nhất là sau bữa sáng hoặc bữa trưa, vì chất béo trong bữa ăn giúp hấp thu tốt hơn. Tránh uống buổi tối để không ảnh hưởng giấc ngủ.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SẢN PHẨM -->
+  <section class="sec no-rule" id="san-pham">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Sản phẩm</span>
+        <h2>Rich Coenzyme Q10 trong hộp có gì</h2>
+        <p class="lede">Thực phẩm bảo vệ sức khoẻ dạng viên nang mềm, nhập khẩu nguyên hộp từ Nhật Bản. Toàn bộ thông số dưới đây lấy đúng theo bản công bố sản phẩm.</p>
+      </div>
+      <div class="prod-art">
         <svg class="pack" viewBox="0 0 360 330" role="img" aria-label="Hop va lo Rich Coenzyme Q10 120 vien nang mem">
           <defs>
             <linearGradient id="gCap" x1="0" y1="0" x2="1" y2="0">
@@ -443,182 +761,6 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
           </g>
         </svg>
         <p class="pack-cap">Hình dựng theo bao bì thật · lọ 120 viên nang mềm</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 01 VẤN ĐỀ -->
-  <section class="sec" id="van-de">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 01 · Vấn đề</span>
-        <h2>Anh chị có đang gặp mấy chuyện này không?</h2>
-        <p class="lede">Đây là nhóm dấu hiệu của người đang cạn năng lượng ở mức tế bào. Gật đầu từ ba dòng trở lên thì phần sau viết đúng cho anh chị.</p>
-      </div>
-      <div class="symptoms">
-        <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Ngủ đủ vẫn mệt.</b> Dậy buổi sáng đã thấy nặng người, phải có cà phê mới khởi động được.</p></div>
-        <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Đuối sớm hơn trước.</b> Ba giờ chiều là hết pin, việc cũ nhưng làm lâu hơn và dễ sai hơn.</p></div>
-        <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Leo hai tầng cầu thang là thở dốc.</b> Trước đây leo bốn tầng vẫn nói chuyện bình thường.</p></div>
-        <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Đau đầu, nặng đầu về chiều.</b> Nhất là những hôm ngủ ít hoặc căng thẳng kéo dài.</p></div>
-        <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Đi khám thấy mỡ máu cao.</b> Bác sĩ dặn theo dõi tim mạch, hoặc đã kê thuốc hạ mỡ máu nhóm statin.</p></div>
-        <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Tập xong ê ẩm mấy ngày.</b> Cơ phục hồi chậm hẳn so với năm, mười năm trước.</p></div>
-      </div>
-      <div class="col">
-        <p class="lede">Mấy dấu hiệu này thường bị gán cho hai chữ “tuổi tác” rồi bỏ qua. Nhưng chúng có một điểm chung rất cụ thể: <b>tế bào không sản xuất đủ năng lượng nữa.</b></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 02 NGUYÊN NHÂN GỐC RỄ -->
-  <section class="sec" id="nguyen-nhan">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 02 · Nguyên nhân gốc rễ</span>
-        <h2>Nhà máy điện trong tế bào đang thiếu nguyên liệu</h2>
-        <p class="lede">Trong mỗi tế bào có ty thể — cỗ máy biến thức ăn và oxy thành năng lượng. Coenzyme Q10 là mắt xích bắt buộc trong dây chuyền đó. Thiếu nó, dây chuyền chạy chậm lại.</p>
-      </div>
-      <div class="chain">
-        <div class="link">
-          <span class="k">MẮT XÍCH 1</span>
-          <h3>Sau tuổi 40, cơ thể tự tổng hợp ít dần</h3>
-          <p>Khả năng tự sản xuất Coenzyme Q10 bắt đầu giảm từ tuổi 20 và tụt đặc biệt nhanh sau tuổi 40, dù ăn uống vẫn đầy đủ.</p>
-        </div>
-        <div class="link">
-          <span class="k">MẮT XÍCH 2</span>
-          <h3>Ăn uống gần như không bù nổi</h3>
-          <p>Thực phẩm giàu Coenzyme Q10 rất ít và khó hấp thu. Muốn nạp 100mg phải ăn khoảng 1,56kg cá mòi Nhật hoặc 3kg thịt bò.</p>
-        </div>
-        <div class="link hot">
-          <span class="k">MẮT XÍCH 3</span>
-          <h3>Thuốc hạ mỡ máu lấy đi thêm</h3>
-          <p>Nhóm statin ức chế một enzyme ở gan. Enzyme đó vừa tạo cholesterol, vừa tạo Coenzyme Q10 — nên chặn cái này là mất luôn cái kia.</p>
-        </div>
-        <div class="link">
-          <span class="k">MẮT XÍCH 4</span>
-          <h3>Stress đốt nhanh phần còn lại</h3>
-          <p>Căng thẳng và thiếu ngủ làm tăng quá trình oxy hóa, tiêu thụ nhiều hơn lượng Coenzyme Q10 vốn đã ít đi.</p>
-        </div>
-      </div>
-      <div class="col stack">
-        <p><b>Vì sao tim chịu trận đầu tiên?</b> Vì tim là khối cơ không bao giờ nghỉ. Cơ quan nào tiêu thụ nhiều năng lượng nhất thì cũng cần nhiều Coenzyme Q10 nhất, và thiếu hụt sẽ lộ ra ở đó sớm nhất — dưới dạng mệt, hụt hơi, kém chịu gắng sức.</p>
-        <p class="note">Nguồn: tài liệu sản phẩm Rich Coenzyme Q10 do Công ty Cổ phần Jinsei Vietnam phát hành.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 03 CÂU CHUYỆN -->
-  <section class="sec" id="cau-chuyen">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 03 · Câu chuyện</span>
-        <h2>Hành trình của một người đi vòng bốn năm</h2>
-      </div>
-      <div class="col">
-        <div class="story">
-          <div class="who"><b>Anh Tuấn, 54 tuổi</b><span>Quản lý kho · Hải Phòng</span></div>
-          <p>Năm 50 tuổi, anh Tuấn bắt đầu thấy chiều nào cũng đuối. Anh nghĩ do công việc ca kíp, ngủ bù cuối tuần là xong.</p>
-          <p>Ngủ bù mãi vẫn không lại sức. Anh chuyển sang cà phê đặc, ngày ba cốc. Tỉnh được đến trưa, rồi tim đập nhanh, đêm khó ngủ, sáng hôm sau lại mệt hơn hôm trước.</p>
-          <p>Đi khám tổng quát, mỡ máu cao. Bác sĩ kê statin. Chỉ số mỡ máu về đẹp, nhưng cái mệt thì nặng thêm — anh không hiểu vì sao.</p>
-          <p>Anh mua vitamin tổng hợp, sâm, nước tăng lực dạng ống. Mỗi thứ đỡ được một tuần đầu rồi đâu lại vào đấy.</p>
-          <p class="turn">Đến khi con trai anh đọc tờ hướng dẫn của chính hộp thuốc statin, mới thấy dòng chữ: nhóm thuốc này làm giảm Coenzyme Q10 trong cơ thể. Suốt bốn năm, anh bổ sung đủ thứ — trừ đúng cái thứ đang bị lấy đi mỗi ngày.</p>
-          <p class="note">Nhân vật minh hoạ, dựng lại từ tình huống thường gặp. Không phải lời chứng thực về hiệu quả sản phẩm.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 04 GIẢI PHÁP TRƯỚC -->
-  <section class="sec" id="giai-phap-cu">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 04 · Giải pháp trước đây</span>
-        <h2>Vì sao mấy cách cũ chỉ đỡ được một đoạn</h2>
-        <p class="lede">Không cách nào dưới đây là sai. Chúng chỉ đang chạm vào những mắt xích khác, không phải mắt xích thiếu hụt.</p>
-      </div>
-      <div class="tablewrap">
-        <table>
-          <thead>
-            <tr><th>Cách đã thử</th><th>Có đỡ không</th><th>Đỡ được bao lâu</th><th>Vì sao chưa tới gốc</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="w">Cà phê, nước tăng lực</td><td><span class="mark part">Đỡ nhanh</span></td><td>2 – 4 tiếng</td><td>Vay năng lượng bằng cách kích thích thần kinh, không tạo thêm năng lượng cho tế bào. Hết thuốc là sụp.</td></tr>
-            <tr><td class="w">Ngủ bù cuối tuần</td><td><span class="mark part">Đỡ ít</span></td><td>1 – 2 ngày</td><td>Bù được giấc, không bù được nguyên liệu mà ty thể đang thiếu.</td></tr>
-            <tr><td class="w">Vitamin tổng hợp</td><td><span class="mark part">Đỡ nhẹ</span></td><td>Không rõ</td><td>Vitamin nhóm B hỗ trợ chuyển hoá, nhưng hầu như không chứa Coenzyme Q10.</td></tr>
-            <tr><td class="w">Ăn nhiều cá, thịt đỏ</td><td><span class="mark no">Gần như không</span></td><td>—</td><td>Muốn đủ 100mg phải ăn 1,56kg cá mòi hoặc 3kg thịt bò mỗi ngày. Không ai ăn nổi.</td></tr>
-            <tr><td class="w">CoQ10 giá rẻ dạng ubiquinone</td><td><span class="mark part">Tuỳ người</span></td><td>Chậm</td><td>Đây là dạng oxy hoá, vào cơ thể còn phải chuyển hoá thêm một bước — bước mà người lớn tuổi làm càng lúc càng kém.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- 05 GIẢI PHÁP GỐC RỄ -->
-  <section class="sec" id="giai-phap-goc">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 05 · Giải pháp gốc rễ</span>
-        <h2>Muốn tới gốc, phải đúng cả ba điều</h2>
-      </div>
-      <div class="col stack">
-        <p class="lede">Bổ sung Coenzyme Q10 nghe thì đơn giản, nhưng thiếu một trong ba điều kiện sau là uống bao nhiêu cũng phí:</p>
-        <div class="symptoms">
-          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Đúng dạng cơ thể dùng được ngay.</b> Ubiquinol là dạng khử, hấp thu tốt hơn và không cần cơ thể chuyển hoá thêm bước nào.</p></div>
-          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Đủ liều mỗi ngày.</b> Liều lắt nhắt vài miligam không tạo được khác biệt nào đáng kể.</p></div>
-          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Có chất dẫn đi kèm.</b> Coenzyme Q10 tan trong dầu; cần môi trường dầu và chất tăng hấp thu thì mới vào được máu.</p></div>
-          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Có lớp chống oxy hoá bảo vệ.</b> Nếu gốc tự do vẫn hoành hành thì phần vừa bổ sung cũng bị đốt sạch.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 06 CƠ CHẾ SẢN PHẨM -->
-  <section class="sec" id="co-che">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 06 · Cơ chế sản phẩm</span>
-        <h2>Rich Coenzyme Q10 xử lý cả bốn điều đó ra sao</h2>
-        <p class="lede">Ba thành phần chính trong mỗi viên nang mềm, mỗi thành phần giữ một vai trò. Số liệu dưới đây lấy đúng theo bản công bố sản phẩm số 4107/2024/ĐKSP.</p>
-      </div>
-      <div class="ings">
-        <div class="ing">
-          <span class="role">Nguyên liệu chính</span>
-          <span class="dose">50<small>mg</small></span>
-          <h3>Coenzym Q10</h3>
-          <p>Bù đúng thứ đang thiếu ở ty thể. Uống 2 viên mỗi ngày là 100mg — đủ liều chứ không lắt nhắt. AFC dùng dạng Ubiquinol, dạng cơ thể sử dụng được ngay.</p>
-        </div>
-        <div class="ing">
-          <span class="role">Lớp bảo vệ</span>
-          <span class="dose">10<small>mg</small></span>
-          <h3>Tảo Haematococcus pluvialis</h3>
-          <p>Nguồn astaxanthin — chất chống oxy hoá mạnh, giúp bảo vệ tế bào khỏi gốc tự do để phần Coenzyme Q10 vừa bổ sung không bị đốt mất.</p>
-        </div>
-        <div class="ing">
-          <span class="role">Chất dẫn</span>
-          <span class="dose">2,5<small>mg</small></span>
-          <h3>Chiết xuất hạt tiêu đen</h3>
-          <p>Piperine trong hạt tiêu đen giúp tăng hấp thu nhiều dưỡng chất, trong đó có Coenzyme Q10. Nang mềm dạng dầu ăn lo nốt phần tan trong dầu.</p>
-        </div>
-      </div>
-      <div class="col">
-        <div class="equiv">
-          <span class="big">100mg<small>trong 2 viên mỗi ngày</small></span>
-          <p>Để nạp được chừng đó Coenzyme Q10 từ bữa ăn, anh chị phải ăn khoảng <b>1,56kg cá mòi Nhật</b> hoặc <b>3kg thịt bò</b> — mỗi ngày. Hai viên nang mềm sau bữa sáng là xong.</p>
-        </div>
-      </div>
-      <div class="col stack">
-        <p><b>Công dụng đã được Cục An toàn thực phẩm xác nhận:</b> hỗ trợ bổ sung Coenzyme Q10 cho cơ thể; hỗ trợ chống oxy hoá, hỗ trợ giảm mệt mỏi; hỗ trợ giảm nguy cơ xơ vữa động mạch, tốt cho tim mạch.</p>
-        <p><b>Cách dùng:</b> người lớn uống 2 viên mỗi ngày với nước, sau bữa ăn chính — tốt nhất là sau bữa sáng hoặc bữa trưa, vì chất béo trong bữa ăn giúp hấp thu tốt hơn. Tránh uống buổi tối để không ảnh hưởng giấc ngủ.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SẢN PHẨM -->
-  <section class="sec" id="san-pham">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Sản phẩm</span>
-        <h2>Rich Coenzyme Q10 trong hộp có gì</h2>
-        <p class="lede">Thực phẩm bảo vệ sức khoẻ dạng viên nang mềm, nhập khẩu nguyên hộp từ Nhật Bản. Toàn bộ thông số dưới đây lấy đúng theo bản công bố sản phẩm.</p>
       </div>
       <div class="shots">
         <figure class="shot">
@@ -1011,6 +1153,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
             <div class="field full"><label for="moc">Mốc dễ tìm <span class="opt-lbl">không bắt buộc</span></label><input id="moc" name="moc" type="text" autocomplete="address-line2" placeholder="Cạnh trạm y tế xã, đối diện chợ, gần cây đa đầu làng…"></div>
 
             <p class="fgroup">Tình trạng sức khoẻ</p>
+            <div class="field full"><label for="tuKiem">Kết quả tự kiểm ở đầu trang</label><input id="tuKiem" name="tuKiem" type="text" readonly placeholder="Chưa làm bài tự kiểm — anh chị kéo lên đầu trang tick thử"></div>
             <div class="field full"><label for="tinhtrang">Anh chị đang gặp vấn đề nào</label>
               <select id="tinhtrang" name="tinhtrang">
                 <option>Mệt mỏi kéo dài dù ngủ đủ</option>
@@ -1107,6 +1250,101 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 </div>
 
 <script>
+(function(){
+  var quiz = document.getElementById('quiz');
+  if(!quiz) return;
+
+  var QUESTIONS = [
+    {q:'Buổi sáng ngủ dậy, anh chị thấy người thế nào?',
+     a:['Tỉnh táo, dậy là làm việc được ngay','Hơi nặng người, một lúc mới tỉnh','Nặng người, phải có cà phê mới khởi động nổi']},
+    {q:'Khoảng ba giờ chiều, sức làm việc của anh chị ra sao?',
+     a:['Vẫn bình thường như buổi sáng','Chậm hơn, phải cố một chút','Hết pin, việc cũ mà làm lâu hơn và dễ sai']},
+    {q:'Leo cầu thang bộ hai tầng thì sao?',
+     a:['Bình thường, vẫn nói chuyện được','Hơi hụt hơi, nghỉ một nhịp là ổn','Thở dốc, phải đứng lại nghỉ']},
+    {q:'Anh chị có hay bị nặng đầu hoặc đau đầu về chiều không?',
+     a:['Gần như không','Thỉnh thoảng, khi ngủ ít hoặc căng thẳng','Thường xuyên, gần như tuần nào cũng có']},
+    {q:'Kết quả khám sức khoẻ gần nhất của anh chị thế nào?',
+     a:['Các chỉ số đều bình thường','Mỡ máu hoặc huyết áp nhỉnh, bác sĩ dặn theo dõi','Đang uống thuốc hạ mỡ máu nhóm statin']},
+    {q:'Sau khi vận động mạnh hoặc làm việc nặng, cơ thể phục hồi thế nào?',
+     a:['Hôm sau là khoẻ lại','Mỏi một hai ngày','Ê ẩm mấy ngày liền, chậm hơn hẳn trước đây']}
+  ];
+
+  var LEVELS = [
+    {max:2,  h:'Nền năng lượng còn tốt',
+     p:'Anh chị chưa có dấu hiệu đáng lo. Cứ giữ nếp ngủ đủ và vận động đều là được.',
+     list:['Chưa cần bổ sung gì vội','Nên khám sức khoẻ định kỳ mỗi năm một lần','Sau tuổi 40 kiểm tra lại bài này mỗi vài tháng']},
+    {max:5,  h:'Mới chớm — nên để ý từ bây giờ',
+     p:'Vài dấu hiệu nhẹ thường bị bỏ qua vì còn chịu được. Đây lại là giai đoạn dễ xoay chuyển nhất.',
+     list:['Đọc phần Nguyên nhân gốc rễ ngay bên dưới','Ghi lại mức tỉnh táo buổi chiều trong hai tuần','Hỏi tư vấn trước khi tự mua bất cứ thứ gì']},
+    {max:8,  h:'Đang thiếu hụt khá rõ',
+     p:'Ở mức này thì không còn là chuyện mệt vặt. Phần bên dưới giải thích vì sao ngủ bù và cà phê không giải quyết được.',
+     list:['Xem bảng Giải pháp trước đây để biết cách nào chỉ đỡ tạm','Xem phần Cơ chế sản phẩm ở giữa trang','Nên để lại số để được hỏi kỹ tình trạng']},
+    {max:12, h:'Cần xử lý sớm',
+     p:'Nhiều dấu hiệu cùng lúc là cơ thể đang báo rõ. Nhất là nếu anh chị đang dùng thuốc hạ mỡ máu.',
+     list:['Nhóm statin làm giảm Coenzyme Q10 trong cơ thể — xem mắt xích 3 bên dưới','Mang hộp sản phẩm đi khám để bác sĩ đọc bảng thành phần','Để lại số, nhân viên tư vấn gọi lại hỏi kỹ trước khi tư vấn liệu trình']}
+  ];
+
+  var elI=document.getElementById('q-i'), elBar=document.getElementById('q-bar'),
+      elT=document.getElementById('q-text'), elO=document.getElementById('q-opts'),
+      elBack=document.getElementById('q-back'), elHint=document.getElementById('q-hint'),
+      elRes=document.getElementById('q-result'), elN=document.getElementById('score-n'),
+      elH=document.getElementById('result-h'), elP=document.getElementById('result-p'),
+      elFill=document.getElementById('bar-fill'), elList=document.getElementById('result-list'),
+      elAgain=document.getElementById('q-again'), elForm=document.getElementById('tuKiem');
+
+  var answers = [], step = 0;
+
+  function render(){
+    if(step >= QUESTIONS.length){ finish(); return; }
+    quiz.hidden = false; elRes.hidden = true;
+    var Q = QUESTIONS[step];
+    elI.textContent = step + 1;
+    elBar.style.width = (step / QUESTIONS.length * 100) + '%';
+    elT.textContent = Q.q;
+    elO.innerHTML = '';
+    Q.a.forEach(function(txt, idx){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'qopt' + (answers[step] === idx ? ' picked' : '');
+      b.innerHTML = '<span class="k">' + 'ABC'[idx] + '</span><span></span>';
+      b.lastChild.textContent = txt;
+      b.addEventListener('click', function(){ answers[step] = idx; step++; save(); render(); });
+      elO.appendChild(b);
+    });
+    elBack.hidden = step === 0;
+    elHint.textContent = 'Chọn đáp án đúng nhất với anh chị';
+  }
+
+  function finish(){
+    var n = answers.reduce(function(a,b){ return a + (b||0); }, 0);
+    var lv = LEVELS.filter(function(l){ return n <= l.max; })[0];
+    quiz.hidden = true; elRes.hidden = false;
+    elN.textContent = n;
+    elH.textContent = lv.h;
+    elP.textContent = lv.p;
+    elFill.style.width = (n/12*100) + '%';
+    elList.innerHTML = '';
+    lv.list.forEach(function(t){
+      var li = document.createElement('li'); li.textContent = t; elList.appendChild(li);
+    });
+    if(elForm) elForm.value = 'Bài tự kiểm: ' + n + '/12 điểm — ' + lv.h;
+    save();
+  }
+
+  function save(){
+    try{ localStorage.setItem('dilim-quiz', JSON.stringify({a:answers, s:step})); }catch(e){}
+  }
+
+  try{
+    var raw = localStorage.getItem('dilim-quiz');
+    if(raw){ var d = JSON.parse(raw); if(Array.isArray(d.a)){ answers = d.a; step = d.s || 0; } }
+  }catch(e){}
+
+  elBack.addEventListener('click', function(){ if(step>0){ step--; save(); render(); } });
+  elAgain.addEventListener('click', function(){ answers=[]; step=0; if(elForm) elForm.value=''; save(); render(); quiz.scrollIntoView({block:'center',behavior:'smooth'}); });
+
+  render();
+})();
 (function(){
   var shots = document.querySelectorAll('.shot img');
   Array.prototype.forEach.call(shots, function(img){
