@@ -527,6 +527,11 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .ok-msg{display:none;border:1px solid var(--jade);background:var(--jade-soft);color:var(--jade);border-radius:var(--r);padding:.85rem 1rem;font-size:.9rem;font-weight:500}
 .ok-msg.on{display:block}
 .ok-msg.loi{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+.ok-msg.on{padding:1.1rem 1.15rem;font-size:.95rem}
+.don-tom-tat{display:block;white-space:pre-line;margin:.8rem 0;padding:.75rem .9rem;border-radius:var(--r);background:#fff;border:1px dashed currentColor;font-weight:600;line-height:1.55}
+.don-huong-dan{display:block;margin:.6rem 0 .9rem;font-weight:400;line-height:1.6}
+.don-nut{display:flex;flex-wrap:wrap;gap:.5rem}
+.don-nut .btn{flex:1 1 auto}
 
 /* faq */
 .faq details{border-bottom:1px solid var(--line2)}
@@ -1922,19 +1927,23 @@ var NOI_NHAN_DON = "";
 
   // Luoi an toan: khi chua noi duoc voi noi nhan don, khong de mat don.
   // Chep san noi dung don vao bo nho tam va moi khach gui qua Messenger hoac goi dien.
-  function duPhong(du, dauMuc){
+  function duPhong(du, dauMuc, loi){
     var t = tomTat(du);
+    var q = encodeURIComponent(t);
     try{
       if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t);
     }catch(e){}
     ok.classList.add('on');
-    ok.classList.add('loi');
+    ok.classList.toggle('loi', !!loi);
     ok.innerHTML =
-        '<b>' + thoat(dauMuc) + '</b><br><br>'
-      + '<span style="white-space:pre-line">' + thoat(t) + '</span><br><br>'
-      + '<span style="font-size:.95em">Nội dung trên đã được sao chép sẵn. Anh chị bấm một trong hai nút dưới đây, đơn sẽ không bị mất.</span><br><br>'
-      + '<a class="btn" href="' + M_ME + '" target="_blank" rel="noopener">Gửi đơn qua Messenger</a> '
-      + '<a class="btn btn-ghost" href="tel:0913351394">☎ Gọi 0913.351.394</a>';
+        '<b>' + thoat(dauMuc) + '</b>'
+      + '<span class="don-tom-tat">' + thoat(t) + '</span>'
+      + '<span class="don-huong-dan">Bấm một nút dưới đây, tin nhắn đã soạn sẵn, anh chị chỉ cần bấm <b>Gửi</b>. Nếu ô soạn tin để trống thì bấm giữ rồi chọn <b>Dán</b> — nội dung đơn đã được chép sẵn vào máy.</span>'
+      + '<span class="don-nut">'
+      + '<a class="btn btn-lg" href="' + M_ME + '?text=' + q + '" target="_blank" rel="noopener">Gửi đơn qua Messenger</a>'
+      + '<a class="btn btn-lg btn-ghost" href="sms:0913351394?&body=' + q + '">Gửi bằng tin nhắn SMS</a>'
+      + '<a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi 0913.351.394</a>'
+      + '</span>';
     ok.scrollIntoView({block:'center', behavior:'smooth'});
   }
 
@@ -1961,7 +1970,7 @@ var NOI_NHAN_DON = "";
     du.nguon     = location.href;
 
     if(!NOI_NHAN_DON){
-      duPhong(du, 'Đơn của anh chị đã được ghi lại, nhưng hệ thống nhận đơn tự động còn đang hoàn thiện.');
+      duPhong(du, 'Đơn của anh chị đã soạn xong. Còn một bước cuối để gửi về cho bên em, mất khoảng mười giây.', false);
       return;
     }
 
@@ -1976,7 +1985,7 @@ var NOI_NHAN_DON = "";
       bao('Đã nhận thông tin của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.');
       f.reset();
     }).catch(function(){
-      duPhong(du, 'Mạng đang trục trặc nên đơn chưa gửi đi được.');
+      duPhong(du, 'Mạng đang trục trặc nên đơn chưa gửi thẳng đi được. Đơn không mất đâu ạ.', true);
     }).then(function(){
       if(nut){ nut.disabled = false; nut.textContent = chuNut; }
     });
