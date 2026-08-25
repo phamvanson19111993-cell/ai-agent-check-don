@@ -1,0 +1,45 @@
+name: Dang trang len GitHub Pages
+
+on:
+  push:
+    branches: ["claude/dilim-one-website-es08sj"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Chi lay nhung file trang can, bo ban video goc 43MB cho nhe
+      - name: Gom file can dang
+        run: |
+          mkdir -p _site/videos
+          cp index.html _site/
+          cp -r images _site/
+          cp -r videos/ngan _site/videos/ngan
+          touch _site/.nojekyll
+          du -sh _site
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
