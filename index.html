@@ -127,9 +127,12 @@ a{color:var(--red)}
 /* product section */
 .shots{display:grid;gap:1rem}
 @media(min-width:700px){.shots{grid-template-columns:repeat(3,1fr)}}
-.shot{border:1px dashed var(--line);background:var(--sunk);border-radius:var(--r);aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;text-align:center;padding:1rem}
-.shot .n{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3)}
-.shot .d{font-size:.84rem;color:var(--ink2)}
+.shot{position:relative;margin:0;border:1px solid var(--line2);background:var(--sunk);border-radius:var(--r);aspect-ratio:4/3;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1;background:var(--sunk)}
+.shot img.missing{display:none}
+.shot .ph{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;text-align:center;padding:1rem;border:1px dashed var(--line);border-radius:var(--r)}
+.shot .ph b{font-family:"IBM Plex Mono",monospace;font-size:.64rem;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3)}
+.shot .ph{font-size:.84rem;color:var(--ink2)}
 .spec-list{display:grid;gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--r);overflow:hidden}
 @media(min-width:620px){.spec-list{grid-template-columns:1fr 1fr}}
 .spec-row{background:var(--card);padding:.9rem 1.1rem;display:flex;gap:1rem;align-items:baseline}
@@ -324,38 +327,91 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
       </div>
       </div>
       <div class="hero-art">
-        <svg class="pack" viewBox="0 0 340 300" role="img" aria-label="Minh hoạ hộp và lọ Rich Coenzyme Q10 120 viên nang mềm">
-          <ellipse class="shadow" cx="175" cy="288" rx="130" ry="9"></ellipse>
+        <svg class="pack" viewBox="0 0 360 320" role="img" aria-label="Hộp và lọ Rich Coenzyme Q10 120 viên nang mềm">
+          <defs>
+            <linearGradient id="gCap" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#B99552"></stop>
+              <stop offset="18%" stop-color="#F3E4BE"></stop>
+              <stop offset="42%" stop-color="#E8D3A0"></stop>
+              <stop offset="55%" stop-color="#D8BE85"></stop>
+              <stop offset="80%" stop-color="#F0DFB6"></stop>
+              <stop offset="100%" stop-color="#A9853F"></stop>
+            </linearGradient>
+            <linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#4E2610"></stop>
+              <stop offset="14%" stop-color="#8A4C22"></stop>
+              <stop offset="30%" stop-color="#A96435"></stop>
+              <stop offset="52%" stop-color="#75391594"></stop>
+              <stop offset="70%" stop-color="#6B3414"></stop>
+              <stop offset="100%" stop-color="#3F1D0B"></stop>
+            </linearGradient>
+            <linearGradient id="gBox" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#B81E38"></stop>
+              <stop offset="30%" stop-color="#E03149"></stop>
+              <stop offset="72%" stop-color="#D42843"></stop>
+              <stop offset="100%" stop-color="#9E1730"></stop>
+            </linearGradient>
+            <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#F0DCA8"></stop>
+              <stop offset="50%" stop-color="#CFA85C"></stop>
+              <stop offset="100%" stop-color="#9C7734"></stop>
+            </linearGradient>
+            <linearGradient id="gBand" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5A2C17"></stop>
+              <stop offset="100%" stop-color="#38180C"></stop>
+            </linearGradient>
+            <radialGradient id="gShadow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(0,0,0,.30)"></stop>
+              <stop offset="100%" stop-color="rgba(0,0,0,0)"></stop>
+            </radialGradient>
+          </defs>
 
-          <!-- hộp giấy -->
-          <rect class="box" x="18" y="30" width="150" height="252" rx="3"></rect>
-          <rect class="badge" x="34" y="44" width="76" height="15" rx="7.5"></rect>
-          <text class="jp t-tiny ink" x="72" y="54.5" text-anchor="middle">機能性表示食品</text>
-          <circle cx="93" cy="128" r="46" fill="none" stroke="#D9B46A" stroke-width="6"></circle>
-          <text class="gold" x="93" y="146" text-anchor="middle" style="font:700 52px Newsreader,serif">Ri</text>
-          <text class="gold-lt t-rich" x="93" y="188" text-anchor="middle">RICH</text>
-          <text class="jp wht" x="93" y="206" text-anchor="middle" style="font-size:9px">還元型コエンザイムQ10</text>
-          <rect class="box-dk" x="18" y="216" width="150" height="52"></rect>
-          <text class="jp wht" x="93" y="234" text-anchor="middle" style="font-size:10px;font-weight:700">身体的・精神的な</text>
-          <text class="jp wht" x="93" y="249" text-anchor="middle" style="font-size:10px;font-weight:700">疲労感を軽減</text>
-          <text class="wht" x="93" y="278" text-anchor="middle" style="font:400 8px IBM Plex Mono,monospace">120 soft capsules</text>
+          <ellipse cx="185" cy="300" rx="145" ry="14" fill="url(#gShadow)"></ellipse>
 
-          <!-- lọ -->
-          <rect class="gold" x="176" y="70" width="104" height="44" rx="6"></rect>
-          <rect class="gold-lt" x="176" y="70" width="104" height="12" rx="6"></rect>
-          <rect class="glass" x="168" y="108" width="120" height="174" rx="12"></rect>
-          <rect class="glass-lt" x="176" y="112" width="14" height="164" rx="7" opacity=".55"></rect>
-          <rect class="badge" x="196" y="126" width="64" height="13" rx="6.5"></rect>
-          <text class="jp t-tiny ink" x="228" y="135.5" text-anchor="middle">機能性表示食品</text>
-          <text class="jp gold-lt" x="228" y="158" text-anchor="middle" style="font-size:7px">リッチ</text>
-          <text class="gold-lt t-rich" x="228" y="176" text-anchor="middle">RICH</text>
-          <text class="jp wht" x="228" y="196" text-anchor="middle" style="font-size:9px">還元型コエンザイムQ10</text>
-          <text class="gold" x="228" y="210" text-anchor="middle" style="font:400 7.5px IBM Plex Mono,monospace">120 soft capsules</text>
-          <rect class="box-dk" x="168" y="220" width="120" height="46"></rect>
-          <text class="jp wht" x="228" y="237" text-anchor="middle" style="font-size:9px;font-weight:700">身体的・精神的な</text>
-          <text class="jp wht" x="228" y="251" text-anchor="middle" style="font-size:9px;font-weight:700">疲労感を軽減</text>
+          <!-- ===== hộp giấy ===== -->
+          <g>
+            <rect x="14" y="26" width="152" height="266" rx="3" fill="url(#gBox)"></rect>
+            <rect x="14" y="26" width="10" height="266" fill="rgba(255,255,255,.10)"></rect>
+            <rect x="30" y="40" width="80" height="16" rx="8" fill="#fff"></rect>
+            <text class="jp" x="70" y="51.5" text-anchor="middle" fill="#2A1408" style="font-size:5.4px">機能性表示食品</text>
+            <circle cx="90" cy="130" r="48" fill="none" stroke="url(#gGold)" stroke-width="7"></circle>
+            <text x="90" y="150" text-anchor="middle" fill="url(#gGold)" style="font:700 55px Newsreader,serif">Ri</text>
+            <text x="90" y="196" text-anchor="middle" fill="#F0DCA8" style="font:700 16px Newsreader,serif;letter-spacing:.22em">RICH</text>
+            <text class="jp" x="90" y="215" text-anchor="middle" fill="#fff" style="font-size:9.5px">還元型コエンザイムQ10</text>
+            <rect x="14" y="226" width="152" height="50" fill="url(#gBand)"></rect>
+            <text class="jp" x="90" y="244" text-anchor="middle" fill="#fff" style="font-size:10.5px;font-weight:700">身体的・精神的な</text>
+            <text class="jp" x="90" y="259" text-anchor="middle" fill="#fff" style="font-size:10.5px;font-weight:700">疲労感を軽減</text>
+            <text x="90" y="287" text-anchor="middle" fill="#fff" style="font:400 8px IBM Plex Mono,monospace">120 soft capsules</text>
+          </g>
+
+          <!-- ===== lọ ===== -->
+          <g>
+            <rect x="186" y="52" width="116" height="52" rx="7" fill="url(#gCap)"></rect>
+            <rect x="186" y="52" width="116" height="9" rx="4.5" fill="rgba(255,255,255,.45)"></rect>
+            <rect x="186" y="96" width="116" height="8" fill="rgba(0,0,0,.14)"></rect>
+            <path d="M196 104 h96 a22 22 0 0 1 22 22 v148 a14 14 0 0 1 -14 14 h-112 a14 14 0 0 1 -14 -14 v-148 a22 22 0 0 1 22 -22 z" fill="url(#gGlass)"></path>
+            <rect x="196" y="116" width="13" height="158" rx="6.5" fill="rgba(255,255,255,.22)"></rect>
+            <rect x="296" y="120" width="6" height="150" rx="3" fill="rgba(255,255,255,.10)"></rect>
+            <rect x="212" y="126" width="76" height="15" rx="7.5" fill="#fff"></rect>
+            <text class="jp" x="250" y="137" text-anchor="middle" fill="#2A1408" style="font-size:5.4px">機能性表示食品</text>
+            <text class="jp" x="250" y="160" text-anchor="middle" fill="#E7CE95" style="font-size:7px">リッチ</text>
+            <text x="250" y="180" text-anchor="middle" fill="url(#gGold)" style="font:700 19px Newsreader,serif;letter-spacing:.2em">RICH</text>
+            <text class="jp" x="250" y="200" text-anchor="middle" fill="#fff" style="font-size:9.5px">還元型コエンザイムQ10</text>
+            <text x="250" y="215" text-anchor="middle" fill="#E7CE95" style="font:400 8px IBM Plex Mono,monospace">120 soft capsules</text>
+            <rect x="196" y="226" width="118" height="48" fill="url(#gBand)" opacity=".92"></rect>
+            <text class="jp" x="252" y="244" text-anchor="middle" fill="#fff" style="font-size:9.5px;font-weight:700">身体的・精神的な</text>
+            <text class="jp" x="252" y="259" text-anchor="middle" fill="#fff" style="font-size:9.5px;font-weight:700">疲労感を軽減</text>
+          </g>
+
+          <!-- ===== viên nang ===== -->
+          <g>
+            <ellipse cx="196" cy="296" rx="17" ry="11" fill="#8A4A16"></ellipse>
+            <ellipse cx="192" cy="292" rx="7" ry="4" fill="rgba(255,255,255,.32)"></ellipse>
+            <ellipse cx="230" cy="299" rx="17" ry="11" fill="#7A3F12"></ellipse>
+            <ellipse cx="226" cy="295" rx="7" ry="4" fill="rgba(255,255,255,.28)"></ellipse>
+          </g>
         </svg>
-        <p class="pack-cap">Hình minh hoạ dựng theo bao bì thật</p>
+        <p class="pack-cap">Hình dựng theo bao bì thật · lọ 120 viên nang mềm</p>
       </div>
     </div>
   </section>
@@ -534,14 +590,23 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
         <p class="lede">Thực phẩm bảo vệ sức khoẻ dạng viên nang mềm, nhập khẩu nguyên hộp từ Nhật Bản. Toàn bộ thông số dưới đây lấy đúng theo bản công bố sản phẩm.</p>
       </div>
       <div class="shots">
-        <div class="shot"><span class="n">Ảnh 01</span><span class="d">Mặt trước hộp và lọ 120 viên</span></div>
-        <div class="shot"><span class="n">Ảnh 02</span><span class="d">Nhãn phụ tiếng Việt, đọc rõ số công bố</span></div>
-        <div class="shot"><span class="n">Ảnh 03</span><span class="d">Viên nang mềm trên lòng bàn tay, thấy rõ kích thước</span></div>
+        <figure class="shot">
+          <img src="images/san-pham-01.jpg" alt="Hộp và lọ Rich Coenzyme Q10 120 viên" loading="lazy">
+          <span class="ph"><b>Ảnh 01</b>Mặt trước hộp và lọ 120 viên</span>
+        </figure>
+        <figure class="shot">
+          <img src="images/san-pham-02.jpg" alt="Nhãn phụ tiếng Việt của Rich Coenzyme Q10" loading="lazy">
+          <span class="ph"><b>Ảnh 02</b>Nhãn phụ tiếng Việt, đọc rõ số công bố</span>
+        </figure>
+        <figure class="shot">
+          <img src="images/san-pham-03.jpg" alt="Viên nang mềm Rich Coenzyme Q10" loading="lazy">
+          <span class="ph"><b>Ảnh 03</b>Viên nang mềm, thấy rõ kích thước</span>
+        </figure>
       </div>
       <div class="col">
         <div class="fill">
-          <span class="lbl">Cần anh gửi file · Ảnh sản phẩm</span>
-          <span class="txt">Trong Drive đã có sẵn ảnh <b>AFCRICH - Rich Coenzyme Q10.jpg</b>, <b>Nhãn phụ - Rich Coenzyme Q10</b> và bốn ảnh chụp HEIC. Em chưa nhúng được vì ảnh phải đi qua khung hội thoại mới xuống được máy, mà dung lượng vượt giới hạn. Cách nhanh nhất: anh tải ba ảnh đó về rồi đẩy vào thư mục dự án trên GitHub (nhánh <b>claude/dilim-one-website-es08sj</b>), báo em một tiếng là em nhúng thẳng vào ba ô này. Ảnh HEIC nên đổi sang JPG trước vì trình duyệt không mở được HEIC.</span>
+          <span class="lbl">Cách gắn ảnh thật · Chỉ cần thả file</span>
+          <span class="txt">Ba khung trên đã nối sẵn với ba file ảnh. Anh chỉ cần tạo thư mục <b>images/</b> trong dự án rồi đặt đúng ba tên: <b>san-pham-01.jpg</b>, <b>san-pham-02.jpg</b>, <b>san-pham-03.jpg</b> — ảnh sẽ tự hiện lên, không cần sửa dòng mã nào. Chưa có file thì khung giữ nguyên trạng thái chờ như hiện tại, không vỡ bố cục. Trong Drive đã sẵn ảnh <b>AFCRICH - Rich Coenzyme Q10.jpg</b> và <b>Nhãn phụ - Rich Coenzyme Q10</b>; bốn ảnh HEIC nên đổi sang JPG vì trình duyệt không mở được HEIC.</span>
         </div>
       </div>
       <div class="col">
@@ -980,6 +1045,13 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 </div>
 
 <script>
+(function(){
+  var shots = document.querySelectorAll('.shot img');
+  Array.prototype.forEach.call(shots, function(img){
+    img.addEventListener('error', function(){ img.classList.add('missing'); });
+    if (img.complete && img.naturalWidth === 0) img.classList.add('missing');
+  });
+})();
 (function(){
   var f = document.getElementById('lead-form');
   var ok = document.getElementById('ok-msg');
