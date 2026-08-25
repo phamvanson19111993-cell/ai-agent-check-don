@@ -76,6 +76,18 @@ a{color:var(--red)}
 .steps-nav a.now{color:var(--red);border-color:var(--red);background:var(--red-soft)}
 @media(max-width:700px){.steps-nav a{font-size:.6rem;padding:.4rem .4rem;letter-spacing:.04em}}
 
+/* hotline */
+.hotline{display:inline-flex;align-items:center;gap:.45rem;margin-left:.9rem;text-decoration:none;border:1px solid var(--red);color:var(--red);background:var(--red-soft);border-radius:100px;padding:.4rem .8rem;font-family:"IBM Plex Mono",monospace;font-size:.78rem;font-weight:500;white-space:nowrap}
+.hotline:hover{background:var(--red);color:#fff}
+.hotline .ic{font-size:.9em}
+@media(max-width:820px){.hotline .no{display:none}.hotline{padding:.4rem .55rem;margin-left:.5rem}}
+.hero-tel{font-size:.92rem;color:var(--ink2)}
+.hero-tel a{font-family:"IBM Plex Mono",monospace;font-weight:600;text-decoration:none;border-bottom:1px solid var(--red)}
+.btn-row{display:flex;flex-wrap:wrap;gap:.6rem}
+.btn-row .btn{flex:1 1 220px;justify-content:center}
+.dock .btn-call{flex:none;padding:.72rem .9rem;font-size:1.05rem;margin-left:auto}
+.dock .btn-call + .btn{margin-left:.5rem}
+
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.72rem 1.25rem;border-radius:var(--r);border:1px solid var(--red);background:var(--red);color:#FFFFFF;font:700 .95rem/1.2 "Be Vietnam Pro",sans-serif;text-decoration:none;cursor:pointer;transition:transform .12s ease,filter .12s ease}
 .btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
@@ -146,6 +158,28 @@ a{color:var(--red)}
 .jpcell .vn{font-size:.88rem;color:var(--ink2)}
 .jpcell .k{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--jade)}
 
+/* dai ho so san pham */
+.prod-band{background:var(--band);color:#FFEAF3;border-top:0;border-radius:var(--r);padding-inline:clamp(1rem,3vw,2.2rem)}
+.prod-band h2,.prod-band h3{color:#fff}
+.prod-band .eb-band{color:#F3A8C8}
+.prod-band .eb-band::before{background:#F3A8C8}
+.prod-grid{display:grid;gap:2rem;align-items:center}
+@media(min-width:900px){.prod-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:3rem}}
+.prod-tx{display:flex;flex-direction:column;gap:1.1rem}
+.prod-band h2{font-size:clamp(2rem,4.6vw,3.15rem);letter-spacing:-.02em}
+.prod-lede{color:rgba(255,234,243,.86);font-size:clamp(1rem,1.5vw,1.18rem);max-width:34ch;line-height:1.55}
+.prod-lede b{color:#fff;font-weight:700}
+.chips{list-style:none;margin:.2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.chips li{border:1px solid rgba(255,234,243,.34);border-radius:var(--r);padding:.5rem .85rem;font-size:.86rem;color:rgba(255,234,243,.92);white-space:nowrap}
+.prod-pic .pack{max-width:340px}
+.prod-pic .pack-cap{color:rgba(255,234,243,.55)}
+.prod-band .spec-list{background:rgba(255,234,243,.16);border-color:rgba(255,234,243,.16)}
+.prod-band .spec-row{background:var(--band)}
+.prod-band .spec-row dt{color:rgba(255,234,243,.6)}
+.prod-band .spec-row dd{color:#fff}
+.prod-band .shot{border-color:rgba(255,234,243,.2);background:rgba(255,234,243,.08)}
+.prod-band .note{color:rgba(255,234,243,.6)}
+
 /* product section */
 .shots{display:grid;gap:1rem}
 @media(min-width:700px){.shots{grid-template-columns:repeat(3,1fr)}}
@@ -173,7 +207,7 @@ a{color:var(--red)}
 /* hero jump */
 .hero-jump{display:inline-flex;align-self:flex-start;align-items:center;gap:.5rem;font:600 .95rem/1 "Be Vietnam Pro",sans-serif;color:var(--red);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:.3rem;margin-top:.3rem}
 .hero-jump:hover{gap:.75rem}
-.prod-art{margin-bottom:1.5rem}
+.prod-art{margin-bottom:0}
 
 /* symptom list */
 .symptoms{display:grid;gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--r);overflow:hidden}
@@ -440,6 +474,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
       <a href="#co-che">3 · Sản phẩm</a>
       <a href="#dat-hang">Báo giá</a>
     </nav>
+    <a class="hotline" href="tel:0913351394"><span class="ic" aria-hidden="true">☎</span><span class="no">0913.351.394</span></a>
   </div>
 </header>
 
@@ -503,6 +538,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
       </div>
 
       <a class="hero-jump" id="bat-dau" href="#van-de">Làm bài kiểm tra 30 giây <span aria-hidden="true">↓</span></a>
+      <p class="hero-tel">Cần hỏi ngay: <a href="tel:0913351394">0913.351.394</a></p>
       <div class="trustline">
         <span>Sản xuất tại <b>Shizuoka, Nhật Bản</b></span>
         <span>Số công bố <b class="mono">4107/2024/ĐKSP</b></span>
@@ -813,13 +849,22 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   </section>
 
   <!-- SẢN PHẨM -->
-  <section class="sec no-rule" id="san-pham">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Sản phẩm</span>
-        <h2>Rich Coenzyme Q10 trong hộp có gì</h2>
-        <p class="lede">Thực phẩm bảo vệ sức khoẻ dạng viên nang mềm, nhập khẩu nguyên hộp từ Nhật Bản. Toàn bộ thông số dưới đây lấy đúng theo bản công bố sản phẩm.</p>
+  <section class="sec prod-band" id="san-pham">
+    <div class="wrap prod-grid">
+      <div class="prod-tx">
+        <span class="eyebrow eb-band">Hồ sơ sản phẩm · Tim</span>
+        <h2>Rich Coenzyme Q10</h2>
+        <p class="prod-lede">Dòng <b>Flagship</b> của AFC Nhật Bản — và điểm khác biệt nằm ở một chữ: <b>dạng khử</b>.</p>
+        <ul class="chips">
+          <li>Coenzyme Q10 50mg/viên</li>
+          <li>2 viên/ngày = 100mg</li>
+          <li>120 viên · 2 tháng</li>
+          <li>Tảo Haematococcus 10mg</li>
+          <li>Chiết xuất hạt tiêu đen 2,5mg</li>
+          <li>2.890.000đ</li>
+        </ul>
       </div>
+      <div class="prod-pic">
       <div class="prod-art">
         <svg class="pack" viewBox="0 0 360 330" role="img" aria-label="Hop va lo Rich Coenzyme Q10 120 vien nang mem">
           <defs>
@@ -929,6 +974,10 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
         </svg>
         <p class="pack-cap">Hình dựng theo bao bì thật · lọ 120 viên nang mềm</p>
       </div>
+      </div>
+    </div>
+
+    <div class="wrap stack-lg" style="margin-top:clamp(2rem,4vw,3rem)">
       <div class="shots">
         <figure class="shot">
           <img src="images/san-pham-01.jpg" alt="Hộp và lọ Rich Coenzyme Q10 120 viên" loading="lazy">
@@ -1232,7 +1281,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
                 <option>Chưa quyết, nhờ tư vấn thêm</option>
               </select>
             </div>
-            <div class="full"><button class="btn btn-lg" type="submit" style="width:100%">Gửi thông tin, nhận tư vấn</button></div>
+            <div class="full btn-row"><button class="btn btn-lg" type="submit">Gửi thông tin, nhận tư vấn</button><a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi ngay 0913.351.394</a></div>
           </form>
           <p class="ok-msg" id="ok-msg">Đã ghi nhận. Đây là bản demo giao diện nên thông tin chưa được gửi đi đâu cả — cần nối form vào hệ thống trước khi chạy quảng cáo.</p>
           <p class="form-note">Địa chỉ càng chi tiết thì bưu tá càng giao đúng ngay lần đầu, nhất là ở vùng nông thôn nơi nhiều nhà chưa có số. Thông tin chỉ dùng để liên hệ tư vấn và giao hàng, không chia sẻ cho bên thứ ba.</p>
@@ -1259,7 +1308,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
               <div><dt>Số tài khoản</dt><dd class="acc">3869 1388 888</dd></div>
               <div><dt>Nội dung</dt><dd>Họ tên + số điện thoại</dd></div>
             </dl>
-            <p class="note">Anh chị gửi thông tin ở ô phía trên trước, nhân viên gọi lại xác nhận đơn rồi mới chuyển khoản cũng được. Chuyển xong chụp biên lai gửi lại để bên em đối chiếu và gửi hàng.</p>
+            <p class="note">Anh chị gửi thông tin ở ô phía trên trước, nhân viên gọi lại xác nhận đơn rồi mới chuyển khoản cũng được. Chuyển xong chụp biên lai gửi lại để bên em đối chiếu và gửi hàng. Cần gấp thì gọi <a href="tel:0913351394">0913.351.394</a>.</p>
           </div>
         </div>
       </div>
@@ -1387,6 +1436,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <div class="co">
     <span><b>Nhà sản xuất:</b> AFC-HD AMS Life Science Co., Ltd — Second Factory, 2-4-3 Toyoda, Suruga-ku, Shizuoka 422-8027, Nhật Bản</span>
     <span><b>Thương nhân chịu trách nhiệm về sản phẩm:</b> Công ty Cổ phần 5SPRO — Số 431 Ngọc Thuỵ, phường Ngọc Thuỵ, quận Long Biên, Hà Nội</span>
+    <span><b>Hotline tư vấn:</b> <a href="tel:0913351394">0913.351.394</a></span>
     <span><b>Phân phối và quảng cáo:</b> Công ty Cổ phần Jinsei Vietnam — LK06-07 phố Hồng Tiến, phường Bồ Đề, Hà Nội · MST 0110613577 · Hotline 0932.731.555</span>
   </div>
   <nav>
@@ -1402,6 +1452,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 
 <div class="dock">
   <div class="p">Mua 6 tặng 1<b>từ 41.286đ mỗi ngày</b></div>
+  <a class="btn btn-call" href="tel:0913351394" aria-label="Gọi hotline 0913.351.394">☎</a>
   <a class="btn" id="de-lai-so" href="#dat-hang">Để lại số</a>
 </div>
 
