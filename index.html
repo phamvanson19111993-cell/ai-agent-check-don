@@ -97,6 +97,12 @@ a{color:var(--red)}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn-ghost:hover{border-color:var(--red);color:var(--red);filter:none}
 
+/* he thong nhan manh */
+.hl{background:linear-gradient(180deg,transparent 58%,var(--red-soft) 58%);font-weight:700;color:var(--ink);padding:0 .1em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.badge{display:inline-flex;align-items:center;gap:.35rem;font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--red);border-radius:100px;padding:.22rem .6rem;white-space:nowrap;vertical-align:.15em}
+.pullquote{border-left:3px solid var(--red);padding:.2rem 0 .2rem 1.1rem;font-size:1.12rem;line-height:1.55;color:var(--ink);font-weight:500}
+.pullquote b{color:var(--red);font-weight:700}
+
 /* khoi chot giua trang */
 .chot{background:var(--card);border:1px solid var(--red);border-radius:var(--r);padding:clamp(1.3rem,3vw,1.9rem);display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
 .chot-tx{flex:1 1 320px;display:flex;flex-direction:column;gap:.35rem}
@@ -376,6 +382,8 @@ th,td{text-align:left;padding:.85rem .95rem;border-bottom:1px solid var(--line2)
 th{font-family:"IBM Plex Mono",monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);background:var(--sunk);white-space:nowrap}
 tbody tr:last-child td{border-bottom:0}
 td.w{font-weight:600;white-space:nowrap}
+.row-key td{background:color-mix(in srgb,var(--red-soft) 60%,transparent);border-top:2px solid var(--red);border-bottom:2px solid var(--red)}
+.row-key td b{color:var(--red)}
 th.hi{color:var(--red)}
 td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .mark{font-family:"IBM Plex Mono",monospace;font-size:.78rem;white-space:nowrap}
@@ -394,7 +402,8 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 /* equivalence */
 .equiv{background:var(--band);color:#FFEAF3;border-radius:var(--r);padding:clamp(1.4rem,4vw,2.1rem);display:grid;gap:1.25rem}
 @media(min-width:760px){.equiv{grid-template-columns:auto minmax(0,1fr);align-items:center}}
-.equiv .big{font-family:"Be Vietnam Pro",sans-serif;font-size:clamp(2.4rem,7vw,3.6rem);font-weight:700;line-height:1;color:#fff;white-space:nowrap}
+.equiv .big{font-family:"Be Vietnam Pro",sans-serif;font-size:clamp(3.2rem,9vw,5.2rem);font-weight:800;letter-spacing:-.03em;font-weight:700;line-height:1;color:#fff;white-space:nowrap}
+.equiv .big i{font-style:normal;font-size:.42em;font-weight:600;margin-left:.06em}
 .equiv .big small{display:block;font:400 .78rem/1.4 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,234,243,.6);margin-top:.5rem}
 .equiv p{color:rgba(255,234,243,.8);font-size:.96rem}
 .equiv b{color:#fff}
@@ -469,7 +478,9 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .quote td.p{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;font-size:.95rem}
 .quote th:not(:first-child){text-align:right}
 .quote td.p b{color:var(--red);font-weight:600}
-.quote tr.best td{background:color-mix(in srgb,var(--red-soft) 55%,transparent)}
+.quote tr.best td{background:color-mix(in srgb,var(--red-soft) 70%,transparent);border-top:2px solid var(--red);border-bottom:2px solid var(--red)}
+.quote tr.best td:first-child{position:relative}
+.quote tr.best .tag{background:var(--red);color:#fff;border-color:var(--red);font-weight:600}
 .quote tr.alt td{border-bottom-style:dashed}
 .quote td.gift{white-space:normal;font-size:.82rem;line-height:1.4;color:var(--ink2);min-width:230px}
 .quote td.gift b{color:var(--red);font-weight:600}
@@ -755,9 +766,9 @@ body:has(.dock.on){padding-bottom:74px}
           <p>Thực phẩm giàu Coenzyme Q10 rất ít và khó hấp thu. Muốn nạp 100mg phải ăn khoảng 1,56kg cá mòi Nhật hoặc 3kg thịt bò.</p>
         </div>
         <div class="link hot">
-          <span class="k">MẮT XÍCH 3</span>
+          <span class="k">MẮT XÍCH 3 <span class="badge">Quan trọng nhất</span></span>
           <h3>Thuốc hạ mỡ máu lấy đi thêm</h3>
-          <p>Nhóm statin ức chế một enzyme ở gan. Enzyme đó vừa tạo cholesterol, vừa tạo Coenzyme Q10 — nên chặn cái này là mất luôn cái kia.</p>
+          <p>Nhóm statin ức chế một enzyme ở gan. Enzyme đó <span class="hl">vừa tạo cholesterol, vừa tạo Coenzyme Q10</span> — nên chặn cái này là mất luôn cái kia.</p>
         </div>
         <div class="link">
           <span class="k">MẮT XÍCH 4</span>
@@ -786,7 +797,8 @@ body:has(.dock.on){padding-bottom:74px}
           <p>Ngủ bù mãi vẫn không lại sức. Anh chuyển sang cà phê đặc, ngày ba cốc. Tỉnh được đến trưa, rồi tim đập nhanh, đêm khó ngủ, sáng hôm sau lại mệt hơn hôm trước.</p>
           <p>Đi khám tổng quát, mỡ máu cao. Bác sĩ kê statin. Chỉ số mỡ máu về đẹp, nhưng cái mệt thì nặng thêm — anh không hiểu vì sao.</p>
           <p>Anh mua vitamin tổng hợp, sâm, nước tăng lực dạng ống. Mỗi thứ đỡ được một tuần đầu rồi đâu lại vào đấy.</p>
-          <p class="turn">Đến khi con trai anh đọc tờ hướng dẫn của chính hộp thuốc statin, mới thấy dòng chữ: nhóm thuốc này làm giảm Coenzyme Q10 trong cơ thể. Suốt bốn năm, anh bổ sung đủ thứ — trừ đúng cái thứ đang bị lấy đi mỗi ngày.</p>
+          <p class="turn pullquote">Suốt bốn năm, anh bổ sung đủ thứ — <b>trừ đúng cái thứ đang bị lấy đi mỗi ngày</b>.</p>
+          <p>Con trai anh đọc tờ hướng dẫn của chính hộp statin mới thấy dòng chữ: nhóm thuốc này làm giảm Coenzyme Q10 trong cơ thể.</p>
           <p class="note">Nhân vật minh hoạ, dựng lại từ tình huống thường gặp. Không phải lời chứng thực về hiệu quả sản phẩm.</p>
         </div>
       </div>
@@ -983,8 +995,8 @@ body:has(.dock.on){padding-bottom:74px}
       </div>
       <div class="col">
         <div class="equiv">
-          <span class="big">100mg<small>trong 2 viên mỗi ngày</small></span>
-          <p>Để nạp được chừng đó Coenzyme Q10 từ bữa ăn, anh chị phải ăn khoảng <b>1,56kg cá mòi Nhật</b> hoặc <b>3kg thịt bò</b> — mỗi ngày. Hai viên nang mềm sau bữa sáng là xong.</p>
+          <span class="big">100<i>mg</i><small>trong 2 viên mỗi ngày</small></span>
+          <p>Để nạp được chừng đó Coenzyme Q10 từ bữa ăn, anh chị phải ăn khoảng <b>1,56kg cá mòi Nhật</b> hoặc <b>3kg thịt bò</b> — <span class="hl" style="color:#fff;background:linear-gradient(180deg,transparent 58%,rgba(255,255,255,.28) 58%)">mỗi ngày</span>. Hai viên nang mềm sau bữa sáng là xong.</p>
         </div>
       </div>
       <div class="col stack">
@@ -1115,7 +1127,7 @@ body:has(.dock.on){padding-bottom:74px}
             <tr><th>Tiêu chí</th><th class="hi">Ubiquinol — dạng khử</th><th>Ubiquinone — dạng oxy hoá</th></tr>
           </thead>
           <tbody>
-            <tr><td class="w">Khả năng hấp thu</td><td class="hi">Dùng được trực tiếp, không cần chuyển hoá thêm</td><td>Hấp thu kém hơn, cơ thể phải chuyển thành ubiquinol trước</td></tr>
+            <tr class="row-key"><td class="w">Khả năng hấp thu <span class="badge">Khác biệt cốt lõi</span></td><td class="hi"><b>Dùng được trực tiếp</b>, không cần cơ thể chuyển hoá thêm bước nào</td><td>Hấp thu kém hơn, cơ thể phải chuyển thành ubiquinol trước</td></tr>
             <tr><td class="w">Hiệu quả chống oxy hoá</td><td class="hi">Mạnh hơn, bảo vệ tế bào tốt hơn</td><td>Yếu hơn</td></tr>
             <tr><td class="w">Phù hợp với ai</td><td class="hi">Mọi lứa tuổi, kể cả người lớn tuổi hoặc kém hấp thu</td><td>Thường chỉ người trẻ, tiêu hoá khoẻ mới dùng hiệu quả</td></tr>
             <tr><td class="w">Mức độ phổ biến</td><td class="hi">Ít gặp hơn vì chi phí sản xuất cao</td><td>Rất phổ biến trên thị trường</td></tr>
@@ -1415,7 +1427,7 @@ body:has(.dock.on){padding-bottom:74px}
         </details>
         <details>
           <summary>Sao giá cao hơn Coenzyme Q10 bán ngoài hiệu thuốc?</summary>
-          <p>Ba lý do. Thứ nhất là dạng hoạt chất: sản phẩm dùng Coenzyme Q10 dạng khử, trên bao bì Nhật in rõ 還元型コエンザイムQ10, còn hàng phổ thông phần lớn là dạng oxy hoá rẻ hơn. Thứ hai là liều: 2 viên mỗi ngày cho đủ 100mg chứ không lắt nhắt vài chục miligam. Thứ ba là hàng nhập nguyên hộp từ Nhật, có số công bố và giấy phép quảng cáo riêng, không phải hàng đóng gói lại.</p>
+          <p>Ba lý do. Thứ nhất là dạng hoạt chất: sản phẩm dùng Coenzyme Q10 dạng khử, trên bao bì Nhật <span class="hl">in rõ 還元型コエンザイムQ10</span>, còn hàng phổ thông phần lớn là dạng oxy hoá rẻ hơn. Thứ hai là liều: 2 viên mỗi ngày cho đủ 100mg chứ không lắt nhắt vài chục miligam. Thứ ba là hàng nhập nguyên hộp từ Nhật, có số công bố và giấy phép quảng cáo riêng, không phải hàng đóng gói lại.</p>
         </details>
         <details>
           <summary>Có đúng là hàng nội địa Nhật không?</summary>
@@ -1639,13 +1651,13 @@ body:has(.dock.on){padding-bottom:74px}
   var ADVICE = [
     [null,
      {t:'Sáng dậy còn nặng người', r:'Ty thể khởi động chậm sau một đêm, thường gặp khi nền năng lượng bắt đầu hụt.', d:'Giữ giờ đi ngủ cố định trong hai tuần, kể cả cuối tuần.'},
-     {t:'Sáng dậy phải có cà phê mới nổi', r:'Cà phê không tạo thêm năng lượng, nó chỉ chặn tín hiệu buồn ngủ. Sáng nào cũng cần tới nó là cơ thể đang vay chứ không đủ.', d:'Bỏ cữ cà phê sau 3 giờ chiều để không phá giấc đêm, rồi xem sáng hôm sau có nhẹ hơn không.'}],
+     {t:'Sáng dậy phải có cà phê mới nổi', r:'<span class="hl">Cà phê không tạo thêm năng lượng, nó chỉ chặn tín hiệu buồn ngủ.</span> Sáng nào cũng cần tới nó là cơ thể đang vay chứ không đủ.', d:'Bỏ cữ cà phê sau 3 giờ chiều để không phá giấc đêm, rồi xem sáng hôm sau có nhẹ hơn không.'}],
     [null,
      {t:'Chiều làm việc chậm lại', r:'Lượng năng lượng tế bào tạo ra không đủ kéo hết ngày.', d:'Chia việc nặng về buổi sáng, chiều để việc nhẹ.'},
      {t:'Ba giờ chiều là hết pin', r:'Việc cũ mà làm lâu hơn và dễ sai hơn là dấu hiệu rõ của thiếu hụt năng lượng ở mức tế bào, không phải lười.', d:'Ghi lại mức tỉnh táo buổi chiều mỗi ngày trong hai tuần để có cái mà so.'}],
     [null,
      {t:'Leo cầu thang hơi hụt hơi', r:'Tim phải làm nhiều hơn để bù, nên gắng sức nhẹ cũng thấy mệt.', d:'Đi bộ nhanh 30 phút mỗi ngày, tăng dần.'},
-     {t:'Hai tầng cầu thang đã thở dốc', r:'Tim là khối cơ không bao giờ nghỉ, nên là nơi thiếu hụt lộ ra sớm nhất.', d:'Nên đi kiểm tra tim mạch, đừng để tự đoán.'}],
+     {t:'Hai tầng cầu thang đã thở dốc', r:'<span class="hl">Tim là khối cơ không bao giờ nghỉ</span>, nên là nơi thiếu hụt lộ ra sớm nhất.', d:'Nên đi kiểm tra tim mạch, đừng để tự đoán.'}],
     [null,
      {t:'Lối sống có vài thứ đang bào mòn tế bào', r:'Thức khuya và căng thẳng làm tăng quá trình oxy hoá, tiêu tốn thêm phần Coenzyme Q10 vốn đã ít đi sau tuổi 40.', d:'Chọn bỏ một thứ dễ nhất trong tuần này — thường là giấc ngủ muộn.'},
      {t:'Nhiều thứ cùng bào mòn một lúc', r:'Thức khuya, căng thẳng, rượu bia, khói thuốc cộng dồn lại thì tốc độ oxy hoá vượt xa khả năng cơ thể tự bù.', d:'Bỏ bớt trước khi bổ sung. Bổ sung mà vẫn giữ nguyên lối sống thì như đổ nước vào thùng thủng.'}],
