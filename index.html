@@ -425,6 +425,10 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .nhan-phu dt{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);line-height:1.7}
 .nhan-phu dd{margin:0;font-size:.92rem;line-height:1.65}
 .nhan-phu dd i{color:var(--ink3);font-style:italic}
+.giay-anh{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem;margin:.9rem 0 0}
+.giay-anh figure{margin:0;display:flex;flex-direction:column;gap:.55rem}
+.giay-anh img{width:100%;height:auto;display:block;border:1px solid var(--line2);border-radius:var(--r);background:#fff}
+.giay-anh figcaption{font-size:.82rem;line-height:1.6;color:var(--ink3)}
 @media (max-width:640px){.nhan-phu>div{grid-template-columns:1fr}}
 
 /* factories */
@@ -1132,6 +1136,21 @@ body:has(.dock.on){padding-bottom:74px}
       </div>
       <div class="col stack">
         <p>Ngoài ra, mỗi lô hàng đều có phiếu kiểm nghiệm (COA) đối chiếu hàm lượng Coenzyme Q10 thực tế với mức công bố 50mg mỗi viên. Anh chị mua hàng có quyền yêu cầu xem phiếu của đúng lô mình nhận.</p>
+      </div>
+
+            <div class="col stack">
+        <h3 class="nh3">Ảnh chụp giấy tờ gốc</h3>
+        <p class="lede-s">Bấm vào ảnh để xem cỡ lớn, đọc được từng dòng. Trên giấy tiếp nhận có mã QR của Cục An toàn thực phẩm, anh chị quét được để đối chiếu.</p>
+        <div class="giay-anh">
+          <figure>
+            <img src="images/giay-cong-bo.webp" alt="Giấy tiếp nhận đăng ký bản công bố sản phẩm số 4107/2024/ĐKSP do Cục An toàn thực phẩm cấp ngày 09/05/2024" loading="lazy" width="900" height="1272">
+            <figcaption>Giấy tiếp nhận đăng ký bản công bố sản phẩm số <b>4107/2024/ĐKSP</b> — Cục An toàn thực phẩm, Bộ Y tế, ngày 09/05/2024. Ký bởi Phó Cục trưởng Nguyễn Hùng Long.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/nhan-phu.webp" alt="Nhãn phụ tiếng Việt của Thực phẩm bảo vệ sức khoẻ Rich Coenzyme Q10" loading="lazy" width="900" height="1153">
+            <figcaption>Nhãn phụ tiếng Việt dán trên từng hộp — thành phần, công dụng, cách dùng, lưu ý và số ĐKSP. Anh chị đối chiếu với tem trên hộp mình nhận.</figcaption>
+          </figure>
+        </div>
       </div>
 
       <div class="col stack">
