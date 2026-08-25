@@ -24,7 +24,7 @@ Khách ── Zalo OA ──► POST /webhook ──► kiểm tra chữ ký ─
 
 ```bash
 npm install
-node scripts/chat.js         # chat với agent ngay trên terminal, không cần Zalo
+npm run chat                 # chat với agent ngay trên terminal, không cần Zalo
 ```
 
 Thử: `cho hỏi đơn DH123456`, `sđt của mình là 0901234567`, `mình muốn hủy đơn`.
@@ -33,23 +33,25 @@ Chưa có `ANTHROPIC_API_KEY` thì CLI chạy chế độ regex. Có key thì Cl
 
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-...
-node scripts/chat.js
+npm run chat
 ```
 
 ## Kết nối Zalo OA
 
-1. Tạo ứng dụng tại <https://developers.zalo.me>, thêm sản phẩm **Official Account API**,
-   liên kết OA của bạn và xin các quyền gửi tin (`send message`, `manage OA`).
-2. Chạy luồng OAuth cấp quyền OA để lấy **refresh token** (bước `oa/permission` → `oa/access_token`).
-   Token này chỉ dùng được một lần; app sẽ tự lưu token mới vào `data/zalo-token.json`.
-3. Khai báo **Webhook URL** trỏ tới `https://<domain>/webhook` và bật các sự kiện
-   `user_send_text`, `follow`, `user_send_image`.
-4. Cấu hình và chạy:
+Hướng dẫn đầy đủ từng bước (kèm bảng lỗi thường gặp): **[docs/SETUP-ZALO.md](docs/SETUP-ZALO.md)**.
+
+Tóm tắt:
 
 ```bash
-cp .env.example .env      # điền ZALO_APP_ID / ZALO_APP_SECRET / ZALO_REFRESH_TOKEN
-npm start
+cp .env.example .env      # điền ZALO_APP_ID + ZALO_APP_SECRET
+npm run token             # mở link Zalo hiện ra, bấm Cho phép → nhận ZALO_REFRESH_TOKEN
+npm start                 # rồi trỏ Webhook URL của OA về https://<domain>/webhook
 ```
+
+`npm run token` chạy luồng OAuth v4 + PKCE của Zalo (`oa/permission` → `oa/access_token`),
+tự mở server nhận callback ở `http://localhost:3000/oauth/callback` và lưu token vào
+`data/zalo-token.json`. Callback về máy chủ khác thì dùng
+`npm run token -- --url-only` rồi `npm run token -- --code=<code>`.
 
 Test cục bộ thì mở tunnel (`ngrok http 3000`) rồi dán URL https vào phần Webhook của OA.
 
@@ -63,7 +65,8 @@ Test cục bộ thì mở tunnel (`ngrok http 3000`) rồi dán URL https vào p
 | `ZALO_APP_ID` | – | App ID trên developers.zalo.me (bắt buộc) |
 | `ZALO_APP_SECRET` | – | Secret key của app, dùng cho header `secret_key` khi refresh token (bắt buộc) |
 | `ZALO_OA_SECRET_KEY` | `ZALO_APP_SECRET` | Khóa ký webhook, nếu OA dùng khóa riêng |
-| `ZALO_REFRESH_TOKEN` | – | Refresh token khởi tạo (bắt buộc, chỉ dùng lần đầu) |
+| `ZALO_REFRESH_TOKEN` | – | Refresh token khởi tạo, lấy bằng `npm run token` (bắt buộc) |
+| `ZALO_REDIRECT_URI` | `http://localhost:3000/oauth/callback` | Callback OAuth, phải trùng khai báo trong app Zalo |
 | `ZALO_TOKEN_FILE` | `./data/zalo-token.json` | Nơi lưu access/refresh token mới |
 | `ZALO_VERIFY_SIGNATURE` | `true` | Bật/tắt kiểm tra chữ ký webhook |
 | `ANTHROPIC_API_KEY` | – | Không có thì bot chạy chế độ regex |
@@ -111,7 +114,7 @@ tin nhắn, lặp đến khi model trả lời bằng văn bản.
 npm test
 ```
 
-48 test chạy bằng `node --test`, không cần mạng: chữ ký webhook, refresh + retry token Zalo,
+53 test chạy bằng `node --test`, không cần mạng: chữ ký webhook, refresh + retry token Zalo,
 vòng lặp công cụ của agent, chế độ fallback, cắt lịch sử hội thoại, và tầng HTTP.
 
 ## Triển khai

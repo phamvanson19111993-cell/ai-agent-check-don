@@ -1,3 +1,4 @@
+import './util/loadEnv.js';
 import Anthropic from '@anthropic-ai/sdk';
 import { config } from './config.js';
 import { log } from './util/log.js';

@@ -4,6 +4,7 @@
  *   node scripts/chat.js
  * Huu ich de chinh prompt va kiem tra logic tra cuu truoc khi deploy.
  */
+import '../src/util/loadEnv.js';
 import readline from 'node:readline/promises';
 import { stdin, stdout } from 'node:process';
 import Anthropic from '@anthropic-ai/sdk';
