@@ -532,6 +532,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .don-huong-dan{display:block;margin:.6rem 0 .9rem;font-weight:400;line-height:1.6}
 .don-nut{display:flex;flex-wrap:wrap;gap:.5rem}
 .don-nut .btn{flex:1 1 auto}
+.don-nut .don-chinh{flex:1 1 100%}
 
 /* faq */
 .faq details{border-bottom:1px solid var(--line2)}
@@ -1920,7 +1921,7 @@ var NOI_NHAN_DON = "";
 
   // Luoi an toan: khi chua noi duoc voi noi nhan don, khong de mat don.
   // Chep san noi dung don vao bo nho tam va moi khach gui qua Messenger hoac goi dien.
-  var HD_MAC_DINH = 'Bấm một nút dưới đây, tin nhắn đã soạn sẵn, anh chị chỉ cần bấm <b>Gửi</b>. Nếu ô soạn tin để trống thì bấm giữ rồi chọn <b>Dán</b> — nội dung đơn đã được chép sẵn vào máy.';
+  var HD_MAC_DINH = 'Nội dung đơn đã được chép sẵn vào máy anh chị. Bấm một nút dưới đây, nếu ô soạn tin còn trống thì bấm giữ rồi chọn <b>Dán</b>, xong bấm <b>Gửi</b>.';
 
   function duPhong(du, dauMuc, loi, hd){
     var t = tomTat(du);
@@ -1935,7 +1936,8 @@ var NOI_NHAN_DON = "";
       + '<span class="don-tom-tat">' + thoat(t) + '</span>'
       + '<span class="don-huong-dan">' + (hd || HD_MAC_DINH) + '</span>'
       + '<span class="don-nut">'
-      + '<a class="btn btn-lg" href="' + M_ME + '?text=' + q + '" target="_blank" rel="noopener">Gửi đơn qua Messenger</a>'
+      + '<a class="btn btn-lg don-chinh" href="' + M_ME + '?text=' + q + '" target="_blank" rel="noopener">Gửi đơn qua Messenger</a>'
+      + '<a class="btn btn-lg btn-ghost" href="https://zalo.me/0913351394" target="_blank" rel="noopener">Gửi qua Zalo</a>'
       + '<a class="btn btn-lg btn-ghost" href="sms:0913351394?&body=' + q + '">Gửi bằng tin nhắn SMS</a>'
       + '<a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi 0913.351.394</a>'
       + '</span>';
@@ -1980,7 +1982,7 @@ var NOI_NHAN_DON = "";
       duPhong(du,
         'Bên em đã nhận được đơn của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.',
         false,
-        'Muốn bên em xử lý ngay mà không phải chờ điện thoại, anh chị gửi thêm đơn này qua <b>Messenger</b> hoặc <b>tin nhắn điện thoại</b> — bấm một nút dưới đây, nội dung đã soạn sẵn.');
+        'Muốn bên em xử lý ngay mà không phải chờ điện thoại, anh chị gửi thêm đơn này qua <b>Messenger</b>, <b>Zalo</b> hay <b>tin nhắn</b> — nội dung đã chép sẵn, bấm nút rồi dán là xong.');
       f.reset();
     }).catch(function(){
       duPhong(du, 'Mạng đang trục trặc nên đơn chưa gửi thẳng đi được. Đơn không mất đâu ạ.', true);
