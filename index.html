@@ -158,6 +158,16 @@ a{color:var(--red)}
 .jpcell .vn{font-size:.88rem;color:var(--ink2)}
 .jpcell .k{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--jade)}
 
+/* phan hoi khach */
+.fb{display:grid;gap:1rem}
+@media(min-width:760px){.fb{grid-template-columns:repeat(3,1fr)}}
+.fb-card{margin:0;border:1px dashed var(--line);background:var(--sunk);border-radius:var(--r);padding:1.4rem 1.25rem;min-height:150px;display:flex;flex-direction:column;gap:.5rem;justify-content:center;text-align:center}
+.fb-card img{width:100%;height:auto;border-radius:var(--r);display:block}
+.fb-n{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3)}
+.fb-card figcaption{font-size:.86rem;color:var(--ink3)}
+.fb-cta{display:flex;flex-direction:column;gap:.8rem;align-items:center;text-align:center}
+.fb-btns{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
+
 /* anh chup that */
 .lifeshot{margin:0;display:flex;flex-direction:column;gap:.7rem}
 .lifeshot img{width:100%;height:auto;display:block;border-radius:var(--r);border:1px solid rgba(255,234,243,.22)}
@@ -782,8 +792,33 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
         </div>
       </div>
       <div class="col stack">
+        <p>Anh chị cũng có thể <a href="https://m.me/61592861334561" target="_blank" rel="noopener">nhắn tin thẳng qua Facebook</a> nếu ngại gọi điện.</p>
         <p><b>Ba điều nhân viên tư vấn không được làm:</b> không nói sản phẩm chữa được bệnh, không giục chốt đơn trong cuộc gọi đầu, không khuyên bỏ hay giảm thuốc bác sĩ đã kê.</p>
         
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="phan-hoi">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Giai đoạn 2 · Phản hồi</span>
+        <h2>Khách đã mua nói gì</h2>
+        <p class="lede">Phản hồi thật của khách, không cắt ghép. Anh chị bấm vào để xem toàn bộ hội thoại gốc.</p>
+      </div>
+
+      <div class="fb">
+        <figure class="fb-card"><span class="fb-n">Phản hồi 01</span><figcaption>Chỗ này dành cho ảnh chụp hội thoại thật.</figcaption></figure>
+        <figure class="fb-card"><span class="fb-n">Phản hồi 02</span><figcaption>Chỗ này dành cho ảnh chụp hội thoại thật.</figcaption></figure>
+        <figure class="fb-card"><span class="fb-n">Phản hồi 03</span><figcaption>Chỗ này dành cho ảnh chụp hội thoại thật.</figcaption></figure>
+      </div>
+
+      <div class="col fb-cta">
+        <div class="fb-btns">
+          <a class="btn btn-lg" href="https://www.facebook.com/profile.php?id=61592861334561" target="_blank" rel="noopener">Xem phản hồi trên Facebook</a>
+          <a class="btn btn-lg btn-ghost" href="https://m.me/61592861334561" target="_blank" rel="noopener">Nhắn tin hỏi trực tiếp</a>
+        </div>
+        <p class="note">Phản hồi và câu chuyện của khách đăng công khai trên trang Facebook của bên em, anh chị xem được toàn bộ chứ không phải bản đã cắt ghép.</p>
       </div>
     </div>
   </section>
@@ -1339,6 +1374,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <div class="co">
     <span><b>Nhà sản xuất:</b> AFC-HD AMS Life Science Co., Ltd — Second Factory, 2-4-3 Toyoda, Suruga-ku, Shizuoka 422-8027, Nhật Bản</span>
     <span><b>Thương nhân chịu trách nhiệm về sản phẩm:</b> Công ty Cổ phần 5SPRO — Số 431 Ngọc Thuỵ, phường Ngọc Thuỵ, quận Long Biên, Hà Nội</span>
+    <span><b>Facebook:</b> <a href="https://www.facebook.com/profile.php?id=61592861334561" target="_blank" rel="noopener">DiLiM Supplement</a></span>
     <span><b>Hotline tư vấn:</b> <a href="tel:0913351394">0913.351.394</a></span>
     <span><b>Phân phối và quảng cáo:</b> Công ty Cổ phần Jinsei Vietnam — LK06-07 phố Hồng Tiến, phường Bồ Đề, Hà Nội · MST 0110613577 · Hotline 0932.731.555</span>
   </div>
