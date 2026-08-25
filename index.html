@@ -1894,6 +1894,23 @@ body:has(.dock.on){padding-bottom:74px}
    ===================================================================== */
 var NOI_NHAN_DON = "";
 
+/* ---------------------------------------------------------------------
+   BIEU MAU GOOGLE — don chay thang vao bang tinh cua Biểu mẫu.
+   Lay 4 con so tu duong "lien ket dien san" cua bieu mau, dang:
+     ...viewform?usp=pp_url&entry.1234567=a&entry.7654321=b&...
+   Dien dung thu tu: o thu nhat la Ho ten, thu hai la So dien thoai,
+   thu ba la Dia chi, thu tu la So luong. Chi dien phan so, bo chu
+   "entry." di. De trong bat ky o nao thi duong nay tat, don quay ve
+   gui qua Messenger / Zalo / SMS.
+   --------------------------------------------------------------------- */
+var FORM_GOOGLE = {
+  ma      : "1FAIpQLSfIOFZ5idbMz91nBJNb1oS84N8SEcUo6FRy2KcaCa_CTPAhGA",
+  ten     : "",
+  sdt     : "",
+  dia_chi : "",
+  soluong : ""
+};
+
 (function(){
   var f  = document.getElementById('lead-form');
   var ok = document.getElementById('ok-msg');
@@ -1944,6 +1961,34 @@ var NOI_NHAN_DON = "";
     ok.scrollIntoView({block:'center', behavior:'smooth'});
   }
 
+  // Don chay vao bang tinh cua Bieu mau Google.
+  // Gui kieu form nen trinh duyet khong can CORS; khong doc duoc ket qua
+  // tra ve, coi nhu gui xong khi khong co loi mang.
+  function guiBieuMau(du){
+    var g = FORM_GOOGLE;
+    if(!g.ma || !g.ten || !g.sdt || !g.dia_chi || !g.soluong) return null;
+    var cap = [[g.ten, du.ten], [g.sdt, du.sdt], [g.dia_chi, du.dia_chi], [g.soluong, du.soluong]];
+    var than = cap.map(function(c){
+      return 'entry.' + c[0] + '=' + encodeURIComponent(c[1] || '');
+    }).join('&');
+    return fetch('https://docs.google.com/forms/d/e/' + g.ma + '/formResponse', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+      body: than
+    });
+  }
+
+  function guiNoiNhan(du){
+    if(!NOI_NHAN_DON) return null;
+    return fetch(NOI_NHAN_DON, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(du)
+    });
+  }
+
   f.addEventListener('submit', function(e){
     e.preventDefault();
 
@@ -1966,19 +2011,16 @@ var NOI_NHAN_DON = "";
     du.thoi_gian = new Date().toLocaleString('vi-VN');
     du.nguon     = location.href;
 
-    if(!NOI_NHAN_DON){
+    var dangGui = guiBieuMau(du) || guiNoiNhan(du);
+
+    if(!dangGui){
       duPhong(du, 'Đơn của anh chị đã soạn xong. Còn một bước cuối để gửi về cho bên em, mất khoảng mười giây.', false);
       return;
     }
 
     if(nut){ nut.disabled = true; nut.textContent = 'Đang gửi…'; }
 
-    fetch(NOI_NHAN_DON, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type':'text/plain;charset=utf-8'},
-      body: JSON.stringify(du)
-    }).then(function(){
+    dangGui.then(function(){
       duPhong(du,
         'Bên em đã nhận được đơn của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.',
         false,
