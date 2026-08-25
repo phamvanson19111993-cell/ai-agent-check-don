@@ -1913,6 +1913,20 @@ var NOI_NHAN_DON = "";
 
     var du = {};
     new FormData(f).forEach(function(v,k){ du[k] = v; });
+
+    // gop dia chi 5 cap thanh mot dong cho de doc trong bang
+    du.dia_chi = [du.sonha, du.thon, du.xa, du.huyen, du.tinh]
+                   .filter(function(x){ return x && x.trim(); })
+                   .join(', ');
+    if(du.moc && du.moc.trim()) du.dia_chi += ' (' + du.moc.trim() + ')';
+
+    // tach so hop va so tien tu o chon so luong
+    var chon = du.soluong || '';
+    var mHop  = chon.match(/(\d+)\s*hộp/);
+    var mTien = chon.match(/([\d.]+)đ/);
+    du.so_hop  = mHop  ? mHop[1] : '';
+    du.so_tien = mTien ? mTien[1].replace(/\./g,'') : '';
+
     du.thoi_gian = new Date().toLocaleString('vi-VN');
     du.nguon     = location.href;
 
