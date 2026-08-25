@@ -533,9 +533,18 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .don-nut{display:flex;flex-wrap:wrap;gap:.5rem}
 .don-nut .btn{flex:1 1 auto}
 .don-nut .don-chinh{flex:1 1 100%}
-.don-tra{display:block;margin:1rem 0 .2rem;padding-top:.95rem;border-top:1px dashed currentColor;border-radius:var(--r);transition:background .35s ease}
-.don-tra.nhay{background:rgba(214,51,108,.10)}
-@media (prefers-reduced-motion: reduce){.don-tra{transition:none}}
+.don-tra{display:block;margin:.95rem 0;padding:.9rem 0;border-top:1px dashed currentColor;border-bottom:1px dashed currentColor}
+.ck-bank{display:block;margin:.35rem 0 .6rem;font-weight:400;font-size:.92em}
+.ck-hang{display:flex;align-items:center;gap:.6rem;margin:.45rem 0;padding:.55rem .7rem;background:#fff;border:1px solid currentColor;border-radius:var(--r);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ck-hang:active,.ck-hang.xong{background:rgba(214,51,108,.10)}
+.ck-noi{flex:1 1 auto;display:flex;flex-direction:column;gap:.08rem;min-width:0}
+.ck-nhan{font-weight:400;font-size:.76em;letter-spacing:.02em;opacity:.7}
+.ck-gt{font-weight:700;font-size:1.04em;line-height:1.3;word-break:break-word}
+.ck-nut{flex:0 0 auto;font-size:.72em;font-weight:700;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;padding:.3rem .55rem;border:1px solid currentColor;border-radius:999px;opacity:.7}
+.ck-qr{display:flex;align-items:center;gap:.8rem;margin:.75rem 0 .2rem}
+.don-tra .qr-card{width:132px;flex:0 0 auto;padding:.45rem;gap:0}
+.ck-qr-cap{flex:1 1 auto;font-weight:400;font-size:.86em;line-height:1.5;opacity:.85}
+.ck-note{display:block;margin-top:.55rem;font-weight:400;line-height:1.6}
 .don-tra-hang{display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-start;margin-top:.75rem}
 .don-tra .qr-card{flex:0 0 auto}
 .don-tra-info{flex:1 1 210px;font-weight:400;line-height:1.65}
@@ -1944,6 +1953,16 @@ var FORM_GOOGLE = {
     });
   }
 
+  // Ban hien tren man hinh: bo dong tieu de va thoi gian cho do dai,
+  // tin nhan gui di van giu day du.
+  function tomTatNgan(du){
+    return [['Họ tên', du.ten], ['Điện thoại', du.sdt],
+            ['Địa chỉ', du.dia_chi], ['Số lượng', du.soluong]]
+      .filter(function(x){ return x[1] && String(x[1]).trim(); })
+      .map(function(x){ return x[0] + ': ' + x[1]; })
+      .join('\n');
+  }
+
   function tomTat(du){
     return 'ĐƠN HÀNG RICH COENZYME Q10'
       + '\nHọ tên: '     + (du.ten     || '')
@@ -1955,7 +1974,7 @@ var FORM_GOOGLE = {
 
   // Luoi an toan: khi chua noi duoc voi noi nhan don, khong de mat don.
   // Chep san noi dung don vao bo nho tam va moi khach gui qua Messenger hoac goi dien.
-  var HD_MAC_DINH = 'Nội dung đơn đã được chép sẵn vào máy anh chị. Bấm một nút dưới đây, nếu ô soạn tin còn trống thì bấm giữ rồi chọn <b>Dán</b>, xong bấm <b>Gửi</b>.';
+  var HD_MAC_DINH = 'Đơn đã chép sẵn vào máy. Bấm một nút dưới đây, ô soạn tin còn trống thì bấm giữ chọn <b>Dán</b>.';
 
   function noiDungCK(du){
     return [du.ten, du.sdt].filter(function(x){ return x && x.trim(); }).join(' ');
@@ -1984,29 +2003,54 @@ var FORM_GOOGLE = {
   function khoiTra(du){
     var svg = du.so_tien && QR_TIEN[du.so_tien];
     if(!svg) return '';
-    var noiDung = noiDungCK(du);
+    var nd = noiDungCK(du);
+    function hang(nhan, hien, chep){
+      return '<span class="ck-hang" data-chep="' + thoat(chep) + '">'
+           +   '<span class="ck-noi">'
+           +     '<span class="ck-nhan">' + nhan + '</span>'
+           +     '<span class="ck-gt">' + thoat(hien) + '</span>'
+           +   '</span>'
+           +   '<span class="ck-nut">Chép</span>'
+           + '</span>';
+    }
     return '<span class="don-tra">'
-      + '<b>Muốn nhận hàng sớm hơn thì chuyển khoản trước</b>'
-      + '<span class="don-tra-hang">'
-      +   '<span class="qr-card">'
-      +     '<span class="qr-top"><span class="qr-name">PHAM VAN SON</span>'
-      +     '<span class="qr-acc">3869 1388 888</span></span>'
-      +     svg
-      +     '<span class="qr-bot"><span>TPBank</span><span>VietQR · napas 247</span></span>'
-      +   '</span>'
-      +   '<span class="don-tra-info">'
-      +     'Mã này đã có sẵn <b>' + chamNghin(du.so_tien) + 'đ</b> bên trong. '
-      +     'Anh chị mở app ngân hàng bất kỳ, quét mã, số tài khoản và số tiền tự hiện, không phải gõ tay.'
-      +     '<span class="don-tra-nd">Nội dung chuyển khoản: <b>' + thoat(noiDung) + '</b></span>'
-      +     'Chuyển xong anh chị chụp biên lai gửi qua Messenger hoặc Zalo để bên em đối chiếu và gửi hàng ngay. '
-      +     'Chưa muốn chuyển cũng không sao — nhân viên vẫn gọi lại xác nhận, anh chị <b>thanh toán khi nhận hàng</b> cũng được.'
-      +   '</span>'
+      + '<b>Chuyển khoản</b>'
+      + '<span class="ck-bank">TPBank — PHAM VAN SON</span>'
+      + hang('Số tài khoản', '3869 1388 888', '38691388888')
+      + hang('Số tiền',      chamNghin(du.so_tien) + 'đ', du.so_tien)
+      + hang('Nội dung',     nd, nd)
+      + '<span class="ck-qr">'
+      +   '<span class="qr-card">' + svg + '</span>'
+      +   '<span class="ck-qr-cap">Xem trên máy tính thì quét mã này bằng app ngân hàng — '
+      +   'mã đã có sẵn số tiền.</span>'
       + '</span>'
+      + '<span class="ck-note">Chuyển xong chụp biên lai gửi kèm. Hoặc cứ để nhân viên '
+      + 'gọi lại xác nhận rồi <b>thanh toán khi nhận hàng</b>.</span>'
       + '</span>';
   }
 
-  function duPhong(du, dauMuc, loi, hd){
-    var t  = tomTat(du);   // ban ngan, hien tren man hinh
+  // Cham vao mot hang la chep noi dung hang do, khoi phai boi den tung so.
+  function noiChep(){
+    Array.prototype.slice.call(ok.querySelectorAll('.ck-hang')).forEach(function(h){
+      h.addEventListener('click', function(){
+        var nut = h.querySelector('.ck-nut');
+        try{
+          if(navigator.clipboard && navigator.clipboard.writeText){
+            navigator.clipboard.writeText(h.getAttribute('data-chep'));
+          }
+        }catch(e){}
+        h.classList.add('xong');
+        if(nut) nut.textContent = 'Đã chép';
+        setTimeout(function(){
+          h.classList.remove('xong');
+          if(nut) nut.textContent = 'Chép';
+        }, 1800);
+      });
+    });
+  }
+
+  function duPhong(du, dauMuc, loi, hd, guiRoi){
+    var t  = tomTatNgan(du);  // ban ngan, hien tren man hinh
     var tn = tinNhan(du);  // ban day du, dung de gui va de dan
     var q  = encodeURIComponent(tn);
     try{
@@ -2017,6 +2061,7 @@ var FORM_GOOGLE = {
     ok.innerHTML =
         '<b>' + thoat(dauMuc) + '</b>'
       + '<span class="don-tom-tat">' + thoat(t) + '</span>'
+      + (guiRoi ? khoiTra(du) : '')
       + '<span class="don-huong-dan">' + (hd || HD_MAC_DINH) + '</span>'
       + '<span class="don-nut">'
       + '<a class="btn btn-lg don-chinh" href="' + M_ME + '?text=' + q + '" target="_blank" rel="noopener">Gửi đơn qua Messenger</a>'
@@ -2024,26 +2069,9 @@ var FORM_GOOGLE = {
       + '<a class="btn btn-lg btn-ghost" href="sms:0913351394?&body=' + q + '">Gửi bằng tin nhắn SMS</a>'
       + '<a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi 0913.351.394</a>'
       + '</span>'
-      + khoiTra(du);
-    noiTiepQR();
-    ok.scrollIntoView({block:'center', behavior:'smooth'});
-  }
-
-  // Bam nut gui tin xong thi dua khach thang toi ma QR, khoi phai tim.
-  function noiTiepQR(){
-    var tra = ok.querySelector('.don-tra');
-    if(!tra) return;
-    var nut = Array.prototype.slice.call(ok.querySelectorAll('.don-nut a'));
-    nut.forEach(function(a){
-      if(a.getAttribute('href').indexOf('tel:') === 0) return;
-      a.addEventListener('click', function(){
-        setTimeout(function(){
-          tra.scrollIntoView({block:'center', behavior:'smooth'});
-          tra.classList.add('nhay');
-          setTimeout(function(){ tra.classList.remove('nhay'); }, 2400);
-        }, 700);
-      });
-    });
+      + (guiRoi ? '' : khoiTra(du));
+    noiChep();
+    ok.scrollIntoView({block:'start', behavior:'smooth'});
   }
 
   // Don chay vao bang tinh cua Bieu mau Google.
@@ -2131,8 +2159,9 @@ var FORM_GOOGLE = {
     dangGui.then(function(){
       duPhong(du,
         'Bên em đã nhận được đơn của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.',
-        false,
-        'Muốn bên em xử lý ngay mà không phải chờ điện thoại, anh chị gửi thêm đơn này qua <b>Messenger</b>, <b>Zalo</b> hay <b>tin nhắn</b> — nội dung đã chép sẵn, bấm nút rồi dán là xong.');
+        false, /* guiRoi duoi cung */
+        'Muốn được nhắn lại ngay thay vì chờ điện thoại, anh chị gửi thêm đơn qua <b>Messenger</b>, <b>Zalo</b> hoặc <b>tin nhắn</b>.',
+        true);
       f.reset();
     }).catch(function(){
       duPhong(du, 'Mạng đang trục trặc nên đơn chưa gửi thẳng đi được. Đơn không mất đâu ạ.', true);
