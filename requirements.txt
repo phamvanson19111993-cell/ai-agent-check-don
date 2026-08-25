@@ -1,0 +1,6 @@
+# HTTP client cho JSON-RPC / REST tới Odoo
+requests>=2.31.0
+# Nạp cấu hình từ file .env
+python-dotenv>=1.0.0
+# Đọc file Excel (.xlsx) khi import đơn
+openpyxl>=3.1.0

@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# Cấu hình bí mật
+.env
+*.session
+
+# Dữ liệu tạm
+*.log
+data/*.xlsx
+data/*.csv
+!data/mau_don_hang.csv
