@@ -472,6 +472,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .opt-lbl{font-weight:400;color:var(--ink3);font-size:.72rem;margin-left:.3rem}
 .ok-msg{display:none;border:1px solid var(--jade);background:var(--jade-soft);color:var(--jade);border-radius:var(--r);padding:.85rem 1rem;font-size:.9rem;font-weight:500}
 .ok-msg.on{display:block}
+.ok-msg.loi{border-color:var(--red);background:var(--red-soft);color:var(--red)}
 
 /* faq */
 .faq details{border-bottom:1px solid var(--line2)}
@@ -1750,14 +1751,64 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 })();
 </script>
 <script>
+/* =====================================================================
+   NƠI NHẬN ĐƠN — dán đường dẫn vào đúng một dòng dưới đây là xong.
+
+   Cách 1 · Google Sheet (miễn phí, dữ liệu của riêng anh)
+       Dán đường dẫn Apps Script, dạng:
+       https://script.google.com/macros/s/AKfy..../exec
+
+   Cách 2 · Pancake POS
+       Dán đường dẫn API tạo đơn kèm khoá, dạng:
+       https://pos.pages.fm/api/v1/shops/<mã shop>/orders?api_key=<khoá>
+
+   Để trống thì form chỉ hiện thông báo, KHÔNG lưu đơn đi đâu cả.
+   ===================================================================== */
+var NOI_NHAN_DON = "";
+
 (function(){
-  var f = document.getElementById('lead-form');
+  var f  = document.getElementById('lead-form');
   var ok = document.getElementById('ok-msg');
   if(!f || !ok) return;
+
+  var nut = f.querySelector('button[type="submit"]');
+  var chuNut = nut ? nut.textContent : '';
+
+  function bao(text, loi){
+    ok.textContent = text;
+    ok.classList.add('on');
+    ok.classList.toggle('loi', !!loi);
+    ok.scrollIntoView({block:'center', behavior:'smooth'});
+  }
+
   f.addEventListener('submit', function(e){
     e.preventDefault();
-    ok.classList.add('on');
-    ok.scrollIntoView({block:'center', behavior:'smooth'});
+
+    if(!NOI_NHAN_DON){
+      bao('Đã ghi nhận. Đây là bản demo giao diện nên thông tin chưa được gửi đi đâu cả — cần nối form vào nơi nhận đơn trước khi chạy quảng cáo.');
+      return;
+    }
+
+    var du = {};
+    new FormData(f).forEach(function(v,k){ du[k] = v; });
+    du.thoi_gian = new Date().toLocaleString('vi-VN');
+    du.nguon     = location.href;
+
+    if(nut){ nut.disabled = true; nut.textContent = 'Đang gửi…'; }
+
+    fetch(NOI_NHAN_DON, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(du)
+    }).then(function(){
+      bao('Đã nhận thông tin của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.');
+      f.reset();
+    }).catch(function(){
+      bao('Mạng đang trục trặc nên chưa gửi được. Anh chị gọi thẳng 0913.351.394 giúp em, hoặc thử lại sau ít phút.', true);
+    }).then(function(){
+      if(nut){ nut.disabled = false; nut.textContent = chuNut; }
+    });
   });
 })();
 </script>
