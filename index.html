@@ -417,7 +417,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <div class="wrap nav-in">
     <a class="brand" href="#/"><b>DiLiM</b><span>Supplement · AFC Nhật Bản</span></a>
     <nav class="steps-nav" id="steps-nav" aria-label="Các bước">
-      <a href="#/quiz"     data-step="quiz">1 · Kiểm tra</a>
+      <a href="#/quiz"     data-step="home">1 · Kiểm tra</a>
       <a href="#/ho-tro"   data-step="ho-tro">2 · Hỗ trợ</a>
       <a href="#/san-pham" data-step="san-pham">3 · Sản phẩm</a>
     </nav>
@@ -435,7 +435,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
         <path d="M0 34 H80 l10 -4 l8 8 l9 -26 l10 40 l9 -22 l8 4 H240 l10 -3 l8 6 l9 -20 l10 32 l9 -17 l8 2 H420 l10 -4 l8 8 l9 -26 l10 40 l9 -22 l8 4 H600"></path>
       </svg>
       <p class="lede">Ngủ đủ tám tiếng mà sáng dậy vẫn thấy cạn pin — đó không hẳn là chuyện tuổi tác. Sau tuổi 40, lượng Coenzyme Q10 mà mỗi tế bào cần để đốt thức ăn thành năng lượng tụt rất nhanh. Tim là cơ quan cần nhiều nhất, nên cũng là nơi chịu trận đầu tiên.</p>
-      <a class="hero-jump" href="#van-de">Bắt đầu bài kiểm tra <span aria-hidden="true">↓</span></a>
+      <a class="hero-jump" href="#/quiz">Bắt đầu bài kiểm tra <span aria-hidden="true">↓</span></a>
       <div class="trustline">
         <span>Sản xuất tại <b>Shizuoka, Nhật Bản</b></span>
         <span>Số công bố <b class="mono">4107/2024/ĐKSP</b></span>
@@ -496,7 +496,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
           </div>
           <div class="story-box" id="story-box" hidden></div>
           <div class="result-cta">
-            <a class="btn" href="#nguyen-nhan">Xem phần hỗ trợ dành cho anh chị <span aria-hidden="true">→</span></a>
+            <a class="btn" href="#/ho-tro">Xem phần hỗ trợ dành cho anh chị <span aria-hidden="true">→</span></a>
             <button type="button" class="qbtn-back" id="q-again">Làm lại</button>
           </div>
         </div>
@@ -1361,7 +1361,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 
 
   <div class="wrap screen-foot rt" data-screen="quiz">
-    <a class="btn btn-ghost" href="#/">← Quay lại</a>
+    <a class="btn btn-ghost" href="#/">← Về đầu</a>
     <a class="btn spacer" href="#/ho-tro">Sang bước 2 · Hỗ trợ →</a>
   </div>
 
@@ -1379,13 +1379,13 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 (function(){
  try {
   var MAP = {
-    'home':     ['hero-sec'],
-    'quiz':     ['stage-1','van-de'],
+    'home':     ['hero-sec','stage-1','van-de'],
     'ho-tro':   ['stage-2','nguyen-nhan','cau-chuyen','giai-phap-cu','giai-phap-goc','ho-tro','phan-hoi','tu-lam'],
     'san-pham': ['stage-3','co-che','san-pham','lam-sang','sang-che','chung-minh','khac-biet','nha-may','tai-nhat','ma-ck'],
     'dat-hang': ['dat-hang','faq-sec','legal-sec']
   };
-  var ORDER = ['home','quiz','ho-tro','san-pham','dat-hang'];
+  var ORDER = ['home','ho-tro','san-pham','dat-hang'];
+  var ALIAS = {quiz:'home', '':'home'};          // #/quiz va trang chu la cung mot man
 
   // gan nhan man hinh cho tung khoi
   var owner = {};
@@ -1417,12 +1417,40 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
     if(jump) window.scrollTo({top:0, behavior:'instant'});
   }
 
-  function read(){
-    var h = (location.hash || '').replace(/^#\/?/, '');
-    return h === '' ? 'home' : h;
+  // tim man hinh dang chua mot khoi bat ky, ke ca khoi nam sau trong trang
+  function screenOf(id){
+    if(owner[id]) return owner[id];
+    var el = document.getElementById(id);
+    while(el){
+      if(el.classList && el.classList.contains('rt')) return el.getAttribute('data-screen');
+      el = el.parentElement;
+    }
+    return null;
   }
-  window.addEventListener('hashchange', function(){ go(read(), true); });
-  go(read(), false);
+
+  function apply(){
+    var raw = (location.hash || '').replace(/^#/, '');
+    if(raw === '' || raw === '/') { go('home', false); return; }
+
+    if(raw.charAt(0) === '/'){                       // duong dan cua tung buoc
+      var scr = raw.slice(1);
+      if(ALIAS[scr]) scr = ALIAS[scr];
+      go(ORDER.indexOf(scr) === -1 ? 'home' : scr, true);
+      return;
+    }
+
+    var target = screenOf(raw);                      // neo cu kieu #dat-hang, #co-che
+    if(target){
+      go(target, false);
+      var el = document.getElementById(raw);
+      if(el) setTimeout(function(){ el.scrollIntoView({block:'start', behavior:'smooth'}); }, 30);
+    } else {
+      go('home', false);
+    }
+  }
+
+  window.addEventListener('hashchange', apply);
+  apply();
  } catch(e){}
 })();
 </script>
