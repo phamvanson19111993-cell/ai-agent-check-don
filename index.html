@@ -533,7 +533,9 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .don-nut{display:flex;flex-wrap:wrap;gap:.5rem}
 .don-nut .btn{flex:1 1 auto}
 .don-nut .don-chinh{flex:1 1 100%}
-.don-tra{display:block;margin:1rem 0 .2rem;padding-top:.95rem;border-top:1px dashed currentColor}
+.don-tra{display:block;margin:1rem 0 .2rem;padding-top:.95rem;border-top:1px dashed currentColor;border-radius:var(--r);transition:background .35s ease}
+.don-tra.nhay{background:rgba(214,51,108,.10)}
+@media (prefers-reduced-motion: reduce){.don-tra{transition:none}}
 .don-tra-hang{display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-start;margin-top:.75rem}
 .don-tra .qr-card{flex:0 0 auto}
 .don-tra-info{flex:1 1 210px;font-weight:400;line-height:1.65}
@@ -1955,6 +1957,24 @@ var FORM_GOOGLE = {
   // Chep san noi dung don vao bo nho tam va moi khach gui qua Messenger hoac goi dien.
   var HD_MAC_DINH = 'Nội dung đơn đã được chép sẵn vào máy anh chị. Bấm một nút dưới đây, nếu ô soạn tin còn trống thì bấm giữ rồi chọn <b>Dán</b>, xong bấm <b>Gửi</b>.';
 
+  function noiDungCK(du){
+    return [du.ten, du.sdt].filter(function(x){ return x && x.trim(); }).join(' ');
+  }
+
+  // Ban gui qua Messenger / Zalo / SMS: don kem luon phan chuyen khoan,
+  // de khach giu duoc so tai khoan va so tien ngay trong hop thoai.
+  function tinNhan(du){
+    var t = tomTat(du);
+    if(du.so_tien){
+      t += '\n\nCHUYỂN KHOẢN'
+         + '\nTPBank — PHAM VAN SON'
+         + '\nSố tài khoản: 3869 1388 888'
+         + '\nSố tiền: ' + chamNghin(du.so_tien) + 'đ'
+         + '\nNội dung: ' + noiDungCK(du);
+    }
+    return t;
+  }
+
   function chamNghin(x){
     return String(x || '').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
@@ -1964,7 +1984,7 @@ var FORM_GOOGLE = {
   function khoiTra(du){
     var svg = du.so_tien && QR_TIEN[du.so_tien];
     if(!svg) return '';
-    var noiDung = [du.ten, du.sdt].filter(function(x){ return x && x.trim(); }).join(' ');
+    var noiDung = noiDungCK(du);
     return '<span class="don-tra">'
       + '<b>Muốn nhận hàng sớm hơn thì chuyển khoản trước</b>'
       + '<span class="don-tra-hang">'
@@ -1986,10 +2006,11 @@ var FORM_GOOGLE = {
   }
 
   function duPhong(du, dauMuc, loi, hd){
-    var t = tomTat(du);
-    var q = encodeURIComponent(t);
+    var t  = tomTat(du);   // ban ngan, hien tren man hinh
+    var tn = tinNhan(du);  // ban day du, dung de gui va de dan
+    var q  = encodeURIComponent(tn);
     try{
-      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t);
+      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(tn);
     }catch(e){}
     ok.classList.add('on');
     ok.classList.toggle('loi', !!loi);
@@ -2004,7 +2025,25 @@ var FORM_GOOGLE = {
       + '<a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi 0913.351.394</a>'
       + '</span>'
       + khoiTra(du);
+    noiTiepQR();
     ok.scrollIntoView({block:'center', behavior:'smooth'});
+  }
+
+  // Bam nut gui tin xong thi dua khach thang toi ma QR, khoi phai tim.
+  function noiTiepQR(){
+    var tra = ok.querySelector('.don-tra');
+    if(!tra) return;
+    var nut = Array.prototype.slice.call(ok.querySelectorAll('.don-nut a'));
+    nut.forEach(function(a){
+      if(a.getAttribute('href').indexOf('tel:') === 0) return;
+      a.addEventListener('click', function(){
+        setTimeout(function(){
+          tra.scrollIntoView({block:'center', behavior:'smooth'});
+          tra.classList.add('nhay');
+          setTimeout(function(){ tra.classList.remove('nhay'); }, 2400);
+        }, 700);
+      });
+    });
   }
 
   // Don chay vao bang tinh cua Bieu mau Google.
