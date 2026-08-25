@@ -272,6 +272,10 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .field label{font-size:.78rem;font-weight:600;color:var(--ink2)}
 .field input,.field select{font:400 .95rem/1.4 "Be Vietnam Pro",sans-serif;padding:.65rem .8rem;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);color:var(--ink)}
 .form-note{font-size:.8rem;color:var(--ink3)}
+.fgroup{grid-column:1/-1;font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line2);padding-bottom:.4rem;margin-top:.5rem}
+.fgroup:first-child{margin-top:0}
+.field input::placeholder{color:var(--ink3);opacity:.65}
+.opt-lbl{font-weight:400;color:var(--ink3);font-size:.72rem;margin-left:.3rem}
 .ok-msg{display:none;border:1px solid var(--jade);background:var(--jade-soft);color:var(--jade);border-radius:var(--r);padding:.85rem 1rem;font-size:.9rem;font-weight:500}
 .ok-msg.on{display:block}
 
@@ -969,13 +973,23 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
         <div class="offer">
           <div class="price-row">
             <span class="price">2.890.000đ</span>
-            <span class="price-note">Lọ 120 viên · dùng 60 ngày · khoảng 48.000đ mỗi ngày</span>
+            <span class="price-note">Đơn giá 1 hộp · lọ 120 viên · dùng 60 ngày.<br>Mua nhiều có ưu đãi, anh chị chọn số lượng ở ô bên dưới.</span>
           </div>
           <form class="form" id="lead-form">
-            <div class="field"><label for="ten">Họ và tên</label><input id="ten" name="ten" type="text" autocomplete="name" required></div>
-            <div class="field"><label for="sdt">Số điện thoại</label><input id="sdt" name="sdt" type="tel" inputmode="tel" autocomplete="tel" required></div>
-            <div class="field full"><label for="tinh">Tỉnh / thành</label><input id="tinh" name="tinh" type="text" autocomplete="address-level1"></div>
-            <div class="field full"><label for="tinhtrang">Tình trạng hiện tại</label>
+            <p class="fgroup">Người nhận hàng</p>
+            <div class="field"><label for="ten">Họ và tên</label><input id="ten" name="ten" type="text" autocomplete="name" placeholder="Nguyễn Văn A" required></div>
+            <div class="field"><label for="sdt">Số điện thoại</label><input id="sdt" name="sdt" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" required></div>
+
+            <p class="fgroup">Địa chỉ nhận hàng</p>
+            <div class="field"><label for="tinh">Tỉnh / Thành phố</label><input id="tinh" name="tinh" type="text" autocomplete="address-level1" placeholder="Nam Định" required></div>
+            <div class="field"><label for="huyen">Huyện / Quận / Thị xã</label><input id="huyen" name="huyen" type="text" autocomplete="address-level2" placeholder="Huyện Hải Hậu" required></div>
+            <div class="field"><label for="xa">Xã / Phường / Thị trấn</label><input id="xa" name="xa" type="text" autocomplete="address-level3" placeholder="Thị trấn Yên Định" required></div>
+            <div class="field"><label for="thon">Thôn / Xóm / Ấp / Tổ dân phố</label><input id="thon" name="thon" type="text" autocomplete="address-level4" placeholder="Xóm 5" required></div>
+            <div class="field full"><label for="sonha">Số nhà, tên đường</label><input id="sonha" name="sonha" type="text" autocomplete="address-line1" placeholder="Số 12, đường Trần Hưng Đạo"></div>
+            <div class="field full"><label for="moc">Mốc dễ tìm <span class="opt-lbl">không bắt buộc</span></label><input id="moc" name="moc" type="text" autocomplete="address-line2" placeholder="Cạnh trạm y tế xã, đối diện chợ, gần cây đa đầu làng…"></div>
+
+            <p class="fgroup">Tình trạng sức khoẻ</p>
+            <div class="field full"><label for="tinhtrang">Anh chị đang gặp vấn đề nào</label>
               <select id="tinhtrang" name="tinhtrang">
                 <option>Mệt mỏi kéo dài dù ngủ đủ</option>
                 <option>Đang theo dõi mỡ máu, huyết áp</option>
@@ -983,10 +997,24 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
                 <option>Muốn chống oxy hoá, chăm sóc tim mạch chủ động</option>
               </select>
             </div>
+            <div class="field full"><label for="soluong">Số lượng muốn đặt</label>
+              <select id="soluong" name="soluong">
+                <option>1 hộp — 2.890.000đ</option>
+                <option>2 hộp — 5.580.000đ (tiết kiệm 200.000đ)</option>
+                <option>3 hộp — 8.670.000đ (kèm quà tặng)</option>
+                <option>3 hộp — 8.320.000đ (tiết kiệm 350.000đ)</option>
+                <option>4 hộp — 11.560.000đ (kèm quà tặng)</option>
+                <option>4 hộp — 11.110.000đ (tiết kiệm 450.000đ)</option>
+                <option>5 hộp — 14.450.000đ (kèm quà tặng)</option>
+                <option>5 hộp — 13.850.000đ (tiết kiệm 600.000đ)</option>
+                <option selected>6 hộp — 17.340.000đ (tặng thêm 1 hộp)</option>
+                <option>Chưa quyết, nhờ tư vấn thêm</option>
+              </select>
+            </div>
             <div class="full"><button class="btn btn-lg" type="submit" style="width:100%">Gửi thông tin, nhận tư vấn</button></div>
           </form>
           <p class="ok-msg" id="ok-msg">Đã ghi nhận. Đây là bản demo giao diện nên thông tin chưa được gửi đi đâu cả — cần nối form vào hệ thống trước khi chạy quảng cáo.</p>
-          <p class="form-note">Thông tin chỉ dùng để liên hệ tư vấn, không chia sẻ cho bên thứ ba.</p>
+          <p class="form-note">Địa chỉ càng chi tiết thì bưu tá càng giao đúng ngay lần đầu, nhất là ở vùng nông thôn nơi nhiều nhà chưa có số. Thông tin chỉ dùng để liên hệ tư vấn và giao hàng, không chia sẻ cho bên thứ ba.</p>
         </div>
       </div>
     </div>
