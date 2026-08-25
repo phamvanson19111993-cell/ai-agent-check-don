@@ -4,6 +4,7 @@ Ví dụ:
   python -m src.cli check                 # đếm & liệt kê cơ hội đang hoạt động
   python -m src.cli list --limit 20
   python -m src.cli import data/don.xlsx  # import/cập nhật cơ hội từ file
+  python -m src.cli grab --interval 0.1   # tự động nhận cơ hội về tài khoản
 """
 
 from __future__ import annotations
@@ -12,17 +13,24 @@ import argparse
 import sys
 from typing import List, Optional
 
+import os
+
 from .config import load_config
 from .crm import CrmService
+from .grabber import Grabber
 from .odoo_client import OdooClient, OdooError
 from .orders import REF_COLUMN, REF_FIELD, load_orders, order_to_opportunity
 
 
-def _build_service() -> CrmService:
+def _build_client() -> OdooClient:
     config = load_config()
     client = OdooClient(config)
     client.authenticate()
-    return CrmService(client)
+    return client
+
+
+def _build_service() -> CrmService:
+    return CrmService(_build_client())
 
 
 def cmd_check(_args: argparse.Namespace) -> int:
@@ -74,6 +82,16 @@ def cmd_import(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_grab(args: argparse.Namespace) -> int:
+    client = _build_client()
+    target_uid = args.uid or (
+        int(os.getenv("ODOO_TARGET_UID")) if os.getenv("ODOO_TARGET_UID") else None
+    )
+    grabber = Grabber(client, target_uid=target_uid)
+    grabber.run(interval=args.interval, max_iterations=args.max_iterations)
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="ai-agent-check-don",
@@ -92,6 +110,22 @@ def build_parser() -> argparse.ArgumentParser:
         "--dry-run", action="store_true", help="Chỉ in ra, không ghi lên Odoo"
     )
 
+    p_grab = sub.add_parser(
+        "grab", help="Tự động nhận cơ hội về tài khoản của bạn (nhanh nhất)"
+    )
+    p_grab.add_argument(
+        "--interval", type=float, default=0.2,
+        help="Giây giữa 2 lần quét (nhỏ hơn = nhanh hơn). Mặc định 0.2",
+    )
+    p_grab.add_argument(
+        "--uid", type=int, default=None,
+        help="Id user đích. Bỏ trống = tài khoản đang đăng nhập",
+    )
+    p_grab.add_argument(
+        "--max-iterations", type=int, default=None, dest="max_iterations",
+        help="Số vòng tối đa (bỏ trống = chạy vô hạn tới khi Ctrl+C)",
+    )
+
     return parser
 
 
@@ -102,6 +136,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         "check": cmd_check,
         "list": cmd_list,
         "import": cmd_import,
+        "grab": cmd_grab,
     }[args.command]
     try:
         return handler(args)

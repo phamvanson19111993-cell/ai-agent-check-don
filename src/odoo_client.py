@@ -160,5 +160,36 @@ class OdooClient:
     def write(self, model: str, ids: Sequence[int], values: Dict[str, Any]) -> bool:
         return self.execute_kw(model, "write", [list(ids), values])
 
+    def search(
+        self,
+        model: str,
+        domain: Optional[List[Any]] = None,
+        limit: Optional[int] = None,
+        order: Optional[str] = None,
+    ) -> List[int]:
+        """Trả về danh sách id khớp domain (nhẹ hơn search_read)."""
+        kwargs: Dict[str, Any] = {}
+        if limit is not None:
+            kwargs["limit"] = limit
+        if order:
+            kwargs["order"] = order
+        return self.execute_kw(model, "search", [domain or []], kwargs)
+
+    def get_uid(self) -> int:
+        """Lấy id user hiện tại (dùng cho cả 2 chế độ auth)."""
+        if not self.config.uses_session:
+            if self.uid is None:
+                self.authenticate()
+            return int(self.uid or 0)
+        # Chế độ session: hỏi thông tin phiên đang đăng nhập
+        info = self._post("/web/session/get_session_info", {
+            "jsonrpc": "2.0", "method": "call", "params": {},
+        })
+        uid = (info or {}).get("uid")
+        if not uid:
+            raise OdooError("Không lấy được uid từ session — session_id có thể đã hết hạn.")
+        self.uid = int(uid)
+        return self.uid
+
     def search_count(self, model: str, domain: Optional[List[Any]] = None) -> int:
         return self.execute_kw(model, "search_count", [domain or []])
