@@ -158,6 +158,16 @@ a{color:var(--red)}
 .jpcell .vn{font-size:.88rem;color:var(--ink2)}
 .jpcell .k{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--jade)}
 
+/* video phan hoi */
+.vid{display:flex;flex-direction:column;gap:.65rem;text-decoration:none;color:inherit;group:vid}
+.vid-thumb{position:relative;aspect-ratio:9/13;border-radius:var(--r);background:linear-gradient(160deg,var(--sunk),#F6D7E4);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:border-color .15s ease,transform .15s ease}
+.vid:hover .vid-thumb{border-color:var(--red);transform:translateY(-3px)}
+.vid-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.play{width:54px;height:54px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px -8px rgba(214,36,110,.8)}
+.play::after{content:"";border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.vid-tx{display:flex;flex-direction:column;gap:.15rem;font-size:.86rem;color:var(--ink2);text-align:center}
+.vid-tx b{font-size:.92rem;color:var(--ink);font-weight:700}
+
 /* phan hoi khach */
 .fb{display:grid;gap:1rem}
 @media(min-width:760px){.fb{grid-template-columns:repeat(3,1fr)}}
@@ -808,9 +818,18 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
       </div>
 
       <div class="fb">
-        <figure class="fb-card"><span class="fb-n">Phản hồi 01</span><figcaption>Chỗ này dành cho ảnh chụp hội thoại thật.</figcaption></figure>
-        <figure class="fb-card"><span class="fb-n">Phản hồi 02</span><figcaption>Chỗ này dành cho ảnh chụp hội thoại thật.</figcaption></figure>
-        <figure class="fb-card"><span class="fb-n">Phản hồi 03</span><figcaption>Chỗ này dành cho ảnh chụp hội thoại thật.</figcaption></figure>
+        <a class="vid" href="https://www.facebook.com/profile.php?id=61592861334561" target="_blank" rel="noopener" data-video="1">
+          <span class="vid-thumb"><span class="play" aria-hidden="true"></span></span>
+          <span class="vid-tx"><b>Phản hồi 01</b>Anh Phan Hồng Sơn chia sẻ</span>
+        </a>
+        <a class="vid" href="https://www.facebook.com/profile.php?id=61592861334561" target="_blank" rel="noopener" data-video="2">
+          <span class="vid-thumb"><span class="play" aria-hidden="true"></span></span>
+          <span class="vid-tx"><b>Phản hồi 02</b>Anh Phan Hồng Sơn chia sẻ</span>
+        </a>
+        <a class="vid" href="https://www.facebook.com/profile.php?id=61592861334561" target="_blank" rel="noopener" data-video="3">
+          <span class="vid-thumb"><span class="play" aria-hidden="true"></span></span>
+          <span class="vid-tx"><b>Phản hồi 03</b>Anh Phan Hồng Sơn chia sẻ</span>
+        </a>
       </div>
 
       <div class="col fb-cta">
