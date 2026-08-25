@@ -492,7 +492,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
         </div>
       </div>
 
-      <a class="hero-jump" href="#van-de">Làm bài kiểm tra 30 giây <span aria-hidden="true">↓</span></a>
+      <a class="hero-jump" id="bat-dau" href="#van-de">Làm bài kiểm tra 30 giây <span aria-hidden="true">↓</span></a>
       <div class="trustline">
         <span>Sản xuất tại <b>Shizuoka, Nhật Bản</b></span>
         <span>Số công bố <b class="mono">4107/2024/ĐKSP</b></span>
@@ -554,7 +554,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
           <div class="story-box" id="story-box" hidden></div>
           <div class="result-cta">
             <a class="btn" href="#nguyen-nhan">Xem phần hỗ trợ dành cho anh chị <span aria-hidden="true">→</span></a>
-            <button type="button" class="qbtn-back" id="q-again">Làm lại</button>
+            <button type="button" class="qbtn-back" id="q-again">↻ Làm lại bài kiểm tra</button>
           </div>
         </div>
 
@@ -1572,11 +1572,33 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 
   try{
     var raw = localStorage.getItem('dilim-quiz');
-    if(raw){ var d = JSON.parse(raw); if(Array.isArray(d.a)){ answers = d.a; step = d.s || 0; } }
+    if(raw){
+      var d = JSON.parse(raw);
+      if(Array.isArray(d.a) && d.a.length <= QUESTIONS.length){
+        answers = d.a;
+        step = (typeof d.s === 'number' && d.s >= 0 && d.s <= QUESTIONS.length) ? d.s : 0;
+        var du = answers.filter(function(v){ return typeof v === 'number'; }).length;
+        if(step >= QUESTIONS.length && du < QUESTIONS.length){ answers = []; step = 0; }
+      }
+    }
   }catch(e){}
 
+  function lamLai(){ answers = []; step = 0; if(elForm) elForm.value=''; save(); render(); }
+
+  // Nut "Lam bai kiem tra" va muc luc dau trang: luon bat dau lai tu cau 1,
+  // neu khong thi khach da lam mot lan se chi thay bang ket qua cu va tuong nut hong
+  Array.prototype.forEach.call(
+    document.querySelectorAll('#bat-dau, #steps-nav a[href="#van-de"]'),
+    function(a){
+      a.addEventListener('click', function(){
+        lamLai();
+        setTimeout(function(){ quiz.scrollIntoView({block:'center', behavior:'smooth'}); }, 40);
+      });
+    }
+  );
+
   elBack.addEventListener('click', function(){ if(step>0){ step--; save(); render(); } });
-  elAgain.addEventListener('click', function(){ answers=[]; step=0; if(elForm) elForm.value=''; save(); render(); quiz.scrollIntoView({block:'center',behavior:'smooth'}); });
+  elAgain.addEventListener('click', function(){ lamLai(); quiz.scrollIntoView({block:'center',behavior:'smooth'}); });
 
   render();
  } catch (err) {
