@@ -23,13 +23,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Chi lay nhung file trang can, bo ban video goc 43MB cho nhe
+      # Trang khong con nhung video nao nen chi can HTML va anh
       - name: Gom file can dang
         run: |
-          mkdir -p _site/videos
+          mkdir -p _site
           cp index.html _site/
           cp -r images _site/
-          cp -r videos/ngan _site/videos/ngan
           touch _site/.nojekyll
           du -sh _site
 
