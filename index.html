@@ -209,6 +209,26 @@ a{color:var(--red)}
 .result-cta{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
 @media (prefers-reduced-motion: reduce){.bar span{transition:none}}
 
+/* tu van rieng */
+.advice{border-top:1px solid var(--line2);padding-top:1rem;display:flex;flex-direction:column;gap:.9rem}
+.advice-h{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin:0;font-weight:400}
+.advice-list{display:flex;flex-direction:column;gap:.75rem}
+.adv{border-left:2px solid var(--red);background:color-mix(in srgb,var(--red-soft) 32%,transparent);border-radius:0 var(--r) var(--r) 0;padding:.85rem 1rem;display:flex;flex-direction:column;gap:.35rem}
+.adv.mild{border-left-color:var(--amber);background:color-mix(in srgb,var(--amber-soft) 35%,transparent)}
+.adv-t{font-weight:600;font-size:.94rem}
+.adv-r{font-size:.87rem;color:var(--ink2)}
+.adv-d{font-size:.87rem;color:var(--ink)}
+.adv-d b{color:var(--red);font-weight:600}
+.adv.mild .adv-d b{color:var(--amber)}
+
+/* cau chuyen theo ho so */
+.story-box{border-top:1px solid var(--line2);padding-top:1rem;display:flex;flex-direction:column;gap:.6rem}
+.story-box .who{display:flex;flex-wrap:wrap;gap:.4rem .8rem;align-items:baseline;font-size:.8rem;color:var(--ink3)}
+.story-box .who b{color:var(--ink);font-family:"Newsreader",serif;font-size:1.05rem;font-weight:600}
+.story-box p{font-size:.92rem;color:var(--ink2)}
+.story-box p.turn{color:var(--ink);font-weight:500}
+.story-box .note{font-size:.75rem}
+
 /* chain */
 .chain{display:grid;gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--r);overflow:hidden}
 @media(min-width:820px){.chain{grid-template-columns:repeat(4,1fr)}}
@@ -439,6 +459,11 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
           </div>
           <div class="bar"><span id="bar-fill"></span></div>
           <ul class="result-list" id="result-list"></ul>
+          <div class="advice" id="advice" hidden>
+            <h4 class="advice-h">Tư vấn riêng theo câu trả lời của anh chị</h4>
+            <div class="advice-list" id="advice-list"></div>
+          </div>
+          <div class="story-box" id="story-box" hidden></div>
           <div class="result-cta">
             <a class="btn" href="#nguyen-nhan">Xem phần hỗ trợ dành cho anh chị <span aria-hidden="true">→</span></a>
             <button type="button" class="qbtn-back" id="q-again">Làm lại</button>
@@ -1292,13 +1317,55 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
      list:['Nhóm statin làm giảm Coenzyme Q10 trong cơ thể — xem mắt xích 3 bên dưới','Mang hộp sản phẩm đi khám để bác sĩ đọc bảng thành phần','Để lại số, nhân viên tư vấn gọi lại hỏi kỹ trước khi tư vấn liệu trình']}
   ];
 
+
+  var ADVICE = [
+    [null,
+     {t:'Sáng dậy còn nặng người', r:'Ty thể khởi động chậm sau một đêm, thường gặp khi nền năng lượng bắt đầu hụt.', d:'Giữ giờ đi ngủ cố định trong hai tuần, kể cả cuối tuần.'},
+     {t:'Sáng dậy phải có cà phê mới nổi', r:'Cà phê không tạo thêm năng lượng, nó chỉ chặn tín hiệu buồn ngủ. Sáng nào cũng cần tới nó là cơ thể đang vay chứ không đủ.', d:'Bỏ cữ cà phê sau 3 giờ chiều để không phá giấc đêm, rồi xem sáng hôm sau có nhẹ hơn không.'}],
+    [null,
+     {t:'Chiều làm việc chậm lại', r:'Lượng năng lượng tế bào tạo ra không đủ kéo hết ngày.', d:'Chia việc nặng về buổi sáng, chiều để việc nhẹ.'},
+     {t:'Ba giờ chiều là hết pin', r:'Việc cũ mà làm lâu hơn và dễ sai hơn là dấu hiệu rõ của thiếu hụt năng lượng ở mức tế bào, không phải lười.', d:'Ghi lại mức tỉnh táo buổi chiều mỗi ngày trong hai tuần để có cái mà so.'}],
+    [null,
+     {t:'Leo cầu thang hơi hụt hơi', r:'Tim phải làm nhiều hơn để bù, nên gắng sức nhẹ cũng thấy mệt.', d:'Đi bộ nhanh 30 phút mỗi ngày, tăng dần.'},
+     {t:'Hai tầng cầu thang đã thở dốc', r:'Tim là khối cơ không bao giờ nghỉ, nên là nơi thiếu hụt lộ ra sớm nhất.', d:'Nên đi kiểm tra tim mạch, đừng để tự đoán.'}],
+    [null,
+     {t:'Thỉnh thoảng nặng đầu', r:'Thường đi kèm thiếu ngủ và căng thẳng kéo dài, hai thứ làm tăng oxy hoá.', d:'Ngủ đủ và giảm màn hình buổi tối trước khi tính tới thứ khác.'},
+     {t:'Nặng đầu gần như tuần nào cũng có', r:'Căng thẳng kéo dài làm tăng quá trình oxy hoá, tiêu tốn thêm phần Coenzyme Q10 vốn đã ít đi.', d:'Đau đầu thường xuyên thì phải đi khám để loại trừ nguyên nhân khác, đừng tự xử lý ở nhà.'}],
+    [null,
+     {t:'Mỡ máu hoặc huyết áp nhỉnh', r:'Bác sĩ dặn theo dõi tức là đang ở ngưỡng cần để ý, chưa phải bệnh.', d:'Giữ cân nặng và đi khám lại đúng hẹn.'},
+     {t:'Đang uống thuốc hạ mỡ máu nhóm statin', r:'Statin ức chế một enzyme ở gan. Enzyme đó vừa tạo cholesterol vừa tạo Coenzyme Q10, nên chặn cái này là mất luôn cái kia. Đây là mắt xích quan trọng nhất trong kết quả của anh chị.', d:'Mang đơn thuốc đi hỏi thẳng bác sĩ đang theo dõi mình. Tuyệt đối không tự bỏ statin.'}],
+    [null,
+     {t:'Phục hồi chậm hơn trước', r:'Cơ bắp cần năng lượng để sửa chữa, thiếu thì lâu lại sức hơn.', d:'Giãn cơ sau khi tập và ngủ đủ, đừng tập dồn.'},
+     {t:'Ê ẩm mấy ngày liền sau khi vận động', r:'Quá trình phục hồi chậm hẳn so với trước là dấu hiệu nền năng lượng đã xuống thấp.', d:'Giảm cường độ xuống còn một nửa trong hai tuần, xem cơ thể có bắt kịp không.'}]
+  ];
+
+  var STORIES = [
+    {when:function(a){ return a[4] === 2; },
+     name:'Anh Tuấn, 54 tuổi', job:'Quản lý kho · Hải Phòng',
+     p:['Anh Tuấn cũng trả lời giống anh chị ở câu về thuốc hạ mỡ máu. Năm 50 tuổi anh thấy chiều nào cũng đuối, nghĩ do ca kíp, ngủ bù cuối tuần là xong.',
+        'Ngủ bù mãi không lại sức. Anh chuyển sang cà phê đặc ngày ba cốc, tỉnh được tới trưa rồi tim đập nhanh, đêm khó ngủ, sáng hôm sau mệt hơn hôm trước. Đi khám mỡ máu cao, bác sĩ kê statin. Chỉ số về đẹp, nhưng cái mệt thì nặng thêm.'],
+     turn:'Đến khi con trai anh đọc tờ hướng dẫn của chính hộp statin, mới thấy dòng chữ: nhóm thuốc này làm giảm Coenzyme Q10 trong cơ thể. Suốt bốn năm anh bổ sung đủ thứ, trừ đúng cái đang bị lấy đi mỗi ngày.'},
+    {when:function(a){ return (a[0]||0) + (a[1]||0) >= 3; },
+     name:'Chị Lan, 47 tuổi', job:'Kế toán trưởng · Hà Nội',
+     p:['Chị Lan cũng đuối từ giữa chiều giống anh chị. Mùa quyết toán năm nào chị cũng nghĩ qua đợt là khoẻ lại.',
+        'Nhưng qua đợt rồi vẫn thế. Chị uống vitamin tổng hợp, sâm, nước tăng lực dạng ống. Mỗi thứ đỡ được tuần đầu rồi đâu lại vào đấy. Chị bắt đầu nghĩ tại mình gần năm mươi rồi, chịu thôi.'],
+     turn:'Điều chị không biết: sau tuổi 40, khả năng tự tạo Coenzyme Q10 tụt rất nhanh, mà vitamin tổng hợp thì hầu như không chứa chất này. Chị bổ sung nhiều thứ, nhưng không trúng thứ đang thiếu.'},
+    {when:function(){ return true; },
+     name:'Chú Bình, 58 tuổi', job:'Nghỉ hưu · Nam Định',
+     p:['Chú Bình để ý ra khi leo lên tầng hai nhà con gái thì phải đứng lại thở, trong khi hai năm trước chú còn xách nước lên sân thượng.',
+        'Chú nghĩ già rồi thì thế, không đi khám. Con cái giục mãi chú mới chịu đi, hoá ra các chỉ số tim mạch đã ở ngưỡng phải theo dõi.'],
+     turn:'Tim là khối cơ không bao giờ nghỉ, nên cũng là nơi cần Coenzyme Q10 nhiều nhất và là nơi thiếu hụt lộ ra sớm nhất. Cái mệt khi leo cầu thang thường tới trước con số trên phiếu xét nghiệm.'}
+  ];
+
   var elI=document.getElementById('q-i'), elBar=document.getElementById('q-bar'),
       elT=document.getElementById('q-text'), elO=document.getElementById('q-opts'),
       elBack=document.getElementById('q-back'), elHint=document.getElementById('q-hint'),
       elRes=document.getElementById('q-result'), elN=document.getElementById('score-n'),
       elH=document.getElementById('result-h'), elP=document.getElementById('result-p'),
       elFill=document.getElementById('bar-fill'), elList=document.getElementById('result-list'),
-      elAgain=document.getElementById('q-again'), elForm=document.getElementById('tuKiem');
+      elAgain=document.getElementById('q-again'), elForm=document.getElementById('tuKiem'),
+      elAdv=document.getElementById('advice'), elAdvL=document.getElementById('advice-list'),
+      elStory=document.getElementById('story-box');
 
   var answers = [], step = 0;
 
@@ -1335,6 +1402,43 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
     lv.list.forEach(function(t){
       var li = document.createElement('li'); li.textContent = t; elList.appendChild(li);
     });
+    // tu van rieng theo tung cau tra loi
+    elAdvL.innerHTML = '';
+    var flagged = 0;
+    answers.forEach(function(v, qi){
+      if(!v) return;
+      var a = ADVICE[qi][v]; if(!a) return;
+      flagged++;
+      var d = document.createElement('div');
+      d.className = 'adv' + (v === 1 ? ' mild' : '');
+      var t = document.createElement('p'); t.className='adv-t'; t.textContent = a.t;
+      var r = document.createElement('p'); r.className='adv-r'; r.textContent = a.r;
+      var w = document.createElement('p'); w.className='adv-d';
+      var b = document.createElement('b'); b.textContent = 'Nên làm: ';
+      w.appendChild(b); w.appendChild(document.createTextNode(a.d));
+      d.appendChild(t); d.appendChild(r); d.appendChild(w);
+      elAdvL.appendChild(d);
+    });
+    elAdv.hidden = flagged === 0;
+
+    // cau chuyen hop voi ho so
+    var st = STORIES.filter(function(x){ return x.when(answers); })[0];
+    elStory.hidden = flagged === 0;
+    if(flagged){
+      elStory.innerHTML = '';
+      var who = document.createElement('div'); who.className='who';
+      var nm = document.createElement('b'); nm.textContent = st.name;
+      var jb = document.createElement('span'); jb.textContent = st.job;
+      who.appendChild(nm); who.appendChild(jb); elStory.appendChild(who);
+      st.p.forEach(function(txt){
+        var el = document.createElement('p'); el.textContent = txt; elStory.appendChild(el);
+      });
+      var tp = document.createElement('p'); tp.className='turn'; tp.textContent = st.turn; elStory.appendChild(tp);
+      var nt = document.createElement('p'); nt.className='note';
+      nt.textContent = 'Nhân vật minh hoạ, dựng lại từ tình huống thường gặp. Không phải lời chứng thực về hiệu quả sản phẩm.';
+      elStory.appendChild(nt);
+    }
+
     if(elForm) elForm.value = 'Bài tự kiểm: ' + n + '/12 điểm — ' + lv.h;
     save();
   }
