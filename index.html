@@ -76,6 +76,18 @@ a{color:var(--red)}
 .brand span{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
 .nav .btn{margin-left:auto}
 
+/* danh sach viec noi bo */
+.todo{display:grid;gap:1rem}
+@media(min-width:800px){.todo{grid-template-columns:1fr 1fr}}
+.td{background:var(--card);border:1px solid var(--line2);border-left:3px solid var(--ink3);border-radius:var(--r);padding:1.2rem 1.25rem;display:flex;flex-direction:column;gap:.45rem}
+.td .k{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3)}
+.td p{font-size:.88rem;color:var(--ink2)}
+.td-stop{border-left-color:var(--red)}
+.td-stop .k{color:var(--red)}
+.td-cut{border-left-color:var(--amber);opacity:.9}
+.td-cut .k{color:var(--amber)}
+.foot .noi-bo{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+
 /* khung theo buoc */
 .steps-nav{display:flex;gap:.15rem;margin-left:auto;align-items:center}
 .steps-nav a{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);text-decoration:none;padding:.45rem .6rem;border-radius:var(--r);white-space:nowrap;border:1px solid transparent}
@@ -662,31 +674,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
       </div>
       <div class="col stack">
         <p><b>Ba điều nhân viên tư vấn không được làm:</b> không nói sản phẩm chữa được bệnh, không giục chốt đơn trong cuộc gọi đầu, không khuyên bỏ hay giảm thuốc bác sĩ đã kê.</p>
-        <div class="fill">
-          <span class="lbl">Cần anh điền · Chính sách sau bán</span>
-          <span class="txt">Điền chính sách thật của bên anh: đổi trả trong bao nhiêu ngày, điều kiện thế nào, ai chịu phí ship khi đổi, có kiểm tra hàng trước khi thanh toán không, hotline chăm sóc sau bán. Đây là phần khách ở tuổi này đọc kỹ nhất trước khi quyết định.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="phan-hoi">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Giai đoạn 2 · Phản hồi</span>
-        <h2>Khách đã mua nói gì</h2>
-        <p class="lede">Phần này em để trống có chủ ý. Em không tự viết phản hồi khách hàng — bịa ra một dòng cũng là làm giả bằng chứng, và với thực phẩm bảo vệ sức khoẻ thì còn là chuyện pháp lý.</p>
-      </div>
-      <div class="fb">
-        <div class="fb-card"><span class="fb-n">Phản hồi 01</span><p>Chỗ này dành cho phản hồi thật của khách.</p></div>
-        <div class="fb-card"><span class="fb-n">Phản hồi 02</span><p>Chỗ này dành cho phản hồi thật của khách.</p></div>
-        <div class="fb-card"><span class="fb-n">Phản hồi 03</span><p>Chỗ này dành cho phản hồi thật của khách.</p></div>
-      </div>
-      <div class="col stack">
-        <div class="fill">
-          <span class="lbl">Cần anh gửi · Phản hồi thật, và phải lọc kỹ</span>
-          <span class="txt">Anh gửi em phản hồi thật kèm sự đồng ý của khách. Nhưng phải lọc: quảng cáo thực phẩm bảo vệ sức khoẻ <b>bị cấm dùng thư cảm ơn của người bệnh</b>, cấm dùng hình ảnh và tên của bác sĩ, nhân viên y tế, cơ sở y tế. Nên phản hồi <b>dùng được</b> là loại nói về dịch vụ: tư vấn có kỹ không, giao hàng nhanh không, đóng gói ra sao, hàng có đúng tem nhãn không. Loại <b>không dùng được</b> là những câu kiểu “uống xong hết mệt”, “khỏi bệnh tim”, “bác sĩ khen” — đây chính là nhóm câu bị xử phạt nhiều nhất. Anh gửi sang, em lọc và dựng lại phần này.</span>
-        </div>
+        
       </div>
     </div>
   </section>
@@ -900,24 +888,6 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
           <span class="ph"><b>Ảnh 03</b>Viên nang mềm, thấy rõ kích thước</span>
         </figure>
       </div>
-      <div class="col">
-        <div class="fill">
-          <span class="lbl">Cách gắn ảnh thật · Chỉ cần thả file</span>
-          <span class="txt">Ba khung trên đã nối sẵn với ba file ảnh. Anh chỉ cần tạo thư mục <b>images/</b> trong dự án rồi đặt đúng ba tên: <b>san-pham-01.jpg</b>, <b>san-pham-02.jpg</b>, <b>san-pham-03.jpg</b> — ảnh sẽ tự hiện lên, không cần sửa dòng mã nào. Chưa có file thì khung giữ nguyên trạng thái chờ như hiện tại, không vỡ bố cục. Trong Drive đã sẵn ảnh <b>AFCRICH - Rich Coenzyme Q10.jpg</b> và <b>Nhãn phụ - Rich Coenzyme Q10</b>; bốn ảnh HEIC nên đổi sang JPG vì trình duyệt không mở được HEIC.</span>
-        </div>
-      </div>
-      <div class="col">
-        <div class="fill">
-          <span class="lbl">Cần anh rà lại · Banner đang vượt công dụng đã duyệt</span>
-          <span class="txt">Banner DiLiM đang chạy có mấy dòng nằm ngoài giấy xác nhận nội dung quảng cáo số 1582/2024/XNQC-ATTP: <b>“giúp tăng tập trung, giảm đau đầu, hỗ trợ trí nhớ”</b>, <b>“năng lượng cho não bộ”</b>, <b>“làm chậm quá trình lão hoá”</b>. Giấy chỉ duyệt đúng ba công dụng: hỗ trợ bổ sung Coenzyme Q10; hỗ trợ chống oxy hoá, hỗ trợ giảm mệt mỏi; hỗ trợ giảm nguy cơ xơ vữa động mạch, tốt cho tim mạch. Trên trang này em chỉ dùng ba dòng đó. Anh cho rà lại banner trước khi chạy tiếp, vì giấy phép ghi rõ phải quảng cáo đúng nội dung đã xác nhận.</span>
-        </div>
-      </div>
-      <div class="col">
-        <div class="fill">
-          <span class="lbl">Cần anh sửa gấp · Sai thành phần trên banner</span>
-          <span class="txt">Ảnh banner đang chạy ghi thành phần là <b>“chiết xuất gừng đen”</b>, nhưng bản công bố 4107/2024/ĐKSP ghi rõ là <b>chiết xuất hạt tiêu đen (Piper nigrum) 2,5mg</b>. Nhiều khả năng khâu dịch nhầm 黒胡椒 (hạt tiêu đen) thành 黒生姜 (gừng đen). Ghi sai thành phần so với bản công bố là lỗi nặng khi bị hậu kiểm — anh cho sửa lại banner trước khi chạy quảng cáo. Trên trang này em đã ghi đúng theo bản công bố.</span>
-        </div>
-      </div>
       <div class="spec-list">
         <div class="spec-row"><dt>Tên sản phẩm</dt><dd>Thực phẩm bảo vệ sức khoẻ RICH COENZYME Q10</dd></div>
         <div class="spec-row"><dt>Dạng bào chế</dt><dd>Viên nang mềm</dd></div>
@@ -932,65 +902,12 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   </section>
 
   <!-- 07 CHỨNG MINH LÂM SÀNG -->
-  <section class="sec" id="lam-sang">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 07 · Chứng minh lâm sàng</span>
-        <h2>Khoa học nói gì về Coenzyme Q10</h2>
-        <p class="lede">Đây là các nghiên cứu về hoạt chất Coenzyme Q10 nói chung, do bộ phận đào tạo tổng hợp — không phải thử nghiệm riêng trên sản phẩm này.</p>
-      </div>
-      <div class="studies">
-        <div class="study">
-          <span class="src">European Journal of Nutrition · 2016</span>
-          <span class="big">12 tuần</span>
-          <h3>Cải thiện làn da</h3>
-          <p>Bổ sung Coenzyme Q10 giúp giảm nếp nhăn và tăng độ ẩm da sau 12 tuần sử dụng liên tục.</p>
-        </div>
-        <div class="study">
-          <span class="src">Nghiên cứu tại Nhật Bản · 2020</span>
-          <span class="big">CoQ10 + AXT</span>
-          <h3>Cộng hưởng với astaxanthin</h3>
-          <p>Kết hợp Coenzyme Q10 với astaxanthin cho hiệu quả chống lão hoá và bảo vệ da khỏi tia UV tốt hơn khi dùng riêng lẻ.</p>
-        </div>
-        <div class="study">
-          <span class="src">Tài liệu sản phẩm · Jinsei Vietnam</span>
-          <span class="big">30%</span>
-          <h3>Tần suất cơn đau đầu</h3>
-          <p>Một số nghiên cứu ghi nhận Coenzyme Q10 làm giảm khoảng 30% tần suất cơn đau đầu ở người trưởng thành; hơn một nửa số người tham gia giảm được 50% số ngày đau đầu mỗi tháng.</p>
-        </div>
-      </div>
-      <div class="col stack">
-        <p>Riêng astaxanthin trong tảo Haematococcus — thành phần thứ hai của sản phẩm — được tài liệu đào tạo mô tả là chất chống oxy hoá mạnh hơn vitamin C nhiều lần, đóng vai trò bảo vệ phần Coenzyme Q10 vừa được bổ sung khỏi bị gốc tự do phá huỷ.</p>
-        <div class="fill">
-          <span class="lbl">Cần anh xử lý trước khi chạy quảng cáo · Quan trọng</span>
-          <span class="txt">Ba nghiên cứu trên lấy từ tài liệu đào tạo nội bộ và <b>chưa có trích dẫn đầy đủ</b> (thiếu tên tác giả, số tạp chí, cỡ mẫu). Quan trọng hơn: các kết quả về <b>nếp nhăn, làn da và đau đầu nằm ngoài ba công dụng đã được Cục An toàn thực phẩm duyệt</b>. Anh chọn một trong hai — xin nhà cung cấp bản nghiên cứu gốc và bổ sung nội dung quảng cáo, hoặc bỏ hẳn ba thẻ này và chỉ giữ phần chống oxy hoá, giảm mệt mỏi, tim mạch. Em để nguyên đây để anh quyết, không tự ý đăng.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- 08 BẰNG SÁNG CHẾ -->
-  <section class="sec" id="sang-che">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 08 · Bằng sáng chế</span>
-        <h2>Phần này chưa có dữ liệu trong hồ sơ</h2>
-      </div>
-      <div class="col stack">
-        <p class="lede">Em đã rà toàn bộ thư mục hồ sơ của Rich Coenzyme Q10 trên Drive — có giấy công bố, giấy phép quảng cáo, chứng nhận GMP, COA và tài liệu đào tạo, nhưng <b>không có tài liệu bằng sáng chế nào</b>.</p>
-        <div class="fill">
-          <span class="lbl">Cần anh xác minh · Bằng sáng chế</span>
-          <span class="txt">Nếu AFC có bằng sáng chế liên quan (công nghệ nang mềm, công nghệ ổn định Ubiquinol…), anh xin nhà cung cấp số bằng (特許第 … 号), chủ sở hữu bằng, ngày cấp và phạm vi bảo hộ, rồi gửi em điền vào. Nếu không có, nên bỏ hẳn khối này chứ đừng viết chung chung — ghi “sản phẩm được cấp bằng sáng chế” mà không có số là sai sự thật và dễ bị xử phạt.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- 09 HỒ SƠ & KIỂM NGHIỆM -->
   <section class="sec" id="chung-minh">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 09 · Hồ sơ &amp; kiểm nghiệm</span>
+        <span class="eyebrow">Phần 07 · Hồ sơ &amp; kiểm nghiệm</span>
         <h2>Giấy tờ tra được, không phải lời hứa</h2>
         <p class="lede">Bốn con số dưới đây anh chị có thể tự đối chiếu. Số công bố tra trên cổng của Cục An toàn thực phẩm; chứng nhận GMP tra tại Hiệp hội Thực phẩm Sức khoẻ và Dinh dưỡng Nhật Bản.</p>
       </div>
@@ -1018,10 +935,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
       </div>
       <div class="col stack">
         <p>Ngoài ra, mỗi lô hàng đều có phiếu kiểm nghiệm (COA) đối chiếu hàm lượng Coenzyme Q10 thực tế với mức công bố 50mg mỗi viên. Anh chị mua hàng có quyền yêu cầu xem phiếu của đúng lô mình nhận.</p>
-        <div class="fill">
-          <span class="lbl">Cần anh bổ sung · Ảnh chụp giấy tờ</span>
-          <span class="txt">Chèn ảnh scan bốn giấy tờ trên vào đúng khối này (giấy công bố, giấy xác nhận quảng cáo, chứng nhận GMP, COA lô gần nhất). Người mua ở tuổi này rất hay chụp màn hình gửi cho con cháu kiểm tra — có ảnh thật thì khối này mới có sức nặng.</span>
-        </div>
+        
       </div>
     </div>
   </section>
@@ -1030,7 +944,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <section class="sec" id="khac-biet">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 10 · Điểm khác biệt</span>
+        <span class="eyebrow">Phần 08 · Điểm khác biệt</span>
         <h2>Ubiquinol khác ubiquinone ở chỗ nào</h2>
         <p class="lede">Đây là điểm khác biệt cốt lõi, và cũng là lý do giá không thể bằng hàng phổ thông. Cùng gọi là “CoQ10” nhưng hai dạng này không như nhau.</p>
       </div>
@@ -1058,7 +972,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <section class="sec" id="nha-may">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 11 · Nhà máy</span>
+        <span class="eyebrow">Phần 09 · Nhà máy</span>
         <h2>Làm ra ở đâu, ai chịu trách nhiệm</h2>
         <p class="lede">AFC ra đời năm 1969, trước cả khi Nhật Bản chính thức có luật về thực phẩm chức năng năm 1991. Tập đoàn có bốn nhà máy đạt chuẩn GMP; Rich Coenzyme Q10 được sản xuất tại nhà máy thứ hai ở Shizuoka.</p>
       </div>
@@ -1094,7 +1008,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <section class="sec" id="tai-nhat">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 12 · Kiểm chứng</span>
+        <span class="eyebrow">Phần 10 · Kiểm chứng</span>
         <h2>Người Nhật có thật sự dùng không?</h2>
         <p class="lede">Đây là câu người mua hỏi nhiều nhất, vì thị trường không thiếu hàng “chuẩn Nhật” mà người Nhật chưa từng thấy.</p>
       </div>
@@ -1119,10 +1033,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
         </div>
         <p>Bao bì bán tại Việt Nam là bao bì Nhật nguyên bản, chữ Nhật in trực tiếp trên hộp và trên lọ, kèm tem nhãn phụ tiếng Việt do đơn vị nhập khẩu dán thêm. Anh chị cầm hộp lên là đối chiếu được ngay với ảnh trên trang này.</p>
         <p>Nhà sản xuất công bố thông tin doanh nghiệp tại <a href="https://www.ams-life.co.jp/" target="_blank" rel="noopener">ams-life.co.jp</a> — trang này nêu rõ mảng sản xuất thực phẩm chức năng và tình trạng niêm yết trên sàn Tokyo.</p>
-        <div class="fill">
-          <span class="lbl">Cần anh bổ sung · Link trang gốc bên Nhật</span>
-          <span class="txt">Trang doanh nghiệp của chính nhà sản xuất là <b>ams-life.co.jp</b> — nơi công bố mảng sản xuất thực phẩm chức năng và thông tin niêm yết. Em chưa xác minh được đường dẫn tới đúng trang bán lẻ Rich Coenzyme Q10 tại Nhật nên không điền bừa. Anh xin Jinsei Vietnam link chính thức của dòng sản phẩm này, kèm ảnh chụp màn hình phòng khi trang đổi đường dẫn, và ảnh bao bì bản Nhật đặt cạnh bản Việt để khách tự đối chiếu.</span>
-        </div>
+        
       </div>
     </div>
   </section>
@@ -1131,7 +1042,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <section class="sec" id="ma-ck">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 13 · Mã chứng khoán</span>
+        <span class="eyebrow">Phần 11 · Mã chứng khoán</span>
         <h2>Công ty mẹ minh bạch tới đâu</h2>
       </div>
       <div class="ticker">
@@ -1152,7 +1063,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <section class="sec" id="dat-hang">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 14 · Báo giá &amp; đặt hàng</span>
+        <span class="eyebrow">Phần 12 · Báo giá &amp; đặt hàng</span>
         <h2>Báo giá &amp; đặt hàng</h2>
         <p class="lede">Giá niêm yết theo quy cách. Chưa cần quyết định mua ngay — anh chị để lại số, nhân viên tư vấn gọi lại hỏi kỹ tình trạng sức khoẻ và thuốc đang dùng rồi mới tư vấn liệu trình phù hợp.</p>
       </div>
@@ -1306,12 +1217,6 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="fill">
-          <span class="lbl">Cần anh quét thử trước khi chạy quảng cáo</span>
-          <span class="txt">Mã QR trên trang do em <b>tự tạo lại</b> từ số tài khoản, không phải ảnh anh gửi — vì ảnh trong khung chat không tải xuống máy được. Em dựng theo chuẩn VietQR NAPAS 247 với mã ngân hàng TPBank <b>970423</b>, số tài khoản <b>38691388888</b>, loại mã tĩnh không gắn sẵn số tiền, và đã tự quét lại bằng máy để xác nhận giải mã ra đúng chuỗi gốc. <b>Dù vậy anh vẫn phải mở app ngân hàng quét thử một lần</b>, xem có hiện đúng tên PHAM VAN SON và đúng số tài khoản không rồi mới cho trang chạy. Đây là chuyện tiền bạc, em không muốn anh tin vào kiểm tra của riêng em.</span>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1360,6 +1265,75 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 </main>
 
 
+  <section class="sec" id="noi-bo">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Nội bộ · không dành cho khách</span>
+        <h2>Việc còn lại trước khi chạy quảng cáo</h2>
+        <p class="lede">Trang cho khách đã sạch, không còn ô trống nào. Những việc dưới đây em không tự làm được, cần anh xử lý. Khách không nhìn thấy trang này trừ khi mở đúng đường dẫn.</p>
+      </div>
+
+      <div class="todo">
+        <div class="td td-stop">
+          <span class="k">Chặn phát hành · 1</span>
+          <h3>Form chưa nối vào đâu cả</h3>
+          <p>Bấm gửi chỉ hiện thông báo, dữ liệu không đi đâu. Chạy quảng cáo bây giờ là mất trắng toàn bộ đơn. Cần nối vào Google Sheet, CRM hoặc một địa chỉ nhận đơn.</p>
+        </div>
+        <div class="td td-stop">
+          <span class="k">Chặn phát hành · 2</span>
+          <h3>Quét thử mã QR một lần</h3>
+          <p>Mã do em dựng lại từ số tài khoản theo chuẩn VietQR NAPAS 247 (TPBank 970423, tài khoản 38691388888), đã tự giải mã kiểm chứng. Nhưng phải mở app ngân hàng quét thật, thấy đúng tên PHAM VAN SON mới được dùng.</p>
+        </div>
+        <div class="td td-stop">
+          <span class="k">Chặn phát hành · 3</span>
+          <h3>Banner đang sai hai chỗ</h3>
+          <p>Banner ghi “chiết xuất gừng đen” trong khi bản công bố ghi <b>chiết xuất hạt tiêu đen (Piper nigrum) 2,5mg</b> — nhiều khả năng dịch nhầm 黒胡椒 thành 黒生姜. Banner còn ghi “tăng tập trung, giảm đau đầu, hỗ trợ trí nhớ”, “năng lượng cho não bộ”, “làm chậm lão hoá” — không dòng nào nằm trong giấy xác nhận quảng cáo 1582/2024/XNQC-ATTP.</p>
+        </div>
+
+        <div class="td">
+          <span class="k">Cần bổ sung · 4</span>
+          <h3>Ảnh sản phẩm thật</h3>
+          <p>Đẩy 3 file vào thư mục <b>images/</b> đúng tên <b>san-pham-01.jpg</b>, <b>san-pham-02.jpg</b>, <b>san-pham-03.jpg</b> là dải ảnh tự hiện. Chưa có thì dải ảnh tự ẩn, trang không lộ khung trống. Ảnh HEIC phải đổi sang JPG.</p>
+        </div>
+        <div class="td">
+          <span class="k">Cần bổ sung · 5</span>
+          <h3>Chính sách sau bán</h3>
+          <p>Đổi trả bao nhiêu ngày, điều kiện gì, ai chịu phí ship khi đổi, có cho kiểm tra hàng trước khi thanh toán không, hotline chăm sóc sau bán.</p>
+        </div>
+        <div class="td">
+          <span class="k">Cần bổ sung · 6</span>
+          <h3>Phản hồi khách hàng</h3>
+          <p>Em đã bỏ mục này khỏi trang vì không có dữ liệu thật và em không viết phản hồi giả. Anh gửi phản hồi thật kèm sự đồng ý của khách. Chỉ dùng loại nói về <b>dịch vụ</b> — tư vấn, giao hàng, đóng gói, tem nhãn. Không dùng loại nói “uống xong hết mệt”, “khỏi bệnh tim”, “bác sĩ khen”: quảng cáo thực phẩm bảo vệ sức khoẻ cấm thư cảm ơn của người bệnh và cấm dùng hình ảnh nhân viên y tế.</p>
+        </div>
+        <div class="td">
+          <span class="k">Cần bổ sung · 7</span>
+          <h3>Ảnh chụp bốn giấy tờ</h3>
+          <p>Giấy công bố, giấy xác nhận quảng cáo, chứng nhận GMP, phiếu kiểm nghiệm lô gần nhất. Số đã có trên trang, thêm ảnh scan thì khối đó mới nặng ký.</p>
+        </div>
+        <div class="td">
+          <span class="k">Cần bổ sung · 8</span>
+          <h3>Link trang sản phẩm bên Nhật</h3>
+          <p>Em chỉ xác minh được trang doanh nghiệp <b>ams-life.co.jp</b>, chưa tìm ra đường dẫn tới đúng dòng Rich Coenzyme Q10 nên không điền bừa. Anh xin Jinsei Vietnam link chính thức kèm ảnh chụp màn hình.</p>
+        </div>
+
+        <div class="td td-cut">
+          <span class="k">Em đã bỏ · 9</span>
+          <h3>Mục chứng minh lâm sàng</h3>
+          <p>Ba nghiên cứu trong tài liệu đào tạo thiếu tên tác giả và số tạp chí, lại nói về nếp nhăn, làn da và đau đầu — nằm ngoài ba công dụng đã duyệt. Muốn đăng lại thì phải có bản nghiên cứu gốc và bổ sung nội dung quảng cáo với Cục An toàn thực phẩm.</p>
+        </div>
+        <div class="td td-cut">
+          <span class="k">Em đã bỏ · 10</span>
+          <h3>Mục bằng sáng chế</h3>
+          <p>Rà hết thư mục hồ sơ trên Drive không có tài liệu bằng sáng chế nào. Có số bằng thật (特許第 … 号) kèm chủ sở hữu và ngày cấp thì gửi em dựng lại.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <p class="note">Ba công dụng duy nhất được phép ghi, theo giấy 1582/2024/XNQC-ATTP: hỗ trợ bổ sung Coenzyme Q10 cho cơ thể; hỗ trợ chống oxy hoá, hỗ trợ giảm mệt mỏi; hỗ trợ giảm nguy cơ xơ vữa động mạch, tốt cho tim mạch. Toàn bộ trang khách hiện chỉ dùng đúng ba dòng này.</p>
+      </div>
+    </div>
+  </section>
+
   <div class="wrap screen-foot rt" data-screen="quiz">
     <a class="btn btn-ghost" href="#/">← Về đầu</a>
     <a class="btn spacer" href="#/ho-tro">Sang bước 2 · Hỗ trợ →</a>
@@ -1380,11 +1354,12 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
  try {
   var MAP = {
     'home':     ['hero-sec','stage-1','van-de'],
-    'ho-tro':   ['stage-2','nguyen-nhan','cau-chuyen','giai-phap-cu','giai-phap-goc','ho-tro','phan-hoi','tu-lam'],
-    'san-pham': ['stage-3','co-che','san-pham','lam-sang','sang-che','chung-minh','khac-biet','nha-may','tai-nhat','ma-ck'],
-    'dat-hang': ['dat-hang','faq-sec','legal-sec']
+    'ho-tro':   ['stage-2','nguyen-nhan','cau-chuyen','giai-phap-cu','giai-phap-goc','ho-tro','tu-lam'],
+    'san-pham': ['stage-3','co-che','san-pham','chung-minh','khac-biet','nha-may','tai-nhat','ma-ck'],
+    'dat-hang': ['dat-hang','faq-sec','legal-sec'],
+    'noi-bo':   ['noi-bo']
   };
-  var ORDER = ['home','ho-tro','san-pham','dat-hang'];
+  var ORDER = ['home','ho-tro','san-pham','dat-hang','noi-bo'];
   var ALIAS = {quiz:'home', '':'home'};          // #/quiz va trang chu la cung mot man
 
   // gan nhan man hinh cho tung khoi
@@ -1466,7 +1441,8 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
     <a href="#co-che">Cơ chế</a>
     <a href="#san-pham">Sản phẩm</a>
     <a href="#chung-minh">Giấy tờ</a>
-    <a href="#dat-hang">Đặt hàng</a>
+    <a href="#/dat-hang">Đặt hàng</a>
+    <a class="noi-bo" href="#/noi-bo">Ghi chú nội bộ</a>
   </nav>
 </footer>
 
@@ -1674,11 +1650,20 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 </script>
 <script>
 (function(){
-  var shots = document.querySelectorAll('.shot img');
-  Array.prototype.forEach.call(shots, function(img){
-    img.addEventListener('error', function(){ img.classList.add('missing'); });
-    if (img.complete && img.naturalWidth === 0) img.classList.add('missing');
+  var box = document.querySelector('.shots');
+  if(!box) return;
+  var imgs = Array.prototype.slice.call(box.querySelectorAll('img'));
+  var hong = 0;
+  function xet(){
+    if(hong >= imgs.length) box.hidden = true;      // chua co anh that thi an han, khong de khung trong
+    else box.hidden = false;
+  }
+  imgs.forEach(function(img){
+    img.addEventListener('error', function(){ img.classList.add('missing'); hong++; xet(); });
+    img.addEventListener('load', function(){ img.classList.remove('missing'); xet(); });
+    if(img.complete && img.naturalWidth === 0){ img.classList.add('missing'); hong++; }
   });
+  xet();
 })();
 </script>
 <script>
