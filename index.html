@@ -7,43 +7,23 @@
 <title>Pin Tế Bào Tuổi 40</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Noto+Sans+JP:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;700&display=swap">
 <style>
 :root{
-  --paper:#EFF1F2; --card:#FFFFFF; --sunk:#E4E7E9; --band:#111820;
-  --ink:#131A21; --ink2:#495662; --ink3:#6F7C88;
-  --line:#CBD2D7; --line2:#E0E5E8;
-  --red:#A6323F; --red-soft:#F4E0E2;
-  --amber:#9C7220; --amber-soft:#F2E8D2;
-  --jade:#1E6A55; --jade-soft:#DCEAE5;
-  --r:4px;
-  --shadow:0 1px 0 rgba(19,26,33,.05), 0 22px 44px -34px rgba(19,26,33,.65);
+  color-scheme:dark;
+  --paper:#0B2B20; --card:#123A2C; --sunk:#0A2419; --band:#061A12;
+  --ink:#F3F8F5; --ink2:#B6CEC3; --ink3:#7FA294;
+  --line:#1E4C3A; --line2:#17402F;
+  --red:#2FBE85;  --red-soft:#123F2E;
+  --amber:#D9A64B; --amber-soft:#33290F;
+  --jade:#63D6A4;  --jade-soft:#0F3729;
+  --r:6px;
+  --shadow:0 1px 0 rgba(0,0,0,.28), 0 26px 52px -34px rgba(0,0,0,.85);
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#0B1116; --card:#121A21; --sunk:#172029; --band:#080D12;
-    --ink:#E8EDF1; --ink2:#A6B3BD; --ink3:#7A8791;
-    --line:#26313A; --line2:#1C252D;
-    --red:#F0757F; --red-soft:#2B1417;
-    --amber:#DCAE55; --amber-soft:#2A2113;
-    --jade:#4FBE9E; --jade-soft:#102923;
-    --shadow:0 1px 0 rgba(0,0,0,.5), 0 26px 52px -36px #000;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#0B1116; --card:#121A21; --sunk:#172029; --band:#080D12;
-  --ink:#E8EDF1; --ink2:#A6B3BD; --ink3:#7A8791;
-  --line:#26313A; --line2:#1C252D;
-  --red:#F0757F; --red-soft:#2B1417;
-  --amber:#DCAE55; --amber-soft:#2A2113;
-  --jade:#4FBE9E; --jade-soft:#102923;
-  --shadow:0 1px 0 rgba(0,0,0,.5), 0 26px 52px -36px #000;
-}
-
 *{box-sizing:border-box}
 [hidden]{display:none !important}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:"Newsreader",Georgia,"Times New Roman",serif;margin:0;line-height:1.13;text-wrap:balance;font-weight:600}
+h1,h2,h3{font-family:"Be Vietnam Pro",system-ui,sans-serif;margin:0;line-height:1.13;text-wrap:balance;font-weight:600}
 h1{font-size:clamp(2.05rem,5.4vw,3.5rem);font-weight:700}
 h2{font-size:clamp(1.6rem,3.5vw,2.35rem);font-weight:700}
 h3{font-size:1.14rem;line-height:1.32}
@@ -72,7 +52,7 @@ a{color:var(--red)}
 .nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line2)}
 .nav-in{display:flex;align-items:center;gap:1rem;height:58px}
 .brand{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;color:inherit}
-.brand b{font-family:"Newsreader",serif;font-size:1.2rem;font-weight:700;letter-spacing:.01em}
+.brand b{font-family:"Be Vietnam Pro",sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:.01em}
 .brand span{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
 .nav .btn{margin-left:auto}
 
@@ -101,16 +81,36 @@ a{color:var(--red)}
 .routed .rt.show{display:block}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.72rem 1.25rem;border-radius:var(--r);border:1px solid var(--red);background:var(--red);color:#fff;font:600 .95rem/1.2 "Be Vietnam Pro",sans-serif;text-decoration:none;cursor:pointer;transition:transform .12s ease,filter .12s ease}
-:root[data-theme="dark"] .btn{color:#0B1116}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn{color:#0B1116}}
-:root[data-theme="light"] .btn{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.72rem 1.25rem;border-radius:var(--r);border:1px solid var(--red);background:var(--red);color:#06231A;font:700 .95rem/1.2 "Be Vietnam Pro",sans-serif;text-decoration:none;cursor:pointer;transition:transform .12s ease,filter .12s ease}
 .btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
 .btn-lg{padding:.95rem 1.75rem;font-size:1.02rem}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn-ghost:hover{border-color:var(--red);color:var(--red);filter:none}
 
-/* hero */
+/* hero giua trang, nen xanh reu */
+.hero{padding-block:clamp(2.5rem,7vw,5rem) clamp(2.5rem,6vw,4rem)}
+.hero-mid{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.35rem;width:min(880px,100%);margin-inline:auto}
+.logo{display:flex;align-items:center;gap:.7rem}
+.logo-mark{width:44px;height:44px;flex:none}
+.logo-tx{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+.logo-tx b{font-size:1.75rem;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
+.logo-tx i{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.34em;color:var(--red);margin-top:.22rem}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink3)}
+.hero h1{font-size:clamp(1.95rem,5.4vw,3.9rem);font-weight:800;letter-spacing:-.025em;line-height:1.1;max-width:100%;text-wrap:pretty}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero-p{color:var(--ink2);font-size:clamp(1rem,1.4vw,1.12rem);max-width:60ch}
+.hero-p b{color:var(--ink);font-weight:700}
+.three{display:grid;gap:2rem;margin-top:1.2rem;width:100%}
+@media(min-width:720px){.three{grid-template-columns:repeat(3,1fr);gap:1.5rem}}
+.one{display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.ring{width:104px;height:104px;border-radius:50%;border:1px solid var(--line);background:var(--sunk);display:flex;align-items:center;justify-content:center}
+.ring svg{width:62px;height:62px}
+.one h3{font-size:1rem;font-weight:700}
+.one p{font-size:.86rem;color:var(--ink3);max-width:26ch}
+.hero .hero-jump{align-self:center;margin-top:.6rem}
+.hero .trustline{justify-content:center;width:100%}
+
+/* hero cu */
 .hero{padding-block:clamp(2.5rem,6vw,4.25rem) clamp(2rem,4vw,3rem)}
 .aud{display:inline-flex;align-self:flex-start;border:1px solid var(--red);color:var(--red);background:var(--red-soft);border-radius:100px;padding:.32rem .9rem;font-size:.8rem;font-weight:600}
 .hero h1 em{font-style:normal;color:var(--red)}
@@ -137,7 +137,7 @@ a{color:var(--red)}
 .pack .wht{fill:#FFFFFF}
 .pack .ink{fill:#2A1408}
 .pack .shadow{fill:rgba(0,0,0,.16)}
-.pack .t-rich{font:700 15px "Newsreader",serif;letter-spacing:.22em}
+.pack .t-rich{font:700 15px "Be Vietnam Pro",sans-serif;letter-spacing:.22em}
 .pack .t-jp{font-weight:400}
 .pack .t-tiny{font-size:5px;letter-spacing:.02em}
 .pack-cap{text-align:center;font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-top:.9rem}
@@ -204,7 +204,7 @@ a{color:var(--red)}
 .quiz-step{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
 .quiz-step b{color:var(--red);font-weight:500}
 .quiz-body{display:flex;flex-direction:column;gap:1rem;min-height:190px}
-.quiz-body h3{font-family:"Newsreader",serif;font-size:1.4rem;font-weight:600;line-height:1.25}
+.quiz-body h3{font-family:"Be Vietnam Pro",sans-serif;font-size:1.4rem;font-weight:600;line-height:1.25}
 .quiz-opts{display:flex;flex-direction:column;gap:.55rem}
 .qopt{text-align:left;font:500 .95rem/1.4 "Be Vietnam Pro",sans-serif;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:.8rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.75rem;transition:border-color .14s ease,background .14s ease,transform .1s ease}
 .qopt:hover{border-color:var(--red);background:color-mix(in srgb,var(--red-soft) 35%,var(--paper));transform:translateX(2px)}
@@ -220,7 +220,7 @@ a{color:var(--red)}
 /* ket qua test */
 .result{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.35rem 1.4rem;display:flex;flex-direction:column;gap:1rem;box-shadow:var(--shadow)}
 .result-top{display:flex;gap:1.1rem;align-items:center}
-.score{font-family:"Newsreader",serif;line-height:1;color:var(--red);flex:none;display:flex;align-items:baseline;font-variant-numeric:tabular-nums}
+.score{font-family:"Be Vietnam Pro",sans-serif;line-height:1;color:var(--red);flex:none;display:flex;align-items:baseline;font-variant-numeric:tabular-nums}
 .score b{font-size:2.9rem;font-weight:700}
 .score span{font-size:1.15rem;color:var(--ink3)}
 .score i{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);align-self:flex-end;margin-left:.35rem;padding-bottom:.35rem}
@@ -258,7 +258,7 @@ a{color:var(--red)}
 /* cau chuyen theo ho so */
 .story-box{border-top:1px solid var(--line2);padding-top:1rem;display:flex;flex-direction:column;gap:.6rem}
 .story-box .who{display:flex;flex-wrap:wrap;gap:.4rem .8rem;align-items:baseline;font-size:.8rem;color:var(--ink3)}
-.story-box .who b{color:var(--ink);font-family:"Newsreader",serif;font-size:1.05rem;font-weight:600}
+.story-box .who b{color:var(--ink);font-family:"Be Vietnam Pro",sans-serif;font-size:1.05rem;font-weight:600}
 .story-box p{font-size:.92rem;color:var(--ink2)}
 .story-box p.turn{color:var(--ink);font-weight:500}
 .story-box .note{font-size:.75rem}
@@ -277,7 +277,7 @@ a{color:var(--red)}
 /* story */
 .story{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:var(--r);padding:clamp(1.4rem,4vw,2.2rem);display:flex;flex-direction:column;gap:1.05rem;box-shadow:var(--shadow)}
 .story .who{display:flex;flex-wrap:wrap;gap:.45rem .9rem;align-items:baseline;font-size:.82rem;color:var(--ink3)}
-.story .who b{color:var(--ink);font-family:"Newsreader",serif;font-size:1.1rem;font-weight:600}
+.story .who b{color:var(--ink);font-family:"Be Vietnam Pro",sans-serif;font-size:1.1rem;font-weight:600}
 .story p{color:var(--ink2)}
 .story p.turn{color:var(--ink);font-weight:500;border-top:1px solid var(--line2);padding-top:1.05rem}
 
@@ -306,7 +306,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 /* equivalence */
 .equiv{background:var(--band);color:#EAF0F4;border-radius:var(--r);padding:clamp(1.4rem,4vw,2.1rem);display:grid;gap:1.25rem}
 @media(min-width:760px){.equiv{grid-template-columns:auto minmax(0,1fr);align-items:center}}
-.equiv .big{font-family:"Newsreader",serif;font-size:clamp(2.4rem,7vw,3.6rem);font-weight:700;line-height:1;color:#fff;white-space:nowrap}
+.equiv .big{font-family:"Be Vietnam Pro",sans-serif;font-size:clamp(2.4rem,7vw,3.6rem);font-weight:700;line-height:1;color:#fff;white-space:nowrap}
 .equiv .big small{display:block;font:400 .78rem/1.4 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(234,240,244,.6);margin-top:.5rem}
 .equiv p{color:rgba(234,240,244,.8);font-size:.96rem}
 .equiv b{color:#fff}
@@ -342,7 +342,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 @media(min-width:820px){.studies{grid-template-columns:repeat(3,1fr)}}
 .study{background:var(--card);border:1px solid var(--line2);border-top:2px solid var(--jade);border-radius:var(--r);padding:1.3rem 1.25rem;display:flex;flex-direction:column;gap:.55rem}
 .study .src{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--jade)}
-.study .big{font-family:"Newsreader",serif;font-size:2.1rem;font-weight:700;line-height:1;color:var(--jade);font-variant-numeric:tabular-nums}
+.study .big{font-family:"Be Vietnam Pro",sans-serif;font-size:2.1rem;font-weight:700;line-height:1;color:var(--jade);font-variant-numeric:tabular-nums}
 .study p{font-size:.88rem;color:var(--ink2)}
 
 /* pricing */
@@ -363,7 +363,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .pay{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.2rem,3vw,1.7rem);display:grid;gap:1.4rem}
 @media(min-width:620px){.pay{grid-template-columns:auto minmax(0,1fr);align-items:center}}
 .pay-qr{display:flex;flex-direction:column;align-items:center;gap:.5rem}
-.qr-card{width:212px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:.85rem;display:flex;flex-direction:column;gap:.6rem;box-shadow:var(--shadow)}
+.qr-card{width:212px;background:#FFFFFF;border:1px solid var(--line);border-radius:10px;padding:.85rem;display:flex;flex-direction:column;gap:.6rem;box-shadow:var(--shadow)}
 .qr-top{display:flex;flex-direction:column;gap:.05rem;text-align:center}
 .qr-name{font-weight:700;font-size:.82rem;color:#12100E;letter-spacing:.02em}
 .qr-acc{font-family:"IBM Plex Mono",monospace;font-size:.92rem;color:#12100E}
@@ -380,7 +380,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 /* offer */
 .offer{background:var(--card);border:2px solid var(--red);border-radius:var(--r);padding:clamp(1.5rem,4vw,2.4rem);display:flex;flex-direction:column;gap:1.25rem;box-shadow:var(--shadow)}
 .price-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:.9rem}
-.price{font-family:"Newsreader",serif;font-size:2.6rem;font-weight:700;line-height:1;color:var(--red);font-variant-numeric:tabular-nums}
+.price{font-family:"Be Vietnam Pro",sans-serif;font-size:2.6rem;font-weight:700;line-height:1;color:var(--red);font-variant-numeric:tabular-nums}
 .price-note{font-size:.85rem;color:var(--ink3)}
 .form{display:grid;gap:.75rem}
 @media(min-width:660px){.form{grid-template-columns:1fr 1fr}.form .full{grid-column:1/-1}}
@@ -440,14 +440,62 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 
   <!-- HERO -->
   <section class="wrap hero" id="hero-sec">
-    <div class="col stack">
-      <span class="aud">Dành cho người 40 – 60 tuổi, mệt mỏi kéo dài</span>
-      <h1>Cơ thể không yếu đi vì tuổi tác,<br>mà vì <em>tế bào đang cạn năng lượng</em></h1>
-      <svg class="ecg" viewBox="0 0 600 54" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0 34 H80 l10 -4 l8 8 l9 -26 l10 40 l9 -22 l8 4 H240 l10 -3 l8 6 l9 -20 l10 32 l9 -17 l8 2 H420 l10 -4 l8 8 l9 -26 l10 40 l9 -22 l8 4 H600"></path>
-      </svg>
-      <p class="lede">Ngủ đủ tám tiếng mà sáng dậy vẫn thấy cạn pin — đó không hẳn là chuyện tuổi tác. Sau tuổi 40, lượng Coenzyme Q10 mà mỗi tế bào cần để đốt thức ăn thành năng lượng tụt rất nhanh. Tim là cơ quan cần nhiều nhất, nên cũng là nơi chịu trận đầu tiên.</p>
-      <a class="hero-jump" href="#/quiz">Bắt đầu bài kiểm tra <span aria-hidden="true">↓</span></a>
+    <div class="hero-mid">
+      <div class="logo">
+        <svg viewBox="0 0 44 44" class="logo-mark" aria-hidden="true">
+          <circle cx="22" cy="22" r="20" fill="#2FBE85"></circle>
+          <path d="M30 14a10 10 0 1 0-3 15c4-2 5-7 3-11" fill="none" stroke="#0B2B20" stroke-width="4.5" stroke-linecap="round"></path>
+          <circle cx="21" cy="19" r="4" fill="#0B2B20"></circle>
+        </svg>
+        <span class="logo-tx"><b>DiLiM</b><i>SUPPLEMENT</i></span>
+      </div>
+      <p class="kicker">DiLiM · Soi góc rễ Tim · Mạch · Não bộ</p>
+      <h1>Khám không ra bệnh.<br>Nhưng người <em>vẫn mệt</em>.</h1>
+      <p class="hero-p">Xét nghiệm nói bình thường. Mà ngủ không sâu, sáng dậy chưa thấy đủ sức, leo hai tầng cầu thang đã hụt hơi.</p>
+      <p class="hero-p">Cảm giác thì chỉ có <i>một</i> chữ: mệt. Nhưng bên dưới chữ đó, cơ thể đang gặp <b>một trong ba chuyện</b> — và ba chuyện này không giống nhau chút nào.</p>
+
+      <div class="three">
+        <div class="one">
+          <span class="ring">
+            <svg viewBox="0 0 60 60" aria-hidden="true">
+              <ellipse cx="30" cy="30" rx="22" ry="10" fill="none" stroke="#8FBDAC" stroke-width="1.6" transform="rotate(-28 30 30)"></ellipse>
+              <ellipse cx="30" cy="30" rx="22" ry="10" fill="none" stroke="#8FBDAC" stroke-width="1.6" transform="rotate(28 30 30)"></ellipse>
+              <circle cx="11" cy="22" r="2.4" fill="#8FBDAC"></circle>
+              <circle cx="49" cy="38" r="2.4" fill="#8FBDAC"></circle>
+              <path d="M32 16 L22 32 h7 l-3 13 11-17h-7z" fill="#2FBE85"></path>
+            </svg>
+          </span>
+          <h3>Tế bào cạn năng lượng</h3>
+          <p>Ty thể thiếu nguyên liệu để đốt thức ăn thành năng lượng.</p>
+        </div>
+        <div class="one">
+          <span class="ring">
+            <svg viewBox="0 0 60 60" aria-hidden="true">
+              <path d="M6 22 C18 12, 26 32, 38 24 S52 18, 55 24" fill="none" stroke="#DCEDE5" stroke-width="2.4" stroke-linecap="round"></path>
+              <path d="M6 36 C18 26, 26 46, 38 38 S52 32, 55 38" fill="none" stroke="#DCEDE5" stroke-width="2.4" stroke-linecap="round"></path>
+              <circle cx="16" cy="30" r="2.6" fill="#8FBDAC"></circle>
+              <circle cx="45" cy="31" r="2.6" fill="#8FBDAC"></circle>
+              <ellipse cx="30" cy="31" rx="6.5" ry="5" fill="#D9463C"></ellipse>
+            </svg>
+          </span>
+          <h3>Mạch máu kém lưu thông</h3>
+          <p>Máu đi chậm, oxy tới mô ít, gắng sức nhẹ đã thấy hụt hơi.</p>
+        </div>
+        <div class="one">
+          <span class="ring">
+            <svg viewBox="0 0 60 60" aria-hidden="true">
+              <path d="M34 12c-8-3-16 2-16 9 -5 2-6 9-1 12 -2 6 3 11 9 10 3 4 10 3 12-2 6 0 9-6 6-11 3-5 0-12-5-13 -1-4-3-6-5-5z" fill="none" stroke="#DCEDE5" stroke-width="2.2" stroke-linejoin="round"></path>
+              <path d="M30 15v28M30 24c-4 0-6 3-9 3M30 33c4 0 6 3 9 3" fill="none" stroke="#8FBDAC" stroke-width="1.8" stroke-linecap="round"></path>
+              <circle cx="45" cy="20" r="2.2" fill="#2FBE85"></circle>
+              <circle cx="49" cy="27" r="1.6" fill="#2FBE85"></circle>
+            </svg>
+          </span>
+          <h3>Não bộ căng thẳng</h3>
+          <p>Đầu nặng, khó tập trung, ngủ không sâu dù nằm đủ giờ.</p>
+        </div>
+      </div>
+
+      <a class="hero-jump" href="#/quiz">Làm bài kiểm tra 30 giây <span aria-hidden="true">↓</span></a>
       <div class="trustline">
         <span>Sản xuất tại <b>Shizuoka, Nhật Bản</b></span>
         <span>Số công bố <b class="mono">4107/2024/ĐKSP</b></span>
@@ -828,8 +876,8 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
             <text class="jp" x="77" y="60" text-anchor="middle" fill="#6B2148" style="font-size:5.6px">機能性表示食品</text>
 
             <circle cx="94" cy="140" r="50" fill="none" stroke="url(#gGold)" stroke-width="7.5"></circle>
-            <text x="94" y="161" text-anchor="middle" fill="url(#gGold)" style="font:700 58px Newsreader,serif">Ri</text>
-            <text x="94" y="209" text-anchor="middle" fill="#8A6A2E" style="font:700 17px Newsreader,serif;letter-spacing:.3em">RICH</text>
+            <text x="94" y="161" text-anchor="middle" fill="url(#gGold)" style="font:800 54px "Be Vietnam Pro",sans-serif">Ri</text>
+            <text x="94" y="209" text-anchor="middle" fill="#8A6A2E" style="font:800 16px "Be Vietnam Pro",sans-serif;letter-spacing:.3em">RICH</text>
             <text class="jp" x="94" y="229" text-anchor="middle" fill="#5B4632" style="font-size:10px">還元型コエンザイムQ10</text>
 
             <rect x="16" y="240" width="156" height="46" fill="url(#gBoxBand)"></rect>
@@ -854,7 +902,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
             <text class="jp" x="255" y="144" text-anchor="middle" fill="#241205" style="font-size:5.6px">機能性表示食品</text>
 
             <text class="jp" x="255" y="167" text-anchor="middle" fill="#E4C88E" style="font-size:7.5px">リッチ</text>
-            <text x="255" y="189" text-anchor="middle" fill="url(#gGold)" style="font:700 21px Newsreader,serif;letter-spacing:.28em">RICH</text>
+            <text x="255" y="189" text-anchor="middle" fill="url(#gGold)" style="font:800 20px "Be Vietnam Pro",sans-serif;letter-spacing:.28em">RICH</text>
             <text class="jp" x="255" y="209" text-anchor="middle" fill="#fff" style="font-size:10px">還元型コエンザイムQ10</text>
             <text x="255" y="223" text-anchor="middle" fill="#DFC08A" style="font:400 8.5px IBM Plex Mono,monospace">120 soft capsules</text>
 
