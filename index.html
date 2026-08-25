@@ -159,18 +159,18 @@ a{color:var(--red)}
 .jpcell .k{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--jade)}
 
 /* video phan hoi */
-.vid{display:flex;flex-direction:column;gap:.65rem;text-decoration:none;color:inherit;group:vid}
-.vid-thumb{position:relative;aspect-ratio:9/13;border-radius:var(--r);background:linear-gradient(160deg,var(--sunk),#F6D7E4);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:border-color .15s ease,transform .15s ease}
+.vid{display:flex;flex-direction:column;gap:.5rem;text-decoration:none;color:inherit;width:100%;max-width:180px;margin-inline:auto}
+.vid-thumb{position:relative;aspect-ratio:9/13;max-height:250px;border-radius:var(--r);background:linear-gradient(160deg,var(--sunk),#F6D7E4);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:border-color .15s ease,transform .15s ease}
 .vid:hover .vid-thumb{border-color:var(--red);transform:translateY(-3px)}
 .vid-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.play{width:54px;height:54px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px -8px rgba(214,36,110,.8)}
-.play::after{content:"";border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
-.vid-tx{display:flex;flex-direction:column;gap:.15rem;font-size:.86rem;color:var(--ink2);text-align:center}
-.vid-tx b{font-size:.92rem;color:var(--ink);font-weight:700}
+.play{width:38px;height:38px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px -8px rgba(214,36,110,.8)}
+.play::after{content:"";border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.vid-tx{display:flex;flex-direction:column;gap:.1rem;font-size:.76rem;color:var(--ink3);text-align:center}
+.vid-tx b{font-size:.82rem;color:var(--ink);font-weight:600}
 
 /* phan hoi khach */
 .fb{display:grid;gap:1rem}
-@media(min-width:760px){.fb{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:560px){.fb{grid-template-columns:repeat(3,1fr);max-width:620px;margin-inline:auto}}
 .fb-card{margin:0;border:1px dashed var(--line);background:var(--sunk);border-radius:var(--r);padding:1.4rem 1.25rem;min-height:150px;display:flex;flex-direction:column;gap:.5rem;justify-content:center;text-align:center}
 .fb-card img{width:100%;height:auto;border-radius:var(--r);display:block}
 .fb-n{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3)}
@@ -1396,6 +1396,13 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
           <p>Em chỉ xác minh được trang doanh nghiệp <b>ams-life.co.jp</b>, chưa tìm ra đường dẫn tới đúng dòng Rich Coenzyme Q10 nên không điền bừa. Anh xin Jinsei Vietnam link chính thức kèm ảnh chụp màn hình.</p>
         </div>
 
+        <div class="td">
+          <span class="k">Nối Pancake · 11</span>
+          <h3>Ba đường nối, đường thứ nhất đã chạy</h3>
+          <p><b>Một — nhắn tin:</b> nút “Nhắn tin hỏi trực tiếp” và nút Messenger đã trỏ tới m.me của trang Facebook. Trang đó đang nối Pancake nên hội thoại tự chảy về mục Hội thoại, không cần làm gì thêm.</p>
+          <p><b>Hai — khung chat nổi trên trang:</b> lấy mã nhúng Live Chat trong Pancake rồi gửi em, em dán vào ô cắm đã chừa sẵn ở cuối file. Khách chat thẳng trên trang, không phải rời đi.</p>
+          <p><b>Ba — đơn hàng tự vào Pancake POS:</b> cần khoá API và mã shop trong Pancake để form đẩy đơn sang mục Đơn hàng. Đây cũng là cách xử lý luôn việc form chưa nối vào đâu ở mục số 1.</p>
+        </div>
         <div class="td td-cut">
           <span class="k">Em đã bỏ · 9</span>
           <h3>Mục chứng minh lâm sàng</h3>
@@ -1785,5 +1792,20 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   }
 })();
 </script>
+
+<!-- =======================================================================
+     Ô CẮM PANCAKE — dán mã nhúng của Pancake vào ngay dưới dòng này.
+
+     Lấy mã ở đâu: Pancake → Cài đặt → Live Chat (hoặc Chat Plugin)
+                   → Lấy mã nhúng → sao chép cả đoạn <script>...</script>
+
+     Dán xong thì khung chat Pancake sẽ nổi ở góc phải màn hình, khách
+     nhắn thẳng trên trang này và hội thoại chảy về mục Hội thoại của
+     Pancake, đứng cạnh các hội thoại đến từ Facebook.
+
+     Lưu ý: bản xem trước trên Artifact chặn mã từ máy chủ ngoài nên
+     khung chat sẽ không hiện ở đó. Nó chỉ chạy khi trang đã lên tên
+     miền thật của anh.
+     ======================================================================= -->
 </body>
 </html>
