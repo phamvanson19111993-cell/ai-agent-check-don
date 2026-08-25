@@ -96,6 +96,33 @@ a{color:var(--red)}
 .trustline{display:flex;flex-wrap:wrap;gap:.4rem 1.3rem;font-size:.82rem;color:var(--ink3);border-top:1px solid var(--line2);padding-top:1rem;margin-top:.5rem}
 .trustline b{color:var(--ink);font-weight:600}
 
+/* product visual */
+.hero-grid{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:960px){.hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:3rem}}
+.bottle{width:100%;max-width:300px;margin-inline:auto;display:block}
+.bottle .glass{fill:var(--band)}
+.bottle .lbl-bg{fill:var(--card)}
+.bottle .rule{stroke:var(--line);stroke-width:1;fill:none}
+.bottle .t-brand{fill:var(--red);font:700 15px "Newsreader",serif;letter-spacing:.06em}
+.bottle .t-name{fill:var(--ink);font:700 17px "Newsreader",serif}
+.bottle .t-sub{fill:var(--ink3);font:400 8.5px "IBM Plex Mono",monospace;letter-spacing:.14em}
+.bottle .t-qty{fill:var(--ink2);font:500 9px "IBM Plex Mono",monospace}
+.bottle .cap{fill:var(--red)}
+.bottle .pill{fill:var(--amber)}
+.bottle-cap{text-align:center;font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:.9rem}
+
+/* product section */
+.shots{display:grid;gap:1rem}
+@media(min-width:700px){.shots{grid-template-columns:repeat(3,1fr)}}
+.shot{border:1px dashed var(--line);background:var(--sunk);border-radius:var(--r);aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.35rem;text-align:center;padding:1rem}
+.shot .n{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3)}
+.shot .d{font-size:.84rem;color:var(--ink2)}
+.spec-list{display:grid;gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--r);overflow:hidden}
+@media(min-width:620px){.spec-list{grid-template-columns:1fr 1fr}}
+.spec-row{background:var(--card);padding:.9rem 1.1rem;display:flex;gap:1rem;align-items:baseline}
+.spec-row dt{margin:0;font-size:.8rem;color:var(--ink3);min-width:112px;flex:none}
+.spec-row dd{margin:0;font-size:.92rem;font-weight:500}
+
 /* symptom list */
 .symptoms{display:grid;gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--r);overflow:hidden}
 @media(min-width:680px){.symptoms{grid-template-columns:1fr 1fr}}
@@ -178,15 +205,40 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .ticker h3{color:#fff;font-size:1.25rem}
 .ticker p{color:rgba(234,240,244,.76);font-size:.94rem}
 
+/* studies */
+.studies{display:grid;gap:1rem}
+@media(min-width:820px){.studies{grid-template-columns:repeat(3,1fr)}}
+.study{background:var(--card);border:1px solid var(--line2);border-top:2px solid var(--jade);border-radius:var(--r);padding:1.3rem 1.25rem;display:flex;flex-direction:column;gap:.55rem}
+.study .src{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--jade)}
+.study .big{font-family:"Newsreader",serif;font-size:2.1rem;font-weight:700;line-height:1;color:var(--jade);font-variant-numeric:tabular-nums}
+.study p{font-size:.88rem;color:var(--ink2)}
+
 /* pricing */
 .quote{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
 .quote table{min-width:600px}
 .quote td.p{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;font-size:.95rem}
 .quote th:not(:first-child){text-align:right}
 .quote td.p b{color:var(--red);font-weight:600}
-.quote tr.best td{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
+.quote tr.best td{background:color-mix(in srgb,var(--red-soft) 55%,transparent)}
+.quote tr.alt td{border-bottom-style:dashed}
+.quote td.gift{white-space:normal;font-size:.86rem;color:var(--ink2);min-width:210px}
+.quote td.gift b{color:var(--red);font-weight:600}
+.quote .opt{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:.15rem}
 .quote .tag{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red);border:1px solid var(--red);border-radius:2px;padding:.1rem .35rem;margin-left:.5rem;white-space:nowrap}
 .quote td .sub{display:block;font-size:.8rem;color:var(--ink3);font-weight:400}
+
+/* payment */
+.pay{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.2rem,3vw,1.7rem);display:grid;gap:1.4rem}
+@media(min-width:620px){.pay{grid-template-columns:auto minmax(0,1fr);align-items:center}}
+.pay-qr{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.qr-slot{width:168px;height:168px;border:1px dashed var(--line);border-radius:var(--r);background:var(--sunk);display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.qr-cap{font-size:.76rem;color:var(--ink3)}
+.pay-info h3{margin-bottom:.6rem}
+.bank{margin:0;display:flex;flex-direction:column;gap:.4rem}
+.bank div{display:flex;gap:.9rem;align-items:baseline;border-bottom:1px solid var(--line2);padding-bottom:.4rem}
+.bank dt{margin:0;font-size:.8rem;color:var(--ink3);min-width:118px}
+.bank dd{margin:0;font-weight:600}
+.bank dd.acc{font-family:"IBM Plex Mono",monospace;font-size:1.12rem;color:var(--red);letter-spacing:.02em}
 
 /* offer */
 .offer{background:var(--card);border:2px solid var(--red);border-radius:var(--r);padding:clamp(1.5rem,4vw,2.4rem);display:flex;flex-direction:column;gap:1.25rem;box-shadow:var(--shadow)}
@@ -240,7 +292,8 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 
   <!-- HERO -->
   <section class="wrap hero">
-    <div class="col stack">
+    <div class="hero-grid">
+      <div class="stack">
       <span class="aud">Dành cho người 40 – 60 tuổi, mệt mỏi kéo dài</span>
       <h1>Ngủ đủ tám tiếng mà sáng dậy <em>vẫn thấy cạn pin</em></h1>
       <svg class="ecg" viewBox="0 0 600 54" preserveAspectRatio="none" aria-hidden="true">
@@ -255,6 +308,25 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
         <span>Sản xuất tại <b>Shizuoka, Nhật Bản</b></span>
         <span>Số công bố <b class="mono">4107/2024/ĐKSP</b></span>
         <span>AFC niêm yết sàn Tokyo, mã <b class="mono">2927</b></span>
+      </div>
+      </div>
+      <div class="hero-art">
+        <svg class="bottle" viewBox="0 0 200 300" role="img" aria-label="Minh hoạ lọ Rich Coenzyme Q10 120 viên">
+          <rect class="cap" x="72" y="12" width="56" height="26" rx="4"></rect>
+          <rect class="glass" x="66" y="36" width="68" height="18" rx="3"></rect>
+          <rect class="glass" x="42" y="50" width="116" height="234" rx="12"></rect>
+          <rect class="lbl-bg" x="52" y="96" width="96" height="150" rx="4"></rect>
+          <line class="rule" x1="62" y1="182" x2="138" y2="182"></line>
+          <text class="t-brand" x="100" y="122" text-anchor="middle">AFC</text>
+          <text class="t-sub" x="100" y="138" text-anchor="middle">JAPAN</text>
+          <text class="t-name" x="100" y="162" text-anchor="middle">RICH</text>
+          <text class="t-name" x="100" y="178" text-anchor="middle">CoQ10</text>
+          <text class="t-qty" x="100" y="200" text-anchor="middle">Ubiquinol 50mg</text>
+          <text class="t-qty" x="100" y="214" text-anchor="middle">120 viên nang mềm</text>
+          <ellipse class="pill" cx="82" cy="234" rx="11" ry="7"></ellipse>
+          <ellipse class="pill" cx="106" cy="234" rx="11" ry="7"></ellipse>
+        </svg>
+        <p class="bottle-cap">Hình minh hoạ — chờ ảnh chụp thật</p>
       </div>
     </div>
   </section>
@@ -424,11 +496,98 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
     </div>
   </section>
 
-  <!-- 07 CHỨNG MINH -->
+  <!-- SẢN PHẨM -->
+  <section class="sec" id="san-pham">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Sản phẩm</span>
+        <h2>Rich Coenzyme Q10 trong hộp có gì</h2>
+        <p class="lede">Thực phẩm bảo vệ sức khoẻ dạng viên nang mềm, nhập khẩu nguyên hộp từ Nhật Bản. Toàn bộ thông số dưới đây lấy đúng theo bản công bố sản phẩm.</p>
+      </div>
+      <div class="shots">
+        <div class="shot"><span class="n">Ảnh 01</span><span class="d">Mặt trước hộp và lọ 120 viên</span></div>
+        <div class="shot"><span class="n">Ảnh 02</span><span class="d">Nhãn phụ tiếng Việt, đọc rõ số công bố</span></div>
+        <div class="shot"><span class="n">Ảnh 03</span><span class="d">Viên nang mềm trên lòng bàn tay, thấy rõ kích thước</span></div>
+      </div>
+      <div class="col">
+        <div class="fill">
+          <span class="lbl">Cần anh gửi file · Ảnh sản phẩm</span>
+          <span class="txt">Trong Drive đã có sẵn ảnh <b>AFCRICH - Rich Coenzyme Q10.jpg</b>, <b>Nhãn phụ - Rich Coenzyme Q10</b> và bốn ảnh chụp HEIC. Em chưa nhúng được vì ảnh phải đi qua khung hội thoại mới xuống được máy, mà dung lượng vượt giới hạn. Cách nhanh nhất: anh tải ba ảnh đó về rồi đẩy vào thư mục dự án trên GitHub (nhánh <b>claude/dilim-one-website-es08sj</b>), báo em một tiếng là em nhúng thẳng vào ba ô này. Ảnh HEIC nên đổi sang JPG trước vì trình duyệt không mở được HEIC.</span>
+        </div>
+      </div>
+      <div class="spec-list">
+        <div class="spec-row"><dt>Tên sản phẩm</dt><dd>Thực phẩm bảo vệ sức khoẻ RICH COENZYME Q10</dd></div>
+        <div class="spec-row"><dt>Dạng bào chế</dt><dd>Viên nang mềm</dd></div>
+        <div class="spec-row"><dt>Quy cách</dt><dd>Hộp 1 lọ · lọ 120 viên</dd></div>
+        <div class="spec-row"><dt>Khối lượng viên</dt><dd>350mg ± 23mg cả vỏ nang</dd></div>
+        <div class="spec-row"><dt>Hạn sử dụng</dt><dd>24 tháng kể từ ngày sản xuất</dd></div>
+        <div class="spec-row"><dt>Xuất xứ</dt><dd>Nhật Bản</dd></div>
+        <div class="spec-row"><dt>Bảo quản</dt><dd>Nơi mát, tránh nắng và độ ẩm cao</dd></div>
+        <div class="spec-row"><dt>Số công bố</dt><dd>4107/2024/ĐKSP</dd></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 CHỨNG MINH LÂM SÀNG -->
+  <section class="sec" id="lam-sang">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Phần 07 · Chứng minh lâm sàng</span>
+        <h2>Khoa học nói gì về Coenzyme Q10</h2>
+        <p class="lede">Đây là các nghiên cứu về hoạt chất Coenzyme Q10 nói chung, do bộ phận đào tạo tổng hợp — không phải thử nghiệm riêng trên sản phẩm này.</p>
+      </div>
+      <div class="studies">
+        <div class="study">
+          <span class="src">European Journal of Nutrition · 2016</span>
+          <span class="big">12 tuần</span>
+          <h3>Cải thiện làn da</h3>
+          <p>Bổ sung Coenzyme Q10 giúp giảm nếp nhăn và tăng độ ẩm da sau 12 tuần sử dụng liên tục.</p>
+        </div>
+        <div class="study">
+          <span class="src">Nghiên cứu tại Nhật Bản · 2020</span>
+          <span class="big">CoQ10 + AXT</span>
+          <h3>Cộng hưởng với astaxanthin</h3>
+          <p>Kết hợp Coenzyme Q10 với astaxanthin cho hiệu quả chống lão hoá và bảo vệ da khỏi tia UV tốt hơn khi dùng riêng lẻ.</p>
+        </div>
+        <div class="study">
+          <span class="src">Tài liệu sản phẩm · Jinsei Vietnam</span>
+          <span class="big">30%</span>
+          <h3>Tần suất cơn đau đầu</h3>
+          <p>Một số nghiên cứu ghi nhận Coenzyme Q10 làm giảm khoảng 30% tần suất cơn đau đầu ở người trưởng thành; hơn một nửa số người tham gia giảm được 50% số ngày đau đầu mỗi tháng.</p>
+        </div>
+      </div>
+      <div class="col stack">
+        <p>Riêng astaxanthin trong tảo Haematococcus — thành phần thứ hai của sản phẩm — được tài liệu đào tạo mô tả là chất chống oxy hoá mạnh hơn vitamin C nhiều lần, đóng vai trò bảo vệ phần Coenzyme Q10 vừa được bổ sung khỏi bị gốc tự do phá huỷ.</p>
+        <div class="fill">
+          <span class="lbl">Cần anh xử lý trước khi chạy quảng cáo · Quan trọng</span>
+          <span class="txt">Ba nghiên cứu trên lấy từ tài liệu đào tạo nội bộ và <b>chưa có trích dẫn đầy đủ</b> (thiếu tên tác giả, số tạp chí, cỡ mẫu). Quan trọng hơn: các kết quả về <b>nếp nhăn, làn da và đau đầu nằm ngoài ba công dụng đã được Cục An toàn thực phẩm duyệt</b>. Anh chọn một trong hai — xin nhà cung cấp bản nghiên cứu gốc và bổ sung nội dung quảng cáo, hoặc bỏ hẳn ba thẻ này và chỉ giữ phần chống oxy hoá, giảm mệt mỏi, tim mạch. Em để nguyên đây để anh quyết, không tự ý đăng.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 BẰNG SÁNG CHẾ -->
+  <section class="sec" id="sang-che">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Phần 08 · Bằng sáng chế</span>
+        <h2>Phần này chưa có dữ liệu trong hồ sơ</h2>
+      </div>
+      <div class="col stack">
+        <p class="lede">Em đã rà toàn bộ thư mục hồ sơ của Rich Coenzyme Q10 trên Drive — có giấy công bố, giấy phép quảng cáo, chứng nhận GMP, COA và tài liệu đào tạo, nhưng <b>không có tài liệu bằng sáng chế nào</b>.</p>
+        <div class="fill">
+          <span class="lbl">Cần anh xác minh · Bằng sáng chế</span>
+          <span class="txt">Nếu AFC có bằng sáng chế liên quan (công nghệ nang mềm, công nghệ ổn định Ubiquinol…), anh xin nhà cung cấp số bằng (特許第 … 号), chủ sở hữu bằng, ngày cấp và phạm vi bảo hộ, rồi gửi em điền vào. Nếu không có, nên bỏ hẳn khối này chứ đừng viết chung chung — ghi “sản phẩm được cấp bằng sáng chế” mà không có số là sai sự thật và dễ bị xử phạt.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 HỒ SƠ & KIỂM NGHIỆM -->
   <section class="sec" id="chung-minh">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 07 · Chứng minh</span>
+        <span class="eyebrow">Phần 09 · Hồ sơ &amp; kiểm nghiệm</span>
         <h2>Giấy tờ tra được, không phải lời hứa</h2>
         <p class="lede">Bốn con số dưới đây anh chị có thể tự đối chiếu. Số công bố tra trên cổng của Cục An toàn thực phẩm; chứng nhận GMP tra tại Hiệp hội Thực phẩm Sức khoẻ và Dinh dưỡng Nhật Bản.</p>
       </div>
@@ -464,28 +623,11 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
     </div>
   </section>
 
-  <!-- 08 BẰNG SÁNG CHẾ -->
-  <section class="sec" id="sang-che">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 08 · Bằng sáng chế</span>
-        <h2>Phần này chưa có dữ liệu trong hồ sơ</h2>
-      </div>
-      <div class="col stack">
-        <p class="lede">Em đã rà toàn bộ thư mục hồ sơ của Rich Coenzyme Q10 trên Drive — có giấy công bố, giấy phép quảng cáo, chứng nhận GMP, COA và tài liệu đào tạo, nhưng <b>không có tài liệu bằng sáng chế nào</b>.</p>
-        <div class="fill">
-          <span class="lbl">Cần anh xác minh · Bằng sáng chế</span>
-          <span class="txt">Nếu AFC có bằng sáng chế liên quan (công nghệ nang mềm, công nghệ ổn định Ubiquinol…), anh xin nhà cung cấp số bằng (特許第 … 号), chủ sở hữu bằng, ngày cấp và phạm vi bảo hộ, rồi gửi em điền vào. Nếu không có, nên bỏ hẳn khối này chứ đừng viết chung chung — ghi “sản phẩm được cấp bằng sáng chế” mà không có số là sai sự thật và dễ bị xử phạt.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- 09 SẢN PHẨM KHÁC BIỆT -->
   <section class="sec" id="khac-biet">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 09 · Điểm khác biệt</span>
+        <span class="eyebrow">Phần 10 · Điểm khác biệt</span>
         <h2>Ubiquinol khác ubiquinone ở chỗ nào</h2>
         <p class="lede">Đây là điểm khác biệt cốt lõi, và cũng là lý do giá không thể bằng hàng phổ thông. Cùng gọi là “CoQ10” nhưng hai dạng này không như nhau.</p>
       </div>
@@ -513,7 +655,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <section class="sec" id="nha-may">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 10 · Nhà máy</span>
+        <span class="eyebrow">Phần 11 · Nhà máy</span>
         <h2>Làm ra ở đâu, ai chịu trách nhiệm</h2>
         <p class="lede">AFC ra đời năm 1969, trước cả khi Nhật Bản chính thức có luật về thực phẩm chức năng năm 1991. Tập đoàn có bốn nhà máy đạt chuẩn GMP; Rich Coenzyme Q10 được sản xuất tại nhà máy thứ hai ở Shizuoka.</p>
       </div>
@@ -549,15 +691,16 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <section class="sec" id="tai-nhat">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 11 · Kiểm chứng</span>
+        <span class="eyebrow">Phần 12 · Kiểm chứng</span>
         <h2>Người Nhật có thật sự dùng không?</h2>
         <p class="lede">Đây là câu người mua hỏi nhiều nhất, vì thị trường không thiếu hàng “chuẩn Nhật” mà người Nhật chưa từng thấy.</p>
       </div>
       <div class="col stack">
         <p>Tại Nhật, AFC có hơn <b>200.000 khách hàng hội viên</b> dùng sản phẩm mỗi ngày, cùng hệ thống cửa hàng giới thiệu và tư vấn trên khắp cả nước. Sản phẩm AFC cũng được phân phối tại Singapore, Trung Quốc, Indonesia và Việt Nam.</p>
+        <p>Nhà sản xuất công bố thông tin doanh nghiệp tại <a href="https://www.ams-life.co.jp/" target="_blank" rel="noopener">ams-life.co.jp</a> — trang này nêu rõ mảng sản xuất thực phẩm chức năng và tình trạng niêm yết trên sàn Tokyo.</p>
         <div class="fill">
           <span class="lbl">Cần anh bổ sung · Link trang gốc bên Nhật</span>
-          <span class="txt">Em chưa xác minh được đường dẫn tới đúng trang bán Rich Coenzyme Q10 trên website AFC tại Nhật, nên không dám điền bừa. Anh xin Jinsei Vietnam link chính thức, kèm ảnh chụp màn hình và ảnh bao bì bản Nhật đặt cạnh bản Việt để khách tự đối chiếu. Trang doanh nghiệp của nhà sản xuất là ams-life.co.jp — anh nhờ nhà cung cấp xác nhận trang bán lẻ đúng của dòng sản phẩm này.</span>
+          <span class="txt">Trang doanh nghiệp của chính nhà sản xuất là <b>ams-life.co.jp</b> — nơi công bố mảng sản xuất thực phẩm chức năng và thông tin niêm yết. Em chưa xác minh được đường dẫn tới đúng trang bán lẻ Rich Coenzyme Q10 tại Nhật nên không điền bừa. Anh xin Jinsei Vietnam link chính thức của dòng sản phẩm này, kèm ảnh chụp màn hình phòng khi trang đổi đường dẫn, và ảnh bao bì bản Nhật đặt cạnh bản Việt để khách tự đối chiếu.</span>
         </div>
       </div>
     </div>
@@ -567,7 +710,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <section class="sec" id="ma-ck">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 12 · Mã chứng khoán</span>
+        <span class="eyebrow">Phần 13 · Mã chứng khoán</span>
         <h2>Công ty mẹ minh bạch tới đâu</h2>
       </div>
       <div class="ticker">
@@ -588,61 +731,108 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <section class="sec" id="dat-hang">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 13 · Báo giá &amp; đặt hàng</span>
+        <span class="eyebrow">Phần 14 · Báo giá &amp; đặt hàng</span>
         <h2>Báo giá &amp; đặt hàng</h2>
         <p class="lede">Giá niêm yết theo quy cách. Chưa cần quyết định mua ngay — anh chị để lại số, nhân viên tư vấn gọi lại hỏi kỹ tình trạng sức khoẻ và thuốc đang dùng rồi mới tư vấn liệu trình phù hợp.</p>
       </div>
       <div class="quote">
         <table>
           <thead>
-            <tr><th>Số lượng</th><th>Tổng viên</th><th>Dùng được</th><th>Giá niêm yết</th><th>Tính ra mỗi ngày</th></tr>
+            <tr><th>Số lượng</th><th>Giá</th><th>Ưu đãi</th><th>Dùng được</th><th>Mỗi ngày</th></tr>
           </thead>
           <tbody>
-            <tr class="best">
-              <td class="w">1 hộp<span class="tag">Liệu trình chuẩn</span><span class="sub">Đủ 2 tháng theo khuyến nghị</span></td>
-              <td class="p">120</td>
+            <tr>
+              <td class="w">1 hộp<span class="sub">Đủ 2 tháng theo khuyến nghị</span></td>
+              <td class="p">2.890.000đ</td>
+              <td class="gift"><span style="color:var(--ink3)">Giá niêm yết</span></td>
               <td class="p">60 ngày</td>
-              <td class="p"><b>2.890.000đ</b></td>
               <td class="p">48.167đ</td>
             </tr>
+            <tr class="alt">
+              <td class="w"><span class="opt">Phương án B · giảm tiền</span>2 hộp</td>
+              <td class="p">5.580.000đ</td>
+              <td class="gift">Tiết kiệm <b>200.000đ</b></td>
+              <td class="p">120 ngày</td>
+              <td class="p">46.500đ</td>
+            </tr>
             <tr>
-              <td class="w">3 hộp<span class="sub">Dùng liên tục nửa năm</span></td>
-              <td class="p">360</td>
-              <td class="p">180 ngày</td>
+              <td class="w"><span class="opt">Phương án A · nhận quà</span>3 hộp</td>
               <td class="p">8.670.000đ</td>
+              <td class="gift">Tặng 1 hộp Giảm Mỡ Nội Tạng Ellagic Acid <b>(675.000đ)</b> hoặc 1 tuýp Gluchon Gel <b>(680.000đ)</b></td>
+              <td class="p">180 ngày</td>
               <td class="p">48.167đ</td>
             </tr>
+            <tr class="alt">
+              <td class="w"><span class="opt">Phương án B · giảm tiền</span>3 hộp</td>
+              <td class="p">8.320.000đ</td>
+              <td class="gift">Tiết kiệm <b>350.000đ</b></td>
+              <td class="p">180 ngày</td>
+              <td class="p">46.222đ</td>
+            </tr>
             <tr>
-              <td class="w">5 hộp<span class="sub">Đủ 10 tháng</span></td>
-              <td class="p">600</td>
-              <td class="p">300 ngày</td>
+              <td class="w"><span class="opt">Phương án A · nhận quà</span>4 hộp</td>
+              <td class="p">11.560.000đ</td>
+              <td class="gift">Tặng 1 hộp Nghệ Mùa Thu Nhật Bản <b>(990.000đ)</b></td>
+              <td class="p">240 ngày</td>
+              <td class="p">48.167đ</td>
+            </tr>
+            <tr class="alt">
+              <td class="w"><span class="opt">Phương án B · giảm tiền</span>4 hộp</td>
+              <td class="p">11.110.000đ</td>
+              <td class="gift">Tiết kiệm <b>450.000đ</b></td>
+              <td class="p">240 ngày</td>
+              <td class="p">46.292đ</td>
+            </tr>
+            <tr>
+              <td class="w"><span class="opt">Phương án A · nhận quà</span>5 hộp</td>
               <td class="p">14.450.000đ</td>
+              <td class="gift">Tặng 1 tuýp Gluchon Gel <b>(680.000đ)</b> hoặc 1 hộp Nghệ Mùa Thu <b>(990.000đ)</b></td>
+              <td class="p">300 ngày</td>
               <td class="p">48.167đ</td>
             </tr>
-            <tr>
-              <td class="w">7 hộp<span class="sub">Đủ 14 tháng</span></td>
-              <td class="p">840</td>
+            <tr class="alt">
+              <td class="w"><span class="opt">Phương án B · giảm tiền</span>5 hộp</td>
+              <td class="p">13.850.000đ</td>
+              <td class="gift">Tiết kiệm <b>600.000đ</b></td>
+              <td class="p">300 ngày</td>
+              <td class="p">46.167đ</td>
+            </tr>
+            <tr class="best">
+              <td class="w">6 hộp<span class="tag">Lợi nhất</span><span class="sub">Nhận 7 hộp, dùng liên tục 14 tháng</span></td>
+              <td class="p"><b>17.340.000đ</b></td>
+              <td class="gift">Tặng thêm <b>1 hộp Rich Coenzyme Q10 (2.890.000đ)</b></td>
               <td class="p">420 ngày</td>
-              <td class="p">20.230.000đ</td>
-              <td class="p">48.167đ</td>
-            </tr>
-            <tr>
-              <td class="w">10 hộp<span class="sub">Mua sỉ hoặc dùng cho cả nhà</span></td>
-              <td class="p">1200</td>
-              <td class="p">600 ngày</td>
-              <td class="p">28.900.000đ</td>
-              <td class="p">48.167đ</td>
+              <td class="p">41.286đ</td>
             </tr>
           </tbody>
         </table>
       </div>
+      <div class="col stack">
+        <p class="note">Mỗi hộp là 1 lọ 120 viên, uống 2 viên mỗi ngày nên dùng được 60 ngày. Từ 3 đến 5 hộp, anh chị chọn một trong hai phương án: nhận quà tặng hoặc giảm tiền mặt, không áp dụng đồng thời. Quà tặng là sản phẩm chính hãng trong danh mục, giá trị ghi theo giá niêm yết.</p>
+        <p><b>Mốc 6 hộp đang lợi nhất:</b> trả tiền 6 hộp, nhận 7 hộp, tính ra 41.286đ mỗi ngày — rẻ hơn mốc 1 hộp gần 7.000đ mỗi ngày.</p>
+      </div>
       <div class="col">
-        <p class="note">Mỗi hộp là 1 lọ 120 viên, uống 2 viên mỗi ngày nên dùng được 60 ngày. Giá trong bảng là giá niêm yết nhân theo số lượng, chưa gồm ưu đãi.</p>
+        <div class="pay">
+          <div class="pay-qr">
+            <span class="qr-slot" aria-hidden="true">QR VietQR</span>
+            <span class="qr-cap">Quét bằng app ngân hàng</span>
+          </div>
+          <div class="pay-info">
+            <h3>Chuyển khoản</h3>
+            <dl class="bank">
+              <div><dt>Ngân hàng</dt><dd>TPBank</dd></div>
+              <div><dt>Chủ tài khoản</dt><dd>PHAM VAN SON</dd></div>
+              <div><dt>Số tài khoản</dt><dd class="acc">3869 1388 888</dd></div>
+              <div><dt>Nội dung</dt><dd>Họ tên + số điện thoại</dd></div>
+            </dl>
+            <p class="note">Chuyển khoản xong anh chị chụp lại biên lai gửi cho nhân viên tư vấn để bên em xác nhận và gửi hàng.</p>
+          </div>
+        </div>
       </div>
       <div class="col">
         <div class="fill">
-          <span class="lbl">Cần anh điền · Chiết khấu theo số lượng</span>
-          <span class="txt">Bảng danh mục trên Drive chỉ có đơn giá 2.890.000đ cho một hộp 120 viên, không có bậc chiết khấu. Anh gửi em mức giảm theo từng bậc (ví dụ mua 3 hộp giảm bao nhiêu, 5 hộp và 10 hộp giảm bao nhiêu) cùng chính sách tặng kèm và phí vận chuyển, em thêm hai cột “Ưu đãi” và “Thành tiền” vào bảng. Em không tự suy ra con số này vì đó là giá khách sẽ dựa vào để chốt đơn.</span>
+          <span class="lbl">Cần anh gửi file · Ảnh QR</span>
+          <span class="txt">Em chưa gắn được ảnh QR vào trang vì ảnh anh gửi nằm trong khung chat, không có file trên máy. Anh lưu ảnh QR thành file rồi gửi lại (hoặc đặt vào thư mục dự án), em nhúng thẳng vào ô đang để trống — nhúng dạng dữ liệu nội trang nên trang vẫn chạy độc lập, không phụ thuộc máy chủ ngoài.</span>
         </div>
       </div>
       <div class="col">
@@ -725,13 +915,14 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   <nav>
     <a href="#van-de">Vấn đề</a>
     <a href="#co-che">Cơ chế</a>
+    <a href="#san-pham">Sản phẩm</a>
     <a href="#chung-minh">Giấy tờ</a>
     <a href="#dat-hang">Đặt hàng</a>
   </nav>
 </footer>
 
 <div class="dock">
-  <div class="p">Lọ 120 viên · 60 ngày<b>2.890.000đ</b></div>
+  <div class="p">Mua 6 tặng 1<b>từ 41.286đ mỗi ngày</b></div>
   <a class="btn" href="#dat-hang">Để lại số</a>
 </div>
 
