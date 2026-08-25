@@ -1919,6 +1919,39 @@ var NOI_NHAN_DON = "";
    "entry." di. De trong bat ky o nao thi duong nay tat, don quay ve
    gui qua Messenger / Zalo / SMS.
    --------------------------------------------------------------------- */
+/* =====================================================================
+   PIXEL FACEBOOK — de chay quang cao do duoc va toi uu duoc.
+   Vao Trinh quan ly su kien cua Facebook, lay day so cua Pixel (15 chu
+   so) roi dan vao dong duoi. De trong thi khong tai gi ca, trang chay
+   binh thuong nhu chua co pixel.
+   ===================================================================== */
+var PIXEL_ID = "";
+
+(function(){
+  if(!PIXEL_ID) return;
+  try{
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return; n=f.fbq=function(){
+        n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments);
+      };
+      if(!f._fbq)f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[];
+      t=b.createElement(e); t.async=!0; t.src=v;
+      s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
+  }catch(e){}
+})();
+
+// Bao mot su kien ve Facebook, chay duoc ca khi chua gan pixel.
+function baoFB(ten, so){
+  try{
+    if(!window.fbq) return;
+    if(so) fbq('track', ten, {value: Number(so), currency: 'VND'});
+    else   fbq('track', ten);
+  }catch(e){}
+}
+
 /* Tien coc giu hang. Ma VietQR duoi day da nhung san dung 200.000d,
    khach quet la app ngan hang hien du so tai khoan va so tien. */
 var TIEN_COC = 200000;
@@ -2035,6 +2068,13 @@ var FORM_GOOGLE = {
   }
 
   // Cham vao mot hang la chep noi dung hang do, khoi phai boi den tung so.
+  // Bam nut nhan tin hay goi dien cung la mot buoc mua hang, bao ve Facebook.
+  function noiBaoLienHe(){
+    Array.prototype.slice.call(ok.querySelectorAll('.don-nut a')).forEach(function(a){
+      a.addEventListener('click', function(){ baoFB('Contact'); });
+    });
+  }
+
   function noiChep(){
     Array.prototype.slice.call(ok.querySelectorAll('.ck-hang')).forEach(function(h){
       h.addEventListener('click', function(){
@@ -2076,6 +2116,7 @@ var FORM_GOOGLE = {
       + '</span>'
       + (guiRoi ? '' : khoiTra(du));
     noiChep();
+    noiBaoLienHe();
     ok.scrollIntoView({block:'start', behavior:'smooth'});
   }
 
@@ -2151,6 +2192,8 @@ var FORM_GOOGLE = {
 
     du.thoi_gian = new Date().toLocaleString('vi-VN');
     du.nguon     = location.href;
+
+    baoFB('Lead', du.so_tien);
 
     var dangGui = guiBieuMau(du) || guiNoiNhan(du);
 
