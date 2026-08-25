@@ -70,11 +70,13 @@ a{color:var(--red)}
 .foot .noi-bo:hover{border-color:var(--red);color:var(--red)}
 
 /* khung theo buoc */
-.steps-nav{display:flex;gap:.15rem;margin-left:auto;align-items:center}
+.steps-nav{display:flex;gap:.15rem;margin-left:auto;align-items:center;min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.steps-nav::-webkit-scrollbar{display:none}
+.steps-nav a{flex:0 0 auto;white-space:nowrap}
 .steps-nav a{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);text-decoration:none;padding:.45rem .6rem;border-radius:var(--r);white-space:nowrap;border:1px solid transparent}
 .steps-nav a:hover{color:var(--red)}
 .steps-nav a.now{color:var(--red);border-color:var(--red);background:var(--red-soft)}
-@media(max-width:700px){.steps-nav a{font-size:.6rem;padding:.4rem .4rem;letter-spacing:.04em}}
+@media(max-width:700px){.steps-nav{display:none}}
 
 /* hotline */
 .hotline{display:inline-flex;align-items:center;gap:.45rem;margin-left:.9rem;text-decoration:none;border:1px solid var(--red);color:var(--red);background:var(--red-soft);border-radius:100px;padding:.4rem .8rem;font-family:"IBM Plex Mono",monospace;font-size:.78rem;font-weight:500;white-space:nowrap}
@@ -425,10 +427,11 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .nhan-phu dt{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);line-height:1.7}
 .nhan-phu dd{margin:0;font-size:.92rem;line-height:1.65}
 .nhan-phu dd i{color:var(--ink3);font-style:italic}
-.giay-anh{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem;margin:.9rem 0 0}
+.giay-anh{display:flex;flex-wrap:wrap;gap:1rem 1.2rem;margin:.9rem 0 0}
+.giay-anh figure{flex:1 1 190px;max-width:230px}
 .giay-anh figure{margin:0;display:flex;flex-direction:column;gap:.55rem}
 .giay-anh img{width:100%;height:auto;display:block;border:1px solid var(--line2);border-radius:var(--r);background:#fff}
-.giay-anh figcaption{font-size:.82rem;line-height:1.6;color:var(--ink3)}
+.giay-anh figcaption{font-size:.76rem;line-height:1.55;color:var(--ink3)}
 @media (max-width:640px){.nhan-phu>div{grid-template-columns:1fr}}
 
 /* factories */
@@ -527,8 +530,10 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .price-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:.9rem}
 .price{font-family:"Be Vietnam Pro",sans-serif;font-size:2.6rem;font-weight:700;line-height:1;color:var(--red);font-variant-numeric:tabular-nums}
 .price-note{font-size:.85rem;color:var(--ink3)}
-.form{display:grid;gap:.75rem}
-@media(min-width:660px){.form{grid-template-columns:1fr 1fr}.form .full{grid-column:1/-1}}
+.form{display:grid;gap:.75rem;grid-template-columns:minmax(0,1fr)}
+.field{min-width:0}
+.field input,.field select{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+@media(min-width:660px){.form{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.form .full{grid-column:1/-1}}
 .field{display:flex;flex-direction:column;gap:.3rem}
 .field label{font-size:.78rem;font-weight:600;color:var(--ink2)}
 .field input[readonly]{background:var(--sunk);color:var(--ink2)}
@@ -588,6 +593,14 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .dock .btn{margin-left:auto;flex:none}
 .dock.on{transform:translateY(0)}
 @media (prefers-reduced-motion: reduce){.dock{transition:none}}
+/* may hep 360px: bop lai cho nut khong bi cat */
+@media(max-width:340px){.nav .wrap{gap:.4rem}.nav-buy{padding:.4rem .7rem;font-size:.8rem}}
+@media(max-width:390px){
+  .dock{padding:.55rem .6rem;gap:.45rem}
+  .dock .p{font-size:.72rem;line-height:1.25;min-width:0}
+  .dock .p b{font-size:.86rem}
+  .dock .btn{padding:.5rem .8rem;font-size:.85rem}
+}
 .dock .p b{white-space:nowrap}
 @media(min-width:860px){
   .dock{padding:.55rem 1.6rem;gap:1rem}
@@ -1140,15 +1153,15 @@ body:has(.dock.on){padding-bottom:74px}
 
             <div class="col stack">
         <h3 class="nh3">Ảnh chụp giấy tờ gốc</h3>
-        <p class="lede-s">Bấm vào ảnh để xem cỡ lớn, đọc được từng dòng. Trên giấy tiếp nhận có mã QR của Cục An toàn thực phẩm, anh chị quét được để đối chiếu.</p>
+        <p class="lede-s">Trên giấy tiếp nhận có mã QR của Cục An toàn thực phẩm để anh chị tự đối chiếu.</p>
         <div class="giay-anh">
           <figure>
             <img src="images/giay-cong-bo.webp" alt="Giấy tiếp nhận đăng ký bản công bố sản phẩm số 4107/2024/ĐKSP do Cục An toàn thực phẩm cấp ngày 09/05/2024" loading="lazy" width="900" height="1272">
-            <figcaption>Giấy tiếp nhận đăng ký bản công bố sản phẩm số <b>4107/2024/ĐKSP</b> — Cục An toàn thực phẩm, Bộ Y tế, ngày 09/05/2024. Ký bởi Phó Cục trưởng Nguyễn Hùng Long.</figcaption>
+            <figcaption><b>Giấy tiếp nhận công bố</b> số 4107/2024/ĐKSP — Cục An toàn thực phẩm, 09/05/2024.</figcaption>
           </figure>
           <figure>
             <img src="images/nhan-phu.webp" alt="Nhãn phụ tiếng Việt của Thực phẩm bảo vệ sức khoẻ Rich Coenzyme Q10" loading="lazy" width="900" height="1153">
-            <figcaption>Nhãn phụ tiếng Việt dán trên từng hộp — thành phần, công dụng, cách dùng, lưu ý và số ĐKSP. Anh chị đối chiếu với tem trên hộp mình nhận.</figcaption>
+            <figcaption><b>Nhãn phụ tiếng Việt</b> dán trên từng hộp — đối chiếu với tem trên hộp anh chị nhận.</figcaption>
           </figure>
         </div>
       </div>
