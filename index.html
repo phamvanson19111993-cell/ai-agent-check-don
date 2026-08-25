@@ -343,16 +343,26 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 
 /* pricing */
 .quote{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
-.quote table{min-width:600px}
+.quote table{min-width:560px;font-size:.84rem}
+.quote th,.quote td{padding:.5rem .7rem;vertical-align:middle}
+.quote td.w{white-space:nowrap;font-weight:700;font-size:.95rem;line-height:1.25}
+.quote .days{display:block;font-family:"IBM Plex Mono",monospace;font-size:.66rem;color:var(--ink3);font-weight:400;letter-spacing:.04em}
+.quote td .sub{display:block;font-size:.68rem;color:var(--ink3);font-weight:400}
+.quote td.per{white-space:nowrap}
+.quote td.per i{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.6rem;color:var(--ink3);margin-left:.15rem}
+.quote .or{color:var(--ink3);font-weight:400}
+.quote .plain{color:var(--ink3)}
 .quote td.p{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;font-size:.95rem}
 .quote th:not(:first-child){text-align:right}
 .quote td.p b{color:var(--red);font-weight:600}
 .quote tr.best td{background:color-mix(in srgb,var(--red-soft) 55%,transparent)}
 .quote tr.alt td{border-bottom-style:dashed}
-.quote td.gift{white-space:normal;font-size:.86rem;color:var(--ink2);min-width:210px}
+.quote td.gift{white-space:normal;font-size:.82rem;line-height:1.4;color:var(--ink2);min-width:230px}
 .quote td.gift b{color:var(--red);font-weight:600}
-.quote .opt{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:.15rem}
-.quote .tag{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red);border:1px solid var(--red);border-radius:2px;padding:.1rem .35rem;margin-left:.5rem;white-space:nowrap}
+.quote .opt{font-family:"IBM Plex Mono",monospace;font-size:.55rem;letter-spacing:.09em;text-transform:uppercase;display:inline-block;padding:.06rem .3rem;border-radius:3px;margin-right:.35rem;vertical-align:.12em}
+.quote .opt.g{color:var(--red);background:var(--red-soft)}
+.quote .opt.c{color:var(--jade);background:var(--jade-soft)}
+.quote .tag{font-family:"IBM Plex Mono",monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red);border:1px solid var(--red);border-radius:2px;padding:.1rem .35rem;margin-left:.5rem;white-space:nowrap}
 .quote td .sub{display:block;font-size:.8rem;color:var(--ink3);font-weight:400}
 
 /* payment */
@@ -1115,71 +1125,62 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
       <div class="quote">
         <table>
           <thead>
-            <tr><th>Số lượng</th><th>Giá</th><th>Ưu đãi</th><th>Dùng được</th><th>Mỗi ngày</th></tr>
+            <tr><th>Số lượng</th><th>Giá</th><th>Ưu đãi</th><th>Mỗi ngày</th></tr>
           </thead>
           <tbody>
             <tr>
-              <td class="w">1 hộp<span class="sub">Đủ 2 tháng theo khuyến nghị</span></td>
+              <td class="w">1 hộp<span class="days">60 ngày</span><span class="sub">Đủ 2 tháng</span></td>
               <td class="p">2.890.000đ</td>
-              <td class="gift"><span style="color:var(--ink3)">Giá niêm yết</span></td>
-              <td class="p">60 ngày</td>
-              <td class="p">48.167đ</td>
+              <td class="gift"><span class="plain">Giá niêm yết</span></td>
+              <td class="p per">48.167đ<i>/ngày</i></td>
             </tr>
             <tr class="alt">
-              <td class="w"><span class="opt">Phương án B · giảm tiền</span>2 hộp</td>
+              <td class="w"><span class="opt c">Giảm</span>2 hộp<span class="days">120 ngày</span></td>
               <td class="p">5.580.000đ</td>
               <td class="gift">Tiết kiệm <b>200.000đ</b></td>
-              <td class="p">120 ngày</td>
-              <td class="p">46.500đ</td>
+              <td class="p per">46.500đ<i>/ngày</i></td>
             </tr>
             <tr>
-              <td class="w"><span class="opt">Phương án A · nhận quà</span>3 hộp</td>
+              <td class="w"><span class="opt g">Quà</span>3 hộp<span class="days">180 ngày</span></td>
               <td class="p">8.670.000đ</td>
-              <td class="gift">Tặng 1 hộp Giảm Mỡ Nội Tạng Ellagic Acid <b>(675.000đ)</b> hoặc 1 tuýp Gluchon Gel <b>(680.000đ)</b></td>
-              <td class="p">180 ngày</td>
-              <td class="p">48.167đ</td>
+              <td class="gift">Tặng <b>Ellagic Acid</b> 675k <span class="or">hoặc</span> <b>Gluchon Gel</b> 680k</td>
+              <td class="p per">48.167đ<i>/ngày</i></td>
             </tr>
             <tr class="alt">
-              <td class="w"><span class="opt">Phương án B · giảm tiền</span>3 hộp</td>
+              <td class="w"><span class="opt c">Giảm</span>3 hộp<span class="days">180 ngày</span></td>
               <td class="p">8.320.000đ</td>
               <td class="gift">Tiết kiệm <b>350.000đ</b></td>
-              <td class="p">180 ngày</td>
-              <td class="p">46.222đ</td>
+              <td class="p per">46.222đ<i>/ngày</i></td>
             </tr>
             <tr>
-              <td class="w"><span class="opt">Phương án A · nhận quà</span>4 hộp</td>
+              <td class="w"><span class="opt g">Quà</span>4 hộp<span class="days">240 ngày</span></td>
               <td class="p">11.560.000đ</td>
-              <td class="gift">Tặng 1 hộp Nghệ Mùa Thu Nhật Bản <b>(990.000đ)</b></td>
-              <td class="p">240 ngày</td>
-              <td class="p">48.167đ</td>
+              <td class="gift">Tặng <b>Nghệ Mùa Thu</b> 990k</td>
+              <td class="p per">48.167đ<i>/ngày</i></td>
             </tr>
             <tr class="alt">
-              <td class="w"><span class="opt">Phương án B · giảm tiền</span>4 hộp</td>
+              <td class="w"><span class="opt c">Giảm</span>4 hộp<span class="days">240 ngày</span></td>
               <td class="p">11.110.000đ</td>
               <td class="gift">Tiết kiệm <b>450.000đ</b></td>
-              <td class="p">240 ngày</td>
-              <td class="p">46.292đ</td>
+              <td class="p per">46.292đ<i>/ngày</i></td>
             </tr>
             <tr>
-              <td class="w"><span class="opt">Phương án A · nhận quà</span>5 hộp</td>
+              <td class="w"><span class="opt g">Quà</span>5 hộp<span class="days">300 ngày</span></td>
               <td class="p">14.450.000đ</td>
-              <td class="gift">Tặng 1 tuýp Gluchon Gel <b>(680.000đ)</b> hoặc 1 hộp Nghệ Mùa Thu <b>(990.000đ)</b></td>
-              <td class="p">300 ngày</td>
-              <td class="p">48.167đ</td>
+              <td class="gift">Tặng <b>Gluchon Gel</b> 680k <span class="or">hoặc</span> <b>Nghệ Mùa Thu</b> 990k</td>
+              <td class="p per">48.167đ<i>/ngày</i></td>
             </tr>
             <tr class="alt">
-              <td class="w"><span class="opt">Phương án B · giảm tiền</span>5 hộp</td>
+              <td class="w"><span class="opt c">Giảm</span>5 hộp<span class="days">300 ngày</span></td>
               <td class="p">13.850.000đ</td>
               <td class="gift">Tiết kiệm <b>600.000đ</b></td>
-              <td class="p">300 ngày</td>
-              <td class="p">46.167đ</td>
+              <td class="p per">46.167đ<i>/ngày</i></td>
             </tr>
             <tr class="best">
-              <td class="w">6 hộp<span class="tag">Lợi nhất</span><span class="sub">Nhận 7 hộp, dùng liên tục 14 tháng</span></td>
+              <td class="w"><span class="opt g">Quà</span>6 hộp<span class="tag">Lợi nhất</span><span class="days">420 ngày</span><span class="sub">Nhận 7 hộp</span></td>
               <td class="p"><b>17.340.000đ</b></td>
-              <td class="gift">Tặng thêm <b>1 hộp Rich Coenzyme Q10 (2.890.000đ)</b></td>
-              <td class="p">420 ngày</td>
-              <td class="p">41.286đ</td>
+              <td class="gift">Tặng thêm <b>1 hộp Rich CoQ10</b> 2,89tr</td>
+              <td class="p per">41.286đ<i>/ngày</i></td>
             </tr>
           </tbody>
         </table>
@@ -1208,7 +1209,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
             <div class="field full"><label for="moc">Mốc dễ tìm <span class="opt-lbl">không bắt buộc</span></label><input id="moc" name="moc" type="text" autocomplete="address-line2" placeholder="Cạnh trạm y tế xã, đối diện chợ, gần cây đa đầu làng…"></div>
 
             <p class="fgroup">Tình trạng sức khoẻ</p>
-            <div class="field full"><label for="tuKiem">Kết quả tự kiểm ở đầu trang</label><input id="tuKiem" name="tuKiem" type="text" readonly placeholder="Chưa làm bài tự kiểm — anh chị kéo lên đầu trang tick thử"></div>
+            <div class="field full"><label for="tuKiem">Kết quả bài kiểm tra</label><input id="tuKiem" name="tuKiem" type="text" readonly placeholder="Chưa làm bài kiểm tra — bấm đây để làm, 30 giây"></div>
             <div class="field full"><label for="tinhtrang">Anh chị đang gặp vấn đề nào</label>
               <select id="tinhtrang" name="tinhtrang">
                 <option>Mệt mỏi kéo dài dù ngủ đủ</option>
@@ -1401,7 +1402,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 
 <div class="dock">
   <div class="p">Mua 6 tặng 1<b>từ 41.286đ mỗi ngày</b></div>
-  <a class="btn" href="#dat-hang">Để lại số</a>
+  <a class="btn" id="de-lai-so" href="#dat-hang">Để lại số</a>
 </div>
 
 <script>
@@ -1676,6 +1677,31 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
     }, {rootMargin:'-45% 0px -50% 0px'});
     moc.forEach(function(el){ if(el) io.observe(el); });
   }catch(e){}
+})();
+</script>
+<script>
+(function(){
+  var nut = document.getElementById('de-lai-so');
+  var ten = document.getElementById('ten');
+  var oKiem = document.getElementById('tuKiem');
+  var quiz = document.getElementById('quiz');
+
+  if(nut && ten){
+    nut.addEventListener('click', function(){
+      setTimeout(function(){
+        ten.scrollIntoView({block:'center', behavior:'smooth'});
+        try{ ten.focus({preventScroll:true}); }catch(e){ ten.focus(); }
+      }, 320);
+    });
+  }
+  // chua lam bai thi bam vao o ket qua se dua len bai kiem tra
+  if(oKiem && quiz){
+    oKiem.style.cursor = 'pointer';
+    oKiem.addEventListener('click', function(){
+      if(oKiem.value) return;
+      quiz.scrollIntoView({block:'center', behavior:'smooth'});
+    });
+  }
 })();
 </script>
 </body>
