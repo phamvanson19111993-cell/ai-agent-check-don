@@ -569,7 +569,8 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .ck-nhan{font-weight:400;font-size:.76em;letter-spacing:.02em;opacity:.7}
 .ck-gt{font-weight:700;font-size:1.04em;line-height:1.3;word-break:break-word}
 .ck-nut{flex:0 0 auto;font-size:.72em;font-weight:700;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;padding:.3rem .55rem;border:1px solid currentColor;border-radius:999px;opacity:.7}
-.ck-qr{display:flex;align-items:center;gap:.8rem;margin:.75rem 0 .2rem}
+.ck-app{display:block;width:100%;margin:.75rem 0 .1rem;text-align:center}
+.ck-qr{display:flex;align-items:center;gap:.8rem;margin:.7rem 0 .2rem}
 .don-tra .qr-card{width:132px;flex:0 0 auto;padding:.45rem;gap:0}
 .ck-qr-cap{flex:1 1 auto;font-weight:400;font-size:.86em;line-height:1.5;opacity:.85}
 .ck-note{display:block;margin-top:.55rem;font-weight:400;line-height:1.6}
@@ -1585,8 +1586,9 @@ body:has(.dock.on){padding-bottom:74px}
         </div>
         <div class="td td-stop">
           <span class="k">Chặn phát hành · 2</span>
-          <h3>Quét thử mã QR đặt cọc một lần</h3>
-          <p>Mã hiện tại nhúng sẵn <b>200.000đ tiền cọc</b>, dựng theo chuẩn VietQR NAPAS 247 (TPBank 970423, tài khoản 38691388888), em đã tự giải mã kiểm chứng ra đúng số tài khoản và đúng số tiền. Nhưng phải mở app ngân hàng quét thật, thấy đúng tên PHAM VAN SON và đúng 200.000đ mới được dùng.</p>
+          <h3>Thử một lần nút mở app và mã QR</h3>
+          <p>Mã QR dựng theo chuẩn VietQR NAPAS 247 (TPBank 970423, tài khoản 38691388888), em đã tự giải mã kiểm chứng cả mã cọc 200.000đ lẫn chín mã theo từng mức giá — đúng số tài khoản, đúng số tiền. Nhưng phải mở app ngân hàng quét thật, thấy đúng tên PHAM VAN SON mới được dùng.</p>
+          <p><b>Nút “Mở app ngân hàng” thì em không thử được:</b> máy em không ra được internet ngoài GitHub. Nút dùng đường dẫn VietQR kèm sẵn số tài khoản, số tiền và nội dung chuyển khoản. Anh mở trang bằng điện thoại, bấm thử một lần xem có nhảy sang app ngân hàng và điền sẵn đúng không. Nếu máy anh không nhận thì báo em, em đổi sang cách khác.</p>
         </div>
         <div class="td td-stop">
           <span class="k">Chặn phát hành · 3</span>
@@ -2087,6 +2089,20 @@ var FORM_GOOGLE = {
   // Chep san noi dung don vao bo nho tam va moi khach gui qua Messenger hoac goi dien.
   var HD_MAC_DINH = 'Đơn đã chép sẵn vào máy. Bấm một nút dưới đây, ô soạn tin còn trống thì bấm giữ chọn <b>Dán</b>.';
 
+  // Ngan hang khong nhan dau tieng Viet trong noi dung chuyen khoan
+  function khongDau(x){
+    return String(x == null ? '' : x)
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/\u0111/g, 'd').replace(/\u0110/g, 'D');
+  }
+
+  // Duong dan mo thang app ngan hang tren dien thoai, da co san so tien
+  function duongApp(soTien, nd){
+    return 'https://dl.vietqr.io/pay?app=&ba=38691388888@970423'
+         + '&am=' + soTien
+         + '&tn=' + encodeURIComponent(khongDau(nd));
+  }
+
   function noiDungCK(du){
     return [du.ten, du.sdt].filter(function(x){ return x && x.trim(); }).join(' ');
   }
@@ -2128,6 +2144,11 @@ var FORM_GOOGLE = {
            +   '<span class="ck-nut">Chép</span>'
            + '</span>';
     }
+    function nutApp(soTien, lop, an){
+      return '<a class="btn btn-lg ck-app ' + lop + '" href="' + duongApp(soTien, nd) + '" '
+           + 'target="_blank" rel="noopener"' + (an ? ' hidden' : '') + '>'
+           + 'Mở app ngân hàng, chuyển ' + chamNghin(soTien) + 'đ</a>';
+    }
     function khoiQR(svg, chu, lop, an){
       return '<span class="ck-qr ' + lop + '"' + (an ? ' hidden' : '') + '>'
            +   '<span class="qr-card">' + svg + '</span>'
@@ -2154,8 +2175,10 @@ var FORM_GOOGLE = {
       + hang('Tiền cọc', chamNghin(TIEN_COC) + 'đ', String(TIEN_COC), 'ck-coc', false)
       + (haiCach ? hang('Số tiền', chamNghin(tong) + 'đ', String(tong), 'ck-du', true) : '')
       + hang('Nội dung', nd, nd)
-      + khoiQR(QR_COC, 'Quét mã này bằng app ngân hàng — mã đã có sẵn ' + chamNghin(TIEN_COC) + 'đ tiền cọc, không phải gõ số.', 'ck-coc', false)
-      + (haiCach ? khoiQR(qrDu, 'Quét mã này bằng app ngân hàng — mã đã có sẵn ' + chamNghin(tong) + 'đ, không phải gõ số.', 'ck-du', true) : '')
+      + nutApp(TIEN_COC, 'ck-coc', false)
+      + (haiCach ? nutApp(tong, 'ck-du', true) : '')
+      + khoiQR(QR_COC, 'Máy tính thì quét mã này bằng điện thoại — mã đã có sẵn ' + chamNghin(TIEN_COC) + 'đ.', 'ck-coc', false)
+      + (haiCach ? khoiQR(qrDu, 'Máy tính thì quét mã này bằng điện thoại — mã đã có sẵn ' + chamNghin(tong) + 'đ.', 'ck-du', true) : '')
       + '<span class="ck-note ck-coc">'
       +   (con > 0 ? 'Còn lại <b>' + chamNghin(con) + 'đ</b> anh chị trả khi nhận hàng. ' : 'Phần còn lại anh chị trả khi nhận hàng. ')
       +   'Cọc xong chụp biên lai gửi kèm để bên em gửi hàng ngay. Chưa muốn cọc cũng được, nhân viên vẫn gọi lại xác nhận đơn.'
