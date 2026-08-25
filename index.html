@@ -1903,13 +1903,43 @@ var NOI_NHAN_DON = "";
     ok.scrollIntoView({block:'center', behavior:'smooth'});
   }
 
+  var M_ME = 'https://m.me/61592861334561';
+
+  function thoat(x){
+    return String(x == null ? '' : x).replace(/[&<>"]/g, function(c){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c];
+    });
+  }
+
+  function tomTat(du){
+    return 'ĐƠN HÀNG RICH COENZYME Q10'
+      + '\nHọ tên: '     + (du.ten     || '')
+      + '\nĐiện thoại: ' + (du.sdt     || '')
+      + '\nĐịa chỉ: '    + (du.dia_chi || '')
+      + '\nSố lượng: '   + (du.soluong || '')
+      + '\nThời gian: '  + (du.thoi_gian || '');
+  }
+
+  // Luoi an toan: khi chua noi duoc voi noi nhan don, khong de mat don.
+  // Chep san noi dung don vao bo nho tam va moi khach gui qua Messenger hoac goi dien.
+  function duPhong(du, dauMuc){
+    var t = tomTat(du);
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t);
+    }catch(e){}
+    ok.classList.add('on');
+    ok.classList.add('loi');
+    ok.innerHTML =
+        '<b>' + thoat(dauMuc) + '</b><br><br>'
+      + '<span style="white-space:pre-line">' + thoat(t) + '</span><br><br>'
+      + '<span style="font-size:.95em">Nội dung trên đã được sao chép sẵn. Anh chị bấm một trong hai nút dưới đây, đơn sẽ không bị mất.</span><br><br>'
+      + '<a class="btn" href="' + M_ME + '" target="_blank" rel="noopener">Gửi đơn qua Messenger</a> '
+      + '<a class="btn btn-ghost" href="tel:0913351394">☎ Gọi 0913.351.394</a>';
+    ok.scrollIntoView({block:'center', behavior:'smooth'});
+  }
+
   f.addEventListener('submit', function(e){
     e.preventDefault();
-
-    if(!NOI_NHAN_DON){
-      bao('Đã ghi nhận. Đây là bản demo giao diện nên thông tin chưa được gửi đi đâu cả — cần nối form vào nơi nhận đơn trước khi chạy quảng cáo.');
-      return;
-    }
 
     var du = {};
     new FormData(f).forEach(function(v,k){ du[k] = v; });
@@ -1930,6 +1960,11 @@ var NOI_NHAN_DON = "";
     du.thoi_gian = new Date().toLocaleString('vi-VN');
     du.nguon     = location.href;
 
+    if(!NOI_NHAN_DON){
+      duPhong(du, 'Đơn của anh chị đã được ghi lại, nhưng hệ thống nhận đơn tự động còn đang hoàn thiện.');
+      return;
+    }
+
     if(nut){ nut.disabled = true; nut.textContent = 'Đang gửi…'; }
 
     fetch(NOI_NHAN_DON, {
@@ -1941,7 +1976,7 @@ var NOI_NHAN_DON = "";
       bao('Đã nhận thông tin của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.');
       f.reset();
     }).catch(function(){
-      bao('Mạng đang trục trặc nên chưa gửi được. Anh chị gọi thẳng 0913.351.394 giúp em, hoặc thử lại sau ít phút.', true);
+      duPhong(du, 'Mạng đang trục trặc nên đơn chưa gửi đi được.');
     }).then(function(){
       if(nut){ nut.disabled = false; nut.textContent = chuNut; }
     });
