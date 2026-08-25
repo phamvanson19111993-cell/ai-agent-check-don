@@ -4,7 +4,6 @@ window.AGENT_GROUPS = [
   {
     name: 'ai-agent-check-don',
     agents: [
-      { icon: '🔢', name: 'AI Agent icons với dòng đánh số', role: 'Giao diện danh sách agent, đánh số + icon' },
       { icon: '📚', name: 'AI agent học tập và đào tạo',     role: 'Nội bộ: tự học, đào tạo nhân viên mới' },
       { icon: '🎥', name: 'Video hướng dẫn curl Foxia API',  role: 'Hướng dẫn kỹ thuật: gọi API Foxia bằng curl' },
       { icon: '🩺', name: 'AI Agent video content sức khỏe', role: 'Sản xuất nội dung video chủ đề sức khỏe' },
