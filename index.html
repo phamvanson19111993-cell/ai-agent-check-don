@@ -1905,6 +1905,12 @@ var NOI_NHAN_DON = "";
    --------------------------------------------------------------------- */
 var FORM_GOOGLE = {
   ma      : "1FAIpQLSfIOFZ5idbMz91nBJNb1oS84N8SEcUo6FRy2KcaCa_CTPAhGA",
+
+  // Bieu mau hien co MOT o duy nhat: ca don ghi gon vao day.
+  gop     : "322596292",
+
+  // Neu sau nay tach bieu mau thanh 4 cau hoi rieng thi xoa "gop" o tren
+  // va dien 4 ma o duoi day, don se vao 4 cot rieng.
   ten     : "",
   sdt     : "",
   dia_chi : "",
@@ -1964,10 +1970,33 @@ var FORM_GOOGLE = {
   // Don chay vao bang tinh cua Bieu mau Google.
   // Gui kieu form nen trinh duyet khong can CORS; khong doc duoc ket qua
   // tra ve, coi nhu gui xong khi khong co loi mang.
+  // Ban day du cua don, dung cho o gop chung
+  function donDayDu(du){
+    var d = [
+      ['Họ tên',    du.ten],
+      ['Điện thoại', du.sdt],
+      ['Địa chỉ',   du.dia_chi],
+      ['Số lượng',  du.soluong],
+      ['Tình trạng', du.tinhtrang],
+      ['Bài kiểm tra', du.tuKiem],
+      ['Thời gian', du.thoi_gian]
+    ];
+    return d.filter(function(x){ return x[1] && String(x[1]).trim(); })
+            .map(function(x){ return x[0] + ': ' + x[1]; })
+            .join('\n');
+  }
+
   function guiBieuMau(du){
     var g = FORM_GOOGLE;
-    if(!g.ma || !g.ten || !g.sdt || !g.dia_chi || !g.soluong) return null;
-    var cap = [[g.ten, du.ten], [g.sdt, du.sdt], [g.dia_chi, du.dia_chi], [g.soluong, du.soluong]];
+    if(!g.ma) return null;
+    var cap;
+    if(g.gop){
+      cap = [[g.gop, donDayDu(du)]];
+    }else if(g.ten && g.sdt && g.dia_chi && g.soluong){
+      cap = [[g.ten, du.ten], [g.sdt, du.sdt], [g.dia_chi, du.dia_chi], [g.soluong, du.soluong]];
+    }else{
+      return null;
+    }
     var than = cap.map(function(c){
       return 'entry.' + c[0] + '=' + encodeURIComponent(c[1] || '');
     }).join('&');
