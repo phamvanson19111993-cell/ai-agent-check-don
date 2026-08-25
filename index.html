@@ -1901,13 +1901,6 @@ var NOI_NHAN_DON = "";
   var nut = f.querySelector('button[type="submit"]');
   var chuNut = nut ? nut.textContent : '';
 
-  function bao(text, loi){
-    ok.textContent = text;
-    ok.classList.add('on');
-    ok.classList.toggle('loi', !!loi);
-    ok.scrollIntoView({block:'center', behavior:'smooth'});
-  }
-
   var M_ME = 'https://m.me/61592861334561';
 
   function thoat(x){
@@ -1927,7 +1920,9 @@ var NOI_NHAN_DON = "";
 
   // Luoi an toan: khi chua noi duoc voi noi nhan don, khong de mat don.
   // Chep san noi dung don vao bo nho tam va moi khach gui qua Messenger hoac goi dien.
-  function duPhong(du, dauMuc, loi){
+  var HD_MAC_DINH = 'Bấm một nút dưới đây, tin nhắn đã soạn sẵn, anh chị chỉ cần bấm <b>Gửi</b>. Nếu ô soạn tin để trống thì bấm giữ rồi chọn <b>Dán</b> — nội dung đơn đã được chép sẵn vào máy.';
+
+  function duPhong(du, dauMuc, loi, hd){
     var t = tomTat(du);
     var q = encodeURIComponent(t);
     try{
@@ -1938,7 +1933,7 @@ var NOI_NHAN_DON = "";
     ok.innerHTML =
         '<b>' + thoat(dauMuc) + '</b>'
       + '<span class="don-tom-tat">' + thoat(t) + '</span>'
-      + '<span class="don-huong-dan">Bấm một nút dưới đây, tin nhắn đã soạn sẵn, anh chị chỉ cần bấm <b>Gửi</b>. Nếu ô soạn tin để trống thì bấm giữ rồi chọn <b>Dán</b> — nội dung đơn đã được chép sẵn vào máy.</span>'
+      + '<span class="don-huong-dan">' + (hd || HD_MAC_DINH) + '</span>'
       + '<span class="don-nut">'
       + '<a class="btn btn-lg" href="' + M_ME + '?text=' + q + '" target="_blank" rel="noopener">Gửi đơn qua Messenger</a>'
       + '<a class="btn btn-lg btn-ghost" href="sms:0913351394?&body=' + q + '">Gửi bằng tin nhắn SMS</a>'
@@ -1982,7 +1977,10 @@ var NOI_NHAN_DON = "";
       headers: {'Content-Type':'text/plain;charset=utf-8'},
       body: JSON.stringify(du)
     }).then(function(){
-      bao('Đã nhận thông tin của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.');
+      duPhong(du,
+        'Bên em đã nhận được đơn của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.',
+        false,
+        'Muốn bên em xử lý ngay mà không phải chờ điện thoại, anh chị gửi thêm đơn này qua <b>Messenger</b> hoặc <b>tin nhắn điện thoại</b> — bấm một nút dưới đây, nội dung đã soạn sẵn.');
       f.reset();
     }).catch(function(){
       duPhong(du, 'Mạng đang trục trặc nên đơn chưa gửi thẳng đi được. Đơn không mất đâu ạ.', true);
