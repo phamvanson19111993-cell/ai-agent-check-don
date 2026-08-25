@@ -1,31 +1,26 @@
-// Render danh sách agent: số thứ tự chạy liên tục qua các nhóm, kèm icon vai trò.
+// Render sổ phòng: đánh số Phòng 1 → Phòng N từ trên xuống.
 (function () {
+  var LABEL = { wait: 'Chờ anh', ready: 'Xong, chờ duyệt', run: 'Đang chạy' };
   var list = document.getElementById('agent-list');
-  var index = 0;
 
-  window.AGENT_GROUPS.forEach(function (group, gi) {
-    if (gi > 0) {
-      var head = document.createElement('div');
-      head.className = 'group-head';
-      head.innerHTML = '<span>' + group.name + '</span><button class="icon-btn" title="Thêm vào ' + group.name + '">+</button>';
-      list.appendChild(head);
-    }
+  window.AGENTS.forEach(function (agent, i) {
+    var row = document.createElement('div');
+    row.className = 'room';
 
-    group.agents.forEach(function (agent) {
-      index += 1;
-      var row = document.createElement('button');
-      row.className = 'agent-row';
-      row.type = 'button';
-      row.innerHTML =
-        '<span class="num">' + index + '</span>' +
-        '<span class="role-icon" aria-hidden="true">' + agent.icon + '</span>' +
-        '<span class="text"><span class="name">' + agent.name + '</span>' +
-        '<span class="role">' + agent.role + '</span></span>';
-      row.addEventListener('click', function () {
-        list.querySelectorAll('.agent-row.active').forEach(function (el) { el.classList.remove('active'); });
-        row.classList.add('active');
-      });
-      list.appendChild(row);
-    });
+    var link = agent.session
+      ? '<a class="open" href="https://claude.ai/code/' + agent.session + '">Mở phòng →</a>'
+      : '';
+    var pill = agent.status
+      ? '<span class="pill ' + agent.status + '">' + LABEL[agent.status] + '</span>'
+      : '<span class="pill local">💻 trên máy</span>';
+
+    row.innerHTML =
+      '<span class="rank">Phòng ' + (i + 1) + '</span>' +
+      '<span class="glyph" aria-hidden="true">' + agent.icon + '</span>' +
+      '<span class="body"><span class="name">' + agent.name + '</span>' +
+      '<span class="role">' + agent.role + '</span></span>' +
+      '<span class="meta">' + pill + link + '</span>';
+
+    list.appendChild(row);
   });
 })();
