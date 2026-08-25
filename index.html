@@ -209,6 +209,13 @@ a{color:var(--red)}
 .result-cta{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
 @media (prefers-reduced-motion: reduce){.bar span{transition:none}}
 
+/* phan hoi */
+.fb{display:grid;gap:1rem}
+@media(min-width:760px){.fb{grid-template-columns:repeat(3,1fr)}}
+.fb-card{border:1px dashed var(--line);background:var(--sunk);border-radius:var(--r);padding:1.4rem 1.25rem;min-height:132px;display:flex;flex-direction:column;gap:.5rem;justify-content:center}
+.fb-n{font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3)}
+.fb-card p{font-size:.88rem;color:var(--ink3)}
+
 /* tu van rieng */
 .advice{border-top:1px solid var(--line2);padding-top:1rem;display:flex;flex-direction:column;gap:.9rem}
 .advice-h{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin:0;font-weight:400}
@@ -589,6 +596,66 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
           <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Đủ liều mỗi ngày.</b> Liều lắt nhắt vài miligam không tạo được khác biệt nào đáng kể.</p></div>
           <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Có chất dẫn đi kèm.</b> Coenzyme Q10 tan trong dầu; cần môi trường dầu và chất tăng hấp thu thì mới vào được máu.</p></div>
           <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Có lớp chống oxy hoá bảo vệ.</b> Nếu gốc tự do vẫn hoành hành thì phần vừa bổ sung cũng bị đốt sạch.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ho-tro">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Giai đoạn 2 · Xử lý &amp; hỗ trợ</span>
+        <h2>Để lại số rồi thì chuyện gì xảy ra</h2>
+        <p class="lede">Nói trước cho anh chị biết, để không ai phải nhấc máy trong tâm thế đề phòng.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="k">BƯỚC 01</span>
+          <h3>Gọi lại trong 15 phút</h3>
+          <p>Trong giờ hành chính. Ngoài giờ thì sáng hôm sau. Gọi từ số cố định của công ty, không gọi số lạ.</p>
+        </div>
+        <div class="step">
+          <span class="k">BƯỚC 02</span>
+          <h3>Hỏi kỹ trước khi tư vấn</h3>
+          <p>Tuổi, tình trạng hiện tại, đang dùng thuốc gì, đã đi khám chưa. Nếu anh chị đang điều trị bệnh, nhân viên sẽ khuyên hỏi bác sĩ trước chứ không chốt đơn.</p>
+        </div>
+        <div class="step">
+          <span class="k">BƯỚC 03</span>
+          <h3>Hướng dẫn cách dùng</h3>
+          <p>Uống 2 viên sau bữa sáng hoặc bữa trưa, tránh buổi tối. Dặn rõ những trường hợp không nên dùng.</p>
+        </div>
+        <div class="step">
+          <span class="k">BƯỚC 04</span>
+          <h3>Hỏi lại sau hai tuần</h3>
+          <p>Xem anh chị uống có đều không, có gì bất thường không. Thấy khác lạ thì dừng ngay và đi khám.</p>
+        </div>
+      </div>
+      <div class="col stack">
+        <p><b>Ba điều nhân viên tư vấn không được làm:</b> không nói sản phẩm chữa được bệnh, không giục chốt đơn trong cuộc gọi đầu, không khuyên bỏ hay giảm thuốc bác sĩ đã kê.</p>
+        <div class="fill">
+          <span class="lbl">Cần anh điền · Chính sách sau bán</span>
+          <span class="txt">Điền chính sách thật của bên anh: đổi trả trong bao nhiêu ngày, điều kiện thế nào, ai chịu phí ship khi đổi, có kiểm tra hàng trước khi thanh toán không, hotline chăm sóc sau bán. Đây là phần khách ở tuổi này đọc kỹ nhất trước khi quyết định.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="phan-hoi">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Giai đoạn 2 · Phản hồi</span>
+        <h2>Khách đã mua nói gì</h2>
+        <p class="lede">Phần này em để trống có chủ ý. Em không tự viết phản hồi khách hàng — bịa ra một dòng cũng là làm giả bằng chứng, và với thực phẩm bảo vệ sức khoẻ thì còn là chuyện pháp lý.</p>
+      </div>
+      <div class="fb">
+        <div class="fb-card"><span class="fb-n">Phản hồi 01</span><p>Chỗ này dành cho phản hồi thật của khách.</p></div>
+        <div class="fb-card"><span class="fb-n">Phản hồi 02</span><p>Chỗ này dành cho phản hồi thật của khách.</p></div>
+        <div class="fb-card"><span class="fb-n">Phản hồi 03</span><p>Chỗ này dành cho phản hồi thật của khách.</p></div>
+      </div>
+      <div class="col stack">
+        <div class="fill">
+          <span class="lbl">Cần anh gửi · Phản hồi thật, và phải lọc kỹ</span>
+          <span class="txt">Anh gửi em phản hồi thật kèm sự đồng ý của khách. Nhưng phải lọc: quảng cáo thực phẩm bảo vệ sức khoẻ <b>bị cấm dùng thư cảm ơn của người bệnh</b>, cấm dùng hình ảnh và tên của bác sĩ, nhân viên y tế, cơ sở y tế. Nên phản hồi <b>dùng được</b> là loại nói về dịch vụ: tư vấn có kỹ không, giao hàng nhanh không, đóng gói ra sao, hàng có đúng tem nhãn không. Loại <b>không dùng được</b> là những câu kiểu “uống xong hết mệt”, “khỏi bệnh tim”, “bác sĩ khen” — đây chính là nhóm câu bị xử phạt nhiều nhất. Anh gửi sang, em lọc và dựng lại phần này.</span>
         </div>
       </div>
     </div>
@@ -1270,6 +1337,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   </div>
   <nav>
     <a href="#van-de">Vấn đề</a>
+    <a href="#ho-tro">Hỗ trợ</a>
     <a href="#co-che">Cơ chế</a>
     <a href="#san-pham">Sản phẩm</a>
     <a href="#chung-minh">Giấy tờ</a>
