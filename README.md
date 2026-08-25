@@ -23,6 +23,33 @@ Mở `index.html` bằng trình duyệt để xem. Sửa danh sách trong `agent
 
 Nhóm `mac` gồm các agent số 6–11; số thứ tự chạy liên tục qua các nhóm.
 
+## Tên session trên Claude
+
+Đã đổi tự động (7 session cloud):
+
+| Vai trò | Tên session |
+|---|---|
+| Video content sức khỏe | `🩺 Video content sức khỏe — kịch bản & hook` |
+| Fanpage thương hiệu | `👩 Lady Page — video & ads sản phẩm` |
+| Đồng bộ dữ liệu | `📊 Fanpage Pancake — đồng bộ dữ liệu` |
+| Bán hàng Zalo | `💬 Agen Zalo — tư vấn & chăm khách` |
+| Chăm sóc sau bán | `🎧 CSKH — chăm sóc khách sau bán` |
+| Chống trùng đơn | `🔁 Check trùng đơn — bot Telegram` |
+| Giao diện danh sách | `🔢 Danh sách agent — icon & đánh số` |
+
+Nhóm `mac` chạy trên máy cá nhân nên phải đổi tay — copy đúng các chuỗi sau:
+
+```
+🎬 Edivideo — dựng & cắt video tự động
+✍️ Kịch bản sale — content chốt đơn
+🎥 Curl Foxia API — hướng dẫn kỹ thuật
+📚 Học tập & đào tạo — nội bộ
+📞 SĐT chưa chốt Pancake — gom lead gọi lại
+```
+
+Lưu ý: số 1–9 hiện trong sidebar là **phím tắt theo vị trí**, không phải số đặt được;
+sidebar cũng sắp theo lần dùng gần nhất, nên thứ tự ưu tiên xem ở bảng trên cùng file này.
+
 ## Cấu trúc
 
 - `index.html` — khung sidebar
