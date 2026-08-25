@@ -26,23 +26,23 @@ Mở `index.html` bằng trình duyệt để xem. Sửa danh sách trong `agent
 7 session cloud đã đổi tên tự động:
 
 ```
-🩺 Video content sức khỏe — kịch bản & hook
-👩 Lady Page — video & ads sản phẩm
-📊 Fanpage Pancake — đồng bộ dữ liệu
-💬 Agen Zalo — tư vấn & chăm khách
-🎧 CSKH — chăm sóc khách sau bán
-🔁 Check trùng đơn — bot Telegram
-🔢 Danh sách agent — icon & đánh số
+Phòng 3 · 🩺 Video content sức khỏe
+Phòng 4 · 👩 Lady Page
+Phòng 5 · 📊 Fanpage Pancake
+Phòng 8 · 💬 Agen Zalo
+Phòng 9 · 🎧 CSKH
+Phòng 11 · 🔁 Check trùng đơn
+🗺️ Sơ đồ phòng AI
 ```
 
 5 session nhóm `mac` chạy trên máy cá nhân nên phải đổi tay — copy đúng các chuỗi sau:
 
 ```
-🎬 Edivideo — dựng & cắt video tự động
-✍️ Kịch bản sale — content chốt đơn
-🎥 Curl Foxia API — hướng dẫn kỹ thuật
-📚 Học tập & đào tạo — nội bộ
-📞 SĐT chưa chốt Pancake — gom lead gọi lại
+Phòng 1 · 📚 Học tập & đào tạo
+Phòng 2 · 🎥 Curl Foxia API
+Phòng 6 · 🎬 Edivideo
+Phòng 7 · ✍️ Kịch bản sale
+Phòng 10 · 📞 SĐT chưa chốt Pancake
 ```
 
 Lưu ý: số 1–9 hiện trong sidebar Claude là **phím tắt theo vị trí**, app tự gán, không đặt tay được;
