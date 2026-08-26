@@ -12,10 +12,13 @@ TẤT CẢ ĐỀU Ở TRẠNG THÁI TẠM DỪNG. Không một đồng nào bị
 anh vào Ads Manager tự gạt nút bật. Đây là cố ý — để anh soi lại một lượt
 trước khi tiền bắt đầu chạy.
 
-CÁCH CHẠY
-  1. Điền bốn dòng trong khối CẦN ĐIỀN bên dưới
-  2. pip install requests
-  3. python3 tao-chien-dich.py
+CÁCH CHẠY — không cần sửa gì trong file này
+  1. pip install requests
+  2. python3 tao-chien-dich.py
+  3. Chương trình hỏi bốn số, dán vào từng cái rồi Enter
+
+Ai muốn khỏi gõ lại mỗi lần thì điền sẵn vào khối CẦN ĐIỀN bên dưới,
+hoặc đặt biến môi trường FB_TOKEN, FB_ACT, FB_PAGE, FB_PIXEL.
 
 LẤY BỐN SỐ Ở ĐÂU — xem cuối file.
 """
@@ -96,6 +99,19 @@ NHOM = [
 def goi(duong_dan, du_lieu=None, tep=None, lay=False):
     """Gọi một lệnh tới Facebook. Dừng hẳn nếu Facebook báo lỗi."""
     url = "%s/%s" % (API, duong_dan)
+    try:
+        return _goi(url, du_lieu, tep, lay)
+    except requests.exceptions.SSLError:
+        sys.exit("Lỗi chứng chỉ bảo mật khi nối tới Facebook. Mạng công ty hoặc phần mềm "
+                 "diệt virus có thể đang chặn. Thử mạng khác, hoặc tắt tạm phần mềm chặn.")
+    except requests.exceptions.ConnectionError:
+        sys.exit("Không nối được tới Facebook. Kiểm tra mạng, rồi thử mở "
+                 "graph.facebook.com trên trình duyệt xem có vào được không.")
+    except requests.exceptions.Timeout:
+        sys.exit("Facebook trả lời quá chậm, quá thời gian chờ. Chạy lại lệnh một lần nữa.")
+
+
+def _goi(url, du_lieu, tep, lay):
     if lay:
         r = requests.get(url, params=dict(du_lieu or {}, access_token=TOKEN), timeout=60)
     elif tep:
@@ -120,11 +136,50 @@ def goi(duong_dan, du_lieu=None, tep=None, lay=False):
     return kq
 
 
+def hoi(nhac, goi_y="", kin=False):
+    """Hỏi một giá trị ngay trên màn hình, khỏi phải mở file ra sửa."""
+    while True:
+        if kin:
+            import getpass
+            v = getpass.getpass(nhac).strip()
+        else:
+            v = input(nhac).strip()
+        if not v and goi_y:
+            return goi_y
+        if v:
+            return v
+        print("  Chưa nhập gì. Thử lại, hoặc Ctrl+C để thoát.")
+
+
 def kiem_tra_dau_vao():
-    thieu = [t for t, v in (("FB_TOKEN", TOKEN), ("FB_ACT", TAI_KHOAN),
-                            ("FB_PAGE", TRANG), ("FB_PIXEL", PIXEL)) if not v]
-    if thieu:
-        sys.exit("Chưa điền: %s — mở file, điền vào khối CẦN ĐIỀN." % ", ".join(thieu))
+    """Thiếu số nào thì hỏi ngay, không bắt người dùng mở file."""
+    global TOKEN, TAI_KHOAN, TRANG, PIXEL
+
+    if not (TOKEN and TAI_KHOAN and TRANG and PIXEL):
+        print("""
+╭────────────────────────────────────────────────────────────╮
+│  Cần bốn số. Thiếu số nào chương trình hỏi ngay bên dưới.  │
+│  Cách lấy từng số nằm ở cuối file này.                     │
+╰────────────────────────────────────────────────────────────╯""")
+
+    if not TOKEN:
+        print("\nMã token — dán vào rồi Enter. Chữ sẽ KHÔNG hiện lên màn hình,")
+        print("đó là bình thường, cứ dán rồi Enter.")
+        TOKEN = hoi("  Token: ", kin=True)
+    if not TAI_KHOAN:
+        print("\nMã tài khoản quảng cáo — dãy số sau chữ act= trên thanh địa chỉ.")
+        TAI_KHOAN = hoi("  Mã tài khoản: ")
+    if not TRANG:
+        print("\nMã Trang — Enter luôn để dùng 61592861334561 (lấy từ link Messenger).")
+        TRANG = hoi("  Mã Trang [61592861334561]: ", goi_y="61592861334561")
+    if not PIXEL:
+        print("\nMã Pixel — dãy số sau /dataset/ trong Trình quản lý sự kiện.")
+        print("KHÔNG phải mã tài khoản quảng cáo.")
+        PIXEL = hoi("  Mã Pixel: ")
+
+    for ten, v in (("Mã tài khoản", TAI_KHOAN), ("Mã Trang", TRANG), ("Mã Pixel", PIXEL)):
+        if not v.isdigit():
+            sys.exit("%s phải là dãy số, anh vừa nhập: %r" % (ten, v))
 
     if TAI_KHOAN == PIXEL:
         sys.exit("Mã tài khoản và mã Pixel đang giống hệt nhau. Một trong hai đang sai.\n"
