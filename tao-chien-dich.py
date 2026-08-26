@@ -42,7 +42,7 @@ TAI_KHOAN  = os.environ.get("FB_ACT",   "1562043448271111")   # Tài khoản cá
 TRANG      = os.environ.get("FB_PAGE",  "61592861334561")     # Trang DiLiM Supplement
 PIXEL      = os.environ.get("FB_PIXEL", "1277743445418211")   # Pixel đang gắn trên sonsongkhoe.com
 
-ANH_QC     = "images/qc-vuong.jpg"              # Ảnh quảng cáo 1080x1080
+ANH_QC     = "qc-vuong.jpg"                     # Tự tải về nếu chưa có
 LINK       = "https://sonsongkhoe.com"
 NGAN_SACH  = 150000                             # đồng mỗi ngày, mỗi nhóm
 TEN_CD     = "Q10 · T9 · Tiếp cận mới"
@@ -151,6 +151,26 @@ def hoi(nhac, goi_y="", kin=False):
         print("  Chưa nhập gì. Thử lại, hoặc Ctrl+C để thoát.")
 
 
+ANH_TREN_MANG = "https://sonsongkhoe.com/images/qc-vuong.jpg"
+
+
+def lay_anh_ve():
+    """Không có ảnh trong máy thì tự tải từ trang web về, khỏi phải tạo thư mục."""
+    print("Không thấy %s — đang tải ảnh quảng cáo từ sonsongkhoe.com…" % ANH_QC)
+    try:
+        r = requests.get(ANH_TREN_MANG, timeout=60)
+        r.raise_for_status()
+    except Exception as e:
+        sys.exit("Tải ảnh không được (%s).\nAnh tải tay ảnh qc-vuong.jpg rồi để cạnh file này, "
+                 "và sửa dòng ANH_QC thành \"qc-vuong.jpg\"." % e)
+    thu_muc = os.path.dirname(ANH_QC)
+    if thu_muc:
+        os.makedirs(thu_muc, exist_ok=True)
+    with open(ANH_QC, "wb") as f:
+        f.write(r.content)
+    print("Đã tải xong ảnh, %d KB" % (len(r.content) // 1024))
+
+
 def kiem_tra_dau_vao():
     """Thiếu số nào thì hỏi ngay, không bắt người dùng mở file."""
     global TOKEN, TAI_KHOAN, TRANG, PIXEL
@@ -186,7 +206,7 @@ def kiem_tra_dau_vao():
                  "Mã Pixel lấy ở Trình quản lý sự kiện, trong URL đoạn /dataset/<mã>/")
 
     if not os.path.exists(ANH_QC):
-        sys.exit("Không thấy ảnh %s — sửa dòng ANH_QC cho đúng đường dẫn." % ANH_QC)
+        lay_anh_ve()
 
 
 def main():
