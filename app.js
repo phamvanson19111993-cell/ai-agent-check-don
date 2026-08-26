@@ -7,9 +7,12 @@
     var row = document.createElement('div');
     row.className = 'room';
 
-    var link = agent.session
-      ? '<a class="open" href="https://claude.ai/code/' + agent.session + '">Mở phòng →</a>'
-      : '';
+    var link = '';
+    if (agent.session) {
+      link = '<a class="open" href="https://claude.ai/code/' + agent.session + '">Mở phòng →</a>';
+    } else if (agent.doc) {
+      link = '<a class="open" href="' + agent.doc + '">Xem sổ tay →</a>';
+    }
     var pill = agent.status
       ? '<span class="pill ' + agent.status + '">' + LABEL[agent.status] + '</span>'
       : '<span class="pill local">💻 trên máy</span>';

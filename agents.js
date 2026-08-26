@@ -1,7 +1,9 @@
-// 11 phòng AI — nhóm chạy trên máy Mac xếp trước (Phòng 1–5),
+// 12 phòng AI — nhóm chạy trên máy Mac xếp trước (Phòng 1–5),
 // nhóm chạy trên Claude cloud xếp sau (Phòng 6–11), trong mỗi nhóm giữ thứ tự ưu tiên tăng dần.
+// Phòng 12 là bộ prompt + sổ tay, dán vào Claude/ChatGPT là chạy được ở bất cứ đâu.
 // Đổi thứ tự = đổi vị trí trong mảng này, số phòng tự chạy lại.
-// where: 'mac' (chạy trên máy) | 'cloud' (mở được từ Claude)
+// where: 'mac' (chạy trên máy) | 'cloud' (mở được từ Claude) | 'kit' (prompt + sổ tay trong repo)
+// doc: đường dẫn sổ tay trong repo — hiện nút "Xem sổ tay →"
 // status: 'wait' (chờ anh) | 'ready' (xong, chờ duyệt) | 'run' (đang chạy) | ''
 window.AGENTS = [
   { icon: '📚', name: 'Học tập & đào tạo',      role: 'Nội bộ: tự học, đào tạo nhân viên mới',        where: 'mac' },
@@ -14,5 +16,6 @@ window.AGENTS = [
   { icon: '📊', name: 'Fanpage Pancake',         role: 'Đồng bộ dữ liệu fanpage về hệ thống',          where: 'cloud', status: 'ready', session: 'session_01S4GidnKgEJhxx4eWvT9Kx3' },
   { icon: '💬', name: 'Agen Zalo',               role: 'Tư vấn & chăm khách trên Zalo',                where: 'cloud', status: 'ready', session: 'session_019kdZ7RZ4TytuPHKkn5uBFk' },
   { icon: '🎧', name: 'CSKH',                    role: 'Chăm sóc sau bán, xử lý khiếu nại',            where: 'cloud', status: 'wait',  session: 'session_0181dYS4ZhTFf6rMjhxWg23c' },
-  { icon: '🔁', name: 'Check trùng đơn',         role: 'Bot Telegram chặn trùng đơn, cảnh báo ngay',   where: 'cloud', status: 'ready', session: 'session_01Kf9BfAZLiJ2CychW21bTn2' }
+  { icon: '🔁', name: 'Check trùng đơn',         role: 'Bot Telegram chặn trùng đơn, cảnh báo ngay',   where: 'cloud', status: 'ready', session: 'session_01Kf9BfAZLiJ2CychW21bTn2' },
+  { icon: '📈', name: 'AI Ads Manager',          role: 'Chạy & kiểm soát Meta Ads: creative, số liệu, quyết định scale', where: 'kit', status: 'ready', doc: 'ads-agent/README.md' }
 ];
