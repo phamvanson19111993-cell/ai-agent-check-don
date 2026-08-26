@@ -26,6 +26,18 @@
 
 var EMAIL_BAO = '';   // ví dụ 'phamvanson19111993@gmail.com'. Để trống là tắt.
 
+/* ── ĐẨY ĐƠN SANG PANCAKE POS ────────────────────────────────────────────
+   Lấy trong Pancake: Cài đặt > API. Điền vào đây, KHÔNG điền vào trang web —
+   trang web ai cũng xem được mã nguồn, để khoá ở đó là người lạ tạo đơn giả
+   và đọc hết đơn thật của anh. Trong file này thì khách không nhìn thấy.
+   Để trống cả hai là tắt, mọi thứ khác vẫn chạy bình thường.            */
+var PANCAKE = {
+  shop_id : '',      // mã shop, chỉ gồm số
+  api_key : '',      // khoá API
+  ma_hang : ''       // mã sản phẩm trong Pancake (variation id). Chưa có cũng
+                     // được — đơn vẫn tạo, số hộp ghi trong phần ghi chú.
+};
+
 // Trái: tên cột trong Sheet. Phải: tên mục dữ liệu trang gửi lên.
 var ANH_XA_COT = {
   'Tên Khách'         : 'ten',
@@ -81,6 +93,7 @@ function doPost(e) {
 
     sheet.appendRow(hang);
     dinhDangHangMoi(sheet, tieuDe);
+    daySangPancake(giaTri, d);
     baoEmail(giaTri, d);
 
     return traLoi({ ok: true });
@@ -177,6 +190,67 @@ function baoEmail(g, d) {
   } catch (err) {
     // Hết hạn mức gửi mail thì bỏ qua — dòng dữ liệu đã ghi vào Sheet rồi, không được để mất.
   }
+}
+
+/**
+ * Tạo đơn bên Pancake POS. Ghi lại nguyên văn phản hồi vào trang "Nhật ký"
+ * để lần chạy thử đầu tiên biết ngay đúng hay sai, sai ở chỗ nào.
+ *
+ * LƯU Ý THẬT: tên các trường dưới đây viết theo cách Pancake thường dùng,
+ * nhưng mỗi shop cấu hình một kiểu. Chạy thử một đơn rồi mở trang Nhật ký,
+ * thấy mã 200 là xong; thấy mã khác thì gửi nguyên dòng đó cho Claude sửa lại.
+ */
+function daySangPancake(g, d) {
+  if (!PANCAKE.shop_id || !PANCAKE.api_key) return;
+
+  var sdt = String(g.sdt).replace("'", '');
+  var ghiChu = [
+    'Đơn từ sonsongkhoe.com',
+    g.soluong   ? 'Gói: '          + g.soluong   : '',
+    g.tinhtrang ? 'Tình trạng: '   + g.tinhtrang : '',
+    g.tuKiem    ? 'Bài kiểm tra: ' + g.tuKiem    : ''
+  ].filter(function (x) { return x; }).join(' | ');
+
+  var don = {
+    bill_full_name    : g.ten,
+    bill_phone_number : sdt,
+    shipping_address  : { full_address: g.dia_chi },
+    note              : ghiChu,
+    status            : 0                     // 0 = đơn mới, chờ xác nhận
+  };
+  if (PANCAKE.ma_hang) {
+    don.items = [{ variation_id: PANCAKE.ma_hang, quantity: Number(g.so_hop) || 1 }];
+  }
+
+  var url = 'https://pos.pages.fm/api/v1/shops/' + PANCAKE.shop_id +
+            '/orders?api_key=' + encodeURIComponent(PANCAKE.api_key);
+  try {
+    var res = UrlFetchApp.fetch(url, {
+      method            : 'post',
+      contentType       : 'application/json',
+      payload           : JSON.stringify(don),
+      muteHttpExceptions: true
+    });
+    ghiNhatKy('Pancake', res.getResponseCode(), res.getContentText());
+  } catch (err) {
+    ghiNhatKy('Pancake', 'lỗi', String(err));
+  }
+}
+
+/** Ghi một dòng vào trang "Nhật ký". Không có trang đó thì tự tạo. */
+function ghiNhatKy(dau, ma, noiDung) {
+  try {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var nk = ss.getSheetByName('Nhật ký');
+    if (!nk) {
+      nk = ss.insertSheet('Nhật ký');
+      nk.getRange(1, 1, 1, 4)
+        .setValues([['Thời gian', 'Nơi', 'Mã trả về', 'Nội dung']])
+        .setFontWeight('bold');
+      nk.setFrozenRows(1);
+    }
+    nk.appendRow([new Date(), dau, ma, String(noiDung).slice(0, 4000)]);
+  } catch (boQua) {}
 }
 
 function chuoi(v) {
