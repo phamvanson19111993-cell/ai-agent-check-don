@@ -37,10 +37,10 @@ API = "https://graph.facebook.com/v21.0"
 # ─────────────────────────── CẦN ĐIỀN ───────────────────────────
 # Có thể điền thẳng vào đây, hoặc đặt biến môi trường cùng tên.
 
-TOKEN      = os.environ.get("FB_TOKEN",   "")   # Mã truy cập, chuỗi rất dài
-TAI_KHOAN  = os.environ.get("FB_ACT",     "")   # Mã tài khoản quảng cáo, chỉ số
-TRANG      = os.environ.get("FB_PAGE",    "")   # Mã Trang DiLiM Supplement
-PIXEL      = os.environ.get("FB_PIXEL",   "")   # Mã Pixel THẬT (không phải mã tài khoản)
+TOKEN      = os.environ.get("FB_TOKEN", "")                   # Mã truy cập, chuỗi rất dài
+TAI_KHOAN  = os.environ.get("FB_ACT",   "1562043448271111")   # Tài khoản cá nhân Phạm Sơn
+TRANG      = os.environ.get("FB_PAGE",  "61592861334561")     # Trang DiLiM Supplement
+PIXEL      = os.environ.get("FB_PIXEL", "1277743445418211")   # Pixel đang gắn trên sonsongkhoe.com
 
 ANH_QC     = "images/qc-vuong.jpg"              # Ảnh quảng cáo 1080x1080
 LINK       = "https://sonsongkhoe.com"
@@ -158,7 +158,7 @@ def kiem_tra_dau_vao():
     if not (TOKEN and TAI_KHOAN and TRANG and PIXEL):
         print("""
 ╭────────────────────────────────────────────────────────────╮
-│  Cần bốn số. Thiếu số nào chương trình hỏi ngay bên dưới.  │
+│  Ba số đã điền sẵn. Thiếu số nào chương trình hỏi bên dưới.│
 │  Cách lấy từng số nằm ở cuối file này.                     │
 ╰────────────────────────────────────────────────────────────╯""")
 
