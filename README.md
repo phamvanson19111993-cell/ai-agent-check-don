@@ -49,9 +49,42 @@ Phòng 5 · 📞 SĐT chưa chốt Pancake
 Lưu ý: số 1–9 hiện trong sidebar Claude là **phím tắt theo vị trí**, app tự gán, không đặt tay được;
 sidebar cũng sắp theo lần dùng gần nhất. Số phòng trong file này mới là thứ tự ưu tiên.
 
+## DILIM AI Command Center
+
+Sổ 11 phòng ở trên là **ai đang chạy**. Command Center là **cách 8 phòng chuyên môn phối hợp**:
+AI Tổng Chỉ Huy nhận yêu cầu → chọn phòng → thu thập dữ liệu → kiểm tra nguồn →
+phát hiện mâu thuẫn → giao phân tích → kiểm toán chéo → mới kết luận.
+
+Mở `command-center.html` để xem sơ đồ. Prompt gốc: `prompts/dilim-tong-chi-huy.md`.
+
+| Phòng | Chuyên môn | Agent đang bơm dữ liệu |
+|---|---|---|
+| 1 | 🗄️ Data Center — dữ liệu gốc, ưu tiên số thực tế | 📊 Fanpage Pancake · 📞 SĐT chưa chốt · 🔁 Check trùng đơn |
+| 2 | 📜 Chính sách & Hoa hồng | ⚠️ chưa có |
+| 3 | 📞 Sale — lead, tỷ lệ chốt, AOV | ✍️ Kịch bản sale · 📞 SĐT chưa chốt · 💬 Agen Zalo |
+| 4 | 📣 Marketing & Ads — CPL, ROAS | 🩺 Video sức khỏe · 👩 Lady Page · 🎬 Edivideo |
+| 5 | 🌐 Đại lý & Hệ thống — F1, F2 | ⚠️ chưa có |
+| 6 | 🎧 CSKH — tái mua, khiếu nại | 🎧 CSKH · 💬 Agen Zalo |
+| 7 | 💰 Tài chính — dòng tiền, lợi nhuận | ⚠️ chưa có |
+| 8 | 🔍 AI Kiểm toán — chốt chặn độc lập | 🔁 Check trùng đơn (một phần) |
+
+**3 phòng chưa có agent phụ trách: Chính sách & Hoa hồng, Đại lý & Hệ thống, Tài chính.**
+Chừng nào chưa có, mọi câu hỏi về hoa hồng / F1–F2 / lợi nhuận đều phải lấy số từ anh và ghi rõ
+trạng thái *"Chưa đối chiếu hệ thống"* — không được coi là đã xác minh.
+
+### 3 luật cứng
+
+1. **Một dữ liệu — một nguồn chính thức.** Trí nhớ AI không phải nguồn.
+2. **Thiếu dữ liệu thì ghi `CHƯA ĐỦ DỮ LIỆU ĐỂ KẾT LUẬN`** và chỉ rõ đang thiếu gì — không suy đoán.
+3. **Hai phòng lệch số thì không tự chọn** — báo `PHÁT HIỆN MÂU THUẪN DỮ LIỆU` và trình bày cả hai nguồn.
+
 ## Cấu trúc
 
 - `index.html` — trang sổ phòng
 - `agents.js` — dữ liệu 11 phòng (icon, tên, vai trò, nơi chạy, trạng thái, link session)
 - `app.js` — render, đánh số Phòng 1 → N
-- `styles.css` — giao diện, có sẵn nền sáng/tối
+- `command-center.html` — sơ đồ 8 phòng chuyên môn & quy trình 8 bước
+- `departments.js` — dữ liệu 8 phòng, 8 bước, thứ tự ưu tiên dữ liệu
+- `command-center.js` — render trang Command Center
+- `prompts/dilim-tong-chi-huy.md` — **bản gốc prompt AI Tổng Chỉ Huy** (sửa ở đây trước)
+- `styles.css` — giao diện chung, có sẵn nền sáng/tối

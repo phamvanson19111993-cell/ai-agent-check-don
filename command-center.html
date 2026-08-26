@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DILIM AI Command Center</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <p class="eyebrow">ai-agent-check-don · command center</p>
+      <h1>DILIM AI Command Center</h1>
+      <p class="lede">AI Tổng Chỉ Huy điều phối 8 phòng chuyên môn: thu thập dữ liệu, kiểm tra nguồn,
+        phát hiện mâu thuẫn, bắt kiểm toán chéo — rồi mới kết luận.
+        Bản gốc prompt: <a class="open" href="prompts/dilim-tong-chi-huy.md">prompts/dilim-tong-chi-huy.md</a></p>
+      <p class="lede"><a class="open" href="index.html">← Sổ 11 phòng AI đang chạy</a></p>
+    </header>
+
+    <section>
+      <h2>Một dữ liệu — một nguồn chính thức</h2>
+      <p class="lede">Mỗi số liệu quan trọng phải có đủ 5 trường trước khi được dùng để kết luận.</p>
+      <div class="chips" id="fields"></div>
+      <p class="note">Trí nhớ AI không phải nguồn chính thức. Không tự chuyển trạng thái thành “Đã xác minh”.</p>
+    </section>
+
+    <section>
+      <h2>8 phòng chuyên môn</h2>
+      <div id="dept-list" class="ledger"></div>
+    </section>
+
+    <section>
+      <h2>Quy trình xử lý mọi câu hỏi</h2>
+      <div id="step-list" class="ledger"></div>
+    </section>
+
+    <section>
+      <h2>Ưu tiên khi hai dữ liệu mâu thuẫn</h2>
+      <ol id="priority" class="priority"></ol>
+      <p class="note">Không dùng kết luận cũ để ghi đè dữ liệu gốc mới hơn.
+        Thiếu dữ liệu thì ghi <strong>CHƯA ĐỦ DỮ LIỆU ĐỂ KẾT LUẬN</strong> và chỉ rõ đang thiếu gì — không suy đoán.</p>
+    </section>
+  </main>
+
+  <script src="departments.js"></script>
+  <script src="command-center.js"></script>
+</body>
+</html>

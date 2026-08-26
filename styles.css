@@ -135,3 +135,100 @@ h1 {
   .body { grid-area: body; }
   .meta { grid-area: meta; justify-content: flex-start; }
 }
+
+/* ── Command Center ───────────────────────────────────── */
+
+section { display: flex; flex-direction: column; gap: 14px; }
+
+h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+section .lede { margin: 0; }
+
+.note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 68ch;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 5px 11px 5px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.chip-n {
+  display: inline-grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--ground);
+  font-family: ui-monospace, "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.room.dept { align-items: start; padding-top: 17px; padding-bottom: 17px; }
+.room.dept .glyph { padding-top: 1px; }
+.room.dept .body { gap: 7px; grid-column: 3 / -1; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 1px; }
+
+.tag {
+  font-size: 11.5px;
+  color: var(--ink-2);
+  background: var(--idle-soft);
+  border-radius: 4px;
+  padding: 2px 7px;
+  line-height: 1.5;
+}
+
+.rule {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--wait);
+  background: var(--wait-soft);
+  border-radius: 5px;
+  padding: 5px 9px;
+}
+
+.feeds { font-size: 12.5px; color: var(--muted); }
+.feeds.gap { color: var(--wait); font-weight: 500; }
+
+.room.step { grid-template-columns: 78px minmax(0, 1fr); align-items: start; }
+.room.step .body { grid-column: 2; }
+
+.priority {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--ink-2);
+}
+.priority li::marker { color: var(--muted); font-family: ui-monospace, monospace; font-size: 13px; }
+.priority li:first-child { color: var(--ink); font-weight: 600; }
+
+@media (max-width: 620px) {
+  .room.dept { grid-template-areas: "rank rank" "glyph body"; }
+  .room.dept .body { grid-column: auto; }
+  .room.step { grid-template-columns: minmax(0, 1fr); grid-template-areas: "rank" "body"; }
+  .room.step .body { grid-column: auto; }
+}
