@@ -30,6 +30,7 @@ jobs:
           cp index.html _site/
           cp -r images _site/
           cp -r videos/cat _site/videos/cat
+          cp CNAME _site/CNAME
           touch _site/.nojekyll
           du -sh _site
 
