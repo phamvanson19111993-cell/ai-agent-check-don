@@ -582,6 +582,9 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .don-tra .qr-card{width:132px;flex:0 0 auto;padding:.45rem;gap:0}
 .ck-qr-cap{flex:1 1 auto;font-weight:400;font-size:.86em;line-height:1.5;opacity:.85}
 .ck-note{display:block;margin-top:.55rem;font-weight:400;line-height:1.6}
+.ck-xong{display:block;width:100%;margin:.85rem 0 0;text-align:center}
+.ck-xong.xong{opacity:.62;cursor:default}
+.ck-cam-on{display:block;margin-top:.6rem;padding:.75rem .9rem;border-radius:var(--r);background:#fff;border:1px solid currentColor;font-weight:400;line-height:1.6;font-size:.95em}
 .don-tra-hang{display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-start;margin-top:.75rem}
 .don-tra .qr-card{flex:0 0 auto}
 .don-tra-info{flex:1 1 210px;font-weight:400;line-height:1.65}
@@ -2244,7 +2247,31 @@ var FORM_GOOGLE = {
           ? '<span class="ck-note ck-du" hidden>Chuyển đủ thì nhận hàng là xong, không phải chuẩn bị tiền mặt. '
           + 'Chuyển xong chụp biên lai gửi kèm, bên em gửi hàng ngay trong ngày làm việc.</span>'
           : '')
+      + '<button type="button" class="btn btn-lg ck-xong" '
+      +   'data-coc="' + TIEN_COC + '" data-du="' + (tong || TIEN_COC) + '">'
+      +   'Tôi đã chuyển khoản xong</button>'
+      + '<span class="ck-cam-on" hidden>Bên em nhận được rồi ạ. Anh chị chụp biên lai '
+      + 'gửi qua Messenger hoặc Zalo để bên em đối chiếu và gửi hàng ngay trong ngày làm việc. '
+      + 'Nhân viên vẫn gọi lại xác nhận địa chỉ trước khi gửi.</span>'
       + '</span>';
+  }
+
+  // Khach bam bao da chuyen khoan. Trang khong doc duoc tai khoan ngan hang nen
+  // day la khach tu khai — nhung no phan biet duoc nguoi da mo app ngan hang voi
+  // nguoi chi dien form roi bo di, va do la tin hieu Facebook can de toi uu.
+  function noiDaTra(){
+    var nut = ok.querySelector('.ck-xong');
+    var camOn = ok.querySelector('.ck-cam-on');
+    if(!nut) return;
+    nut.addEventListener('click', function(){
+      var oDu = ok.querySelector('input[name="cach-tra"][value="du"]');
+      var soTien = (oDu && oDu.checked) ? nut.getAttribute('data-du') : nut.getAttribute('data-coc');
+      baoFB('Purchase', soTien);
+      nut.disabled = true;
+      nut.textContent = 'Đã ghi nhận · ' + chamNghin(soTien) + 'đ';
+      nut.classList.add('xong');
+      if(camOn) camOn.hidden = false;
+    });
   }
 
   // Doi giua dat coc va chuyen du: doi so tien, doi ma QR, doi loi dan.
@@ -2311,6 +2338,7 @@ var FORM_GOOGLE = {
       + (guiRoi ? '' : khoiTra(du));
     noiChep();
     noiChonTra();
+    noiDaTra();
     noiBaoLienHe();
     ok.scrollIntoView({block:'start', behavior:'smooth'});
   }
