@@ -253,6 +253,37 @@ function ghiNhatKy(dau, ma, noiDung) {
   } catch (boQua) {}
 }
 
+/**
+ * ══ BẤM NÚT ▶ RUN Ở TRÊN, CHỌN HÀM NÀY, LÀ CÓ MỘT ĐƠN THỬ TRONG BẢNG ══
+ *
+ * Không cần triển khai, không cần link, không cần trang web. Chạy xong mở
+ * bảng ra thấy một dòng "Nguyễn Văn Thử" là phần ghi vào Sheet đã chạy đúng.
+ * Xoá dòng đó đi là sạch.
+ *
+ * Lần đầu chạy Google sẽ hỏi quyền: bấm Xem lại quyền > chọn tài khoản >
+ * Nâng cao > Đi tới ... (không an toàn) > Cho phép. Đó là script của chính
+ * anh nên không sao.
+ */
+function chayThu() {
+  var ketQua = doPost({
+    postData: {
+      contents: JSON.stringify({
+        ten       : 'Nguyễn Văn Thử',
+        sdt       : '0912345678',
+        dia_chi   : 'Số 12 Trần Hưng Đạo, Xóm 5, Thị trấn Yên Định, Huyện Hải Hậu, Nam Định',
+        so_tien   : '17340000',
+        so_hop    : '6',
+        soluong   : '6 hộp — 17.340.000đ (tặng thêm 1 hộp)',
+        tinhtrang : 'Đang uống thuốc hạ mỡ máu nhóm statin',
+        tuKiem    : 'Bài tự kiểm: 9/12 điểm — Cần xử lý sớm',
+        thoi_gian : new Date().toLocaleString('vi-VN'),
+        nguon     : 'chay thu tu Apps Script'
+      })
+    }
+  });
+  Logger.log(ketQua.getContent());
+}
+
 function chuoi(v) {
   return (v === undefined || v === null) ? '' : String(v).trim();
 }
