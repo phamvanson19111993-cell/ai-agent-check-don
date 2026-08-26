@@ -209,6 +209,32 @@ def kiem_tra_dau_vao():
         lay_anh_ve()
 
 
+def lo_pixel(act):
+    """Kiem tra Pixel co dung duoc khong. Khong dung duoc thi tu tao cai moi."""
+    global PIXEL
+    if PIXEL:
+        r = requests.get("%s/%s" % (API, PIXEL),
+                         params={"fields": "name", "access_token": TOKEN}, timeout=60)
+        if "error" not in r.json():
+            print("Pixel     : %s · %s" % (PIXEL, r.json().get("name", "")))
+            return
+        print("Pixel %s khong dung duoc voi tai khoan nay." % PIXEL)
+
+    print("Dang tao Pixel moi ten \"DiLiM Q10\"…")
+    kq = goi("%s/adspixels" % act, {"name": "DiLiM Q10"})
+    PIXEL = kq["id"]
+    print("""
+╭────────────────────────────────────────────────────────────╮
+│  ĐÃ TẠO PIXEL MỚI                                          │
+│                                                            │
+│     %-54s│
+│                                                            │
+│  GỬI DÃY SỐ NÀY CHO CLAUDE để gắn lên sonsongkhoe.com.     │
+│  Chưa gắn thì quảng cáo chạy mà không đếm được đơn nào.    │
+╰────────────────────────────────────────────────────────────╯
+""" % PIXEL)
+
+
 def main():
     kiem_tra_dau_vao()
     act = "act_%s" % TAI_KHOAN.replace("act_", "")
@@ -225,6 +251,8 @@ def main():
               "sẽ KHÔNG phải 150.000đ. Dừng lại và tính lại trước khi chạy tiếp."
               % tk.get("currency"))
         sys.exit(1)
+
+    lo_pixel(act)
 
     # Ảnh dùng chung cho ba mẫu
     with open(ANH_QC, "rb") as f:
@@ -308,6 +336,8 @@ def main():
 │  Bật đủ ba nhóm là tiêu 450.000đ mỗi ngày.                │
 ╰────────────────────────────────────────────────────────────╯
 """)
+    print("Pixel dang dung: %s" % PIXEL)
+    print("Neu so nay khac voi so tren web thi bao Claude doi lai.\n")
 
 
 if __name__ == "__main__":
