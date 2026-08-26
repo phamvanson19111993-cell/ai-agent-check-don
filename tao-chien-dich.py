@@ -38,7 +38,7 @@ API = "https://graph.facebook.com/v21.0"
 # Có thể điền thẳng vào đây, hoặc đặt biến môi trường cùng tên.
 
 TOKEN      = os.environ.get("FB_TOKEN", "")                   # Mã truy cập, chuỗi rất dài
-TAI_KHOAN  = os.environ.get("FB_ACT",   "1562043448271111")   # Tài khoản cá nhân Phạm Sơn
+TAI_KHOAN  = os.environ.get("FB_ACT",   "2260044828113956")   # Pham Son BM1.1 — BM cua anh
 TRANG      = os.environ.get("FB_PAGE",  "61592861334561")     # Trang DiLiM Supplement
 PIXEL      = os.environ.get("FB_PIXEL", "1277743445418211")   # Pixel đang gắn trên sonsongkhoe.com
 
