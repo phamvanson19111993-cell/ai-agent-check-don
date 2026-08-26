@@ -2023,7 +2023,13 @@ var NGAN_HANG = {
   hien_thi      : "3869 1388 888"    // cách nhóm số cho dễ đọc trên trang
 };
 
-/* 5 · LIÊN HỆ */
+/* 5 · TỰ MỞ MESSENGER SAU KHI KHÁCH GỬI ĐƠN
+      true  = khách bấm gửi xong, Messenger tự mở ra với đơn đã soạn sẵn,
+              khách chỉ việc bấm Gửi. Tin nhắn chảy về Pancake.
+      false = không tự mở, khách tự bấm nút. */
+var TU_MO_MESSENGER = true;
+
+/* 6 · LIÊN HỆ */
 var LIEN_HE = {
   hotline    : "0913351394",
   messenger  : "https://m.me/61592861334561",
@@ -2149,6 +2155,17 @@ var FORM_GOOGLE = {
 
   // Ban gui qua Messenger / Zalo / SMS: don kem luon phan chuyen khoan,
   // de khach giu duoc so tai khoan va so tien ngay trong hop thoai.
+  // Mo Messenger ngay trong cu bam cua khach. Goi cham hon mot nhip la
+  // trinh duyet coi nhu cua so tu bat va chan lai.
+  function moMessenger(noiDung){
+    if(!TU_MO_MESSENGER) return;
+    try{
+      var w = window.open(LIEN_HE.messenger + '?text=' + encodeURIComponent(noiDung),
+                          '_blank', 'noopener');
+      if(w) w.opener = null;
+    }catch(e){}
+  }
+
   function tinNhan(du){
     var t = tomTat(du);
     var con = du.so_tien ? (Number(du.so_tien) - TIEN_COC) : 0;
@@ -2372,6 +2389,7 @@ var FORM_GOOGLE = {
     du.nguon     = location.href;
 
     baoFB('Lead', du.so_tien);
+    moMessenger(tinNhan(du));
 
     var dangGui = guiNoiNhan(du) || guiBieuMau(du);
 
@@ -2386,7 +2404,9 @@ var FORM_GOOGLE = {
       duPhong(du,
         'Bên em đã nhận được đơn của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.',
         false, /* guiRoi duoi cung */
-        'Muốn được nhắn lại ngay thay vì chờ điện thoại, anh chị gửi thêm đơn qua <b>Messenger</b>, <b>Zalo</b> hoặc <b>tin nhắn</b>.',
+        (TU_MO_MESSENGER
+          ? 'Bên em vừa mở sẵn Messenger với đơn đã soạn — anh chị bấm <b>Gửi</b> trong đó là bên em nhận được ngay. Không thấy Messenger mở ra thì bấm nút bên dưới.'
+          : 'Muốn được nhắn lại ngay thay vì chờ điện thoại, anh chị gửi thêm đơn qua <b>Messenger</b>, <b>Zalo</b> hoặc <b>tin nhắn</b>.'),
         true);
       f.reset();
     }).catch(function(){
