@@ -1447,7 +1447,7 @@ body:has(.dock.on){padding-bottom:74px}
             <div class="field full"><label for="moc">Mốc dễ tìm <span class="opt-lbl">không bắt buộc</span></label><input id="moc" name="moc" type="text" autocomplete="address-line2" placeholder="Cạnh trạm y tế xã, đối diện chợ, gần cây đa đầu làng…"></div>
 
             <p class="fgroup">Tình trạng sức khoẻ</p>
-            <div class="field full"><label for="tuKiem">Kết quả bài kiểm tra</label><input id="tuKiem" name="tuKiem" type="text" readonly placeholder="Chưa làm bài kiểm tra — bấm đây để làm, 30 giây"></div>
+            <input id="tuKiem" name="tuKiem" type="hidden">
             <div class="field full"><label for="tinhtrang">Anh chị đang gặp vấn đề nào</label>
               <select id="tinhtrang" name="tinhtrang">
                 <option>Mệt mỏi kéo dài dù ngủ đủ</option>
@@ -2350,7 +2350,7 @@ var FORM_GOOGLE = {
 
     baoFB('Lead', du.so_tien);
 
-    var dangGui = guiBieuMau(du) || guiNoiNhan(du);
+    var dangGui = guiNoiNhan(du) || guiBieuMau(du);
 
     if(!dangGui){
       duPhong(du, 'Đơn của anh chị đã soạn xong. Còn một bước cuối để gửi về cho bên em, mất khoảng mười giây.', false);
@@ -2403,7 +2403,6 @@ var FORM_GOOGLE = {
 (function(){
   var nut = document.getElementById('de-lai-so');
   var ten = document.getElementById('ten');
-  var oKiem = document.getElementById('tuKiem');
   var quiz = document.getElementById('quiz');
 
   if(nut && ten){
@@ -2412,14 +2411,6 @@ var FORM_GOOGLE = {
         ten.scrollIntoView({block:'center', behavior:'smooth'});
         try{ ten.focus({preventScroll:true}); }catch(e){ ten.focus(); }
       }, 320);
-    });
-  }
-  // chua lam bai thi bam vao o ket qua se dua len bai kiem tra
-  if(oKiem && quiz){
-    oKiem.style.cursor = 'pointer';
-    oKiem.addEventListener('click', function(){
-      if(oKiem.value) return;
-      quiz.scrollIntoView({block:'center', behavior:'smooth'});
     });
   }
 })();
