@@ -64,3 +64,43 @@ Khi phát hiện một câu có rủi ro:
 
 > File này là hướng dẫn thực hành nội bộ, không phải tư vấn pháp lý.
 > Với sản phẩm có công bố cụ thể, luôn bám theo **nội dung đã được công bố/duyệt** của chính sản phẩm đó.
+
+---
+
+## G. CẤM SAI SỰ THẬT VỀ GIÁ VÀ QUY CÁCH
+
+Nguồn: sổ mâu thuẫn của Tổng Chỉ Huy — **MT-08**, phát hiện bởi Phòng 10 trong kịch bản của chính họ.
+Quảng cáo sai giá là sai sự thật, không phải "nói quá cho hấp dẫn".
+
+| ❌ Cấm viết | Vì sao sai | ✅ Nói thế nào |
+|---|---|---|
+| "Mua nhiều rẻ hơn" · "Mua 3 hộp tính ra mỗi ngày rẻ hơn" | Giá mỗi hộp **phẳng 2.890.000đ ở mọi mốc**. Mốc 1–3–5 đều đúng **48.167đ/ngày** | "Mua 3 hộp là đủ dùng 180 ngày, không phải lo hết giữa chừng" |
+| "Gói đôi rẻ hơn mua lẻ" | Chưa có căn cứ | Bỏ hẳn |
+| "Một hộp chưa kịp thấy gì đâu" | 1 hộp = 120 viên = **60 ngày** | "1 hộp dùng được 60 ngày" |
+| "Mốc 6 được giảm giá" | Không giảm giá đồng nào | "Mốc 6 hộp **được tặng thêm 1 hộp**, thực nhận 7 hộp dùng 420 ngày — tính ra 41.286đ/ngày" |
+| Hứa **cả** quà tặng **và** giảm tiền mặt ở mốc 3–5 | Khách **CHỌN MỘT**, không áp dụng đồng thời | "Từ mốc 3 hộp, anh/chị chọn một: nhận quà hoặc giảm tiền mặt" |
+
+**Con số duy nhất được nói là "rẻ hơn":** 41.286đ/ngày ở mốc 6 so với 48.167đ/ngày ở mốc 1 —
+và phải nói rõ rẻ hơn là **nhờ tặng hộp thứ 7**, không phải nhờ giảm giá.
+Nguồn: `knowledge/products.json` của Phòng 6, mục `ghi_chu_cach_tinh`.
+
+## H. NĂM SỐ GIẤY TỜ CHƯA CÓ NGUỒN — KHÔNG ĐƯA VÀO QUẢNG CÁO
+
+Nguồn: **MT-07**, ưu tiên cao nhất trong sổ mâu thuẫn. Trang bán đang mời khách *"tự đối chiếu"*
+các số này nhưng **toàn hệ thống không có ảnh giấy tờ nào chứng minh**:
+
+```
+Xác nhận nội dung quảng cáo   1582/2024/XNQC-ATTP
+Chứng nhận GMP Nhật Bản        JHNFA 11105
+Hợp pháp hoá lãnh sự           H102-050/HPHLS
+AFC niêm yết sàn Tokyo mã      2927
+MST 5SPRO                      0104104405
+```
+
+**Luật cho Phòng Ads:** không đưa năm số này vào primary text, headline, kịch bản video hay
+landing page **cho tới khi anh Sơn gửi ảnh giấy tờ**. Khách tra không khớp là mất uy tín cả trang,
+và số XNQC sai còn là rủi ro pháp lý trực tiếp.
+
+**Số đã xác minh, dùng được:** số công bố sản phẩm **4107/2024/ĐKSP** · hàm lượng **50mg/viên** ·
+nhà sản xuất **AFC-HD AMS**, nhập khẩu **5SPRO** · dạng hoạt chất **dạng khử (ubiquinol)** —
+xác minh bằng chữ 還元型 trên hộp gốc Nhật (Phòng 7, kỳ 18h 27/08).

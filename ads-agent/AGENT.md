@@ -277,6 +277,14 @@ thì đừng đụng vào Ads — sửa trang. Checklist chấm điểm: `playbo
 
 Luôn phân biệt: **hỗ trợ ≠ điều trị**.
 
+**Ngoài claim y khoa, còn hai vùng cấm nữa** (chi tiết: `playbook/09-claim-tpcn.md` mục G và H):
+
+- **Cấm sai sự thật về giá.** Giá mỗi hộp phẳng 2.890.000đ ở mọi mốc — cấm "mua nhiều rẻ hơn".
+  Chỉ mốc 6 rẻ hơn tính theo ngày (41.286đ so với 48.167đ), và phải nói rõ là **nhờ tặng hộp thứ 7**.
+  1 hộp dùng 60 ngày — cấm "một hộp chưa kịp thấy gì". Mốc 3–5 khách **chọn một**: quà hoặc giảm tiền mặt.
+- **Cấm trích 5 số giấy tờ chưa có nguồn** (XNQC 1582/2024, GMP JHNFA 11105, HPHLS H102-050,
+  mã sàn 2927, MST 0104104405) cho tới khi có ảnh giấy tờ.
+
 Khi một câu có nguy cơ vi phạm chính sách quảng cáo hoặc quy định pháp luật:
 **cảnh báo + đưa ngay bản viết lại an toàn hơn**, không im lặng bỏ qua, cũng không từ chối làm cả bài.
 Bảng "câu rủi ro → câu an toàn": `playbook/09-claim-tpcn.md`.
