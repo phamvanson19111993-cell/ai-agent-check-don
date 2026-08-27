@@ -3,20 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Máy tính kinh tế đơn hàng — CPL / CAC hoà vốn</title>
+  <title>Máy tính kinh tế đơn hàng — CPL / CAC / ROAS hoà vốn</title>
   <link rel="stylesheet" href="../../styles.css">
   <style>
-    .wrap { max-width: 900px; }
-    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
-    @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+    .wrap { max-width: 940px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; align-items: start; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+
+    /* Cảnh báo giả định — phải thấy ngay, không cần đọc code */
+    .assume {
+      margin: 20px 0 4px;
+      border: 2px solid var(--wait);
+      border-left-width: 6px;
+      border-radius: 10px;
+      background: var(--wait-soft);
+      padding: 14px 18px;
+    }
+    .assume h2 {
+      margin: 0 0 6px; font-size: 14px; font-weight: 800; color: var(--wait);
+      letter-spacing: .02em; font-family: ui-monospace, "JetBrains Mono", monospace;
+    }
+    .assume p { margin: 6px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--ink); }
+    .assume code {
+      font-family: ui-monospace, "JetBrains Mono", monospace; font-size: 12.5px;
+      background: var(--surface); padding: 1px 5px; border-radius: 4px;
+    }
 
     fieldset {
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 14px 16px 18px;
-      margin: 0;
-      background: var(--surface);
+      border: 1px solid var(--line); border-radius: 10px;
+      padding: 14px 16px 18px; margin: 0; background: var(--surface);
     }
+    fieldset + fieldset { margin-top: 22px; }
     legend {
       font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
       color: var(--muted); padding: 0 6px;
@@ -24,15 +41,19 @@
     }
     label { display: flex; align-items: center; gap: 10px; margin-top: 11px; font-size: 14px; }
     label span { flex: 1; color: var(--ink-2); }
-    input {
-      width: 130px; padding: 7px 9px; text-align: right;
+    label span em { font-style: normal; color: var(--muted); font-size: 12px; display: block; }
+    input, select {
+      width: 150px; padding: 7px 9px;
       border: 1px solid var(--line-strong); border-radius: 7px;
       background: var(--ground); color: var(--ink);
       font-family: ui-monospace, "JetBrains Mono", monospace;
       font-size: 13.5px; font-variant-numeric: tabular-nums;
     }
-    input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-    .hint { margin: 10px 0 0; font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+    input { text-align: right; }
+    select { width: 100%; text-align: left; }
+    input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+    .hint { margin: 12px 0 0; font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+    .hint b { color: var(--wait); }
 
     .out { display: flex; flex-direction: column; border-top: 1px solid var(--line-strong); margin-top: 4px; }
     .out .line {
@@ -43,7 +64,7 @@
       font-family: ui-monospace, "JetBrains Mono", monospace;
       font-variant-numeric: tabular-nums; font-size: 14.5px; white-space: nowrap;
     }
-    .out .line.key { background: var(--surface); }
+    .out .line.key { background: var(--ground); }
     .out .line.key b { color: var(--accent); font-size: 16px; }
     .out .line small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
     .good b { color: var(--ready); }
@@ -59,11 +80,21 @@
     }
     .verdict .call { font-size: 20px; font-weight: 700; font-family: Georgia, serif; }
     .verdict p { margin: 8px 0 0; color: var(--ink-2); font-size: 14px; line-height: 1.5; }
+    .verdict .tag {
+      display: inline-block; margin-top: 10px; padding: 4px 10px; border-radius: 999px;
+      background: var(--wait-soft); color: var(--wait); font-size: 12px; font-weight: 700;
+    }
     .verdict.scale .call { color: var(--ready); }
     .verdict.keep  .call { color: var(--run); }
     .verdict.stop  .call { color: var(--wait); }
     .verdict.wait  .call { color: var(--idle); }
 
+    .note {
+      margin-top: 14px; padding: 12px 14px; border-radius: 8px;
+      background: var(--ground); border: 1px dashed var(--line-strong);
+      font-size: 13px; line-height: 1.5; color: var(--ink-2);
+    }
+    .note b { color: var(--ink); }
     .back { font-size: 13px; color: var(--accent); text-decoration: none; }
     .back:hover { text-decoration: underline; }
   </style>
@@ -73,31 +104,57 @@
   <header>
     <p class="eyebrow">Phòng 12 · AI Ads Manager</p>
     <h1>Máy tính kinh tế đơn hàng</h1>
-    <p class="lede">Nhập số thật của mình để biết <b>CPL hoà vốn</b> và <b>CAC hoà vốn</b>.
-      Chưa có hai ngưỡng này thì không ai nói được một CPL là rẻ hay đắt.
+    <p class="lede">Nhập số thật để biết <b>CAC hoà vốn</b>, <b>CPL hoà vốn</b> và <b>ROAS hoà vốn</b>.
+      Chưa có ba ngưỡng này thì không ai nói được một CPL hay một ROAS là tốt hay xấu.
       Mọi thứ tính tại chỗ trên máy, không gửi đi đâu.</p>
     <p><a class="back" href="../../index.html">← về sổ phòng</a></p>
   </header>
 
+  <section class="assume">
+    <h2>⚠️ SỐ ĐANG DÙNG LÀ GIẢ ĐỊNH, CHƯA XÁC MINH</h2>
+    <p><b>Giá vốn 1.445.000đ/hộp = 50% giá bán</b> — mức do anh Sơn đặt để tính tạm,
+      <b>chưa đối chiếu hoá đơn nhập</b>. Giá bán 2.890.000đ/hộp thì đã xác minh (nguồn: trang bán đang chạy).</p>
+    <p>Mọi kết luận, báo cáo hay khuyến nghị ngân sách lấy ra từ màn hình này
+      <b>bắt buộc ghi kèm câu</b> <code>theo giả định giá vốn 50%</code>. Không trình bày như số đã xác minh.</p>
+    <p><b>ROAS 2,00 là SÀN TUYỆT ĐỐI, không phải mốc an toàn.</b> Bảng này mới trừ giá vốn hàng.
+      Chưa trừ: quà tặng mốc 3–5 · mức giảm tiền mặt thay quà · hoa hồng đại lý · vận chuyển và đổi trả.
+      Chạy ở ROAS 2,2–2,5 mà chưa trừ bốn khoản đó thì rất có thể <b>đang lỗ mà tưởng lãi</b>.</p>
+  </section>
+
   <div class="grid">
     <div>
       <fieldset>
-        <legend>Một đơn hàng</legend>
-        <label><span>Giá bán trung bình (AOV)</span><input id="aov" type="number" min="0" value="500000"></label>
-        <label><span>Giá vốn (COGS)</span><input id="cogs" type="number" min="0" value="150000"></label>
-        <label><span>Phí ship</span><input id="ship" type="number" min="0" value="25000"></label>
-        <label><span>Hoa hồng sale</span><input id="comm" type="number" min="0" value="30000"></label>
-        <label><span>Tỷ lệ bom hàng COD (%)</span><input id="fail" type="number" min="0" max="100" value="10"></label>
-        <p class="hint">Bom hàng ăn vào lợi nhuận thật: đơn hỏng vẫn tốn ship và tiền quảng cáo.</p>
+        <legend>Mốc combo</legend>
+        <label><span>Chọn mốc</span></label>
+        <select id="tier">
+          <option value="1">1 hộp — 2.890.000đ, giao 1 hộp</option>
+          <option value="3">3 hộp — 8.670.000đ, giao 3 hộp</option>
+          <option value="5">5 hộp — 14.450.000đ, giao 5 hộp</option>
+          <option value="6">6 hộp — 17.340.000đ, giao 7 hộp (tặng 1)</option>
+          <option value="custom">Tuỳ chỉnh — tự nhập</option>
+        </select>
+        <label><span>Doanh thu mỗi đơn (AOV)</span><input id="aov" type="number" min="0" value="2890000"></label>
+        <label><span>Số hộp phải giao</span><input id="boxes" type="number" min="0" step="1" value="1"></label>
+        <label><span>Giá vốn 1 hộp <em>giả định 50%</em></span><input id="unitCost" type="number" min="0" value="1445000"></label>
+        <div class="note" id="tierNote"></div>
       </fieldset>
 
-      <fieldset style="margin-top:22px">
+      <fieldset>
+        <legend>Bốn khoản chưa có số</legend>
+        <label><span>Vốn quà tặng mỗi đơn</span><input id="gift" type="number" min="0" value="0"></label>
+        <label><span>Hoa hồng đại lý / sale</span><input id="comm" type="number" min="0" value="0"></label>
+        <label><span>Phí ship mỗi đơn</span><input id="ship" type="number" min="0" value="0"></label>
+        <label><span>Tỷ lệ bom hàng / đổi trả (%)</span><input id="fail" type="number" min="0" max="100" value="0"></label>
+        <p class="hint" id="zeroWarn"></p>
+      </fieldset>
+
+      <fieldset>
         <legend>Số liệu chiến dịch</legend>
-        <label><span>Chi phí Ads (kỳ đang xét)</span><input id="spend" type="number" min="0" value="5000000"></label>
-        <label><span>Số lead</span><input id="leads" type="number" min="0" value="100"></label>
-        <label><span>Số đơn chốt</span><input id="orders" type="number" min="0" value="15"></label>
+        <label><span>Chi phí Ads (kỳ đang xét)</span><input id="spend" type="number" min="0" value="0"></label>
+        <label><span>Số lead</span><input id="leads" type="number" min="0" value="0"></label>
+        <label><span>Số đơn chốt</span><input id="orders" type="number" min="0" value="0"></label>
         <label><span>Biên lợi nhuận muốn giữ (%)</span><input id="margin" type="number" min="0" max="90" value="30"></label>
-        <p class="hint">Chưa có đơn nào thì để <b>0</b> — máy sẽ nói còn phải chờ bao nhiêu tiền nữa mới đủ dữ liệu để kết luận.</p>
+        <p class="hint">Chưa có đơn nào thì để <b style="color:var(--ink-2)">0</b> — máy sẽ nói còn phải chờ bao nhiêu tiền nữa mới đủ dữ liệu để kết luận.</p>
       </fieldset>
     </div>
 
@@ -107,7 +164,7 @@
         <div class="out" id="thresholds"></div>
       </fieldset>
 
-      <fieldset style="margin-top:22px">
+      <fieldset>
         <legend>Thực tế đang chạy</legend>
         <div class="out" id="actuals"></div>
       </fieldset>
@@ -119,16 +176,22 @@
 
 <script>
 (function () {
-  var ids = ['aov','cogs','ship','comm','fail','spend','leads','orders','margin'];
+  var TIERS = {
+    '1': { aov: 2890000,  boxes: 1, note: '' },
+    '3': { aov: 8670000,  boxes: 3, note: 'Mốc này có quà tặng — <b>chưa biết quà là gì</b>, nên vốn quà đang để 0. Nếu quà là 1 hộp cùng loại thì biên tụt từ 50% xuống 33,3%.' },
+    '5': { aov: 14450000, boxes: 5, note: 'Mốc này có quà tặng — <b>chưa biết quà là gì</b>, nên vốn quà đang để 0. Nếu quà là 1 hộp cùng loại thì biên tụt xuống 41,7%.' },
+    '6': { aov: 17340000, boxes: 7, note: '<b>Mốc 6 và mốc 5 lãi gộp y hệt nhau: 7.225.000đ.</b> Hộp thứ 6 lãi vào đúng bằng hộp thứ 7 tặng đi. Mốc 6 chỉ hơn về doanh thu và thời gian giữ khách (420 ngày so với 300 ngày), <b>không hơn về lãi</b>, mà tốn thêm 2 hộp tồn kho và tiền ship. Đừng mặc định đẩy khách lên mốc 6 vì tưởng lãi hơn.' }
+  };
+  var ASSUME = 'theo giả định giá vốn 50%';
+
+  var ids = ['aov','boxes','unitCost','gift','comm','ship','fail','spend','leads','orders','margin'];
   var el = {};
   ids.forEach(function (id) { el[id] = document.getElementById(id); });
+  var tierSel = document.getElementById('tier');
 
-  var vnd = function (n) {
-    if (!isFinite(n)) return '—';
-    return Math.round(n).toLocaleString('vi-VN') + 'đ';
-  };
+  var vnd = function (n) { return isFinite(n) ? Math.round(n).toLocaleString('vi-VN') + 'đ' : '—'; };
   var pct = function (n) { return isFinite(n) ? (n * 100).toFixed(1) + '%' : '—'; };
-  var x = function (n) { return isFinite(n) ? n.toFixed(2) + 'x' : '—'; };
+  var x   = function (n) { return isFinite(n) ? n.toFixed(2) + 'x' : '—'; };
   var num = function (id) { var v = parseFloat(el[id].value); return isFinite(v) ? v : 0; };
 
   function row(label, value, note, cls) {
@@ -136,26 +199,50 @@
       (note ? '<small>' + note + '</small>' : '') + '</span><b>' + value + '</b></div>';
   }
 
+  function applyTier() {
+    var t = TIERS[tierSel.value];
+    document.getElementById('tierNote').innerHTML = t && t.note
+      ? t.note
+      : (tierSel.value === 'custom'
+          ? 'Đang ở chế độ tuỳ chỉnh — tự nhập doanh thu, số hộp giao và giá vốn.'
+          : 'Mốc 1 hộp: không quà tặng, biên gộp 50% ' + ASSUME + '.');
+    if (t) { el.aov.value = t.aov; el.boxes.value = t.boxes; }
+    render();
+  }
+
   function render() {
-    var aov = num('aov'), cogs = num('cogs'), ship = num('ship'), comm = num('comm');
+    var aov = num('aov'), boxes = num('boxes'), unitCost = num('unitCost');
+    var gift = num('gift'), comm = num('comm'), ship = num('ship');
     var failRate = Math.min(Math.max(num('fail'), 0), 100) / 100;
     var spend = num('spend'), leads = num('leads'), orders = num('orders');
     var margin = Math.min(Math.max(num('margin'), 0), 90) / 100;
 
-    // Lợi nhuận gộp trên mỗi đơn CHỐT, đã trừ hao vì bom hàng:
-    // đơn giao thành công mang về (aov - cogs - ship - comm), đơn bom vẫn mất ship.
-    var grossPerDelivered = aov - cogs - ship - comm;
+    var cogs = unitCost * boxes;
+    // Đơn giao thành công mang về (aov − vốn hàng − quà − hoa hồng − ship);
+    // đơn bom vẫn mất ship (và mất hàng nếu không thu hồi được — chưa tính vào đây).
+    var grossPerDelivered = aov - cogs - gift - comm - ship;
     var grossPerOrder = grossPerDelivered * (1 - failRate) - ship * failRate;
 
+    var grossMargin = aov > 0 ? grossPerOrder / aov : NaN;
+    var breakevenROAS = grossPerOrder > 0 ? aov / grossPerOrder : NaN;
     var breakevenCAC = grossPerOrder;
     var l2s = leads > 0 ? orders / leads : NaN;
     var breakevenCPL = isFinite(l2s) ? breakevenCAC * l2s : NaN;
     var targetCPL = isFinite(breakevenCPL) ? breakevenCPL * (1 - margin) : NaN;
     var targetCAC = breakevenCAC * (1 - margin);
 
+    var untouched = (gift === 0 ? 1 : 0) + (comm === 0 ? 1 : 0) + (ship === 0 ? 1 : 0) + (failRate === 0 ? 1 : 0);
+    document.getElementById('zeroWarn').innerHTML = untouched > 0
+      ? '<b>Đang để ' + untouched + '/4 khoản bằng 0</b> — vì chưa có số thật. ' +
+        'Nghĩa là mọi ngưỡng bên phải là <b>mức tối đa lý thuyết</b>: ngưỡng thật thấp hơn, ' +
+        'và ROAS hoà vốn thật cao hơn. Có số nào thì điền số đó vào, ngưỡng sẽ siết lại ngay.'
+      : 'Đã điền đủ 4 khoản — ngưỡng bên phải đang phản ánh chi phí thật, không còn là mức tối đa lý thuyết.';
+
     document.getElementById('thresholds').innerHTML =
-      row('Lợi nhuận gộp mỗi đơn', vnd(grossPerOrder), 'đã trừ hao bom hàng ' + (failRate * 100).toFixed(0) + '%') +
-      row('CAC hoà vốn', vnd(breakevenCAC), 'trên mức này là lỗ', 'key') +
+      row('Lãi gộp mỗi đơn', vnd(grossPerOrder), ASSUME) +
+      row('Biên lãi gộp', pct(grossMargin), '') +
+      row('ROAS hoà vốn', x(breakevenROAS), 'dưới mức này là ĐANG LỖ, không phải lãi mỏng', 'key') +
+      row('CAC hoà vốn', vnd(breakevenCAC), 'trần chi phí ads mỗi đơn', 'key') +
       row('Tỷ lệ Lead → Đơn', pct(l2s), leads > 0 ? orders + '/' + leads + ' lead' : 'chưa có lead') +
       row('CPL hoà vốn', vnd(breakevenCPL), 'CPL hoà vốn = CAC hoà vốn × tỷ lệ chốt', 'key') +
       row('CPL mục tiêu', vnd(targetCPL), 'để giữ biên ' + (margin * 100).toFixed(0) + '%') +
@@ -170,14 +257,15 @@
 
     var cplCls = isFinite(cpl) && isFinite(breakevenCPL) ? (cpl <= breakevenCPL ? 'good' : 'bad') : '';
     var cacCls = isFinite(cac) ? (cac <= breakevenCAC ? 'good' : 'bad') : '';
+    var roasCls = isFinite(roas) && isFinite(breakevenROAS) ? (roas >= breakevenROAS ? 'good' : 'bad') : '';
 
     document.getElementById('actuals').innerHTML =
       row('CPL thực tế', vnd(cpl), '', cplCls) +
       row('CAC thực tế', vnd(cac), orders > 0 ? '' : 'chưa có đơn', cacCls) +
       row('Doanh thu ước tính', vnd(revenue), 'đơn giao thành công') +
-      row('ROAS', x(roas), 'doanh thu / chi phí ads') +
-      row('Profit ROAS', x(profitRoas), 'lợi nhuận gộp / chi phí ads', isFinite(profitRoas) ? (profitRoas >= 1 ? 'good' : 'bad') : '') +
-      row('Lãi / lỗ kỳ này', vnd(profit), 'sau khi trừ tiền ads', profit >= 0 ? 'good' : 'bad');
+      row('ROAS thực tế', x(roas), isFinite(breakevenROAS) ? 'ngưỡng hoà vốn ' + x(breakevenROAS) : '', roasCls) +
+      row('Profit ROAS', x(profitRoas), 'lãi gộp / chi phí ads', isFinite(profitRoas) ? (profitRoas >= 1 ? 'good' : 'bad') : '') +
+      row('Lãi / lỗ kỳ này', vnd(profit), 'sau khi trừ tiền ads · ' + ASSUME, profit >= 0 ? 'good' : 'bad');
 
     // Quyết định — chỉ phán khi đã đủ ngưỡng dữ liệu.
     var v = document.getElementById('verdict');
@@ -185,11 +273,12 @@
 
     if (grossPerOrder <= 0) {
       cls = 'stop'; call = 'SỬA — chưa có lợi nhuận để mà chạy ads';
-      why = 'Mỗi đơn đang không sinh ra lợi nhuận gộp (' + vnd(grossPerOrder) + '). ' +
-            'Sửa giá bán, giá vốn, phí ship hoặc tỷ lệ bom hàng trước khi tiêu thêm tiền quảng cáo.';
+      why = 'Mỗi đơn đang không sinh ra lãi gộp (' + vnd(grossPerOrder) + '). ' +
+            'Sửa giá bán, giá vốn, cơ cấu quà tặng hoặc phí ship trước khi tiêu thêm tiền quảng cáo.';
     } else if (spend <= 0 || leads <= 0) {
       cls = 'wait'; call = 'CHƯA ĐỦ DỮ LIỆU';
-      why = 'Cần ít nhất chi phí ads và số lead của kỳ đang xét.';
+      why = 'Ngưỡng bên phải đã tính xong. Cần thêm chi phí ads và số lead của kỳ đang xét để phán ' +
+            'chiến dịch đang lãi hay lỗ.';
     } else if (orders <= 0) {
       if (spend < breakevenCAC) {
         cls = 'wait'; call = 'CHỜ — chưa tiêu đủ để kết luận';
@@ -204,36 +293,50 @@
     } else if (cac <= targetCAC && orders >= 5) {
       cls = 'scale'; call = 'SCALE có kiểm soát';
       why = 'CAC ' + vnd(cac) + ' đang dưới cả mức mục tiêu ' + vnd(targetCAC) + '. ' +
-            'Trước khi tăng tiền, hỏi đội sale có gọi kịp lượng lead mới không — ' +
-            'lead nằm chờ vài tiếng là tỷ lệ chốt rơi và CAC tự tăng.';
+            'Trước khi tăng tiền: hỏi đội sale có gọi kịp lượng lead mới không, và nhớ rằng ' +
+            'khoảng an toàn này sẽ hẹp lại khi điền đủ vốn quà tặng, hoa hồng và ship.';
     } else if (cac <= targetCAC) {
       cls = 'keep'; call = 'GIỮ — tín hiệu tốt nhưng còn ít đơn';
       why = 'CAC ' + vnd(cac) + ' dưới mục tiêu, nhưng mới ' + orders + ' đơn nên chưa chắc chắn. ' +
             'Chạy thêm cho đủ khoảng 5–10 đơn rồi hãy scale.';
     } else if (cac <= breakevenCAC) {
-      cls = 'keep'; call = 'GIỮ — còn lãi nhưng mỏng';
-      why = 'CAC ' + vnd(cac) + ' nằm giữa mục tiêu (' + vnd(targetCAC) + ') và hoà vốn (' +
-            vnd(breakevenCAC) + '). Chưa scale. Việc cần làm: tăng tỷ lệ chốt hoặc tăng AOV bằng combo/upsell.';
+      cls = 'keep'; call = 'GIỮ — sát sàn, đừng gọi đây là lãi';
+      why = 'CAC ' + vnd(cac) + ' nằm giữa mục tiêu (' + vnd(targetCAC) + ') và sàn hoà vốn (' +
+            vnd(breakevenCAC) + '). Vùng này rất dễ hoá lỗ ngay khi trừ quà tặng, hoa hồng và ship — ' +
+            'bốn khoản chưa có số. Chưa scale. Việc cần làm: lấy cho ra bốn khoản đó, ' +
+            'rồi tăng tỷ lệ chốt hoặc đẩy AOV lên mốc combo cao hơn.';
     } else if (spend < breakevenCAC * 2) {
       cls = 'wait'; call = 'CHỜ THÊM — CAC đang vượt nhưng dữ liệu còn mỏng';
-      why = 'CAC ' + vnd(cac) + ' vượt hoà vốn ' + vnd(breakevenCAC) + ', nhưng mới tiêu ' + vnd(spend) +
+      why = 'CAC ' + vnd(cac) + ' vượt sàn hoà vốn ' + vnd(breakevenCAC) + ', nhưng mới tiêu ' + vnd(spend) +
             '. Cho chạy tới khoảng ' + vnd(breakevenCAC * 2) + ' rồi quyết, trừ khi lead rõ ràng là số rác.';
     } else {
       cls = 'stop'; call = 'TẮT hoặc SỬA — đang lỗ';
-      why = 'CAC ' + vnd(cac) + ' vượt hoà vốn ' + vnd(breakevenCAC) + ' và đã tiêu đủ để tin con số này. ' +
+      why = 'CAC ' + vnd(cac) + ' vượt sàn hoà vốn ' + vnd(breakevenCAC) + ' và đã tiêu đủ để tin con số này. ' +
             'Xác định tầng nghẽn trước khi làm lại: CTR thấp (creative), LP View → Lead thấp (landing page), ' +
             'hay lead không nghe máy (sai tệp / gọi chậm).';
     }
 
     v.className = 'verdict ' + cls;
     v.innerHTML = '<h3>Quyết định</h3><div class="call">' + call + '</div><p>' + why + '</p>' +
+      '<span class="tag">Kết luận này ' + ASSUME + '</span>' +
       '<p style="font-size:12.5px;color:var(--muted)">Máy chỉ tính từ số bạn nhập. ' +
-      'Chất lượng lead, tỷ lệ nghe máy và tốc độ gọi không nằm trong đây — ' +
-      'đưa thêm cho agent khi phân tích.</p>';
+      'Chất lượng lead, tỷ lệ nghe máy và tốc độ gọi không nằm trong đây — đưa thêm cho agent khi phân tích.</p>';
   }
 
-  ids.forEach(function (id) { el[id].addEventListener('input', render); });
-  render();
+  // Sửa doanh thu hoặc số hộp = rời khỏi mốc dựng sẵn; các ô khác chỉ tính lại.
+  var TIER_IDS = ['aov', 'boxes'];
+  ids.forEach(function (id) {
+    el[id].addEventListener('input', function () {
+      if (TIER_IDS.indexOf(id) !== -1 && tierSel.value !== 'custom') {
+        tierSel.value = 'custom';
+        applyTier();
+      } else {
+        render();
+      }
+    });
+  });
+  tierSel.addEventListener('change', applyTier);
+  applyTier();
 })();
 </script>
 </body>

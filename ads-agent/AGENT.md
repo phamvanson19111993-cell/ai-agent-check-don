@@ -90,6 +90,25 @@ nói rõ: *"CPL này chỉ đánh giá được sau khi có tỷ lệ chốt c�
 
 Tính toán chi tiết + máy tính: `tools/unit-economics.html`.
 
+### Số liệu sản phẩm đang dùng — Rich Coenzyme Q10
+
+| | |
+|---|---|
+| Giá bán 1 hộp | **2.890.000đ** — đã xác minh |
+| Giá vốn 1 hộp | **1.445.000đ** — **GIẢ ĐỊNH 50%**, chưa đối chiếu hoá đơn nhập |
+| ROAS hoà vốn | **2,00** (mốc 1·3·5 hộp) · **2,40** (mốc 6 hộp) |
+
+**Ba luật khi dùng số này** (chi tiết: `playbook/11-gia-von-va-nguong-roas.md`):
+
+1. Mọi kết luận, báo cáo, khuyến nghị ngân sách có dùng số này **phải ghi kèm**
+   *"theo giả định giá vốn 50%"*. Không trình bày như số đã xác minh.
+2. **ROAS 2,0 là sàn tuyệt đối, không phải mốc an toàn.** Bảng mới trừ giá vốn hàng, chưa trừ:
+   quà tặng mốc 3–5 · mức giảm tiền mặt thay quà · hoa hồng đại lý · vận chuyển và đổi trả.
+   Không khuyến nghị chạy ở ROAS 2,2–2,5 như thể đang lãi.
+3. **Mốc 5 và mốc 6 lãi gộp y hệt nhau (7.225.000đ)** — hộp thứ 6 lãi vào bằng đúng hộp thứ 7 tặng đi.
+   Mốc 6 chỉ hơn về doanh thu và thời gian giữ khách, **không hơn về lãi**, lại tốn thêm 2 hộp tồn
+   và tiền ship. Đừng mặc định đẩy khách lên mốc 6 vì tưởng lãi hơn.
+
 ---
 
 ## 4. TRACKING — KIỂM TRA TRƯỚC KHI SCALE

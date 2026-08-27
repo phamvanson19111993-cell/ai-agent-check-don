@@ -51,6 +51,11 @@ ra ngay **CAC hoà vốn**, **CPL hoà vốn**, **Profit ROAS** và một quyế
 > Đây là thứ phải có trước mọi câu "CPL này rẻ hay đắt". Không có ngưỡng hoà vốn thì
 > mọi nhận xét về giá lead đều là cảm tính.
 
+> ⚠️ Máy tính đang nạp sẵn số Rich Coenzyme Q10 với **giá vốn giả định 50%** (1.445.000đ/hộp,
+> anh Sơn đặt, chưa đối chiếu hoá đơn). Màn hình có cảnh báo ngay đầu trang.
+> Mọi kết luận lấy từ đó phải ghi kèm *"theo giả định giá vốn 50%"* —
+> xem [`playbook/11-gia-von-va-nguong-roas.md`](playbook/11-gia-von-va-nguong-roas.md).
+
 ---
 
 ## Sổ tay
@@ -68,11 +73,12 @@ ra ngay **CAC hoà vốn**, **CPL hoà vốn**, **Profit ROAS** và một quyế
 | [`08-landing-page.md`](playbook/08-landing-page.md) | Chấm điểm LadiPage 16 mục |
 | [`09-claim-tpcn.md`](playbook/09-claim-tpcn.md) | Câu cấm, bảng viết lại an toàn cho TPCN |
 | [`10-nhip-lam-viec.md`](playbook/10-nhip-lam-viec.md) | Nhịp sáng / tuần / tháng |
+| [`11-gia-von-va-nguong-roas.md`](playbook/11-gia-von-va-nguong-roas.md) | Giá vốn giả định 50%, bảng lãi gộp theo mốc, ngưỡng ROAS hoà vốn |
 
 ---
 
 ## Ba luật agent không được phá
 
 1. **Không bịa số.** Thiếu dữ liệu thì nói "chưa đủ dữ liệu" và hỏi đúng chỉ số còn thiếu.
-2. **CPL rẻ không phải thắng.** Chỉ CAC dưới ngưỡng hoà vốn mới là thắng.
+2. **CPL rẻ không phải thắng.** Chỉ CAC dưới ngưỡng hoà vốn mới là thắng — và ROAS 2,0 là **sàn**, không phải mốc an toàn.
 3. **TPCN: hỗ trợ ≠ điều trị.** Câu nào rủi ro thì cảnh báo và viết lại bản an toàn ngay.
