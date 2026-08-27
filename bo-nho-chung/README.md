@@ -43,6 +43,26 @@ DATA UPDATE
 | `luat-tuan-thu.md` | Được nói / không được nói + cảnh báo tương tác | Mọi phòng viết nội dung |
 | `mau-thuan-dang-mo.md` | Chỗ dữ liệu đang lệch nhau, chưa chốt | Tổng Chỉ Huy, trước khi kết luận |
 
+## 🔒 CAM KẾT ĐƯỜNG DẪN — Tổng Chỉ Huy không được đổi tuỳ tiện
+
+Phòng 9 đã viết bot **đọc thẳng** hai file dưới đây lúc chạy, theo đúng đường dẫn:
+
+```
+bo-nho-chung/san-pham/rich-coenzyme-q10.md
+bo-nho-chung/luat-tuan-thu.md
+```
+
+**Đổi tên hoặc di chuyển hai file này = bot mất hồ sơ và tự câm về sản phẩm.**
+Tổng Chỉ Huy cam kết giữ nguyên đường dẫn; nếu buộc phải đổi thì **báo trước cho các phòng**.
+
+## ♻️ Công cụ dùng chung — đừng viết lại
+
+| Công cụ | Của phòng | Lấy về |
+|---|---|---|
+| **Đọc bộ nhớ chung lúc chạy** — `git show`, cache 15 phút, đọc hỏng thì giữ bản cũ | Phòng 9 | `git show origin/claude/agen-zalo-3780k7:src/knowledge/sharedMemory.js` — copy nguyên file, không dính phần Zalo |
+| **Bộ soát tuân thủ tự động** — 5 luật chặn câu sai giá / sai liệu trình / sai thành phần | Phòng 6 | `python -m agent.cli check <file>` — chạy trên file markdown bất kỳ, không cần khoá API |
+| **Chuẩn hoá số điện thoại Việt Nam** — khôi phục số 0 đầu, đầu số 11 số cũ | Phòng 8 | `git show origin/claude/fanpage-pancake-auto-update-iy8fuu:pancake_export/phones.py` |
+
 ## Câu dán vào đầu mỗi phòng
 
 Xem `prompts/moi-phong-doc-dau-phien.md` — dán 1 lần vào mỗi agent,
