@@ -39,7 +39,7 @@ Quà tặng là sản phẩm chính hãng trong danh mục, tính theo giá niê
 |---|---|
 | **Số công bố sản phẩm** (con số cụ thể) | Trang nói "có" nhưng chưa ghi số. Ads và CSKH đều cần khi khách hỏi |
 | **Hàm lượng mỗi viên** | Suy ra 50mg/viên từ "2 viên = 100mg" — **cần đối chiếu nhãn thật** |
-| **Giá vốn mỗi hộp** | Không có thì Phòng Tài chính không tính được lợi nhuận, Ads không tính được ngưỡng ROAS |
+| ~~Giá vốn mỗi hộp~~ | ✅ Đã có mức tạm: **1.445.000đ (giả định 50% giá bán, anh Sơn đặt)** → xem `../tai-chinh/gia-von-va-nguong-roas.md`. Vẫn cần hoá đơn nhập thật để bỏ chữ "giả định" |
 | **Tên đầy đủ trên bao bì** | Phòng CSKH đang để trống, đang gọi tạm "Rich Coenzyme Q10" |
 | **Nhà sản xuất / đơn vị nhập khẩu** | Khách hỏi nguồn gốc là phải trả lời được |
 

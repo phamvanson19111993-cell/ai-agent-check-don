@@ -3,16 +3,17 @@
   "cap_nhat": "2026-08-27",
   "nhanh_goc": "main",
   "tra_cuu": {
-    "gia_san_pham":        "bo-nho-chung/san-pham/rich-coenzyme-q10.md",
-    "quy_cach_lieu_dung":  "bo-nho-chung/san-pham/rich-coenzyme-q10.md",
-    "dac_diem_san_pham":   "bo-nho-chung/san-pham/rich-coenzyme-q10.md",
+    "gia_san_pham": "bo-nho-chung/san-pham/rich-coenzyme-q10.md",
+    "quy_cach_lieu_dung": "bo-nho-chung/san-pham/rich-coenzyme-q10.md",
+    "dac_diem_san_pham": "bo-nho-chung/san-pham/rich-coenzyme-q10.md",
     "duoc_noi_khong_duoc_noi": "bo-nho-chung/luat-tuan-thu.md",
     "canh_bao_tuong_tac_thuoc": "bo-nho-chung/luat-tuan-thu.md",
-    "cau_bat_buoc_tpcn":   "bo-nho-chung/luat-tuan-thu.md",
-    "phong_nao_giu_gi":    "bo-nho-chung/00-ban-do-he-thong.md",
-    "du_lieu_dang_lech":   "bo-nho-chung/mau-thuan-dang-mo.md",
+    "cau_bat_buoc_tpcn": "bo-nho-chung/luat-tuan-thu.md",
+    "phong_nao_giu_gi": "bo-nho-chung/00-ban-do-he-thong.md",
+    "du_lieu_dang_lech": "bo-nho-chung/mau-thuan-dang-mo.md",
     "quy_trinh_tong_chi_huy": "prompts/dilim-tong-chi-huy.md",
-    "cau_dan_dau_phien":   "prompts/moi-phong-doc-dau-phien.md"
+    "cau_dan_dau_phien": "prompts/moi-phong-doc-dau-phien.md",
+    "gia_von_va_nguong_roas": "bo-nho-chung/tai-chinh/gia-von-va-nguong-roas.md"
   },
   "chua_co_nguon": [
     "chinh_sach_hoa_hong",
@@ -21,7 +22,6 @@
     "doanh_so_f1",
     "doanh_so_f2",
     "doanh_so_he_thong",
-    "gia_von",
     "chi_phi_ads_thuc_te",
     "so_cong_bo_san_pham",
     "thong_tin_thanh_toan"
@@ -32,5 +32,8 @@
     "Tạo dữ liệu mới phải ghi DATA UPDATE và push lên main.",
     "Không tự đổi trạng thái thành Đã xác minh.",
     "Thiếu dữ liệu thì ghi CHƯA ĐỦ DỮ LIỆU ĐỂ KẾT LUẬN, không đoán."
-  ]
+  ],
+  "gia_dinh_chua_xac_minh": {
+    "gia_von_moi_hop": "1.445.000đ (50% giá bán) — anh Sơn đặt để tính, chưa đối chiếu hoá đơn nhập. Trích ra ngoài phải ghi kèm \"theo giả định giá vốn 50%\"."
+  }
 }
