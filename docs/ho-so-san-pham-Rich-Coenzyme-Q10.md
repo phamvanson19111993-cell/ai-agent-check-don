@@ -1,12 +1,12 @@
 # HỒ SƠ SẢN PHẨM — Rich Coenzyme Q10 (DILI Supplement)
 
-> **Giá, quy cách, liều dùng: ĐÃ XÁC MINH** — nguồn là trang bán đang chạy thật
-> (nhánh `web`, khớp với `claude/dilim-one-website-es08sj`), cập nhật **27/08/2026**.
-> Hồ sơ chuẩn dùng chung: `bo-nho-chung/san-pham/rich-coenzyme-q10.md` trên nhánh
-> `claude/dilim-ai-command-center-yy5uvo`.
+> **Tên, giấy tờ, thành phần, quy cách, liều, giá: ĐÃ XÁC MINH.**
+> Nguồn: nhãn phụ + giấy công bố + hộp gốc Nhật (Phòng 7 đối chiếu), và trang bán đang chạy.
+> Hồ sơ chuẩn dùng chung: `bo-nho-chung/san-pham/rich-coenzyme-q10.md`
+> trên nhánh `claude/dilim-ai-command-center-yy5uvo` — cập nhật **27/08/2026 kỳ 18h**.
 >
-> 🟡 = còn thiếu, **không được đoán, phải hỏi anh Sơn**.
-> 🟨 = chờ anh gửi (thông tin thanh toán, biểu mẫu).
+> 🟡 = còn thiếu, **không được đoán**.
+> 🟨 = chờ anh Sơn gửi (thông tin thanh toán, biểu mẫu).
 
 ---
 
@@ -14,14 +14,28 @@
 
 | Mục | Nội dung |
 |---|---|
-| **Tên gọi khi nhắn khách** | Coenzyme Q10 |
-| **Tên đầy đủ trên bao bì** | 🟡 *chưa có — phải hỏi anh Sơn* |
-| **Xuất xứ** | Nhật Bản — nhập **nguyên hộp**, bao bì Nhật nguyên bản + tem nhãn phụ tiếng Việt |
-| **Điểm khác biệt** | **Dạng khử (ubiquinol)** — cùng dạng với CoQ10 trong cơ thể, hấp thu và sinh năng lượng tốt hơn dạng oxy hoá mà hàng phổ thông rẻ hơn hay dùng |
-| **Hàm lượng** | **100mg mỗi ngày** (đủ liều, không lắt nhắt vài chục mg) |
-| **Quy cách** | 1 hộp = 1 lọ **120 viên nang mềm** |
-| **Liều dùng** | **2 viên/ngày** → 1 hộp dùng **60 ngày**. Uống **trong hoặc ngay sau bữa ăn có dầu mỡ** |
+| **Tên đầy đủ** | **Thực phẩm bảo vệ sức khỏe RICH COENZYME Q10** |
+| **Số công bố** | **4107/2024/ĐKSP** — Cục An toàn thực phẩm, Bộ Y tế, cấp 09/05/2024 |
+| **Nhà sản xuất** | AFC-HD AMS Life Science Co., Ltd — Second Factory, Shizuoka, Nhật Bản |
+| **Đơn vị nhập khẩu** | Công ty Cổ phần 5SPRO — ĐT 02438728688 |
+| **Dạng hoạt chất** | **DẠNG KHỬ (ubiquinol)** — hộp gốc Nhật in 還元型 ngay dưới chữ RICH |
+| **Quy cách** | 1 hộp = 1 lọ **120 viên nang mềm** *(nhãn KHÔNG có loại 60 viên — đừng chào bán)* |
+| **Liều dùng** | **2 viên/ngày với nước** → **100mg/ngày**, 1 hộp dùng **60 ngày**. Uống trong hoặc ngay sau bữa ăn có dầu mỡ |
+| **Hạn dùng** | 02 năm kể từ ngày sản xuất |
 | **Thời gian thấy khác biệt** | **4–8 tuần** |
+
+> ⚠️ Cụm **"Thực phẩm bảo vệ sức khỏe"** bắt buộc đứng trước tên sản phẩm trong mọi ấn phẩm quảng cáo.
+
+### Thành phần mỗi viên — theo nhãn phụ
+
+| Thành phần | Hàm lượng | Vai trò |
+|---|---|---|
+| **Coenzyme Q10** | **50 mg** | Hoạt chất chính |
+| **Tảo Haematococcus** *(H. pluvialis)* | 10 mg | Nguồn astaxanthin, chống oxy hoá |
+| **Chiết xuất hạt tiêu đen** *(Piper nigrum)* | 2,5 mg | Piperine — tăng hấp thu |
+
+> ❌ **KHÔNG PHẢI "thìa là đen".** Thìa là đen là *Nigella sativa*, cây hoàn toàn khác,
+> **không có trong sản phẩm**. Nói nhầm là sai lệch thành phần — khách dị ứng tra cứu ra kết quả sai.
 
 ### 💰 Bảng giá — ĐÃ XÁC MINH
 
@@ -41,12 +55,23 @@
 > ⚠️ **Đừng nói "mua 3 hộp rẻ hơn"** — sai sự thật, tính theo ngày là bằng nhau.
 > Cái rẻ hơn thật sự chỉ có ở mốc 6 hộp.
 
-### 🟡 Còn thiếu — phải hỏi anh Sơn, không được đoán
+### 🔴 5 CON SỐ TRANG BÁN ĐANG HIỆN MÀ CHƯA CÓ GIẤY TỜ
 
-- 🟡 **Số công bố sản phẩm** (con số cụ thể) — khách hay hỏi
-- 🟡 **Hàm lượng mỗi viên** — suy ra 50mg/viên từ "2 viên = 100mg", **chưa đối chiếu nhãn thật**
-- 🟡 **Tên đầy đủ trên bao bì**
-- 🟡 **Nhà sản xuất / đơn vị nhập khẩu** — khách hỏi nguồn gốc là phải trả lời được
+Trang bán mời khách *"tự đối chiếu"* các số dưới đây, nhưng trong hệ thống **chưa có ảnh
+giấy tờ nào chứng minh**. **CSKH không được khẳng định** khi khách hỏi:
+
+| Con số trang đang hiện | Tình trạng |
+|---|---|
+| Xác nhận nội dung quảng cáo **1582/2024/XNQC-ATTP** | ❌ chưa có nguồn |
+| Chứng nhận GMP Nhật Bản **JHNFA 11105** | ❌ chưa có nguồn |
+| Hợp pháp hoá lãnh sự **H102-050/HPHLS** | ❌ chưa có nguồn |
+| AFC niêm yết sàn Tokyo mã **2927** | ❌ chưa có nguồn |
+| MST 5SPRO **0104104405** | ❌ chưa có nguồn |
+
+**Khách hỏi tới mấy số này thì trả lời:**
+> Dạ để em xin bên giấy tờ gửi anh/chị bản chụp cho chính xác ạ, em không dám nói vo đâu ạ 🙏
+
+→ Rồi báo lên để lấy ảnh giấy tờ. **Khách tra ra không khớp là mất uy tín cả trang.**
 
 > 🔑 **Điểm bán mạnh nhất — nói ngay ở bước tư vấn:**
 > CoQ10 tan trong dầu, và **dạng khử hấp thu tốt hơn dạng oxy hoá**. Đa số hàng rẻ ngoài
@@ -186,10 +211,12 @@ Phụ nữ có thai / cho con bú · trẻ em · người sắp phẫu thuật �
 > Dạ cái anh/chị đang thiếu có thể là năng lượng ở mức tế bào ạ. CoQ10 là chất cơ thể mình
 > tự sản xuất, nhưng **càng lớn tuổi càng giảm dần**, nên nhiều người bổ sung thêm.
 >
-> Bên em là loại của Nhật, **dạng khử** — tức là cùng dạng với CoQ10 trong cơ thể mình,
-> nên hấp thu tốt hơn dạng oxy hoá mà hàng rẻ ngoài thị trường hay dùng. Liều **100mg mỗi
-> ngày**, đủ liều chứ không lắt nhắt vài chục mg như nhiều loại khác ạ. Hàng nhập nguyên
-> hộp từ Nhật ạ.
+> Bên em là **Thực phẩm bảo vệ sức khỏe Rich Coenzyme Q10**, hàng Nhật, **dạng khử** —
+> tức là cùng dạng với CoQ10 trong cơ thể mình, nên hấp thu tốt hơn dạng oxy hoá mà hàng
+> rẻ ngoài thị trường hay dùng. Mỗi viên 50mg, uống 2 viên là **100mg/ngày** ạ.
+> Trong đó còn có tảo Haematococcus và chiết xuất hạt tiêu đen giúp hấp thu tốt hơn ạ.
+> Sản xuất tại nhà máy AFC-HD AMS ở Shizuoka, Nhật Bản; công ty 5SPRO nhập về,
+> số công bố **4107/2024/ĐKSP** của Cục An toàn thực phẩm ạ.
 >
 > Em nói trước với anh/chị: **đây là thực phẩm chức năng, không phải thuốc và không thay
 > được thuốc chữa bệnh ạ.** Nó cần thời gian, thường 4–8 tuần mới thấy rõ. Em không dám
@@ -316,6 +343,9 @@ Khách đang uống thuốc tim mạch mà muốn dùng cả hai → **bắt bu�
 | **"2.890.000 một hộp đắt quá"** | Dạ một hộp dùng được **60 ngày** anh/chị ạ, tính ra khoảng **48.000đ mỗi ngày**. Em nói con số thật để anh/chị tự cân nhắc, chứ em không dám bảo là rẻ đâu ạ. Nếu lúc này chưa tiện thì anh/chị cứ để sau, em vẫn ở đây ạ 😊 |
 | **"Đang uống thuốc huyết áp có dùng được không"** | Dạ anh/chị hỏi bác sĩ của mình một câu cho chắc nha ạ, vì CoQ10 có thể làm huyết áp hạ thêm. Bác sĩ đồng ý thì em hỗ trợ ạ. Và **thuốc bác sĩ kê anh/chị vẫn uống đều, tuyệt đối không bỏ ạ** 🙏 |
 | **"Người nhà tôi đang truyền hoá chất, dùng được không"** | Dạ trường hợp này **bắt buộc phải hỏi bác sĩ điều trị** anh/chị ạ. Người đang hoá trị thì mọi thứ bổ sung đều phải bác sĩ đồng ý, em không dám tự tư vấn đâu ạ 🙏 |
+| **"Giấy tờ Việt Nam có ghi ubiquinol đâu?"** | Dạ nhãn phụ tiếng Việt ghi theo tên hoạt chất chung là **Coenzyme Q10 50mg**, đúng quy định ghi nhãn ạ. Còn **dạng khử thì in trên hộp gốc Nhật** — chữ 還元型 ngay dưới chữ RICH, anh/chị nhìn hộp là thấy ạ 😊 |
+| **"Địa chỉ công ty trên giấy công bố khác trên nhãn?"** | Dạ **cùng một địa chỉ** anh/chị ạ. Giấy công bố cấp năm 2024 ghi *Phường Ngọc Thuỵ, Quận Long Biên*; nhãn mới ghi *Phường Bồ Đề, TP Hà Nội* — do **sáp nhập phường và bỏ cấp quận** ạ. Anh/chị tra thấy lệch là vì vậy ạ. |
+| **"Cho xin số công bố"** | Dạ **4107/2024/ĐKSP**, Cục An toàn thực phẩm - Bộ Y tế cấp ngày 09/05/2024 ạ. Anh/chị tra trên cổng của Cục là ra ạ 😊 |
 | **"Uống vào thấy khó ngủ"** | Dạ anh/chị thử chuyển sang uống **bữa sáng hoặc bữa trưa** thay vì bữa tối xem sao ạ. Vài hôm anh/chị báo lại em nha ạ. |
 
 ---
