@@ -1,0 +1,14 @@
+{
+  "ghi_chu": "Lệnh của Phòng 7 · 27/08/2026\nMỗi việc dưới đây đều có lý do ghi rõ. Anh đọc lý do, không đồng ý thì gõ Enter bỏ qua.\nChạy thử trước:  python3 thuc-thi.py\nLàm thật:        python3 thuc-thi.py --lam\n\nCHƯA có lệnh nào cho tài khoản sạch 2260044828113956, vì Phòng 7 chưa có số\nthật. Chạy bao-cao-ads.py, dán kết quả về, Phòng 7 sẽ viết lệnh tiếp.",
+  "khoi": [
+    {
+      "tai_khoan": "1440077257813466",
+      "viec": [
+        {
+          "lam": "tam_dung_het",
+          "ly_do": "TẠM DỪNG TOÀN BỘ CHIẾN DỊCH TRÊN TÀI KHOẢN THUÊ (Aztlan Athletics LLC).\n    Ba lý do, cái nào cũng đủ để dừng:\n    1. Đã tiêu khoảng 950.000đ mà không ra một kết quả nào.\n    2. Đang tối ưu vào 'Lượt mua trên Meta' trong khi pixel chưa hề có\n       dữ liệu mua hàng — Meta không có gì để học, tiền chỉ đi ra.\n    3. Tài khoản là tài khoản thuê, đang treo cảnh báo truy cập trái phép.\n       Anh không kháng nghị được, chỉ chủ tài khoản làm được.\n    Đang đặt khoảng 870.000đ mỗi ngày. Nếu tài khoản bỗng thông trở lại,\n    số tiền đó cắn vào đúng ba chiến dịch hỏng này trước tiên."
+        }
+      ]
+    }
+  ]
+}
