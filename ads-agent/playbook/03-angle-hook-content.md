@@ -18,25 +18,67 @@
 **Quy tắc test:** mỗi lần test là test **angle**, không phải đổi vài chữ.
 Mỗi angle phải có tối thiểu 2–3 hook và 2 format khác nhau trước khi kết luận nó thua.
 
-## B. 12 KHUNG HOOK (3 giây đầu)
+## B. HOOK — LẤY TỪ NGÂN HÀNG CỦA PHÒNG 6, KHÔNG VIẾT LẠI
 
-Điền nội dung ngành mình vào chỗ `[...]`:
+Phòng 6 (Video content sức khoẻ) đã có sẵn **60 hook** đã qua kiểm tuân thủ, kèm câu nối,
+đối tượng và triệu chứng. Phòng Ads **dùng lại**, không tự chế hook mới cho cùng bộ sản phẩm.
 
-1. **Chạm đúng nỗi đau** — "Cứ đến [thời điểm] là [triệu chứng] lại tới đúng không?"
-2. **Sai lầm** — "[Việc nhiều người làm] mới là lý do [vấn đề] mãi không đỡ."
-3. **Nếu — thì** — "Nếu bạn đang [tình trạng], xem hết 30 giây này."
-4. **Con số** — "[N] người [nhóm khách] đang mắc chung một lỗi này."
-5. **Phủ định niềm tin cũ** — "Không phải do [nguyên nhân ai cũng nghĩ]."
-6. **Câu hỏi phân loại** — "Bạn trên [tuổi] và hay [triệu chứng]? Đoạn này dành cho bạn."
-7. **Trước–sau** — "[N] tuần trước cô ấy còn [tình trạng]. Giờ thì..."
-8. **Cảnh báo nhẹ** — "Đừng bỏ qua nếu [dấu hiệu] xuất hiện thường xuyên."
-9. **Bí mật ngành** — "Người trong nghề [ngành] ít khi nói ra điều này."
-10. **So sánh** — "Cùng [chi phí/thời gian], cách này khác hẳn cách kia ở chỗ..."
-11. **Chứng minh trực quan** — mở bằng **hình ảnh** kết quả, không mở bằng lời.
-12. **Đối thoại** — "Hôm qua có chị nhắn: '[câu hỏi thật của khách]'."
+```bash
+# 10 hook mạnh nhất, có câu nối liền sau — cầm lên quay được ngay
+git show origin/claude/ai-agent-health-video-content-rmedj9:docs/10-hook-manh-nhat.md
 
-**Kỵ:** mở bằng logo, tên thương hiệu, "Kính chào quý khách", nhạc intro, hoặc một câu chung chung
-ai đọc cũng lướt.
+# ngân hàng đầy đủ 60 hook
+git show origin/claude/ai-agent-health-video-content-rmedj9:knowledge/hooks.json
+
+# personas, format, CTA, quy tắc tuân thủ
+git show origin/claude/ai-agent-health-video-content-rmedj9:knowledge/personas.json
+git show origin/claude/ai-agent-health-video-content-rmedj9:knowledge/formats.json
+```
+
+### Bản đồ Angle (Phòng 12) ↔ kiểu hook (Phòng 6)
+
+| Angle | Lọc `kieu` trong `hooks.json` | Số hook có sẵn |
+|---|---|---|
+| 1 · Vấn đề | `dong-cam`, `cau-hoi` | 15 |
+| 2 · Sai lầm phổ biến | `sai-lam-thuong-gap`, `phan-de` | 12 |
+| 3 · Cơ chế | `vi-von`, `tiet-lo` | 4 |
+| 4 · Câu chuyện khách hàng | `ke-chuyen` | 4 |
+| 5 · Chuyên gia giải thích | `tiet-lo`, `con-so` | 11 |
+| 6 · Giáo dục thị trường | `con-so`, `thoi-su-doi-song` | 11 |
+| 7 · Giải pháp | `thu-thach`, `danh-cho-con-cai` | 4 |
+| 8 · So sánh | `so-sanh` | 4 |
+| 9 · FAQ | `doc-binh-luan`, `cau-hoi` | 10 |
+| 10 · Objection Handling | `phan-de`, `canh-bao-nhe` | 11 |
+
+### 5 personas dùng chung với Phòng 6
+
+`phu-nu-45-55` · `dan-van-phong-30-45` · `nguoi-cao-tuoi-60` ·
+`con-cai-mua-cho-bo-me` · `nguoi-mo-mau-huyet-ap`
+
+Đặt tên ad theo persona để đối chiếu được với bảng lead:
+`AngleB_Hook02_concai_video20s`.
+
+### Ba hook Phòng 6 đánh giá mạnh nhất về khả năng ra đơn
+
+- **"Có ba trường hợp tôi khuyên anh chị đừng mua của tôi."** — bán bằng sự thành thật.
+- **"Ba câu hỏi, trả lời xong là biết mình nên bắt đầu từ đâu."** — khách tự phân loại ở bình luận.
+- **"Bố mẹ kêu tê tay, đừng vội nghĩ là do tuổi già."** — người mua là con cái, chi trả cao hơn.
+
+### Nguyên tắc hook (kế thừa từ Phòng 6, không sửa)
+
+- 3 giây đầu quyết định phần lớn lượt xem hết video.
+- Hook mô tả **cảm giác của người xem**, không giới thiệu bản thân, không nhắc sản phẩm.
+- Một hook chỉ nói một ý.
+- Tránh tên bệnh và từ y tế mạnh ngay câu đầu.
+- Hook phải hứa điều mà thân video trả được.
+- Đọc lên thành tiếng: nghe như quảng cáo thì viết lại.
+
+**Kỵ:** mở bằng logo, tên thương hiệu, "Kính chào quý khách", nhạc intro.
+
+### Khi nào Phòng Ads mới tự viết hook
+
+Chỉ khi chạy sản phẩm **ngoài bộ 3** của Phòng 6, hoặc khi cần biến thể cho một angle
+mà bank chưa phủ. Viết xong phải gửi ngược cho Phòng 6 để họ kiểm tuân thủ trước khi chạy.
 
 ## C. PRIMARY TEXT — 3 khung dùng được ngay
 

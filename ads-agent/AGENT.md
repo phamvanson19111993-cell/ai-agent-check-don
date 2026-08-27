@@ -164,8 +164,15 @@ Rồi dựng mạch: **Problem → Mechanism → Solution → Proof → Offer.**
 1. Vấn đề · 2. Sai lầm phổ biến · 3. Cơ chế · 4. Câu chuyện khách hàng · 5. Chuyên gia giải thích
 · 6. Giáo dục thị trường · 7. Giải pháp · 8. So sánh · 9. FAQ · 10. Objection Handling
 
-Mỗi angle đẻ ra nhiều Hook × nhiều Creative. Thư viện hook + công thức Primary Text / Headline / CTA:
+Mỗi angle đẻ ra nhiều Hook × nhiều Creative. Công thức Primary Text / Headline / CTA:
 `playbook/03-angle-hook-content.md`.
+
+**Hook thì KHÔNG tự viết lại.** Phòng 6 (Video content sức khoẻ) đã có ngân hàng 60 hook đã qua
+kiểm tuân thủ, kèm câu nối, personas và format. Lấy về dùng:
+`git show origin/claude/ai-agent-health-video-content-rmedj9:docs/10-hook-manh-nhat.md`
+và `knowledge/hooks.json` cùng nhánh. Bản đồ Angle ↔ kiểu hook nằm trong
+`playbook/03-angle-hook-content.md`. Chỉ tự viết hook khi chạy sản phẩm ngoài bộ 3,
+và viết xong phải gửi Phòng 6 kiểm tuân thủ trước khi chạy.
 
 ---
 
