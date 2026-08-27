@@ -72,6 +72,20 @@ Mở `command-center.html` để xem sơ đồ. Prompt gốc: `prompts/dilim-ton
 Chừng nào chưa có, mọi câu hỏi về hoa hồng / F1–F2 / lợi nhuận đều phải lấy số từ anh và ghi rõ
 trạng thái *"Chưa đối chiếu hệ thống"* — không được coi là đã xác minh.
 
+### Bộ nhớ chung — nơi các AI lấy dữ liệu của nhau
+
+Trước đây 11 phòng nằm trên 11 nhánh git riêng, không phòng nào thấy phòng nào, nên cùng
+một câu hỏi bị hỏi lại ở từng phòng. `bo-nho-chung/` sửa đúng chỗ đó:
+
+| File | Nội dung |
+|---|---|
+| `bo-nho-chung/index.json` | Mục lục máy đọc — agent đọc đầu tiên, tra "cần X → mở file nào" |
+| `bo-nho-chung/00-ban-do-he-thong.md` | 13 nhánh có gì, phòng nào đang giữ code/tài liệu nào |
+| `bo-nho-chung/san-pham/rich-coenzyme-q10.md` | Hồ sơ chuẩn — giá, quy cách, liều (lấy từ trang bán đang chạy) |
+| `bo-nho-chung/luat-tuan-thu.md` | Được nói / không được nói + cảnh báo tương tác thuốc |
+| `bo-nho-chung/mau-thuan-dang-mo.md` | Chỗ dữ liệu đang lệch nhau, chưa chốt |
+| `prompts/moi-phong-doc-dau-phien.md` | Câu dán 1 lần vào mỗi phòng để nó tự đọc bộ nhớ chung |
+
 ### 3 luật cứng
 
 1. **Một dữ liệu — một nguồn chính thức.** Trí nhớ AI không phải nguồn.
@@ -87,4 +101,6 @@ trạng thái *"Chưa đối chiếu hệ thống"* — không được coi là 
 - `departments.js` — dữ liệu 8 phòng, 8 bước, thứ tự ưu tiên dữ liệu
 - `command-center.js` — render trang Command Center
 - `prompts/dilim-tong-chi-huy.md` — **bản gốc prompt AI Tổng Chỉ Huy** (sửa ở đây trước)
+- `prompts/moi-phong-doc-dau-phien.md` — câu dán vào từng phòng
+- `bo-nho-chung/` — **bộ nhớ chung**: mục lục, bản đồ hệ thống, hồ sơ sản phẩm, luật tuân thủ, sổ mâu thuẫn
 - `styles.css` — giao diện chung, có sẵn nền sáng/tối
