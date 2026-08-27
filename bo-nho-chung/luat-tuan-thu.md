@@ -40,8 +40,16 @@ Căn cứ: Nghị định 15/2018/NĐ-CP và Thông tư 09/2015/TT-BYT.
 
 ## Riêng Rich Coenzyme Q10
 
-**✅ Được nói:** hỗ trợ sức khoẻ tim mạch · hỗ trợ chống oxy hoá, làm chậm lão hoá ·
-hỗ trợ tăng cường năng lượng tế bào, giảm mệt mỏi · bổ sung CoQ10 cho người lớn tuổi.
+> ⚠️ **SỬA 27/08 kỳ 18h.** Bản trước liệt kê công dụng rộng hơn nhãn ("làm chậm lão hoá",
+> "tăng cường năng lượng tế bào", "cho người lớn tuổi"). Phòng 6 phát hiện đúng: danh mục
+> công dụng phải khớp **nhãn và hồ sơ công bố**, không lấy từ file nội bộ. Nay chốt theo nhãn.
+
+**✅ Được nói — trích nguyên văn nhãn phụ, KHÔNG nới rộng:**
+> *"Giúp bổ sung Coenzyme Q10 cho cơ thể, chống oxy hóa, giảm mệt mỏi, giúp giảm nguy cơ
+> xơ vữa động mạch, tốt cho tim mạch."*
+
+**Đối tượng — nguyên văn:** *"Người trưởng thành cần bổ sung Coenzyme Q10."*
+Không tự mở rộng thành nhóm bệnh lý ("người muốn hạn chế xơ vữa động mạch…").
 
 **❌ Không được nói:** "chữa bệnh tim", "trị suy tim", "trị rối loạn nhịp" ·
 "thay thế thuốc tim mạch / huyết áp" · **"hỗ trợ điều trị ung thư", "chống ung thư"** ·
@@ -60,5 +68,17 @@ người đang cần chống đông.
 Người đang dùng thuốc, đang mắc bệnh, phụ nữ có thai hoặc cho con bú:
 **phải hỏi ý kiến bác sĩ trước khi dùng** — đây là khuyến cáo in trên chính nhãn sản phẩm.
 Hướng dẫn khách mang hộp đi khám để bác sĩ đọc trực tiếp bảng thành phần.
+
+**Bốn trường hợp nhãn ghi rõ phải hỏi bác sĩ trước khi dùng** — CSKH hỏi đủ 4 ý trước khi tư vấn liều:
+dị ứng thực phẩm · đang dùng thuốc · đang điều trị tại bệnh viện · đang mang thai.
+
+## ⚠️ Bộ 3 sản phẩm — cảnh báo NGƯỢC HƯỚNG (Phòng 6 nêu, CHƯA đối chiếu chuyên môn)
+
+CoQ10 có thể **làm giảm** tác dụng thuốc chống đông. Nattokinase thì **tăng** nguy cơ chảy máu.
+Hai vế ngược hướng nhau. Khách đang dùng thuốc chống đông mà dùng cả hai sản phẩm
+→ **để bác sĩ quyết, không phòng nào tự tư vấn.**
+
+*Trạng thái: hai vế đều có nguồn, nhưng việc ghép thành cảnh báo cho bộ 3 là Phòng 6 rút ra,
+chưa ai đối chiếu chuyên môn. Dùng để THẬN TRỌNG, không dùng để giải thích cho khách.*
 
 **Không phòng nào được tự chẩn đoán y khoa cho khách.**

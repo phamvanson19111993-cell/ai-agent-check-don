@@ -13,7 +13,8 @@
     "du_lieu_dang_lech": "bo-nho-chung/mau-thuan-dang-mo.md",
     "quy_trinh_tong_chi_huy": "prompts/dilim-tong-chi-huy.md",
     "cau_dan_dau_phien": "prompts/moi-phong-doc-dau-phien.md",
-    "gia_von_va_nguong_roas": "bo-nho-chung/tai-chinh/gia-von-va-nguong-roas.md"
+    "gia_von_va_nguong_roas": "bo-nho-chung/tai-chinh/gia-von-va-nguong-roas.md",
+    "thanh_phan_va_giay_to": "bo-nho-chung/san-pham/rich-coenzyme-q10.md"
   },
   "chua_co_nguon": [
     "chinh_sach_hoa_hong",
@@ -23,8 +24,12 @@
     "doanh_so_f2",
     "doanh_so_he_thong",
     "chi_phi_ads_thuc_te",
-    "so_cong_bo_san_pham",
-    "thong_tin_thanh_toan"
+    "thong_tin_thanh_toan",
+    "giay_xac_nhan_quang_cao_1582",
+    "chung_nhan_gmp_jhnfa_11105",
+    "hop_phap_hoa_lanh_su",
+    "ma_co_phieu_tokyo_2927",
+    "mst_5spro"
   ],
   "luat": [
     "Đọc bộ nhớ chung trước khi hỏi anh.",
