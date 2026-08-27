@@ -37,7 +37,7 @@
         "Người đang dùng statin (cần hỏi ý kiến bác sĩ)"
       ],
       "luu_y_an_toan": [
-        "Người đang dùng thuốc chống đông máu cần hỏi ý kiến bác sĩ",
+        "Người đang dùng thuốc chống đông máu (warfarin, sintrom) PHẢI hỏi ý kiến bác sĩ: CoQ10 có cấu trúc gần giống vitamin K nên có thể làm giảm tác dụng của thuốc chống đông",
         "Phụ nữ có thai, cho con bú cần hỏi ý kiến bác sĩ",
         "Nên uống cùng bữa ăn có chất béo để hấp thu tốt hơn"
       ],
@@ -78,7 +78,8 @@
         "duoc_phep_noi": "Vẫn được nói bình thường về công dụng và cơ chế của CoQ10, chỉ không khẳng định dạng.",
         "ngay_khoa": "27/08/2026",
         "go_khoa_khi": "Có xác nhận từ việc đối chiếu nhãn thật. Khi gỡ khoá thì bỏ mục này và bỏ mục tương ứng trong knowledge/compliance.json."
-      }
+      },
+      "huong_tuong_tac": "CoQ10 có thể LÀM GIẢM tác dụng thuốc chống đông (nguy cơ đông máu), ngược hướng với Nattokinase là tăng nguy cơ chảy máu. Khách dùng cả hai mà đang có thuốc chống đông thì bắt buộc để bác sĩ quyết. Nguồn: bo-nho-chung/luat-tuan-thu.md, 27/08/2026."
     },
     {
       "id": "dha-epa-sq",

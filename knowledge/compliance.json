@@ -168,6 +168,16 @@
       "ten": "Tự xưng duy nhất",
       "mau": "(sản phẩm|thương hiệu|loại|dòng|công nghệ)\\s+(\\w+\\s+){0,2}duy nhất",
       "thay_bang": "một trong những"
+    },
+    {
+      "ten": "Cam kết phòng ngừa bệnh cụ thể",
+      "mau": "(phòng ngừa|ngăn ngừa|phòng chống|phòng tránh|chống lại)\\s+(được\\s+)?(bệnh\\s+)?(đột quỵ|ung thư|tiểu đường|đái tháo đường|tai biến|nhồi máu|alzheimer|sa sút trí tuệ|parkinson)",
+      "thay_bang": "hỗ trợ tăng cường lưu thông máu / hỗ trợ sức khoẻ tim mạch"
+    },
+    {
+      "ten": "Gán công dụng chữa bệnh cho CoQ10",
+      "mau": "(chữa|trị|khỏi)\\s+(bệnh\\s+)?(tim|suy tim|rối loạn nhịp|ung thư)|thay thế thuốc\\s+(tim mạch|huyết áp|tim)",
+      "thay_bang": "hỗ trợ tăng cường sức khoẻ tim mạch"
     }
   ],
   "khoa_tam_thoi": [
@@ -187,5 +197,6 @@
       "ngay_khoa": "27/08/2026"
     }
   ],
-  "ghi_chu_khoa_tam_thoi": "Những cụm đang bị tạm khoá vì chưa xác minh. Khác với từ cấm: không sai luật, chỉ là chưa đủ căn cứ để khẳng định. Gỡ mục này khi đã xác minh xong."
+  "ghi_chu_khoa_tam_thoi": "Những cụm đang bị tạm khoá vì chưa xác minh. Khác với từ cấm: không sai luật, chỉ là chưa đủ căn cứ để khẳng định. Gỡ mục này khi đã xác minh xong.",
+  "nguon_luat_chung": "Đối chiếu với bo-nho-chung/luat-tuan-thu.md (nhánh claude/dilim-ai-command-center-yy5uvo), 27/08/2026."
 }
