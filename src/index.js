@@ -5,6 +5,7 @@ import { log } from './util/log.js';
 import { createOrderProvider } from './orders/index.js';
 import { SessionStore } from './store/sessions.js';
 import { OrderAgent } from './agent/agent.js';
+import { SharedMemory } from './knowledge/sharedMemory.js';
 import { FallbackOrderAgent } from './agent/fallbackAgent.js';
 import { ZaloClient } from './zalo/client.js';
 import { FileTokenStore } from './zalo/tokenStore.js';
@@ -32,6 +33,8 @@ function main() {
   const sessions = new SessionStore(config.session);
   const fallbackAgent = new FallbackOrderAgent({ orders });
 
+  const knowledge = config.knowledge.enabled ? new SharedMemory(config.knowledge) : null;
+
   let agent = null;
   if (config.claude.enabled) {
     agent = new OrderAgent({
@@ -42,6 +45,7 @@ function main() {
       effort: config.claude.effort,
       maxTokens: config.claude.maxTokens,
       maxToolTurns: config.claude.maxToolTurns,
+      knowledge,
       onEscalate: async ({ userId, reason, orderCode }) => {
         // TODO: noi vao he thong ticket / thong bao nhom CSKH cua ban.
         log.warn('cskh.handoff', { userId, reason, orderCode });
@@ -67,6 +71,16 @@ function main() {
 
   const pruneTimer = setInterval(() => sessions.prune(), 5 * 60 * 1000);
   pruneTimer.unref();
+
+  // Nap truoc de biet ngay luc khoi dong la co doc duoc ho so hay khong.
+  knowledge?.get().then((loaded) => {
+    if (!loaded) {
+      log.warn('knowledge.unavailable', {
+        detail: 'Khong doc duoc bo nho chung — bot se khong tra loi cau hoi san pham.',
+        branch: config.knowledge.branch,
+      });
+    }
+  });
 
   server.listen(config.port, () => {
     log.info('server.listening', {

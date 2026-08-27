@@ -44,6 +44,20 @@ export function loadConfig(env = process.env) {
       httpApiKey: env.ORDER_API_KEY || '',
       httpTimeoutMs: int(env.ORDER_API_TIMEOUT_MS, 8000),
     },
+    knowledge: {
+      branch: env.SHARED_MEMORY_BRANCH || 'origin/claude/dilim-ai-command-center-yy5uvo',
+      // Doc thang tu nhanh Tong Chi Huy, khong chep so sang nhanh minh.
+      files: (
+        env.SHARED_MEMORY_FILES ||
+        'bo-nho-chung/san-pham/rich-coenzyme-q10.md,bo-nho-chung/luat-tuan-thu.md'
+      )
+        .split(',')
+        .map((file) => file.trim())
+        .filter(Boolean),
+      dir: env.SHARED_MEMORY_DIR || '',
+      refreshMs: int(env.SHARED_MEMORY_REFRESH_MS, 15 * 60 * 1000),
+      enabled: bool(env.SHARED_MEMORY_ENABLED, true),
+    },
     session: {
       maxTurns: int(env.SESSION_MAX_TURNS, 12),
       ttlMs: int(env.SESSION_TTL_MS, 30 * 60 * 1000),

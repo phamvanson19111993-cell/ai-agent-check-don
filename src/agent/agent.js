@@ -1,4 +1,4 @@
-import { SYSTEM_PROMPT, TOOLS } from './prompt.js';
+import { buildSystemPrompt, TOOLS } from './prompt.js';
 import { createToolRunner } from './tools.js';
 import { log } from '../util/log.js';
 
@@ -19,8 +19,10 @@ export class OrderAgent {
     maxTokens = 16000,
     maxToolTurns = 6,
     onEscalate,
+    knowledge = null,
   }) {
     this.client = client;
+    this.knowledge = knowledge;
     this.sessions = sessions;
     this.model = model;
     this.effort = effort;
@@ -32,12 +34,14 @@ export class OrderAgent {
   async reply({ userId, text }) {
     const messages = [...this.sessions.get(userId), { role: 'user', content: text }];
     let escalated = false;
+    // Doc that bai thi buildSystemPrompt tu lui ve che do chi tra don hang.
+    const system = buildSystemPrompt(await this.#loadKnowledge());
 
     for (let turn = 0; turn < this.maxToolTurns; turn += 1) {
       const response = await this.client.beta.messages.create({
         model: this.model,
         max_tokens: this.maxTokens,
-        system: SYSTEM_PROMPT,
+        system,
         tools: TOOLS,
         thinking: { type: 'adaptive' },
         output_config: { effort: this.effort },
@@ -75,6 +79,16 @@ export class OrderAgent {
     log.warn('agent.tool_turns_exhausted', { userId });
     this.sessions.set(userId, messages);
     return { text: HANDOFF_MESSAGE, escalated: true };
+  }
+
+  async #loadKnowledge() {
+    if (!this.knowledge) return null;
+    try {
+      return await this.knowledge.get();
+    } catch (err) {
+      log.error('knowledge.load_failed', { error: err.message });
+      return null;
+    }
   }
 
   async #runTool(block, context) {

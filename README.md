@@ -95,6 +95,24 @@ Provider chỉ cần hai method:
 { getOrder(code) -> order|null, findOrdersByPhone(phone) -> order[] }
 ```
 
+## Bộ nhớ chung — hồ sơ sản phẩm & luật tuân thủ
+
+Bot đọc **thẳng** hồ sơ chuẩn từ nhánh Tổng Chỉ Huy lúc chạy, **không chép số sang nhánh này**:
+
+```
+origin/claude/dilim-ai-command-center-yy5uvo:bo-nho-chung/san-pham/rich-coenzyme-q10.md
+origin/claude/dilim-ai-command-center-yy5uvo:bo-nho-chung/luat-tuan-thu.md
+```
+
+Lý do: luật ghi *"Mọi phòng lấy số ở đây. Không phòng nào được tự ghi khác"* — chép ra bản sao
+là tạo nguồn thứ hai, sẽ lệch ngay khi hồ sơ gốc được sửa. Nội dung được nạp vào system prompt
+(có `cache_control` nên không tốn token lặp lại) và tự đọc lại mỗi 15 phút.
+
+**Nếu không đọc được** (chưa `git fetch` nhánh đó, không có git), bot tự lùi về chế độ chỉ tra
+đơn hàng và chuyển nhân viên mọi câu hỏi về giá/quy cách/công dụng — thà im còn hơn nói sai số.
+
+Nhớ `git fetch origin claude/dilim-ai-command-center-yy5uvo` trên máy chủ trước khi chạy.
+
 ## Agent hoạt động thế nào
 
 `src/agent/agent.js` chạy vòng lặp tool use: gửi tin khách + lịch sử cho Claude, model
@@ -114,7 +132,7 @@ tin nhắn, lặp đến khi model trả lời bằng văn bản.
 npm test
 ```
 
-53 test chạy bằng `node --test`, không cần mạng: chữ ký webhook, refresh + retry token Zalo,
+60 test chạy bằng `node --test`, không cần mạng: chữ ký webhook, refresh + retry token Zalo,
 vòng lặp công cụ của agent, chế độ fallback, cắt lịch sử hội thoại, và tầng HTTP.
 
 ## Triển khai

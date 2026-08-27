@@ -12,6 +12,7 @@ import { config } from '../src/config.js';
 import { createOrderProvider } from '../src/orders/index.js';
 import { SessionStore } from '../src/store/sessions.js';
 import { OrderAgent } from '../src/agent/agent.js';
+import { SharedMemory } from '../src/knowledge/sharedMemory.js';
 import { FallbackOrderAgent } from '../src/agent/fallbackAgent.js';
 
 const orders = createOrderProvider(config.orders);
@@ -25,6 +26,7 @@ const agent = config.claude.enabled
       effort: config.claude.effort,
       maxTokens: config.claude.maxTokens,
       maxToolTurns: config.claude.maxToolTurns,
+      knowledge: config.knowledge.enabled ? new SharedMemory(config.knowledge) : null,
     })
   : new FallbackOrderAgent({ orders });
 
