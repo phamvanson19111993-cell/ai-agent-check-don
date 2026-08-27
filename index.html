@@ -2271,6 +2271,10 @@ var FORM_GOOGLE = {
       });
     }
     o.forEach(function(r){ r.addEventListener('change', function(){ doi(r.value); }); });
+    // Ap dung ngay lua chon khach da bam trong don, khong doi den luc bam lai.
+    // Thieu dong nay thi khach chon "Chuyen khoan du" van nhin thay ma QR 200.000d.
+    var dangChon = o.filter(function(r){ return r.checked; })[0];
+    doi(dangChon ? dangChon.value : 'coc');
   }
 
   // Cham vao mot hang la chep noi dung hang do, khoi phai boi den tung so.
@@ -2422,6 +2426,11 @@ var FORM_GOOGLE = {
           : 'Muốn được nhắn lại ngay thay vì chờ điện thoại, anh chị gửi thêm đơn qua <b>Messenger</b>, <b>Zalo</b> hoặc <b>tin nhắn</b>.'),
         true);
       f.reset();
+      // reset() khong ban su kien change, phai tu dong bo lai vien sang cua the bam
+      ['chon-hop','chon-tra-form'].forEach(function(id){
+        var o = document.getElementById(id);
+        if(o) o.dispatchEvent(new Event('change'));
+      });
     }).catch(function(){
       duPhong(du, 'Mạng đang trục trặc nên đơn chưa gửi thẳng đi được. Đơn không mất đâu ạ.', true);
     }).then(function(){
