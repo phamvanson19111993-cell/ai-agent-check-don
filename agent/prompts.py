@@ -189,11 +189,30 @@ def _product_block(p: dict[str, Any]) -> str:
         "Lưu ý an toàn BẮT BUỘC nhắc nếu có nói tới sản phẩm này:",
         _bullets(p["luu_y_an_toan"]),
     ]
-    if p.get("KHOA_CLAIM", {}).get("dang_khoa"):
-        k = p["KHOA_CLAIM"]
+    if p.get("doi_tuong_theo_nhan"):
         lines.append(
-            f'ĐANG TẠM KHOÁ - TUYỆT ĐỐI KHÔNG VIẾT: {k["noi_dung"]} '
-            f'Lý do: {k["ly_do"]} {k["duoc_phep_noi"]}'
+            f'Đối tượng theo nhãn, NGUYÊN VĂN: "{p["doi_tuong_theo_nhan"]}" '
+            "- không tự mở rộng thành nhóm bệnh lý."
+        )
+    if p.get("nhom_nham_quang_cao"):
+        n = p["nhom_nham_quang_cao"]
+        lines.append(f'Nhóm người xem để chọn giọng: {", ".join(n["nhom"])}. {n["ghi_chu"]}')
+    if p.get("dang_hoat_chat"):
+        h = p["dang_hoat_chat"]
+        lines.append(
+            f'Dạng hoạt chất: {h["ket_luan"]}. Bằng chứng: {h["bang_chung"]} '
+            f'{h["BAT_BUOC_KHI_VIET"]}'
+        )
+    if p.get("cam_tuyet_doi_khong_noi"):
+        lines.append(
+            "CÂU SAI SỰ THẬT - TUYỆT ĐỐI KHÔNG VIẾT: "
+            + "; ".join(p["cam_tuyet_doi_khong_noi"])
+        )
+    chua_nguon = p.get("so_lieu_dang_hien_cho_khach_MA_CHUA_CO_NGUON")
+    if chua_nguon:
+        lines.append(
+            "KHÔNG ĐƯỢC NHẮC (chưa có ảnh giấy tờ): "
+            + "; ".join(chua_nguon["danh_sach"])
         )
     if p.get("tong_lieu_moi_ngay"):
         lines.append(f'Liều mỗi ngày: {p["tong_lieu_moi_ngay"]}')

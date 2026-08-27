@@ -33,7 +33,7 @@ Phần lớn là chuyện năng lượng. Tế bào tạo năng lượng trong t
 
 Chiều nay thử: cứ 45 phút đứng dậy đi 3 phút, uống đủ nước, và không bỏ bữa trưa.
 
-Từ tuổi 40 trở đi lượng CoQ10 trong cơ thể có xu hướng giảm dần. Ai hay mệt, hụt hơi có thể tìm hiểu thêm Rich Coenzyme Q10 - hỗ trợ tăng cường sức khoẻ tim mạch, hỗ trợ giảm mệt mỏi. Nên uống cùng bữa ăn có chất béo. Đang dùng thuốc chống đông máu, có thai hoặc cho con bú thì hỏi ý kiến bác sĩ trước.
+Từ tuổi 40 trở đi lượng CoQ10 trong cơ thể có xu hướng giảm dần. Ai hay mệt, hụt hơi có thể tìm hiểu thêm Rich Coenzyme Q10 - chống oxy hoá, giảm mệt mỏi, tốt cho tim mạch. Nên uống cùng bữa ăn có chất béo. Nhãn ghi rõ 4 trường hợp phải hỏi ý kiến bác sĩ trước khi dùng: dị ứng thực phẩm, đang dùng thuốc, đang điều trị tại bệnh viện, đang mang thai.
 
 Hiệu quả tuỳ thuộc cơ địa từng người. Thực phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh.
 

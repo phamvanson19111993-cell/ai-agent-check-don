@@ -178,25 +178,32 @@
       "ten": "Gán công dụng chữa bệnh cho CoQ10",
       "mau": "(chữa|trị|khỏi)\\s+(bệnh\\s+)?(tim|suy tim|rối loạn nhịp|ung thư)|thay thế thuốc\\s+(tim mạch|huyết áp|tim)",
       "thay_bang": "hỗ trợ tăng cường sức khoẻ tim mạch"
-    }
-  ],
-  "khoa_tam_thoi": [
+    },
     {
-      "ten": "Dạng hoạt chất CoQ10",
-      "cum_bi_khoa": [
-        "ubiquinol",
-        "ubiquinone",
-        "dạng khử",
-        "dạng oxy hoá",
-        "dạng oxy hóa",
-        "dạng oxi hoá",
-        "dạng oxi hóa"
-      ],
-      "ly_do": "Chưa đối chiếu nhãn thật. Trang bán nói dạng khử, kho kiến thức ghi chưa chốt.",
-      "thay_bang": "chỉ nói Coenzyme Q10, không nói dạng",
-      "ngay_khoa": "27/08/2026"
+      "ten": "Sai sự thật về giá - mua nhiều rẻ hơn",
+      "mau": "(mua|lấy|đặt)\\s+(nhiều|combo|nhiều hộp|số lượng)\\s+(thì\\s+)?(sẽ\\s+)?(rẻ|giảm giá|tiết kiệm|có giá tốt)|càng mua nhiều càng rẻ|mua càng nhiều càng rẻ",
+      "thay_bang": "giá mỗi hộp phẳng ở mọi mốc; chỉ mốc 6 lợi hơn nhờ tặng hộp thứ 7"
+    },
+    {
+      "ten": "Sai sự thật về liệu trình - một hộp chưa đủ",
+      "mau": "(một|1)\\s+hộp\\s+(thì\\s+)?(chưa|không)\\s+(kịp\\s+)?(thấy|đủ|ăn thua|có tác dụng)|phải\\s+(dùng|uống)\\s+(ít nhất\\s+)?[2-9]\\s+hộp",
+      "thay_bang": "1 hộp = 120 viên, uống 2 viên mỗi ngày, dùng được 60 ngày"
+    },
+    {
+      "ten": "Sai thành phần - thìa là đen",
+      "mau": "thìa là đen|nigella",
+      "thay_bang": "chiết xuất hạt tiêu đen (Piper nigrum)"
+    },
+    {
+      "ten": "Gán ubiquinol cho giấy tờ Việt Nam",
+      "mau": "(nhãn phụ|giấy tờ|giấy công bố|hồ sơ công bố|nhãn tiếng việt)[^.!?\\n]{0,30}(ubiquinol|dạng khử)",
+      "thay_bang": "dẫn nguồn là chữ 還元型 trên hộp gốc Nhật"
+    },
+    {
+      "ten": "Số giấy tờ chưa có nguồn",
+      "mau": "1582/2024/XNQC|JHNFA\\s*11105|H102-050/HPHLS|0104104405|(niêm yết|mã)\\s*(sàn\\s*)?(tokyo|chứng khoán)[^.!?\\n]{0,15}2927",
+      "thay_bang": "bỏ hẳn cho tới khi có ảnh giấy tờ"
     }
   ],
-  "ghi_chu_khoa_tam_thoi": "Những cụm đang bị tạm khoá vì chưa xác minh. Khác với từ cấm: không sai luật, chỉ là chưa đủ căn cứ để khẳng định. Gỡ mục này khi đã xác minh xong.",
   "nguon_luat_chung": "Đối chiếu với bo-nho-chung/luat-tuan-thu.md (nhánh claude/dilim-ai-command-center-yy5uvo), 27/08/2026."
 }

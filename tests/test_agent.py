@@ -69,17 +69,25 @@ class TestCompliance(unittest.TestCase):
         r = compliance.check("Ai mất ngủ thì gõ số 1 nhé.", yeu_cau_khuyen_cao=False)
         self.assertTrue(r.dat, r.to_text())
 
-    def test_bat_cum_dang_tam_khoa(self):
-        r = compliance.check(
-            "Đây là CoQ10 dạng khử ubiquinol.", yeu_cau_khuyen_cao=False
-        )
-        self.assertFalse(r.dat)
-        self.assertTrue(any("tạm khoá" in i.loai for i in r.issues), r.to_text())
+    def test_bat_sai_su_that_ve_gia(self):
+        r = compliance.check("Mua nhiều rẻ hơn nhé cô chú.", yeu_cau_khuyen_cao=False)
+        self.assertFalse(r.dat, r.to_text())
 
-    def test_noi_ve_coq10_khong_kem_dang_van_dat(self):
+    def test_bat_sai_su_that_ve_lieu_trinh(self):
+        r = compliance.check("Một hộp chưa kịp thấy gì đâu ạ.", yeu_cau_khuyen_cao=False)
+        self.assertFalse(r.dat, r.to_text())
+
+    def test_bat_sai_thanh_phan_thia_la_den(self):
+        r = compliance.check("Trong sản phẩm có thìa là đen.", yeu_cau_khuyen_cao=False)
+        self.assertFalse(r.dat, r.to_text())
+
+    def test_bat_gan_ubiquinol_cho_giay_to_viet_nam(self):
+        r = compliance.check("Nhãn phụ ghi rõ ubiquinol.", yeu_cau_khuyen_cao=False)
+        self.assertFalse(r.dat, r.to_text())
+
+    def test_noi_dang_khu_dan_nguon_hop_nhat_van_dat(self):
         r = compliance.check(
-            "Coenzyme Q10 hỗ trợ giảm mệt mỏi, uống cùng bữa ăn có dầu mỡ.",
-            yeu_cau_khuyen_cao=False,
+            "Hộp gốc Nhật in chữ 還元型, nghĩa là dạng khử.", yeu_cau_khuyen_cao=False
         )
         self.assertTrue(r.dat, r.to_text())
 

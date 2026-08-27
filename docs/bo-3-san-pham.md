@@ -11,7 +11,7 @@ Cơ thể như một thành phố. Máu là xe chở oxy và dưỡng chất. M�
 |---|---|---|
 | Nattokinase | ĐƯỜNG THÔNG | Hỗ trợ tuần hoàn máu, để dưỡng chất tới được não và tứ chi |
 | DHA EPA SQ | XE TỐT | Nguyên liệu cho màng tế bào thần kinh, hỗ trợ chuyển hoá mỡ máu |
-| Rich Coenzyme Q10 | XĂNG ĐỦ | Hỗ trợ năng lượng tế bào, đặc biệt là tim và não |
+| Rich Coenzyme Q10 | XĂNG ĐỦ | Ví von nội bộ về vai trò của CoQ10 trong ty thể. Công dụng nói ra ngoài phải theo nguyên văn nhãn ở dưới |
 
 Câu chốt khi bị hỏi "sao phải mua ba loại":
 > Máu lưu thông tốt mà tế bào không có năng lượng thì vẫn mệt. Tế bào đủ năng lượng mà đường đi
@@ -37,7 +37,7 @@ Câu chốt khi bị hỏi "sao phải mua ba loại":
 ## 3. Rich Coenzyme Q10
 
 - **Là gì**: CoQ10 là chất có sẵn trong cơ thể, nằm trong ty thể - nơi tế bào tạo ra năng lượng.
-- **Công dụng được phép nói**: hỗ trợ tăng cường sức khoẻ tim mạch; hỗ trợ giảm mệt mỏi; hỗ trợ chống oxy hoá.
+- **Công dụng được phép nói**: bổ sung Coenzyme Q10 cho cơ thể; chống oxy hoá; giảm mệt mỏi; giúp giảm nguy cơ xơ vữa động mạch; tốt cho tim mạch (nguyên văn nhãn phụ).
 - **Hợp với ai**: trên 40 tuổi, hay mệt và hụt hơi kéo dài, quan tâm sức khoẻ tim mạch, đang dùng statin (hỏi bác sĩ trước).
 - **Bắt buộc nhắc**: đang dùng thuốc chống đông, có thai, cho con bú → hỏi bác sĩ. Nên uống cùng bữa ăn có chất béo để hấp thu tốt hơn.
 
@@ -47,7 +47,7 @@ Câu chốt khi bị hỏi "sao phải mua ba loại":
 |---|---|---|
 | Tê bì chân tay, chóng mặt | Nattokinase | Mắt xích tuần hoàn |
 | Hay quên, khó tập trung, mỡ máu cao | DHA EPA SQ | Mắt xích nuôi dưỡng thần kinh và mỡ máu |
-| Mệt mỏi, hụt hơi, trên 40 tuổi | Rich Coenzyme Q10 | Mắt xích năng lượng tế bào |
+| Mệt mỏi, hụt hơi, trên 40 tuổi | Rich Coenzyme Q10 | Nhãn cho nói "giảm mệt mỏi" |
 | Mất ngủ | Hỏi thêm trước khi gợi ý | Mất ngủ nhiều nguyên nhân, cần hỏi rõ nội tiết, stress hay tuần hoàn |
 
 ## Việc còn phải làm

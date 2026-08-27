@@ -18,7 +18,7 @@
 | 4-13s | Có hai kiểu mệt. Mệt do thiếu ngủ thì ngủ bù một hôm là đỡ. Còn kiểu kia, ngủ đủ tám tiếng sáng dậy vẫn rã rời. | Cắt đôi màn hình: ngủ bù và vẫn mệt | 2 KIỂU MỆT |
 | 13-25s | Kiểu thứ hai thường liên quan tới năng lượng bên trong tế bào. CoQ10 tham gia vào việc tạo ra năng lượng đó, và lượng CoQ10 trong cơ thể có xu hướng giảm dần sau tuổi 40. | Đồ hoạ pin và ty thể | Sau tuổi 40, CoQ10 giảm dần |
 | 25-34s | Việc làm được ngay: tuần ba buổi đi bộ nhanh 30 phút, ngủ trước 11 giờ, và đừng bỏ bữa sáng. Vận động đều là cách rẻ nhất để tế bào khoẻ lên. | B-roll: đi bộ nhanh, bữa sáng | 3 buổi/tuần · Ngủ trước 23h · Không bỏ bữa sáng |
-| 34-45s | Nếu muốn bổ sung thêm, Rich Coenzyme Q10 hỗ trợ giảm mệt mỏi và hỗ trợ tăng cường sức khoẻ tim mạch. Nhớ uống cùng bữa ăn có chất béo. Ai đang uống thuốc chống đông, có thai hay cho con bú thì hỏi bác sĩ trước. Chi tiết ở giỏ hàng. | Hộp CoQ10 cạnh bữa sáng | Bấm giỏ hàng để xem chi tiết |
+| 34-45s | Nếu muốn bổ sung thêm, Rich Coenzyme Q10 giảm mệt mỏi, tốt cho tim mạch. Nhớ uống cùng bữa ăn có chất béo. Ai đang uống thuốc chống đông, có thai hay cho con bú thì hỏi bác sĩ trước. Chi tiết ở giỏ hàng. | Hộp CoQ10 cạnh bữa sáng | Bấm giỏ hàng để xem chi tiết |
 
 ## 4. Ghi chú quay dựng
 - Quay ở cầu thang thật, ánh sáng tự nhiên. Cảnh mở đầu càng đời thường càng tốt.
@@ -36,7 +36,7 @@ Kiểu hai thường liên quan tới năng lượng bên trong tế bào. CoQ10
 
 Làm ngay tuần này: ba buổi đi bộ nhanh 30 phút, ngủ trước 11 giờ, không bỏ bữa sáng.
 
-Muốn bổ sung thêm thì tìm hiểu Rich Coenzyme Q10 - hỗ trợ giảm mệt mỏi, hỗ trợ tăng cường sức khoẻ tim mạch, hỗ trợ chống oxy hoá. Uống cùng bữa ăn có chất béo để hấp thu tốt hơn. Đang dùng thuốc chống đông máu, có thai hoặc cho con bú thì hỏi ý kiến bác sĩ trước.
+Muốn bổ sung thêm thì tìm hiểu Rich Coenzyme Q10 - giảm mệt mỏi, tốt cho tim mạch, hỗ trợ chống oxy hoá. Uống cùng bữa ăn có chất béo để hấp thu tốt hơn. Đang dùng thuốc chống đông máu, có thai hoặc cho con bú thì hỏi ý kiến bác sĩ trước.
 
 Hiệu quả tuỳ thuộc cơ địa từng người. Thực phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh.
 

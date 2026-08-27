@@ -17,7 +17,9 @@
       "ten": "Rich Coenzyme Q10",
       "vai_tro": "Năng lượng tế bào - tim mạch",
       "thanh_phan_chinh": [
-        "Coenzyme Q10 (ubiquinone/ubiquinol)"
+        "Coenzyme Q10 dạng khử (ubiquinol) 50mg mỗi viên",
+        "Tảo Haematococcus pluvialis 10mg",
+        "Chiết xuất hạt tiêu đen (Piper nigrum) 2,5mg"
       ],
       "co_che_noi_don_gian": [
         "CoQ10 là một chất có sẵn trong cơ thể, nằm trong ty thể - 'nhà máy điện' của tế bào.",
@@ -26,20 +28,19 @@
         "Người đang dùng nhóm thuốc hạ mỡ máu statin thường được ghi nhận có mức CoQ10 trong máu thấp hơn."
       ],
       "loi_ich_duoc_phep_noi": [
-        "Hỗ trợ tăng cường sức khoẻ tim mạch",
-        "Hỗ trợ giảm mệt mỏi, uể oải",
-        "Hỗ trợ chống oxy hoá"
+        "Giúp bổ sung Coenzyme Q10 cho cơ thể",
+        "Chống oxy hoá",
+        "Giảm mệt mỏi",
+        "Giúp giảm nguy cơ xơ vữa động mạch",
+        "Tốt cho tim mạch"
       ],
       "phu_hop_voi": [
-        "Người trên 40 tuổi",
-        "Người hay mệt, hụt hơi, uể oải kéo dài",
-        "Người quan tâm sức khoẻ tim mạch",
-        "Người đang dùng statin (cần hỏi ý kiến bác sĩ)"
+        "Người trưởng thành cần bổ sung Coenzyme Q10 (nguyên văn nhãn)"
       ],
       "luu_y_an_toan": [
-        "Người đang dùng thuốc chống đông máu (warfarin, sintrom) PHẢI hỏi ý kiến bác sĩ: CoQ10 có cấu trúc gần giống vitamin K nên có thể làm giảm tác dụng của thuốc chống đông",
-        "Phụ nữ có thai, cho con bú cần hỏi ý kiến bác sĩ",
-        "Nên uống cùng bữa ăn có chất béo để hấp thu tốt hơn"
+        "Nhãn ghi 4 trường hợp PHẢI hỏi ý kiến bác sĩ trước khi dùng: dị ứng thực phẩm; đang dùng thuốc; đang điều trị tại bệnh viện; đang mang thai",
+        "Người đang dùng thuốc chống đông máu (warfarin, sintrom): CoQ10 có cấu trúc gần giống vitamin K nên có thể làm giảm tác dụng của thuốc chống đông - bắt buộc để bác sĩ quyết",
+        "Uống 2 viên mỗi ngày với nước, trong hoặc ngay sau bữa ăn có dầu mỡ vì CoQ10 tan trong dầu"
       ],
       "goc_quay_b_roll": [
         "Ảnh sản phẩm xoay 360",
@@ -47,12 +48,12 @@
         "Người trung niên leo cầu thang thở dốc"
       ],
       "CAN_DIEN_THEM": {
-        "ham_luong_mg_moi_vien": "",
-        "dang_bao_che": "Viên nang mềm",
-        "quy_cach_dong_goi": "1 hộp = 1 lọ 120 viên nang mềm",
-        "so_cong_bo_san_pham": "",
-        "nha_san_xuat_xuat_xu": "",
-        "lieu_dung_theo_nhan": "2 viên mỗi ngày, uống trong hoặc ngay sau bữa ăn có dầu mỡ. 1 hộp dùng được 60 ngày.",
+        "ham_luong_mg_moi_vien": "50mg Coenzyme Q10",
+        "dang_bao_che": "Viên nang mềm (dịch 200mg ± 6mg, cả vỏ nang 350mg ± 23mg)",
+        "quy_cach_dong_goi": "1 hộp = 1 lọ 120 viên nang mềm (nhãn KHÔNG có quy cách 60 viên)",
+        "so_cong_bo_san_pham": "4107/2024/ĐKSP - Cục An toàn thực phẩm, cấp 09/05/2024",
+        "nha_san_xuat_xuat_xu": "AFC-HD AMS Life Science Co., Ltd - Second Factory, Shizuoka, Nhật Bản. Nhập khẩu: Công ty Cổ phần 5SPRO",
+        "lieu_dung_theo_nhan": "2 viên mỗi ngày với nước, trong hoặc ngay sau bữa ăn có dầu mỡ. 1 hộp dùng được 60 ngày.",
         "gia_ban_le": "2.890.000đ/hộp"
       },
       "tong_lieu_moi_ngay": "100mg CoQ10 mỗi ngày (2 viên)",
@@ -62,24 +63,45 @@
         "5_hop": "14.450.000đ",
         "6_hop": "17.340.000đ - tặng thêm 1 hộp, thực nhận 7 hộp dùng 420 ngày",
         "ghi_chu_cach_tinh": "Giá mỗi hộp phẳng 2.890.000đ ở mọi mốc. Mốc 6 hộp lợi hơn là nhờ hộp thứ 7 tặng thêm chứ không phải nhờ giảm giá: 17.340.000 chia cho 420 ngày = 41.286đ mỗi ngày, so với 48.167đ mỗi ngày ở mốc 1 hộp.",
-        "dieu_kien_quan_trong": "Từ mốc 3 tới 5 hộp, khách CHỌN MỘT: nhận quà tặng HOẶC giảm tiền mặt, không áp dụng đồng thời. Khi tư vấn phải nói rõ điều kiện này, không được hứa cả hai."
+        "dieu_kien_quan_trong": "Từ mốc 3 tới 5 hộp, khách CHỌN MỘT: nhận quà tặng HOẶC giảm tiền mặt, không áp dụng đồng thời. Khi tư vấn phải nói rõ điều kiện này, không được hứa cả hai.",
+        "CAM_NOI_MUA_NHIEU_RE_HON": "SAI SỰ THẬT. Giá mỗi hộp phẳng 2.890.000đ ở MỌI mốc; mốc 1-3-5 đều ra đúng 48.167đ/ngày. Chỉ mốc 6 rẻ hơn (41.286đ/ngày) và là do TẶNG hộp thứ 7, không phải giảm giá. Nói sai là quảng cáo sai giá."
       },
-      "nguon_du_lieu": "trang bán đang chạy (nhánh web), 27/08/2026",
-      "con_thieu_khong_duoc_doan": [
-        "Hàm lượng mỗi viên - suy ra 50mg từ '2 viên = 100mg' nhưng CHƯA đối chiếu nhãn thật, không được ghi vào kịch bản",
-        "Số công bố sản phẩm - trang bán nói 'có' nhưng chưa ghi số cụ thể",
-        "Nhà sản xuất và đơn vị nhập khẩu",
-        "Tên đầy đủ in trên bao bì"
+      "nguon_du_lieu": "nhãn phụ + giấy công bố, Phòng 7 đọc trực tiếp; hồ sơ chuẩn bo-nho-chung/san-pham/rich-coenzyme-q10.md, 27/08/2026",
+      "huong_tuong_tac": "CoQ10 có thể LÀM GIẢM tác dụng thuốc chống đông (nguy cơ đông máu), ngược hướng với Nattokinase là tăng nguy cơ chảy máu. Khách dùng cả hai mà đang có thuốc chống đông thì bắt buộc để bác sĩ quyết. Nguồn: bo-nho-chung/luat-tuan-thu.md, 27/08/2026.",
+      "ten_day_du_tren_bao_bi": "Thực phẩm bảo vệ sức khỏe RICH COENZYME Q10",
+      "dang_hoat_chat": {
+        "ket_luan": "DẠNG KHỬ (UBIQUINOL) - đã xác minh 27/08/2026",
+        "bang_chung": "Hộp gốc Nhật in 還元型コエンザイムQ10 (kangen-gata = dạng khử), ngay dưới chữ RICH. Dạng rẻ hơn tiếng Nhật ghi 酸化型 (oxy hoá, ubiquinone).",
+        "BAT_BUOC_KHI_VIET": "Nếu kịch bản nói tới dạng khử thì phải dẫn nguồn là CHỮ TRÊN HỘP GỐC NHẬT. TUYỆT ĐỐI KHÔNG nói giấy tờ Việt Nam hay nhãn phụ ghi ubiquinol - nhãn phụ chỉ ghi tên hoạt chất chung 'Coenzyme Q10 50mg' theo quy định ghi nhãn.",
+        "cau_tra_loi_khi_khach_hoi": "Nhãn phụ tiếng Việt ghi theo tên hoạt chất chung là Coenzyme Q10 50mg, đúng quy định ghi nhãn. Còn dạng khử in trên hộp gốc Nhật - chữ 還元型 ngay dưới chữ RICH, anh chị nhìn hộp là thấy."
+      },
+      "nguon_cong_dung": "Trích NGUYÊN VĂN nhãn phụ. Không phòng nào được nới rộng.",
+      "doi_tuong_theo_nhan": "Người trưởng thành cần bổ sung Coenzyme Q10.",
+      "nhom_nham_quang_cao": {
+        "ghi_chu": "Đây là nhóm người xem để CHỌN GIỌNG và CHỌN BỐI CẢNH, KHÔNG được nói thành 'sản phẩm dành cho người bị X'. Đối tượng công bố chỉ có một câu duy nhất ở doi_tuong_theo_nhan.",
+        "nhom": [
+          "Người hay mệt, uể oải kéo dài",
+          "Người quan tâm sức khoẻ tim mạch",
+          "Người 40+"
+        ]
+      },
+      "cam_tuyet_doi_khong_noi": [
+        "Mua nhiều rẻ hơn - sai, giá mỗi hộp phẳng ở mọi mốc",
+        "Một hộp chưa kịp thấy gì - sai, 1 hộp dùng 60 ngày, đã vượt mốc 4-8 tuần",
+        "Thìa là đen - SAI THÀNH PHẦN. Trong sản phẩm là chiết xuất HẠT TIÊU ĐEN (Piper nigrum). Thìa là đen là Nigella sativa, cây hoàn toàn khác. Nói nhầm là khách dị ứng tra cứu ra kết quả sai.",
+        "Nhãn phụ / giấy tờ Việt Nam ghi ubiquinol - sai, nhãn phụ chỉ ghi Coenzyme Q10 50mg",
+        "Quy cách 60 viên - nhãn không có quy cách này"
       ],
-      "KHOA_CLAIM": {
-        "dang_khoa": true,
-        "noi_dung": "KHÔNG khẳng định dạng hoạt chất trong kịch bản, hook hay caption - cả 'ubiquinol' (dạng khử) lẫn 'ubiquinone' (dạng oxy hoá).",
-        "ly_do": "Trang bán đang chạy khẳng định là dạng khử ubiquinol, nhưng products.json ghi 'ubiquinone/ubiquinol' không chốt dạng nào. Đang chờ đối chiếu nhãn thật để xác minh.",
-        "duoc_phep_noi": "Vẫn được nói bình thường về công dụng và cơ chế của CoQ10, chỉ không khẳng định dạng.",
-        "ngay_khoa": "27/08/2026",
-        "go_khoa_khi": "Có xác nhận từ việc đối chiếu nhãn thật. Khi gỡ khoá thì bỏ mục này và bỏ mục tương ứng trong knowledge/compliance.json."
-      },
-      "huong_tuong_tac": "CoQ10 có thể LÀM GIẢM tác dụng thuốc chống đông (nguy cơ đông máu), ngược hướng với Nattokinase là tăng nguy cơ chảy máu. Khách dùng cả hai mà đang có thuốc chống đông thì bắt buộc để bác sĩ quyết. Nguồn: bo-nho-chung/luat-tuan-thu.md, 27/08/2026."
+      "so_lieu_dang_hien_cho_khach_MA_CHUA_CO_NGUON": {
+        "ghi_chu": "Trang bán mời khách tự đối chiếu các số này nhưng hệ thống CHƯA có ảnh giấy tờ. KHÔNG được nhắc trong kịch bản, hook hay caption cho tới khi anh Sơn gửi ảnh.",
+        "danh_sach": [
+          "Xác nhận nội dung quảng cáo 1582/2024/XNQC-ATTP",
+          "Chứng nhận GMP Nhật Bản JHNFA 11105",
+          "Hợp pháp hoá lãnh sự H102-050/HPHLS",
+          "AFC niêm yết sàn Tokyo mã 2927",
+          "MST 5SPRO 0104104405"
+        ]
+      }
     },
     {
       "id": "dha-epa-sq",

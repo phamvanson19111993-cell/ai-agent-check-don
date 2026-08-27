@@ -37,7 +37,7 @@ CÂU 2: Hay quên, khó tập trung, hoặc mỡ máu cao?
 → Mắt xích nuôi dưỡng thần kinh và mỡ máu. DHA EPA SQ - hỗ trợ sức khoẻ não bộ và trí nhớ, hỗ trợ giảm mỡ máu.
 
 CÂU 3: Hay mệt, hụt hơi, đã qua tuổi 40?
-→ Mắt xích năng lượng tế bào. Rich Coenzyme Q10 - hỗ trợ giảm mệt mỏi, hỗ trợ tăng cường sức khoẻ tim mạch.
+→ Mắt xích năng lượng tế bào (cách hình dung, không phải công dụng công bố). Rich Coenzyme Q10 - giảm mệt mỏi, tốt cho tim mạch.
 
 Trả lời có ở nhiều câu thì chọn cái đang làm phiền mình nhất trước, đừng gom hết một lượt.
 

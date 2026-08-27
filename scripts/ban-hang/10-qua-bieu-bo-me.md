@@ -34,7 +34,7 @@ Biếu bố mẹ gì cho có ích, chứ không phải cho có?
 
 - Bố mẹ kêu tê tay tê chân, chóng mặt khi đứng lên → chuyện tuần hoàn máu. Nattokinase hỗ trợ tuần hoàn máu, hỗ trợ tăng cường lưu thông máu não.
 - Bố mẹ hay quên, hoặc có kết quả mỡ máu cao → DHA EPA SQ hỗ trợ sức khoẻ não bộ và trí nhớ, hỗ trợ giảm mỡ máu.
-- Bố mẹ hay mệt, hụt hơi, làm một lúc là phải ngồi nghỉ → Rich Coenzyme Q10 hỗ trợ giảm mệt mỏi, hỗ trợ tăng cường sức khoẻ tim mạch.
+- Bố mẹ hay mệt, hụt hơi, làm một lúc là phải ngồi nghỉ → Rich Coenzyme Q10 giảm mệt mỏi, tốt cho tim mạch.
 
 Một việc nên làm trước khi biếu: hỏi bố mẹ đang uống thuốc gì. Nếu bố mẹ đang dùng thuốc chống đông máu, có rối loạn đông máu, chuẩn bị phẫu thuật hoặc nhổ răng, dị ứng đậu nành hay hải sản thì phải hỏi ý kiến bác sĩ trước.
 

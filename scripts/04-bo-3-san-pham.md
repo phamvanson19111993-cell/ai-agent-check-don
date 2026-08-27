@@ -33,7 +33,7 @@ Ba sản phẩm, ba việc khác nhau, không phải ba cái giống nhau bán k
 
 1. Nattokinase - ĐƯỜNG THÔNG: hỗ trợ tuần hoàn máu. Hợp với người hay tê bì chân tay, chóng mặt.
 2. DHA EPA SQ - XE TỐT: DHA cho màng tế bào thần kinh, EPA hỗ trợ mỡ máu. Hợp với người hay quên, ít ăn cá biển, mỡ máu cao.
-3. Rich Coenzyme Q10 - XĂNG ĐỦ: hỗ trợ năng lượng tế bào và sức khoẻ tim mạch. Hợp với người trên 40, hay mệt, hụt hơi.
+3. Rich Coenzyme Q10 - XĂNG ĐỦ: chống oxy hoá, giảm mệt mỏi, tốt cho tim mạch. Hợp với người trên 40, hay mệt, hụt hơi.
 
 Không bắt buộc dùng cả ba. Cứ nhìn xem mình đang vướng ở mắt xích nào thì bắt đầu từ đó.
 
