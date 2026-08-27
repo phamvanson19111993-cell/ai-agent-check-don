@@ -54,6 +54,9 @@ sidebar cũng sắp theo lần dùng gần nhất. Số phòng trong file này m
 - [`sop/phong-7-set-quang-cao.md`](sop/phong-7-set-quang-cao.md) — SOP set quảng cáo Meta:
   nhận video từ Phòng 3 (Edivideo) → check compliance → set campaign trên page
   "Phạm Sơn sống khoẻ mỗi ngày" → đọc số → luật Keep/Kill/Scale.
+- [`sop/content-ads-dilim.md`](sop/content-ads-dilim.md) — content quảng cáo DiLiM/AFC theo
+  Kotler (STP, định vị, value proposition) và Ogilvy (10 tiêu đề, 6 bài copy, kịch bản video 60s),
+  kèm bảng nhắm mục tiêu theo độ tuổi & hành vi.
 
 ## Cấu trúc
 
