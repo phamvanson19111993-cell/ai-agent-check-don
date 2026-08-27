@@ -42,6 +42,54 @@ Phòng 6 theo lệnh khoá (an toàn hơn) và báo lên — **xử lý đúng**
 
 # ĐANG MỞ
 
+## 🔴 MT-10 · Rủi ro pháp lý khi quảng cáo "dạng khử / ubiquinol" — MỚI, ưu tiên cao
+
+Phòng 6 nêu: nhãn phụ và **hồ sơ công bố Việt Nam chỉ ghi "Coenzyme Q10 50mg"**, không ghi dạng.
+Nghị định 15/2018 yêu cầu nội dung quảng cáo phải **đúng nội dung đã công bố**. Nói "dạng khử
+ubiquinol" là **đúng sự thật về sản phẩm** (chữ 還元型 trên hộp Nhật) nhưng **thêm thông tin ngoài
+hồ sơ công bố** → có thể bị coi là quảng cáo không đúng nội dung xác nhận.
+
+Đây là **điểm bán mạnh nhất** của sản phẩm, đang dùng để giải thích chênh giá.
+
+Phòng 6 đã dựng hàng rào: được nói nhưng bắt buộc dẫn nguồn là chữ trên hộp gốc Nhật; bộ soát
+**chặn đăng** nếu ai viết "nhãn phụ ghi ubiquinol".
+
+→ **Cần hỏi đơn vị làm hồ sơ công bố** xem có được nêu dạng hoạt chất trong quảng cáo không,
+**trước khi Ads đổ tiền vào cụm này.**
+
+## 🔴 MT-11 · Đơn khách không chảy vào bảng nào — MỚI
+
+Biểu mẫu "Data Chuyển đổi" gửi đơn vào **một ô gộp duy nhất** (`entry.322596292`) chứa cả đoạn
+văn bản. Bảng tính "Lady Page" trên Drive có 5 cột đúng nhưng **trống hoàn toàn**, tạo tay 25/08,
+**không nối với biểu mẫu**. Hai thứ không khớp → đơn không bao giờ vào bảng.
+
+Phòng nào định lấy số đơn từ bảng "Lady Page" phải biết điều này.
+Cần anh Sơn: mở biểu mẫu → tab Câu trả lời → biểu tượng Trang tính xanh → Tạo bảng tính mới.
+
+## 🔴 MT-12 · Ba chiến dịch đang đốt tiền — MỚI
+
+Tài khoản thuê Aztlan `1440077257813466`: 3 chiến dịch đặt ~870.000đ/ngày, **0 kết quả**,
+tối ưu sai sự kiện, tài khoản đang treo cảnh báo. Lệnh tạm dừng đã viết sẵn trong `lenh.json`
+của Phòng 7, cần anh chạy `python3 thuc-thi.py --lam`.
+
+## 🟠 MT-13 · Trang dilisupplement.com có thể ghi sai thành phần
+
+Phòng 10 lấy "thìa là đen" từ tóm tắt tìm kiếm trỏ về `dilisupplement.com/coenzyme-q10`.
+Nhãn thật ghi **hạt tiêu đen**. Nếu trang đó đang ghi "thìa là đen" thì **trang đang sai thành phần**.
+Không phòng nào mở được trang (đều bị chặn mạng). Cần anh Sơn kiểm.
+
+## 🟠 MT-14 · Sheet cũ trên Drive mất số 0 đầu số điện thoại
+
+Sheet cũ lưu `913592043` thay vì `0913592043` do Google đọc thành số. Phòng 8 đã sửa ở bản mới.
+**Phòng nào đang dùng sheet cũ làm nguồn thì số lệch 1 ký tự đầu** — không khớp khách được.
+
+## 🟡 MT-15 · Phòng 9 Zalo: vai trò lệch
+
+Phòng 9 lập ra để **tra cứu đơn hàng**, nhưng luật hiện giao cả trách nhiệm tư vấn giá/công dụng.
+Phòng 9 tạm cho bot **chuyển nhân viên** mọi câu hỏi sản phẩm — an toàn hơn là để bot nói sai.
+Phòng 9 xin cơ chế đọc bộ nhớ chung lúc bot đang chạy (đề xuất: đọc thẳng file từ nhánh Tổng Chỉ
+Huy lúc khởi động, không chép sang nhánh mình). **Tổng Chỉ Huy chưa duyệt — chờ anh Sơn cho hướng.**
+
 ## 🔴 MT-07 · NĂM con số đang hiện cho khách mà không có nguồn — ƯU TIÊN CAO NHẤT
 
 Trang bán đang chạy mời khách *"tự đối chiếu"* các số này. Trong toàn hệ thống **không có ảnh

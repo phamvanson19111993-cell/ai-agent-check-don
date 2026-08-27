@@ -43,12 +43,15 @@ Bằng chứng: hộp gốc Nhật in **還元型コエンザイムQ10** (*kange
 
 ## Giá — ĐÃ XÁC MINH (nguồn: trang bán đang chạy)
 
-| Mốc | Giá | Thực nhận | Mỗi ngày |
-|---|---|---|---|
-| 1 hộp | 2.890.000đ | 1 hộp · 60 ngày | 48.167đ |
-| 3 hộp | 8.670.000đ *(kèm quà)* | 3 hộp · 180 ngày | 48.167đ |
-| 5 hộp | 14.450.000đ *(kèm quà)* | 5 hộp · 300 ngày | 48.167đ |
-| **6 hộp** | **17.340.000đ** *(tặng thêm 1)* | **7 hộp · 420 ngày** | **41.286đ** |
+| Mốc | Giá | Thực nhận | Mỗi ngày | Ưu đãi |
+|---|---|---|---|---|
+| 1 hộp | 2.890.000đ | 1 hộp · 60 ngày | 48.167đ | giá niêm yết |
+| **2 hộp** | **5.780.000đ** | 2 hộp · 120 ngày | 48.167đ | giá niêm yết, **không kèm quà** |
+| 3 hộp | 8.670.000đ | 3 hộp · 180 ngày | 48.167đ | Ellagic Acid 675k **hoặc** Gluchon Gel 680k |
+| 5 hộp | 14.450.000đ | 5 hộp · 300 ngày | 48.167đ | Gluchon Gel 680k **hoặc** Nghệ Mùa Thu 990k |
+| **6 hộp** | **17.340.000đ** | **7 hộp · 420 ngày** | **41.286đ** | tặng thêm 1 hộp |
+
+*Mốc 2 hộp thêm ngày 27/08 theo yêu cầu trực tiếp của anh Sơn (Phòng 7 đã lên trang).*
 
 > ⚠️ **KHÔNG được nói "mua nhiều rẻ hơn".** Giá mỗi hộp **phẳng 2.890.000đ ở mọi mốc**.
 > Mốc 1–3–5 đều ra đúng 48.167đ/ngày. Chỉ mốc 6 rẻ hơn (41.286đ/ngày) và **do tặng hộp thứ 7**, không phải giảm giá. Nói sai là quảng cáo sai giá.

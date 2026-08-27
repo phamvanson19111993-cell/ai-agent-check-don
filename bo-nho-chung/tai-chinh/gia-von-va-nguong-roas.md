@@ -17,30 +17,39 @@
 > (báo cáo, kịch bản, quyết định ngân sách) **bắt buộc ghi kèm "theo giả định giá vốn 50%"**.
 > Khi có hoá đơn nhập thật, sửa đúng một dòng `von = 50%` ở đây rồi tính lại.
 
-## Bảng lãi gộp theo từng mốc
+## Bảng lãi gộp theo từng mốc — cập nhật 27/08 kỳ 22h
 
-Giá bán 1 hộp: **2.890.000đ** (đã xác minh, nguồn: trang bán đang chạy)
-Giá vốn 1 hộp: **1.445.000đ** (giả định 50%)
+Giá bán 1 hộp: **2.890.000đ** (đã xác minh) · Giá vốn 1 hộp: **1.445.000đ** (giả định 50%)
 
-| Mốc | Doanh thu | Hộp phải giao | Giá vốn | Lãi gộp | Biên | Trần chi phí ads mỗi đơn |
-|---|---|---|---|---|---|---|
-| 1 hộp | 2.890.000đ | 1 | 1.445.000đ | **1.445.000đ** | 50,0% | 1.445.000đ |
-| 3 hộp | 8.670.000đ | 3 | 4.335.000đ | **4.335.000đ** | 50,0% | 4.335.000đ |
-| 5 hộp | 14.450.000đ | 5 | 7.225.000đ | **7.225.000đ** | 50,0% | 7.225.000đ |
-| 6 hộp | 17.340.000đ | **7** *(tặng 1)* | 10.115.000đ | **7.225.000đ** | **41,7%** | 7.225.000đ |
+**Quà tặng nay đã biết** (Phòng 7 cung cấp kỳ 22h) — vốn quà cũng tính theo giả định 50% giá niêm yết:
 
-## 🔍 PHÁT HIỆN — mốc 5 và mốc 6 cho lãi gộp Y HỆT NHAU
+| Mốc | Doanh thu | Hộp giao | Vốn hàng | Vốn quà | Lãi gộp | Biên | Trần ads/đơn |
+|---|---|---|---|---|---|---|---|
+| 1 hộp | 2.890.000đ | 1 | 1.445.000đ | — | **1.445.000đ** | **50,0%** | 1.445.000đ |
+| **2 hộp** *(mới)* | 5.780.000đ | 2 | 2.890.000đ | — | **2.890.000đ** | **50,0%** | 2.890.000đ |
+| 3 hộp | 8.670.000đ | 3 | 4.335.000đ | 340.000đ | **3.995.000đ** | 46,1% | 3.995.000đ |
+| 5 hộp | 14.450.000đ | 5 | 7.225.000đ | 495.000đ | **6.730.000đ** | 46,6% | 6.730.000đ |
+| 6 hộp | 17.340.000đ | **7** | 10.115.000đ | — | **7.225.000đ** | **41,7%** | 7.225.000đ |
 
-Cả hai mốc đều lãi **7.225.000đ**, nhưng mốc 6 phải **giao thêm 2 hộp hàng**.
+Quà theo Phòng 7: mốc 3 hộp = Ellagic Acid 675k **hoặc** Gluchon Gel 680k · mốc 5 hộp =
+Gluchon Gel 680k **hoặc** Nghệ Mùa Thu 990k. Bảng trên lấy **quà đắt nhất** cho từng mốc (thận trọng).
+Khách chọn quà rẻ hơn thì biên nhích lên chút ít.
 
-Lý do: hộp thứ 6 mang về đúng 1.445.000đ lãi, còn hộp thứ 7 tặng đi tốn đúng
-1.445.000đ vốn — hai khoản triệt tiêu nhau.
+## 🔍 Xếp hạng biên lãi — ngược với thứ tự trang bán đang khuyến khích
 
-**Nghĩa là:** mốc 6 chỉ hơn mốc 5 về *doanh thu* và *giữ chân khách lâu hơn* (420 ngày
-so với 300 ngày), **không hơn về lãi**, mà lại tốn thêm 2 hộp tồn kho và tiền ship.
-Trang bán đang quảng cáo mốc 6 là "lợi nhất" — đúng với **khách**, không đúng với **lãi của công ty**.
+```
+1 hộp = 2 hộp  (50,0%)  >  5 hộp (46,6%)  >  3 hộp (46,1%)  >  6 hộp (41,7%)
+```
 
-→ Cần anh quyết: giữ nguyên (chấp nhận đổi lãi lấy khách dùng dài), hay đổi cơ cấu quà mốc 6.
+**Mốc 6 hộp là mốc lãi mỏng nhất**, dù trang ghi "Lợi nhất". Đúng với khách, không đúng với lãi.
+
+**Mốc 2 hộp mới thêm là mốc tốt nhất về biên** trong nhóm đơn lớn: giữ nguyên biên 50%,
+không mất quà, mà vẫn gấp đôi giá trị đơn so với mốc 1 hộp. Đáng đẩy trong quảng cáo.
+
+## 🔍 Mốc 5 và mốc 6 — chênh nhau ít hơn tưởng
+
+Mốc 5 lãi 6.730.000đ, mốc 6 lãi 7.225.000đ → **mốc 6 chỉ hơn 495.000đ (7,4%)**,
+nhưng phải giao thêm **2 hộp** và ship nặng hơn. Trước khi biết quà, hai mốc bằng nhau đúng bằng 0.
 
 ## Ngưỡng ROAS hoà vốn
 
@@ -50,7 +59,9 @@ ROAS hoà vốn = 1 ÷ biên lãi gộp
 
 | Mốc | Biên lãi gộp | ROAS hoà vốn |
 |---|---|---|
-| 1 · 3 · 5 hộp | 50,0% | **2,00** |
+| 1 hộp · **2 hộp** | 50,0% | **2,00** |
+| 5 hộp | 46,6% | **2,15** |
+| 3 hộp | 46,1% | **2,17** |
 | 6 hộp | 41,7% | **2,40** |
 
 **Cách dùng cho Phòng Ads:** ROAS dưới ngưỡng trên là **đang lỗ**, không phải "lãi mỏng".
@@ -60,9 +71,8 @@ Và đây mới là ngưỡng *gộp* — ngưỡng thật còn cao hơn (xem d�
 
 Bảng trên mới trừ mỗi giá vốn hàng. Chưa trừ:
 
-1. **Quà tặng mốc 3 và mốc 5** — trang ghi "sản phẩm chính hãng trong danh mục, tính theo
-   giá niêm yết". Quà cũng có giá vốn. **Chưa biết quà là gì** → chưa trừ được.
-   Nếu quà là 1 hộp cùng loại thì mốc 3 tụt từ 50% xuống 33,3%, mốc 5 tụt xuống 41,7%.
+1. ~~Quà tặng mốc 3 và mốc 5~~ — ✅ **đã biết tên quà và giá niêm yết**, đã trừ ở bảng trên.
+   Vẫn cần **giá vốn thật của quà** (bảng đang giả định 50% giá niêm yết như hàng chính).
 2. **Phương án "giảm tiền mặt"** thay quà ở mốc 3–5 — **chưa biết giảm bao nhiêu**.
 3. **Hoa hồng đại lý / sale** — chưa có chính sách, chưa trừ được đồng nào.
 4. **Vận chuyển, đổi trả, chi phí vận hành** — chưa có số.
