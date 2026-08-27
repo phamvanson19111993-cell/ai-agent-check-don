@@ -185,3 +185,72 @@ Nhãn còn ghi rõ các trường hợp phải hỏi bác sĩ trước khi dùng
 | Ô 4 — NSX / NK | **AFC-HD AMS Life Science Co., Ltd Second Factory** / **Công ty Cổ phần 5SPRO** · nguồn [NP] + [CB] |
 | Trang bán có nói sai không | **Không.** 13/13 mục đối chiếu đều khớp. |
 | Còn thiếu nguồn | Mã cổ phiếu Tokyo 2927 · MST 0104104405 — **cần anh Sơn cung cấp** |
+
+---
+
+# PHẦN BỔ SUNG — đã tự sửa trên trang, cùng ngày
+
+Sau khi đối chiếu kỹ khối **"Chép nguyên từ bản công bố và nhãn phụ"** trên trang với ảnh nhãn thật, phát hiện khối này **không chép nguyên** như tiêu đề của nó tuyên bố. Đã sửa hết, commit cùng ngày.
+
+## Tám chỗ đã sửa
+
+| # | Trang **trước** khi sửa | Nhãn thật | Mức |
+|---|---|---|---|
+| 1 | `Coenzym Q10 50mg` | `Coenzyme Q10: 50mg` | Lỗi chính tả tên hoạt chất |
+| 2 | `Dầu ăn, este acid béo glycerin, D-alpha-tocopherol…` | `Dung môi (dầu ăn), chất nhũ hóa (este acid béo glycerin), chất chống oxy hóa (D-alphatocopherol…)` | Bỏ mất tên nhóm chức năng |
+| 3 | `…cho cơ thể. Giúp chống oxy hoá, giảm mệt mỏi. Giúp giảm…` | `…cho cơ thể, chống oxy hóa, giảm mệt mỏi, giúp giảm…` | Tự đổi dấu câu công dụng |
+| 4 | `Người lớn từ 18 tuổi trở lên có nhu cầu…; người lớn mệt mỏi…; người muốn hạn chế xơ vữa…` | `Người trưởng thành cần bổ sung Coenzyme Q10.` | **Tự viết thêm đối tượng** |
+| 5 | `Người lớn uống 2 viên mỗi ngày` | `Uống 02 viên mỗi ngày với nước` | Sai so với nhãn |
+| 6 | `Lọ 120 viên **hoặc 60 viên**` | `Hộp 1 lọ. Lọ 120 viên.` | **Nhãn không hề có quy cách 60 viên** |
+| 7 | `24 tháng kể từ ngày sản xuất` | `02 năm kể từ ngày sản xuất` | Cùng nghĩa, nhưng không phải chữ trên nhãn |
+| 8 | — thiếu — | Toàn bộ khối **Lưu ý** bắt buộc | **Thiếu hẳn trong khối chép nguyên** |
+
+**Nặng nhất là #6 và #4.**
+
+- **#6** — trang chào bán một quy cách **60 viên không tồn tại trên nhãn**. Khách đọc rồi hỏi mua lọ 60 viên, CSKH không có hàng để bán → mất uy tín ngay ở bước đầu.
+- **#4** — trang tự mở rộng đối tượng sử dụng thành ba nhóm bệnh lý ("người muốn hạn chế xơ vữa động mạch…"), trong khi nhãn chỉ ghi một câu trung tính. Với thực phẩm bảo vệ sức khoẻ, tự mở rộng đối tượng ở khối tự nhận là "chép nguyên hồ sơ" là chỗ dễ bị thổi còi nhất.
+- **#8** — khối cảnh báo bắt buộc trước đó không nằm trong phần hồ sơ. Nay đã đưa vào đầy đủ, gồm cả bốn trường hợp phải hỏi bác sĩ: **dị ứng thực phẩm, đang dùng thuốc, đang điều trị tại bệnh viện, đang mang thai**.
+
+## Ba mục đã thêm mới
+
+**1. Bổ sung dòng số ĐKSP `4107/2024/ĐKSP`** vào khối nhãn phụ.
+
+**2. Ghi chú địa chỉ 5SPRO**, đặt ngay dưới dòng địa chỉ, để khách đối chiếu hai giấy tờ không nghi hàng giả:
+
+> *"Nhãn phụ in trên hộp mới ghi địa chỉ là phường Bồ Đề, thành phố Hà Nội — vẫn đúng địa chỉ này, chỉ là ghi theo tên phường sau khi sáp nhập và bỏ cấp quận."*
+
+**3. Khối chứng minh dạng khử**, đặt ngay dưới hai ảnh giấy tờ gốc — vì khách nhìn ảnh nhãn phụ sẽ thấy nhãn không hề có chữ "ubiquinol", và đó là câu hỏi khó nhất mà trang chưa trả lời:
+
+> **還元型コエンザイムQ10**
+>
+> *"Đây là chữ in trên mặt hộp gốc tiếng Nhật. 還元型 đọc là kangen-gata, nghĩa đen là 'dạng khử' — chính là Ubiquinol. Dạng rẻ tiền hơn thì tiếng Nhật ghi 酸化型 (dạng oxy hoá, tức Ubiquinone). Anh chị cầm hộp lên, tìm dòng chữ này ngay dưới chữ RICH là kiểm chứng được."*
+>
+> *"Nhãn phụ tiếng Việt ở trên chỉ ghi 'Coenzyme Q10: 50mg' — đó là ghi theo tên hoạt chất chung, đúng quy định ghi nhãn của Việt Nam, nên nhãn phụ không nhắc chữ 'dạng khử'. Hai tờ không mâu thuẫn nhau: một tờ ghi tên chung, một tờ ghi dạng cụ thể."*
+
+Điểm bán mạnh nhất của sản phẩm nay có bằng chứng khách **tự cầm hộp lên kiểm tra được**, thay vì phải tin lời trang.
+
+## Kiểm tra sau khi sửa
+
+Chạy lại toàn bộ: không lỗi JS · không tràn ngang ở 390px và 1280px · luồng đặt hàng ba đường (1 hộp trả đủ · 6 hộp đặt cọc · chưa quyết) vẫn đúng.
+
+---
+
+# CẢNH BÁO — SÁU CON SỐ TRÊN TRANG CHƯA CÓ NGUỒN
+
+Rà lại toàn trang thì con số đang hiển thị cho khách nhiều hơn báo cáo ban đầu. **Chỉ 1 trong 7 con số giấy tờ có ảnh chứng minh trong nhánh này.**
+
+| Con số trang đang hiện | Có ảnh trong nhánh? |
+|---|---|
+| Giấy tiếp nhận công bố **4107/2024/ĐKSP** | ✅ có ảnh `giay-cong-bo.webp` |
+| Xác nhận nội dung quảng cáo **1582/2024/XNQC-ATTP** | ❌ **CHƯA CÓ NGUỒN** |
+| Chứng nhận GMP Nhật Bản **JHNFA 11105** | ❌ **CHƯA CÓ NGUỒN** |
+| Hợp pháp hoá lãnh sự **H102-050/HPHLS** | ❌ **CHƯA CÓ NGUỒN** |
+| AFC niêm yết sàn Tokyo mã **2927** | ❌ **CHƯA CÓ NGUỒN** |
+| MST 5SPRO **0104104405** | ❌ **CHƯA CÓ NGUỒN** |
+| Mã hồ sơ **23.11.10.278247.DKCB** | ✅ in ở chân giấy công bố |
+
+Trang đang nói với khách: *"Bốn con số dưới đây anh chị có thể **tự đối chiếu**."* Nếu một trong bốn số đó sai, khách tra ra không thấy → mất đơn, và nặng hơn là mất uy tín cả trang.
+
+**Phòng 7 không xoá và không tự sửa sáu số này** — vì không có nguồn để sửa cho đúng, mà xoá một con số có thật thì mất điểm bán. Máy chủ Phòng 7 bị chặn ra Internet nên không tự tra được.
+
+**Đề nghị anh Sơn gửi ảnh chụp bốn giấy tờ còn thiếu** (xác nhận quảng cáo, GMP, hợp pháp hoá lãnh sự, đăng ký kinh doanh 5SPRO). Có ảnh thì Phòng 7 vừa đối chiếu được, vừa đăng lên trang làm bằng chứng — đúng như đã làm với giấy công bố.
