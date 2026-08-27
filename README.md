@@ -49,6 +49,12 @@ Phòng 5 · 📞 SĐT chưa chốt Pancake
 Lưu ý: số 1–9 hiện trong sidebar Claude là **phím tắt theo vị trí**, app tự gán, không đặt tay được;
 sidebar cũng sắp theo lần dùng gần nhất. Số phòng trong file này mới là thứ tự ưu tiên.
 
+## Quy trình
+
+- [`sop/phong-7-set-quang-cao.md`](sop/phong-7-set-quang-cao.md) — SOP set quảng cáo Meta:
+  nhận video từ Phòng 3 (Edivideo) → check compliance → set campaign trên page
+  "Phạm Sơn sống khoẻ mỗi ngày" → đọc số → luật Keep/Kill/Scale.
+
 ## Cấu trúc
 
 - `index.html` — trang sổ phòng
