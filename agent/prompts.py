@@ -189,6 +189,24 @@ def _product_block(p: dict[str, Any]) -> str:
         "Lưu ý an toàn BẮT BUỘC nhắc nếu có nói tới sản phẩm này:",
         _bullets(p["luu_y_an_toan"]),
     ]
+    if p.get("KHOA_CLAIM", {}).get("dang_khoa"):
+        k = p["KHOA_CLAIM"]
+        lines.append(
+            f'ĐANG TẠM KHOÁ - TUYỆT ĐỐI KHÔNG VIẾT: {k["noi_dung"]} '
+            f'Lý do: {k["ly_do"]} {k["duoc_phep_noi"]}'
+        )
+    if p.get("tong_lieu_moi_ngay"):
+        lines.append(f'Liều mỗi ngày: {p["tong_lieu_moi_ngay"]}')
+    if p.get("gia_theo_moc"):
+        lines.append(
+            "Giá theo mốc: " + json.dumps(p["gia_theo_moc"], ensure_ascii=False)
+        )
+    if p.get("nguon_du_lieu"):
+        lines.append(f'Nguồn số liệu: {p["nguon_du_lieu"]}. Chỉ dùng số ở đây, không lấy nơi khác.')
+    if p.get("con_thieu_khong_duoc_doan"):
+        lines.append(
+            "CHƯA CÓ NGUỒN, KHÔNG ĐƯỢC ĐOÁN: " + "; ".join(p["con_thieu_khong_duoc_doan"])
+        )
     if filled:
         lines.append(f"Thông tin sản phẩm: {json.dumps(filled, ensure_ascii=False)}")
     if missing:

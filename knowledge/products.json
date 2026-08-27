@@ -11,13 +11,14 @@
     "cach_noi_trong_video": "Máu lưu thông tốt mà tế bào không có năng lượng thì vẫn mệt. Tế bào đủ năng lượng mà đường đi của máu kém thì dưỡng chất không tới nơi. Vì vậy 3 sản phẩm hỗ trợ nhau chứ không thay thế nhau.",
     "canh_bao_cach_ban": "KHÔNG nói bộ 3 chữa được bệnh, KHÔNG nói phải mua đủ 3 mới có tác dụng, KHÔNG ép combo. Hãy trình bày như 3 lựa chọn theo nhu cầu."
   },
-
   "san_pham": [
     {
       "id": "coenzyme-q10",
       "ten": "Rich Coenzyme Q10",
       "vai_tro": "Năng lượng tế bào - tim mạch",
-      "thanh_phan_chinh": ["Coenzyme Q10 (ubiquinone/ubiquinol)"],
+      "thanh_phan_chinh": [
+        "Coenzyme Q10 (ubiquinone/ubiquinol)"
+      ],
       "co_che_noi_don_gian": [
         "CoQ10 là một chất có sẵn trong cơ thể, nằm trong ty thể - 'nhà máy điện' của tế bào.",
         "Tim và não là hai cơ quan tiêu tốn năng lượng nhiều nhất nên cũng là nơi có mật độ ty thể cao nhất.",
@@ -29,28 +30,65 @@
         "Hỗ trợ giảm mệt mỏi, uể oải",
         "Hỗ trợ chống oxy hoá"
       ],
-      "phu_hop_voi": ["Người trên 40 tuổi", "Người hay mệt, hụt hơi, uể oải kéo dài", "Người quan tâm sức khoẻ tim mạch", "Người đang dùng statin (cần hỏi ý kiến bác sĩ)"],
+      "phu_hop_voi": [
+        "Người trên 40 tuổi",
+        "Người hay mệt, hụt hơi, uể oải kéo dài",
+        "Người quan tâm sức khoẻ tim mạch",
+        "Người đang dùng statin (cần hỏi ý kiến bác sĩ)"
+      ],
       "luu_y_an_toan": [
         "Người đang dùng thuốc chống đông máu cần hỏi ý kiến bác sĩ",
         "Phụ nữ có thai, cho con bú cần hỏi ý kiến bác sĩ",
         "Nên uống cùng bữa ăn có chất béo để hấp thu tốt hơn"
       ],
-      "goc_quay_b_roll": ["Ảnh sản phẩm xoay 360", "Hình minh hoạ ty thể/tế bào", "Người trung niên leo cầu thang thở dốc"],
+      "goc_quay_b_roll": [
+        "Ảnh sản phẩm xoay 360",
+        "Hình minh hoạ ty thể/tế bào",
+        "Người trung niên leo cầu thang thở dốc"
+      ],
       "CAN_DIEN_THEM": {
         "ham_luong_mg_moi_vien": "",
-        "dang_bao_che": "",
-        "quy_cach_dong_goi": "",
+        "dang_bao_che": "Viên nang mềm",
+        "quy_cach_dong_goi": "1 hộp = 1 lọ 120 viên nang mềm",
         "so_cong_bo_san_pham": "",
         "nha_san_xuat_xuat_xu": "",
-        "lieu_dung_theo_nhan": "",
-        "gia_ban_le": ""
+        "lieu_dung_theo_nhan": "2 viên mỗi ngày, uống trong hoặc ngay sau bữa ăn có dầu mỡ. 1 hộp dùng được 60 ngày.",
+        "gia_ban_le": "2.890.000đ/hộp"
+      },
+      "tong_lieu_moi_ngay": "100mg CoQ10 mỗi ngày (2 viên)",
+      "gia_theo_moc": {
+        "1_hop": "2.890.000đ - dùng 60 ngày",
+        "3_hop": "8.670.000đ",
+        "5_hop": "14.450.000đ",
+        "6_hop": "17.340.000đ - tặng thêm 1 hộp, thực nhận 7 hộp dùng 420 ngày",
+        "ghi_chu_cach_tinh": "Giá mỗi hộp phẳng 2.890.000đ ở mọi mốc. Mốc 6 hộp lợi hơn là nhờ hộp thứ 7 tặng thêm chứ không phải nhờ giảm giá: 17.340.000 chia cho 420 ngày = 41.286đ mỗi ngày, so với 48.167đ mỗi ngày ở mốc 1 hộp.",
+        "dieu_kien_quan_trong": "Từ mốc 3 tới 5 hộp, khách CHỌN MỘT: nhận quà tặng HOẶC giảm tiền mặt, không áp dụng đồng thời. Khi tư vấn phải nói rõ điều kiện này, không được hứa cả hai."
+      },
+      "nguon_du_lieu": "trang bán đang chạy (nhánh web), 27/08/2026",
+      "con_thieu_khong_duoc_doan": [
+        "Hàm lượng mỗi viên - suy ra 50mg từ '2 viên = 100mg' nhưng CHƯA đối chiếu nhãn thật, không được ghi vào kịch bản",
+        "Số công bố sản phẩm - trang bán nói 'có' nhưng chưa ghi số cụ thể",
+        "Nhà sản xuất và đơn vị nhập khẩu",
+        "Tên đầy đủ in trên bao bì"
+      ],
+      "KHOA_CLAIM": {
+        "dang_khoa": true,
+        "noi_dung": "KHÔNG khẳng định dạng hoạt chất trong kịch bản, hook hay caption - cả 'ubiquinol' (dạng khử) lẫn 'ubiquinone' (dạng oxy hoá).",
+        "ly_do": "Trang bán đang chạy khẳng định là dạng khử ubiquinol, nhưng products.json ghi 'ubiquinone/ubiquinol' không chốt dạng nào. Đang chờ đối chiếu nhãn thật để xác minh.",
+        "duoc_phep_noi": "Vẫn được nói bình thường về công dụng và cơ chế của CoQ10, chỉ không khẳng định dạng.",
+        "ngay_khoa": "27/08/2026",
+        "go_khoa_khi": "Có xác nhận từ việc đối chiếu nhãn thật. Khi gỡ khoá thì bỏ mục này và bỏ mục tương ứng trong knowledge/compliance.json."
       }
     },
     {
       "id": "dha-epa-sq",
       "ten": "DHA EPA SQ",
       "vai_tro": "Não bộ - thị lực - mỡ máu",
-      "thanh_phan_chinh": ["DHA (omega-3)", "EPA (omega-3)", "Squalene (SQ)"],
+      "thanh_phan_chinh": [
+        "DHA (omega-3)",
+        "EPA (omega-3)",
+        "Squalene (SQ)"
+      ],
       "co_che_noi_don_gian": [
         "DHA là thành phần cấu trúc chiếm tỉ lệ lớn trong màng tế bào thần kinh và võng mạc.",
         "EPA thiên về hỗ trợ chuyển hoá mỡ máu và đáp ứng viêm của cơ thể.",
@@ -63,13 +101,22 @@
         "Hỗ trợ giảm mỡ máu",
         "Hỗ trợ sức khoẻ thị lực"
       ],
-      "phu_hop_voi": ["Người hay quên, khó tập trung", "Người ít ăn cá biển", "Người mỡ máu cao", "Người làm việc trí óc, nhìn màn hình nhiều"],
+      "phu_hop_voi": [
+        "Người hay quên, khó tập trung",
+        "Người ít ăn cá biển",
+        "Người mỡ máu cao",
+        "Người làm việc trí óc, nhìn màn hình nhiều"
+      ],
       "luu_y_an_toan": [
         "Người dị ứng hải sản/cá cần đọc kỹ thành phần",
         "Người đang dùng thuốc chống đông máu cần hỏi ý kiến bác sĩ",
         "Ngưng trước phẫu thuật theo hướng dẫn của bác sĩ"
       ],
-      "goc_quay_b_roll": ["Cá biển sâu, dầu cá nhỏ giọt", "Hình minh hoạ tế bào thần kinh", "Người ngồi làm việc dụi mắt"],
+      "goc_quay_b_roll": [
+        "Cá biển sâu, dầu cá nhỏ giọt",
+        "Hình minh hoạ tế bào thần kinh",
+        "Người ngồi làm việc dụi mắt"
+      ],
       "CAN_DIEN_THEM": {
         "ham_luong_dha_mg": "",
         "ham_luong_epa_mg": "",
@@ -85,7 +132,9 @@
       "id": "nattokinase",
       "ten": "Nattokinase",
       "vai_tro": "Tuần hoàn máu",
-      "thanh_phan_chinh": ["Nattokinase (enzyme từ đậu nành lên men natto)"],
+      "thanh_phan_chinh": [
+        "Nattokinase (enzyme từ đậu nành lên men natto)"
+      ],
       "co_che_noi_don_gian": [
         "Natto là món đậu nành lên men truyền thống của Nhật Bản.",
         "Nattokinase là enzyme được chiết từ quá trình lên men đó.",
@@ -97,14 +146,23 @@
         "Hỗ trợ tăng cường lưu thông máu não",
         "Hỗ trợ giảm nguy cơ hình thành huyết khối"
       ],
-      "phu_hop_voi": ["Người hay tê bì chân tay", "Người hay đau đầu, chóng mặt do tuần hoàn kém", "Người cao tuổi ít vận động", "Người có tiền sử gia đình về tim mạch"],
+      "phu_hop_voi": [
+        "Người hay tê bì chân tay",
+        "Người hay đau đầu, chóng mặt do tuần hoàn kém",
+        "Người cao tuổi ít vận động",
+        "Người có tiền sử gia đình về tim mạch"
+      ],
       "luu_y_an_toan": [
         "KHÔNG dùng cho người đang dùng thuốc chống đông (warfarin, aspirin liều điều trị) nếu chưa hỏi bác sĩ",
         "KHÔNG dùng cho người rối loạn đông máu, đang chảy máu, chuẩn bị phẫu thuật hoặc nhổ răng",
         "Phụ nữ có thai, cho con bú cần hỏi ý kiến bác sĩ",
         "Người dị ứng đậu nành không dùng"
       ],
-      "goc_quay_b_roll": ["Món natto kéo sợi", "Hình minh hoạ dòng máu trong lòng mạch", "Người bóp tay tê"],
+      "goc_quay_b_roll": [
+        "Món natto kéo sợi",
+        "Hình minh hoạ dòng máu trong lòng mạch",
+        "Người bóp tay tê"
+      ],
       "CAN_DIEN_THEM": {
         "ham_luong_fu_moi_vien": "",
         "so_cong_bo_san_pham": "",

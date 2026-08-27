@@ -169,5 +169,23 @@
       "mau": "(sản phẩm|thương hiệu|loại|dòng|công nghệ)\\s+(\\w+\\s+){0,2}duy nhất",
       "thay_bang": "một trong những"
     }
-  ]
+  ],
+  "khoa_tam_thoi": [
+    {
+      "ten": "Dạng hoạt chất CoQ10",
+      "cum_bi_khoa": [
+        "ubiquinol",
+        "ubiquinone",
+        "dạng khử",
+        "dạng oxy hoá",
+        "dạng oxy hóa",
+        "dạng oxi hoá",
+        "dạng oxi hóa"
+      ],
+      "ly_do": "Chưa đối chiếu nhãn thật. Trang bán nói dạng khử, kho kiến thức ghi chưa chốt.",
+      "thay_bang": "chỉ nói Coenzyme Q10, không nói dạng",
+      "ngay_khoa": "27/08/2026"
+    }
+  ],
+  "ghi_chu_khoa_tam_thoi": "Những cụm đang bị tạm khoá vì chưa xác minh. Khác với từ cấm: không sai luật, chỉ là chưa đủ căn cứ để khẳng định. Gỡ mục này khi đã xác minh xong."
 }

@@ -142,6 +142,22 @@ def check(text: str, *, yeu_cau_khuyen_cao: bool = True) -> Report:
                     )
                 )
 
+    # 1c. Các cụm đang bị TẠM KHOÁ vì chưa xác minh (không sai luật, chỉ chưa đủ căn cứ)
+    for khoa in rules.get("khoa_tam_thoi", []):
+        for cum in khoa["cum_bi_khoa"]:
+            needle = _norm(cum)
+            for idx, line in enumerate(norm_lines, start=1):
+                if needle in line:
+                    report.issues.append(
+                        Issue(
+                            muc_do="chan",
+                            loai=f'Đang tạm khoá - {khoa["ten"]}',
+                            chi_tiet=f'dùng cụm "{cum}" ({khoa["ly_do"]})',
+                            dong=idx,
+                            goi_y=khoa["thay_bang"],
+                        )
+                    )
+
     # 2. Câu khuyến cáo bắt buộc
     if yeu_cau_khuyen_cao:
         disclaimer = _norm(rules["cau_bat_buoc"]["khuyen_cao"])

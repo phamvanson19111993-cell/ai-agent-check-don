@@ -69,6 +69,20 @@ class TestCompliance(unittest.TestCase):
         r = compliance.check("Ai mất ngủ thì gõ số 1 nhé.", yeu_cau_khuyen_cao=False)
         self.assertTrue(r.dat, r.to_text())
 
+    def test_bat_cum_dang_tam_khoa(self):
+        r = compliance.check(
+            "Đây là CoQ10 dạng khử ubiquinol.", yeu_cau_khuyen_cao=False
+        )
+        self.assertFalse(r.dat)
+        self.assertTrue(any("tạm khoá" in i.loai for i in r.issues), r.to_text())
+
+    def test_noi_ve_coq10_khong_kem_dang_van_dat(self):
+        r = compliance.check(
+            "Coenzyme Q10 hỗ trợ giảm mệt mỏi, uống cùng bữa ăn có dầu mỡ.",
+            yeu_cau_khuyen_cao=False,
+        )
+        self.assertTrue(r.dat, r.to_text())
+
     def test_tu_xung_so_1_bi_bat(self):
         r = compliance.check("Đây là sản phẩm số 1 Việt Nam.", yeu_cau_khuyen_cao=False)
         self.assertFalse(r.dat)
