@@ -101,12 +101,33 @@ Nói thẳng với khách câu này — **rất tăng uy tín**:
 
 Đây là upsell duy nhất được làm ở **lần mua đầu**, vì nó phục vụ khách thật:
 
-> Dạ cô, cháu nói thật để cô cân nhắc ạ: cái này thường phải dùng đủ đợt mới thấy rõ,
-> một hộp đa số chưa kịp thấy gì đâu cô. Cô lấy đủ liệu trình 3 hộp thì đỡ bị đứt quãng,
-> mà tính ra mỗi ngày cũng rẻ hơn ạ.
-> Nhưng cô muốn thử một hộp trước cho yên tâm thì cũng được nha cô, cháu không ép cô đâu ạ.
+> Dạ cô, cháu nói thật để cô cân nhắc ạ: cái này cần dùng đủ đợt mới thấy rõ.
+> Cô cứ lấy trước cho đủ một đợt, đỡ bị đứt quãng giữa chừng ạ.
+> Nhưng cô muốn thử ít trước cho yên tâm thì cũng được nha cô, cháu không ép cô đâu ạ.
 
 > 🔑 Câu cuối **"không ép cô đâu"** là chỗ chốt được. Bỏ câu đó là thành ép.
+
+### 🚨 KIỂM TRA GIÁ TRƯỚC KHI NÓI "MUA NHIỀU RẺ HƠN"
+
+**Không phải sản phẩm nào mua nhiều cũng rẻ hơn.** Nói sai là mất uy tín ngay lần đầu.
+
+Ví dụ **Rich Coenzyme Q10** — giá mỗi hộp **phẳng 2.890.000đ ở mọi mốc**:
+
+| Mốc | Mỗi ngày | Có rẻ hơn không? |
+|---|---|---|
+| 1 hộp · 2.890.000đ | 48.167đ | — |
+| 3 hộp · 8.670.000đ | 48.167đ | ❌ **bằng nhau** |
+| 5 hộp · 14.450.000đ | 48.167đ | ❌ **bằng nhau** |
+| 6 hộp · 17.340.000đ *(tặng 1 → 7 hộp)* | 41.286đ | ✅ **rẻ hơn 6.881đ/ngày** |
+
+→ Với sản phẩm này, **chỉ mốc 6 hộp mới được nói là rẻ hơn**, và lý do là **tặng thêm
+hộp thứ 7**, không phải giảm giá. Mốc 3–5 hộp bán bằng **quà tặng**, không bán bằng giá —
+và khách **chọn một**: quà tặng **hoặc** giảm tiền mặt, không được cả hai.
+
+> ⛔ **Cũng không được nói "một hộp chưa kịp thấy gì"** khi một hộp đã dùng được 60 ngày —
+> vượt xa mốc 4–8 tuần cần để thấy kết quả. Đó là nói sai để đẩy gói lớn.
+>
+> **Trước mỗi lần upsell: mở bảng giá ra tính lại. Đừng nói theo thói quen.**
 
 ### ② Upsell khi hết hộp đầu và khách thấy đỡ
 
@@ -119,7 +140,8 @@ Nói thẳng với khách câu này — **rất tăng uy tín**:
 Dùng khi khách nhắc tới chồng/vợ cũng có vấn đề tương tự:
 
 > Dạ cô ơi, cô kể là chú nhà mình cũng hay đau khớp đúng không ạ?
-> Nếu hai cô chú cùng dùng thì bên cháu có mức cho gói đôi, tính ra rẻ hơn mua lẻ ạ.
+> Nếu hai cô chú cùng dùng thì cô hỏi cháu, cháu xem có mức nào tốt hơn cho cô không ạ.
+> *(🟡 chỉ nói "rẻ hơn" khi bảng giá thật sự có mức đôi — kiểm tra trước khi nói)*
 > Cô hỏi chú xem chú có muốn dùng cùng cô không nha cô 😊
 
 ### ④ Upsell lên cộng tác viên / đại lý

@@ -161,8 +161,12 @@ Giờ mới được nói tới sản phẩm. Và nói theo **nỗi khổ của 
 ### 4 cách chốt mềm, dùng theo tình huống
 
 **① Chốt bằng lựa chọn** (khách đã gật gù)
-> Dạ cô dùng thử một hộp xem người mình hợp không, hay cô lấy luôn liệu trình 3 hộp
-> cho đủ đợt ạ? Cháu thấy cô nên đủ đợt, chứ một hộp thường chưa kịp thấy gì đâu cô.
+> Dạ cô dùng thử một hộp xem người mình hợp không, hay cô lấy luôn cho đủ đợt ạ?
+> Cháu thấy cô nên đủ đợt để khỏi bị đứt quãng giữa chừng.
+>
+> ⚠️ *Chỉ nói "một hộp chưa kịp thấy gì" khi điều đó **đúng với sản phẩm cụ thể**.
+> Với sản phẩm mà một hộp đã dùng được 60 ngày thì nói vậy là sai — xem bảng giá và
+> quy cách trong hồ sơ sản phẩm trước khi chốt.*
 
 **② Chốt bằng bước tiếp theo** (khách còn ngập ngừng)
 > Dạ thế cô cho cháu xin cái địa chỉ, cháu ghi lại trước cho cô đã.
@@ -302,7 +306,7 @@ Với khách lớn tuổi, mấy chiêu này **ăn được một đơn nhưng m
 >
 > **Cô Yến:** ừ cháu nói thế cô cũng thấy yên tâm
 >
-> **Sơn:** Dạ. Cô dùng thử một hộp xem người mình hợp không, hay cô lấy đủ liệu trình 3 hộp cho trọn đợt ạ? Cháu thấy cô nên đủ đợt, chứ một hộp thường chưa kịp thấy gì đâu cô.
+> **Sơn:** Dạ. Cô dùng thử một hộp xem người mình hợp không, hay cô lấy luôn cho trọn đợt ạ? Cháu thấy cô nên đủ đợt để khỏi đứt quãng giữa chừng cô ạ.
 >
 > **Cô Yến:** để cô hỏi con cô đã
 >

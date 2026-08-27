@@ -106,7 +106,10 @@
 
 ### Bước 6 — CHỐT
 > Dạ cô dùng thử một hộp xem đường ruột mình hợp không, hay cô lấy đủ liệu trình 3 hộp
-> cho trọn đợt ạ? Cháu thấy cô nên đủ đợt, chứ một hộp thường chưa kịp thấy gì đâu cô.
+> cho trọn đợt ạ? Cháu thấy cô nên đủ đợt để khỏi đứt quãng giữa chừng cô ạ.
+>
+> ⚠️ *Chỉ nói "một hộp chưa kịp thấy gì" nếu 🟡 số ngày dùng của một hộp **thật sự ngắn hơn**
+> thời gian cần để thấy kết quả. Điền quy cách thật vào Phần A rồi mới dùng câu này.*
 > Nhưng cô muốn thử một hộp trước cho yên tâm thì cũng được nha cô, cháu không ép cô đâu ạ.
 
 **→ Gửi xong thì IM LẶNG, chờ khách trả lời.**

@@ -68,7 +68,10 @@ trào ngược, đầy bụng. Đã uống đủ thứ, mất niềm tin.
 
 ---
 
-## 2️⃣ TIM MẠCH – TUẦN HOÀN — NattoKinase Nano
+## 2️⃣ TIM MẠCH – TUẦN HOÀN — NattoKinase Nano · Rich Coenzyme Q10
+
+> 📄 **Rich Coenzyme Q10 có hồ sơ đầy đủ riêng** (giá, quy cách, liều đã xác minh):
+> [`ho-so-san-pham-Rich-Coenzyme-Q10.md`](./ho-so-san-pham-Rich-Coenzyme-Q10.md)
 
 **Chân dung khách:** 55–80 tuổi, cao huyết áp, mỡ máu, tiền sử tai biến,
 hoặc con cái mua cho bố mẹ.
