@@ -629,6 +629,29 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   .dock .btn-call{margin-left:auto}
 }
 body:has(.dock.on){padding-bottom:74px}
+
+.chon-hop{display:grid;gap:.5rem;margin:.15rem 0 0}
+@media(min-width:520px){.chon-hop{grid-template-columns:1fr 1fr}}
+.hop-o{position:relative;display:flex;flex-direction:column;gap:.15rem;
+  padding:.7rem .85rem;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r);cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:border-color .12s ease, background .12s ease}
+.hop-o:hover{border-color:var(--red)}
+.hop-o input{position:absolute;opacity:0;width:0;height:0}
+.hop-o .h-t{font-weight:700;font-size:.95rem;color:var(--ink);line-height:1.25}
+.hop-o .h-t::before{content:'○ ';font-weight:400;color:var(--ink3)}
+.hop-o .h-s{font-size:.8rem;color:var(--ink2);line-height:1.4}
+.hop-o .h-p{font-size:.76rem;color:var(--jade);font-weight:600}
+.hop-o.on{border-color:var(--red);background:var(--red-soft);
+  box-shadow:inset 0 0 0 1px var(--red)}
+.hop-o.on .h-t::before{content:'● ';color:var(--red)}
+.hop-o input:focus-visible + .h-t{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
+.hop-o .h-tem{position:absolute;top:-.55rem;right:.7rem;font-size:.64rem;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;background:var(--band);color:#fff;
+  padding:.16rem .45rem;border-radius:999px}
+.hop-o.rong{grid-column:1/-1}
+.tra-o{display:grid;gap:.5rem;margin:.15rem 0 0}
+@media(min-width:520px){.tra-o{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -1417,27 +1440,24 @@ body:has(.dock.on){padding-bottom:74px}
             <div class="field"><label for="xa">Xã / Phường / Thị trấn</label><input id="xa" name="xa" type="text" autocomplete="address-level3" placeholder="Thị trấn Yên Định" required></div>
             <div class="field"><label for="thon">Thôn / Xóm / Ấp / Tổ dân phố</label><input id="thon" name="thon" type="text" autocomplete="address-level4" placeholder="Xóm 5" required></div>
             <div class="field full"><label for="sonha">Số nhà, tên đường</label><input id="sonha" name="sonha" type="text" autocomplete="address-line1" placeholder="Số 12, đường Trần Hưng Đạo"></div>
-            <div class="field full"><label for="moc">Mốc dễ tìm <span class="opt-lbl">không bắt buộc</span></label><input id="moc" name="moc" type="text" autocomplete="address-line2" placeholder="Cạnh trạm y tế xã, đối diện chợ, gần cây đa đầu làng…"></div>
+            
 
-            <p class="fgroup">Tình trạng sức khoẻ</p>
+            
             <input id="tuKiem" name="tuKiem" type="hidden">
-            <div class="field full"><label for="tinhtrang">Anh chị đang gặp vấn đề nào</label>
-              <select id="tinhtrang" name="tinhtrang">
-                <option>Mệt mỏi kéo dài dù ngủ đủ</option>
-                <option>Đang theo dõi mỡ máu, huyết áp</option>
-                <option>Đang uống thuốc hạ mỡ máu nhóm statin</option>
-                <option>Muốn chống oxy hoá, chăm sóc tim mạch chủ động</option>
-              </select>
-            </div>
+            
             <div class="field full"><label for="soluong">Số lượng muốn đặt</label>
-              <select id="soluong" name="soluong">
-                <option>1 hộp — 2.890.000đ</option>
-                <option>3 hộp — 8.670.000đ (kèm quà tặng)</option>
-                <option>5 hộp — 14.450.000đ (kèm quà tặng)</option>
-                <option selected>6 hộp — 17.340.000đ (tặng thêm 1 hộp)</option>
-                <option>Chưa quyết, nhờ tư vấn thêm</option>
-              </select>
-            </div>
+<div class="chon-hop" id="chon-hop">
+<label class="hop-o"><input type="radio" name="soluong" value="1 hộp — 2.890.000đ"><span class="h-t">1 hộp — 2.890.000đ</span><span class="h-s">Dùng 60 ngày · 48.167đ mỗi ngày</span></label>
+<label class="hop-o"><input type="radio" name="soluong" value="3 hộp — 8.670.000đ (kèm quà tặng)"><span class="h-t">3 hộp — 8.670.000đ</span><span class="h-s">Dùng 180 ngày · kèm quà tặng</span></label>
+<label class="hop-o"><input type="radio" name="soluong" value="5 hộp — 14.450.000đ (kèm quà tặng)"><span class="h-t">5 hộp — 14.450.000đ</span><span class="h-s">Dùng 300 ngày · kèm quà tặng</span></label>
+<label class="hop-o on"><span class="h-tem">Lợi nhất</span><input type="radio" name="soluong" value="6 hộp — 17.340.000đ (tặng thêm 1 hộp)" checked><span class="h-t">6 hộp — 17.340.000đ</span><span class="h-s">Trả tiền 6 hộp, nhận 7 hộp · 420 ngày</span><span class="h-p">41.286đ mỗi ngày · rẻ hơn 2.890.000đ so với mua lẻ</span></label>
+<label class="hop-o rong"><input type="radio" name="soluong" value="Chưa quyết, nhờ tư vấn thêm"><span class="h-t">Chưa quyết, nhờ tư vấn thêm</span><span class="h-s">Nhân viên gọi lại hỏi kỹ rồi mới tư vấn liệu trình</span></label>
+</div></div>
+<div class="field full"><label>Cách thanh toán</label>
+<div class="tra-o" id="chon-tra-form">
+<label class="hop-o on"><input type="radio" name="cach_tra" value="coc" checked><span class="h-t">Đặt cọc 200.000đ giữ hàng</span><span class="h-s">Phần còn lại trả khi nhận hàng</span></label>
+<label class="hop-o"><input type="radio" name="cach_tra" value="du"><span class="h-t">Chuyển khoản đủ</span><span class="h-s">Nhận hàng là xong, không phải trả thêm</span></label>
+</div></div>
             <div class="full btn-row"><button class="btn btn-lg" type="submit">Gửi thông tin, nhận tư vấn</button><a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi ngay 0913.351.394</a></div>
           </form>
           <p class="ok-msg" id="ok-msg">Đã ghi nhận. Đây là bản demo giao diện nên thông tin chưa được gửi đi đâu cả — cần nối form vào hệ thống trước khi chạy quảng cáo.</p>
@@ -2183,10 +2203,10 @@ var FORM_GOOGLE = {
 
     var chon = haiCach
       ? '<span class="ck-chon">'
-        + '<label class="ck-o on"><input type="radio" name="cach-tra" value="coc" checked>'
+        + '<label class="ck-o' + (du.cach_tra === 'du' ? '' : ' on') + '"><input type="radio" name="cach-tra" value="coc"' + (du.cach_tra === 'du' ? '' : ' checked') + '>'
         +   '<span class="ck-o-t">Đặt cọc giữ hàng</span>'
         +   '<span class="ck-o-s">' + chamNghin(TIEN_COC) + 'đ · còn lại trả khi nhận</span></label>'
-        + '<label class="ck-o"><input type="radio" name="cach-tra" value="du">'
+        + '<label class="ck-o' + (du.cach_tra === 'du' ? ' on' : '') + '"><input type="radio" name="cach-tra" value="du"' + (du.cach_tra === 'du' ? ' checked' : '') + '>'
         +   '<span class="ck-o-t">Chuyển khoản đủ</span>'
         +   '<span class="ck-o-s">' + chamNghin(tong) + 'đ · nhận hàng là xong</span></label>'
         + '</span>'
@@ -2318,7 +2338,7 @@ var FORM_GOOGLE = {
       ['Điện thoại', du.sdt],
       ['Địa chỉ',   du.dia_chi],
       ['Số lượng',  du.soluong],
-      ['Tình trạng', du.tinhtrang],
+      ['Cách trả', du.cach_tra === 'du' ? 'Chuyển khoản đủ' : 'Đặt cọc 200.000đ'],
       ['Bài kiểm tra', du.tuKiem],
       ['Thời gian', du.thoi_gian]
     ];
@@ -2409,6 +2429,18 @@ var FORM_GOOGLE = {
     });
   });
 })();
+
+  // Chon so hop va cach tra bang the bam duoc
+  (function(){
+    ['chon-hop','chon-tra-form'].forEach(function(id){
+      var o = document.getElementById(id); if(!o) return;
+      o.addEventListener('change', function(){
+        Array.prototype.slice.call(o.querySelectorAll('.hop-o')).forEach(function(l){
+          l.classList.toggle('on', l.querySelector('input').checked);
+        });
+      });
+    });
+  })();
 </script>
 <script>
 (function(){
