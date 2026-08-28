@@ -1,0 +1,56 @@
+name: Bao cao quang cao ve Telegram
+
+# Chay tren may chu cua GitHub, KHONG phai may anh Son.
+# Nen may anh tat, ngu, hay mat dien thi bao cao van chay.
+on:
+  schedule:
+    - cron: "0 * * * *"      # moi gio, phut 0 gio UTC
+  workflow_dispatch:          # them nut "Run workflow" de bam gui thu ngay
+
+concurrency:
+  group: bao-cao-telegram
+  cancel-in-progress: false
+
+jobs:
+  gui:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cai thu vien
+        run: pip install --quiet requests
+
+      - name: Kiem tra da dien du ba ma chua
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT:  ${{ secrets.TG_CHAT }}
+          FB_TOKEN: ${{ secrets.FB_TOKEN }}
+        run: |
+          thieu=""
+          [ -z "$TG_TOKEN" ] && thieu="$thieu TG_TOKEN"
+          [ -z "$TG_CHAT"  ] && thieu="$thieu TG_CHAT"
+          [ -z "$FB_TOKEN" ] && thieu="$thieu FB_TOKEN"
+          if [ -n "$thieu" ]; then
+            echo "::error::Chua dien ba ma bi mat:$thieu"
+            echo ""
+            echo "Vao: Settings > Secrets and variables > Actions > New repository secret"
+            echo "Them dung ba ten nay:"
+            echo "   TG_TOKEN   ma bot Telegram, lay tu @BotFather"
+            echo "   TG_CHAT    ma cuoc tro chuyen, lay tu @userinfobot"
+            echo "   FB_TOKEN   ma truy cap Facebook, loai Nguoi dung he thong"
+            exit 1
+          fi
+          echo "Du ba ma."
+
+      - name: Gui bao cao
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT:  ${{ secrets.TG_CHAT }}
+          FB_TOKEN: ${{ secrets.FB_TOKEN }}
+          FB_ACT:   ${{ vars.FB_ACT   || '2260044828113956' }}
+          FB_PIXEL: ${{ vars.FB_PIXEL || '1277743445418211' }}
+        run: python3 bao-cao-telegram.py
