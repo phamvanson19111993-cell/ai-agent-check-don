@@ -128,7 +128,10 @@ Không phòng nào mở được trang (đều bị chặn mạng). Cần anh S�
 
 ## 🟠 MT-14 · Sheet cũ trên Drive mất số 0 đầu số điện thoại
 
-Sheet cũ lưu `913592043` thay vì `0913592043` do Google đọc thành số. Phòng 8 đã sửa ở bản mới.
+Sheet cũ lưu `9xxxxxxxx` thay vì `09xxxxxxxx` do Google đọc thành số. Phòng 8 đã sửa ở bản mới.
+
+> 🔒 Số điện thoại thật đã được che ở đây. **Repo này CÔNG KHAI** — không phòng nào được ghi
+> tên, số điện thoại, địa chỉ hay ảnh bill của khách vào file trong repo. Xem `luat-du-lieu-khach.md`.
 **Phòng nào đang dùng sheet cũ làm nguồn thì số lệch 1 ký tự đầu** — không khớp khách được.
 
 ## 🟡 MT-15 · Phòng 9 Zalo: vai trò lệch

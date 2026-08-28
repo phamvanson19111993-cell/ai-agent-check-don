@@ -16,7 +16,8 @@
     "gia_von_va_nguong_roas": "bo-nho-chung/tai-chinh/gia-von-va-nguong-roas.md",
     "thanh_phan_va_giay_to": "bo-nho-chung/san-pham/rich-coenzyme-q10.md",
     "luat_tu_lay_thong_tin": "bo-nho-chung/luat-tu-lay-thong-tin.md",
-    "luat_cai_tien_lien_tuc": "bo-nho-chung/luat-cai-tien-lien-tuc.md"
+    "luat_cai_tien_lien_tuc": "bo-nho-chung/luat-cai-tien-lien-tuc.md",
+    "luat_du_lieu_khach": "bo-nho-chung/luat-du-lieu-khach.md"
   },
   "chua_co_nguon": [
     "chinh_sach_hoa_hong",
@@ -35,6 +36,7 @@
   ],
   "luat": [
     "KHI ANH SƠN HỎI: tự đi lấy thông tin của phòng khác trước, không hỏi lại anh, không chờ Tổng Chỉ Huy. Xem luat-tu-lay-thong-tin.md.",
+    "REPO CÔNG KHAI: cấm ghi tên, số điện thoại, địa chỉ, ảnh bill của khách vào bất kỳ file nào. Xem luat-du-lieu-khach.md.",
     "Đọc bộ nhớ chung trước khi hỏi anh.",
     "Không chép số ra chỗ khác — trỏ về file gốc.",
     "Tạo dữ liệu mới phải ghi DATA UPDATE và push lên main.",
