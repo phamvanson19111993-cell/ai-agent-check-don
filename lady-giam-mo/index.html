@@ -659,6 +659,22 @@ body:has(.dock.on){padding-bottom:74px}
 .tra-o{display:grid;gap:.5rem;margin:.15rem 0 0}
 @media(min-width:520px){.tra-o{grid-template-columns:1fr 1fr}}
 
+/* khung hinh minh hoa — hinh ve tay bang SVG, nhung thang trong file */
+.hinh{margin:0;display:flex;flex-direction:column;gap:.55rem}
+.hinh svg{width:100%;height:auto;display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+.hinh figcaption{font-size:.8rem;color:var(--ink3);line-height:1.5}
+.hinh figcaption b{color:var(--ink2)}
+.hinh-doi{display:grid;gap:1.1rem}
+/* khung anh nam tren dai mau dam thi chu chu thich phai sang len */
+.prod-band .hinh svg{background:#FFFFFF;border-color:#8FCBB2}
+.prod-band .hinh figcaption{color:#CFE7DA}
+.prod-band .hinh figcaption b{color:#FFFFFF}
+@media(min-width:760px){.hinh-doi{grid-template-columns:1fr 1fr}}
+/* Chu trong SVG phai dat co bang style noi tuyen. Dat bang thuoc tinh
+   font-size thi luat CSS de len, chu tran ra khoi khung. */
+.hinh text{font-family:"Be Vietnam Pro",system-ui,sans-serif}
+.hinh .nh{font-family:"IBM Plex Mono",monospace;letter-spacing:.06em}
+
 /* ba con so kiem chung duoc, ngay duoi nut o dau trang */
 .ba-so{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;width:100%;margin-top:1.1rem}
 .ba-so div{background:var(--sunk);border:1px solid var(--line2);border-radius:var(--r);padding:.8rem .45rem;display:flex;flex-direction:column;gap:.25rem;text-align:center}
@@ -878,6 +894,70 @@ body:has(.dock.on){padding-bottom:74px}
           <p>Bữa tối muộn rồi đi ngủ ngay, ngồi liền tám tiếng, ngủ dưới sáu tiếng, bia rượu vài buổi một tuần. Từng thứ nghe đều nhỏ. Nhưng chúng cùng đẩy về một hướng, và <b>hướng đó là ổ bụng</b>.</p>
         </div>
       </div>
+      <div class="col hinh-doi">
+        <figure class="hinh">
+          <svg viewBox="0 0 430 268" role="img" aria-label="Mặt cắt ngang ổ bụng: lớp mỡ dưới da nằm ngoài, lớp mỡ nội tạng nằm sâu bên trong bọc quanh các tạng">
+            <circle cx="124" cy="134" r="100" fill="#EDF7F2" stroke="var(--line)" stroke-width="1.5"></circle>
+            <circle cx="124" cy="134" r="75" fill="#FFFFFF" stroke="var(--line)" stroke-width="1.5"></circle>
+            <circle cx="124" cy="134" r="75" fill="#0E7C55" opacity=".42"></circle>
+            <ellipse cx="98" cy="108" rx="31" ry="23" fill="#FFFFFF" stroke="var(--line)" stroke-width="1.2"></ellipse>
+            <ellipse cx="156" cy="124" rx="22" ry="18" fill="#FFFFFF" stroke="var(--line)" stroke-width="1.2"></ellipse>
+            <ellipse cx="118" cy="166" rx="27" ry="19" fill="#FFFFFF" stroke="var(--line)" stroke-width="1.2"></ellipse>
+            <ellipse cx="163" cy="168" rx="15" ry="12" fill="#FFFFFF" stroke="var(--line)" stroke-width="1.2"></ellipse>
+            <path d="M112 202h24v10a12 12 0 0 1-24 0z" fill="var(--ink3)" opacity=".55"></path>
+            <path d="M195 62h56" stroke="var(--ink3)" stroke-width="1.2"></path>
+            <circle cx="195" cy="62" r="2.6" fill="var(--ink3)"></circle>
+            <text x="258" y="58" style="font-size:13px;font-weight:700" fill="var(--ink)">Mỡ dưới da</text>
+            <text x="258" y="76" style="font-size:11.5px" fill="var(--ink2)">Lớp bấu được giữa</text>
+            <text x="258" y="92" style="font-size:11.5px" fill="var(--ink2)">hai ngón tay</text>
+            <path d="M176 158h75" stroke="var(--red)" stroke-width="1.4"></path>
+            <circle cx="176" cy="158" r="2.8" fill="var(--red)"></circle>
+            <text x="258" y="154" style="font-size:13px;font-weight:700" fill="var(--red)">Mỡ nội tạng</text>
+            <text x="258" y="172" style="font-size:11.5px" fill="var(--ink2)">Bọc quanh gan và ruột.</text>
+            <text x="258" y="188" style="font-size:11.5px" fill="var(--ink2)">Bấu không tới, cân không</text>
+            <text x="258" y="204" style="font-size:11.5px" fill="var(--ink2)">tách ra được.</text>
+            <text x="124" y="252" text-anchor="middle" class="nh" style="font-size:10px" fill="var(--ink3)">MẶT CẮT NGANG Ổ BỤNG</text>
+          </svg>
+          <figcaption><b>Hai loại mỡ, hai câu chuyện.</b> Cùng một ký mỡ, nằm ngoài thì chỉ làm quần chật; nằm trong thì thả axit béo và chất gây viêm vào máu, mà máu vùng bụng chảy thẳng về gan trước. Hình vẽ minh hoạ, không phải ảnh giải phẫu.</figcaption>
+        </figure>
+
+        <figure class="hinh">
+          <svg viewBox="0 0 430 268" role="img" aria-label="So sánh: kim cân đứng nguyên một chỗ trong khi lỗ thắt lưng phải nới ra hai nấc">
+            <text x="108" y="30" text-anchor="middle" class="nh" style="font-size:10px" fill="var(--ink3)">CÁI CÂN</text>
+            <text x="322" y="30" text-anchor="middle" class="nh" style="font-size:10px" fill="var(--ink3)">CÁI THẮT LƯNG</text>
+            <line x1="215" y1="16" x2="215" y2="252" stroke="var(--line2)" stroke-width="1.5"></line>
+            <rect x="38" y="52" width="140" height="96" rx="10" fill="var(--sunk)" stroke="var(--line)" stroke-width="1.5"></rect>
+            <path d="M62 128a46 46 0 0 1 92 0" fill="none" stroke="var(--line)" stroke-width="2"></path>
+            <path d="M108 128L96 92" stroke="var(--red)" stroke-width="3" stroke-linecap="round"></path>
+            <circle cx="108" cy="128" r="4.5" fill="var(--red)"></circle>
+            <rect x="38" y="166" width="140" height="72" rx="10" fill="var(--sunk)" stroke="var(--line)" stroke-width="1.5"></rect>
+            <path d="M62 242a46 46 0 0 1 92 0" fill="none" stroke="var(--line)" stroke-width="2"></path>
+            <path d="M108 242L95 207" stroke="var(--red)" stroke-width="3" stroke-linecap="round"></path>
+            <circle cx="108" cy="242" r="4.5" fill="var(--red)"></circle>
+            <text x="192" y="104" text-anchor="end" class="nh" style="font-size:10px" fill="var(--ink3)">2020</text>
+            <text x="192" y="218" text-anchor="end" class="nh" style="font-size:10px" fill="var(--ink3)">HÔM NAY</text>
+            <rect x="248" y="62" width="150" height="26" rx="5" fill="var(--sunk)" stroke="var(--line)" stroke-width="1.5"></rect>
+            <circle cx="290" cy="75" r="3.4" fill="var(--ink3)"></circle>
+            <circle cx="316" cy="75" r="3.4" fill="var(--ink3)"></circle>
+            <circle cx="342" cy="75" r="3.4" fill="var(--ink3)"></circle>
+            <circle cx="368" cy="75" r="3.4" fill="var(--ink3)"></circle>
+            <circle cx="290" cy="75" r="7" fill="none" stroke="var(--red)" stroke-width="2.4"></circle>
+            <rect x="248" y="176" width="150" height="26" rx="5" fill="var(--sunk)" stroke="var(--line)" stroke-width="1.5"></rect>
+            <circle cx="290" cy="189" r="3.4" fill="var(--ink3)"></circle>
+            <circle cx="316" cy="189" r="3.4" fill="var(--ink3)"></circle>
+            <circle cx="342" cy="189" r="3.4" fill="var(--ink3)"></circle>
+            <circle cx="368" cy="189" r="3.4" fill="var(--ink3)"></circle>
+            <circle cx="342" cy="189" r="7" fill="none" stroke="var(--red)" stroke-width="2.4"></circle>
+            <path d="M290 106v52" stroke="var(--red)" stroke-width="1.4" stroke-dasharray="4 4"></path>
+            <path d="M290 158h52m-8-5 8 5-8 5" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <text x="322" y="150" text-anchor="middle" style="font-size:11.5px;font-weight:700" fill="var(--red)">nới ra hai nấc</text>
+            <text x="108" y="262" text-anchor="middle" style="font-size:11.5px" fill="var(--ink2)">Kim đứng nguyên một chỗ</text>
+            <text x="322" y="262" text-anchor="middle" style="font-size:11.5px" fill="var(--ink2)">Lỗ đang dùng dịch ra ngoài</text>
+          </svg>
+          <figcaption><b>Cùng một người, cùng sáu năm.</b> Cân cộng gộp xương, cơ, nước, mỡ nên nó không báo gì. Cái thắt lưng thì đo đúng chỗ mình muốn theo dõi — nên nó nói thật hơn.</figcaption>
+        </figure>
+      </div>
+
       <div class="col stack">
         <p><b>Vì sao vòng bụng đáng tin hơn cái cân?</b> Vì cân cộng gộp tất cả: xương, cơ, nước, mỡ. Một người tập tạ có thể nặng thêm ba ký mà vòng bụng nhỏ đi. Một người nhịn ăn có thể nhẹ đi ba ký mà phần lớn là cơ và nước, vòng bụng gần như không đổi. <span class="hl">Cái nào đo đúng thứ mình muốn đổi thì cái đó mới đáng theo dõi.</span></p>
         <p>Ngưỡng thường dùng cho người châu Á: <b class="mono">nam từ 90cm</b>, <b class="mono">nữ từ 80cm</b> — đo ngang rốn, buổi sáng, chưa ăn, thước áp sát nhưng không siết. Vượt ngưỡng không có nghĩa là có bệnh; nó có nghĩa là nên đi khám và nên bắt đầu theo dõi.</p>
@@ -1016,6 +1096,58 @@ body:has(.dock.on){padding-bottom:74px}
           <p>Vòng bụng vượt ngưỡng thì nên làm xét nghiệm mỡ máu và đường huyết. Có con số trong tay thì mọi quyết định sau đó, kể cả quyết định không mua gì, đều dựa trên sự thật chứ không dựa trên cảm giác.</p>
         </div>
       </div>
+      <div class="col hinh-doi">
+        <figure class="hinh">
+          <svg viewBox="0 0 430 268" role="img" aria-label="Cách đo vòng bụng: đặt thước ngang rốn, đo buổi sáng khi chưa ăn, thước áp sát nhưng không siết">
+            <text x="20" y="24" class="nh" style="font-size:10px" fill="var(--ink3)">ĐO THẾ NÀO CHO ĐÚNG</text>
+            <circle cx="140" cy="62" r="17" fill="var(--sunk)" stroke="var(--line)" stroke-width="1.6"></circle>
+            <path d="M133 76h14v10h-14z" fill="var(--sunk)" stroke="var(--line)" stroke-width="1.6"></path>
+            <path d="M140 84c-18 0-30 7-34 18l-7 22c-3 10-2 22 0 33l4 24c2 14 2 30 1 43h72c-1-13-1-29 1-43l4-24c2-11 3-23 0-33l-7-22c-4-11-16-18-34-18z" fill="var(--sunk)" stroke="var(--line)" stroke-width="1.6"></path>
+            <path d="M104 100l-13 44 3 30" fill="none" stroke="var(--line)" stroke-width="1.6" stroke-linecap="round"></path>
+            <path d="M176 100l13 44-3 30" fill="none" stroke="var(--line)" stroke-width="1.6" stroke-linecap="round"></path>
+            <line x1="56" y1="160" x2="224" y2="160" stroke="var(--red)" stroke-width="3" stroke-dasharray="8 5"></line>
+            <circle cx="140" cy="160" r="4.5" fill="var(--red)"></circle>
+            <text x="140" y="184" text-anchor="middle" style="font-size:11.5px;font-weight:700" fill="var(--red)">ngang rốn</text>
+            <path d="M56 160h-14m8-6-8 6 8 6" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M224 160h14m-8-6 8 6-8 6" fill="none" stroke="var(--ink3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <rect x="252" y="62" width="162" height="56" rx="6" fill="var(--red-soft)" stroke="var(--red)" stroke-width="1.2"></rect>
+            <text x="268" y="86" style="font-size:13px;font-weight:700" fill="var(--red)">Nam từ 90cm</text>
+            <text x="268" y="106" style="font-size:13px;font-weight:700" fill="var(--red)">Nữ từ 80cm</text>
+            <text x="252" y="142" style="font-size:11.5px" fill="var(--ink2)">Là ngưỡng nên bắt đầu</text>
+            <text x="252" y="159" style="font-size:11.5px" fill="var(--ink2)">theo dõi, không phải là</text>
+            <text x="252" y="176" style="font-size:11.5px" fill="var(--ink2)">đã có bệnh.</text>
+            <text x="252" y="206" style="font-size:11.5px" fill="var(--ink2)">Sáng sớm · chưa ăn ·</text>
+            <text x="252" y="223" style="font-size:11.5px" fill="var(--ink2)">thở ra bình thường ·</text>
+            <text x="252" y="240" style="font-size:11.5px" fill="var(--ink2)">thước áp sát, không siết.</text>
+          </svg>
+          <figcaption><b>Việc 1 — đo cho đúng.</b> Buổi sáng, chưa ăn, đứng thẳng, thở ra bình thường. Thước áp sát da nhưng không siết. Mỗi tuần một lần, cùng một giờ. Ngưỡng trên là tiêu chuẩn vòng eo cho người châu Á.</figcaption>
+        </figure>
+
+        <figure class="hinh">
+          <svg viewBox="0 0 430 268" role="img" aria-label="Trục thời gian buổi tối: ăn xong lúc 18 giờ 30, đi bộ 15 phút, cách giờ đi ngủ ba tiếng">
+            <text x="215" y="26" text-anchor="middle" class="nh" style="font-size:10px" fill="var(--ink3)">MỘT BUỔI TỐI, CHỈ ĐỔI GIỜ</text>
+            <line x1="42" y1="96" x2="392" y2="96" stroke="var(--line)" stroke-width="2.5"></line>
+            <circle cx="66" cy="96" r="7" fill="var(--red)"></circle>
+            <text x="66" y="72" text-anchor="middle" class="nh" style="font-size:11px;font-weight:700" fill="var(--ink)">18:30</text>
+            <text x="66" y="122" text-anchor="middle" style="font-size:11.5px" fill="var(--ink2)">Ăn xong</text>
+            <rect x="94" y="86" width="86" height="20" rx="10" fill="var(--red-soft)" stroke="var(--red)" stroke-width="1.2"></rect>
+            <text x="137" y="100" text-anchor="middle" style="font-size:10.5px;font-weight:700" fill="var(--red)">đi bộ 15 phút</text>
+            <circle cx="368" cy="96" r="7" fill="var(--ink3)"></circle>
+            <text x="368" y="72" text-anchor="middle" class="nh" style="font-size:11px;font-weight:700" fill="var(--ink)">21:30</text>
+            <text x="368" y="122" text-anchor="middle" style="font-size:11.5px" fill="var(--ink2)">Đi ngủ</text>
+            <path d="M188 96h166" stroke="var(--ink3)" stroke-width="1.2" stroke-dasharray="5 4"></path>
+            <line x1="66" y1="132" x2="66" y2="154" stroke="var(--line)" stroke-width="1.2"></line>
+            <line x1="368" y1="132" x2="368" y2="154" stroke="var(--line)" stroke-width="1.2"></line>
+            <path d="M66 154h302m-8-5 8 5-8 5M74 149l-8 5 8 5" fill="none" stroke="var(--ink3)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+            <text x="217" y="180" text-anchor="middle" style="font-size:12px;font-weight:700" fill="var(--ink)">từ lúc ăn xong tới lúc đi ngủ: ít nhất ba tiếng</text>
+            <rect x="42" y="204" width="350" height="46" rx="6" fill="var(--sunk)" stroke="var(--line)" stroke-width="1.2"></rect>
+            <text x="60" y="226" style="font-size:11.5px" fill="var(--ink2)">Không đổi món. Không giảm khẩu phần.</text>
+            <text x="60" y="243" style="font-size:11.5px;font-weight:700" fill="var(--red)">Chỉ đổi giờ — nên đây là việc dễ giữ nhất.</text>
+          </svg>
+          <figcaption><b>Việc 2 — dời bữa tối lên sớm.</b> Đi bộ mươi lăm phút trong vòng nửa tiếng sau bữa, rồi cách giờ đi ngủ ít nhất ba tiếng. Giờ trong hình là ví dụ, anh chị dịch theo nếp nhà mình.</figcaption>
+        </figure>
+      </div>
+
       <div class="col">
         <p>Ba việc trên không cần tới bên em. Phần dưới đây mới là phần giới thiệu sản phẩm — anh chị đọc nếu muốn.</p>
       </div>
@@ -1065,10 +1197,21 @@ body:has(.dock.on){padding-bottom:74px}
         </ul>
       </div>
       <div class="prod-pic">
-        <div class="fill">
-          <span class="lbl">Chưa có ảnh sản phẩm</span>
-          <span class="txt">Cần ảnh chụp hộp và lọ thật, mặt trước, đủ sáng. Ảnh này dùng cả cho trang và cho ảnh quảng cáo.</span>
-        </div>
+        <figure class="hinh hinh-cho-anh">
+          <svg viewBox="0 0 360 260" role="img" aria-label="Hình vẽ tạm chỗ đặt ảnh hộp và lọ sản phẩm">
+            <rect x="4" y="4" width="352" height="252" rx="8" fill="none" stroke="#8FCBB2" stroke-width="2" stroke-dasharray="9 7"></rect>
+            <path d="M96 76h96v144H96z" fill="#E6F5EE" stroke="#8FCBB2" stroke-width="2"></path>
+            <path d="M96 76l22-22h96l-22 22z" fill="#CFE7DA" stroke="#8FCBB2" stroke-width="2"></path>
+            <path d="M192 76l22-22v144l-22 22z" fill="#CFE7DA" stroke="#8FCBB2" stroke-width="2"></path>
+            <rect x="112" y="106" width="64" height="7" rx="3.5" fill="#8FCBB2"></rect>
+            <rect x="112" y="124" width="46" height="6" rx="3" fill="#8FCBB2" opacity=".7"></rect>
+            <rect x="236" y="120" width="60" height="100" rx="9" fill="#E6F5EE" stroke="#8FCBB2" stroke-width="2"></rect>
+            <rect x="250" y="104" width="32" height="18" rx="4" fill="#CFE7DA" stroke="#8FCBB2" stroke-width="2"></rect>
+            <rect x="246" y="146" width="40" height="6" rx="3" fill="#8FCBB2" opacity=".7"></rect>
+            <text x="180" y="244" text-anchor="middle" class="nh" style="font-size:11px" fill="#8FCBB2">CHỜ ẢNH HỘP THẬT</text>
+          </svg>
+          <figcaption>Hình vẽ tạm. Cần ba kiểu ảnh chụp bằng điện thoại: <b>mặt trước hộp</b> · <b>nhãn phụ mặt sau</b> · <b>lọ mở ra</b>. Ba ảnh này dùng được cả cho trang lẫn cho ảnh quảng cáo.</figcaption>
+        </figure>
       </div>
       <div class="spec-list">
         <div class="spec-row"><dt>Tên sản phẩm</dt><dd>Chờ nhãn phụ — tên đầy đủ phải chép đúng như in trên nhãn</dd></div>

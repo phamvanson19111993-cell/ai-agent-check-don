@@ -216,6 +216,25 @@ def kiem_chuyen_doi(br):
     pg.wait_for_timeout(600)
 
     ghi(pg.locator('.ba-so div').count() == 3, 'đầu trang có ba con số kiểm chứng được')
+
+    # Hinh minh hoa: ve tay bang SVG, nhung thang trong file.
+    ghi(pg.locator('figure.hinh').count() == 5, 'đủ năm hình minh hoạ',
+        str(pg.locator('figure.hinh').count()))
+    ghi(pg.evaluate("""() => Array.from(document.querySelectorAll('figure.hinh svg'))
+            .every(s => s.getAttribute('role') === 'img' && s.getAttribute('aria-label'))"""),
+        'hình nào cũng có lời mô tả cho người không nhìn được')
+    # Chu trong SVG phai dat co bang style noi tuyen; dat bang thuoc tinh thi
+    # luat CSS de len va chu tran ra khoi khung — dung loi so 10 cua trang Q10.
+    ghi(pg.evaluate("""() => !document.querySelector('figure.hinh svg text[font-size]')"""),
+        'không đặt cỡ chữ SVG bằng thuộc tính (luật CSS sẽ đè lên)')
+    tran = pg.evaluate("""() => { const x = [];
+        document.querySelectorAll('figure.hinh svg').forEach((sv, i) => {
+          const v = sv.getAttribute('viewBox').split(/\\s+/).map(Number);
+          sv.querySelectorAll('text').forEach(t => { const b = t.getBBox();
+            if (b.x < -1 || b.y < -1 || b.x + b.width > v[2] + 1 || b.y + b.height > v[3] + 1)
+              x.push('hình ' + (i + 1) + ': ' + t.textContent.slice(0, 24)); }); });
+        return x; }""")
+    ghi(not tran, 'không chữ nào tràn khỏi khung hình', '; '.join(tran[:2]))
     ghi(not pg.locator('.chot-quiz').is_visible(), 'khối chốt chưa hiện khi chưa làm bài')
     ghi(not pg.locator('#ket-qua-don').is_visible(), 'phiếu chưa nhắc kết quả khi chưa làm bài')
 
