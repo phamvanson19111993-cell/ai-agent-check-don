@@ -578,6 +578,18 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 #lead-form .tra-o{gap:.4rem}
 #lead-form .tra-o .hop-o{padding:.62rem .8rem}
 #lead-form .tra-o .h-s{display:inline;font-size:.82rem;font-weight:400;margin:0}
+.som{border:1.5px solid var(--red);border-radius:var(--r);background:var(--red-soft);padding:1.15rem 1.2rem;display:flex;flex-direction:column;gap:.55rem}
+.som-nhan{margin:0;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.som-de{margin:0;font-size:1.28rem;font-weight:800;line-height:1.25;letter-spacing:-.01em}
+.som-y{margin:0;font-size:.94rem;line-height:1.6;color:var(--ink2)}
+.som-gia{display:flex;flex-wrap:wrap;gap:.6rem;margin:.25rem 0 .1rem}
+.som-moc{flex:1 1 240px;background:#fff;border:1.5px solid var(--red);border-radius:var(--r);padding:.7rem .85rem;display:flex;flex-direction:column;gap:.15rem;position:relative}
+.som-moc.phu{border-color:var(--line)}
+.som-tem{position:absolute;top:-.6rem;right:.7rem;background:var(--band);color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.16rem .45rem;border-radius:999px}
+.som-so{font-size:1.06rem;font-weight:800}
+.som-phu{font-size:.84rem;color:var(--ink2)}
+.som-nut{display:block;text-align:center;margin-top:.35rem}
+.som-tran{margin:0;font-size:.86rem;line-height:1.55;color:var(--ink2)}
 .truoc-nut{margin:.15rem 0 .7rem;font-size:.9rem;line-height:1.55;color:var(--ink2)}
 .truoc-nut b{color:var(--ink)}
 .dia-chi{border:1.5px dashed var(--line);border-radius:var(--r);background:var(--paper);transition:border-color .2s ease,background .2s ease}
@@ -1032,6 +1044,41 @@ if(typeof window.qrcode !== 'function'){
         <p>Anh chị cũng có thể <a href="https://m.me/61592861334561" target="_blank" rel="noopener">nhắn tin thẳng qua Facebook</a> nếu ngại gọi điện.</p>
         <p><b>Ba điều nhân viên tư vấn không được làm:</b> không nói sản phẩm chữa được bệnh, không giục chốt đơn trong cuộc gọi đầu, không khuyên bỏ hay giảm thuốc bác sĩ đã kê.</p>
         
+      </div>
+    </div>
+  </section>
+
+  <!-- CHOT DON SOM — dat ngay sau khi khach biet san pham la gi, TRUOC khoi
+       phan hoi dai 37.000 ky tu. Truoc day bang gia nam o man hinh 31/38:
+       chi 20% khach cuon toi do moi nhin thay gia. Nguoi da muon mua o man 5
+       thi cho ho mua o man 5; nguoi can than van doc het nhu cu, khong mat gi.
+       KHONG doi gia, khong doi moc, khong doi qua — chi dua thong tin da co
+       len som hon. -->
+  <section class="sec no-rule" id="chot-som">
+    <div class="wrap">
+      <div class="col">
+        <div class="som">
+          <p class="som-nhan">Đã biết mình cần</p>
+          <p class="som-de">Đặt được ngay, không phải đọc hết trang</p>
+          <p class="som-y">Bên dưới còn giấy công bố, nhãn phụ, cơ chế và phản hồi người dùng —
+             anh chị muốn xem kỹ thì cứ kéo tiếp. Còn nếu đã quyết rồi thì đặt luôn ở đây.</p>
+
+          <div class="som-gia">
+            <span class="som-moc">
+              <b class="som-tem">Lợi nhất</b>
+              <span class="som-so">6 hộp — 17.340.000đ</span>
+              <span class="som-phu">Trả tiền 6 hộp, nhận 7 hộp · dùng 420 ngày</span>
+            </span>
+            <span class="som-moc phu">
+              <span class="som-so">1 hộp — 2.890.000đ</span>
+              <span class="som-phu">Dùng 60 ngày · mua thử trước cũng được</span>
+            </span>
+          </div>
+
+          <a class="btn btn-lg som-nut" href="#lead-form">Đặt hàng ngay</a>
+          <p class="som-tran">Bấm gửi chưa phải trả đồng nào. Nhân viên gọi xác nhận trước,
+             anh chị muốn chuyển khoản hay không là quyền anh chị.</p>
+        </div>
       </div>
     </div>
   </section>
