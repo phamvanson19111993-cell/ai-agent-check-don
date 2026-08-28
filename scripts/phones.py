@@ -4,8 +4,8 @@ CÔNG CỤ DÙNG CHUNG — file này chạy độc lập, chỉ dùng thư việ
 không dính gì tới phần Pancake. Phòng khác copy nguyên file này về là dùng được:
 
     from phones import normalize, extract
-    normalize("0913.351.394")   # -> "0913351394"
-    extract("gọi mình số 09666.111.04 nhé")   # -> ["0966611104"]
+    normalize("0901.234.567")   # -> "0901234567"
+    extract("gọi mình số 09012.345.67 nhé")   # -> ["0901234567"]
 
 Hoặc gọi thẳng ngoài dòng lệnh:
 

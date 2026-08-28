@@ -7,7 +7,7 @@
 
 ## 1. Chuẩn hoá cách đặt tên hội thoại
 
-Anh đang đặt tên kiểu: `Lại Sáu 0979455886 23/8 hẹn 2.9` — cách này đúng hướng rồi,
+Anh đang đặt tên kiểu: `<Tên khách> <SĐT> <ngày> hẹn <ngày>` — cách này đúng hướng rồi,
 chỉ cần thống nhất lại thành **1 công thức cố định** để tìm kiếm nhanh:
 
 ```
@@ -25,7 +25,10 @@ chỉ cần thống nhất lại thành **1 công thức cố định** để t�
 | `Ngủ đông` | Trên 60 ngày không mua lại | 20–30 ngày |
 | `Dừng` | Khách yêu cầu không nhắn nữa | ❌ không nhắn |
 
-Ví dụ: `Lê Hằng 0982127800 23/08 Tiềm năng` · `Lại Sáu 0979455886 23/08 Liệu trình`
+Ví dụ: `Nguyễn Văn A 09xxxxxxxx 23/08 Tiềm năng` · `Trần Thị B 09xxxxxxxx 23/08 Liệu trình`
+
+> ⚠️ **Repo này công khai** — ví dụ trong tài liệu phải là tên và số giả.
+> Tên khách thật, số thật chỉ nằm trong Zalo và bảng tính riêng của anh, không đưa lên đây.
 
 **Lợi ích:** gõ `Tiềm năng` vào ô Tìm kiếm là ra hết khách cần chăm hôm đó.
 
