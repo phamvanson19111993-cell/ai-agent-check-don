@@ -313,6 +313,10 @@ Luôn phân biệt: **hỗ trợ ≠ điều trị**.
 - **Cấm sai sự thật về giá.** Giá mỗi hộp phẳng 2.890.000đ ở mọi mốc — cấm "mua nhiều rẻ hơn".
   Chỉ mốc 6 rẻ hơn tính theo ngày (41.286đ so với 48.167đ), và phải nói rõ là **nhờ tặng hộp thứ 7**.
   1 hộp dùng 60 ngày — cấm "một hộp chưa kịp thấy gì". Mốc 3–5 khách **chọn một**: quà hoặc giảm tiền mặt.
+- **Khoá chi tiêu cụm "dạng khử / ubiquinol"** (MT-10). Sản phẩm đúng là dạng khử, nhưng hồ sơ
+  công bố VN chỉ ghi "Coenzyme Q10 50mg" — quảng cáo thêm thông tin ngoài hồ sơ có thể bị coi là
+  sai nội dung xác nhận. Không lấy cụm này làm thông điệp chính cho tới khi đơn vị làm hồ sơ trả lời.
+  Cấm tuyệt đối câu "nhãn phụ ghi ubiquinol".
 - **Cấm trích 5 số giấy tờ chưa có nguồn** (XNQC 1582/2024, GMP JHNFA 11105, HPHLS H102-050,
   mã sàn 2927, MST 0104104405) cho tới khi có ảnh giấy tờ.
 
