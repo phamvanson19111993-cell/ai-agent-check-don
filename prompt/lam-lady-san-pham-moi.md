@@ -236,3 +236,164 @@ PHẦN 9 — CÁCH LÀM VIỆC
 
 VIỆC ĐẦU TIÊN: hỏi anh bốn ô bắt buộc ở Phần 1, và Giấy xác nhận nội dung quảng
 cáo ở Phần 2. Có ảnh nhãn rồi mới bắt đầu dựng trang.
+
+
+═══════════════════════════════════════════════════════════
+PHẦN 6 — TÁM BÀI HỌC ĐÃ TRẢ GIÁ THẬT (cập nhật 28/08/2026)
+═══════════════════════════════════════════════════════════
+
+Đây là những lỗi trang Q10 đã mắc khi đang chạy quảng cáo có tiền thật.
+Em dựng trang mới thì làm ĐÚNG NGAY TỪ ĐẦU, đừng mắc lại.
+
+── 1. Gửi đơn kiểu no-cors là đường CÂM ────────────────────
+Trang gửi đơn sang Google Form bằng `fetch(..., {mode:'no-cors'})`. Với no-cors,
+trình duyệt KHÔNG đọc được kết quả — gửi hỏng và gửi thành công trông y hệt nhau.
+Trang Q10 vẫn hiện "Bên em đã nhận được đơn" dù Google có nhận hay không.
+
+PHẢI LÀM:
+  · Lưu đơn vào localStorage TRƯỚC khi chạm vào mạng. Mạng rớt thì đơn vẫn còn.
+  · Mở được bằng `<tên miền>/#don-da-luu` trên chính máy đó.
+  · Gửi CẢ HAI đường (Apps Script và Google Form), đừng dùng `a || b` —
+    dùng `Promise.all([a, b].filter(Boolean))`.
+  · KHÔNG hứa "bên em đã nhận được". Chỉ ghi "Đã ghi nhận", rồi đẩy khách
+    bấm gửi qua Messenger — đó là đường duy nhất xác minh được.
+
+── 2. Mã QR tĩnh làm mất dấu người chuyển tiền ─────────────
+Trang Q10 dùng 5 mã QR vẽ sẵn, mỗi mã nhúng cùng một dòng "DILIM Q10". Ai quét
+cũng chuyển về với nội dung y hệt nhau → nhìn app ngân hàng không biết tiền của ai.
+Một khách đã chuyển tiền thật và không truy được là ai.
+
+PHẢI LÀM: dựng mã QR NGAY TRÊN MÁY KHÁCH, nhúng số điện thoại của chính họ.
+Payload VietQR (đã kiểm khớp tuyệt đối với mã thật):
+
+  00 '01' · 01 '12'
+  38 → 00 'A000000727', 01 → (00 mã NAPAS, 01 số tài khoản), 02 'QRIBFTTA'
+  52 '0000' · 53 '704' · 54 <số tiền> · 58 'VN'
+  62 → 08 <nội dung, tối đa 25 ký tự>
+  63 <CRC16-CCITT, đa thức 0x1021, khởi tạo 0xFFFF, tính trên cả chuỗi kèm '6304'>
+
+Nội dung: BỎ DẤU tiếng Việt, đặt SỐ ĐIỆN THOẠI LÊN TRƯỚC tên (tên có thể trùng),
+cắt 25 ký tự. Ví dụ `Q10 0912345678 Nguyen Thi`.
+Thư viện `qrcode-generator` tải từ cdnjs. Tải hỏng thì quay về mã vẽ sẵn VÀ
+đổi lời chú thích thành "quét xong sửa ô Nội dung thành …" — không im lặng.
+
+── 3. Purchase phải báo GIÁ TRỊ ĐƠN, không phải tiền cọc ───
+Khách đặt cọc 200.000đ cho đơn 17.340.000đ. Trang Q10 báo về Facebook 200.000đ.
+Meta học nhầm, đi tìm người sinh ra 200.000đ, ROAS thấp hơn sự thật gần 90 lần.
+
+── 4. Biểu mẫu dài là chỗ mất tiền lớn nhất ────────────────
+Số thật của trang Q10: 48 người thấy biểu mẫu → 11 người bắt đầu điền (−77%)
+→ 2 người bấm gửi (−82%). Nguyên nhân: SÁU ô bắt buộc, bốn trong đó là
+tỉnh/huyện/xã/thôn — bắt gõ sáu lần có dấu trên điện thoại.
+
+PHẢI LÀM NGAY TỪ ĐẦU:
+  · Chỉ HỌ TÊN và SỐ ĐIỆN THOẠI là bắt buộc. Địa chỉ để tuỳ chọn.
+  · Gói địa chỉ vào `<details>` gập lại. Lưu ý: `display:grid` trên phần thân
+    sẽ ĐÈ lên cơ chế đóng của `<details>` — phải viết `details[open] > .than{display:grid}`.
+  · Khối địa chỉ tự nổi lên khi đã có tên + số điện thoại mà vẫn chưa mở.
+  · Đừng kể lại bảng giá trong thẻ chọn số lượng — bảng giá đã ở ngay trên.
+    Trang Q10 rút được 1.789px → 1.105px chỉ nhờ bỏ phần kể lại.
+  · `type="tel"` cho số điện thoại, `autocomplete` đủ cho cả 5 cấp địa chỉ.
+
+── 5. Nút gửi phải nói đúng việc nó làm ────────────────────
+Nút trang Q10 ghi "Gửi thông tin, nhận tư vấn" — người vừa chọn 6 hộp
+17.340.000đ lại được mời đi nghe tư vấn. Lời hứa lệch ngay tại chỗ quyết định.
+
+PHẢI LÀM: nút đổi chữ theo mốc khách chọn — "Đặt 6 hộp — 17.340.000đ".
+Chọn "Chưa quyết" thì nút về "Gửi thông tin, nhân viên gọi lại".
+Ngay trên nút thêm một câu gỡ sợ, và câu đó phải ĐÚNG SỰ THẬT:
+"Bấm gửi chưa phải trả đồng nào" — chỉ viết được vì khối thanh toán hiện SAU khi gửi.
+
+── 6. Không đo được thì không biết đang hỏng ở đâu ─────────
+Gắn 11 sự kiện đo phễu ngay từ ngày đầu, đừng chờ đến lúc thắc mắc:
+  PageView → DenCoChe → DenHoSo → DenBangGia → DenForm
+  → InitiateCheckout (bắn khi khách gõ ký tự đầu tiên) → Lead → Purchase
+  Độ sâu cuộn: Cuon25 Cuon50 Cuon75 Cuon90 · Đọc lâu: Doc60Giay Doc180Giay
+Đọc phễu phải in CẢ HAI: chặng mất nhiều người nhất (số tuyệt đối) và chặng
+rơi gắt nhất (%). Hai cái này thường khác nhau và dẫn tới hai quyết định khác nhau.
+
+── 7. Pixel KHÔNG PHẢI nơi chứa đơn ───────────────────────
+Pixel chỉ đếm số lần. Không có tên, không có số điện thoại, không có địa chỉ.
+Con số "1 đã chuyển khoản" trên Events Manager KHÔNG phải một đơn hàng.
+Gọi đúng tên trong mọi báo cáo: "lần bấm gửi", không phải "đơn".
+Đơn thật nằm trong tab Câu trả lời của Google Form. Google KHÔNG cho đọc câu
+trả lời của Form từ bên ngoài — nhưng BẢNG TÍNH thì đọc được. Nên việc đầu tiên
+sau khi tạo Form là bấm "Liên kết tới Trang tính" và bật "Nhận thông báo qua
+email cho câu trả lời mới".
+
+── 8. Kho GitHub này CÔNG KHAI ────────────────────────────
+Đã kiểm: `private: false`. Ai trên internet cũng đọc được mọi file, mọi nhánh,
+và cả lịch sử git.
+  · KHÔNG BAO GIỜ ghi mã bot, token, khoá API vào file trong kho — kể cả
+    index.html. Trang tĩnh thì ai xem mã nguồn cũng đọc được.
+  · KHÔNG ghi tên khách, số điện thoại, địa chỉ, ảnh biên lai vào kho —
+    kể cả trong file báo cáo hay file thử.
+  · Đơn báo cáo chỉ ghi CON SỐ.
+  · Chỗ đúng để cất mã bí mật là GitHub Secrets, hoặc Apps Script phía máy chủ.
+
+
+═══════════════════════════════════════════════════════════
+PHẦN 7 — NỐI VÀO SONSONGKHOE.COM
+═══════════════════════════════════════════════════════════
+
+Trang mới KHÔNG dựng tên miền riêng. Nối vào tên miền đã có, vì ba lý do:
+tên miền đã có tuổi và đã chạy quảng cáo được duyệt; dùng chung Pixel nên dữ
+liệu học không bị chia đôi; và bán chéo được hai chiều.
+
+── Đặt ở đâu ──────────────────────────────────────────────
+Cùng kho, cùng nhánh, khác thư mục:
+
+    kho    : phamvanson19111993-cell/ai-agent-check-don
+    nhánh  : claude/dilim-one-website-es08sj
+    file   : giam-mo/index.html
+    địa chỉ: sonsongkhoe.com/giam-mo/
+
+Đẩy lên nhánh đó là GitHub Pages tự xuất bản trong khoảng 20 giây
+(`.github/workflows/pages.yml` đã có sẵn, không phải sửa).
+Thêm một thư mục KHÔNG ảnh hưởng gì tới trang Q10 ở gốc.
+
+── Pixel: dùng chung, nhưng tách được ─────────────────────
+Dùng ĐÚNG MỘT Pixel cho cả hai trang: `1277743445418211`.
+Chung Pixel thì tệp đối tượng gộp lại, giá mỗi lượt rẻ hơn, và người xem Q10
+có thể được nhắm lại bằng quảng cáo giảm mỡ.
+
+Để hai sản phẩm không lẫn nhau khi tối ưu, làm hai việc:
+  1. Mọi sự kiện đều kèm tham số phân biệt:
+         fbq('track','Lead',{content_name:'Ellagic Acid 60'});
+  2. Trong Events Manager tạo CHUYỂN ĐỔI TUỲ CHỈNH lọc theo đường dẫn:
+         URL chứa "/giam-mo"  → chuyển đổi "Đơn Giảm Mỡ"
+         URL KHÔNG chứa "/giam-mo" → chuyển đổi "Đơn Q10"
+     Rồi mỗi chiến dịch tối ưu theo chuyển đổi tuỳ chỉnh của riêng nó.
+     Cách này KHÔNG cần sửa mã, và không làm hỏng dữ liệu học đang có.
+
+⚠️ Đổi sự kiện tối ưu của một chiến dịch ĐANG CHẠY sẽ đặt lại giai đoạn học.
+Chỉ đặt chuyển đổi tuỳ chỉnh cho chiến dịch MỚI, đừng động vào chiến dịch Q10.
+
+── Đơn hàng: TÁCH RIÊNG ───────────────────────────────────
+Google Form riêng, bảng tính riêng. Đừng dồn chung — trộn hai sản phẩm vào một
+bảng là lúc giao hàng sẽ nhầm.
+Ngân hàng thì dùng chung tài khoản, nhưng nội dung chuyển khoản đổi tiền tố:
+  Q10 → `Q10 <sđt> <tên>`      Giảm mỡ → `GM <sđt> <tên>`
+Nhìn app ngân hàng là biết tiền của sản phẩm nào, không phải tra.
+
+── Bán chéo hai chiều ─────────────────────────────────────
+Đặt ở CUỐI trang, sau khi khách đã đặt đơn — không đặt giữa bài, vì chen sản
+phẩm khác vào giữa lúc đang thuyết phục là làm khách phân tâm rồi bỏ đi cả hai.
+
+  Trên trang giảm mỡ  → một khối nhỏ dẫn sang sonsongkhoe.com (Q10)
+  Trên trang Q10      → một khối nhỏ dẫn sang sonsongkhoe.com/giam-mo/
+
+Chỉ thêm khối bán chéo vào trang Q10 SAU KHI hết ba ngày đo hiện tại —
+đang đóng băng để đọc kết quả, thêm gì vào lúc này là hỏng phép đo.
+
+── Dùng lại được ngay, không phải viết lại ────────────────
+Chép từ `index.html` của trang Q10 sang:
+  · Toàn bộ khối CSS (biến màu `--red --ink --line --jade` … đã cân sẵn)
+  · `chuoiVietQR()` `crc16CCITT()` `veQRDong()` — chỉ đổi số tài khoản nếu khác
+  · `luuDon()` `docKho()` `moKho()` — kho đơn trên máy khách
+  · Toàn bộ 11 sự kiện đo phễu
+  · `khongDau()` `noiDungCK()` — đổi tiền tố Q10 thành GM
+  · `duPhong()` và khối Messenger/Zalo/SMS
+CẨN THẬN với tên biến CSS: trang dùng `--ink2 --ink3 --line2 --red-soft`,
+KHÔNG phải `--ink-2 --ink-3`. Viết sai thì màu im lặng rơi về mặc định,
+không báo lỗi gì cả — đã mắc phải ở 12 chỗ trong một buổi.
