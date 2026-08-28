@@ -117,7 +117,7 @@
     <p>Mọi kết luận, báo cáo hay khuyến nghị ngân sách lấy ra từ màn hình này
       <b>bắt buộc ghi kèm câu</b> <code>theo giả định giá vốn 50%</code>. Không trình bày như số đã xác minh.</p>
     <p><b>ROAS 2,00 là SÀN TUYỆT ĐỐI, không phải mốc an toàn.</b> Bảng này mới trừ giá vốn hàng.
-      Chưa trừ: quà tặng mốc 3–5 · mức giảm tiền mặt thay quà · hoa hồng đại lý · vận chuyển và đổi trả.
+      Quà tặng mốc 3–5 nay đã biết và đã trừ. Vẫn chưa trừ: mức giảm tiền mặt thay quà · hoa hồng đại lý · vận chuyển và đổi trả.
       Chạy ở ROAS 2,2–2,5 mà chưa trừ bốn khoản đó thì rất có thể <b>đang lỗ mà tưởng lãi</b>.</p>
   </section>
 
@@ -128,20 +128,21 @@
         <label><span>Chọn mốc</span></label>
         <select id="tier">
           <option value="1">1 hộp — 2.890.000đ, giao 1 hộp</option>
-          <option value="3">3 hộp — 8.670.000đ, giao 3 hộp</option>
-          <option value="5">5 hộp — 14.450.000đ, giao 5 hộp</option>
+          <option value="2">2 hộp — 5.780.000đ, giao 2 hộp (biên tốt nhất)</option>
+          <option value="3">3 hộp — 8.670.000đ, giao 3 hộp + quà</option>
+          <option value="5">5 hộp — 14.450.000đ, giao 5 hộp + quà</option>
           <option value="6">6 hộp — 17.340.000đ, giao 7 hộp (tặng 1)</option>
           <option value="custom">Tuỳ chỉnh — tự nhập</option>
         </select>
         <label><span>Doanh thu mỗi đơn (AOV)</span><input id="aov" type="number" min="0" value="2890000"></label>
         <label><span>Số hộp phải giao</span><input id="boxes" type="number" min="0" step="1" value="1"></label>
         <label><span>Giá vốn 1 hộp <em>giả định 50%</em></span><input id="unitCost" type="number" min="0" value="1445000"></label>
+        <label><span>Vốn quà tặng <em>tự điền theo mốc · 50% giá niêm yết</em></span><input id="gift" type="number" min="0" value="0"></label>
         <div class="note" id="tierNote"></div>
       </fieldset>
 
       <fieldset>
-        <legend>Bốn khoản chưa có số</legend>
-        <label><span>Vốn quà tặng mỗi đơn</span><input id="gift" type="number" min="0" value="0"></label>
+        <legend>Ba khoản chưa có số</legend>
         <label><span>Hoa hồng đại lý / sale</span><input id="comm" type="number" min="0" value="0"></label>
         <label><span>Phí ship mỗi đơn</span><input id="ship" type="number" min="0" value="0"></label>
         <label><span>Tỷ lệ bom hàng / đổi trả (%)</span><input id="fail" type="number" min="0" max="100" value="0"></label>
@@ -177,10 +178,11 @@
 <script>
 (function () {
   var TIERS = {
-    '1': { aov: 2890000,  boxes: 1, note: '' },
-    '3': { aov: 8670000,  boxes: 3, note: 'Mốc này có quà tặng — <b>chưa biết quà là gì</b>, nên vốn quà đang để 0. Nếu quà là 1 hộp cùng loại thì biên tụt từ 50% xuống 33,3%.' },
-    '5': { aov: 14450000, boxes: 5, note: 'Mốc này có quà tặng — <b>chưa biết quà là gì</b>, nên vốn quà đang để 0. Nếu quà là 1 hộp cùng loại thì biên tụt xuống 41,7%.' },
-    '6': { aov: 17340000, boxes: 7, note: '<b>Mốc 6 và mốc 5 lãi gộp y hệt nhau: 7.225.000đ.</b> Hộp thứ 6 lãi vào đúng bằng hộp thứ 7 tặng đi. Mốc 6 chỉ hơn về doanh thu và thời gian giữ khách (420 ngày so với 300 ngày), <b>không hơn về lãi</b>, mà tốn thêm 2 hộp tồn kho và tiền ship. Đừng mặc định đẩy khách lên mốc 6 vì tưởng lãi hơn.' }
+    '1': { aov: 2890000,  boxes: 1, gift: 0,      note: 'Biên 50,0% — cao nhất cùng với mốc 2 hộp. ROAS hoà vốn 2,00.' },
+    '2': { aov: 5780000,  boxes: 2, gift: 0,      note: '<b>Mốc đáng đẩy nhất.</b> Giữ nguyên biên 50,0% vì không có quà tặng, mà giá trị đơn gấp đôi mốc 1 hộp. ROAS hoà vốn 2,00.' },
+    '3': { aov: 8670000,  boxes: 3, gift: 340000, note: 'Quà: Ellagic Acid 675k <b>hoặc</b> Gluchon Gel 680k — khách chọn một. Vốn quà lấy mức đắt nhất (680k × 50%). Biên tụt còn 46,1%.' },
+    '5': { aov: 14450000, boxes: 5, gift: 495000, note: 'Quà: Gluchon Gel 680k <b>hoặc</b> Nghệ Mùa Thu 990k — khách chọn một. Vốn quà lấy mức đắt nhất (990k × 50%). Biên 46,6%.' },
+    '6': { aov: 17340000, boxes: 7, gift: 0,      note: '<b>Mốc LÃI MỎNG NHẤT (41,7%)</b> dù trang ghi "Lợi nhất" — đúng với khách, không đúng với lãi. Chỉ hơn mốc 5 đúng 495.000đ (7,4%) mà phải giao thêm 2 hộp và ship nặng hơn. Đừng mặc định đẩy khách lên mốc này.' }
   };
   var ASSUME = 'theo giả định giá vốn 50%';
 
@@ -206,7 +208,7 @@
       : (tierSel.value === 'custom'
           ? 'Đang ở chế độ tuỳ chỉnh — tự nhập doanh thu, số hộp giao và giá vốn.'
           : 'Mốc 1 hộp: không quà tặng, biên gộp 50% ' + ASSUME + '.');
-    if (t) { el.aov.value = t.aov; el.boxes.value = t.boxes; }
+    if (t) { el.aov.value = t.aov; el.boxes.value = t.boxes; el.gift.value = t.gift; }
     render();
   }
 
@@ -231,9 +233,9 @@
     var targetCPL = isFinite(breakevenCPL) ? breakevenCPL * (1 - margin) : NaN;
     var targetCAC = breakevenCAC * (1 - margin);
 
-    var untouched = (gift === 0 ? 1 : 0) + (comm === 0 ? 1 : 0) + (ship === 0 ? 1 : 0) + (failRate === 0 ? 1 : 0);
+    var untouched = (comm === 0 ? 1 : 0) + (ship === 0 ? 1 : 0) + (failRate === 0 ? 1 : 0);
     document.getElementById('zeroWarn').innerHTML = untouched > 0
-      ? '<b>Đang để ' + untouched + '/4 khoản bằng 0</b> — vì chưa có số thật. ' +
+      ? '<b>Đang để ' + untouched + '/3 khoản bằng 0</b> — vì chưa có số thật. ' +
         'Nghĩa là mọi ngưỡng bên phải là <b>mức tối đa lý thuyết</b>: ngưỡng thật thấp hơn, ' +
         'và ROAS hoà vốn thật cao hơn. Có số nào thì điền số đó vào, ngưỡng sẽ siết lại ngay.'
       : 'Đã điền đủ 4 khoản — ngưỡng bên phải đang phản ánh chi phí thật, không còn là mức tối đa lý thuyết.';
@@ -324,7 +326,7 @@
   }
 
   // Sửa doanh thu hoặc số hộp = rời khỏi mốc dựng sẵn; các ô khác chỉ tính lại.
-  var TIER_IDS = ['aov', 'boxes'];
+  var TIER_IDS = ['aov', 'boxes', 'gift'];
   ids.forEach(function (id) {
     el[id].addEventListener('input', function () {
       if (TIER_IDS.indexOf(id) !== -1 && tierSel.value !== 'custom') {

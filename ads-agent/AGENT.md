@@ -42,6 +42,36 @@ ADS → LANDING PAGE → LEAD → SALE → ĐƠN HÀNG → LỢI NHUẬN
 
 ---
 
+## 1b. LUẬT TỰ LẤY THÔNG TIN (lệnh anh Sơn 27/08/2026)
+
+Khi anh hỏi, **tự đi lấy dữ liệu của phòng khác** — không hỏi lại anh thứ phòng khác đã có,
+không ngồi chờ Tổng Chỉ Huy chuyển tin. Bốn bước, đúng thứ tự:
+
+```bash
+git fetch origin claude/dilim-ai-command-center-yy5uvo
+# 1. Mục lục — phần lớn câu hỏi dừng ở đây
+git show origin/claude/dilim-ai-command-center-yy5uvo:bo-nho-chung/index.json      # tra mục "tra_cuu"
+# 2. Không có thì tra bản đồ rồi sang thẳng nhánh phòng giữ nó, không xin phép ai
+git show origin/claude/dilim-ai-command-center-yy5uvo:bo-nho-chung/00-ban-do-he-thong.md
+# 3. Vẫn không có thì kiểm tra "chua_co_nguon" trong index.json
+```
+
+Nằm trong `chua_co_nguon` thì trả lời đúng khuôn: **CHƯA ĐỦ DỮ LIỆU ĐỂ KẾT LUẬN · Đang thiếu: X ·
+Ai cấp được: Y** — và ghi vào mục 5 đơn báo cáo kỳ tới. Chỉ hỏi anh khi dữ liệu **thật sự không
+tồn tại ở đâu** trong hệ thống.
+
+Luật đầy đủ + danh bạ "cần gì lấy ở nhánh nào":
+`bo-nho-chung/luat-tu-lay-thong-tin.md` trên nhánh Tổng Chỉ Huy.
+
+**Ba điều cấm:** cấm hỏi anh thứ phòng khác đã có · cấm bịa để lấp chỗ trống · cấm ngồi chờ.
+
+Hai nguồn Phòng Ads dùng nhiều nhất:
+
+| Cần gì | Lấy ở đâu |
+|---|---|
+| Giá, mốc combo, quà tặng, quy cách, số công bố, công dụng được nói | `dilim-ai-command-center-yy5uvo` → `bo-nho-chung/san-pham/rich-coenzyme-q10.md` |
+| Hook, personas, format, kịch bản video | `ai-agent-health-video-content-rmedj9` → `knowledge/`, `scripts/` |
+
 ## 2. DỮ LIỆU PHẢI CÓ TRƯỚC KHI LÀM
 
 Trước khi dựng chiến dịch mới, thu thập đủ (chi tiết: `playbook/01-brief.md`):
@@ -96,7 +126,7 @@ Tính toán chi tiết + máy tính: `tools/unit-economics.html`.
 |---|---|
 | Giá bán 1 hộp | **2.890.000đ** — đã xác minh |
 | Giá vốn 1 hộp | **1.445.000đ** — **GIẢ ĐỊNH 50%**, chưa đối chiếu hoá đơn nhập |
-| ROAS hoà vốn | **2,00** (mốc 1·3·5 hộp) · **2,40** (mốc 6 hộp) |
+| ROAS hoà vốn | **2,00** (mốc 1 & 2 hộp) · **2,15** (5 hộp) · **2,17** (3 hộp) · **2,40** (6 hộp) |
 
 **Ba luật khi dùng số này** (chi tiết: `playbook/11-gia-von-va-nguong-roas.md`):
 
@@ -105,9 +135,10 @@ Tính toán chi tiết + máy tính: `tools/unit-economics.html`.
 2. **ROAS 2,0 là sàn tuyệt đối, không phải mốc an toàn.** Bảng mới trừ giá vốn hàng, chưa trừ:
    quà tặng mốc 3–5 · mức giảm tiền mặt thay quà · hoa hồng đại lý · vận chuyển và đổi trả.
    Không khuyến nghị chạy ở ROAS 2,2–2,5 như thể đang lãi.
-3. **Mốc 5 và mốc 6 lãi gộp y hệt nhau (7.225.000đ)** — hộp thứ 6 lãi vào bằng đúng hộp thứ 7 tặng đi.
-   Mốc 6 chỉ hơn về doanh thu và thời gian giữ khách, **không hơn về lãi**, lại tốn thêm 2 hộp tồn
-   và tiền ship. Đừng mặc định đẩy khách lên mốc 6 vì tưởng lãi hơn.
+3. **Đẩy mốc 2 hộp, không đẩy mốc 6.** Xếp hạng biên: 1 hộp = 2 hộp (50,0%) > 5 hộp (46,6%)
+   > 3 hộp (46,1%) > **6 hộp (41,7%) — mỏng nhất**, dù trang ghi "Lợi nhất". Mốc 2 hộp giữ nguyên
+   biên 50% vì không mất quà mà giá trị đơn gấp đôi mốc 1 — **đây là mốc đáng nhắm khi lập chiến dịch**.
+   Mốc 6 chỉ hơn mốc 5 đúng 495.000đ (7,4%) mà phải giao thêm 2 hộp và ship nặng hơn.
 
 ---
 
