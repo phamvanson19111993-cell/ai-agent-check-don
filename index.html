@@ -566,6 +566,18 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .bill-y{font-size:.92rem;line-height:1.55}
 .bill-nut{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.25rem}
 .bill-nut .btn{flex:1 1 auto}
+.dia-chi{border:1px solid var(--line);border-radius:var(--r);background:#fff}
+.dia-chi>summary{list-style:none;cursor:pointer;padding:.8rem 1rem;display:flex;flex-direction:column;gap:.15rem;position:relative}
+.dia-chi>summary::-webkit-details-marker{display:none}
+.dia-chi>summary::after{content:"+";position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:1.35rem;line-height:1;color:var(--ink-3)}
+.dia-chi[open]>summary::after{content:"\2013"}
+.dia-chi>summary:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
+.dc-t{font-weight:600}
+.dc-s{font-size:.84rem;color:var(--ink-3)}
+.dc-o{display:none}
+.dia-chi[open]>.dc-o{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;padding:0 1rem 1rem}
+@media (max-width:560px){.dia-chi[open]>.dc-o{grid-template-columns:1fr}}
+.dc-o .field.full{grid-column:1/-1}
 .tuy{font-weight:400;font-size:.82em;opacity:.6;letter-spacing:.01em}
 .ok-msg{display:none;border:1px solid var(--jade);background:var(--jade-soft);color:var(--jade);border-radius:var(--r);padding:.85rem 1rem;font-size:.9rem;font-weight:500}
 .ok-msg.on{display:block}
@@ -1470,17 +1482,14 @@ if(typeof window.qrcode !== 'function'){
             <div class="field"><label for="sdt">Số điện thoại</label><input id="sdt" name="sdt" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" required></div>
 
             <p class="fgroup">Địa chỉ nhận hàng</p>
-            <div class="field"><label for="tinh">Tỉnh / Thành phố <span class="tuy">không bắt buộc</span></label><input id="tinh" name="tinh" type="text" autocomplete="address-level1" placeholder="Nam Định"></div>
-            <div class="field"><label for="huyen">Huyện / Quận / Thị xã <span class="tuy">không bắt buộc</span></label><input id="huyen" name="huyen" type="text" autocomplete="address-level2" placeholder="Huyện Hải Hậu"></div>
-            <div class="field"><label for="xa">Xã / Phường / Thị trấn <span class="tuy">không bắt buộc</span></label><input id="xa" name="xa" type="text" autocomplete="address-level3" placeholder="Thị trấn Yên Định"></div>
-            <div class="field"><label for="thon">Thôn / Xóm / Ấp / Tổ dân phố <span class="tuy">không bắt buộc</span></label><input id="thon" name="thon" type="text" autocomplete="address-level4" placeholder="Xóm 5"></div>
-            <div class="field full"><label for="sonha">Số nhà, tên đường</label><input id="sonha" name="sonha" type="text" autocomplete="address-line1" placeholder="Số 12, đường Trần Hưng Đạo"></div>
-            
-
-            
             <input id="tuKiem" name="tuKiem" type="hidden">
             
-            <div class="field full"><label for="soluong">Số lượng muốn đặt</label>
+            <div class="field full"><details class="dia-chi"><summary><span class="dc-t">Địa chỉ giao hàng</span><span class="dc-s">Điền luôn thì bên em giao nhanh hơn · bấm để mở</span></summary><div class="dc-o"><div class="field"><label for="tinh">Tỉnh / Thành phố <span class="tuy">không bắt buộc</span></label><input id="tinh" name="tinh" type="text" autocomplete="address-level1" placeholder="Nam Định"></div>
+<div class="field"><label for="huyen">Huyện / Quận / Thị xã <span class="tuy">không bắt buộc</span></label><input id="huyen" name="huyen" type="text" autocomplete="address-level2" placeholder="Huyện Hải Hậu"></div>
+<div class="field"><label for="xa">Xã / Phường / Thị trấn <span class="tuy">không bắt buộc</span></label><input id="xa" name="xa" type="text" autocomplete="address-level3" placeholder="Thị trấn Yên Định"></div>
+<div class="field"><label for="thon">Thôn / Xóm / Ấp / Tổ dân phố <span class="tuy">không bắt buộc</span></label><input id="thon" name="thon" type="text" autocomplete="address-level4" placeholder="Xóm 5"></div>
+<div class="field full"><label for="sonha">Số nhà, tên đường</label><input id="sonha" name="sonha" type="text" autocomplete="address-line1" placeholder="Số 12, đường Trần Hưng Đạo"></div></div></details></div>
+<div class="field full"><label for="soluong">Số lượng muốn đặt</label>
 <div class="chon-hop" id="chon-hop">
 <label class="hop-o"><input type="radio" name="soluong" value="1 hộp — 2.890.000đ"><span class="h-t">1 hộp — 2.890.000đ</span><span class="h-s">Dùng 60 ngày · 48.167đ mỗi ngày</span></label>
 <label class="hop-o"><input type="radio" name="soluong" value="2 hộp — 5.780.000đ"><span class="h-t">2 hộp — 5.780.000đ</span><span class="h-s">Dùng 120 ngày · 48.167đ mỗi ngày</span><span class="h-p">Đủ 4 tháng — không phải đặt lại giữa chừng</span></label><label class="hop-o"><input type="radio" name="soluong" value="3 hộp — 8.670.000đ (kèm quà tặng)"><span class="h-t">3 hộp — 8.670.000đ</span><span class="h-s">Dùng 180 ngày · 48.167đ mỗi ngày</span><span class="h-p">Tặng Ellagic Acid 675.000đ hoặc Gluchon Gel 680.000đ</span></label>
