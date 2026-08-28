@@ -14,7 +14,8 @@
     "quy_trinh_tong_chi_huy": "prompts/dilim-tong-chi-huy.md",
     "cau_dan_dau_phien": "prompts/moi-phong-doc-dau-phien.md",
     "gia_von_va_nguong_roas": "bo-nho-chung/tai-chinh/gia-von-va-nguong-roas.md",
-    "thanh_phan_va_giay_to": "bo-nho-chung/san-pham/rich-coenzyme-q10.md"
+    "thanh_phan_va_giay_to": "bo-nho-chung/san-pham/rich-coenzyme-q10.md",
+    "luat_tu_lay_thong_tin": "bo-nho-chung/luat-tu-lay-thong-tin.md"
   },
   "chua_co_nguon": [
     "chinh_sach_hoa_hong",
@@ -32,6 +33,7 @@
     "mst_5spro"
   ],
   "luat": [
+    "KHI ANH SƠN HỎI: tự đi lấy thông tin của phòng khác trước, không hỏi lại anh, không chờ Tổng Chỉ Huy. Xem luat-tu-lay-thong-tin.md.",
     "Đọc bộ nhớ chung trước khi hỏi anh.",
     "Không chép số ra chỗ khác — trỏ về file gốc.",
     "Tạo dữ liệu mới phải ghi DATA UPDATE và push lên main.",
