@@ -33,7 +33,7 @@ function main() {
   const sessions = new SessionStore(config.session);
   const fallbackAgent = new FallbackOrderAgent({ orders });
 
-  const knowledge = config.knowledge.enabled ? new SharedMemory(config.knowledge) : null;
+  const knowledge = config.knowledge.enabled ? new SharedMemory({ ...config.knowledge, logger: log }) : null;
 
   let agent = null;
   if (config.claude.enabled) {

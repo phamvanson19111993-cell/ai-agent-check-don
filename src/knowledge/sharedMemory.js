@@ -2,9 +2,11 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { log } from '../util/log.js';
 
 const run = promisify(execFile);
+
+/** Logger rong: file nay chi phu thuoc node core de phong khac copy ve dung ngay. */
+const NO_LOG = { info() {}, warn() {}, error() {} };
 
 /**
  * Doc bo nho chung (ho so san pham + luat tuan thu) TRUC TIEP tu nhanh cua
@@ -16,6 +18,10 @@ const run = promisify(execFile);
  *
  * Doc that bai (chua fetch nhanh, khong co git, sai duong dan) thi tra ve null
  * — agent tu dong quay ve che do khong tra loi cau hoi san pham.
+ *
+ * CONG CU DUNG CHUNG (danh ba bo nho chung, muc "Trinh doc bo nho chung").
+ * Chi phu thuoc node core — copy nguyen file sang phong khac la chay duoc,
+ * khong keo theo bat cu thu gi cua phan Zalo. Muon co log thi truyen `logger`.
  */
 export class SharedMemory {
   constructor({
@@ -26,6 +32,7 @@ export class SharedMemory {
     cwd = process.cwd(),
     now = () => Date.now(),
     exec = run,
+    logger = NO_LOG,
   } = {}) {
     this.branch = branch;
     this.files = files;
@@ -34,6 +41,7 @@ export class SharedMemory {
     this.cwd = cwd;
     this.now = now;
     this.exec = exec;
+    this.log = logger;
     this.cache = null;
   }
 
@@ -56,12 +64,12 @@ export class SharedMemory {
         const content = await this.#readFile(file);
         if (content.trim()) sections.push({ file, content: content.trim() });
       } catch (err) {
-        log.warn('knowledge.file_unavailable', { file, error: err.message });
+        this.log.warn('knowledge.file_unavailable', { file, error: err.message });
       }
     }
 
     if (!sections.length) {
-      log.warn('knowledge.empty', { branch: this.branch, files: this.files.length });
+      this.log.warn('knowledge.empty', { branch: this.branch, files: this.files.length });
       return null;
     }
 
@@ -69,7 +77,7 @@ export class SharedMemory {
       .map(({ file, content }) => `### Nguồn: ${file}\n\n${content}`)
       .join('\n\n---\n\n');
 
-    log.info('knowledge.loaded', { files: sections.map((s) => s.file), chars: text.length });
+    this.log.info('knowledge.loaded', { files: sections.map((s) => s.file), chars: text.length });
     return { text, sources: sections.map((s) => s.file), loadedAt: this.now() };
   }
 

@@ -111,3 +111,25 @@ test('khong co ho so thi prompt cam tra loi cau hoi san pham', () => {
   assert.match(blocks[0].text, /escalate_to_human/);
   assert.doesNotMatch(blocks[0].text, /HỒ SƠ CHUẨN/);
 });
+
+test('la cong cu dung chung: chi import node core, chay duoc khi khong truyen logger', async () => {
+  const source = await import('node:fs/promises').then((fs) =>
+    fs.readFile('src/knowledge/sharedMemory.js', 'utf8'),
+  );
+  const imports = [...source.matchAll(/^import .* from '([^']+)';$/gm)].map((m) => m[1]);
+  assert.deepEqual(
+    imports.filter((mod) => !mod.startsWith('node:')),
+    [],
+    'khong duoc phu thuoc file nao cua du an — phong khac phai copy nguyen file la chay',
+  );
+
+  // Khong truyen logger van chay binh thuong, khong nem loi.
+  const memory = new SharedMemory({
+    branch: 'origin/cmd',
+    files: ['a.md'],
+    exec: async () => {
+      throw new Error('khong co nhanh');
+    },
+  });
+  assert.equal(await memory.load(), null);
+});
