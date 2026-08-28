@@ -1,0 +1,229 @@
+<title>Báo Cáo Mỗi Giờ Qua Telegram</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --nen:#FBF7F8; --nen2:#F2EAED; --the:#FFFFFF; --vien:#E6DADF;
+  --muc:#201A1D; --muc2:#6E6167; --muc3:#9A8E93;
+  --hong:#C8446F; --xanh:#2AABEE; --man:#46203C; --luc:#2C7A66; --do:#B4402F;
+  --bong:0 1px 2px rgba(32,26,29,.05), 0 8px 24px -12px rgba(32,26,29,.12);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --nen:#151113; --nen2:#1E181B; --the:#221B1F; --vien:#3A2E34;
+  --muc:#F4ECEF; --muc2:#B0A2A8; --muc3:#7E7076;
+  --hong:#E87BA0; --xanh:#4CBBF5; --man:#D9A8C8; --luc:#5FBFA6; --do:#E88A78;
+  --bong:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  --nen:#151113; --nen2:#1E181B; --the:#221B1F; --vien:#3A2E34;
+  --muc:#F4ECEF; --muc2:#B0A2A8; --muc3:#7E7076;
+  --hong:#E87BA0; --xanh:#4CBBF5; --man:#D9A8C8; --luc:#5FBFA6; --do:#E88A78;
+  --bong:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--nen);color:var(--muc);
+  font-family:"Be Vietnam Pro",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Be Vietnam Pro",system-ui,sans-serif;
+  font-weight:800;text-wrap:balance;margin:0;line-height:1.12;letter-spacing:-.02em}
+h1{font-size:clamp(2.1rem,6vw,3.5rem)}
+h2{font-size:clamp(1.5rem,3.6vw,2.1rem)}
+h3{font-size:1.12rem;font-weight:600;letter-spacing:-.01em}
+p{margin:0}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+
+header{padding:clamp(3rem,9vw,5.5rem) 0 clamp(2rem,5vw,3rem);border-bottom:1px solid var(--vien)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--hong);margin-bottom:1.1rem}
+.lede{font-size:clamp(1.05rem,2.2vw,1.24rem);color:var(--muc2);max-width:62ch;margin-top:1.4rem}
+
+section{padding:clamp(2.8rem,7vw,4.5rem) 0;border-bottom:1px solid var(--vien)}
+section:last-of-type{border-bottom:0}
+.dau{display:flex;flex-direction:column;gap:.9rem;max-width:64ch;margin-bottom:2.4rem}
+.dau p{color:var(--muc2)}
+
+/* HAI CỘT: hình bên trái, chữ bên phải */
+.buoc{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);
+  gap:clamp(1.2rem,3vw,2.6rem);align-items:start;padding:1.8rem 0}
+.buoc + .buoc{border-top:1px solid var(--vien)}
+.buoc-hinh{background:var(--the);border:1px solid var(--vien);border-radius:12px;
+  overflow:hidden;box-shadow:var(--bong)}
+.buoc-hinh svg{display:block;width:100%;height:auto}
+.buoc-hinh img{display:block;width:100%;height:auto}
+.buoc-tx{display:flex;flex-direction:column;gap:.7rem;padding-top:.2rem}
+.so{display:inline-flex;align-items:center;justify-content:center;
+  width:1.75rem;height:1.75rem;border-radius:50%;background:var(--muc);color:var(--nen);
+  font-family:"IBM Plex Mono",monospace;font-size:.78rem;flex:none}
+.buoc-tt{display:flex;align-items:center;gap:.65rem}
+.buoc-tx p{color:var(--muc2)}
+.buoc-tx b{color:var(--muc)}
+@media(max-width:720px){.buoc{grid-template-columns:1fr;gap:1rem}}
+
+.hai{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.6rem}
+@media(max-width:620px){.hai{grid-template-columns:1fr}}
+.the{background:var(--the);border:1px solid var(--vien);border-radius:12px;
+  padding:1.3rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
+.the.sai{border-color:color-mix(in srgb,var(--do) 40%,var(--vien))}
+.the.dung{border-color:color-mix(in srgb,var(--luc) 45%,var(--vien))}
+.nhan{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muc3)}
+.the.sai .nhan{color:var(--do)} .the.dung .nhan{color:var(--luc)}
+.gia{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.7rem;
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.the p{color:var(--muc2);font-size:.94rem}
+
+.trich{border-left:3px solid var(--hong);padding:.2rem 0 .2rem 1.2rem;margin:1.6rem 0;
+  font-size:clamp(1.05rem,2.3vw,1.3rem);line-height:1.45;max-width:56ch}
+.trich cite{display:block;margin-top:.6rem;font-size:.85rem;font-style:normal;color:var(--muc3);
+  font-family:"IBM Plex Mono",monospace}
+
+.mau{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);
+  gap:clamp(1.2rem,3vw,2.4rem);align-items:start;padding:2rem 0}
+.mau + .mau{border-top:1px solid var(--vien)}
+@media(max-width:720px){.mau{grid-template-columns:1fr}}
+.mau-tx{display:flex;flex-direction:column;gap:.85rem}
+.tem{align-self:flex-start;font-family:"IBM Plex Mono",monospace;font-size:.66rem;
+  letter-spacing:.14em;text-transform:uppercase;padding:.3rem .7rem;border-radius:99px;
+  background:var(--nen2);color:var(--muc2);border:1px solid var(--vien)}
+.tem.n{background:color-mix(in srgb,var(--hong) 14%,transparent);color:var(--hong);
+  border-color:color-mix(in srgb,var(--hong) 30%,transparent)}
+.chu-qc{background:var(--nen2);border-radius:10px;padding:1rem 1.15rem;font-size:.93rem;
+  line-height:1.6;color:var(--muc);border:1px solid var(--vien)}
+.chu-qc .d{color:var(--muc3);font-family:"IBM Plex Mono",monospace;font-size:.66rem;
+  letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.3rem}
+.chu-qc .d + p{margin-bottom:.9rem}
+.chu-qc p:last-child{margin-bottom:0}
+
+.bang{width:100%;overflow-x:auto;margin-top:1.6rem}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.94rem}
+th,td{text-align:left;padding:.78rem .9rem;border-bottom:1px solid var(--vien);vertical-align:top}
+th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muc3);font-weight:500}
+td.n{font-variant-numeric:tabular-nums;font-family:"IBM Plex Mono",monospace;white-space:nowrap}
+tr.dung td:first-child{border-left:3px solid var(--luc)}
+tr.sai td:first-child{border-left:3px solid var(--do)}
+tr.giua td:first-child{border-left:3px solid var(--hong)}
+
+.canh{background:var(--the);border:1px solid var(--vien);border-left:3px solid var(--hong);
+  border-radius:10px;padding:1.2rem 1.35rem;margin-top:1.8rem;display:flex;
+  flex-direction:column;gap:.5rem}
+.canh strong{color:var(--muc)}
+.canh p{color:var(--muc2);font-size:.95rem}
+
+footer{padding:2.5rem 0 4rem;color:var(--muc3);font-size:.85rem;
+  font-family:"IBM Plex Mono",monospace}
+</style><style>
+.dt-tin{max-width:360px;margin:0 auto;background:var(--the);border:1px solid var(--vien);
+  border-radius:16px;overflow:hidden;box-shadow:var(--bong)}
+.dt-dau{display:flex;align-items:center;gap:.6rem;padding:.7rem .9rem;background:var(--nen2);
+  border-bottom:1px solid var(--vien)}
+.dt-ava{width:32px;height:32px;border-radius:50%;background:var(--xanh);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.dt-ten{font-weight:600;font-size:.9rem}
+.dt-tt{font-size:.7rem;color:var(--muc3)}
+.dt-than{padding:.9rem;background:var(--nen2)}
+.dt-bong{background:var(--the);border-radius:12px;padding:.8rem .9rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;line-height:1.6;
+  white-space:pre-wrap;border:1px solid var(--vien)}
+.dt-bong b{font-family:"Be Vietnam Pro",sans-serif;font-size:.78rem}
+.canh{background:var(--the);border:1px solid var(--vien);border-left:3px solid var(--hong);
+  border-radius:10px;padding:1.15rem 1.3rem;margin-top:1.8rem;display:flex;
+  flex-direction:column;gap:.45rem}
+.canh strong{color:var(--muc)} .canh p{color:var(--muc2);font-size:.94rem}
+.doi{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+@media(max-width:620px){.doi{grid-template-columns:1fr}}
+.the2{background:var(--the);border:1px solid var(--vien);border-radius:12px;padding:1.2rem 1.3rem;
+  display:flex;flex-direction:column;gap:.5rem}
+.the2.no{border-color:color-mix(in srgb,var(--do) 40%,var(--vien))}
+.the2.co{border-color:color-mix(in srgb,var(--luc) 45%,var(--vien))}
+.the2 .n{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muc3)}
+.the2.no .n{color:var(--do)} .the2.co .n{color:var(--luc)}
+.the2 h3{font-size:1.15rem}
+.the2 p{color:var(--muc2);font-size:.92rem}
+</style>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Phòng 7 · 28/08/2026</p>
+  <h1>Báo cáo mỗi giờ qua Telegram</h1>
+  <p class="lede">Mỗi tiếng một tin nhắn về điện thoại anh: tiêu bao nhiêu, được mấy đơn, chi phí mỗi đơn so với mục tiêu 5%, và khách đọc tới đâu thì bỏ. Cài một lần, chạy mãi.</p>
+</header>
+
+<section>
+  <div class="dau"><h2>Vì sao Telegram chứ không phải Zalo</h2></div>
+  <div class="doi">
+    <div class="the2 no">
+      <span class="n">Zalo — không làm được</span>
+      <h3>Phải có Official Account</h3>
+      <p>Zalo chỉ cho gửi tin tự động qua Official Account <b>đã được duyệt</b> — phải đăng ký doanh nghiệp, nộp hồ sơ, chờ xét. Token cũng hết hạn định kỳ, phải lấy lại.</p>
+    </div>
+    <div class="the2 co">
+      <span class="n">Telegram — làm được ngay</span>
+      <h3>Tạo bot mất 30 giây</h3>
+      <p>Không đăng ký gì. Token dùng <b>vĩnh viễn</b>. Anh vẫn nhận trên điện thoại như mọi tin nhắn khác, có thông báo đẩy.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="dau"><h2>Tin nhắn anh sẽ nhận</h2>
+  <p>Đây là số giả lập để anh thấy hình dạng, chưa phải số thật.</p></div>
+  <div class="dt-tin">
+    <div class="dt-dau"><div class="dt-ava">D</div><div>
+      <div class="dt-ten">DiLiM Báo Cáo</div><div class="dt-tt">bot</div></div></div>
+    <div class="dt-than"><div class="dt-bong">BÁO CÁO Q10 · 15:00 28/08
+
+<b>HÔM NAY</b>
+Chi          387.420đ
+Tiếp cận     8.914 người
+Xem trang    366
+Mỗi lượt xem 1.058đ
+Đơn          <b>2</b>
+
+Chi phí mỗi đơn <b>193.710đ</b>
+  đơn 1 hộp · ngưỡng 5% 144.500đ → chưa đạt
+  đơn 2 hộp · ngưỡng 5% 289.000đ → ĐẠT ✅
+  đơn 6 hộp · ngưỡng 5% 867.000đ → ĐẠT ✅
+
+<b>KHÁCH ĐỌC TỚI ĐÂU</b>
+Vào trang          366  100%
+Tới cơ chế         171   47%
+Tới giấy tờ        104   28%
+Tới bảng giá        73   20%
+Thấy biểu mẫu       48   13%
+Bắt đầu điền        11    3%
+Gửi đơn              2    1%
+Đã chuyển khoản      1    0%
+
+⛔ Mất nhiều nhất ở: <b>Tới cơ chế</b> (195 người)</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="dau"><h2>Năm bước cài</h2>
+  <p>Hình bên trái là màn hình anh cần nhìn.</p></div>
+<div class="buoc"><div class="buoc-hinh"><svg viewBox="0 0 340 214" xmlns="http://www.w3.org/2000/svg" role="img"><rect width="340" height="214" fill="var(--the)"/><rect x="0" y="0" width="340" height="28" rx="0" fill="var(--nen2)" stroke="var(--vien)" stroke-width="0"/><circle cx="20" cy="14" r="10" fill="var(--xanh)"/><text x="20" y="18" text-anchor="middle" fill="#fff" style="font-size:10px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">T</text><text x="38" y="18" text-anchor="start" fill="var(--muc)" style="font-size:10px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">BotFather</text><text x="38" y="30" text-anchor="start" fill="var(--muc3)" style="font-size:7.5px;font-family:Be Vietnam Pro,sans-serif">Tìm trong Telegram</text><rect x="150" y="52" width="178" height="26" rx="13" fill="var(--xanh)" stroke="var(--xanh)" stroke-width="0"/><text x="162" y="69" text-anchor="start" fill="#fff" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif">/newbot</text><rect x="12" y="88" width="250" height="26" rx="13" fill="var(--nen2)" stroke="var(--nen2)" stroke-width="0"/><text x="24" y="105" text-anchor="start" fill="var(--muc)" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif">Đặt tên cho bot của bạn?</text><rect x="150" y="124" width="178" height="26" rx="13" fill="var(--xanh)" stroke="var(--xanh)" stroke-width="0"/><text x="162" y="141" text-anchor="start" fill="#fff" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif">DiLiM Bao Cao</text><rect x="12" y="160" width="300" height="26" rx="13" fill="var(--nen2)" stroke="var(--nen2)" stroke-width="0"/><text x="24" y="177" text-anchor="start" fill="var(--muc)" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif">Xong! Mã bot của bạn:</text><rect x="12" y="190" width="316" height="20" rx="4" fill="var(--nen2)" stroke="var(--vien)" stroke-width="0"/><text x="20" y="204" text-anchor="start" fill="var(--xanh)" style="font-size:8.5px;font-family:IBM Plex Mono,monospace;font-weight:500">8123456789:AAH...xyz</text></svg></div><div class="buoc-tx"><div class="buoc-tt"><span class="so">1</span><h3>Tạo bot Telegram</h3></div><p>Mở Telegram, tìm <b>@BotFather</b>, gõ <b>/newbot</b>. Đặt tên bot, đặt tên đăng nhập kết thúc bằng <i>bot</i>. Nó trả về một chuỗi dài dạng <b>8123456789:AAH…</b> — đó là <b>TG_TOKEN</b>. Mất khoảng 30 giây.</p></div></div>
+<div class="buoc"><div class="buoc-hinh"><svg viewBox="0 0 340 214" xmlns="http://www.w3.org/2000/svg" role="img"><rect width="340" height="214" fill="var(--the)"/><rect x="0" y="0" width="340" height="28" rx="0" fill="var(--nen2)" stroke="var(--vien)" stroke-width="0"/><circle cx="20" cy="14" r="10" fill="var(--xanh)"/><text x="20" y="18" text-anchor="middle" fill="#fff" style="font-size:10px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">i</text><text x="38" y="18" text-anchor="start" fill="var(--muc)" style="font-size:10px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">userinfobot</text><rect x="196" y="52" width="132" height="26" rx="13" fill="var(--xanh)" stroke="var(--xanh)" stroke-width="0"/><text x="208" y="69" text-anchor="start" fill="#fff" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif">Start</text><rect x="12" y="88" width="190" height="26" rx="13" fill="var(--nen2)" stroke="var(--nen2)" stroke-width="0"/><text x="24" y="105" text-anchor="start" fill="var(--muc)" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif">Id: 1234567890</text><rect x="12" y="124" width="316" height="50" rx="6" fill="none" stroke="var(--hong)" stroke-width="1.5" stroke-dasharray="5 4"/><text x="24" y="144" text-anchor="start" fill="var(--hong)" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">TRƯỚC KHI CHẠY: nhắn cho bot</text><text x="24" y="160" text-anchor="start" fill="var(--hong)" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">CỦA ANH một câu bất kỳ.</text><text x="24" y="192" text-anchor="start" fill="var(--muc2)" style="font-size:8px;font-family:Be Vietnam Pro,sans-serif">Không nhắn trước thì Telegram</text><text x="24" y="206" text-anchor="start" fill="var(--muc2)" style="font-size:8px;font-family:Be Vietnam Pro,sans-serif">không cho bot nhắn tới anh.</text></svg></div><div class="buoc-tx"><div class="buoc-tt"><span class="so">2</span><h3>Lấy mã cuộc trò chuyện</h3></div><p>Tìm <b>@userinfobot</b>, bấm <b>Start</b>, nó trả về Id của anh — đó là <b>TG_CHAT</b>.<br><br><b>Quan trọng:</b> phải nhắn cho <i>bot của anh</i> một câu bất kỳ trước. Telegram không cho bot nhắn tới người chưa từng nhắn cho nó. Bỏ qua bước này là báo cáo không bao giờ tới.</p></div></div>
+<div class="buoc"><div class="buoc-hinh"><svg viewBox="0 0 340 214" xmlns="http://www.w3.org/2000/svg" role="img"><rect width="340" height="214" fill="var(--the)"/><rect x="0" y="0" width="340" height="26" rx="0" fill="var(--nen2)" stroke="var(--vien)" stroke-width="0"/><text x="12" y="17" text-anchor="start" fill="var(--muc3)" style="font-size:8px;font-family:IBM Plex Mono,monospace">Trình quản lý doanh nghiệp</text><text x="12" y="46" text-anchor="start" fill="var(--muc2)" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif">Cài đặt doanh nghiệp</text><text x="20" y="62" text-anchor="start" fill="var(--muc2)" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif">→ Người dùng</text><text x="28" y="78" text-anchor="start" fill="var(--muc)" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">→ Người dùng hệ thống</text><rect x="12" y="88" width="150" height="24" rx="5" fill="var(--luc)" stroke="var(--luc)" stroke-width="0"/><text x="87" y="104" text-anchor="middle" fill="#fff" style="font-size:9px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">+ Thêm</text><text x="12" y="132" text-anchor="start" fill="var(--muc2)" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif">Chỉ định tài sản:</text><rect x="12" y="142" width="150" height="20" rx="4" fill="var(--nen2)" stroke="var(--vien)" stroke-width="0"/><text x="20" y="156" text-anchor="start" fill="var(--muc)" style="font-size:7.5px;font-family:IBM Plex Mono,monospace">2260044828113956</text><rect x="172" y="142" width="156" height="20" rx="4" fill="var(--nen2)" stroke="var(--vien)" stroke-width="0"/><text x="180" y="156" text-anchor="start" fill="var(--muc)" style="font-size:7.5px;font-family:IBM Plex Mono,monospace">Pixel 1277743445...</text><text x="12" y="182" text-anchor="start" fill="var(--muc2)" style="font-size:8.5px;font-family:Be Vietnam Pro,sans-serif">Quyền cần tick:</text><rect x="12" y="190" width="88" height="20" rx="10" fill="none" stroke="var(--xanh)" stroke-width="1.5"/><text x="24" y="204" text-anchor="start" fill="var(--xanh)" style="font-size:7.5px;font-family:IBM Plex Mono,monospace">ads_read</text><rect x="108" y="190" width="142" height="20" rx="10" fill="none" stroke="var(--xanh)" stroke-width="1.5"/><text x="118" y="204" text-anchor="start" fill="var(--xanh)" style="font-size:7px;font-family:IBM Plex Mono,monospace">business_management</text></svg></div><div class="buoc-tx"><div class="buoc-tt"><span class="so">3</span><h3>Lấy token Facebook không hết hạn</h3></div><p>Token lấy từ Graph API Explorer <b>chỉ sống 1–2 tiếng</b> — chạy mỗi giờ là hỏng ngay.<br><br>Phải dùng token <b>Người dùng hệ thống</b>: Trình quản lý doanh nghiệp → Cài đặt → Người dùng hệ thống → Thêm → chỉ định tài khoản quảng cáo và Pixel → tạo token với quyền <b>ads_read</b> và <b>business_management</b>. Loại này không hết hạn.</p></div></div>
+<div class="buoc"><div class="buoc-hinh"><svg viewBox="0 0 340 214" xmlns="http://www.w3.org/2000/svg" role="img"><rect width="340" height="214" fill="var(--the)"/><rect x="0" y="0" width="340" height="26" rx="0" fill="var(--nen2)" stroke="var(--vien)" stroke-width="0"/><text x="12" y="17" text-anchor="start" fill="var(--muc3)" style="font-size:8px;font-family:IBM Plex Mono,monospace">bao-cao-telegram.py</text><text x="12" y="46" text-anchor="start" fill="var(--muc3)" style="font-size:8px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">CẦN ĐIỀN</text><rect x="12" y="56" width="316" height="116" rx="6" fill="var(--nen2)" stroke="var(--vien)" stroke-width="0"/><text x="22" y="76" text-anchor="start" fill="var(--muc)" style="font-size:7.5px;font-family:IBM Plex Mono,monospace">TG_TOKEN  = "8123456789:AAH..."</text><text x="22" y="96" text-anchor="start" fill="var(--muc)" style="font-size:7.5px;font-family:IBM Plex Mono,monospace">TG_CHAT   = "1234567890"</text><text x="22" y="116" text-anchor="start" fill="var(--muc)" style="font-size:7.5px;font-family:IBM Plex Mono,monospace">FB_TOKEN  = "EAAG..."</text><text x="22" y="140" text-anchor="start" fill="var(--muc3)" style="font-size:7.5px;font-family:IBM Plex Mono,monospace">FB_ACT    = "2260044828113956"</text><text x="22" y="160" text-anchor="start" fill="var(--muc3)" style="font-size:7.5px;font-family:IBM Plex Mono,monospace">FB_PIXEL  = "1277743445418211"</text><text x="12" y="190" text-anchor="start" fill="var(--muc2)" style="font-size:8px;font-family:Be Vietnam Pro,sans-serif">Hai dòng dưới đã điền sẵn.</text><text x="12" y="205" text-anchor="start" fill="var(--muc)" style="font-size:8px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">Chỉ cần điền ba dòng trên.</text></svg></div><div class="buoc-tx"><div class="buoc-tt"><span class="so">4</span><h3>Điền ba mã vào file</h3></div><p>Mở <b>bao-cao-telegram.py</b>, tìm khối <b>CẦN ĐIỀN</b> ở đầu file, điền ba dòng. Mã tài khoản và Pixel em đã điền sẵn.<br><br>Chạy thử: <b>python3 bao-cao-telegram.py</b> — báo cáo phải hiện trên màn hình <i>và</i> tới Telegram.</p></div></div>
+<div class="buoc"><div class="buoc-hinh"><svg viewBox="0 0 340 214" xmlns="http://www.w3.org/2000/svg" role="img"><rect width="340" height="214" fill="var(--the)"/><rect x="0" y="0" width="340" height="26" rx="0" fill="var(--nen2)" stroke="var(--vien)" stroke-width="0"/><text x="12" y="17" text-anchor="start" fill="var(--muc3)" style="font-size:8px;font-family:IBM Plex Mono,monospace">Chạy tự động mỗi giờ</text><text x="12" y="46" text-anchor="start" fill="var(--muc)" style="font-size:9px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">Windows</text><rect x="12" y="54" width="316" height="44" rx="5" fill="var(--nen2)" stroke="var(--vien)" stroke-width="0"/><text x="22" y="72" text-anchor="start" fill="var(--muc2)" style="font-size:8px;font-family:Be Vietnam Pro,sans-serif">Task Scheduler → Create Task</text><text x="22" y="88" text-anchor="start" fill="var(--muc2)" style="font-size:8px;font-family:Be Vietnam Pro,sans-serif">Trigger: Daily, lặp mỗi 1 giờ</text><text x="12" y="120" text-anchor="start" fill="var(--muc)" style="font-size:9px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">Mac / Linux</text><rect x="12" y="128" width="316" height="34" rx="5" fill="var(--nen2)" stroke="var(--vien)" stroke-width="0"/><text x="22" y="143" text-anchor="start" fill="var(--muc2)" style="font-size:7.5px;font-family:IBM Plex Mono,monospace">crontab -e</text><text x="22" y="157" text-anchor="start" fill="var(--muc2)" style="font-size:7px;font-family:IBM Plex Mono,monospace">0 * * * *  python3 bao-cao-telegram.py</text><rect x="12" y="176" width="316" height="30" rx="5" fill="none" stroke="var(--hong)" stroke-width="1.5"/><text x="22" y="196" text-anchor="start" fill="var(--hong)" style="font-size:8px;font-family:Be Vietnam Pro,sans-serif;font-weight:700">Chạy thử tay một lần trước khi đặt lịch.</text></svg></div><div class="buoc-tx"><div class="buoc-tt"><span class="so">5</span><h3>Đặt lịch chạy mỗi giờ</h3></div><p>Chạy thử tay thành công rồi mới đặt lịch. Máy phải bật thì lịch mới chạy — máy tắt là không có báo cáo.<br><br>Nếu anh muốn chạy cả khi tắt máy thì phải đặt trên một máy chủ luôn bật; nói em, em chỉ cách.</p></div></div>
+</section>
+
+<section>
+  <div class="dau"><h2>Ba điều dễ hỏng</h2></div>
+  <div class="canh">
+    <strong>Token Facebook hết hạn giữa chừng</strong>
+    <p>Token lấy từ Graph API Explorer chỉ sống 1–2 tiếng. Chạy mỗi giờ thì tới lần thứ hai đã hỏng. <b>Bắt buộc dùng token Người dùng hệ thống</b> — bước 3.</p>
+  </div>
+  <div class="canh">
+    <strong>Bot không nhắn được cho anh</strong>
+    <p>Telegram không cho bot nhắn tới người chưa từng nhắn cho nó. <b>Phải nhắn cho bot của anh một câu bất kỳ trước</b> — bước 2.</p>
+  </div>
+  <div class="canh">
+    <strong>Máy tắt thì không có báo cáo</strong>
+    <p>Lịch chạy trên máy anh. Máy tắt hoặc ngủ là không chạy. Muốn chạy cả khi tắt máy thì phải đặt trên máy chủ luôn bật — nói em, em chỉ cách.</p>
+  </div>
+</section>
+
+<footer>Phòng 7 · Lady Page · sonsongkhoe.com</footer>
+</div>
