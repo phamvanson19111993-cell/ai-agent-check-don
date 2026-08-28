@@ -2088,6 +2088,13 @@ function baoFB(ten, so){
   }catch(e){}
 }
 
+/* Su kien rieng cua trang, khong phai su kien chuan cua Facebook.
+   Dung de do KHACH DOC TOI DAU roi bo di - Facebook khong tu do duoc
+   viec nay, chi co trang moi biet. */
+function baoRieng(ten){
+  try{ if(window.fbq) fbq('trackCustom', ten); }catch(e){}
+}
+
 /* Tien coc giu hang. Ma VietQR duoi day da nhung san dung 200.000d,
    khach quet la app ngan hang hien du so tai khoan va so tien. */
 var QR_TIEN = {"5780000": "<svg class=\"qr\" shape-rendering=\"crispEdges\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 41 41\"><path stroke=\"#000\" d=\"M0 0.5h7m1 0h1m2 0h1m5 0h1m1 0h1m1 0h2m2 0h4m5 0h7m-41 1h1m5 0h1m1 0h1m3 0h1m1 0h3m1 0h1m4 0h1m1 0h1m3 0h1m4 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m1 0h2m3 0h2m1 0h1m8 0h1m3 0h1m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h5m2 0h1m4 0h2m1 0h1m2 0h2m2 0h1m3 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m2 0h1m1 0h3m4 0h2m1 0h3m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m3 0h1m2 0h1m5 0h1m2 0h1m1 0h1m3 0h2m1 0h1m2 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-33 1h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h2m1 0h2m1 0h1m2 0h1m1 0h2m-33 1h1m1 0h2m1 0h3m1 0h1m4 0h1m5 0h2m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m2 0h1m1 0h2m-39 1h2m1 0h1m1 0h1m4 0h2m1 0h1m1 0h5m2 0h6m1 0h3m2 0h1m2 0h1m-38 1h1m1 0h1m1 0h3m1 0h2m3 0h1m3 0h1m1 0h1m1 0h1m6 0h2m3 0h1m2 0h1m1 0h1m-40 1h1m5 0h1m1 0h4m1 0h1m4 0h3m3 0h2m1 0h1m2 0h2m1 0h4m1 0h1m-39 1h6m1 0h3m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h2m1 0h1m2 0h2m-38 1h2m2 0h2m3 0h3m1 0h3m1 0h5m1 0h1m5 0h1m2 0h1m2 0h1m-37 1h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h5m6 0h2m2 0h1m2 0h1m2 0h1m-40 1h1m2 0h2m1 0h2m2 0h1m4 0h2m3 0h3m1 0h1m1 0h1m4 0h2m2 0h1m2 0h1m-40 1h2m2 0h3m2 0h1m2 0h2m2 0h1m1 0h1m10 0h1m1 0h2m2 0h1m2 0h1m-39 1h1m9 0h3m3 0h1m1 0h4m3 0h2m1 0h2m1 0h1m2 0h2m1 0h1m-38 1h1m2 0h4m3 0h1m2 0h1m1 0h1m2 0h2m2 0h3m2 0h1m1 0h1m6 0h1m1 0h1m1 0h1m-41 1h1m2 0h3m1 0h1m3 0h3m3 0h2m1 0h2m1 0h1m8 0h1m2 0h1m-36 1h2m1 0h2m1 0h1m2 0h2m1 0h2m1 0h1m3 0h2m4 0h1m4 0h1m1 0h1m1 0h1m2 0h1m1 0h1m-40 1h2m3 0h1m1 0h2m2 0h1m1 0h3m3 0h1m1 0h1m4 0h1m1 0h5m3 0h1m2 0h1m-39 1h2m2 0h2m1 0h3m1 0h3m1 0h2m2 0h1m2 0h2m1 0h1m1 0h5m4 0h2m-37 1h2m1 0h1m2 0h1m2 0h2m1 0h1m5 0h2m6 0h1m2 0h1m1 0h2m5 0h1m-39 1h1m2 0h2m1 0h1m1 0h1m2 0h3m2 0h2m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m-40 1h4m1 0h1m5 0h1m1 0h2m2 0h1m2 0h2m1 0h1m2 0h1m3 0h1m1 0h1m2 0h1m2 0h2m-38 1h5m1 0h3m1 0h4m1 0h2m6 0h1m2 0h1m1 0h2m1 0h3m1 0h1m-37 1h2m1 0h1m5 0h1m4 0h4m2 0h2m1 0h1m1 0h2m2 0h2m4 0h1m-36 1h2m3 0h5m3 0h1m1 0h2m2 0h1m1 0h4m3 0h1m2 0h5m1 0h1m-26 1h1m5 0h2m1 0h1m2 0h1m5 0h1m2 0h1m1 0h1m3 0h1m-41 1h1m1 0h1m3 0h1m2 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m9 0h1m1 0h3m3 0h1m-38 1h1m5 0h1m2 0h2m3 0h1m2 0h1m1 0h1m1 0h1m2 0h3m1 0h1m1 0h1m2 0h2m1 0h1m-38 1h9m1 0h5m5 0h1m3 0h1m1 0h3m1 0h7m2 0h1m-33 1h3m1 0h1m4 0h3m1 0h1m1 0h1m1 0h3m2 0h1m1 0h1m3 0h1m1 0h2m-40 1h7m1 0h1m1 0h1m1 0h5m1 0h2m3 0h1m1 0h1m3 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-41 1h1m5 0h1m1 0h6m2 0h2m1 0h2m2 0h2m3 0h1m1 0h3m3 0h1m2 0h2m-41 1h1m1 0h3m1 0h1m3 0h4m7 0h1m1 0h2m1 0h2m2 0h1m1 0h8m-40 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m2 0h3m3 0h1m-36 1h1m1 0h3m1 0h1m1 0h1m3 0h3m3 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m4 0h1m4 0h2m-41 1h1m5 0h1m3 0h1m3 0h1m1 0h2m2 0h2m2 0h1m11 0h1m2 0h2m-41 1h7m1 0h2m2 0h1m4 0h4m5 0h2m1 0h1m2 0h3m2 0h2\"/></svg>", "2890000": "<svg class=\"qr\" shape-rendering=\"crispEdges\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 41 41\"><path stroke=\"#000\" d=\"M0 0.5h7m2 0h1m3 0h1m3 0h1m1 0h2m4 0h1m4 0h1m1 0h1m1 0h7m-41 1h1m5 0h1m1 0h5m3 0h1m1 0h4m1 0h1m2 0h2m1 0h1m1 0h2m1 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m5 0h2m1 0h4m1 0h1m3 0h3m1 0h1m1 0h2m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m2 0h2m2 0h5m2 0h4m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h1m1 0h4m1 0h1m2 0h1m5 0h5m1 0h3m1 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m3 0h1m2 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-32 1h2m3 0h1m2 0h1m1 0h1m3 0h3m1 0h1m1 0h1m-30 1h1m1 0h1m1 0h1m1 0h1m2 0h1m2 0h2m4 0h2m1 0h1m1 0h3m3 0h2m1 0h1m3 0h1m2 0h1m-39 1h1m1 0h2m2 0h1m3 0h1m3 0h1m4 0h2m1 0h1m2 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m-39 1h2m3 0h1m1 0h1m3 0h1m2 0h5m1 0h2m1 0h1m3 0h2m1 0h1m2 0h1m1 0h1m1 0h1m-38 1h1m1 0h2m2 0h2m3 0h1m1 0h4m1 0h2m1 0h2m1 0h3m1 0h1m1 0h3m2 0h2m2 0h1m-41 1h1m1 0h1m2 0h2m5 0h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m3 0h1m1 0h1m3 0h1m1 0h1m-38 1h2m1 0h2m9 0h5m2 0h4m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-40 1h2m1 0h2m1 0h2m2 0h4m2 0h3m2 0h6m4 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-41 1h1m3 0h1m3 0h2m1 0h3m2 0h1m1 0h2m1 0h2m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m-39 1h1m4 0h1m3 0h2m1 0h2m1 0h2m4 0h3m3 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-41 1h1m2 0h3m3 0h2m4 0h1m1 0h4m1 0h2m1 0h3m3 0h1m1 0h1m3 0h1m1 0h2m-41 1h1m1 0h1m2 0h2m1 0h1m2 0h2m5 0h4m1 0h2m1 0h1m1 0h2m2 0h3m1 0h1m2 0h1m-40 1h3m1 0h2m2 0h3m1 0h4m1 0h3m3 0h1m1 0h3m3 0h1m1 0h1m1 0h1m1 0h3m-38 1h1m1 0h1m1 0h2m1 0h2m3 0h1m3 0h1m5 0h1m1 0h1m4 0h1m2 0h1m1 0h1m1 0h2m-33 1h2m1 0h1m1 0h1m2 0h1m1 0h2m2 0h1m1 0h4m1 0h1m3 0h1m2 0h1m1 0h1m1 0h1m-40 1h1m3 0h1m1 0h1m1 0h2m1 0h1m1 0h2m3 0h1m1 0h1m1 0h1m3 0h1m4 0h2m1 0h5m1 0h1m-40 1h5m1 0h4m1 0h1m1 0h4m2 0h1m1 0h2m3 0h1m1 0h1m1 0h1m3 0h1m3 0h1m-36 1h1m1 0h1m2 0h1m3 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h3m3 0h1m-41 1h4m1 0h1m3 0h1m1 0h1m3 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m-32 1h1m2 0h2m4 0h1m1 0h1m1 0h2m3 0h1m1 0h1m1 0h1m3 0h5m1 0h1m-39 1h1m1 0h1m5 0h1m1 0h4m1 0h2m2 0h1m1 0h3m1 0h3m1 0h1m5 0h1m1 0h1m-38 1h2m2 0h1m1 0h4m1 0h1m2 0h1m3 0h1m1 0h1m4 0h1m2 0h1m1 0h1m1 0h2m4 0h1m1 0h1m-40 1h1m1 0h2m5 0h1m1 0h2m1 0h3m1 0h3m1 0h1m1 0h1m1 0h3m2 0h2m1 0h2m2 0h1m-40 1h1m2 0h2m1 0h1m1 0h5m2 0h1m1 0h1m1 0h2m1 0h1m3 0h4m1 0h2m2 0h1m2 0h1m1 0h1m-40 1h1m1 0h1m3 0h1m1 0h3m8 0h1m2 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h3m1 0h1m-40 1h1m2 0h4m3 0h1m1 0h1m1 0h1m1 0h1m1 0h4m2 0h1m1 0h3m2 0h6m1 0h1m1 0h1m-33 1h1m1 0h4m1 0h2m4 0h1m2 0h1m1 0h2m1 0h4m3 0h4m-40 1h7m3 0h1m3 0h4m1 0h1m2 0h1m1 0h2m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m-39 1h1m5 0h1m4 0h2m6 0h4m1 0h1m2 0h6m3 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m2 0h6m3 0h1m1 0h3m3 0h1m1 0h1m1 0h6m2 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m1 0h1m5 0h1m1 0h1m1 0h5m1 0h1m1 0h2m1 0h2m1 0h1m1 0h3m-40 1h1m1 0h3m1 0h1m1 0h1m10 0h1m3 0h2m1 0h2m1 0h4m1 0h1m1 0h5m-41 1h1m5 0h1m3 0h5m1 0h1m1 0h4m1 0h1m1 0h1m3 0h3m3 0h1m1 0h1m1 0h2m-41 1h7m1 0h4m4 0h1m2 0h2m1 0h3m1 0h3m1 0h1m1 0h2m1 0h4m1 0h1\"/></svg>", "8670000": "<svg class=\"qr\" shape-rendering=\"crispEdges\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 41 41\"><path stroke=\"#000\" d=\"M0 0.5h7m3 0h2m3 0h3m1 0h2m4 0h1m4 0h3m1 0h7m-41 1h1m5 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h4m1 0h1m2 0h2m1 0h1m1 0h2m1 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m3 0h4m2 0h3m1 0h1m3 0h3m1 0h1m1 0h2m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h3m1 0h5m2 0h4m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h1m2 0h5m2 0h1m5 0h5m1 0h3m1 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m3 0h1m2 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-32 1h2m3 0h1m2 0h1m1 0h1m3 0h3m1 0h1m1 0h1m-30 1h1m1 0h1m1 0h1m1 0h1m2 0h1m2 0h2m4 0h2m1 0h1m1 0h3m3 0h2m1 0h1m3 0h1m2 0h1m-40 1h2m1 0h1m3 0h2m2 0h1m3 0h1m4 0h2m1 0h1m2 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m-38 1h2m1 0h4m3 0h1m2 0h5m1 0h2m1 0h1m3 0h2m1 0h1m2 0h1m1 0h1m1 0h1m-39 1h4m4 0h1m3 0h1m1 0h4m1 0h2m1 0h2m1 0h3m1 0h1m1 0h3m2 0h2m2 0h1m-37 1h1m1 0h2m4 0h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m3 0h1m1 0h1m3 0h1m1 0h1m-37 1h1m1 0h1m7 0h1m2 0h5m2 0h4m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-40 1h2m1 0h2m1 0h2m2 0h2m2 0h1m2 0h2m2 0h6m7 0h1m1 0h1m1 0h1m1 0h1m-41 1h1m3 0h1m3 0h2m2 0h3m3 0h2m1 0h2m1 0h1m2 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m-39 1h1m4 0h1m2 0h1m2 0h6m4 0h3m3 0h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-41 1h1m2 0h3m4 0h4m3 0h4m1 0h2m1 0h3m3 0h1m1 0h1m3 0h1m1 0h2m-41 1h1m1 0h1m2 0h2m1 0h7m3 0h4m1 0h2m1 0h1m1 0h2m2 0h3m1 0h1m2 0h1m-40 1h3m1 0h2m2 0h1m3 0h1m3 0h4m3 0h1m1 0h3m3 0h1m1 0h1m1 0h1m1 0h3m-38 1h1m1 0h1m1 0h3m1 0h2m1 0h2m3 0h1m5 0h1m1 0h1m4 0h1m2 0h1m1 0h1m1 0h2m-37 1h1m3 0h1m4 0h1m1 0h2m1 0h2m2 0h1m1 0h4m1 0h1m3 0h1m2 0h1m1 0h1m1 0h1m-37 1h2m1 0h1m2 0h1m1 0h1m1 0h2m3 0h1m1 0h1m1 0h1m3 0h1m4 0h2m1 0h5m1 0h1m-40 1h1m3 0h1m2 0h3m1 0h1m1 0h4m2 0h1m1 0h2m3 0h1m1 0h1m1 0h1m3 0h1m3 0h1m-39 1h1m2 0h4m1 0h1m3 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h3m3 0h1m-41 1h1m1 0h4m1 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m-38 1h2m1 0h1m1 0h6m4 0h1m1 0h1m1 0h2m3 0h1m1 0h1m1 0h1m3 0h1m1 0h3m1 0h1m-38 1h1m2 0h1m2 0h1m2 0h4m1 0h2m2 0h1m1 0h3m1 0h3m1 0h1m3 0h1m1 0h1m1 0h1m-38 1h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1m2 0h1m3 0h1m1 0h1m4 0h1m2 0h1m1 0h1m1 0h2m4 0h1m1 0h1m-40 1h1m1 0h2m4 0h3m3 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1m1 0h4m2 0h1m-40 1h1m2 0h2m1 0h1m1 0h3m1 0h2m3 0h1m1 0h2m1 0h1m3 0h3m2 0h2m2 0h1m2 0h1m1 0h1m-40 1h1m1 0h1m3 0h1m1 0h1m1 0h1m3 0h2m3 0h1m2 0h1m1 0h1m2 0h1m2 0h3m1 0h3m1 0h1m-40 1h1m2 0h4m2 0h2m1 0h1m1 0h1m3 0h4m2 0h1m1 0h4m2 0h5m1 0h1m1 0h1m-33 1h1m2 0h1m1 0h1m7 0h1m2 0h1m1 0h2m1 0h1m1 0h2m3 0h4m-40 1h7m2 0h1m1 0h2m2 0h1m1 0h1m1 0h1m2 0h1m1 0h2m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m-39 1h1m5 0h1m2 0h2m3 0h1m4 0h4m1 0h1m2 0h6m3 0h1m-37 1h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m1 0h3m2 0h2m1 0h1m1 0h6m2 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h5m1 0h1m1 0h2m1 0h2m1 0h1m1 0h3m-40 1h1m1 0h3m1 0h1m1 0h1m10 0h1m3 0h2m1 0h2m1 0h4m1 0h1m1 0h5m-41 1h1m5 0h1m3 0h5m1 0h1m1 0h4m1 0h1m1 0h1m3 0h3m3 0h1m1 0h1m1 0h2m-41 1h7m1 0h4m4 0h1m2 0h2m1 0h3m1 0h3m1 0h1m1 0h2m1 0h4m1 0h1\"/></svg>", "14450000": "<svg class=\"qr\" shape-rendering=\"crispEdges\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 41 41\"><path stroke=\"#000\" d=\"M0 0.5h7m1 0h1m4 0h2m2 0h3m1 0h2m1 0h2m1 0h1m2 0h1m3 0h7m-41 1h1m5 0h1m1 0h1m1 0h2m3 0h1m2 0h3m2 0h3m3 0h2m1 0h1m1 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m1 0h2m1 0h1m1 0h2m1 0h2m7 0h1m2 0h1m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h1m2 0h4m5 0h2m4 0h2m2 0h2m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m5 0h3m4 0h2m1 0h3m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m2 0h2m3 0h1m4 0h1m2 0h1m1 0h1m3 0h2m1 0h1m2 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-33 1h3m2 0h3m1 0h1m2 0h2m1 0h2m1 0h1m2 0h1m1 0h2m-33 1h1m1 0h2m1 0h3m1 0h2m2 0h1m6 0h2m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m2 0h1m1 0h2m-39 1h1m9 0h2m1 0h7m2 0h6m1 0h3m2 0h1m2 0h2m-41 1h3m2 0h3m2 0h1m1 0h1m6 0h1m1 0h1m1 0h1m6 0h2m3 0h1m2 0h1m1 0h1m-41 1h1m4 0h1m3 0h2m3 0h1m4 0h3m3 0h2m1 0h1m2 0h2m1 0h4m2 0h1m-41 1h2m1 0h2m1 0h5m1 0h1m5 0h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m3 0h1m1 0h1m2 0h1m-39 1h1m1 0h1m1 0h1m1 0h2m3 0h1m1 0h1m1 0h3m1 0h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h2m2 0h1m-38 1h3m2 0h1m1 0h2m2 0h2m1 0h2m1 0h3m1 0h2m1 0h1m3 0h2m3 0h1m2 0h1m2 0h1m-40 1h1m2 0h1m2 0h3m1 0h3m2 0h2m3 0h1m1 0h1m1 0h3m2 0h1m2 0h1m2 0h1m2 0h1m-37 1h4m3 0h1m1 0h1m1 0h1m5 0h1m3 0h1m7 0h1m2 0h1m2 0h1m-39 1h4m7 0h1m1 0h1m4 0h2m1 0h2m1 0h3m1 0h2m1 0h1m2 0h2m1 0h1m-38 1h1m1 0h1m1 0h3m2 0h2m3 0h1m3 0h1m3 0h1m1 0h1m2 0h1m1 0h1m6 0h1m1 0h1m1 0h1m-41 1h1m3 0h2m1 0h1m1 0h1m3 0h3m1 0h2m1 0h2m1 0h2m7 0h1m2 0h1m-36 1h2m1 0h2m1 0h2m2 0h4m1 0h1m3 0h2m2 0h1m1 0h1m4 0h1m1 0h1m1 0h2m1 0h1m1 0h1m-40 1h2m1 0h3m2 0h1m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m4 0h1m1 0h5m3 0h2m1 0h1m-39 1h2m1 0h1m1 0h1m2 0h1m2 0h2m2 0h2m2 0h1m2 0h2m1 0h1m1 0h5m2 0h2m1 0h1m1 0h1m-40 1h1m3 0h1m3 0h5m6 0h2m6 0h1m2 0h1m1 0h3m1 0h2m1 0h1m-40 1h4m1 0h4m2 0h1m2 0h1m2 0h2m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-40 1h3m1 0h2m6 0h2m2 0h2m2 0h2m1 0h1m2 0h1m3 0h1m1 0h1m2 0h1m2 0h1m-39 1h4m1 0h6m2 0h3m1 0h2m6 0h1m2 0h1m1 0h2m2 0h2m1 0h1m2 0h1m-41 1h1m1 0h1m2 0h1m2 0h1m1 0h3m4 0h2m2 0h2m1 0h1m1 0h2m2 0h2m2 0h1m1 0h1m3 0h1m-40 1h2m3 0h1m1 0h3m3 0h1m1 0h2m2 0h1m1 0h4m3 0h1m5 0h2m1 0h2m-28 1h1m3 0h1m2 0h2m1 0h1m2 0h1m5 0h1m2 0h1m1 0h1m3 0h1m-41 1h1m1 0h1m1 0h3m2 0h3m5 0h1m1 0h1m2 0h1m2 0h1m3 0h2m1 0h4m3 0h1m-38 1h1m2 0h1m2 0h2m1 0h2m1 0h3m1 0h2m3 0h1m2 0h3m3 0h1m2 0h2m1 0h1m-38 1h9m2 0h2m2 0h1m5 0h1m2 0h1m1 0h11m2 0h1m-33 1h1m1 0h2m1 0h2m2 0h3m1 0h1m1 0h3m1 0h1m2 0h1m1 0h1m3 0h1m1 0h2m-40 1h7m1 0h5m3 0h1m1 0h1m1 0h1m4 0h1m3 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-41 1h1m5 0h1m1 0h1m1 0h1m2 0h2m1 0h2m1 0h1m10 0h3m3 0h1m2 0h2m-41 1h1m1 0h3m1 0h1m2 0h4m1 0h1m6 0h1m2 0h1m1 0h2m2 0h1m1 0h8m-40 1h1m1 0h3m1 0h1m1 0h4m2 0h2m1 0h1m2 0h1m1 0h3m1 0h1m2 0h3m3 0h1m-36 1h1m1 0h3m1 0h1m1 0h2m2 0h3m5 0h1m2 0h1m1 0h1m1 0h1m1 0h1m4 0h1m2 0h1m1 0h2m-41 1h1m5 0h1m2 0h1m3 0h2m1 0h1m1 0h1m1 0h2m2 0h1m11 0h1m2 0h2m-41 1h7m1 0h1m5 0h1m1 0h1m1 0h3m5 0h2m1 0h1m2 0h3m3 0h1\"/></svg>", "17340000": "<svg class=\"qr\" shape-rendering=\"crispEdges\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 41 41\"><path stroke=\"#000\" d=\"M0 0.5h7m1 0h2m1 0h2m1 0h1m2 0h3m1 0h2m1 0h2m1 0h1m1 0h2m3 0h7m-41 1h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h3m2 0h3m6 0h1m1 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m4 0h1m2 0h1m2 0h1m1 0h2m7 0h1m2 0h1m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h7m5 0h2m4 0h2m2 0h2m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m2 0h2m3 0h4m4 0h2m1 0h3m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m2 0h2m3 0h1m4 0h1m2 0h1m1 0h1m3 0h2m1 0h1m2 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-33 1h3m2 0h3m1 0h1m2 0h2m1 0h2m1 0h1m2 0h1m1 0h2m-33 1h1m1 0h2m1 0h3m1 0h2m2 0h1m6 0h2m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m2 0h1m1 0h2m-40 1h2m2 0h1m1 0h1m4 0h2m1 0h7m2 0h6m1 0h3m2 0h1m2 0h2m-40 1h1m1 0h1m2 0h2m2 0h1m1 0h1m6 0h1m1 0h1m1 0h1m6 0h2m3 0h1m2 0h1m1 0h1m-37 1h2m2 0h3m3 0h1m4 0h3m3 0h2m1 0h1m2 0h2m1 0h4m2 0h1m-41 1h4m2 0h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m-37 1h1m1 0h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h2m2 0h1m-38 1h3m2 0h1m1 0h1m1 0h1m1 0h1m5 0h3m1 0h2m1 0h1m3 0h4m1 0h1m2 0h1m2 0h1m-40 1h1m2 0h1m2 0h4m4 0h3m3 0h1m1 0h1m1 0h3m1 0h2m2 0h1m2 0h1m2 0h1m-37 1h4m2 0h2m1 0h1m1 0h3m3 0h1m3 0h1m4 0h1m2 0h1m2 0h1m2 0h1m-39 1h4m5 0h1m1 0h6m1 0h2m1 0h2m1 0h3m1 0h2m1 0h1m2 0h2m1 0h1m-38 1h1m1 0h1m1 0h3m2 0h2m2 0h2m1 0h1m1 0h1m3 0h1m1 0h1m2 0h1m1 0h1m6 0h1m1 0h1m1 0h1m-41 1h1m3 0h2m1 0h1m1 0h1m1 0h1m1 0h3m1 0h2m1 0h2m1 0h2m7 0h1m2 0h1m-36 1h2m1 0h2m1 0h2m2 0h1m1 0h1m6 0h2m2 0h1m1 0h1m4 0h1m1 0h1m1 0h2m1 0h1m1 0h1m-40 1h4m1 0h1m2 0h1m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m4 0h1m1 0h5m3 0h2m1 0h1m-40 1h2m2 0h1m1 0h4m2 0h2m2 0h2m2 0h1m2 0h2m1 0h1m1 0h5m2 0h2m1 0h1m1 0h1m-41 1h2m1 0h1m1 0h1m3 0h5m6 0h2m6 0h1m2 0h1m1 0h3m1 0h2m1 0h1m-39 1h1m2 0h2m1 0h2m2 0h1m2 0h1m2 0h2m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-40 1h1m1 0h2m1 0h1m1 0h2m3 0h2m2 0h2m2 0h2m1 0h1m2 0h1m3 0h1m1 0h1m2 0h1m2 0h1m-39 1h2m1 0h1m2 0h2m1 0h2m2 0h3m1 0h2m6 0h1m2 0h1m1 0h2m2 0h2m1 0h1m2 0h1m-40 1h1m6 0h1m1 0h3m4 0h2m2 0h2m1 0h1m1 0h2m2 0h2m1 0h2m1 0h1m3 0h1m-39 1h1m3 0h5m3 0h1m2 0h1m2 0h1m1 0h4m3 0h1m2 0h5m1 0h2m-35 1h1m3 0h1m1 0h3m1 0h1m3 0h2m1 0h1m2 0h1m5 0h1m1 0h1m2 0h1m3 0h1m-41 1h1m1 0h1m1 0h3m3 0h5m1 0h2m1 0h1m2 0h1m2 0h1m3 0h2m2 0h3m3 0h1m-38 1h1m2 0h1m2 0h4m3 0h2m1 0h2m3 0h1m2 0h4m5 0h2m1 0h1m-38 1h11m3 0h1m6 0h1m2 0h1m1 0h3m2 0h6m2 0h1m-33 1h1m2 0h1m1 0h1m2 0h4m1 0h1m1 0h3m1 0h1m2 0h1m1 0h1m3 0h1m1 0h2m-40 1h7m1 0h1m1 0h2m4 0h1m1 0h1m1 0h1m4 0h1m3 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-41 1h1m5 0h1m1 0h3m2 0h1m1 0h1m1 0h1m1 0h1m10 0h3m3 0h1m2 0h2m-41 1h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h2m5 0h1m2 0h1m1 0h1m3 0h1m1 0h8m-40 1h1m1 0h3m1 0h1m1 0h4m3 0h1m1 0h1m2 0h1m1 0h3m1 0h1m2 0h3m3 0h1m-36 1h1m1 0h3m1 0h1m1 0h2m2 0h3m5 0h1m2 0h1m1 0h1m1 0h1m1 0h1m4 0h1m2 0h1m1 0h2m-41 1h1m5 0h1m2 0h1m3 0h2m1 0h1m1 0h1m1 0h2m2 0h1m11 0h1m2 0h2m-41 1h7m1 0h1m5 0h1m1 0h1m1 0h3m5 0h2m1 0h1m2 0h3m3 0h1\"/></svg>"};
@@ -2539,6 +2546,82 @@ var FORM_GOOGLE = {
       });
     });
   })();
+</script>
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   DO DUONG KHACH DI TREN TRANG
+
+   Facebook chi biet den luc khach bam vao. Tu do tro di no mu.
+   Khoi nay bao ve Facebook khach doc toi dau roi dung lai - de biet
+   trang dut o cho nao, thay vi doan.
+
+   Moi su kien ban DUNG MOT LAN moi lan mo trang.
+   ═══════════════════════════════════════════════════════════════ */
+(function(){
+  var daBan = {};
+  function ban(ten){
+    if(daBan[ten]) return;
+    daBan[ten] = 1;
+    baoRieng(ten);
+  }
+
+  // ── Do sau cuon: 25 50 75 90 phan tram chieu cao trang ──
+  var MOC = [[25,'Cuon25'],[50,'Cuon50'],[75,'Cuon75'],[90,'Cuon90']];
+  var doi = false;
+  function xemCuon(){
+    doi = false;
+    var tren = window.pageYOffset || document.documentElement.scrollTop;
+    var cao  = document.documentElement.scrollHeight - window.innerHeight;
+    if(cao <= 0) return;
+    var pt = tren / cao * 100;
+    for(var i = 0; i < MOC.length; i++) if(pt >= MOC[i][0]) ban(MOC[i][1]);
+  }
+  window.addEventListener('scroll', function(){
+    if(doi) return;
+    doi = true;
+    (window.requestAnimationFrame || setTimeout)(xemCuon, 120);
+  }, {passive:true});
+
+  // ── Moc theo tung phan cua trang ──
+  var PHAN = [
+    ['bat-dau',    'DenBaiKiemTra'],   // toi bai tu kiem 30 giay
+    ['co-che',     'DenCoChe'],        // toi phan giai thich san pham
+    ['chung-min' + 'h', 'DenHoSo'],    // toi phan giay to
+    ['dat-hang',   'DenBangGia'],      // toi bang gia
+    ['lead-form',  'DenForm']          // bieu mau that su hien ra
+  ];
+  try{
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(!e.isIntersecting) return;
+          var t = e.target.getAttribute('data-ban');
+          if(t) ban(t);
+          io.unobserve(e.target);
+        });
+      }, {threshold: 0.15});
+      PHAN.forEach(function(p){
+        var el = document.getElementById(p[0]);
+        if(el){ el.setAttribute('data-ban', p[1]); io.observe(el); }
+      });
+    }
+  }catch(e){}
+
+  // ── Doc lau: 60 giay va 180 giay tren trang ──
+  setTimeout(function(){ ban('Doc60Giay');  }, 60000);
+  setTimeout(function(){ ban('Doc180Giay'); }, 180000);
+
+  // ── Cham vao bai kiem tra (bam dap an dau tien) ──
+  document.addEventListener('click', function(e){
+    var n = e.target;
+    while(n && n !== document.body){
+      if(n.classList && n.classList.contains('qopt')){ ban('BatDauKiemTra'); return; }
+      n = n.parentNode;
+    }
+  }, true);
+
+  xemCuon();
+})();
 </script>
 <script>
 (function(){
