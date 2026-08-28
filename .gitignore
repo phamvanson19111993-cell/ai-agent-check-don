@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# File chua ma bi mat — TUYET DOI khong day len GitHub
+cau-hinh.json
+nhat-ky.txt

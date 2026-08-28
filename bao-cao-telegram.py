@@ -44,12 +44,27 @@ except ImportError:
 
 API = "https://graph.facebook.com/v21.0"
 
-# ─────────────────────────── CẦN ĐIỀN ───────────────────────────
-TG_TOKEN  = os.environ.get("TG_TOKEN", "")
-TG_CHAT   = os.environ.get("TG_CHAT",  "")
-FB_TOKEN  = os.environ.get("FB_TOKEN", "")
-TAI_KHOAN = os.environ.get("FB_ACT",   "2260044828113956")
-PIXEL     = os.environ.get("FB_PIXEL", "1277743445418211")
+# ─────────────────────────── CẤU HÌNH ───────────────────────────
+# Chay  cai-bao-cao-gio.py  mot lan la no tu tao file cau-hinh.json
+# ben canh day. Khong muon dung file thi dien thang vao duoi.
+
+def _doc_cau_hinh():
+    duong = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cau-hinh.json")
+    try:
+        with open(duong, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+_CH = _doc_cau_hinh()
+def _lay(ten, mac_dinh=""):
+    return os.environ.get(ten) or _CH.get(ten) or mac_dinh
+
+TG_TOKEN  = _lay("TG_TOKEN")
+TG_CHAT   = _lay("TG_CHAT")
+FB_TOKEN  = _lay("FB_TOKEN")
+TAI_KHOAN = _lay("FB_ACT",   "2260044828113956")
+PIXEL     = _lay("FB_PIXEL", "1277743445418211")
 # ────────────────────────────────────────────────────────────────
 
 GIA_HOP  = 2890000
