@@ -57,7 +57,7 @@
 > em không dám nói vo đâu ạ."* **Không được tự suy từ giá quà tặng.**
 
 **Hiểu cho đúng để tư vấn không sai:**
-- Giá mỗi hộp **phẳng 2.890.000đ ở mọi mốc** — mốc 3 và 5 **không rẻ hơn** tính theo ngày
+- Giá mỗi hộp **phẳng 2.890.000đ ở mọi mốc** — mốc **1 · 2 · 3 · 5** đều ra đúng 48.167đ/ngày, **không mốc nào rẻ hơn mốc nào**
 - Mốc 6 lợi nhất **không phải nhờ giảm giá** mà nhờ **hộp thứ 7 tặng thêm**:
   `17.340.000 ÷ (7 × 60 ngày) = 41.286đ/ngày`, rẻ hơn mốc 1 hộp **6.881đ/ngày**
 - Mốc 3–5 hộp: khách **chọn MỘT** — nhận quà tặng **HOẶC** giảm tiền mặt, **không được cả hai**
