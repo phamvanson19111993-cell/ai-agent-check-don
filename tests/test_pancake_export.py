@@ -1,6 +1,9 @@
 """Chạy: python3 -m unittest discover -s tests -v"""
 
 import os
+import re
+import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -154,3 +157,45 @@ class TestClientParsing(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestPhonesDungChung(unittest.TestCase):
+    """phones.py là công cụ dùng chung -> phải chạy độc lập, không dính Pancake."""
+
+    def _source(self):
+        path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            "pancake_export", "phones.py",
+        )
+        with open(path, "r", encoding="utf-8") as handle:
+            return handle.read()
+
+    def test_khong_import_gi_trong_goi_pancake(self):
+        source = self._source()
+        for cam in ("from .", "from pancake_export", "import pancake_export"):
+            self.assertNotIn(cam, source,
+                             "phones.py không được phụ thuộc phần Pancake (%s)" % cam)
+
+    def test_chi_dung_thu_vien_chuan(self):
+        source = self._source()
+        modules = re.findall(r"^\s*import\s+(\w+)", source, re.MULTILINE)
+        self.assertTrue(set(modules).issubset({"re", "sys"}),
+                        "phones.py chỉ được dùng thư viện chuẩn, đang có: %s" % modules)
+
+    def test_copy_rieng_file_van_chay_duoc(self):
+        """Copy nguyên file sang chỗ khác, import bằng tên trần vẫn phải chạy."""
+        with tempfile.TemporaryDirectory() as folder:
+            shutil.copy(
+                os.path.join(
+                    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                    "pancake_export", "phones.py",
+                ),
+                os.path.join(folder, "phones.py"),
+            )
+            ket_qua = subprocess.run(
+                [sys.executable, "-c",
+                 "import phones; print(phones.normalize('0913.351.394'))"],
+                cwd=folder, capture_output=True, text=True,
+            )
+            self.assertEqual(ket_qua.returncode, 0, ket_qua.stderr)
+            self.assertEqual(ket_qua.stdout.strip(), "0913351394")

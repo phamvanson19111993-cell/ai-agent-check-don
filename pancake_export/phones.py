@@ -1,4 +1,16 @@
-"""Nhận diện và chuẩn hoá số điện thoại Việt Nam."""
+"""Nhận diện và chuẩn hoá số điện thoại Việt Nam.
+
+CÔNG CỤ DÙNG CHUNG — file này chạy độc lập, chỉ dùng thư viện chuẩn Python,
+không dính gì tới phần Pancake. Phòng khác copy nguyên file này về là dùng được:
+
+    from phones import normalize, extract
+    normalize("0913.351.394")   # -> "0913351394"
+    extract("gọi mình số 09666.111.04 nhé")   # -> ["0966611104"]
+
+Hoặc gọi thẳng ngoài dòng lệnh:
+
+    python3 phones.py "0913.351.394" "+84 913 351 394"
+"""
 
 import re
 
@@ -97,3 +109,20 @@ def extract_many(*values):
     for value in values:
         walk(value)
     return phones
+
+
+def _main(argv):
+    """Chạy trực tiếp: chuẩn hoá từng chuỗi truyền vào, mỗi kết quả một dòng."""
+    if not argv:
+        print(__doc__.strip())
+        return 1
+    for raw in argv:
+        found = extract(raw) or ([normalize(raw)] if normalize(raw) else [])
+        print("%s\t%s" % (raw, ", ".join(found) if found else "KHÔNG PHẢI SĐT"))
+    return 0
+
+
+if __name__ == "__main__":
+    import sys
+
+    raise SystemExit(_main(sys.argv[1:]))
