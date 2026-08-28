@@ -560,6 +560,13 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .fgroup:first-child{margin-top:0}
 .field input::placeholder{color:var(--ink3);opacity:.65}
 .opt-lbl{font-weight:400;color:var(--ink3);font-size:.72rem;margin-left:.3rem}
+.ck-cam-on{display:flex;flex-direction:column;gap:.55rem;margin-top:.9rem;padding:.95rem 1.05rem;border:1px solid var(--jade);background:var(--jade-soft);border-radius:var(--r)}
+.ck-cam-on[hidden]{display:none}
+.bill-de{font-size:1.02rem;color:var(--jade)}
+.bill-y{font-size:.92rem;line-height:1.55}
+.bill-nut{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.25rem}
+.bill-nut .btn{flex:1 1 auto}
+.tuy{font-weight:400;font-size:.82em;opacity:.6;letter-spacing:.01em}
 .ok-msg{display:none;border:1px solid var(--jade);background:var(--jade-soft);color:var(--jade);border-radius:var(--r);padding:.85rem 1rem;font-size:.9rem;font-weight:500}
 .ok-msg.on{display:block}
 .ok-msg.loi{border-color:var(--red);background:var(--red-soft);color:var(--red)}
@@ -1463,10 +1470,10 @@ if(typeof window.qrcode !== 'function'){
             <div class="field"><label for="sdt">Số điện thoại</label><input id="sdt" name="sdt" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" required></div>
 
             <p class="fgroup">Địa chỉ nhận hàng</p>
-            <div class="field"><label for="tinh">Tỉnh / Thành phố</label><input id="tinh" name="tinh" type="text" autocomplete="address-level1" placeholder="Nam Định" required></div>
-            <div class="field"><label for="huyen">Huyện / Quận / Thị xã</label><input id="huyen" name="huyen" type="text" autocomplete="address-level2" placeholder="Huyện Hải Hậu" required></div>
-            <div class="field"><label for="xa">Xã / Phường / Thị trấn</label><input id="xa" name="xa" type="text" autocomplete="address-level3" placeholder="Thị trấn Yên Định" required></div>
-            <div class="field"><label for="thon">Thôn / Xóm / Ấp / Tổ dân phố</label><input id="thon" name="thon" type="text" autocomplete="address-level4" placeholder="Xóm 5" required></div>
+            <div class="field"><label for="tinh">Tỉnh / Thành phố <span class="tuy">không bắt buộc</span></label><input id="tinh" name="tinh" type="text" autocomplete="address-level1" placeholder="Nam Định"></div>
+            <div class="field"><label for="huyen">Huyện / Quận / Thị xã <span class="tuy">không bắt buộc</span></label><input id="huyen" name="huyen" type="text" autocomplete="address-level2" placeholder="Huyện Hải Hậu"></div>
+            <div class="field"><label for="xa">Xã / Phường / Thị trấn <span class="tuy">không bắt buộc</span></label><input id="xa" name="xa" type="text" autocomplete="address-level3" placeholder="Thị trấn Yên Định"></div>
+            <div class="field"><label for="thon">Thôn / Xóm / Ấp / Tổ dân phố <span class="tuy">không bắt buộc</span></label><input id="thon" name="thon" type="text" autocomplete="address-level4" placeholder="Xóm 5"></div>
             <div class="field full"><label for="sonha">Số nhà, tên đường</label><input id="sonha" name="sonha" type="text" autocomplete="address-line1" placeholder="Số 12, đường Trần Hưng Đạo"></div>
             
 
@@ -1489,7 +1496,7 @@ if(typeof window.qrcode !== 'function'){
             <div class="full btn-row"><button class="btn btn-lg" type="submit">Gửi thông tin, nhận tư vấn</button><a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi ngay 0913.351.394</a></div>
           </form>
           <p class="ok-msg" id="ok-msg">Đã ghi nhận. Đây là bản demo giao diện nên thông tin chưa được gửi đi đâu cả — cần nối form vào hệ thống trước khi chạy quảng cáo.</p>
-          <p class="form-note">Địa chỉ càng chi tiết thì bưu tá càng giao đúng ngay lần đầu, nhất là ở vùng nông thôn nơi nhiều nhà chưa có số. Thông tin chỉ dùng để liên hệ tư vấn và giao hàng, không chia sẻ cho bên thứ ba.</p>
+          <p class="form-note">Chỉ <b>họ tên</b> và <b>số điện thoại</b> là bắt buộc — anh chị bấm gửi được ngay. Địa chỉ điền luôn thì bên em giao nhanh hơn; chưa tiện thì nhân viên gọi lại hỏi cũng được. Thông tin chỉ dùng để liên hệ tư vấn và giao hàng, không chia sẻ cho bên thứ ba.</p>
         </div>
       </div>
       <div class="col">
@@ -2368,9 +2375,16 @@ var FORM_GOOGLE = {
       + '<button type="button" class="btn btn-lg ck-xong" '
       +   'data-coc="' + TIEN_COC + '" data-du="' + (tong || TIEN_COC) + '">'
       +   'Tôi đã chuyển khoản xong</button>'
-      + '<span class="ck-cam-on" hidden>Bên em nhận được rồi ạ. Anh chị chụp biên lai '
-      + 'gửi qua Messenger hoặc Zalo để bên em đối chiếu và gửi hàng ngay trong ngày làm việc. '
-      + 'Nhân viên vẫn gọi lại xác nhận địa chỉ trước khi gửi.</span>'
+      + '<span class="ck-cam-on" hidden>'
+      +   '<b class="bill-de">Còn một bước cuối: gửi ảnh biên lai</b>'
+      +   '<span class="bill-y">Anh chị chụp màn hình biên lai chuyển khoản rồi gửi vào '
+      +     'Messenger hoặc Zalo. Bên em đối chiếu xong là <b>gửi hàng ngay trong ngày làm việc</b>. '
+      +     'Không gửi ảnh thì bên em vẫn gọi lại, nhưng phải chờ đối chiếu sổ ngân hàng nên chậm hơn.</span>'
+      +   '<span class="bill-nut">'
+      +     '<a class="btn btn-lg" href="' + M_ME + '" target="_blank" rel="noopener">Gửi ảnh biên lai qua Messenger</a>'
+      +     '<a class="btn btn-lg btn-ghost" href="' + LIEN_HE.zalo + '" target="_blank" rel="noopener">Gửi qua Zalo</a>'
+      +   '</span>'
+      + '</span>'
       + '</span>';
   }
 
