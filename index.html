@@ -2188,13 +2188,20 @@ var FORM_GOOGLE = {
 
   function tinNhan(du){
     var t = tomTat(du);
-    var con = du.so_tien ? (Number(du.so_tien) - TIEN_COC) : 0;
-    t += '\n\nĐẶT CỌC GIỮ HÀNG'
-       + '\nTPBank — PHAM VAN SON'
+    // Ban tin gui sang Messenger/SMS phai khop dung cach tra khach da chon.
+    // Truoc day luon ghi "DAT COC GIU HANG 200.000d" ke ca khi khach chon
+    // chuyen khoan du - nhan vien doc Messenger se doi coc, sai y khach.
+    var tong  = du.so_tien ? Number(du.so_tien) : 0;
+    var traDu = (du.cach_tra === 'du') && tong > 0;
+    var con   = tong ? (tong - TIEN_COC) : 0;
+    t += traDu ? '\n\nCHUYỂN KHOẢN ĐỦ' : '\n\nĐẶT CỌC GIỮ HÀNG';
+    t += '\nTPBank — PHAM VAN SON'
        + '\nSố tài khoản: 3869 1388 888'
-       + '\nTiền cọc: ' + chamNghin(TIEN_COC) + 'đ'
+       + (traDu ? '\nSố tiền: ' + chamNghin(tong) + 'đ'
+                : '\nTiền cọc: ' + chamNghin(TIEN_COC) + 'đ')
        + '\nNội dung: ' + noiDungCK(du);
-    if(con > 0) t += '\nCòn lại ' + chamNghin(con) + 'đ trả khi nhận hàng';
+    if(traDu)          t += '\nChuyển đủ, nhận hàng là xong.';
+    else if(con > 0)   t += '\nCòn lại ' + chamNghin(con) + 'đ trả khi nhận hàng';
     return t;
   }
 
