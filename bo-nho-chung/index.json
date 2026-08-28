@@ -15,7 +15,8 @@
     "cau_dan_dau_phien": "prompts/moi-phong-doc-dau-phien.md",
     "gia_von_va_nguong_roas": "bo-nho-chung/tai-chinh/gia-von-va-nguong-roas.md",
     "thanh_phan_va_giay_to": "bo-nho-chung/san-pham/rich-coenzyme-q10.md",
-    "luat_tu_lay_thong_tin": "bo-nho-chung/luat-tu-lay-thong-tin.md"
+    "luat_tu_lay_thong_tin": "bo-nho-chung/luat-tu-lay-thong-tin.md",
+    "luat_cai_tien_lien_tuc": "bo-nho-chung/luat-cai-tien-lien-tuc.md"
   },
   "chua_co_nguon": [
     "chinh_sach_hoa_hong",
