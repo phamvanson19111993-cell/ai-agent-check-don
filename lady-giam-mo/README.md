@@ -8,8 +8,23 @@ kèm `prompt/lam-lady-san-pham-moi.md` là bản chỉ dẫn dựng Lady cho s�
 
 ## Trạng thái
 
-⏸ **Đang chờ hồ sơ.** Chưa dựng trang. Xem `HO-SO-CAN-ANH-GUI.md` — bốn ô bắt buộc
-còn trống, nặng nhất là **ảnh nhãn phụ tiếng Việt**.
+🟡 **Trang đã dựng xong, chạy được, nhưng chưa được phép chạy quảng cáo.**
+
+Chạy được ngay: bài kiểm tra 30 giây · phiếu đặt hàng · bản tin Messenger/Zalo/SMS ·
+mã QR đặt cọc 200.000đ (đã quét thử, ra đúng số tiền và số tài khoản) · thang sự kiện pixel.
+
+Còn trống, và cố ý để trống: công dụng · thành phần · số công bố · bảng giá.
+Xem `HO-SO-CAN-ANH-GUI.md`. Bốn ô bắt buộc còn thiếu, nặng nhất là **ảnh nhãn phụ tiếng Việt**.
+
+## File trong thư mục này
+
+| File | Là gì |
+|---|---|
+| `index.html` | Cả trang trong một file — 157KB, không phụ thuộc gì bên ngoài trừ phông chữ Google |
+| `HUONG-DAN-SUA.md` | Sửa giá, sửa nhãn, sửa nơi nhận đơn ở đâu |
+| `HO-SO-CAN-ANH-GUI.md` | Bốn ô bắt buộc anh cần gửi |
+| `tao-ma-qr.py` | Sinh mã VietQR cho từng mốc giá |
+| `kiem-trang.py` | Tự kiểm trên trình duyệt trước khi đẩy — 42 mục |
 
 ## ⚠️ Một kho GitHub chỉ đăng được MỘT trang
 
