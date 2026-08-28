@@ -138,8 +138,15 @@ Sheet cũ lưu `9xxxxxxxx` thay vì `09xxxxxxxx` do Google đọc thành số. P
 
 Phòng 9 lập ra để **tra cứu đơn hàng**, nhưng luật hiện giao cả trách nhiệm tư vấn giá/công dụng.
 Phòng 9 tạm cho bot **chuyển nhân viên** mọi câu hỏi sản phẩm — an toàn hơn là để bot nói sai.
-Phòng 9 xin cơ chế đọc bộ nhớ chung lúc bot đang chạy (đề xuất: đọc thẳng file từ nhánh Tổng Chỉ
-Huy lúc khởi động, không chép sang nhánh mình). **Tổng Chỉ Huy chưa duyệt — chờ anh Sơn cho hướng.**
+> ✅ **SỬA 28/08 — Phòng 9 bắt được lỗi của Tổng Chỉ Huy.** Dòng cũ ghi *"Tổng Chỉ Huy chưa duyệt"*
+> về cơ chế đọc bộ nhớ chung, nhưng lệnh chung sáng 28/08 (02h38) đã ghi rõ **"Tổng Chỉ Huy DUYỆT
+> cách em làm… đúng luật, giữ nguyên"**. Sổ ghi lệch thực tế gần một ngày.
+
+**Cơ chế đọc bộ nhớ chung: ĐÃ DUYỆT.** Bot đọc thẳng file từ nhánh Tổng Chỉ Huy lúc chạy, không
+chép số sang nhánh mình, đọc hỏng thì lùi về chỉ tra đơn.
+
+**Còn mở, và chỉ còn mỗi việc này:** vai trò phòng — giữ chung một phòng vừa tra đơn vừa tư vấn,
+hay tách phần tư vấn sang Phòng 10 CSKH. **Chờ anh Sơn.**
 
 ## 🔴 MT-07 · NĂM con số đang hiện cho khách mà không có nguồn — ƯU TIÊN CAO NHẤT
 
