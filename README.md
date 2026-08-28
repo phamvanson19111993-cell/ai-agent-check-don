@@ -35,6 +35,15 @@ python3 scripts/lich_cskh.py data/danh_sach_khach_mau.csv --tat-ca
 
 Script không cần cài thêm thư viện (chỉ dùng Python 3 chuẩn).
 
+Script tự chuẩn hoá số điện thoại (`0913.351.394`, `+84 913 351 394`, đầu số 11 số cũ…),
+**gộp khách trùng số** và cảnh báo số không đọc được — nhờ công cụ dùng chung
+`scripts/phones.py`. Nguồn gốc là Phòng 11, lấy bản mới bằng:
+
+```bash
+git show origin/claude/fanpage-pancake-auto-update-iy8fuu:pancake_export/phones.py \
+  > scripts/phones.py
+```
+
 ## Quy tắc cốt lõi
 
 1. **10 ngày/lần** – VIP 7 ngày, khách ngủ đông 20 ngày, khách im lặng 30 ngày.

@@ -15,6 +15,17 @@ import sys
 from datetime import date, datetime
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+try:
+    # Công cụ dùng chung của Phòng 11 — nguồn gốc:
+    #   claude/fanpage-pancake-auto-update-iy8fuu → pancake_export/phones.py
+    # Lấy lại bản mới:
+    #   git show origin/claude/fanpage-pancake-auto-update-iy8fuu:pancake_export/phones.py \
+    #     > scripts/phones.py
+    from phones import normalize as chuan_hoa_sdt
+except ImportError:  # thiếu phones.py thì vẫn chạy được, chỉ không chuẩn hoá
+    chuan_hoa_sdt = None
+
 GOC = Path(__file__).resolve().parent.parent
 FILE_MAU = GOC / "data" / "mau_tin_nhan.json"
 
@@ -104,6 +115,29 @@ def chon_tin(khach, du_lieu, hom_nay, luot):
     return nhom["ten"].upper(), mau
 
 
+def chuan_hoa_danh_sach(khach_hang):
+    """Chuẩn hoá số điện thoại, bỏ khách trùng số. Trả về (danh sách, số hỏng, số trùng)."""
+    if chuan_hoa_sdt is None:
+        return khach_hang, 0, 0
+
+    da_thay, ket_qua, so_hong = set(), [], 0
+    for khach in khach_hang:
+        goc = khach.get("so_dien_thoai", "")
+        sach = chuan_hoa_sdt(goc)
+        if sach is None:
+            so_hong += 1
+            khach["so_dien_thoai"] = f"{goc} (⚠️ số không hợp lệ)"
+            ket_qua.append(khach)
+            continue
+        if sach in da_thay:
+            continue  # trùng số -> cùng một khách, giữ bản ghi đầu
+        da_thay.add(sach)
+        khach["so_dien_thoai"] = sach
+        ket_qua.append(khach)
+    # bản ghi số hỏng vẫn được giữ trong ket_qua, nên phần hụt đi đúng là số bị gộp
+    return ket_qua, so_hong, len(khach_hang) - len(ket_qua)
+
+
 def main():
     p = argparse.ArgumentParser(description="Lịch CSKH Zalo chu kỳ 10 ngày")
     p.add_argument("csv_khach", help="File CSV danh sách khách")
@@ -117,6 +151,8 @@ def main():
 
     with open(args.csv_khach, encoding="utf-8") as f:
         khach_hang = list(csv.DictReader(f))
+
+    khach_hang, so_hong, so_trung = chuan_hoa_danh_sach(khach_hang)
 
     print(f"\n📅 LỊCH CHĂM SÓC KHÁCH HÀNG ZALO — ngày {hom_nay:%d/%m/%Y}")
     print(f"⏰ Giờ gửi khuyến nghị: {' · '.join(du_lieu['gio_gui_khuyen_nghi'])}")
@@ -152,6 +188,10 @@ def main():
         print(f"  ✉️  {dien_bien(mau, khach)}")
 
     print("\n" + "=" * 72)
+    if so_trung:
+        print(f"ℹ️  Đã gộp {so_trung} bản ghi trùng số điện thoại.")
+    if so_hong:
+        print(f"⚠️  {so_hong} bản ghi có số điện thoại không đọc được — cần sửa tay.")
     print(f"Tổng: {den_han} khách cần nhắn hôm nay / {len(khach_hang)} khách.")
     print("Nhớ: sửa ít nhất 1 chi tiết riêng cho mỗi khách trước khi gửi.\n")
     return 0
