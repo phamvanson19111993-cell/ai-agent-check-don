@@ -19,7 +19,6 @@ import importlib.util
 import pathlib
 import re
 import sys
-import tempfile
 
 import cv2
 import numpy as np
@@ -58,33 +57,6 @@ def dien_phieu(pg):
     for o, v in [('#tinh', 'Nam Định'), ('#huyen', 'Hải Hậu'),
                  ('#xa', 'Yên Định'), ('#thon', 'Xóm 5')]:
         pg.fill(o, v)
-
-
-def ban_thu_co_gia():
-    """Dung mot ban co gia gia dinh de kiem duong bang gia.
-    Ban nay chi nam trong thu muc tam, khong bao gio duoc day len."""
-    spec = importlib.util.spec_from_file_location('qr', GOC / 'tao-ma-qr.py')
-    qr = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(qr)
-
-    tien = [590000, 1150000, 3150000, 4900000]
-    s = TRANG.read_text(encoding='utf-8')
-    assert 'var QR_TIEN = {};' in s, \
-        'index.html khong con cho de cam ma QR thu — xem lai da sua gi'
-    s, n = re.subn(r'var BANG_GIA = \[.*?\];',
-                   "var BANG_GIA = ["
-                   "{hop:1,  gia:590000,  nhan:'Mua thử'},"
-                   "{hop:2,  gia:1150000},"
-                   "{hop:6,  gia:3150000, loi_nhat:true, qua:'Quà thử', qua_tien:675000},"
-                   "{hop:10, gia:4900000}];", s, flags=re.S)
-    assert n == 1, 'khong tim thay BANG_GIA de thay'
-    s = s.replace('var VIEN_MOI_NGAY = 0;', 'var VIEN_MOI_NGAY = 2;')
-    s = s.replace('var QR_TIEN = {};',
-                  'var QR_TIEN = {' + ', '.join(
-                      '"%d": "%s"' % (t, qr.ra_svg(t)) for t in tien) + '};')
-    f = pathlib.Path(tempfile.mkdtemp()) / 'thu-co-gia.html'
-    f.write_text(s, encoding='utf-8')
-    return f
 
 
 def quet(png_url):
@@ -143,24 +115,29 @@ def kiem_trang_that(br):
         pg.close()
 
 
-def kiem_bang_gia(br, ban_thu):
-    print('\n=== ĐƯỜNG BẢNG GIÁ · bản thử có giá giả định ===')
+def kiem_bang_gia(br):
+    print('\n=== ĐƯỜNG BẢNG GIÁ ===')
     pg = br.new_page(viewport={'width': 390, 'height': 900})
     ljs = bat_loi(pg)
-    pg.goto(ban_thu.as_uri(), wait_until='load')
+    pg.goto(TRANG.as_uri(), wait_until='load')
     pg.wait_for_timeout(600)
 
     ghi(not ljs, 'không lỗi JavaScript', '; '.join(ljs[:2]))
     bg0 = pg.locator('#bang-gia').inner_text()
     ghi(pg.locator('#bang-gia .quote table tbody tr').count() == 4,
-        'bảng báo giá đủ 4 mốc 1 · 2 · 6 · 10 hộp')
-    ghi('30 ngày' in bg0 and '300 ngày' in bg0, 'số ngày dùng tự tính từ liều trên nhãn')
+        'bảng báo giá đủ 4 mốc theo bảng giá niêm yết')
+    ghi('30 ngày' in bg0 and '90 ngày' in bg0,
+        'số ngày dùng tự tính từ liều 2 viên mỗi ngày trên nhãn')
     ghi(pg.locator('#bang-gia .fill').count() == 0, 'lời báo "chưa có bảng giá" đã tắt')
     bg = pg.locator('#bang-gia').inner_text()
     ghi('lợi nhất' in bg.lower(), 'có nhãn Lợi nhất')
     ghi('675.000đ' in bg, 'quà tặng ghi rõ trị giá bao nhiêu tiền')
+    ghi('180 ngày' in bg0, 'mốc tặng thêm gói tính đủ 180 ngày, không theo công thức')
     ghi(pg.locator('#chon-hop .hop-o').count() == 5, 'thẻ chọn số lượng: 4 mốc + 1 chưa quyết')
-    ghi(pg.locator('.offer .price').inner_text() == '590.000đ', 'dòng giá đầu ô đặt hàng đổi theo')
+    ghi('675.000đ' in bg0 and '1.269.000đ' in bg0 and '1.822.500đ' in bg0 and '3.375.000đ' in bg0,
+        'đủ bốn giá đúng như bảng giá niêm yết 2026')
+    ghi(pg.locator('.offer .price').inner_text() == '675.000đ',
+        'dòng giá đầu ô đặt hàng đúng giá niêm yết', pg.locator('.offer .price').inner_text())
     ghi(pg.locator('#chon-hop input:checked').count() == 1, 'luôn có đúng một mốc được chọn sẵn')
 
     # Khach chon CHUYEN KHOAN DU — day la cho trang Q10 tung hong ba lan
@@ -181,7 +158,7 @@ def kiem_bang_gia(br, ban_thu):
     pg.locator('#ok-msg .ck-xong').click()
     pg.wait_for_timeout(300)
     mua = pg.evaluate("window.__mua.filter(function(x){ return x[1] === 'Purchase'; })")
-    ghi(len(mua) == 1 and mua[0][2]['value'] == 3150000,
+    ghi(len(mua) == 1 and mua[0][2]['value'] == 3375000,
         'Purchase báo GIÁ TRỊ ĐƠN, không phải tiền cọc', str(mua))
 
     ma = {}
@@ -189,7 +166,7 @@ def kiem_bang_gia(br, ban_thu):
     for i in range(anh.count()):
         lop = anh.nth(i).evaluate("e => e.closest('.ck-qr').className")
         ma['du' if 'ck-du' in lop else 'coc'] = so_tien_trong_ma(quet(anh.nth(i).get_attribute('src')))
-    ghi(ma.get('du') == 3150000, 'quét mã "chuyển khoản đủ" ra đúng 3.150.000đ', str(ma))
+    ghi(ma.get('du') == 3375000, 'quét mã "chuyển khoản đủ" ra đúng 3.375.000đ', str(ma))
     ghi(ma.get('coc') == 200000, 'quét mã "đặt cọc" ra đúng 200.000đ', str(ma))
     pg.close()
 
@@ -291,13 +268,12 @@ def kiem_chuyen_doi(br):
 
 
 def main():
-    ban_thu = ban_thu_co_gia()
     with sync_playwright() as pw:
         br = mo_trinh_duyet(pw)
         kiem_trang_that(br)
         kiem_chuyen_doi(br)
         kiem_ma_qr_tinh(br)
-        kiem_bang_gia(br, ban_thu)
+        kiem_bang_gia(br)
         br.close()
 
     print('\n===== %d đạt, %d hỏng =====' % (len(dat), len(loi)))
