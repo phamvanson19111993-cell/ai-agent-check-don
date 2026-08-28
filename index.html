@@ -566,16 +566,35 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .bill-y{font-size:.92rem;line-height:1.55}
 .bill-nut{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.25rem}
 .bill-nut .btn{flex:1 1 auto}
-.truoc-nut{margin:.15rem 0 .7rem;font-size:.9rem;line-height:1.55;color:var(--ink-2)}
+/* Bang gia day du da nam o muc #dat-hang ngay tren. Trong bieu mau, khach chi
+   can CHON — khong can doc lai. Nen an dong phu, gop dong qua vao mot dong,
+   cho ca khoi gon lai con mot phan ba. Gia tri o input KHONG doi. */
+#lead-form .chon-hop{gap:.4rem}
+#lead-form .hop-o{padding:.62rem .8rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.1rem .5rem}
+#lead-form .hop-o .h-s{display:none}
+#lead-form .hop-o .h-t{font-size:1rem}
+#lead-form .hop-o .h-p{font-size:.82rem;font-weight:500;margin:0;flex:0 1 auto}
+#lead-form .hop-o .h-tem{font-size:.66rem;padding:.1rem .38rem}
+#lead-form .tra-o{gap:.4rem}
+#lead-form .tra-o .hop-o{padding:.62rem .8rem}
+#lead-form .tra-o .h-s{display:inline;font-size:.82rem;font-weight:400;margin:0}
+.truoc-nut{margin:.15rem 0 .7rem;font-size:.9rem;line-height:1.55;color:var(--ink2)}
 .truoc-nut b{color:var(--ink)}
-.dia-chi{border:1px solid var(--line);border-radius:var(--r);background:#fff}
-.dia-chi>summary{list-style:none;cursor:pointer;padding:.8rem 1rem;display:flex;flex-direction:column;gap:.15rem;position:relative}
+.dia-chi{border:1.5px dashed var(--line);border-radius:var(--r);background:var(--paper);transition:border-color .2s ease,background .2s ease}
+.dia-chi:hover{border-color:var(--red)}
+.dia-chi.moi{border:1.5px solid var(--red);background:var(--red-soft);box-shadow:0 0 0 3px rgba(214,36,110,.14)}
+.dia-chi.moi .dc-t{color:var(--red)}
+.dia-chi.moi>summary::after{background:var(--red);color:#fff;border-color:var(--red)}
+.dia-chi[open]{border-style:solid}
+.dia-chi>summary{list-style:none;cursor:pointer;padding:.6rem .8rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.1rem .45rem}
 .dia-chi>summary::-webkit-details-marker{display:none}
-.dia-chi>summary::after{content:"+";position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:1.35rem;line-height:1;color:var(--ink-3)}
+.dia-chi>summary::after{content:"+";margin-left:auto;align-self:center;flex:0 0 auto;width:28px;height:28px;border:1.5px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.15rem;line-height:1;color:var(--ink2);transition:background .2s ease,color .2s ease}
 .dia-chi[open]>summary::after{content:"\2013"}
+.dc-nhac{display:none;font-size:.8rem;font-weight:600;color:var(--red);flex:1 0 100%;margin-top:.1rem}
+.dia-chi.moi .dc-nhac{display:block}
 .dia-chi>summary:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
-.dc-t{font-weight:600}
-.dc-s{font-size:.84rem;color:var(--ink-3)}
+.dc-t{font-weight:600;font-size:.98rem}
+.dc-s{font-size:.82rem;color:var(--ink3);flex:1 1 auto}
 .dc-o{display:none}
 .dia-chi[open]>.dc-o{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;padding:0 1rem 1rem}
 @media (max-width:560px){.dia-chi[open]>.dc-o{grid-template-columns:1fr}}
@@ -1486,7 +1505,7 @@ if(typeof window.qrcode !== 'function'){
             <p class="fgroup">Địa chỉ nhận hàng</p>
             <input id="tuKiem" name="tuKiem" type="hidden">
             
-            <div class="field full"><details class="dia-chi"><summary><span class="dc-t">Địa chỉ giao hàng</span><span class="dc-s">Điền luôn thì bên em giao nhanh hơn · bấm để mở</span></summary><div class="dc-o"><div class="field"><label for="tinh">Tỉnh / Thành phố <span class="tuy">không bắt buộc</span></label><input id="tinh" name="tinh" type="text" autocomplete="address-level1" placeholder="Nam Định"></div>
+            <div class="field full"><details class="dia-chi"><summary><span class="dc-t">Địa chỉ giao hàng</span><span class="dc-s">giao nhanh hơn — không bắt buộc</span><span class="dc-nhac">Bấm vào đây để điền địa chỉ</span></summary><div class="dc-o"><div class="field"><label for="tinh">Tỉnh / Thành phố <span class="tuy">không bắt buộc</span></label><input id="tinh" name="tinh" type="text" autocomplete="address-level1" placeholder="Nam Định"></div>
 <div class="field"><label for="huyen">Huyện / Quận / Thị xã <span class="tuy">không bắt buộc</span></label><input id="huyen" name="huyen" type="text" autocomplete="address-level2" placeholder="Huyện Hải Hậu"></div>
 <div class="field"><label for="xa">Xã / Phường / Thị trấn <span class="tuy">không bắt buộc</span></label><input id="xa" name="xa" type="text" autocomplete="address-level3" placeholder="Thị trấn Yên Định"></div>
 <div class="field"><label for="thon">Thôn / Xóm / Ấp / Tổ dân phố <span class="tuy">không bắt buộc</span></label><input id="thon" name="thon" type="text" autocomplete="address-level4" placeholder="Xóm 5"></div>
@@ -1494,9 +1513,9 @@ if(typeof window.qrcode !== 'function'){
 <div class="field full"><label for="soluong">Số lượng muốn đặt</label>
 <div class="chon-hop" id="chon-hop">
 <label class="hop-o"><input type="radio" name="soluong" value="1 hộp — 2.890.000đ"><span class="h-t">1 hộp — 2.890.000đ</span><span class="h-s">Dùng 60 ngày · 48.167đ mỗi ngày</span></label>
-<label class="hop-o"><input type="radio" name="soluong" value="2 hộp — 5.780.000đ"><span class="h-t">2 hộp — 5.780.000đ</span><span class="h-s">Dùng 120 ngày · 48.167đ mỗi ngày</span><span class="h-p">Đủ 4 tháng — không phải đặt lại giữa chừng</span></label><label class="hop-o"><input type="radio" name="soluong" value="3 hộp — 8.670.000đ (kèm quà tặng)"><span class="h-t">3 hộp — 8.670.000đ</span><span class="h-s">Dùng 180 ngày · 48.167đ mỗi ngày</span><span class="h-p">Tặng Ellagic Acid 675.000đ hoặc Gluchon Gel 680.000đ</span></label>
-<label class="hop-o"><input type="radio" name="soluong" value="5 hộp — 14.450.000đ (kèm quà tặng)"><span class="h-t">5 hộp — 14.450.000đ</span><span class="h-s">Dùng 300 ngày · 48.167đ mỗi ngày</span><span class="h-p">Tặng Gluchon Gel 680.000đ hoặc Nghệ Mùa Thu 990.000đ</span></label>
-<label class="hop-o on"><span class="h-tem">Lợi nhất</span><input type="radio" name="soluong" value="6 hộp — 17.340.000đ (tặng thêm 1 hộp)" checked><span class="h-t">6 hộp — 17.340.000đ</span><span class="h-s">Trả tiền 6 hộp, nhận 7 hộp · 420 ngày</span><span class="h-p">41.286đ mỗi ngày · rẻ hơn 2.890.000đ so với mua lẻ</span></label>
+<label class="hop-o"><input type="radio" name="soluong" value="2 hộp — 5.780.000đ"><span class="h-t">2 hộp — 5.780.000đ</span><span class="h-s">Dùng 120 ngày · 48.167đ mỗi ngày</span><span class="h-p">đủ 4 tháng</span></label><label class="hop-o"><input type="radio" name="soluong" value="3 hộp — 8.670.000đ (kèm quà tặng)"><span class="h-t">3 hộp — 8.670.000đ</span><span class="h-s">Dùng 180 ngày · 48.167đ mỗi ngày</span><span class="h-p">kèm quà 675.000đ</span></label>
+<label class="hop-o"><input type="radio" name="soluong" value="5 hộp — 14.450.000đ (kèm quà tặng)"><span class="h-t">5 hộp — 14.450.000đ</span><span class="h-s">Dùng 300 ngày · 48.167đ mỗi ngày</span><span class="h-p">kèm quà 990.000đ</span></label>
+<label class="hop-o on"><span class="h-tem">Lợi nhất</span><input type="radio" name="soluong" value="6 hộp — 17.340.000đ (tặng thêm 1 hộp)" checked><span class="h-t">6 hộp — 17.340.000đ</span><span class="h-s">Trả tiền 6 hộp, nhận 7 hộp · 420 ngày</span><span class="h-p">tặng thêm 1 hộp</span></label>
 <label class="hop-o rong"><input type="radio" name="soluong" value="Chưa quyết, nhờ tư vấn thêm"><span class="h-t">Chưa quyết, nhờ tư vấn thêm</span><span class="h-s">Nhân viên gọi lại hỏi kỹ rồi mới tư vấn liệu trình</span></label>
 </div></div>
 <div class="field full"><label>Cách thanh toán</label>
@@ -2731,6 +2750,30 @@ var FORM_GOOGLE = {
       if(e.target && e.target.name === 'soluong') doiChuNut();
     });
     doiChuNut();
+  })();
+
+  // Lam khoi dia chi noi len DUNG LUC khach can bam: khi da co ten va so dien
+  // thoai ma dia chi van dong va van trong. Xong viec thi tat den di, khong
+  // de mot cai vien do nhap nhay suot buoi.
+  (function(){
+    var f  = document.getElementById('lead-form');
+    if(!f) return;
+    var kd = f.querySelector('.dia-chi');
+    if(!kd) return;
+    var ten = f.querySelector('[name="ten"]'), sdt = f.querySelector('[name="sdt"]');
+
+    function coChu(o){ return o && o.value && o.value.trim().length > 1; }
+    function daDienDiaChi(){
+      return Array.prototype.slice.call(kd.querySelectorAll('input'))
+        .some(function(o){ return o.value && o.value.trim(); });
+    }
+    function xet(){
+      kd.classList.toggle('moi',
+        coChu(ten) && coChu(sdt) && !kd.open && !daDienDiaChi());
+    }
+    f.addEventListener('input', xet);
+    kd.addEventListener('toggle', xet);
+    xet();
   })();
 
   // Chon so hop va cach tra bang the bam duoc
