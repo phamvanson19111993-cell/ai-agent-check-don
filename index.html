@@ -662,6 +662,14 @@ body:has(.dock.on){padding-bottom:74px}
 .tra-o{display:grid;gap:.5rem;margin:.15rem 0 0}
 @media(min-width:520px){.tra-o{grid-template-columns:1fr 1fr}}
 </style>
+<!-- Thu vien dung ma QR, de trang tu ve duoc ma mang so dien thoai cua tung khach.
+     Tai hong thi trang quay ve 5 ma ve san — khach khong bao gio thieu ma. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+if(typeof window.qrcode !== 'function'){
+  document.write('<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"><\/script>');
+}
+</script>
 </head>
 <body>
 <header class="nav">
@@ -2177,8 +2185,74 @@ var FORM_GOOGLE = {
          + '&tn=' + encodeURIComponent(khongDau(nd));
   }
 
+  // Nhieu ngan hang cat dau tieng Viet va gioi han 25 ky tu o o noi dung.
+  // Bo dau truoc cho chac, va dat SO DIEN THOAI len truoc ten — so dien thoai
+  // moi la thu anh So'n doi chieu duoc, ten co the trung.
+  function khongDau(t){
+    return String(t || '')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/đ/g, 'd').replace(/Đ/g, 'D')
+      .replace(/[^0-9A-Za-z ]/g, ' ')
+      .replace(/\s+/g, ' ').trim();
+  }
+
   function noiDungCK(du){
-    return [du.ten, du.sdt].filter(function(x){ return x && x.trim(); }).join(' ');
+    var sdt = String(du.sdt || '').replace(/[^0-9]/g, '');
+    var nd  = ('Q10 ' + sdt + ' ' + khongDau(du.ten)).replace(/\s+/g, ' ').trim();
+    return nd.slice(0, 25).trim();      // 25 la gioi han cua truong 08 trong VietQR
+  }
+
+  // ── Dung lai ma QR ngay tren may khach, mang dung so dien thoai cua ho ──
+  // Truoc day trang dung 5 ma QR ve san, moi ma nhung cung mot dong chu
+  // "DILIM Q10". Ai quet cung chuyen ve voi noi dung y het nhau, nen anh So'n
+  // nhin app ngan hang thay tien vao ma khong biet cua ai. Day la goc cua loi do.
+  function crc16CCITT(t){
+    var c = 0xFFFF;
+    for(var i = 0; i < t.length; i++){
+      c ^= t.charCodeAt(i) << 8;
+      for(var j = 0; j < 8; j++)
+        c = (c & 0x8000) ? ((c << 1) ^ 0x1021) & 0xFFFF : (c << 1) & 0xFFFF;
+    }
+    return ('000' + c.toString(16).toUpperCase()).slice(-4);
+  }
+  function oTLV(ma, gt){ return ma + ('0' + gt.length).slice(-2) + gt; }
+
+  function chuoiVietQR(soTien, noiDung){
+    var p = oTLV('00','01') + oTLV('01','12')
+      + oTLV('38', oTLV('00','A000000727')
+                 + oTLV('01', oTLV('00', NGAN_HANG.ma_ngan_hang)
+                            + oTLV('01', NGAN_HANG.so_tai_khoan))
+                 + oTLV('02','QRIBFTTA'))
+      + oTLV('52','0000') + oTLV('53','704')
+      + (soTien ? oTLV('54', String(soTien)) : '')
+      + oTLV('58','VN')
+      + (noiDung ? oTLV('62', oTLV('08', noiDung)) : '')
+      + '6304';
+    return p + crc16CCITT(p);
+  }
+
+  // Tra ve SVG neu dung duoc, tra ve null neu thu vien chua tai xong —
+  // luc do trang quay ve dung ma ve san, khong bao gio de khach khong co ma nao.
+  function veQRDong(soTien, noiDung){
+    try{
+      if(typeof window.qrcode !== 'function') return null;
+      var q = window.qrcode(0, 'L');
+      q.addData(chuoiVietQR(soTien, noiDung));
+      q.make();
+      var n = q.getModuleCount(), d = '';
+      for(var r = 0; r < n; r++){
+        var c = 0;
+        while(c < n){
+          if(q.isDark(r, c)){
+            var b = c;
+            while(c < n && q.isDark(r, c)) c++;
+            d += 'M' + b + ' ' + (r + 0.5) + 'h' + (c - b);
+          } else c++;
+        }
+      }
+      return '<svg class="qr" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" '
+           + 'viewBox="0 0 ' + n + ' ' + n + '"><path stroke="#000" d="' + d + '"/></svg>';
+    }catch(e){ return null; }
   }
 
   // Ban gui qua Messenger / Zalo / SMS: don kem luon phan chuyen khoan,
@@ -2241,6 +2315,18 @@ var FORM_GOOGLE = {
            + 'target="_blank" rel="noopener"' + (an ? ' hidden' : '') + '>'
            + 'Mở app ngân hàng, chuyển ' + chamNghin(soTien) + 'đ</a>';
     }
+    // Chu duoi ma phai noi dung su that: ma dong da co san noi dung, ma ve san
+    // thi KHONG — phai bao khach tu sua, khong duoc im lang.
+    function chuQR(soTien, maDong, nd){
+      var chung = 'Đang dùng điện thoại thì <b>bấm giữ vào mã để lưu ảnh</b>, '
+                + 'rồi mở app ngân hàng chọn quét mã từ thư viện ảnh.';
+      return maDong
+        ? 'Mã đã có sẵn ' + chamNghin(soTien) + 'đ, số tài khoản và nội dung '
+          + '<b>' + thoat(nd) + '</b>. ' + chung
+        : 'Mã đã có sẵn ' + chamNghin(soTien) + 'đ và số tài khoản. '
+          + 'Quét xong, anh chị <b>sửa ô Nội dung thành ' + thoat(nd) + '</b> '
+          + 'để bên em biết tiền của ai. ' + chung;
+    }
     function khoiQR(svg, chu, lop, an){
       return '<span class="ck-qr ' + lop + '"' + (an ? ' hidden' : '') + '>'
            +   '<span class="qr-card">' + svg + '</span>'
@@ -2269,8 +2355,8 @@ var FORM_GOOGLE = {
       + hang('Nội dung', nd, nd)
       + nutApp(TIEN_COC, 'ck-coc', false)
       + (haiCach ? nutApp(tong, 'ck-du', true) : '')
-      + khoiQR(QR_COC, 'Mã đã có sẵn ' + chamNghin(TIEN_COC) + 'đ và số tài khoản. Đang dùng điện thoại thì <b>bấm giữ vào mã để lưu ảnh</b>, rồi mở app ngân hàng chọn quét mã từ thư viện ảnh.', 'ck-coc', false)
-      + (haiCach ? khoiQR(qrDu, 'Mã đã có sẵn ' + chamNghin(tong) + 'đ và số tài khoản. Đang dùng điện thoại thì <b>bấm giữ vào mã để lưu ảnh</b>, rồi mở app ngân hàng chọn quét mã từ thư viện ảnh.', 'ck-du', true) : '')
+      + khoiQR(veQRDong(TIEN_COC, nd) || QR_COC, chuQR(TIEN_COC, veQRDong(TIEN_COC, nd), nd), 'ck-coc', false)
+      + (haiCach ? khoiQR(veQRDong(tong, nd) || qrDu, chuQR(tong, veQRDong(tong, nd), nd), 'ck-du', true) : '')
       + '<span class="ck-note ck-coc">'
       +   (con > 0 ? 'Còn lại <b>' + chamNghin(con) + 'đ</b> anh chị trả khi nhận hàng. ' : 'Phần còn lại anh chị trả khi nhận hàng. ')
       +   'Cọc xong chụp biên lai gửi kèm để bên em gửi hàng ngay. Chưa muốn cọc cũng được, nhân viên vẫn gọi lại xác nhận đơn.'
