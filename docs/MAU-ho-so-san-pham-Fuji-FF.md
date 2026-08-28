@@ -96,6 +96,9 @@
 
 *🟡 Anh thay bằng khách thật của anh, đã xin phép.*
 
+> 🔴 **Kể xong phải kèm:** *"Hiệu quả tuỳ thuộc cơ địa từng người ạ, em không dám nói
+> anh/chị cũng sẽ y như vậy đâu."* — thiếu câu này là lỗi chặn đăng.
+
 ### Bước 5 — TRAO
 > Dạ cái cô đang cần là bổ sung chất xơ hoà tan để nuôi lợi khuẩn đường ruột cô ạ.
 > Bên cháu có men đại tràng Fuji FF của Nhật, chất xơ phân tử dài.

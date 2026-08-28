@@ -134,6 +134,19 @@ Khách lớn tuổi tin **người giống mình**, không tin bảng thành ph�
 
 **Kể thật, kể vừa phải.** Kể quá hay → khách nghi. Kể có cả cái chưa hoàn hảo → khách tin.
 
+### 🔴 BẮT BUỘC khi kể chuyện khách khác
+
+Mỗi lần dẫn lời người dùng khác, **phải kèm câu này** — không được bỏ:
+
+> *"Hiệu quả tuỳ thuộc cơ địa từng người ạ."*
+
+Ví dụ hoàn chỉnh:
+> …Cô ấy bảo giờ đêm vẫn tỉnh nhưng nằm một lúc là ngủ lại được ạ.
+> **Nhưng cái này hiệu quả tuỳ cơ địa từng người cô ạ, cháu không dám nói cô cũng sẽ y như vậy đâu.**
+
+> Lời chứng thực không kèm lưu ý cơ địa là **lỗi chặn đăng** theo bộ soát tuân thủ chung.
+> Và với khách, câu "cháu không dám nói cô cũng y như vậy" lại làm họ tin hơn.
+
 ---
 
 ## BƯỚC 5 — TRAO (tư vấn, không chào hàng)
@@ -327,3 +340,7 @@ Với khách lớn tuổi, mấy chiêu này **ăn được một đơn nhưng m
 | Chốt xong mình có im lặng chờ không? | ☐ |
 
 > **Khách nói nhiều hơn mình = cuộc chốt tốt.** Ngược lại là hỏng.
+
+---
+
+> *"Thực phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh."*

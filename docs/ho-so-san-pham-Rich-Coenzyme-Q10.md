@@ -207,6 +207,9 @@ Phụ nữ có thai / cho con bú · trẻ em · người sắp phẫu thuật �
 > việc được lâu hơn. Anh ấy dặn em là phải uống đều và uống sau bữa ăn, chứ uống lúc đói
 > là kém hẳn ạ.
 
+> 🔴 **Kể xong phải kèm:** *"Hiệu quả tuỳ thuộc cơ địa từng người ạ, em không dám nói
+> anh/chị cũng sẽ y như vậy đâu."* — thiếu câu này là lỗi chặn đăng.
+
 ### Bước 5 — TRAO
 > Dạ cái anh/chị đang thiếu có thể là năng lượng ở mức tế bào ạ. CoQ10 là chất cơ thể mình
 > tự sản xuất, nhưng **càng lớn tuổi càng giảm dần**, nên nhiều người bổ sung thêm.

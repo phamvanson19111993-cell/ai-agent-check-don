@@ -226,3 +226,7 @@
 | Khách phàn nàn | "Dạ em xin lỗi {xung_ho} ạ 🙏 {xung_ho} cho em xin ảnh/video phần lỗi giúp em, em xử lý đổi cho {xung_ho} ngay trong hôm nay ạ." |
 | Khách nói đang bận | "Dạ em xin lỗi đã làm phiền ạ. {xung_ho} cứ lo việc, khi nào rảnh nhắn em nha ạ 😊" |
 | Khách bảo đừng nhắn nữa | "Dạ em xin lỗi {xung_ho} ạ. Em sẽ không làm phiền {xung_ho} nữa. Cảm ơn {xung_ho} đã từng ủng hộ shop em ạ 🙏" |
+
+---
+
+> *"Thực phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh."*

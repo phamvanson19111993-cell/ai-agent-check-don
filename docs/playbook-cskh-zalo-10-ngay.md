@@ -123,3 +123,7 @@ Khách yêu cầu dừng → ngừng vĩnh viễn
 
 - Theo dõi khách: [`../data/danh_sach_khach_mau.csv`](../data/danh_sach_khach_mau.csv)
 - Tính lịch + gợi ý tin nhắn: `python3 scripts/lich_cskh.py data/danh_sach_khach_mau.csv`
+
+---
+
+> *"Thực phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh."*

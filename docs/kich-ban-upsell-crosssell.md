@@ -267,3 +267,7 @@ Và chiều ngược lại — **con cái mua cho bố mẹ**:
 - [ ] Đây có phải tin **chúc lễ / sinh nhật** không? (nếu có → **không** kèm bán hàng)
 
 > Còn một ô chưa tích → **chưa gửi.**
+
+---
+
+> *"Thực phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh."*
