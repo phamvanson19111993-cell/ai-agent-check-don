@@ -133,3 +133,23 @@ test('la cong cu dung chung: chi import node core, chay duoc khi khong truyen lo
   });
   assert.equal(await memory.load(), null);
 });
+
+test('doc duoc file o nhanh khac khi muc ghi dang "nhanh:duong-dan"', async () => {
+  const { exec, calls } = fakeExec({
+    'origin/cmd:bo-nho-chung/luat.md': 'luat chung',
+    'origin/phong-cskh:docs/thu-vien.md': 'thu vien tin nhan',
+  });
+  const memory = new SharedMemory({
+    branch: 'origin/cmd',
+    files: ['bo-nho-chung/luat.md', 'origin/phong-cskh:docs/thu-vien.md'],
+    exec,
+  });
+
+  const loaded = await memory.load();
+  assert.deepEqual(calls.map((c) => c.args[1]), [
+    'origin/cmd:bo-nho-chung/luat.md',
+    'origin/phong-cskh:docs/thu-vien.md',
+  ]);
+  assert.match(loaded.text, /luat chung/);
+  assert.match(loaded.text, /thu vien tin nhan/);
+});

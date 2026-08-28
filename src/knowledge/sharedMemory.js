@@ -45,12 +45,25 @@ export class SharedMemory {
     this.cache = null;
   }
 
+  /**
+   * Mot muc trong `files` co hai dang:
+   *   'bo-nho-chung/luat.md'            -> lay o nhanh mac dinh
+   *   'origin/nhanh-khac:docs/abc.md'   -> lay o nhanh khac
+   * Danh ba bo nho chung tro sang nhieu nhanh phong khac nhau nen can dang thu hai.
+   */
+  #resolve(entry) {
+    const cut = entry.lastIndexOf(':');
+    if (cut === -1) return { branch: this.branch, file: entry };
+    return { branch: entry.slice(0, cut), file: entry.slice(cut + 1) };
+  }
+
   /** Doc mot file: uu tien thu muc cuc bo neu duoc chi dinh, con lai lay tu nhanh git. */
-  async #readFile(file) {
+  async #readFile(entry) {
+    const { branch, file } = this.#resolve(entry);
     if (this.dir) {
       return fs.readFile(path.join(this.dir, file), 'utf8');
     }
-    const { stdout } = await this.exec('git', ['show', `${this.branch}:${file}`], {
+    const { stdout } = await this.exec('git', ['show', `${branch}:${file}`], {
       cwd: this.cwd,
       maxBuffer: 4 * 1024 * 1024,
     });
