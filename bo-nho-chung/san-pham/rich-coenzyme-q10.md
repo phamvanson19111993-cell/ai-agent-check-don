@@ -54,11 +54,21 @@ Bằng chứng: hộp gốc Nhật in **還元型コエンザイムQ10** (*kange
 *Mốc 2 hộp thêm ngày 27/08 theo yêu cầu trực tiếp của anh Sơn (Phòng 7 đã lên trang).*
 
 > ⚠️ **KHÔNG được nói "mua nhiều rẻ hơn".** Giá mỗi hộp **phẳng 2.890.000đ ở mọi mốc**.
-> Mốc 1–3–5 đều ra đúng 48.167đ/ngày. Chỉ mốc 6 rẻ hơn (41.286đ/ngày) và **do tặng hộp thứ 7**, không phải giảm giá. Nói sai là quảng cáo sai giá.
+> Mốc **1 · 2 · 3 · 5** đều ra đúng 48.167đ/ngày. Chỉ mốc 6 rẻ hơn (41.286đ/ngày) và **do tặng hộp thứ 7**, không phải giảm giá. Nói sai là quảng cáo sai giá.
 
 > ⚠️ **KHÔNG được nói "một hộp chưa kịp thấy gì"** — 1 hộp dùng được 60 ngày, đã vượt mốc 4–8 tuần.
 
-Từ 3–5 hộp: khách **chọn một** — quà tặng **hoặc** giảm tiền mặt, không đồng thời.
+### ⚠️ Quà tặng có HAI LỚP "chọn một" — đọc nhanh là nói sai với khách
+
+```
+LỚP 1 — chọn hình thức:   quà tặng   HOẶC   giảm tiền mặt      (không đồng thời)
+LỚP 2 — nếu chọn quà, chọn món:
+        mốc 3 hộp →  Ellagic Acid 675.000đ   HOẶC  Gluchon Gel 680.000đ
+        mốc 5 hộp →  Gluchon Gel 680.000đ    HOẶC  Nghệ Mùa Thu 990.000đ
+```
+
+**Mức "giảm tiền mặt" là bao nhiêu: CHƯA CÓ NGUỒN.** Khách đã hỏi, CSKH chưa trả lời được.
+Cần anh Sơn hoặc Phòng 7 cho con số. Không phòng nào được tự đoán.
 
 ## Công dụng — CHỈ ĐƯỢC NÓI TRONG PHẠM VI NÀY
 

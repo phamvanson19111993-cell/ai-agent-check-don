@@ -42,6 +42,49 @@ Phòng 6 theo lệnh khoá (an toàn hơn) và báo lên — **xử lý đúng**
 
 # ĐANG MỞ
 
+## 🔴 MT-16 · HAI PHÒNG CÙNG LÀM QUẢNG CÁO — MỚI, cần anh chốt
+
+Phòng Ads (12) phát hiện **Phòng 7 cũng có SOP set quảng cáo riêng**
+(`sop/phong-7-set-quang-cao.md`, nhánh `dili-performance-media-buyer-u68k1m`).
+
+| | Phòng 7 | Phòng Ads (12) |
+|---|---|---|
+| Bán qua | **Inbox** | **Landing page + form** |
+| Quy ước tên | `DILI_A01-ProblemAware_H02-CauHoi_9x16_v1` | `AngleA_Hook01_vanphong_video45s` |
+
+**Hai bản không sai, nhưng đang chạy song song.** Không chốt thì sẽ có **hai bộ số không đối chiếu
+được với nhau** — và không ai biết chiến dịch nào thuộc về ai.
+
+→ Cần anh chốt: **một phòng cầm ads**, hay **chia theo kênh** (Phòng 7 inbox · Phòng 12 landing page).
+
+## 🔴 MT-17 · Bộ soát tuân thủ báo lỗi GIẢ, và tạo động cơ ngược — MỚI
+
+Phòng 10 chạy bộ soát của Phòng 6 trên 9 file docs → **36 lỗi chặn đăng**. Rà tay: **phần lớn là
+dương tính giả** — máy quét trúng chính các danh sách cấm:
+
+| Máy báo | Câu thật |
+|---|---|
+| *"dùng cụm chữa khỏi"* | *"Tuyệt đối **không** hứa chữa khỏi bệnh"* |
+| *"Sai thành phần - thìa là đen"* | *"❌ **KHÔNG PHẢI** thìa là đen"* |
+| *"Khẳng định tuyệt đối"* | *"7 điều **tuyệt đối không** làm"* |
+
+**Nguy hiểm ở động cơ:** phòng nào muốn báo cáo xanh sẽ **xoá chính danh sách cấm của mình**.
+Bộ soát càng nghiêm càng đẩy các phòng vứt bỏ phần cảnh báo — **ngược mục đích**.
+
+→ Phòng 6 sửa: bỏ qua dòng có ❌ ⛔ ⚠️, dòng trong khối *"không được nói / cấm / tuyệt đối không"*,
+và câu khuyến cáo bắt buộc. **Tổng Chỉ Huy đã giao Phòng 6.**
+
+## 🟠 MT-18 · Mức "giảm tiền mặt" thay quà — khách đang hỏi, không ai trả lời được
+
+Luật quà tặng có nhắc *"quà tặng hoặc giảm tiền mặt"* nhưng **con số không tồn tại ở đâu trong
+hệ thống**. Phòng 10 báo khách đã hỏi thật. Cần anh Sơn hoặc Phòng 7.
+
+## 🟠 MT-19 · Mục tiêu 5% chặt hơn hoà vốn ~10 lần
+
+Chi phí ads 5% doanh thu = **ROAS 20**; hoà vốn chỉ cần **ROAS 2,0–2,4**.
+**Rủi ro tắt chiến dịch đang lãi vì tưởng lỗ.** Đề xuất: giữ 5% làm mục tiêu phấn đấu, lấy trần
+CPA của từng mốc làm lằn ranh tắt máy. Cần anh chốt.
+
 ## 🔴 MT-10 · Rủi ro pháp lý khi quảng cáo "dạng khử / ubiquinol" — MỚI, ưu tiên cao
 
 Phòng 6 nêu: nhãn phụ và **hồ sơ công bố Việt Nam chỉ ghi "Coenzyme Q10 50mg"**, không ghi dạng.
@@ -66,11 +109,16 @@ văn bản. Bảng tính "Lady Page" trên Drive có 5 cột đúng nhưng **tr�
 Phòng nào định lấy số đơn từ bảng "Lady Page" phải biết điều này.
 Cần anh Sơn: mở biểu mẫu → tab Câu trả lời → biểu tượng Trang tính xanh → Tạo bảng tính mới.
 
-## 🔴 MT-12 · Ba chiến dịch đang đốt tiền — MỚI
+## 🔴 MT-12 · Ba chiến dịch đang đốt tiền — PHÒNG ADS KẾT LUẬN: TẮT NGAY
 
 Tài khoản thuê Aztlan `1440077257813466`: 3 chiến dịch đặt ~870.000đ/ngày, **0 kết quả**,
 tối ưu sai sự kiện, tài khoản đang treo cảnh báo. Lệnh tạm dừng đã viết sẵn trong `lenh.json`
 của Phòng 7, cần anh chạy `python3 thuc-thi.py --lam`.
+
+**Phòng Ads đánh giá 28/08 — TẮT NGAY, không chờ thêm:** trần chi phí ads cho 1 đơn mốc 1 hộp là
+1.445.000đ. Với 870.000đ/ngày thì **chưa tới 2 ngày đã vượt trần mà chưa ra đơn nào**.
+Theo luật quyết định: tiêu quá 1× CAC hoà vốn mà không có đơn → **TẮT**, không phải "chờ thêm dữ liệu".
+*(theo giả định giá vốn 50%)*
 
 ## 🟠 MT-13 · Trang dilisupplement.com có thể ghi sai thành phần
 

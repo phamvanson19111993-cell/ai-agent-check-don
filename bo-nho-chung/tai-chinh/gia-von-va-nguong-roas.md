@@ -35,21 +35,42 @@ Quà theo Phòng 7: mốc 3 hộp = Ellagic Acid 675k **hoặc** Gluchon Gel 680
 Gluchon Gel 680k **hoặc** Nghệ Mùa Thu 990k. Bảng trên lấy **quà đắt nhất** cho từng mốc (thận trọng).
 Khách chọn quà rẻ hơn thì biên nhích lên chút ít.
 
-## 🔍 Xếp hạng biên lãi — ngược với thứ tự trang bán đang khuyến khích
+## ⚠️ ĐÍNH CHÍNH 28/08 — cách xếp hạng cũ ở đây DẪN TỚI QUYẾT ĐỊNH SAI
 
-```
-1 hộp = 2 hộp  (50,0%)  >  5 hộp (46,6%)  >  3 hộp (46,1%)  >  6 hộp (41,7%)
-```
+> Bản trước xếp hạng các mốc theo **biên lãi %** và kết luận *"mốc 6 hộp là mốc lãi mỏng nhất,
+> nhãn Lợi nhất là đúng với khách chứ không đúng với lãi"*.
+>
+> **Số học đúng, nhưng kết luận sai.** Phòng 7 đọc mục đó và **suýt gỡ nhãn "Lợi nhất" khỏi
+> mốc mang về nhiều lãi nhất**, rồi tự phát hiện và đính chính. Lỗi thuộc về Tổng Chỉ Huy.
+>
+> **Vì sao sai:** biên lãi % chỉ là thước đo đúng khi chi phí kéo khách tỷ lệ thuận với doanh thu.
+> Ở đây **không phải** — mỗi đơn tốn đúng **một lần CPA**, dù đơn đó 1 hộp hay 6 hộp.
 
-**Mốc 6 hộp là mốc lãi mỏng nhất**, dù trang ghi "Lợi nhất". Đúng với khách, không đúng với lãi.
+## 🔍 THƯỚC ĐO ĐÚNG — sức chịu CPA của từng mốc
 
-**Mốc 2 hộp mới thêm là mốc tốt nhất về biên** trong nhóm đơn lớn: giữ nguyên biên 50%,
-không mất quà, mà vẫn gấp đôi giá trị đơn so với mốc 1 hộp. Đáng đẩy trong quảng cáo.
+| Mốc | Lãi gộp = **CPA tối đa chịu được** | Gấp mấy lần mốc 1 hộp |
+|---|---|---|
+| 1 hộp | 1.445.000đ | 1× |
+| 2 hộp | 2.890.000đ | 2× |
+| 3 hộp | 3.995.000đ | 2,8× |
+| 5 hộp | 6.730.000đ | 4,7× |
+| **6 hộp** | **7.225.000đ** | **5×** |
 
-## 🔍 Mốc 5 và mốc 6 — chênh nhau ít hơn tưởng
+**Đơn 6 hộp lãi hơn đơn 1 hộp đúng 5.780.000đ ở MỌI mức CPA** — vì CPA trừ vào cả hai như nhau.
+Khi quảng cáo đắt lên, **mốc 1 hộp lỗ trước, mốc 6 hộp vẫn lãi dày.**
 
-Mốc 5 lãi 6.730.000đ, mốc 6 lãi 7.225.000đ → **mốc 6 chỉ hơn 495.000đ (7,4%)**,
-nhưng phải giao thêm **2 hộp** và ship nặng hơn. Trước khi biết quà, hai mốc bằng nhau đúng bằng 0.
+→ **Nhãn "Lợi nhất" trên mốc 6 hộp là ĐÚNG** cho cả khách lẫn công ty. Không gỡ.
+
+## Dùng thước nào, khi nào
+
+| Câu hỏi | Dùng thước |
+|---|---|
+| *Nên đẩy khách lên mốc nào?* | **CPA tối đa chịu được** (bảng trên) — mốc càng lớn càng an toàn |
+| *Chiến dịch này lãi hay lỗ?* | **CPA thực tế so với trần của mốc đó** |
+| *Đặt mục tiêu ROAS bao nhiêu?* | **ROAS hoà vốn** (bảng dưới) — vì ROAS là tỷ số theo đồng doanh thu |
+
+Hai thước không mâu thuẫn: mốc lớn **chịu CPA cao hơn** nhưng **cần ROAS cao hơn**.
+Chạy theo giá mỗi đơn (leadgen) thì nhìn thước một; chạy tối ưu theo giá trị đơn thì nhìn thước hai.
 
 ## Ngưỡng ROAS hoà vốn
 
@@ -89,3 +110,43 @@ Chạy ads ở ROAS 2,2–2,5 mà chưa trừ 4 khoản trên thì rất có th�
 | Mức "giảm tiền mặt" thay quà | Anh Sơn / Phòng 7 |
 | Chính sách hoa hồng | Anh Sơn |
 | Phí ship trung bình mỗi đơn | Phòng 8 (dữ liệu đơn thật) |
+
+
+---
+
+# 📈 SỐ THẬT ĐẦU TIÊN CỦA HỆ THỐNG — 27/08/2026
+
+```
+DATA UPDATE
+- Loại dữ liệu:        Giá mỗi lượt xem trang đích
+- Giá trị:             954đ  (224.227đ ÷ 235 lượt)
+- Kỳ:                  27/08/2026 · tài khoản 2260044828113956
+- Nguồn:               ảnh Ads Manager anh Sơn gửi 28/08, Phòng 7 đọc
+- Agent tạo:           Phòng 7
+- Trạng thái xác minh: ĐÃ XÁC MINH
+```
+
+Đây là **con số kinh doanh thật đầu tiên** hệ thống có. Ghép với trần CPA ra ngay ngưỡng sống còn:
+
+| Mốc | Cần bao nhiêu lượt xem để ra 1 đơn thì hoà vốn | Tỷ lệ chốt tối thiểu |
+|---|---|---|
+| 1 hộp | 1.515 lượt | 0,066% |
+| 2 hộp | 3.029 lượt | 0,033% |
+| 3 hộp | 4.188 lượt | 0,024% |
+| 5 hộp | 7.055 lượt | 0,014% |
+| 6 hộp | 7.573 lượt | 0,013% |
+
+*Theo giả định giá vốn 50%. Chưa trừ hoa hồng, vận chuyển, giảm tiền mặt.*
+
+**Đọc bảng này thế nào:** chạy hết 1.445.000đ tiền quảng cáo (≈1.515 lượt xem) mà **chưa ra
+một đơn 1 hộp nào** thì chiến dịch đó đã lỗ. Đây là lằn ranh tắt máy, không phải mốc để "chờ thêm".
+
+## ⚠️ Mục tiêu "chi phí ads 5% doanh thu" chặt hơn hoà vốn khoảng 10 lần
+
+Phòng 7 nêu: 5% tương đương **ROAS 20**, trong khi hoà vốn chỉ cần **ROAS 2,0–2,4**.
+Một đơn 6 hộp tốn 3 triệu tiền quảng cáo là **trượt mục tiêu 5% gấp 3,5 lần** — nhưng
+**vẫn lãi hơn 4 triệu**.
+
+**Rủi ro: tắt chiến dịch đang lãi vì tưởng lỗ.**
+Đề xuất của Phòng 7, Tổng Chỉ Huy đồng tình: **giữ 5% làm mục tiêu phấn đấu, lấy ROAS 2,4
+(hoặc trần CPA của mốc) làm lằn ranh tắt máy.** Cần anh Sơn chốt.
