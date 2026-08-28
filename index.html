@@ -2443,6 +2443,57 @@ var FORM_GOOGLE = {
             .join('\n');
   }
 
+  // KHO DON TREN MAY KHACH
+  // Luu don TRUOC khi cham vao mang. Google co nhan hay khong, don van con
+  // tren may khach. Mo lai trang voi #don-da-luu se in ra toan bo.
+  var KHO_DON = 'dilim-don-da-gui';
+
+  function docKho(){
+    try{ return JSON.parse(localStorage.getItem(KHO_DON) || '[]'); }
+    catch(e){ return []; }
+  }
+
+  function luuDon(du, trangThai){
+    try{
+      var kho = docKho();
+      kho.push({ luc: new Date().toISOString(), trang_thai: trangThai, don: du });
+      if(kho.length > 50) kho = kho.slice(-50);
+      localStorage.setItem(KHO_DON, JSON.stringify(kho));
+      return kho.length;
+    }catch(e){ return 0; }
+  }
+
+  function danhDauKho(trangThai){
+    try{
+      var kho = docKho();
+      if(!kho.length) return;
+      kho[kho.length-1].trang_thai = trangThai;
+      localStorage.setItem(KHO_DON, JSON.stringify(kho));
+    }catch(e){}
+  }
+
+  // Cua sau de lay lai don neu duong gui hong: sonsongkhoe.com/#don-da-luu
+  function moKho(){
+    if(location.hash !== '#don-da-luu') return;
+    var kho = docKho();
+    var o = document.createElement('pre');
+    o.style.cssText = 'position:fixed;inset:0;z-index:9999;margin:0;padding:16px;'
+      + 'overflow:auto;background:#fff;color:#111;font:12px/1.5 ui-monospace,monospace;'
+      + 'white-space:pre-wrap;word-break:break-word';
+    o.textContent = kho.length
+      ? 'ĐƠN ĐÃ LƯU TRÊN MÁY NÀY: ' + kho.length + '\n\n'
+        + kho.map(function(m,i){
+            return '─── ' + (i+1) + ' ─── ' + m.luc + ' ─── ' + m.trang_thai + '\n'
+                 + Object.keys(m.don).map(function(k){ return k + ': ' + m.don[k]; }).join('\n');
+          }).join('\n\n')
+      : 'Máy này chưa lưu đơn nào.';
+    document.body.appendChild(o);
+  }
+  moKho();
+  window.addEventListener('hashchange', function(){
+    if(location.hash === '#don-da-luu') location.reload();
+  });
+
   function guiBieuMau(du){
     var g = FORM_GOOGLE;
     if(!g.ma) return null;
@@ -2504,9 +2555,15 @@ var FORM_GOOGLE = {
     baoFB('Lead', du.so_tien);
     moMessenger(tinNhan(du));
 
-    var dangGui = guiNoiNhan(du) || guiBieuMau(du);
+    luuDon(du, 'dang-gui');
+
+    // Gui CA HAI duong. Truoc day dung ||, co Apps Script thi khong gui Bieu mau
+    // nua — mot duong hong la mat don. Gio duong nao song thi don van di.
+    var duong = [guiNoiNhan(du), guiBieuMau(du)].filter(Boolean);
+    var dangGui = duong.length ? Promise.all(duong) : null;
 
     if(!dangGui){
+      danhDauKho('khong-co-duong-gui');
       duPhong(du, 'Đơn của anh chị đã soạn xong. Còn một bước cuối để gửi về cho bên em, mất khoảng mười giây.', false);
       return;
     }
@@ -2514,12 +2571,15 @@ var FORM_GOOGLE = {
     if(nut){ nut.disabled = true; nut.textContent = 'Đang gửi…'; }
 
     dangGui.then(function(){
+      danhDauKho('da-gui-di');
+      // Gui kieu no-cors nen trinh duyet KHONG doc duoc Google tra ve gi.
+      // Vi vay khong duoc hua chac "ben em da nhan duoc" — chi noi da ghi nhan,
+      // roi day khach sang duong bam Gui duoc (Messenger/Zalo), duong duy nhat
+      // ma anh So'n nhin thay ngay tren dien thoai.
       duPhong(du,
-        'Bên em đã nhận được đơn của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.',
+        'Đã ghi nhận đơn của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.',
         false, /* guiRoi duoi cung */
-        (TU_MO_MESSENGER
-          ? 'Bên em vừa mở sẵn Messenger với đơn đã soạn — anh chị bấm <b>Gửi</b> trong đó là bên em nhận được ngay. Không thấy Messenger mở ra thì bấm nút bên dưới.'
-          : 'Muốn được nhắn lại ngay thay vì chờ điện thoại, anh chị gửi thêm đơn qua <b>Messenger</b>, <b>Zalo</b> hoặc <b>tin nhắn</b>.'),
+        'Muốn <b>chắc chắn</b> bên em gọi lại đúng đơn này, anh chị bấm <b>Gửi đơn qua Messenger</b> ở dưới — đơn đã soạn sẵn, chỉ bấm Gửi, mất ba giây. Dùng Zalo hay tin nhắn cũng được.',
         true);
       f.reset();
       // reset() khong ban su kien change, phai tu dong bo lai vien sang cua the bam
@@ -2528,7 +2588,8 @@ var FORM_GOOGLE = {
         if(o) o.dispatchEvent(new Event('change'));
       });
     }).catch(function(){
-      duPhong(du, 'Mạng đang trục trặc nên đơn chưa gửi thẳng đi được. Đơn không mất đâu ạ.', true);
+      danhDauKho('gui-hong');
+      duPhong(du, 'Mạng đang trục trặc nên đơn chưa gửi thẳng đi được. Đơn đã lưu trên máy anh chị, không mất. Anh chị bấm nút Messenger hoặc Zalo bên dưới để gửi ngay.', true);
     }).then(function(){
       if(nut){ nut.disabled = false; nut.textContent = chuNut; }
     });
