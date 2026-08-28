@@ -42,67 +42,60 @@ TAI_KHOAN  = os.environ.get("FB_ACT",   "2260044828113956")   # Pham Son BM1.1 �
 TRANG      = os.environ.get("FB_PAGE",  "61592861334561")     # Trang DiLiM Supplement
 PIXEL      = os.environ.get("FB_PIXEL", "1277743445418211")   # Pixel đang gắn trên sonsongkhoe.com
 
-ANH_QC     = "qc-vuong.jpg"                     # Tự tải về nếu chưa có
-LINK       = "https://sonsongkhoe.com"
-# NGÂN SÁCH — sửa 28/08/2026, số cũ 150.000đ là em đặt bừa khi chưa có dữ liệu.
-# Số mới tính ngược từ giá thật đo được ngày 27/08: 954đ mỗi lượt xem trang đích
-# (224.227đ chia cho 235 lượt, tài khoản 2260044828113956).
-#   Mốc quyết định  : 1.000 lượt xem → đủ để biết trang có chốt được không
-#   Tiền cần        : 1.000 x 954đ = 954.157đ
-#   Chia 5 ngày     : 190.831đ mỗi ngày → làm tròn 190.000đ
-# Chạy chậm hơn 5 ngày thì thị trường và mùa vụ đổi, số đo mất nghĩa.
-# Chạy nhanh hơn 3 ngày thì Meta chưa kịp thoát giai đoạn học.
-NGAN_SACH  = 190000                             # đồng mỗi ngày, cho cả đợt thử
-TEN_CD     = "Q10 · T9 · Tiếp cận mới"
+# ── HỒ SƠ SẢN PHẨM ──────────────────────────────────────────────
+# Cấu hình từng sản phẩm nằm trong thư mục san-pham/, không nằm ở đây nữa.
+# Thêm sản phẩm mới thì thêm một file vào đó, KHÔNG sửa file này.
+#
+#     python3 tao-chien-dich.py                    -> Q10 (mặc định)
+#     python3 tao-chien-dich.py --san-pham giam-mo -> giảm mỡ
+#     python3 tao-chien-dich.py --san-pham q10
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+import importlib.util as _iu
+
+def _nap_ho_so(ten):
+    thu_muc = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'san-pham')
+    duong = os.path.join(thu_muc, ten.replace('-', '_') + '.py')
+    if not os.path.exists(duong):
+        co = sorted(f[:-3].replace('_', '-') for f in os.listdir(thu_muc)
+                    if f.endswith('.py') and not f.startswith('__'))
+        sys.exit("Khong co ho so san pham '%s'. Dang co: %s" % (ten, ', '.join(co)))
+    spec = _iu.spec_from_file_location('sp_' + ten.replace('-', '_'), duong)
+    m = _iu.module_from_spec(spec); spec.loader.exec_module(m)
+    for k in ('TEN_CD', 'LINK', 'NGAN_SACH', 'ANH_QC', 'NHOM'):
+        if not hasattr(m, k):
+            sys.exit("Ho so %s thieu bien bat buoc: %s" % (duong, k))
+    # O nao con de CAN_DIEN thi DUNG HAN — khong dang quang cao voi cau bia.
+    thieu = []
+    def di(gt, ten_o):
+        if isinstance(gt, str):
+            if gt.strip().startswith('CAN_DIEN'):
+                thieu.append('%s\n       %s' % (ten_o, gt.strip().split(chr(10))[0]))
+        elif isinstance(gt, dict):
+            for k2, v in gt.items(): di(v, '%s[%r]' % (ten_o, k2))
+        elif isinstance(gt, (list, tuple)):
+            for i2, v in enumerate(gt): di(v, '%s[%d]' % (ten_o, i2))
+    for k in dir(m):
+        if not k.startswith('_'): di(getattr(m, k), k)
+    if thieu:
+        print("\nKHONG CHAY DUOC — ho so '%s' con %d o chua dien:\n" % (ten, len(thieu)))
+        for d in thieu: print("   -", d)
+        print("\nDien vao: %s" % duong)
+        print("\nTUYET DOI khong tu bia so cong bo, gia, hay cong dung.")
+        print("Khach tra ra khong khop la Facebook go bai va mat uy tin ca ten mien.")
+        sys.exit(1)
+    return m
+
+_TEN_SP = 'q10'
+if '--san-pham' in sys.argv:
+    _TEN_SP = sys.argv[sys.argv.index('--san-pham') + 1]
+_HS = _nap_ho_so(_TEN_SP)
+
+ANH_QC     = _HS.ANH_QC
+LINK       = _HS.LINK
+NGAN_SACH  = _HS.NGAN_SACH
+TEN_CD     = _HS.TEN_CD
+NHOM       = _HS.NHOM
 # ────────────────────────────────────────────────────────────────
-
-KHUYEN_CAO = "Thực phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh."
-
-NHOM = [
-    {
-        "ten": "Nhom 1 · 40-50",
-        "tuoi": (40, 50),
-        "chu": (
-            "Sau tuổi 40, lượng Coenzyme Q10 cơ thể tự tạo ra giảm dần. Nhiều người thấy "
-            "chiều nào cũng đuối dù sáng vẫn khoẻ, ngủ đủ mà sáng dậy vẫn nặng người.\n\n"
-            "Rich Coenzyme Q10 — hàng nội địa Nhật của AFC, 2 viên mỗi ngày. Giúp chống "
-            "oxy hoá, giảm mệt mỏi.\n\n"
-            "Trên trang có bài tự kiểm 30 giây: sáu câu hỏi, không hỏi tên, không hỏi số "
-            "điện thoại, trả lời xong có kết quả ngay.\n\n" + KHUYEN_CAO
-        ),
-        "tieu_de": "Sáu câu hỏi, 30 giây, có kết quả ngay",
-        "mo_ta": "Hàng nội địa Nhật · Số công bố 4107/2024/ĐKSP",
-    },
-    {
-        "ten": "Nhom 2 · 50-65",
-        "tuoi": (50, 65),
-        "chu": (
-            "Tim là cơ bắp duy nhất trong người không được phép nghỉ. Sau tuổi 50, nhiều "
-            "người leo hai tầng cầu thang đã phải dừng lại thở.\n\n"
-            "Coenzyme Q10 là chất tế bào dùng để tạo ra năng lượng, và cơ thể tự tạo ra "
-            "ngày một ít đi theo tuổi.\n\n"
-            "Rich Coenzyme Q10 của AFC Nhật Bản — hãng niêm yết trên sàn Tokyo, nhà máy "
-            "đạt chuẩn GMP Nhật. Một lọ 120 viên dùng đúng hai tháng. Giúp chống oxy hoá, "
-            "giảm mệt mỏi; giúp giảm nguy cơ xơ vữa động mạch, tốt cho tim mạch.\n\n" + KHUYEN_CAO
-        ),
-        "tieu_de": "Một lọ 120 viên, dùng đúng hai tháng",
-        "mo_ta": "Giấy tờ tra được ngay trên trang",
-    },
-    {
-        "ten": "Nhom 3 · 28-40 con mua",
-        "tuoi": (28, 40),
-        "chu": (
-            "Bố mẹ ngoài 55 thường ngại nói mình mệt. Đến lúc nói ra thì đã mệt lâu rồi.\n\n"
-            "Rich Coenzyme Q10 — hàng nội địa Nhật của AFC, hãng ra đời năm 1969 và niêm "
-            "yết trên sàn Tokyo. Một lọ 120 viên dùng đúng hai tháng, ngày 2 viên sau bữa sáng.\n\n"
-            "Giấy tiếp nhận công bố số 4107/2024/ĐKSP, ảnh chụp giấy gốc và nhãn phụ đăng "
-            "ngay trên trang để nhà mình tự đối chiếu.\n\n" + KHUYEN_CAO
-        ),
-        "tieu_de": "Quà cho bố mẹ, hàng nội địa Nhật",
-        "mo_ta": "Giao toàn quốc · Đặt cọc 200.000đ giữ hàng",
-    },
-]
-
 
 def goi(duong_dan, du_lieu=None, tep=None, lay=False):
     """Gọi một lệnh tới Facebook. Dừng hẳn nếu Facebook báo lỗi."""
