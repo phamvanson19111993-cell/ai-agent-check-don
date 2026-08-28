@@ -126,19 +126,24 @@ def kiem_bang_gia(br):
     bg0 = pg.locator('#bang-gia').inner_text()
     ghi(pg.locator('#bang-gia .quote table tbody tr').count() == 4,
         'bảng báo giá đủ 4 mốc theo bảng giá niêm yết')
-    ghi('30 ngày' in bg0 and '90 ngày' in bg0,
+    ghi('30 ngày' in bg0 and '60 ngày' in bg0,
         'số ngày dùng tự tính từ liều 2 viên mỗi ngày trên nhãn')
     ghi(pg.locator('#bang-gia .fill').count() == 0, 'lời báo "chưa có bảng giá" đã tắt')
     bg = pg.locator('#bang-gia').inner_text()
     ghi('lợi nhất' in bg.lower(), 'có nhãn Lợi nhất')
-    ghi('675.000đ' in bg, 'quà tặng ghi rõ trị giá bao nhiêu tiền')
-    ghi('180 ngày' in bg0, 'mốc tặng thêm gói tính đủ 180 ngày, không theo công thức')
+    ghi('1.350.000đ' in bg, 'quà tặng ghi rõ trị giá bao nhiêu tiền')
+    ghi('180 ngày' in bg0 and '360 ngày' in bg0,
+        'mốc tặng thêm gói tính đủ số ngày thật, không theo công thức')
     ghi(pg.locator('#chon-hop .hop-o').count() == 5, 'thẻ chọn số lượng: 4 mốc + 1 chưa quyết')
-    ghi('675.000đ' in bg0 and '1.269.000đ' in bg0 and '1.822.500đ' in bg0 and '3.375.000đ' in bg0,
+    ghi('675.000đ' in bg0 and '1.269.000đ' in bg0 and '3.375.000đ' in bg0 and '6.750.000đ' in bg0,
         'đủ bốn giá đúng như bảng giá niêm yết 2026')
     ghi(pg.locator('.offer .price').inner_text() == '675.000đ',
         'dòng giá đầu ô đặt hàng đúng giá niêm yết', pg.locator('.offer .price').inner_text())
     ghi(pg.locator('#chon-hop input:checked').count() == 1, 'luôn có đúng một mốc được chọn sẵn')
+    ghi(pg.locator('#bang-gia .icon-goi').count() == 4, 'mốc nào cũng có dãy biểu tượng gói')
+    ghi(pg.evaluate("() => document.querySelectorAll('#bang-gia tbody tr:last-child .icon-goi g').length") == 12,
+        'mốc 10 tặng 2 vẽ đủ 12 gói túi thuốc')
+    ghi(pg.locator('#chon-hop .icon-goi').count() == 4, 'thẻ chọn số lượng cũng có dãy gói')
 
     # Khach chon CHUYEN KHOAN DU — day la cho trang Q10 tung hong ba lan
     dien_phieu(pg)
@@ -158,7 +163,7 @@ def kiem_bang_gia(br):
     pg.locator('#ok-msg .ck-xong').click()
     pg.wait_for_timeout(300)
     mua = pg.evaluate("window.__mua.filter(function(x){ return x[1] === 'Purchase'; })")
-    ghi(len(mua) == 1 and mua[0][2]['value'] == 3375000,
+    ghi(len(mua) == 1 and mua[0][2]['value'] == 6750000,
         'Purchase báo GIÁ TRỊ ĐƠN, không phải tiền cọc', str(mua))
 
     ma = {}
@@ -166,7 +171,7 @@ def kiem_bang_gia(br):
     for i in range(anh.count()):
         lop = anh.nth(i).evaluate("e => e.closest('.ck-qr').className")
         ma['du' if 'ck-du' in lop else 'coc'] = so_tien_trong_ma(quet(anh.nth(i).get_attribute('src')))
-    ghi(ma.get('du') == 3375000, 'quét mã "chuyển khoản đủ" ra đúng 3.375.000đ', str(ma))
+    ghi(ma.get('du') == 6750000, 'quét mã "chuyển khoản đủ" ra đúng 6.750.000đ', str(ma))
     ghi(ma.get('coc') == 200000, 'quét mã "đặt cọc" ra đúng 200.000đ', str(ma))
     pg.close()
 
@@ -180,6 +185,11 @@ def kiem_ma_qr_tinh(br):
     ghi(p.startswith('000201') and 'A000000727' in p, 'là mã VietQR hợp lệ')
     ghi(so_tien_trong_ma(p) == 200000, 'quét ra đúng tiền cọc 200.000đ', str(so_tien_trong_ma(p)))
     ghi('38691388888' in p and '970423' in p, 'đúng số tài khoản và mã ngân hàng TPBank')
+    # Chuan QR doi vien trang it nhat 4 o. De 2 o thi co ma van doc duoc,
+    # co ma khong — ma 6.750.000d la mot ca hong that.
+    ghi(pg.evaluate("""() => { const s = document.documentElement.innerHTML;
+            const m = s.match(/V = 12, D = (\\d+)/); return m ? Number(m[1]) : 0; }""") >= 4,
+        'viền trắng quanh mã QR đủ 4 ô theo chuẩn')
     pg.close()
 
 
