@@ -226,13 +226,14 @@ video.vid-thumb{width:100%;height:auto;object-fit:cover;background:#12241C}
 .prod-band .eb-band{color:#8FCBB2}
 .prod-band .eb-band::before{background:#8FCBB2}
 .prod-grid{display:grid;gap:2rem;align-items:center}
-@media(min-width:900px){.prod-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:3rem}}
+@media(min-width:900px){.prod-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:2.4rem 3rem}
+  .prod-grid .spec-list{grid-column:1 / -1}}
 .prod-tx{display:flex;flex-direction:column;gap:1.1rem}
 .prod-band h2{font-size:clamp(2rem,4.6vw,3.15rem);letter-spacing:-.02em}
 .prod-lede{color:rgba(255,234,243,.86);font-size:clamp(1rem,1.5vw,1.18rem);max-width:34ch;line-height:1.55}
 .prod-lede b{color:#fff;font-weight:700}
 .chips{list-style:none;margin:.2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
-.chips li{border:1px solid rgba(255,234,243,.34);border-radius:var(--r);padding:.5rem .85rem;font-size:.86rem;color:rgba(255,234,243,.92);white-space:nowrap}
+.chips li{border:1px solid rgba(255,234,243,.34);border-radius:var(--r);padding:.5rem .85rem;font-size:.86rem;color:rgba(255,234,243,.92)}
 .pack-photo{width:100%;max-width:360px;height:auto;display:block;margin-inline:auto;filter:drop-shadow(0 26px 34px rgba(0,0,0,.42))}
 .prod-pic .pack-cap{color:rgba(255,234,243,.55)}
 .prod-band .spec-list{background:rgba(255,234,243,.16);border-color:rgba(255,234,243,.16)}
@@ -691,7 +692,7 @@ body:has(.dock.on){padding-bottom:74px}
 .hinh figcaption b{color:var(--ink2)}
 .hinh-doi{display:grid;gap:1.1rem}
 /* khung anh nam tren dai mau dam thi chu chu thich phai sang len */
-.prod-band .hinh svg{background:#FFFFFF;border-color:#8FCBB2}
+.prod-band .hinh svg{background:transparent;border:0}
 .prod-band .hinh figcaption{color:#CFE7DA}
 .prod-band .hinh figcaption b{color:#FFFFFF}
 @media(min-width:760px){.hinh-doi{grid-template-columns:1fr 1fr}}
@@ -1171,8 +1172,8 @@ body:has(.dock.on){padding-bottom:74px}
   <section class="sec prod-band" id="san-pham">
     <div class="wrap prod-grid">
       <div class="prod-tx">
-        <span class="eyebrow eb-band">Hồ sơ sản phẩm</span>
-        <h2>Thực phẩm bảo vệ sức khoẻ<br>ELLAGIC ACID</h2>
+        <span class="eyebrow eb-band">Hồ sơ sản phẩm · Thực phẩm bảo vệ sức khoẻ</span>
+        <h2>ELLAGIC ACID</h2>
         <p class="prod-lede">Nhập nguyên gói từ <b>Nhật Bản</b>. Túi nhôm <b>60 viên nén</b>, uống 2 viên mỗi ngày — một gói đi hết <b>30 ngày</b>.</p>
         <ul class="chips">
           <li>Chiết xuất xoài Châu Phi 159mg/viên</li>
@@ -1185,30 +1186,57 @@ body:has(.dock.on){padding-bottom:74px}
         </ul>
       </div>
       <div class="prod-pic">
-        <figure class="hinh">
-          <svg viewBox="0 0 360 260" role="img" aria-label="Hình vẽ túi nhôm 60 viên và viên nén">
-            <rect x="4" y="4" width="352" height="252" rx="8" fill="none" stroke="#8FCBB2" stroke-width="2" stroke-dasharray="9 7"></rect>
-            <path d="M112 62h124v168H112z" fill="#E6F5EE" stroke="#8FCBB2" stroke-width="2"></path>
-            <path d="M112 62h124v14H112z" fill="#CFE7DA" stroke="#8FCBB2" stroke-width="2"></path>
-            <path d="M118 56h112v6H118z" fill="#CFE7DA" stroke="#8FCBB2" stroke-width="2"></path>
-            <rect x="132" y="98" width="84" height="8" rx="4" fill="#8FCBB2"></rect>
-            <rect x="132" y="118" width="58" height="7" rx="3.5" fill="#8FCBB2" opacity=".7"></rect>
-            <rect x="132" y="196" width="46" height="7" rx="3.5" fill="#8FCBB2" opacity=".7"></rect>
-            <ellipse cx="278" cy="196" rx="26" ry="17" fill="#FFFFFF" stroke="#8FCBB2" stroke-width="2"></ellipse>
-            <ellipse cx="262" cy="216" rx="26" ry="17" fill="#FFFFFF" stroke="#8FCBB2" stroke-width="2"></ellipse>
-            <text x="180" y="246" text-anchor="middle" class="nh" style="font-size:10px" fill="#8FCBB2">TÚI NHÔM 60 VIÊN NÉN</text>
+        <figure class="hinh hinh-goi">
+          <svg viewBox="0 0 400 300" role="img" aria-label="Hình vẽ túi nhôm 60 viên Ellagic Acid kèm hai viên nén">
+            <defs>
+              <linearGradient id="tui" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#FFFFFF"></stop>
+                <stop offset="1" stop-color="#E6F5EE"></stop>
+              </linearGradient>
+              <linearGradient id="bong" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#0C4636" stop-opacity=".16"></stop>
+                <stop offset="1" stop-color="#0C4636" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+
+            <ellipse cx="196" cy="272" rx="118" ry="13" fill="#0C4636" opacity=".1"></ellipse>
+
+            <path d="M118 44h156v218a10 10 0 0 1-10 10H128a10 10 0 0 1-10-10z" fill="url(#tui)" stroke="#8FCBB2" stroke-width="2.5"></path>
+            <path d="M118 44h156v20H118z" fill="#CFE7DA" stroke="#8FCBB2" stroke-width="2.5"></path>
+            <path d="M126 34h140a6 6 0 0 1 6 6v4H120v-4a6 6 0 0 1 6-6z" fill="#CFE7DA" stroke="#8FCBB2" stroke-width="2.5"></path>
+            <path d="M258 34v10" stroke="#8FCBB2" stroke-width="2.5"></path>
+            <path d="M118 64h156v34H118z" fill="#0C4636"></path>
+            <path d="M254 44h20v228a10 10 0 0 1-10 10h-10z" fill="url(#bong)"></path>
+
+            <text x="196" y="87" text-anchor="middle" style="font-size:16px;font-weight:800;letter-spacing:.04em" fill="#FFFFFF">ELLAGIC ACID</text>
+            <text x="196" y="120" text-anchor="middle" class="nh" style="font-size:10px;letter-spacing:.2em" fill="#0E7C55">AFC · NHẬT BẢN</text>
+
+            <rect x="146" y="136" width="100" height="30" rx="15" fill="#DFF1E8" stroke="#0E7C55" stroke-width="1.6"></rect>
+            <text x="196" y="156" text-anchor="middle" style="font-size:14px;font-weight:700" fill="#0E7C55">60 viên</text>
+
+            <text x="196" y="192" text-anchor="middle" style="font-size:12.5px" fill="#416154">Uống 2 viên mỗi ngày</text>
+            <text x="196" y="212" text-anchor="middle" style="font-size:12.5px;font-weight:700" fill="#12241C">Một gói dùng 30 ngày</text>
+
+            <path d="M150 232h92" stroke="#CFE7DA" stroke-width="2"></path>
+            <text x="196" y="252" text-anchor="middle" class="nh" style="font-size:9px;letter-spacing:.14em" fill="#7E9A8C">TÚI NHÔM · VIÊN NÉN</text>
+
+            <ellipse cx="316" cy="244" rx="30" ry="20" fill="#FFFFFF" stroke="#8FCBB2" stroke-width="2.2"></ellipse>
+            <ellipse cx="316" cy="238" rx="30" ry="20" fill="#FFFFFF" stroke="#8FCBB2" stroke-width="2.2"></ellipse>
+            <path d="M296 234h40" stroke="#CFE7DA" stroke-width="2"></path>
+            <ellipse cx="72" cy="256" rx="30" ry="20" fill="#FFFFFF" stroke="#8FCBB2" stroke-width="2.2"></ellipse>
+            <path d="M52 252h40" stroke="#CFE7DA" stroke-width="2"></path>
           </svg>
-          <figcaption>Hình vẽ minh hoạ quy cách. Ảnh chụp gói thật nằm ở phần hồ sơ bên dưới.</figcaption>
+          <figcaption>Hình minh hoạ quy cách — túi nhôm 60 viên nén, uống 2 viên mỗi ngày.</figcaption>
         </figure>
       </div>
       <div class="spec-list">
-        <div class="spec-row"><dt>Tên sản phẩm</dt><dd>Thực phẩm bảo vệ sức khỏe ELLAGIC ACID</dd></div>
+        <div class="spec-row"><dt>Tên sản phẩm</dt><dd>TPBVSK ELLAGIC ACID</dd></div>
         <div class="spec-row"><dt>Dạng bào chế</dt><dd>Viên nén</dd></div>
         <div class="spec-row"><dt>Quy cách</dt><dd>Túi nhôm 60 viên</dd></div>
         <div class="spec-row"><dt>Khối lượng viên</dt><dd>300mg ± 15mg</dd></div>
         <div class="spec-row"><dt>Hạn sử dụng</dt><dd>3 năm kể từ ngày sản xuất</dd></div>
         <div class="spec-row"><dt>Xuất xứ</dt><dd>Nhật Bản</dd></div>
-        <div class="spec-row"><dt>Bảo quản</dt><dd>Tránh nhiệt độ cao, độ ẩm cao và ánh nắng trực tiếp, bảo quản ở nơi mát mẻ</dd></div>
+        <div class="spec-row"><dt>Bảo quản</dt><dd>Nơi mát, tránh nắng và ẩm</dd></div>
         <div class="spec-row"><dt>Số công bố</dt><dd>3993/2024/ĐKSP</dd></div>
       </div>
     </div>
