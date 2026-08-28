@@ -44,7 +44,15 @@ PIXEL      = os.environ.get("FB_PIXEL", "1277743445418211")   # Pixel đang gắ
 
 ANH_QC     = "qc-vuong.jpg"                     # Tự tải về nếu chưa có
 LINK       = "https://sonsongkhoe.com"
-NGAN_SACH  = 150000                             # đồng mỗi ngày, mỗi nhóm
+# NGÂN SÁCH — sửa 28/08/2026, số cũ 150.000đ là em đặt bừa khi chưa có dữ liệu.
+# Số mới tính ngược từ giá thật đo được ngày 27/08: 954đ mỗi lượt xem trang đích
+# (224.227đ chia cho 235 lượt, tài khoản 2260044828113956).
+#   Mốc quyết định  : 1.000 lượt xem → đủ để biết trang có chốt được không
+#   Tiền cần        : 1.000 x 954đ = 954.157đ
+#   Chia 5 ngày     : 190.831đ mỗi ngày → làm tròn 190.000đ
+# Chạy chậm hơn 5 ngày thì thị trường và mùa vụ đổi, số đo mất nghĩa.
+# Chạy nhanh hơn 3 ngày thì Meta chưa kịp thoát giai đoạn học.
+NGAN_SACH  = 190000                             # đồng mỗi ngày, cho cả đợt thử
 TEN_CD     = "Q10 · T9 · Tiếp cận mới"
 # ────────────────────────────────────────────────────────────────
 
