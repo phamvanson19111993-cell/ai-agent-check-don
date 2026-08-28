@@ -58,15 +58,16 @@
       },
       "tong_lieu_moi_ngay": "100mg CoQ10 mỗi ngày (2 viên)",
       "gia_theo_moc": {
-        "1_hop": "2.890.000đ - dùng 60 ngày",
-        "3_hop": "8.670.000đ",
-        "5_hop": "14.450.000đ",
-        "6_hop": "17.340.000đ - tặng thêm 1 hộp, thực nhận 7 hộp dùng 420 ngày",
+        "1_hop": "2.890.000đ - 60 ngày - 48.167đ/ngày - giá niêm yết",
+        "3_hop": "8.670.000đ - 180 ngày - 48.167đ/ngày - quà: Ellagic Acid 675k HOẶC Gluchon Gel 680k",
+        "5_hop": "14.450.000đ - 300 ngày - 48.167đ/ngày - quà: Gluchon Gel 680k HOẶC Nghệ Mùa Thu 990k",
+        "6_hop": "17.340.000đ - thực nhận 7 hộp - 420 ngày - 41.286đ/ngày - tặng thêm 1 hộp",
         "ghi_chu_cach_tinh": "Giá mỗi hộp phẳng 2.890.000đ ở mọi mốc. Mốc 6 hộp lợi hơn là nhờ hộp thứ 7 tặng thêm chứ không phải nhờ giảm giá: 17.340.000 chia cho 420 ngày = 41.286đ mỗi ngày, so với 48.167đ mỗi ngày ở mốc 1 hộp.",
-        "dieu_kien_quan_trong": "Từ mốc 3 tới 5 hộp, khách CHỌN MỘT: nhận quà tặng HOẶC giảm tiền mặt, không áp dụng đồng thời. Khi tư vấn phải nói rõ điều kiện này, không được hứa cả hai.",
-        "CAM_NOI_MUA_NHIEU_RE_HON": "SAI SỰ THẬT. Giá mỗi hộp phẳng 2.890.000đ ở MỌI mốc; mốc 1-3-5 đều ra đúng 48.167đ/ngày. Chỉ mốc 6 rẻ hơn (41.286đ/ngày) và là do TẶNG hộp thứ 7, không phải giảm giá. Nói sai là quảng cáo sai giá."
+        "dieu_kien_quan_trong": "Mốc 2 hộp KHÔNG có quà. Mốc 3 và 5 hộp: khách CHỌN MỘT - quà tặng HOẶC giảm tiền mặt, không áp dụng đồng thời. Tư vấn hứa cả hai là sai.",
+        "CAM_NOI_MUA_NHIEU_RE_HON": "SAI SỰ THẬT. Giá mỗi hộp phẳng 2.890.000đ ở MỌI mốc; mốc 1-3-5 đều ra đúng 48.167đ/ngày. Chỉ mốc 6 rẻ hơn (41.286đ/ngày) và là do TẶNG hộp thứ 7, không phải giảm giá. Nói sai là quảng cáo sai giá.",
+        "2_hop": "5.780.000đ - 120 ngày - 48.167đ/ngày - giá niêm yết, KHÔNG kèm quà (mốc mới 27/08 theo yêu cầu anh Sơn)"
       },
-      "nguon_du_lieu": "nhãn phụ + giấy công bố, Phòng 7 đọc trực tiếp; hồ sơ chuẩn bo-nho-chung/san-pham/rich-coenzyme-q10.md, 27/08/2026",
+      "nguon_du_lieu": "Nhãn phụ + giấy công bố (Phòng 7 đọc trực tiếp) và trang bán đang chạy. Nguồn gốc: bo-nho-chung/san-pham/rich-coenzyme-q10.md, đọc lúc 28/08/2026 12h.",
       "huong_tuong_tac": "CoQ10 có thể LÀM GIẢM tác dụng thuốc chống đông (nguy cơ đông máu), ngược hướng với Nattokinase là tăng nguy cơ chảy máu. Khách dùng cả hai mà đang có thuốc chống đông thì bắt buộc để bác sĩ quyết. Nguồn: bo-nho-chung/luat-tuan-thu.md, 27/08/2026.",
       "ten_day_du_tren_bao_bi": "Thực phẩm bảo vệ sức khỏe RICH COENZYME Q10",
       "dang_hoat_chat": {
@@ -101,7 +102,8 @@
           "AFC niêm yết sàn Tokyo mã 2927",
           "MST 5SPRO 0104104405"
         ]
-      }
+      },
+      "CANH_BAO_BAN_SAO": "Toàn bộ số giá ở đây là BẢN SAO. Nguồn gốc: bo-nho-chung/san-pham/rich-coenzyme-q10.md trên nhánh claude/dilim-ai-command-center-yy5uvo. Trước khi quay bất kỳ video nào nói giá, PHẢI git show lại file gốc để đối chiếu. Ngày 27/08 bản sao này đã lệch sau chưa đầy 24 giờ vì mốc 2 hộp được thêm mà Phòng 6 không biết."
     },
     {
       "id": "dha-epa-sq",
