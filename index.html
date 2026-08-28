@@ -1845,8 +1845,12 @@ body:has(.dock.on){padding-bottom:74px}
     elHint.textContent = 'Chọn đáp án đúng nhất với anh chị';
   }
 
+  var daBaoBaiKiem = false;
   function finish(){
     var n = answers.reduce(function(a,b){ return a + (b||0); }, 0);
+    // Lam xong bai kiem tra = khach da bo 30 giay nghi ve suc khoe cua minh.
+    // Day la su kien duy nhat co du so luong de moi pixel trong tuan dau.
+    if(!daBaoBaiKiem){ daBaoBaiKiem = true; baoFB('CompleteRegistration'); }
     var lv = LEVELS.filter(function(l){ return n <= l.max; })[0];
     quiz.hidden = true; elRes.hidden = false;
     elN.textContent = n;
@@ -2111,6 +2115,15 @@ var FORM_GOOGLE = {
   var nut = f.querySelector('button[type="submit"]');
   var chuNut = nut ? nut.textContent : '';
 
+  // Khach bat dau dien phieu = tin hieu manh nhat truoc khi mua.
+  // Bao mot lan duy nhat moi phien, de Meta co du kien ma hoc.
+  var daBaoBatDau = false;
+  f.addEventListener('input', function(){
+    if(daBaoBatDau) return;
+    daBaoBatDau = true;
+    baoFB('InitiateCheckout');
+  });
+
   var M_ME = LIEN_HE.messenger;
 
   function thoat(x){
@@ -2269,10 +2282,14 @@ var FORM_GOOGLE = {
     if(!nut) return;
     nut.addEventListener('click', function(){
       var oDu = ok.querySelector('input[name="cach-tra"][value="du"]');
-      var soTien = (oDu && oDu.checked) ? nut.getAttribute('data-du') : nut.getAttribute('data-coc');
-      baoFB('Purchase', soTien);
+      var daChuyen = (oDu && oDu.checked) ? nut.getAttribute('data-du') : nut.getAttribute('data-coc');
+      // Bao ve Facebook GIA TRI DON, khong phai so tien vua chuyen.
+      // Khach dat coc 200.000d van la don 17.340.000d. Bao 200.000d thi Meta
+      // hoc nham, di tim nguoi sinh ra 200.000d, va ROAS trong Ads Manager
+      // thap hon su that gan 90 lan.
+      baoFB('Purchase', nut.getAttribute('data-du'));
       nut.disabled = true;
-      nut.textContent = 'Đã ghi nhận · ' + chamNghin(soTien) + 'đ';
+      nut.textContent = 'Đã ghi nhận · ' + chamNghin(daChuyen) + 'đ';
       nut.classList.add('xong');
       if(camOn) camOn.hidden = false;
     });
