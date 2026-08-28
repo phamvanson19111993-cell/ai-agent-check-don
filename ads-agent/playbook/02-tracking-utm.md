@@ -75,3 +75,23 @@ trường ẩn theo query string). Kết quả: mỗi dòng lead trong Sheet/CRM
 
 Không có 4 cột `utm_*` + `Nghe máy` + `Chốt` thì agent không phân tích chất lượng lead được,
 chỉ phân tích được số bề mặt trên Ads Manager.
+
+> ## 🚨 BẢNG LEAD THẬT KHÔNG BAO GIỜ ĐƯỢC ĐƯA VÀO REPO
+>
+> Repo `ai-agent-check-don` là **repo công khai** — ai trên Internet cũng đọc được mọi file,
+> mọi nhánh (kiểm 28/08/2026, `private: false`). Bảng ở trên là **cấu trúc cột mẫu**, không phải
+> chỗ để dán dữ liệu thật.
+>
+> **Cấm tuyệt đối commit:** tên khách · số điện thoại · địa chỉ · ảnh chụp màn hình có thông tin
+> khách · ảnh bill chuyển khoản · token, khoá API, mã bot Telegram.
+>
+> Bảng lead thật sống ở **Google Sheet riêng / CRM riêng**. Khi gửi số cho agent phân tích:
+> gửi **số tổng hợp theo `utm_content`**, không gửi từng dòng khách.
+>
+> | ✅ Được ghi trong báo cáo | ❌ Không được ghi |
+> |---|---|
+> | "AngleB_Hook02 ra 14 lead, 9 nghe máy, 2 chốt" | tên · SĐT · địa chỉ của 14 người đó |
+> | "1 đơn mốc 6 hộp, 17.340.000đ" | ảnh bill, số tài khoản người gửi |
+>
+> Luật đầy đủ: `bo-nho-chung/luat-du-lieu-khach.md` trên nhánh Tổng Chỉ Huy.
+> **Repo chỉ nhận CON SỐ, không nhận NGƯỜI.**

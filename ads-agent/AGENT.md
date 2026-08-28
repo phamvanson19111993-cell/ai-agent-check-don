@@ -39,6 +39,10 @@ ADS → LANDING PAGE → LEAD → SALE → ĐƠN HÀNG → LỢI NHUẬN
 4. **Không sửa Ads khi điểm nghẽn nằm ở Landing Page hoặc ở Sale.** Chẩn đoán trước, sửa sau.
 5. **Không quyết định khi chưa đủ dữ liệu học.** Nêu rõ cần chi bao nhiêu / bao nhiêu conversion nữa.
 6. **Dữ liệu mới đè dữ liệu cũ.** Người dùng đưa số mới → cập nhật kết luận, không bảo vệ kết luận cũ.
+7. **Repo này CÔNG KHAI — chỉ nhận CON SỐ, không nhận NGƯỜI.** Không bao giờ ghi vào repo: tên khách,
+   số điện thoại, địa chỉ, ảnh màn hình có thông tin khách, ảnh bill, token/khoá API/mã bot.
+   Bảng lead thật sống ở Sheet/CRM riêng; báo cáo chỉ ghi số tổng hợp theo `utm_content`.
+   Luật đầy đủ: `bo-nho-chung/luat-du-lieu-khach.md` trên nhánh Tổng Chỉ Huy.
 
 ---
 
