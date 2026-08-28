@@ -41,21 +41,31 @@ cần anh quyết tên kho và tên miền.
 Trong lúc chờ, thư mục này chỉ giữ hồ sơ và ghi chú. Không có workflow đăng trang,
 cố ý để không đụng vào trang Q10.
 
-## Bộ khung sẽ dựng (12 phần, hai giai đoạn: cho trước — bán sau)
+## Bộ khung — 9 mục, ngắn hơn trang Q10
 
 ```
-Mở đầu   chạm nỗi khổ, chưa nói tên sản phẩm · 2 nút · 3 con số · số điện thoại
-  01  Bài tự kiểm tra 6 câu  ← thứ giá trị nhất trên trang
-  02  Nguyên nhân gốc rễ          07  Hồ sơ & kiểm nghiệm
-  03  Câu chuyện đi vòng          08  Điểm khác biệt
-  04  Vì sao cách cũ chỉ đỡ       09  Nhà máy
-  05  Muốn tới gốc cần gì         10  Kiểm chứng
-  ──  Ba việc làm ngay, miễn phí  11  Minh bạch công ty mẹ
-  06  Cơ chế sản phẩm             12  Báo giá & đặt hàng
-  ──  Hỏi đáp  ·  Khối nội bộ (ẩn)
+Mở đầu   chạm nỗi khổ · 2 nút · 3 con số · số điện thoại
+  01  Bài tự kiểm tra 6 câu   ← xong bài là hiện khối chốt ngay tại chỗ
+  02  Hai loại mỡ, cái cân không nhìn thấy chỗ mỡ nằm
+  03  Câu chuyện đi vòng sáu năm
+  04  Vì sao mấy cách cũ chỉ đỡ một đoạn
+  05  Bốn việc nên làm ngay, không tốn đồng nào   ← chốt giai đoạn cho
+  ──  dải mời đặt hàng
+  06  Công dụng trên nhãn — đúng một dòng
+  ──  Hồ sơ sản phẩm
+  07  Giấy tờ & chép nguyên văn nhãn phụ
+  ──  dải mời đặt hàng
+  08  Đọc nhãn cho kỹ
+  09  Ai làm ra, ai chịu trách nhiệm
+  ──  dải mời đặt hàng
+  12  Báo giá & đặt hàng  ·  Hỏi đáp  ·  Pháp lý  ·  Ghi chú nội bộ (ẩn)
 ```
 
-Một file `index.html` duy nhất, ảnh nhúng base64, không phụ thuộc gì bên ngoài.
+So với trang Q10: **4.656 chữ** thay vì 5.683 · **24.650px** cuộn thay vì 32.791px.
+Bộ tự kiểm có mục canh chừng hai con số này, thêm nội dung mà vượt ngưỡng là báo đỏ.
+
+**Sáu đường vào phiếu đặt hàng:** nút ở đầu trang · khối chốt ngay sau bài kiểm tra ·
+ba dải giữa trang · thanh dính đáy màn hình.
 
 ## Ranh giới cứng của nhóm giảm cân
 

@@ -204,6 +204,43 @@ def kiem_chuyen_doi(br):
 
     ghi(pg.locator('.ba-so div').count() == 3, 'đầu trang có ba con số kiểm chứng được')
 
+    # Loi moi dat hang phai gap khach nhieu lan tren duong cuon, khong doi
+    # toi cuoi trang moi hien ra mot lan.
+    dai = pg.locator('.chot')
+    ghi(dai.count() == 3, 'có ba dải mời đặt hàng rải giữa trang', str(dai.count()))
+    ghi(pg.evaluate("""() => Array.from(document.querySelectorAll('.chot'))
+            .every(c => c.querySelector('a[href="#dat-hang"]') && c.querySelector('a[href^="tel:"]'))"""),
+        'dải nào cũng có cả nút đặt hàng lẫn nút gọi')
+
+    # Trang phai ngan hon trang Q10. Do bang so chu khach doc duoc, bo phan
+    # ghi chu noi bo. Dat nguong de sau nay them noi dung khong troi di xa.
+    do = pg.evaluate("""() => {
+        const bo = new Set(['SCRIPT','STYLE','NOSCRIPT']);
+        const nb = document.getElementById('noi-bo');
+        let chu = '';
+        const di = n => {
+          if (n.nodeType === 3) { chu += n.nodeValue + ' '; return; }
+          if (n.nodeType !== 1 || bo.has(n.tagName) || n === nb || n.hidden) return;
+          if (getComputedStyle(n).display === 'none') return;
+          n.childNodes.forEach(di);
+        };
+        di(document.body);
+        return { tu: chu.trim().split(/\\s+/).filter(Boolean).length,
+                 cao: document.documentElement.scrollHeight };
+    }""")
+    ghi(do['tu'] <= 5000, 'trang gọn hơn trang Q10 (5.683 chữ)', str(do['tu']) + ' chữ')
+    ghi(do['cao'] <= 27000, 'đường cuộn ngắn hơn trang Q10 (32.791px)', str(do['cao']) + 'px')
+
+    # Bang "mot nam dat lai may lan" — toan bo la phep chia tu bang gia
+    ghi(pg.locator('#dat-lai table tbody tr').count() == 4, 'bảng đặt lại đủ bốn mốc')
+    dl = pg.locator('#dat-lai').inner_text()
+    ghi('12 lần' in dl and '1 lần' in dl, 'bảng đặt lại tính đúng số lần mỗi năm', dl.replace(chr(10), ' | ')[:90])
+    ghi(pg.locator('#dat-lai tr.it').count() == 1, 'đánh dấu đúng một mốc ít phải đặt lại nhất')
+
+    # O nhac dat lai
+    ghi(pg.locator('#nhac').is_checked(), 'ô nhắc trước khi hết gói mặc định có tích')
+    ghi(pg.locator('#nhac').is_visible(), 'ô nhắc hiện ngay từ bước một, không bị gộp vào khối địa chỉ')
+
     # Hinh minh hoa: ve tay bang SVG, nhung thang trong file.
     ghi(pg.locator('figure.hinh').count() == 5, 'đủ năm hình minh hoạ',
         str(pg.locator('figure.hinh').count()))
@@ -272,6 +309,25 @@ def kiem_chuyen_doi(br):
     pg.wait_for_timeout(300)
     ghi(not pg.locator('#ket-qua-don').is_visible(), 'làm lại bài thì phiếu xoá kết quả cũ')
     ghi('12/12' not in pg.locator('.dock .p').inner_text(), 'làm lại bài thì thanh dưới cũng xoá')
+
+    # Don gui di phai ghi ro khach co dong y cho goi nhac hay khong
+    pg.goto(TRANG.as_uri(), wait_until='load')
+    pg.wait_for_timeout(400)
+    dien_phieu(pg)
+    pg.click('button[type="submit"]')
+    pg.wait_for_timeout(900)
+    tin = pg.evaluate("decodeURIComponent(document.querySelector('.don-chinh').href.split('text=')[1])")
+    ghi('Nhắc trước khi hết gói: Có' in tin, 'đơn ghi lại là khách đồng ý cho gọi nhắc')
+
+    pg.goto(TRANG.as_uri(), wait_until='load')
+    pg.wait_for_timeout(400)
+    dien_phieu(pg)
+    pg.locator('.nhac-lbl').click()
+    pg.click('button[type="submit"]')
+    pg.wait_for_timeout(900)
+    tin = pg.evaluate("decodeURIComponent(document.querySelector('.don-chinh').href.split('text=')[1])")
+    ghi('Nhắc trước khi hết gói: Không' in tin,
+        'bỏ tích thì đơn ghi Không — nhân viên không được gọi')
 
     ghi(not ljs, 'không lỗi JavaScript', '; '.join(ljs[:2]))
     pg.close()

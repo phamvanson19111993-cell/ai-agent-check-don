@@ -659,6 +659,21 @@ body:has(.dock.on){padding-bottom:74px}
 .tra-o{display:grid;gap:.5rem;margin:.15rem 0 0}
 @media(min-width:520px){.tra-o{grid-template-columns:1fr 1fr}}
 
+/* o khach tu chon nho goi nhac truoc khi het goi */
+.nhac-o{background:var(--sunk);border:1px solid var(--line);border-radius:var(--r);padding:.9rem 1rem}
+.nhac-lbl{display:flex;gap:.7rem;align-items:flex-start;cursor:pointer;font-size:.88rem;color:var(--ink2);line-height:1.55}
+.nhac-lbl input{width:20px;height:20px;flex:none;margin-top:.15rem;accent-color:var(--red)}
+.nhac-lbl b{color:var(--ink)}
+
+/* bang: mua kieu nao thi mot nam phai dat lai may lan */
+.dat-lai{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:1.25rem}
+.dat-lai table{width:100%;border-collapse:collapse;font-size:.88rem}
+.dat-lai th{background:var(--sunk);font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:400;padding:.6rem .8rem;text-align:left}
+.dat-lai td{padding:.6rem .8rem;border-top:1px solid var(--line2)}
+.dat-lai .n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+.dat-lai tr.it td{background:var(--red-soft)}
+.dat-lai tr.it .n{color:var(--red);font-weight:700}
+
 /* day bieu tuong goi ben canh tung moc gia — khach nhin ra ngay minh nhan bao nhieu */
 .icon-goi{display:block;margin-top:.45rem;max-width:100%;height:auto}
 .hop-o .icon-goi{margin-top:.4rem}
@@ -695,8 +710,8 @@ body:has(.dock.on){padding-bottom:74px}
 /* khoi chot ngay sau khi khach lam xong bai kiem tra */
 .chot-quiz{border:2px solid var(--red);background:var(--red-soft);border-radius:var(--r);padding:1.15rem 1.2rem;display:flex;flex-direction:column;gap:.6rem}
 .chot-quiz p{font-size:.9rem;color:var(--ink2)}
-.chot-nut{display:flex;flex-direction:column;gap:.55rem}
-@media(min-width:620px){.chot-nut{flex-direction:row}.chot-nut .btn{flex:1}}
+.chot-quiz .chot-nut{display:flex;flex-direction:column;gap:.55rem}
+@media(min-width:620px){.chot-quiz .chot-nut{flex-direction:row}.chot-quiz .chot-nut .btn{flex:1}}
 
 /* nhac lai ket qua bai kiem ngay tren phieu dat hang */
 .ket-qua-don{background:var(--sunk);border-left:3px solid var(--red);border-radius:var(--r);padding:.7rem .85rem;font-size:.86rem;color:var(--ink2)}
@@ -739,8 +754,7 @@ body:has(.dock.on){padding-bottom:74px}
       <p class="kicker">DiLiM · Vòng bụng · Mỡ nội tạng · Chuyển hoá</p>
       <h1>Cân nặng gần như cũ,<br>mà bụng <em>vẫn to lên</em>.</h1>
       <p class="hero-p">Cân điện tử báo con số không khác năm ngoái mấy. Nhưng cái quần cùng cỡ thì cài khó hơn, và ngồi xuống là thấy bụng chèn.</p>
-      <p class="hero-p">Chuyện đó có tên. Cân nặng đo <i>tất cả</i> những gì trên người — xương, cơ, nước, mỡ. Nó không phân biệt được mỡ nằm <b>dưới da</b> với mỡ nằm <b>bọc quanh tạng</b>. Hai loại mỡ này không giống nhau chút nào.</p>
-      <p class="hero-promise">Trang này làm ba việc theo thứ tự: giúp anh chị <b>đo đúng chỗ</b>, chỉ ra <b>nhóm nguyên nhân</b> đang nghiêng về đâu, rồi <b>sau cùng</b> mới nói tới sản phẩm.</p>
+      <p class="hero-promise">Cân đo <i>tất cả</i> — xương, cơ, nước, mỡ — nên nó không báo gì. Trang này giúp anh chị <b>đo đúng chỗ</b>, chỉ ra <b>nhóm nguyên nhân</b>, rồi <b>sau cùng</b> mới nói tới sản phẩm.</p>
 
       <div class="three">
         <div class="one">
@@ -798,7 +812,7 @@ body:has(.dock.on){padding-bottom:74px}
   <div class="wrap" id="stage-1">
     <div class="stage">
       <span class="stage-n">Giai đoạn 1</span>
-      <div class="stage-tx"><h2>Phân tích</h2><p>Trước hết xem anh chị đang ở đâu. Bài kiểm tra dưới đây không hỏi tên, không hỏi số điện thoại, làm xong là có kết quả ngay.</p></div>
+      <div class="stage-tx"><h2>Phân tích</h2><p>Xem anh chị đang ở đâu đã. Không hỏi tên, không hỏi số điện thoại, làm xong là có kết quả ngay.</p></div>
     </div>
   </div>
 
@@ -807,7 +821,7 @@ body:has(.dock.on){padding-bottom:74px}
       <div class="col head">
         <span class="eyebrow">Phần 1 · Tự kiểm tra</span>
         <h2>Tự kiểm tra trong 30 giây</h2>
-        <p class="lede">Sáu câu về vòng bụng và nếp sinh hoạt. Không hỏi tên, không hỏi số điện thoại. Làm xong là biết mình đang nghiêng về nhóm nguyên nhân nào.</p>
+        <p class="lede">Sáu câu về vòng bụng và nếp sinh hoạt. Làm xong là biết mình nghiêng về nhóm nguyên nhân nào.</p>
       </div>
       <div class="col">
         <div class="quiz" id="quiz">
@@ -870,7 +884,7 @@ body:has(.dock.on){padding-bottom:74px}
   <div class="wrap" id="stage-2">
     <div class="stage">
       <span class="stage-n">Giai đoạn 2</span>
-      <div class="stage-tx"><h2>Hỗ trợ</h2><p>Giờ nói cho hết ngọn ngành: vì sao bụng to lên trong khi cân gần như cũ, những cách anh chị từng thử hụt ở đâu, và ba việc nên làm ngay mà không tốn đồng nào. Phần này không bán gì cả.</p></div>
+      <div class="stage-tx"><h2>Hỗ trợ</h2><p>Vì sao bụng to lên trong khi cân gần như cũ, những cách cũ hụt ở đâu, và bốn việc nên làm ngay không tốn đồng nào. Phần này không bán gì cả.</p></div>
     </div>
   </div>
 
@@ -880,23 +894,23 @@ body:has(.dock.on){padding-bottom:74px}
       <div class="col head">
         <span class="eyebrow">Phần 02 · Nguyên nhân gốc rễ</span>
         <h2>Cái cân không nhìn thấy chỗ mỡ nằm</h2>
-        <p class="lede">Cùng một ký mỡ, nằm dưới da thì chỉ làm quần chật. Nằm bọc quanh gan và ruột thì lại là chuyện khác hẳn — vì lớp mỡ đó không nằm yên.</p>
+        <p class="lede">Cùng một ký mỡ: nằm dưới da thì chỉ làm quần chật, nằm bọc quanh gan và ruột thì khác hẳn — vì lớp mỡ đó không nằm yên.</p>
       </div>
       <div class="chain">
         <div class="link">
           <span class="k">MẮT XÍCH 1</span>
           <h3>Hai loại mỡ, hai câu chuyện</h3>
-          <p>Mỡ dưới da là lớp bấu được vào giữa hai ngón tay. Mỡ nội tạng nằm sâu hơn, bọc quanh gan, ruột và tuỵ — <span class="hl">bấu không tới, và cái cân cũng không tách được ra</span>. Bụng cứng và tròn đều, ấn vào thấy chắc chứ không mềm, thường là dấu hiệu phần mỡ sâu đang nhiều lên.</p>
+          <p>Mỡ dưới da bấu được giữa hai ngón tay. Mỡ nội tạng nằm sâu hơn, bọc quanh gan và ruột — <span class="hl">bấu không tới, cân cũng không tách ra được</span>. Bụng cứng và tròn đều thường là dấu hiệu phần mỡ sâu đang nhiều lên.</p>
         </div>
         <div class="link hot">
           <span class="k">MẮT XÍCH 2 <span class="badge">Điểm khác biệt lớn nhất</span></span>
           <h3>Lớp mỡ sâu không nằm yên</h3>
-          <p>Mỡ nội tạng hoạt động như một mô sống: nó liên tục thả axit béo tự do và các chất gây viêm vào máu. Mà máu từ vùng bụng thì <span class="hl">chảy thẳng về gan trước</span>, chứ không đi vòng. Đó là lý do vì sao vòng bụng lại liên quan tới các chỉ số mỡ máu và đường huyết chặt hơn nhiều so với con số trên cân.</p>
+          <p>Nó hoạt động như mô sống: liên tục thả axit béo và chất gây viêm vào máu. Mà máu vùng bụng <span class="hl">chảy thẳng về gan trước</span>, không đi vòng. Đó là lý do vòng bụng gắn với các chỉ số sức khoẻ chặt hơn con số trên cân.</p>
         </div>
         <div class="link">
           <span class="k">MẮT XÍCH 3</span>
           <h3>Sau tuổi 40, khối cơ hao đi</h3>
-          <p>Cơ là nơi tiêu thụ năng lượng ngay cả lúc ngồi yên. Mỗi năm sau tuổi 40, khối cơ mất dần nếu không tập gì. Cơ ít đi thì mức tiêu hao lúc nghỉ tụt xuống — <span class="hl">vẫn ăn như cũ, nhưng phần dư ra nhiều hơn trước</span>. Phần dư đó tìm chỗ chứa, và chỗ dễ nhất là ổ bụng.</p>
+          <p>Cơ tiêu thụ năng lượng ngay cả lúc ngồi yên. Sau tuổi 40 khối cơ mất dần nếu không tập gì, nên mức tiêu hao lúc nghỉ tụt xuống — <span class="hl">vẫn ăn như cũ mà phần dư nhiều hơn trước</span>. Phần dư đó tìm chỗ chứa, chỗ dễ nhất là ổ bụng.</p>
         </div>
         <div class="link">
           <span class="k">MẮT XÍCH 4</span>
@@ -969,7 +983,6 @@ body:has(.dock.on){padding-bottom:74px}
       </div>
 
       <div class="col stack">
-        <p><b>Vì sao vòng bụng đáng tin hơn cái cân?</b> Vì cân cộng gộp tất cả: xương, cơ, nước, mỡ. Một người tập tạ có thể nặng thêm ba ký mà vòng bụng nhỏ đi. Một người nhịn ăn có thể nhẹ đi ba ký mà phần lớn là cơ và nước, vòng bụng gần như không đổi. <span class="hl">Cái nào đo đúng thứ mình muốn đổi thì cái đó mới đáng theo dõi.</span></p>
         <p>Ngưỡng thường dùng cho người châu Á: <b class="mono">nam từ 90cm</b>, <b class="mono">nữ từ 80cm</b> — đo ngang rốn, buổi sáng, chưa ăn, thước áp sát nhưng không siết. Vượt ngưỡng không có nghĩa là có bệnh; nó có nghĩa là nên đi khám và nên bắt đầu theo dõi.</p>
         <p class="note">Các con số ngưỡng ở trên là tiêu chuẩn vòng eo dùng cho người châu Á, không phải cam kết của sản phẩm. Bài viết này không thay thế việc thăm khám.</p>
       </div>
@@ -986,12 +999,10 @@ body:has(.dock.on){padding-bottom:74px}
       <div class="col">
         <div class="story">
           <div class="who"><b>Chị Nhàn, 46 tuổi</b><span>Kế toán · Bắc Ninh</span></div>
-          <p>Lần đầu chị Nhàn thấy quần chật là năm 40 tuổi. Chị làm cái việc mà gần như ai cũng làm: nhịn bớt. Bỏ cơm tối, chỉ ăn hoa quả. Ba tuần xuống bốn ký, chị mừng.</p>
-          <p>Tháng thứ hai thì đứng. Chị nhịn thêm nữa, người bắt đầu đuối, chiều nào cũng hoa mắt. Đến khi ăn lại bình thường thì bốn ký quay về trong sáu tuần, kèm thêm một ký nữa.</p>
-          <p>Sáu năm sau đó là vòng lặp ấy. Trà giảm cân, nhịn gián đoạn, tập bụng mỗi tối trăm cái. Có đợt cân xuống thật, nhưng cái quần vẫn cài khó y như cũ — chị không hiểu vì sao.</p>
-          <p>Điều chị không biết: mỗi lần nhịn sâu, phần mất đi có cả cơ. Cơ mất thì mức tiêu hao lúc nghỉ tụt theo. Ăn lại như cũ thì phần dư nhiều hơn trước — và nó không quay về chỗ cũ, nó vào ổ bụng.</p>
+          <p>Năm 40 tuổi chị Nhàn thấy quần chật, liền làm cái việc gần như ai cũng làm: bỏ cơm tối, chỉ ăn hoa quả. Ba tuần xuống bốn ký. Tháng thứ hai thì đứng. Đến khi ăn lại bình thường, bốn ký quay về trong sáu tuần, kèm thêm một ký nữa.</p>
+          <p>Sáu năm sau đó là vòng lặp ấy — trà giảm cân, nhịn gián đoạn, tập bụng trăm cái mỗi tối. Có đợt cân xuống thật, nhưng cái quần vẫn cài khó y như cũ. Điều chị không biết: mỗi lần nhịn sâu, phần mất đi có cả cơ; cơ mất thì mức tiêu hao lúc nghỉ tụt theo, và phần dư sau đó không quay về chỗ cũ mà vào ổ bụng.</p>
           <p class="turn pullquote">Suốt sáu năm chị theo dõi <b>con số trên cân</b>, trong khi thứ đang đổi là <b>chỗ mỡ nằm</b>.</p>
-          <p>Việc đầu tiên chị đổi không tốn đồng nào: bỏ cân điện tử, mua một cái thước dây, đo ngang rốn mỗi sáng thứ Hai và ghi vào sổ. Ba tháng sau chị mới có được thứ mà sáu năm trước không có — một đường biểu diễn đo đúng thứ mình muốn đổi.</p>
+          <p>Việc đầu tiên chị đổi không tốn đồng nào: cất cân đi, mua một cái thước dây, đo ngang rốn mỗi sáng thứ Hai.</p>
           <p class="note">Câu chuyện dựng lại từ kiểu tình huống bên em gặp thường xuyên khi tư vấn, không phải hồ sơ của một khách hàng cụ thể, và không mô tả tác dụng của bất kỳ sản phẩm nào.</p>
         </div>
       </div>
@@ -1004,7 +1015,7 @@ body:has(.dock.on){padding-bottom:74px}
       <div class="col head">
         <span class="eyebrow">Phần 04 · Giải pháp trước đây</span>
         <h2>Vì sao mấy cách cũ chỉ đỡ được một đoạn</h2>
-        <p class="lede">Không phải cách nào cũng vô ích. Nhưng mỗi cách chạm vào một mảnh, và mảnh đó thường không phải mảnh đang giữ mỡ ở lại ổ bụng.</p>
+        <p class="lede">Không cách nào vô ích cả. Nhưng mỗi cách chỉ chạm một mảnh, và thường không phải mảnh đang giữ mỡ lại.</p>
       </div>
       <div class="tablewrap">
         <table>
@@ -1012,10 +1023,9 @@ body:has(.dock.on){padding-bottom:74px}
             <tr><th>Cách đã thử</th><th>Có đỡ không</th><th>Đỡ được bao lâu</th><th>Vì sao chưa tới gốc</th></tr>
           </thead>
           <tbody>
-            <tr><td class="w">Nhịn ăn sâu, bỏ bữa tối</td><td><span class="mark part">Cân xuống nhanh</span></td><td>2 – 6 tuần</td><td>Phần mất đi có cả cơ và nước. Cơ ít đi thì mức tiêu hao lúc nghỉ tụt theo, ăn lại là lên nhanh hơn trước.</td></tr>
+            <tr><td class="w">Nhịn ăn sâu, bỏ bữa tối</td><td><span class="mark part">Cân xuống nhanh</span></td><td>2 – 6 tuần</td><td>Mất cả cơ và nước. Cơ ít đi thì mức tiêu hao lúc nghỉ tụt theo, ăn lại là lên nhanh hơn trước.</td></tr>
             <tr><td class="w">Trà và thuốc lợi tiểu</td><td><span class="mark no">Gần như không</span></td><td>Vài ngày</td><td>Thứ mất đi chủ yếu là nước. Uống nước lại là con số quay về, vòng bụng không đổi.</td></tr>
-            <tr><td class="w">Tập gập bụng mỗi tối</td><td><span class="mark part">Chắc cơ bụng</span></td><td>Lâu dài</td><td>Cơ thể không đốt mỡ tại chỗ theo nhóm cơ mình tập. Bụng chắc hơn nhưng lớp mỡ sâu vẫn nằm nguyên đó.</td></tr>
-            <tr><td class="w">Đi bộ nhẹ nhàng, không đều</td><td><span class="mark part">Đỡ ít</span></td><td>Tuỳ</td><td>Có ích cho sức khoẻ chung, nhưng nếu bữa ăn và giờ ngủ không đổi thì phần dư mỗi ngày vẫn còn nguyên.</td></tr>
+            <tr><td class="w">Tập gập bụng mỗi tối</td><td><span class="mark part">Chắc cơ bụng</span></td><td>Lâu dài</td><td>Cơ thể không đốt mỡ tại chỗ theo nhóm cơ mình tập. Bụng chắc hơn, lớp mỡ sâu vẫn nguyên đó.</td></tr>
             <tr><td class="w">Chỉ theo dõi bằng cân</td><td><span class="mark no">Đo sai thứ</span></td><td>—</td><td>Cân cộng gộp xương, cơ, nước, mỡ. Nó không phân biệt được mỡ dưới da với mỡ bọc quanh tạng.</td></tr>
           </tbody>
         </table>
@@ -1024,86 +1034,34 @@ body:has(.dock.on){padding-bottom:74px}
     </div>
   </section>
 
-  <!-- 05 GIẢI PHÁP GỐC RỄ -->
-  <section class="sec" id="giai-phap-goc">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 05 · Giải pháp gốc rễ</span>
-        <h2>Muốn tới gốc, phải đúng cả bốn điều</h2>
-      </div>
-      <div class="col stack">
-        <p class="lede">Bốn điều này không phải bí quyết. Cái khó là phải làm cùng lúc — thiếu một là ba cái kia đỡ được một đoạn rồi đứng.</p>
-        <div class="symptoms">
-          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Đo đúng thứ mình muốn đổi.</b> Thước dây quanh rốn, mỗi tuần một lần, cùng một giờ. Cân vẫn cứ đứng lên, nhưng đường cần theo dõi là vòng bụng.</p></div>
-          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Giữ được khối cơ.</b> Ăn đủ đạm trong mỗi bữa và có vận động chịu lực vài buổi mỗi tuần. Đây là điều bị bỏ qua nhiều nhất, và cũng là điều quyết định lần này có lên lại hay không.</p></div>
-          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Dời bữa tối lên sớm.</b> Ăn xong cách giờ đi ngủ ít nhất ba tiếng, và đi bộ mươi lăm phút sau bữa. Không đổi khẩu phần, chỉ đổi giờ.</p></div>
-          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Ngủ đủ.</b> Ngủ ngắn kéo dài làm cảm giác đói lệch đi, chiều hôm sau thèm ngọt hơn. Đây là mắt xích im lặng nhất trong bốn cái.</p></div>
-        </div>
-        <p>Bốn điều trên đều <b>miễn phí</b>. Bên em nói chúng trước, và nói kỹ, vì nếu bốn điều này không đứng thì không có thứ gì bổ sung thêm vào giúp được.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- HỖ TRỢ -->
-  <section class="sec" id="ho-tro">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Giai đoạn 2 · Xử lý &amp; hỗ trợ</span>
-        <h2>Để lại số rồi thì chuyện gì xảy ra</h2>
-        <p class="lede">Nói trước cho anh chị biết, để không phải lo bị làm phiền.</p>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <span class="k">BƯỚC 01</span>
-          <h3>Gọi lại trong 15 phút</h3>
-          <p>Trong giờ hành chính. Ngoài giờ thì sáng hôm sau. Gọi từ số cố định của bên em, không phải tổng đài tự động.</p>
-        </div>
-        <div class="step">
-          <span class="k">BƯỚC 02</span>
-          <h3>Hỏi kỹ trước khi tư vấn</h3>
-          <p>Hỏi vòng bụng, nếp ăn ngủ, và nhất là <b>thuốc đang dùng</b>. Đang có bệnh nền hoặc đang dùng thuốc thì nhân viên được yêu cầu khuyên anh chị hỏi bác sĩ trước, không được chốt đơn.</p>
-        </div>
-        <div class="step">
-          <span class="k">BƯỚC 03</span>
-          <h3>Hướng dẫn cách dùng theo nhãn</h3>
-          <p>Đúng liều ghi trên nhãn phụ, không hơn. Kèm theo bốn việc miễn phí ở phần trên — cái đó quan trọng hơn.</p>
-        </div>
-        <div class="step">
-          <span class="k">BƯỚC 04</span>
-          <h3>Hỏi lại sau hai tuần</h3>
-          <p>Một cuộc gọi hỏi vòng bụng đo được bao nhiêu và có gì khó chịu không. Hết liệu trình là dừng, bên em không tự động gửi hàng kỳ sau.</p>
-        </div>
-      </div>
-      <div class="col stack">
-        <p>Anh chị cũng có thể <a href="https://m.me/61592861334561" target="_blank" rel="noopener">nhắn tin thẳng qua Facebook</a> nếu ngại gọi điện.</p>
-        <p><b>Không muốn mua cũng cứ để lại số.</b> Bốn việc miễn phí ở phần trên, nhân viên hướng dẫn hết, không kèm điều kiện gì.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- KHÉP LẠI GIAI ĐOẠN 2 -->
+  <!-- 05 BỐN VIỆC MIỄN PHÍ -->
   <section class="sec" id="tu-lam">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Khép lại giai đoạn 2</span>
-        <h2>Ba việc nên làm ngay, không tốn đồng nào</h2>
-        <p class="lede">Làm ba việc này trong bốn tuần rồi đo lại. Nếu vòng bụng đã đi xuống thì anh chị không cần mua gì của bên em cả.</p>
+        <span class="eyebrow">Phần 05 · Khép lại giai đoạn cho</span>
+        <h2>Bốn việc nên làm ngay, không tốn đồng nào</h2>
+        <p class="lede">Bốn việc này không phải bí quyết. Cái khó là phải làm cùng lúc — thiếu một là ba cái kia đỡ được một đoạn rồi đứng. Làm bốn tuần rồi đo lại; vòng bụng đã đi xuống thì anh chị không cần mua gì của bên em cả.</p>
       </div>
       <div class="chain">
         <div class="link">
           <span class="k">VIỆC 1</span>
           <h3>Mua một cái thước dây</h3>
-          <p>Sáng thứ Hai, chưa ăn, đo ngang rốn, ghi vào sổ hoặc ghi chú trong điện thoại. Mỗi tuần một lần, cùng một giờ. Bốn con số là đã thành một đường.</p>
+          <p>Sáng thứ Hai, chưa ăn, đo ngang rốn, ghi lại. Mỗi tuần một lần, cùng một giờ. Bốn con số là đã thành một đường — <span class="hl">và nó đo đúng thứ anh chị muốn đổi</span>, khác hẳn cái cân.</p>
         </div>
         <div class="link">
           <span class="k">VIỆC 2</span>
+          <h3>Giữ cho được khối cơ</h3>
+          <p>Đủ đạm mỗi bữa, thêm vận động chịu lực vài buổi mỗi tuần. Đây là việc bị bỏ qua nhiều nhất, và cũng là việc quyết định lần này có lên lại hay không.</p>
+        </div>
+        <div class="link">
+          <span class="k">VIỆC 3</span>
           <h3>Dời bữa tối lên sớm, đi bộ sau khi ăn</h3>
-          <p>Không đổi món, không giảm khẩu phần — chỉ đổi giờ. Ăn xong cách giờ ngủ ba tiếng, và đi bộ mươi lăm phút trong vòng nửa tiếng sau bữa.</p>
+          <p>Không đổi món, không giảm khẩu phần — chỉ đổi giờ. Ăn xong cách giờ ngủ ba tiếng, đi bộ mươi lăm phút ngay sau bữa. Ngủ đủ nữa thì càng tốt: ngủ ngắn kéo dài làm chiều hôm sau thèm ngọt hơn.</p>
         </div>
         <div class="link hot">
-          <span class="k">VIỆC 3</span>
+          <span class="k">VIỆC 4</span>
           <h3>Đi khám và cầm kết quả về</h3>
-          <p>Vòng bụng vượt ngưỡng thì nên làm xét nghiệm mỡ máu và đường huyết. Có con số trong tay thì mọi quyết định sau đó, kể cả quyết định không mua gì, đều dựa trên sự thật chứ không dựa trên cảm giác.</p>
+          <p>Vòng bụng vượt ngưỡng thì nên xét nghiệm mỡ máu và đường huyết. Có con số trong tay thì mọi quyết định sau đó — kể cả quyết định không mua gì — đều dựa trên sự thật.</p>
         </div>
       </div>
       <div class="col hinh-doi">
@@ -1159,16 +1117,29 @@ body:has(.dock.on){padding-bottom:74px}
       </div>
 
       <div class="col">
-        <p>Ba việc trên không cần tới bên em. Phần dưới đây mới là phần giới thiệu sản phẩm — anh chị đọc nếu muốn.</p>
+        <p>Bốn việc trên không cần tới bên em. Phần dưới đây mới là phần giới thiệu sản phẩm — anh chị đọc nếu muốn.</p>
       </div>
     </div>
   </section>
+
+  <div class="wrap">
+    <div class="chot">
+      <div class="chot-tx">
+        <h3>Làm bốn việc trên rồi mà vẫn muốn thêm phần hỗ trợ?</h3>
+        <p>Để lại số, nhân viên gọi lại hỏi kỹ vòng bụng và thuốc đang dùng rồi mới tư vấn. Không mua cũng được hướng dẫn đủ bốn việc.</p>
+      </div>
+      <div class="chot-nut">
+        <a class="btn btn-lg" href="#dat-hang">Để lại số, nhận tư vấn</a>
+        <a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ 0913.351.394</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Giai đoạn 3 -->
   <div class="wrap" id="stage-3">
     <div class="stage">
       <span class="stage-n">Giai đoạn 3</span>
-      <div class="stage-tx"><h2>Sản phẩm và báo giá</h2><p>Đọc tới đây rồi thì em mới giới thiệu sản phẩm. Anh chị xem thành phần, giấy tờ, giá cả rồi tự quyết, không ai giục.</p></div>
+      <div class="stage-tx"><h2>Sản phẩm và báo giá</h2><p>Giờ mới tới phần sản phẩm. Anh chị xem thành phần, giấy tờ, giá rồi tự quyết.</p></div>
     </div>
   </div>
 
@@ -1178,7 +1149,7 @@ body:has(.dock.on){padding-bottom:74px}
       <div class="col head">
         <span class="eyebrow">Phần 06 · Sản phẩm đứng ở đâu</span>
         <h2>Công dụng ghi trên nhãn có đúng một dòng</h2>
-        <p class="lede">Từ đây trở xuống là phần giới thiệu sản phẩm. Bên em nói đúng dòng công dụng đã đăng ký với Cục An toàn thực phẩm, không thêm một chữ.</p>
+        <p class="lede">Bên em nói đúng dòng công dụng đã đăng ký với Cục An toàn thực phẩm, không thêm một chữ.</p>
       </div>
       <div class="col stack">
         <div class="cong-dung">
@@ -1186,8 +1157,7 @@ body:has(.dock.on){padding-bottom:74px}
           <p class="cd-v">Hỗ trợ giảm béo.</p>
           <span class="cd-n">Giấy tiếp nhận đăng ký bản công bố sản phẩm số <b class="mono">3993/2024/ĐKSP</b> · Giấy xác nhận nội dung quảng cáo số <b class="mono">1581/2024/XNQC-ATTP</b></span>
         </div>
-        <p><b>Bên em dừng đúng ở đó.</b> Trên bao bì tiếng Nhật của hãng có ghi thêm mấy nội dung khác, nhưng nội dung được phép quảng cáo tại Việt Nam là nội dung đã đăng ký — và nội dung đã đăng ký chỉ có bốn chữ: <i>hỗ trợ giảm béo</i>. Nên anh chị sẽ không thấy trang này hứa giảm mỡ ở chỗ nào, giảm bao nhiêu cân, hay trong bao nhiêu ngày.</p>
-        <p>Cũng vì thế, phần quan trọng nhất của trang này vẫn là <a href="#tu-lam">ba việc miễn phí</a> ở trên. Thực phẩm bảo vệ sức khoẻ là phần hỗ trợ thêm, đứng sau chế độ ăn, giấc ngủ và vận động — không đứng thay.</p>
+        <p><b>Bên em dừng đúng ở đó.</b> Bao bì tiếng Nhật có ghi thêm mấy ý khác, nhưng ở Việt Nam cái được phép nói là cái đã đăng ký. Nên trang này không hứa giảm mỡ ở chỗ nào, giảm bao nhiêu cân, hay trong bao nhiêu ngày. Phần quan trọng nhất vẫn là <a href="#tu-lam">bốn việc miễn phí</a> ở trên — sản phẩm đứng sau ăn, ngủ, vận động chứ không đứng thay.</p>
         <div class="symptoms">
           <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Đối tượng sử dụng, nguyên văn nhãn:</b> Người lớn từ 18 tuổi trở lên béo phì, người muốn giảm béo.</p></div>
           <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Cách dùng, nguyên văn nhãn:</b> Uống 2 viên mỗi ngày với nước. Một gói 60 viên đi hết 30 ngày.</p></div>
@@ -1250,7 +1220,7 @@ body:has(.dock.on){padding-bottom:74px}
       <div class="col head">
         <span class="eyebrow">Phần 07 · Hồ sơ &amp; kiểm nghiệm</span>
         <h2>Giấy tờ tra được, không phải lời hứa</h2>
-        <p class="lede">Hai số đầu tra được trên cổng của Cục An toàn thực phẩm. Anh chị gõ số vào là ra hồ sơ, không cần tin lời bên em.</p>
+        <p class="lede">Hai số đầu tra được trên cổng của Cục An toàn thực phẩm — gõ số vào là ra hồ sơ, không cần tin lời bên em.</p>
       </div>
       <div class="papers">
         <div class="paper-i">
@@ -1306,18 +1276,30 @@ body:has(.dock.on){padding-bottom:74px}
     </div>
   </section>
 
+  <div class="wrap">
+    <div class="chot">
+      <div class="chot-tx">
+        <h3>Giấy tờ tra được rồi thì đặt hàng thôi</h3>
+        <p>Số công bố 3993/2024/ĐKSP tra trên cổng Cục An toàn thực phẩm. Giao toàn quốc, gọi xác nhận trước khi gửi, trả tiền khi nhận cũng được.</p>
+      </div>
+      <div class="chot-nut">
+        <a class="btn btn-lg" href="#dat-hang">Xem giá &amp; đặt hàng</a>
+        <a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ 0913.351.394</a>
+      </div>
+    </div>
+  </div>
+
   <!-- 08 ĐIỂM KHÁC BIỆT -->
   <section class="sec" id="khac-biet">
     <div class="wrap stack-lg">
       <div class="col head">
         <span class="eyebrow">Phần 08 · Đọc nhãn cho kỹ</span>
         <h2>Ba con số đáng nhìn trên nhãn</h2>
-        <p class="lede">Bên em không so sánh với sản phẩm của hãng nào. Chỉ nói đúng thứ in trên nhãn, để anh chị tự đối chiếu khi xem hàng khác.</p>
+        <p class="lede">Chỉ nói đúng thứ in trên nhãn, để anh chị tự đối chiếu khi xem hàng khác.</p>
       </div>
       <div class="col stack">
         <div class="symptoms">
           <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>159mg chiết xuất, chứa 1,5mg Axit Ellagic mỗi viên.</b> Nhãn ghi rõ cả khối lượng chiết xuất lẫn hàm lượng hoạt chất bên trong. Nhiều sản phẩm chỉ ghi khối lượng chiết xuất — con số đó lớn hơn nhưng không cho biết bên trong có bao nhiêu.</p></div>
-          <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Sai số công bố ± 20%.</b> Chỉ tiêu chất lượng chủ yếu được đăng ký kèm ngưỡng sai số, nghĩa là có mức để đối chiếu khi kiểm nghiệm, không phải con số nói suông.</p></div>
           <div class="sym"><span class="bx" aria-hidden="true"></span><p><b>Đúng một dòng công dụng.</b> Nhãn ghi <i>hỗ trợ giảm béo</i> — hết. Anh chị gặp sản phẩm cùng nhóm mà quảng cáo hứa số cân hoặc số ngày thì nên tra lại số công bố của họ trước khi mua.</p></div>
         </div>
         <p class="note">Phần này nói về cách đọc nhãn nói chung, không nhằm hạ thấp sản phẩm cụ thể nào.</p>
@@ -1325,61 +1307,36 @@ body:has(.dock.on){padding-bottom:74px}
     </div>
   </section>
 
-  <!-- 09 NHÀ MÁY -->
+  <!-- 09 NHÀ MÁY & CÔNG TY MẸ -->
   <section class="sec" id="nha-may">
     <div class="wrap stack-lg">
       <div class="col head">
-        <span class="eyebrow">Phần 09 · Nhà máy</span>
-        <h2>Làm ra ở đâu, ai chịu trách nhiệm</h2>
-        <p class="lede">Ba cái tên, ba trách nhiệm khác nhau. Ghi ra để anh chị biết gọi ai khi cần.</p>
+        <span class="eyebrow">Phần 09 · Ai làm ra, ai chịu trách nhiệm</span>
+        <h2>Ba cái tên, ba trách nhiệm</h2>
       </div>
       <div class="col">
         <div class="camket">
-          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Sản xuất — AFC – HD AMS Life Science Co., Ltd, Second Factory.</b> 2-4-3 Toyoda, Suruga-ku, thành phố Shizuoka, tỉnh Shizuoka 422-8027, Nhật Bản. Cùng nhà máy làm ra Rich Coenzyme Q10 mà bên em đang phân phối.</p></div>
-          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Công bố và nhập khẩu — Công ty Cổ phần 5SPRO.</b> Số 431 Ngọc Thuỵ, phường Ngọc Thuỵ, quận Long Biên, Hà Nội. Đây là thương nhân chịu trách nhiệm về sản phẩm, đứng tên trên Giấy tiếp nhận công bố.</p></div>
-          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Phân phối và quảng cáo — Công ty Cổ phần Jinsei Vietnam.</b> Liền kề 06-07 đường Hồng Tiến, phường Bồ Đề, quận Long Biên, Hà Nội. Đứng tên trên Giấy xác nhận nội dung quảng cáo.</p></div>
+          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Sản xuất — AFC-HD AMS Life Science Co., Ltd, Second Factory</b>, Shizuoka, Nhật Bản. Công ty <b>niêm yết sàn chứng khoán Tokyo, mã <span class="mono">2927</span></b> nên phải công bố báo cáo tài chính định kỳ. Cùng nhà máy làm ra Rich Coenzyme Q10 bên em đang bán ở <a href="https://sonsongkhoe.com" target="_blank" rel="noopener">sonsongkhoe.com</a>.</p></div>
+          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Công bố và nhập khẩu — Công ty Cổ phần 5SPRO</b>, quận Long Biên, Hà Nội. Đứng tên trên Giấy tiếp nhận công bố.</p></div>
+          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Phân phối và quảng cáo — Công ty Cổ phần Jinsei Vietnam</b>, quận Long Biên, Hà Nội. Đứng tên trên Giấy xác nhận nội dung quảng cáo.</p></div>
           <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Bán hàng và tư vấn — DiLiM Supplement.</b> Người gọi lại cho anh chị là nhân viên bên em, số <a href="tel:0913351394">0913.351.394</a>.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 10 KIỂM CHỨNG -->
-  <section class="sec" id="phan-hoi">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 10 · Kiểm chứng</span>
-        <h2>Khách đã mua nói gì</h2>
-        <p class="lede">Phần này để trống cho tới khi có phản hồi thật của khách đã mua đúng sản phẩm này.</p>
+  <div class="wrap">
+    <div class="chot">
+      <div class="chot-tx">
+        <h3>Một gói đi hết 30 ngày</h3>
+        <p>Uống 2 viên mỗi ngày theo nhãn nên mỗi gói vừa đúng một tháng. Mua mốc nhiều gói thì giá mỗi ngày rẻ hơn và cả năm đỡ phải đặt lại nhiều lần.</p>
       </div>
-      <div class="col stack">
-        <div class="fill">
-          <span class="lbl">Chưa có phản hồi thật</span>
-          <span class="txt">Bên em không mượn phản hồi từ sản phẩm khác sang, và <b>không dùng ảnh trước – sau</b>. Với nhóm giảm cân, ảnh trước – sau và lời chứng kể như bằng chứng hiệu quả là thứ bị soi kỹ nhất.</span>
-          <span class="txt">Khi có phản hồi thật: quay video, xin phép người quay, và chỉ để họ kể trải nghiệm — không để họ nói thay cho công dụng.</span>
-        </div>
-        <div class="fb-btns">
-          <a class="btn btn-lg" href="https://www.facebook.com/profile.php?id=61592861334561" target="_blank" rel="noopener">Xem trang Facebook của bên em</a>
-          <a class="btn btn-lg btn-ghost" href="https://m.me/61592861334561" target="_blank" rel="noopener">Nhắn tin hỏi trực tiếp</a>
-        </div>
+      <div class="chot-nut">
+        <a class="btn btn-lg" href="#dat-hang">Xem bốn mốc giá</a>
+        <a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ 0913.351.394</a>
       </div>
     </div>
-  </section>
-
-  <!-- 11 MINH BẠCH CÔNG TY MẸ -->
-  <section class="sec" id="ma-ck">
-    <div class="wrap stack-lg">
-      <div class="col head">
-        <span class="eyebrow">Phần 11 · Minh bạch công ty mẹ</span>
-        <h2>Công ty mẹ minh bạch tới đâu</h2>
-      </div>
-      <div class="col stack">
-        <p>Nhà sản xuất ghi trên nhãn — <b>AFC-HD AMS Life Science Co., Ltd</b> — là công ty <b>niêm yết trên sàn chứng khoán Tokyo</b>, mã <b class="mono">2927</b>. Công ty niêm yết phải công bố báo cáo tài chính định kỳ và chịu ràng buộc công bố thông tin, nghĩa là có một bên thứ ba nhìn vào sổ sách chứ không phải chỉ có lời của nhà phân phối.</p>
-        <p>Đây cũng là nhà máy làm ra <b>Rich Coenzyme Q10</b> mà bên em đang bán ở <a href="https://sonsongkhoe.com" target="_blank" rel="noopener">sonsongkhoe.com</a> — anh chị đối chiếu được hai bộ hồ sơ với nhau.</p>
-        <p class="note">Thông tin niêm yết là thông tin về doanh nghiệp, không phải bằng chứng về công dụng của sản phẩm.</p>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- 12 ĐẶT HÀNG -->
   <section class="sec" id="dat-hang">
@@ -1387,8 +1344,10 @@ body:has(.dock.on){padding-bottom:74px}
       <div class="col head">
         <span class="eyebrow">Phần 12 · Báo giá &amp; đặt hàng</span>
         <h2>Báo giá &amp; đặt hàng</h2>
-        <p class="lede">Chưa cần quyết định mua ngay — anh chị để lại số, nhân viên tư vấn gọi lại hỏi kỹ vòng bụng, nếp sinh hoạt và thuốc đang dùng rồi mới tư vấn.</p>
+        <p class="lede">Chưa cần quyết ngay — để lại số, nhân viên gọi lại hỏi kỹ vòng bụng và thuốc đang dùng rồi mới tư vấn.</p>
       </div>
+
+      <div class="col" id="dat-lai"></div>
 
       <div class="col" id="bang-gia">
         <div class="fill">
@@ -1402,7 +1361,7 @@ body:has(.dock.on){padding-bottom:74px}
         <div class="camket">
           <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Gọi lại xác nhận trước khi giao.</b> Không có chuyện hàng tự nhiên tới cửa rồi bắt nhận.</p></div>
           <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Hàng có tem nhãn phụ tiếng Việt.</b> Số công bố tra được trên cổng của Cục An toàn thực phẩm.</p></div>
-          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Hết liệu trình là dừng.</b> Bên em không tự động gửi hàng kỳ sau, không gọi giục mua tiếp.</p></div>
+          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Không tự động gửi hàng kỳ sau.</b> Bên em chỉ gọi nhắc trước khi hết gói nếu anh chị tự tích vào ô đó trong phiếu. Không tích thì bên em không gọi.</p></div>
           <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Đang uống thuốc thì được khuyên hỏi bác sĩ trước.</b> Nhân viên tư vấn không được phép chốt đơn trong trường hợp đó.</p></div>
         </div>
       </div>
@@ -1440,6 +1399,13 @@ body:has(.dock.on){padding-bottom:74px}
                 <label class="hop-o on"><input type="radio" name="cach_tra" value="coc" checked><span class="h-t">Đặt cọc 200.000đ giữ hàng</span><span class="h-s">Phần còn lại trả khi nhận hàng</span></label>
                 <label class="hop-o"><input type="radio" name="cach_tra" value="du"><span class="h-t">Chuyển khoản đủ</span><span class="h-s">Nhận hàng là xong, không phải trả thêm</span></label>
               </div>
+            </div>
+
+            <div class="field full nhac-o">
+              <label class="nhac-lbl" for="nhac">
+                <input type="checkbox" id="nhac" name="nhac" value="Có" checked>
+                <span><b>Gọi nhắc tôi trước khi hết gói.</b> Một gói dùng 30 ngày. Bên em ghi lại ngày hết rồi gọi trước vài hôm, để anh chị khỏi bị đứt quãng giữa chừng. Không muốn thì bỏ dấu tích này — bên em sẽ không gọi.</span>
+              </label>
             </div>
 
             <div class="full btn-row"><button class="btn btn-lg" type="submit">Gửi thông tin, nhận tư vấn</button><a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi ngay 0913.351.394</a></div>
@@ -1487,19 +1453,15 @@ body:has(.dock.on){padding-bottom:74px}
       <div class="col faq">
         <details>
           <summary>Uống vào giảm được mấy ký, trong bao lâu?</summary>
-          <p>Bên em không trả lời câu này bằng con số, và anh chị nên cảnh giác với bất kỳ ai trả lời bằng con số. Công dụng đã đăng ký của sản phẩm đúng một dòng: <b>hỗ trợ giảm béo</b>. Thực phẩm bảo vệ sức khoẻ không được phép cam kết hiệu quả, và mức thay đổi của mỗi người phụ thuộc vào ăn, ngủ, vận động — những thứ ở Phần 05.</p>
+          <p>Bên em không trả lời bằng con số, và anh chị nên cảnh giác với bất kỳ ai trả lời bằng con số. Công dụng đã đăng ký đúng một dòng: <b>hỗ trợ giảm béo</b>. Thực phẩm bảo vệ sức khoẻ không được phép cam kết hiệu quả.</p>
         </details>
         <details>
           <summary>Một gói dùng được bao lâu, uống thế nào?</summary>
           <p>Uống <b>2 viên mỗi ngày với nước</b>, đúng như nhãn ghi. Túi 60 viên nên một gói đi hết <b>30 ngày</b>. Không uống hơn liều khuyến nghị.</p>
         </details>
         <details>
-          <summary>Có phải nhịn ăn hay kiêng khem gì không?</summary>
-          <p>Bên em không khuyên nhịn sâu. Phần 04 đã nói vì sao nhịn sâu thường làm mất cơ và dẫn tới lên lại. Cách dùng theo đúng nhãn phụ, còn ăn uống thì theo bốn điều ở Phần 05.</p>
-        </details>
-        <details>
           <summary>Đang uống thuốc thì dùng được không?</summary>
-          <p>Phải hỏi bác sĩ trước. Nhân viên tư vấn của bên em được yêu cầu <b>không chốt đơn</b> khi khách đang dùng thuốc điều trị, mà khuyên mang hộp sản phẩm đi hỏi bác sĩ đang theo dõi cho mình.</p>
+          <p>Phải hỏi bác sĩ trước. Nhân viên tư vấn của bên em được yêu cầu <b>không chốt đơn</b> khi khách đang dùng thuốc điều trị.</p>
         </details>
         <details>
           <summary>Phụ nữ có thai, đang cho con bú, trẻ em dùng được không?</summary>
@@ -1507,15 +1469,11 @@ body:has(.dock.on){padding-bottom:74px}
         </details>
         <details>
           <summary>Sao trang này không nói sản phẩm giảm mỡ chỗ nào?</summary>
-          <p>Vì nội dung quảng cáo phải đúng nội dung đã đăng ký, mà nội dung đã đăng ký cho sản phẩm này chỉ có <b>hỗ trợ giảm béo</b>. Bao bì tiếng Nhật của hãng có ghi thêm mấy nội dung khác, nhưng ở Việt Nam thì cái được phép nói là cái ghi trong hồ sơ công bố. Bên em nói đúng chừng đó, không hơn.</p>
+          <p>Vì nội dung quảng cáo phải đúng nội dung đã đăng ký, mà nội dung đã đăng ký chỉ có <b>hỗ trợ giảm béo</b>. Bao bì tiếng Nhật ghi thêm mấy ý khác, nhưng ở Việt Nam cái được phép nói là cái ghi trong hồ sơ công bố.</p>
         </details>
         <details>
-          <summary>Làm sao biết hàng là thật?</summary>
-          <p>Gõ số <b class="mono">3993/2024/ĐKSP</b> vào cổng tra cứu của Cục An toàn thực phẩm là ra hồ sơ công bố, đứng tên Công ty Cổ phần 5SPRO. Gói hàng giao tới có tem nhãn phụ tiếng Việt dán ngoài, nội dung khớp với khối chép nguyên văn ở Phần 07.</p>
-        </details>
-        <details>
-          <summary>Giao hàng và thanh toán thế nào?</summary>
-          <p>Giao toàn quốc. Trả khi nhận hàng, hoặc cọc 200.000đ giữ hàng, hoặc chuyển khoản đủ. Nhân viên luôn gọi xác nhận trước khi gửi.</p>
+          <summary>Giao hàng, thanh toán, và làm sao biết hàng thật?</summary>
+          <p>Giao toàn quốc, gọi xác nhận trước khi gửi. Trả khi nhận hàng, hoặc cọc 200.000đ giữ hàng, hoặc chuyển khoản đủ. Gõ số <b class="mono">3993/2024/ĐKSP</b> vào cổng tra cứu của Cục An toàn thực phẩm là ra hồ sơ, đứng tên Công ty Cổ phần 5SPRO — khớp với tem nhãn phụ dán trên gói.</p>
         </details>
       </div>
     </div>
@@ -1646,7 +1604,7 @@ body:has(.dock.on){padding-bottom:74px}
      list:['Mua thước dây, đo ngang rốn sáng thứ Hai hằng tuần','Dời bữa tối lên sớm, đi bộ mươi lăm phút sau khi ăn','Đọc phần Nguyên nhân gốc rễ ngay bên dưới']},
     {max:8,  h:'Mỡ đang dồn về ổ bụng khá rõ',
      p:'Ở mức này thì không còn là chuyện quần hơi chật. Phần bên dưới giải thích vì sao nhịn ăn và tập bụng không giải quyết được, và bốn điều cần làm cùng lúc.',
-     list:['Xem bảng Giải pháp trước đây để biết cách nào chỉ đỡ tạm','Làm ba việc miễn phí ở cuối giai đoạn 2 trong bốn tuần rồi đo lại','Nên đi xét nghiệm mỡ máu và đường huyết']},
+     list:['Xem bảng Giải pháp trước đây để biết cách nào chỉ đỡ tạm','Làm bốn việc miễn phí ở cuối giai đoạn 2 trong bốn tuần rồi đo lại','Nên đi xét nghiệm mỡ máu và đường huyết']},
     {max:12, h:'Nhiều dấu hiệu cùng lúc — nên đi khám',
      p:'Nhiều câu cùng ở mức cao. Việc đầu tiên nên làm không phải là mua gì, mà là đi khám và cầm kết quả về.',
      list:['Đi xét nghiệm mỡ máu, đường huyết và siêu âm gan','Cầm kết quả đi hỏi bác sĩ trước khi dùng thêm bất cứ thứ gì','Bắt đầu ghi vòng bụng mỗi tuần từ hôm nay']}
@@ -1783,7 +1741,7 @@ body:has(.dock.on){padding-bottom:74px}
       elCDtx.innerHTML = '';
       elCDtx.appendChild(document.createTextNode('Theo câu trả lời của anh chị, dấu hiệu đang dồn về chuyện ' + c.thu + ' trong ba chuyện nói ở đầu trang: '));
       var b1 = document.createElement('b'); b1.textContent = c.ten; elCDtx.appendChild(b1);
-      elCDtx.appendChild(document.createTextNode('. ' + c.giai + ' Phần dưới đây nói kỹ vì sao, và ba việc anh chị làm được ngay mà không tốn đồng nào.'));
+      elCDtx.appendChild(document.createTextNode('. ' + c.giai + ' Phần dưới đây nói kỹ vì sao, và bốn việc anh chị làm được ngay mà không tốn đồng nào.'));
     }
 
     // tu van rieng theo tung cau tra loi
@@ -2027,6 +1985,35 @@ var BANG_GIA = [
     return a;
   }, BANG_GIA[0]);
 
+  // 1a · Mot nam phai dat lai may lan. Chi la phep chia tu so ngay dung,
+  //      khong dinh gi toi cong dung san pham.
+  var oLai = document.getElementById('dat-lai');
+  if(oLai && VIEN_MOI_NGAY){
+    // Lam tron chu khong lam tron len: goi 30 ngay thi mot nam dat 12 lan,
+    // khong phai 13. Chia 365 roi lam tron len ra 13, doc la thay sai ngay.
+    function soLan(m){ return Math.max(1, Math.round(365 / m.ngay)); }
+    var itNhat = BANG_GIA.reduce(function(a, b){
+      return soLan(b) < soLan(a) ? b : a;
+    }, BANG_GIA[0]);
+    var l = '<div class="dat-lai"><table><thead><tr>'
+          + '<th>Mua kiểu này</th><th>Một năm đặt lại</th><th>Giá mỗi ngày</th>'
+          + '</tr></thead><tbody>';
+    BANG_GIA.forEach(function(m){
+      var lan = soLan(m);
+      l += '<tr' + (m === itNhat ? ' class="it"' : '') + '>'
+        +  '<td>' + m.hop + ' gói' + (m.tang ? ' (nhận ' + (m.hop + m.tang) + ')' : '')
+        +    ' · dùng ' + m.ngay + ' ngày</td>'
+        +  '<td class="n">' + lan + ' lần</td>'
+        +  '<td class="n">' + chamNghin(moiNgay(m)) + 'đ</td>'
+        +  '</tr>';
+    });
+    l += '</tbody></table></div>'
+      +  '<p class="note">Mỗi lần đặt lại là một lần phải nhớ, một lần chờ giao. '
+      +  'Mốc ' + itNhat.hop + ' gói chỉ phải đặt ' + soLan(itNhat)
+      +  ' lần trong cả năm.</p>';
+    oLai.innerHTML = l;
+  }
+
   // 1 · bang bao gia
   var h = '<div class="quote"><table><thead><tr>'
         + '<th>Số lượng</th><th>Giá</th><th>Ưu đãi</th><th>Mỗi ngày</th></tr></thead><tbody>';
@@ -2244,6 +2231,7 @@ var FORM_GOOGLE = {
       + '\nĐiện thoại: ' + (du.sdt     || '')
       + '\nĐịa chỉ: '    + (du.dia_chi || '')
       + '\nSố lượng: '   + (du.soluong || '')
+      + '\nNhắc trước khi hết gói: ' + (du.nhac ? 'Có' : 'Không')
       + '\nThời gian: '  + (du.thoi_gian || '');
   }
 
@@ -2531,6 +2519,7 @@ var FORM_GOOGLE = {
       ['Số lượng',  du.soluong],
       ['Cách trả', du.cach_tra === 'du' ? 'Chuyển khoản đủ'
                                         : 'Đặt cọc ' + chamNghin(TIEN_COC) + 'đ'],
+      ['Nhắc trước khi hết gói', du.nhac ? 'Có' : 'Không'],
       ['Bài kiểm tra', du.tuKiem],
       ['Thời gian', du.thoi_gian]
     ];
