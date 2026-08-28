@@ -70,6 +70,49 @@ class TestCompliance(unittest.TestCase):
         r = compliance.check("Ai mất ngủ thì gõ số 1 nhé.", yeu_cau_khuyen_cao=False)
         self.assertTrue(r.dat, r.to_text())
 
+    # --- Ba ví dụ Phòng 10 nêu: nhắc từ cấm ĐỂ CẤM, không được báo lỗi -----------
+    def test_p10_khong_hua_chua_khoi(self):
+        r = compliance.check("Tuyệt đối KHÔNG hứa chữa khỏi bệnh", yeu_cau_khuyen_cao=False)
+        self.assertTrue(r.dat, r.to_text())
+
+    def test_p10_khong_phai_thia_la_den(self):
+        r = compliance.check("❌ KHÔNG PHẢI thìa là đen", yeu_cau_khuyen_cao=False)
+        self.assertTrue(r.dat, r.to_text())
+
+    def test_p10_bay_dieu_tuyet_doi_khong_lam(self):
+        r = compliance.check("7 điều tuyệt đối không làm", yeu_cau_khuyen_cao=False)
+        self.assertTrue(r.dat, r.to_text())
+
+    def test_bang_thay_tu_khong_bi_bao_loi(self):
+        doc = "## Bảng thay từ\n\n| ❌ Cấm | ✅ Thay bằng |\n|---|---|\n| chữa khỏi | hỗ trợ cải thiện |\n"
+        r = compliance.check(doc, yeu_cau_khuyen_cao=False)
+        self.assertTrue(r.dat, r.to_text())
+
+    # --- Sửa xong không được mở lỗ hổng -------------------------------------------
+    def test_khong_lach_duoc_bang_cach_gan_phu_dinh_xa(self):
+        r = compliance.check(
+            "Không nói quá đâu ạ, sản phẩm chữa khỏi mất ngủ thật.",
+            yeu_cau_khuyen_cao=False,
+        )
+        self.assertFalse(r.dat, "Phủ định ở xa không được coi là ngữ cảnh cấm")
+
+    def test_khong_lach_duoc_bang_van_xuoi_duoi_tieu_de_cam(self):
+        doc = "## Những điều cấm\n\nSản phẩm của chúng tôi chữa khỏi mất ngủ.\n"
+        r = compliance.check(doc, yeu_cau_khuyen_cao=False)
+        self.assertFalse(r.dat, "Văn xuôi nấp dưới tiêu đề cấm vẫn phải bị chặn")
+
+    def test_che_do_nghiem_ngat_soat_ca_dong_tham_chieu(self):
+        tl = "Tuyệt đối KHÔNG hứa chữa khỏi bệnh"
+        self.assertTrue(compliance.check(tl, yeu_cau_khuyen_cao=False).dat)
+        self.assertFalse(
+            compliance.check(tl, yeu_cau_khuyen_cao=False, nghiem_ngat=True).dat
+        )
+
+    def test_bo_qua_duoc_dem_va_bao_cao(self):
+        r = compliance.check("❌ KHÔNG PHẢI thìa là đen", yeu_cau_khuyen_cao=False)
+        self.assertGreater(r.so_dong_tham_chieu, 0)
+        self.assertIn("Đã bỏ qua", r.to_text())
+
     def test_danh_dau_bo_qua_thi_khong_soat(self):
         text = compliance.BO_QUA_MARKER + "\nTài liệu này liệt kê từ chữa khỏi làm ví dụ."
         r = compliance.check(text)

@@ -113,7 +113,9 @@ def cmd_check(args: argparse.Namespace) -> int:
             loi += 1
             continue
         report = compliance.check(
-            path.read_text(encoding="utf-8"), yeu_cau_khuyen_cao=not args.bo_qua_khuyen_cao
+            path.read_text(encoding="utf-8"),
+            yeu_cau_khuyen_cao=not args.bo_qua_khuyen_cao,
+            nghiem_ngat=args.nghiem_ngat,
         )
         print(f"=== {path} ===")
         print(report.to_text())
@@ -230,6 +232,11 @@ def build_parser() -> argparse.ArgumentParser:
     c = sub.add_parser("check", help="Soát tuân thủ một hoặc nhiều file (không cần API)")
     c.add_argument("duong_dan", nargs="+")
     c.add_argument("--bo-qua-khuyen-cao", action="store_true", help="Không bắt buộc có câu khuyến cáo")
+    c.add_argument(
+        "--nghiem-ngat",
+        action="store_true",
+        help="Soát cả những dòng liệt kê điều cấm. Dùng để kiểm kỹ kịch bản sắp quay.",
+    )
     c.set_defaults(func=cmd_check)
 
     pl = sub.add_parser("plan", help="Lên lịch nội dung (không cần API)")

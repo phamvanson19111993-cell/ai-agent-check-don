@@ -24,6 +24,98 @@ def _norm(text: str) -> str:
 BO_QUA_MARKER = "<!-- soat-tuan-thu: bo-qua -->"
 
 
+# --- Nhận diện dòng THAM CHIẾU (nhắc tới từ cấm để cấm, không phải để dùng) -----------
+# Bộ soát càng nghiêm càng đẩy các phòng xoá chính danh sách cấm của mình cho báo cáo xanh.
+# Đó là lỗi thiết kế, nên phải phân biệt "dùng từ cấm" với "nhắc từ cấm để cấm".
+
+_ICON_THAM_CHIEU = ("❌", "⛔", "⚠️", "⚠", "🚫", "🔴", "🚨", "‼️")
+
+# Dòng mở đầu một khối liệt kê điều cấm
+_TIEU_DE_KHOI_CAM = re.compile(
+    r"(không được nói|không được viết|không được|tuyệt đối không|cấm nói|cấm viết|"
+    r"những điều cấm|từ cấm|bảng thay từ|không bao giờ|điều cấm|không phải|"
+    r"câu cấm|không nên nói|tránh nói|trước khi nói|nên nói)"
+)
+
+# Cụm phủ định đứng SAU từ cấm: "Làm tan cục máu đông | công dụng như thuốc" ,
+# "Nói X là vi phạm quy định". Không có cụm này thì câu là câu quảng cáo thật.
+_PHU_DINH_SAU = re.compile(
+    r"^[^.!?\n]{0,60}?(là vi phạm|vi phạm|là sai|sai luật|bị phạt|mức phạt|cấm|"
+    r"mất uy tín|thất đức|sai lệch|không được|không nên|nguy hiểm|"
+    r"công dụng như thuốc|cam kết y tế|quảng cáo sai)"
+)
+
+# Câu hỏi của khách được trích lại, không phải câu khẳng định của người bán
+_LA_CAU_HOI = re.compile(r"^[^.!\n]{0,25}\?")
+
+# Cụm phủ định đứng ngay trước từ cấm
+_PHU_DINH = re.compile(
+    r"(không|đừng|cấm|tránh|thay vì|thay cho|chớ|nghiêm cấm|hạn chế|bỏ|sai|nhầm)"
+    r"[^.!?\n]{0,12}$"
+)
+
+# Cửa sổ nhìn ngược để tìm phủ định, tính bằng ký tự
+_CUA_SO_PHU_DINH = 30
+
+
+def _la_dong_tham_chieu(line: str) -> bool:
+    """Dòng liệt kê điều cấm, không phải dòng nội dung đem đăng."""
+    tho = line.strip().lstrip("-*|>#0123456789. \t")
+    if tho[:2] in _ICON_THAM_CHIEU or any(tho.startswith(i) for i in _ICON_THAM_CHIEU):
+        return True
+    return bool(_TIEU_DE_KHOI_CAM.search(_norm(line)))
+
+
+def _bi_phu_dinh(norm_line: str, vi_tri: int, het: int | None = None) -> bool:
+    """Từ cấm nằm trong ngữ cảnh CẤM chứ không phải ngữ cảnh dùng.
+
+    Ba dấu hiệu: phủ định đứng trước ("không hứa chữa khỏi"), phủ định đứng sau
+    ("làm tan cục máu đông | công dụng như thuốc"), hoặc đang trích câu hỏi của khách.
+    """
+    truoc = norm_line[max(0, vi_tri - _CUA_SO_PHU_DINH) : vi_tri]
+    if _PHU_DINH.search(truoc):
+        return True
+    sau = norm_line[het if het is not None else vi_tri :]
+    return bool(_PHU_DINH_SAU.search(sau) or _LA_CAU_HOI.match(sau))
+
+
+_LA_TIEU_DE = re.compile(r"^\s{0,3}#{1,6}\s")
+# Chỉ bỏ qua GẠCH ĐẦU DÒNG và Ô BẢNG nằm dưới tiêu đề cấm - không bỏ qua văn xuôi.
+# Kịch bản quảng cáo viết bằng văn xuôi, nên lỗ hổng "nấp dưới tiêu đề cấm" bị chặn.
+# Ô bảng bắt đầu bằng | và không cần khoảng trắng sau (dòng kẻ |---|---| cũng tính)
+_LA_MUC_LIET_KE = re.compile(r"^\s{0,4}(\||[-*+>]\s|\d+[.)]\s)")
+
+
+def _danh_dau_dong_tham_chieu(lines: list[str]) -> list[bool]:
+    """Đánh dấu những dòng chỉ NHẮC tới từ cấm để cấm, không phải để dùng.
+
+    Khối cấm mở bằng một dòng gợi ý ("Không được nói:", "❌ Câu cấm", tiêu đề bảng
+    thay từ) và chỉ tha các GẠCH ĐẦU DÒNG, Ô BẢNG ngay sau đó. Gặp văn xuôi hoặc
+    tiêu đề mới là đóng khối - nên không nấp văn quảng cáo dưới tiêu đề cấm được.
+    """
+    ket_qua: list[bool] = []
+    trong_khoi_cam = False
+    for line in lines:
+        la_cue = _la_dong_tham_chieu(line)
+        if _LA_TIEU_DE.match(line):
+            trong_khoi_cam = la_cue
+            ket_qua.append(la_cue)
+            continue
+        if la_cue:
+            trong_khoi_cam = True  # dòng gợi ý mở khối cho các mục ngay dưới
+            ket_qua.append(True)
+            continue
+        if not line.strip():
+            ket_qua.append(False)  # dòng trống giữ nguyên khối, không tính
+            continue
+        if _LA_MUC_LIET_KE.match(line):
+            ket_qua.append(trong_khoi_cam)
+            continue
+        trong_khoi_cam = False  # gặp văn xuôi là đóng khối
+        ket_qua.append(False)
+    return ket_qua
+
+
 def _mask_allowed(norm_line: str, rules: dict) -> str:
     """Che các cụm hợp lệ (khuyến cáo bắt buộc, lời khuyên đi khám...) trước khi soát từ cấm."""
     out = norm_line
@@ -55,6 +147,7 @@ class Report:
     dat: bool = True
     issues: list[Issue] = field(default_factory=list)
     bo_qua: bool = False  # file tra cứu, có đánh dấu bỏ qua
+    so_dong_tham_chieu: int = 0  # dòng nhắc từ cấm trong ngữ cảnh cấm, đã bỏ qua
 
     @property
     def blocking(self) -> list[Issue]:
@@ -67,14 +160,23 @@ class Report:
     def to_text(self) -> str:
         if self.bo_qua:
             return "File tra cứu (có đánh dấu bỏ qua) - không soát."
+        ghi_chu = (
+            f"\nĐã bỏ qua {self.so_dong_tham_chieu} dòng nhắc tới từ cấm trong ngữ cảnh "
+            "cấm hoặc phủ định (dùng --nghiem-ngat để soát cả những dòng này)."
+            if self.so_dong_tham_chieu
+            else ""
+        )
         if not self.issues:
-            return "Không phát hiện lỗi tuân thủ. Vẫn nên đọc lại bằng mắt trước khi đăng."
+            return (
+                "Không phát hiện lỗi tuân thủ. Vẫn nên đọc lại bằng mắt trước khi đăng."
+                + ghi_chu
+            )
         lines = [str(i) for i in self.issues]
         lines.append("")
         lines.append(
             f"Tổng: {len(self.blocking)} lỗi chặn đăng, {len(self.warnings)} cảnh báo."
         )
-        return "\n".join(lines)
+        return "\n".join(lines) + ghi_chu
 
     def to_prompt_feedback(self) -> str:
         """Định dạng lỗi để gửi lại cho model tự sửa."""
@@ -106,11 +208,21 @@ _MEDICAL_ENDORSE = re.compile(
     r"[^.!?\n]{0,15}?(kê đơn|khuyên dùng|tin dùng|giới thiệu|chứng nhận)"
 )
 
-_ABSOLUTE = re.compile(r"\b(100%|tuyệt đối|chắc chắn khỏi|hoàn toàn khỏi|vĩnh viễn)\b")
+_ABSOLUTE = re.compile(
+    r"\b(100%|chắc chắn khỏi|hoàn toàn khỏi)\b"
+    r"|(khỏi|hết|tác dụng|hiệu quả)[^.!?\n]{0,20}vĩnh viễn"
+    r"|tuyệt đối[^.!?\n]{0,15}(an toàn|hiệu quả|khỏi|không tái phát)"
+)
 
 
-def check(text: str, *, yeu_cau_khuyen_cao: bool = True) -> Report:
-    """Soát một kịch bản và trả về báo cáo tuân thủ."""
+def check(
+    text: str, *, yeu_cau_khuyen_cao: bool = True, nghiem_ngat: bool = False
+) -> Report:
+    """Soát một kịch bản và trả về báo cáo tuân thủ.
+
+    nghiem_ngat=True thì soát cả những dòng liệt kê điều cấm. Chỉ dùng khi muốn
+    kiểm tra thật kỹ một kịch bản sắp quay, không dùng cho tài liệu tra cứu.
+    """
     rules = kb.compliance()
     report = Report()
 
@@ -125,11 +237,28 @@ def check(text: str, *, yeu_cau_khuyen_cao: bool = True) -> Report:
     # khuyến cáo bắt buộc cũng chứa những từ nằm trong danh sách cấm.
     masked_lines = [_mask_allowed(line, rules) for line in norm_lines]
 
+    # Dòng nào chỉ NHẮC tới từ cấm để cấm thì không tính là vi phạm.
+    if nghiem_ngat:
+        tham_chieu = [False] * len(lines)
+    else:
+        tham_chieu = _danh_dau_dong_tham_chieu(lines)
+        report.so_dong_tham_chieu = sum(tham_chieu)
+
     # 1. Từ cấm
     for pair in rules["tu_cam_va_tu_thay_the"]:
         needle = _norm(pair["cam"])
         for idx, line in enumerate(masked_lines, start=1):
-            if needle in line:
+            if tham_chieu[idx - 1]:
+                continue
+            vi_tri = line.find(needle)
+            if (
+                vi_tri >= 0
+                and _bi_phu_dinh(line, vi_tri, vi_tri + len(needle))
+                and not nghiem_ngat
+            ):
+                report.so_dong_tham_chieu += 1
+                continue
+            if vi_tri >= 0:
                 report.issues.append(
                     Issue(
                         muc_do="chan",
@@ -144,7 +273,13 @@ def check(text: str, *, yeu_cau_khuyen_cao: bool = True) -> Report:
     for rule in rules.get("mau_cam_regex", []):
         pattern = re.compile(rule["mau"])
         for idx, line in enumerate(masked_lines, start=1):
-            if pattern.search(line):
+            if tham_chieu[idx - 1]:
+                continue
+            khop = pattern.search(line)
+            if khop and _bi_phu_dinh(line, khop.start(), khop.end()) and not nghiem_ngat:
+                report.so_dong_tham_chieu += 1
+                continue
+            if khop:
                 report.issues.append(
                     Issue(
                         muc_do="chan",
@@ -187,6 +322,8 @@ def check(text: str, *, yeu_cau_khuyen_cao: bool = True) -> Report:
 
     # 3. Cam kết thời gian
     for idx, line in enumerate(norm_lines, start=1):
+        if tham_chieu[idx - 1]:
+            continue
         if _TIME_PROMISE.search(line):
             report.issues.append(
                 Issue(

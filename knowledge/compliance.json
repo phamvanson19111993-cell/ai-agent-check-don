@@ -150,7 +150,11 @@
     "vào bệnh viện",
     "tốt nhất là đi khám",
     "cách tốt nhất là đi khám",
-    "tốt nhất cô chú nên đi khám"
+    "tốt nhất cô chú nên đi khám",
+    "không thay được thuốc chữa bệnh",
+    "không phải thuốc và không thay được thuốc",
+    "không phải là thuốc chữa bệnh",
+    "không thay thế thuốc chữa bệnh"
   ],
   "ghi_chu_ngoai_le": "Đây là những cụm HỢP LỆ, được bỏ qua trước khi soát từ cấm, vì bản thân câu khuyến cáo bắt buộc và các lời khuyên đi khám đều chứa từ nằm trong danh sách cấm.",
   "mau_cam_regex": [
