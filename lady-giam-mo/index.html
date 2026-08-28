@@ -658,6 +658,28 @@ body:has(.dock.on){padding-bottom:74px}
 .hop-o.rong{grid-column:1/-1}
 .tra-o{display:grid;gap:.5rem;margin:.15rem 0 0}
 @media(min-width:520px){.tra-o{grid-template-columns:1fr 1fr}}
+
+/* ba con so kiem chung duoc, ngay duoi nut o dau trang */
+.ba-so{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;width:100%;margin-top:1.1rem}
+.ba-so div{background:var(--sunk);border:1px solid var(--line2);border-radius:var(--r);padding:.8rem .45rem;display:flex;flex-direction:column;gap:.25rem;text-align:center}
+.ba-so b{font-family:"IBM Plex Mono",monospace;font-size:1rem;line-height:1.1;color:var(--red)}
+.ba-so span{font-size:.7rem;color:var(--ink2);line-height:1.35}
+.hero-vi{font-size:.8rem;color:var(--ink3)}
+
+/* khoi chot ngay sau khi khach lam xong bai kiem tra */
+.chot-quiz{border:2px solid var(--red);background:var(--red-soft);border-radius:var(--r);padding:1.15rem 1.2rem;display:flex;flex-direction:column;gap:.6rem}
+.chot-quiz p{font-size:.9rem;color:var(--ink2)}
+.chot-nut{display:flex;flex-direction:column;gap:.55rem}
+@media(min-width:620px){.chot-nut{flex-direction:row}.chot-nut .btn{flex:1}}
+
+/* nhac lai ket qua bai kiem ngay tren phieu dat hang */
+.ket-qua-don{background:var(--sunk);border-left:3px solid var(--red);border-radius:var(--r);padding:.7rem .85rem;font-size:.86rem;color:var(--ink2)}
+.ket-qua-don b{color:var(--ink)}
+
+/* phieu hai buoc: khoi dia chi chi hien khi da co so dien thoai */
+.form.gon .dc{display:none}
+.buoc-nhac{grid-column:1/-1;font-size:.8rem;color:var(--ink3);font-style:italic}
+.form:not(.gon) .buoc-nhac{display:none}
 </style>
 </head>
 <body>
@@ -736,11 +758,12 @@ body:has(.dock.on){padding-bottom:74px}
         <a class="hero-jump" id="bat-dau" href="#van-de"><span class="pulse" aria-hidden="true"></span>Làm bài kiểm tra 30 giây</a>
         <a class="hero-buy" href="#dat-hang">Đã biết mình cần — xem giá &amp; đặt hàng</a>
       </div>
+      <p class="hero-vi">Làm bài trước cũng được — không phải mua gì.</p>
       <p class="hero-tel">Cần hỏi ngay: <a href="tel:0913351394">0913.351.394</a></p>
-      <div class="trustline">
-        <span>Ngưỡng vòng eo châu Á: nam <b class="mono">≥90cm</b> · nữ <b class="mono">≥80cm</b></span>
-        <span>Nhập nguyên hộp từ <b>Nhật Bản</b></span>
-        <span>AFC niêm yết sàn Tokyo, mã <b class="mono">2927</b></span>
+      <div class="ba-so">
+        <div><b>90 · 80</b><span>Ngưỡng vòng eo tính bằng cm, cho nam và nữ người châu Á</span></div>
+        <div><b>6 câu · 30 giây</b><span>Bài tự kiểm, không hỏi tên, không hỏi số điện thoại</span></div>
+        <div><b>15 phút</b><span>Để lại số là được gọi lại, trong giờ hành chính</span></div>
       </div>
     </div>
   </section>
@@ -795,8 +818,16 @@ body:has(.dock.on){padding-bottom:74px}
             <div class="advice-list" id="advice-list"></div>
           </div>
           <div class="story-box" id="story-box" hidden></div>
+          <div class="chot-quiz">
+            <h3>Nhận bản hướng dẫn bốn tuần, viết theo đúng kết quả này</h3>
+            <p>Bốn việc cần làm cùng lúc, sắp theo nhóm nguyên nhân của riêng anh chị, kèm cách ghi vòng bụng mỗi tuần. <b>Miễn phí, không kèm điều kiện mua gì.</b></p>
+            <div class="chot-nut">
+              <a class="btn btn-lg" href="#dat-hang" id="chot-de-so">Để lại số, nhận hướng dẫn</a>
+              <a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi 0913.351.394</a>
+            </div>
+          </div>
           <div class="quiz-foot">
-            <a class="btn" href="#nguyen-nhan">Đọc tiếp phần giải thích</a>
+            <a class="btn btn-ghost" href="#nguyen-nhan">Đọc tiếp phần giải thích</a>
             <button type="button" class="qbtn-back" id="q-again">↻ Làm lại</button>
           </div>
         </div>
@@ -1200,17 +1231,19 @@ body:has(.dock.on){padding-bottom:74px}
             <span class="price">Chờ báo giá</span>
             <span class="price-note">Bảng giá đang được chốt. Anh chị để lại số ở dưới, nhân viên gọi lại báo giá và tư vấn.</span>
           </div>
+          <p class="ket-qua-don" id="ket-qua-don" hidden></p>
           <form class="form" id="lead-form">
             <p class="fgroup">Người nhận hàng</p>
             <div class="field"><label for="ten">Họ và tên</label><input id="ten" name="ten" type="text" autocomplete="name" placeholder="Nguyễn Văn A" required></div>
             <div class="field"><label for="sdt">Số điện thoại</label><input id="sdt" name="sdt" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" required></div>
 
-            <p class="fgroup">Địa chỉ nhận hàng</p>
-            <div class="field"><label for="tinh">Tỉnh / Thành phố</label><input id="tinh" name="tinh" type="text" autocomplete="address-level1" placeholder="Nam Định" required></div>
-            <div class="field"><label for="huyen">Huyện / Quận / Thị xã</label><input id="huyen" name="huyen" type="text" autocomplete="address-level2" placeholder="Huyện Hải Hậu" required></div>
-            <div class="field"><label for="xa">Xã / Phường / Thị trấn</label><input id="xa" name="xa" type="text" autocomplete="address-level3" placeholder="Thị trấn Yên Định" required></div>
-            <div class="field"><label for="thon">Thôn / Xóm / Ấp / Tổ dân phố</label><input id="thon" name="thon" type="text" autocomplete="address-level4" placeholder="Xóm 5" required></div>
-            <div class="field full"><label for="sonha">Số nhà, tên đường</label><input id="sonha" name="sonha" type="text" autocomplete="address-line1" placeholder="Số 12, đường Trần Hưng Đạo"></div>
+            <p class="buoc-nhac">Điền số điện thoại xong, phần địa chỉ sẽ hiện ra ngay bên dưới.</p>
+            <p class="fgroup dc">Địa chỉ nhận hàng</p>
+            <div class="field dc"><label for="tinh">Tỉnh / Thành phố</label><input id="tinh" name="tinh" type="text" autocomplete="address-level1" placeholder="Nam Định" required></div>
+            <div class="field dc"><label for="huyen">Huyện / Quận / Thị xã</label><input id="huyen" name="huyen" type="text" autocomplete="address-level2" placeholder="Huyện Hải Hậu" required></div>
+            <div class="field dc"><label for="xa">Xã / Phường / Thị trấn</label><input id="xa" name="xa" type="text" autocomplete="address-level3" placeholder="Thị trấn Yên Định" required></div>
+            <div class="field dc"><label for="thon">Thôn / Xóm / Ấp / Tổ dân phố</label><input id="thon" name="thon" type="text" autocomplete="address-level4" placeholder="Xóm 5" required></div>
+            <div class="field full dc"><label for="sonha">Số nhà, tên đường</label><input id="sonha" name="sonha" type="text" autocomplete="address-line1" placeholder="Số 12, đường Trần Hưng Đạo"></div>
 
             <input id="tuKiem" name="tuKiem" type="hidden">
 
@@ -1594,7 +1627,27 @@ body:has(.dock.on){padding-bottom:74px}
     }
 
     if(elForm) elForm.value = 'Bài tự kiểm: ' + n + '/12 điểm — ' + lv.h;
+    nhacKetQua(n, lv.h);
     save();
+  }
+
+  // Nhac lai ket qua o phieu dat hang va o thanh duoi man hinh.
+  // Khach cuon toi phieu van con thay dung con so cua minh, khong phai nho lai.
+  function nhacKetQua(n, muc){
+    var o = document.getElementById('ket-qua-don');
+    if(o){
+      o.hidden = (n === null);
+      if(n !== null){
+        o.innerHTML = 'Kết quả bài kiểm của anh chị: <b>' + n + '/12 điểm</b> — ' + muc
+                    + '. Nhân viên sẽ tư vấn dựa trên kết quả này.';
+      }
+    }
+    var d = document.querySelector('.dock .p');
+    if(d){
+      d.innerHTML = (n === null)
+        ? 'Tư vấn miễn phí · giao toàn quốc<b>Để lại số, gọi lại trong 15 phút</b>'
+        : 'Kết quả của anh chị: ' + n + '/12 điểm<b>Để lại số, nhận hướng dẫn 4 tuần</b>';
+    }
   }
 
   function save(){
@@ -1614,7 +1667,12 @@ body:has(.dock.on){padding-bottom:74px}
     }
   }catch(e){}
 
-  function lamLai(){ answers = []; step = 0; if(elForm) elForm.value=''; save(); render(); }
+  function lamLai(){
+    answers = []; step = 0;
+    if(elForm) elForm.value = '';
+    nhacKetQua(null);
+    save(); render();
+  }
 
   // Nut "Lam bai kiem tra" va muc luc dau trang: luon bat dau lai tu cau 1,
   // neu khong thi khach da lam mot lan se chi thay bang ket qua cu va tuong nut hong
@@ -1657,38 +1715,59 @@ body:has(.dock.on){padding-bottom:74px}
 </script>
 <script>
 /* ╔══════════════════════════════════════════════════════════════════════╗
-   ║  BẢNG GIÁ — điền một chỗ này, cả trang đổi theo                      ║
+   ║  BẢNG GIÁ — anh Sơn chỉ cần gõ NĂM CON SỐ vào đây                    ║
    ╚══════════════════════════════════════════════════════════════════════╝
 
-   Điền xong bảng dưới đây thì bảng báo giá, thẻ chọn số lượng trong phiếu
-   đặt hàng và cách tính tiền mỗi ngày đều tự dựng lại. Không phải sửa ba chỗ.
+   Bốn mốc đã dựng sẵn đúng như anh chốt: 1 hộp · 2 hộp · 6 hộp · 10 hộp.
+   Việc còn lại là thay số 0 bằng giá thật, cộng một con số nữa là uống mấy
+   viên mỗi ngày. Điền xong thì bảng báo giá, thẻ chọn số lượng trong phiếu
+   đặt hàng, số ngày dùng và giá mỗi ngày đều tự dựng lại.
 
-   Mỗi mốc:
-     hop       số hộp
-     gia       tổng tiền của mốc đó, viết liền không dấu chấm
-     ngay      dùng được bao nhiêu ngày (số hộp × số ngày mỗi hộp)
-     nhan      chữ nhỏ dưới số hộp, để trống cũng được
-     qua       tên quà tặng — để trống nếu mốc đó không có quà
-     qua_tien  QUÀ TRỊ GIÁ BAO NHIÊU TIỀN. Chữ "kèm quà tặng" là chữ rỗng,
-               khách không quy ra được thành tiền thì không thấy lợi ở đâu.
-     loi_nhat  đúng một mốc được đặt true, mốc đó gắn nhãn "Lợi nhất"
+   Còn một số 0 nào thì trang KHÔNG hiện bảng giá — nó hiện lời báo còn
+   thiếu gì. Cố ý như vậy: giá nửa vời trên trang bán là khách hỏi lại rồi bỏ.
 
-   Ví dụ khi có giá (đang để trống vì chưa chốt giá):
-     { hop:1, gia:590000,  ngay:30,  nhan:'Đủ 1 tháng' },
-     { hop:3, gia:1650000, ngay:90,  qua:'Tên quà', qua_tien:675000 },
-     { hop:6, gia:3100000, ngay:180, loi_nhat:true }
+   ⚠️ Đổi giá thì phải sinh lại mã QR cho các số tiền mới:
+        python3 tao-ma-qr.py <giá 1 hộp> <giá 2 hộp> <giá 6 hộp> <giá 10 hộp>
+      rồi dán kết quả vào QR_TIEN ở khối dưới. Không sinh lại thì khách quét
+      ra số tiền cũ. */
 
-   ⚠️ Đổi bảng này thì phải sinh lại mã QR cho các số tiền mới:
-        python3 tao-ma-qr.py 590000 1650000 3100000
-      rồi dán kết quả vào QR_TIEN ở khối dưới. Không sinh lại thì khách
-      quét ra số tiền cũ hoặc không có mã. */
+/* Uống mấy viên mỗi ngày — lấy đúng theo dòng "Cách dùng" trên nhãn phụ.
+   Hộp 60 viên: uống 2 viên/ngày thì một hộp đi 30 ngày, uống 1 viên thì 60 ngày.
+   Chưa biết thì để 0, trang sẽ bỏ luôn cột "mỗi ngày" chứ không đoán. */
+var VIEN_MOI_NGAY = 0;
+var VIEN_MOI_HOP  = 60;
 
-var BANG_GIA = [];
+var BANG_GIA = [
+  { hop:1,  gia:0, nhan:'Mua thử' },
+  { hop:2,  gia:0 },
+  { hop:6,  gia:0, loi_nhat:true },
+  { hop:10, gia:0 }
+];
 
 (function(){
   var oBang = document.getElementById('bang-gia');
   var oHop  = document.getElementById('chon-hop');
-  if(!oBang || !oHop || !BANG_GIA.length) return;   // chua co gia thi giu nguyen loi bao con trong
+  if(!oBang || !oHop || !BANG_GIA.length) return;
+
+  // Con moc nao chua co gia thi khong dung bang — giu nguyen loi bao con trong,
+  // va noi ro con thieu nhung moc nao de khoi phai do.
+  var thieu = BANG_GIA.filter(function(m){ return !m.gia; });
+  if(thieu.length){
+    var o = oBang.querySelector('.fill');
+    if(o){
+      var d = document.createElement('span');
+      d.className = 'txt';
+      d.innerHTML = 'Còn thiếu giá của: <b>'
+        + thieu.map(function(m){ return m.hop + ' hộp'; }).join(' · ') + '</b>.';
+      o.appendChild(d);
+    }
+    return;
+  }
+
+  // So ngay dung tu tinh ra tu lieu dung ghi tren nhan, khong go tay tung moc.
+  BANG_GIA.forEach(function(m){
+    m.ngay = VIEN_MOI_NGAY ? Math.round(m.hop * VIEN_MOI_HOP / VIEN_MOI_NGAY) : 0;
+  });
 
   function chamNghin(x){
     return String(x || '').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -1758,7 +1837,7 @@ var BANG_GIA = [];
   var oGia  = document.querySelector('.offer .price');
   var oChu  = document.querySelector('.offer .price-note');
   if(oGia) oGia.textContent = chamNghin(re1.gia) + 'đ';
-  if(oChu) oChu.innerHTML = 'Đơn giá ' + re1.hop + ' hộp · 60 viên'
+  if(oChu) oChu.innerHTML = 'Đơn giá ' + re1.hop + ' hộp · ' + VIEN_MOI_HOP + ' viên'
     + (re1.ngay ? ' · dùng ' + re1.ngay + ' ngày' : '')
     + '.<br>Mua nhiều có ưu đãi, anh chị chọn số lượng ở ô bên dưới.';
 })();
@@ -2339,18 +2418,77 @@ var FORM_GOOGLE = {
 </script>
 <script>
 (function(){
-  var nut = document.getElementById('de-lai-so');
   var ten = document.getElementById('ten');
-  var quiz = document.getElementById('quiz');
+  if(!ten) return;
 
-  if(nut && ten){
-    nut.addEventListener('click', function(){
-      setTimeout(function(){
-        ten.scrollIntoView({block:'center', behavior:'smooth'});
-        try{ ten.focus({preventScroll:true}); }catch(e){ ten.focus(); }
-      }, 320);
-    });
+  // Ca nut duoi man hinh lan nut trong khoi chot sau bai kiem tra:
+  // cuon toi phieu roi dat con tro vao o Ho ten luon, bot cho khach mot cu bam.
+  Array.prototype.forEach.call(
+    document.querySelectorAll('#de-lai-so, #chot-de-so'),
+    function(nut){
+      nut.addEventListener('click', function(){
+        setTimeout(function(){
+          ten.scrollIntoView({block:'center', behavior:'smooth'});
+          try{ ten.focus({preventScroll:true}); }catch(e){ ten.focus(); }
+        }, 320);
+      });
+    }
+  );
+})();
+</script>
+
+<script>
+/* Phieu hai buoc.
+   Bay o mot phieu bay dong lam khach ngan ngay tu cai nhin dau. Buoc mot chi
+   hoi ten va so dien thoai — hai o. Co so dien thoai roi thi khoi dia chi moi
+   hien ra, luc do khach da bo cong vao roi nen di tiep de hon.
+
+   Hai cai bay phai tranh:
+   1. O "required" bi an thi trinh duyet khong focus vao duoc, bam Gui la khong
+      co chuyen gi xay ra va cung khong bao loi. Nen luc an phai go "required"
+      ra, luc hien lai moi tra ve.
+   2. Khach bam Gui khi khoi dia chi con dang an thi don se thieu dia chi. Nen
+      bam Gui cung mo khoi dia chi ra truoc, roi trinh duyet moi kiem.
+
+   Tat JavaScript thi khong co lop nay, ca phieu hien day du nhu cu. */
+(function(){
+  var f = document.getElementById('lead-form');
+  if(!f) return;
+  var sdt = document.getElementById('sdt');
+  var nut = f.querySelector('button[type="submit"]');
+  var oDC = Array.prototype.slice.call(f.querySelectorAll('.dc'));
+  if(!sdt || !oDC.length) return;
+
+  var batBuoc = oDC.reduce(function(ds, o){
+    return ds.concat(Array.prototype.slice.call(o.querySelectorAll('[required]')));
+  }, []);
+
+  var daMo = false;
+
+  function gon(){
+    f.classList.add('gon');
+    batBuoc.forEach(function(o){ o.required = false; });
   }
+
+  function mo(cuon){
+    if(daMo) return;
+    daMo = true;
+    f.classList.remove('gon');
+    batBuoc.forEach(function(o){ o.required = true; });
+    if(cuon){
+      var dau = oDC[0];
+      if(dau) dau.scrollIntoView({block:'center', behavior:'smooth'});
+    }
+  }
+
+  gon();
+
+  sdt.addEventListener('input', function(){
+    if(sdt.value.replace(/\D/g, '').length >= 9) mo(true);
+  });
+
+  // Bam Gui khi con dang gon: mo ra truoc, de trinh duyet kiem duoc cac o bat buoc.
+  if(nut) nut.addEventListener('click', function(){ mo(false); }, true);
 })();
 </script>
 

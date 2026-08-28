@@ -67,15 +67,18 @@ def ban_thu_co_gia():
     qr = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(qr)
 
-    tien = [590000, 1650000, 3100000]
+    tien = [590000, 1150000, 3150000, 4900000]
     s = TRANG.read_text(encoding='utf-8')
-    assert 'var BANG_GIA = [];' in s and 'var QR_TIEN = {};' in s, \
-        'index.html khong con cho de cam bang gia thu — xem lai da sua gi'
-    s = s.replace('var BANG_GIA = [];',
-                  "var BANG_GIA = ["
-                  "{hop:1, gia:590000,  ngay:30,  nhan:'Đủ 1 tháng'},"
-                  "{hop:3, gia:1650000, ngay:90,  qua:'Quà thử', qua_tien:675000},"
-                  "{hop:6, gia:3100000, ngay:180, loi_nhat:true}];")
+    assert 'var QR_TIEN = {};' in s, \
+        'index.html khong con cho de cam ma QR thu — xem lai da sua gi'
+    s, n = re.subn(r'var BANG_GIA = \[.*?\];',
+                   "var BANG_GIA = ["
+                   "{hop:1,  gia:590000,  nhan:'Mua thử'},"
+                   "{hop:2,  gia:1150000},"
+                   "{hop:6,  gia:3150000, loi_nhat:true, qua:'Quà thử', qua_tien:675000},"
+                   "{hop:10, gia:4900000}];", s, flags=re.S)
+    assert n == 1, 'khong tim thay BANG_GIA de thay'
+    s = s.replace('var VIEN_MOI_NGAY = 0;', 'var VIEN_MOI_NGAY = 2;')
     s = s.replace('var QR_TIEN = {};',
                   'var QR_TIEN = {' + ', '.join(
                       '"%d": "%s"' % (t, qr.ra_svg(t)) for t in tien) + '};')
@@ -148,12 +151,15 @@ def kiem_bang_gia(br, ban_thu):
     pg.wait_for_timeout(600)
 
     ghi(not ljs, 'không lỗi JavaScript', '; '.join(ljs[:2]))
-    ghi(pg.locator('#bang-gia .quote table tbody tr').count() == 3, 'bảng báo giá đủ 3 mốc')
+    bg0 = pg.locator('#bang-gia').inner_text()
+    ghi(pg.locator('#bang-gia .quote table tbody tr').count() == 4,
+        'bảng báo giá đủ 4 mốc 1 · 2 · 6 · 10 hộp')
+    ghi('30 ngày' in bg0 and '300 ngày' in bg0, 'số ngày dùng tự tính từ liều trên nhãn')
     ghi(pg.locator('#bang-gia .fill').count() == 0, 'lời báo "chưa có bảng giá" đã tắt')
     bg = pg.locator('#bang-gia').inner_text()
     ghi('lợi nhất' in bg.lower(), 'có nhãn Lợi nhất')
     ghi('675.000đ' in bg, 'quà tặng ghi rõ trị giá bao nhiêu tiền')
-    ghi(pg.locator('#chon-hop .hop-o').count() == 4, 'thẻ chọn số lượng: 3 mốc + 1 chưa quyết')
+    ghi(pg.locator('#chon-hop .hop-o').count() == 5, 'thẻ chọn số lượng: 4 mốc + 1 chưa quyết')
     ghi(pg.locator('.offer .price').inner_text() == '590.000đ', 'dòng giá đầu ô đặt hàng đổi theo')
     ghi(pg.locator('#chon-hop input:checked').count() == 1, 'luôn có đúng một mốc được chọn sẵn')
 
@@ -175,7 +181,7 @@ def kiem_bang_gia(br, ban_thu):
     pg.locator('#ok-msg .ck-xong').click()
     pg.wait_for_timeout(300)
     mua = pg.evaluate("window.__mua.filter(function(x){ return x[1] === 'Purchase'; })")
-    ghi(len(mua) == 1 and mua[0][2]['value'] == 3100000,
+    ghi(len(mua) == 1 and mua[0][2]['value'] == 3150000,
         'Purchase báo GIÁ TRỊ ĐƠN, không phải tiền cọc', str(mua))
 
     ma = {}
@@ -183,7 +189,7 @@ def kiem_bang_gia(br, ban_thu):
     for i in range(anh.count()):
         lop = anh.nth(i).evaluate("e => e.closest('.ck-qr').className")
         ma['du' if 'ck-du' in lop else 'coc'] = so_tien_trong_ma(quet(anh.nth(i).get_attribute('src')))
-    ghi(ma.get('du') == 3100000, 'quét mã "chuyển khoản đủ" ra đúng 3.100.000đ', str(ma))
+    ghi(ma.get('du') == 3150000, 'quét mã "chuyển khoản đủ" ra đúng 3.150.000đ', str(ma))
     ghi(ma.get('coc') == 200000, 'quét mã "đặt cọc" ra đúng 200.000đ', str(ma))
     pg.close()
 
@@ -200,11 +206,77 @@ def kiem_ma_qr_tinh(br):
     pg.close()
 
 
+
+def kiem_chuyen_doi(br):
+    """Nhung thu them vao de khach de mua hon — moi cai deu phai chay dung."""
+    print('\n=== ĐƯỜNG CHUYỂN ĐỔI ===')
+    pg = br.new_page(viewport={'width': 390, 'height': 900})
+    ljs = bat_loi(pg)
+    pg.goto(TRANG.as_uri(), wait_until='load')
+    pg.wait_for_timeout(600)
+
+    ghi(pg.locator('.ba-so div').count() == 3, 'đầu trang có ba con số kiểm chứng được')
+    ghi(not pg.locator('.chot-quiz').is_visible(), 'khối chốt chưa hiện khi chưa làm bài')
+    ghi(not pg.locator('#ket-qua-don').is_visible(), 'phiếu chưa nhắc kết quả khi chưa làm bài')
+
+    # phieu hai buoc: luc dau chi hoi ten va so dien thoai
+    ghi('gon' in (pg.get_attribute('#lead-form', 'class') or ''), 'phiếu mở ra ở dạng gọn')
+    ghi(not pg.locator('#tinh').is_visible(), 'khối địa chỉ đang ẩn')
+    ghi(pg.evaluate("() => !document.getElementById('tinh').required"),
+        'ô địa chỉ đang ẩn thì bỏ bắt buộc — nếu không, bấm Gửi sẽ đứng im không báo gì')
+
+    pg.fill('#sdt', '0912345678')
+    pg.wait_for_timeout(300)
+    ghi(pg.locator('#tinh').is_visible(), 'điền số điện thoại xong thì khối địa chỉ hiện ra')
+    ghi(pg.evaluate("() => document.getElementById('tinh').required"),
+        'khối địa chỉ hiện ra thì bắt buộc được trả về')
+
+    # bam Gui khi con dang gon cung phai mo khoi dia chi ra
+    pg.goto(TRANG.as_uri(), wait_until='load')
+    pg.wait_for_timeout(400)
+    pg.fill('#ten', 'Nguyễn Văn Kiểm')
+    pg.click('button[type="submit"]')
+    pg.wait_for_timeout(300)
+    ghi(pg.locator('#tinh').is_visible(), 'bấm Gửi khi phiếu còn gọn thì địa chỉ mở ra')
+    ghi(pg.locator('#ok-msg.on').count() == 0, 'đơn thiếu địa chỉ thì không gửi đi')
+
+    # lam xong bai kiem tra: ket qua phai theo khach xuong toi phieu
+    pg.goto(TRANG.as_uri(), wait_until='load')
+    pg.wait_for_timeout(400)
+    pg.click('#bat-dau')
+    pg.wait_for_timeout(300)
+    for i in range(6):
+        pg.locator('#q-opts .qopt').nth(2).click()
+        pg.wait_for_timeout(120)
+    ghi(pg.locator('.chot-quiz').is_visible(), 'làm xong bài thì hiện khối chốt')
+    ghi(pg.locator('#ket-qua-don').is_visible()
+        and '12/12' in pg.locator('#ket-qua-don').inner_text(),
+        'phiếu đặt hàng nhắc lại đúng số điểm',
+        pg.locator('#ket-qua-don').inner_text()[:60])
+    ghi('12/12' in pg.locator('.dock .p').inner_text(),
+        'thanh dưới màn hình đổi theo kết quả', pg.locator('.dock .p').inner_text()[:50])
+
+    pg.click('#chot-de-so')
+    pg.wait_for_timeout(800)
+    ghi(pg.evaluate("() => document.activeElement && document.activeElement.id") == 'ten',
+        'bấm "Để lại số" thì con trỏ nhảy thẳng vào ô Họ tên')
+
+    # lam lai bai thi moi cho nhac ket qua phai xoa theo
+    pg.locator('#q-again').click()
+    pg.wait_for_timeout(300)
+    ghi(not pg.locator('#ket-qua-don').is_visible(), 'làm lại bài thì phiếu xoá kết quả cũ')
+    ghi('12/12' not in pg.locator('.dock .p').inner_text(), 'làm lại bài thì thanh dưới cũng xoá')
+
+    ghi(not ljs, 'không lỗi JavaScript', '; '.join(ljs[:2]))
+    pg.close()
+
+
 def main():
     ban_thu = ban_thu_co_gia()
     with sync_playwright() as pw:
         br = mo_trinh_duyet(pw)
         kiem_trang_that(br)
+        kiem_chuyen_doi(br)
         kiem_ma_qr_tinh(br)
         kiem_bang_gia(br, ban_thu)
         br.close()

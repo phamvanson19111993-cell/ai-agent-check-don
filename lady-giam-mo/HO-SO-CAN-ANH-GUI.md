@@ -13,7 +13,7 @@ Lần này chặn từ đầu.
 | 1 | Ảnh chụp **nhãn phụ tiếng Việt** dán trên hộp | ❌ CHƯA CÓ | Chụp rõ chữ, đủ cả khối Lưu ý. Có ảnh này em mới đọc và chép ra được. |
 | 2 | Ảnh **Giấy tiếp nhận đăng ký bản công bố sản phẩm** | ❌ CHƯA CÓ | Cần số giấy + ngày cấp để in lên trang. |
 | 3 | Ảnh **hộp và lọ thật**, chụp rõ mặt trước | ❌ CHƯA CÓ | Dùng làm ảnh sản phẩm và ảnh quảng cáo. |
-| 4 | **Giá bán mỗi hộp** và các mốc combo | ❌ CHƯA CÓ | Bao nhiêu hộp · giá bao nhiêu · quà gì · quà trị giá bao nhiêu tiền. |
+| 4 | **Giá bốn mốc: 1 · 2 · 6 · 10 hộp** | ❌ CHƯA CÓ | Bốn mốc đã dựng sẵn trên trang, chỉ chờ bốn con số. Kèm một số nữa: uống mấy viên mỗi ngày. |
 
 Về ô số 4 — thứ duy nhất em biết chắc: sản phẩm này đang là **quà tặng mốc 3 hộp**
 trên trang Q10, niêm yết **675.000đ**. Đó là *giá quà tặng*, chưa chắc là giá bán lẻ.

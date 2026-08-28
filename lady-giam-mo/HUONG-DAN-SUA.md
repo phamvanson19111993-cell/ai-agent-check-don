@@ -3,22 +3,30 @@
 Cả trang nằm trong một file `index.html`. Mọi thứ hay phải sửa đều gom vào
 hai khối ở gần cuối file, không phải đi tìm khắp nơi.
 
-## 1 · Điền bảng giá
+## 1 · Điền bảng giá — năm con số
 
-Tìm dòng `var BANG_GIA = [];` rồi điền vào. Ví dụ:
+Bốn mốc đã dựng sẵn: **1 hộp · 2 hộp · 6 hộp · 10 hộp**. Việc còn lại là thay
+số 0 bằng giá thật.
 
 ```js
+var VIEN_MOI_NGAY = 0;        // uống mấy viên mỗi ngày, lấy theo nhãn phụ
+
 var BANG_GIA = [
-  { hop:1, gia:590000,  ngay:30,  nhan:'Đủ 1 tháng' },
-  { hop:3, gia:1650000, ngay:90,  qua:'Tên quà tặng', qua_tien:675000 },
-  { hop:6, gia:3100000, ngay:180, loi_nhat:true }
+  { hop:1,  gia:0, nhan:'Mua thử' },
+  { hop:2,  gia:0 },
+  { hop:6,  gia:0, loi_nhat:true },
+  { hop:10, gia:0 }
 ];
 ```
 
-Điền xong thì **ba chỗ tự đổi theo**: bảng báo giá, thẻ chọn số lượng trong
-phiếu đặt hàng, và dòng đơn giá ở đầu ô đặt hàng. Không phải sửa ba lần.
+Điền xong thì **bốn chỗ tự đổi theo**: bảng báo giá, thẻ chọn số lượng trong
+phiếu đặt hàng, số ngày dùng, và dòng đơn giá ở đầu ô đặt hàng.
 
-`qua_tien` là trị giá quà tính bằng tiền. Chữ "kèm quà tặng" là chữ rỗng —
+Còn sót một số 0 nào thì trang **không hiện bảng giá** — nó hiện lời báo còn
+thiếu mốc nào. Cố ý như vậy: giá nửa vời trên trang bán là khách hỏi lại rồi bỏ.
+
+Muốn thêm quà cho một mốc thì thêm hai khoá: `qua:'Tên quà'` và
+`qua_tien:675000`. **Phải có `qua_tien`** — chữ "kèm quà tặng" là chữ rỗng,
 khách không quy ra được thành tiền thì không thấy lợi ở đâu.
 
 ## 2 · Sinh lại mã QR sau khi đổi giá
