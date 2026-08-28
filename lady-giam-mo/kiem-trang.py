@@ -242,7 +242,7 @@ def kiem_chuyen_doi(br):
     ghi(pg.locator('#nhac').is_visible(), 'ô nhắc hiện ngay từ bước một, không bị gộp vào khối địa chỉ')
 
     # Hinh minh hoa: ve tay bang SVG, nhung thang trong file.
-    ghi(pg.locator('figure.hinh').count() == 5, 'đủ năm hình minh hoạ',
+    ghi(pg.locator('figure.hinh').count() == 4, 'đủ bốn hình minh hoạ vẽ tay',
         str(pg.locator('figure.hinh').count()))
     ghi(pg.evaluate("""() => Array.from(document.querySelectorAll('figure.hinh svg'))
             .every(s => s.getAttribute('role') === 'img' && s.getAttribute('aria-label'))"""),
