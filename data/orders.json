@@ -1,9 +1,10 @@
 {
+  "_doc": "DỮ LIỆU GIẢ để demo và chạy test. Repo này CÔNG KHAI — tuyệt đối không thay bằng đơn hàng, tên, số điện thoại hay địa chỉ của khách thật. Đơn thật đi qua Apps Script → Telegram riêng → bảng tính riêng, không vào repo. Xem bo-nho-chung/luat-du-lieu-khach.md.",
   "orders": [
     {
       "code": "DH123456",
       "status": "shipping",
-      "customer_name": "Nguyễn Văn An",
+      "customer_name": "Nguyễn Văn A",
       "phone": "0901234567",
       "address": "12 Nguyễn Huệ, Quận 1, TP.HCM",
       "items": [
@@ -25,7 +26,7 @@
     {
       "code": "DH123457",
       "status": "delivered",
-      "customer_name": "Trần Thị Bích",
+      "customer_name": "Trần Thị B",
       "phone": "0912345678",
       "address": "45 Lê Lợi, Hải Châu, Đà Nẵng",
       "items": [{ "name": "Bàn phím cơ K68", "quantity": 1, "price": 1250000 }],
@@ -37,13 +38,13 @@
       "estimated_delivery": "2026-08-14T00:00:00+07:00",
       "history": [
         { "at": "2026-08-10T14:00:00+07:00", "status": "pending", "note": "Đơn được tạo" },
-        { "at": "2026-08-13T10:20:00+07:00", "status": "delivered", "note": "Giao thành công, người nhận: Trần Thị Bích" }
+        { "at": "2026-08-13T10:20:00+07:00", "status": "delivered", "note": "Giao thành công, người nhận: Trần Thị B" }
       ]
     },
     {
       "code": "DH123458",
       "status": "pending",
-      "customer_name": "Nguyễn Văn An",
+      "customer_name": "Nguyễn Văn A",
       "phone": "0901234567",
       "address": "12 Nguyễn Huệ, Quận 1, TP.HCM",
       "items": [{ "name": "Sạc nhanh 65W", "quantity": 1, "price": 450000 }],
@@ -57,8 +58,8 @@
     {
       "code": "DH123459",
       "status": "cancelled",
-      "customer_name": "Lê Minh Cường",
-      "phone": "0938887766",
+      "customer_name": "Lê Văn C",
+      "phone": "0901234569",
       "items": [{ "name": "Chuột không dây M1", "quantity": 1, "price": 320000 }],
       "total": 320000,
       "created_at": "2026-08-18T11:00:00+07:00",

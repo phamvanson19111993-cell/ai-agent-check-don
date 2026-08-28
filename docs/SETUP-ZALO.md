@@ -111,6 +111,13 @@ Bot dùng dữ liệu mẫu trong `data/orders.json` nên trả lời được n
 
 ## Bảo mật
 
+> 🔴 **Repo này đang CÔNG KHAI** — ai trên Internet cũng đọc được mọi file ở mọi nhánh.
+> Một dòng `.env` lỡ commit là app secret của OA nằm ngoài đó vĩnh viễn (xoá commit sau
+> cũng không lấy lại được, phải tạo lại secret key).
+
 - `.env` và `data/zalo-token.json` đã nằm trong `.gitignore` — đừng commit lên GitHub.
+- Dữ liệu trong `data/orders.json` là **đơn giả để demo**. Đừng thay bằng đơn khách thật:
+  không tên, không số điện thoại, không địa chỉ thật vào repo. Nối hệ thống thật thì đặt
+  `ORDER_PROVIDER=http` — đơn ở lại máy chủ của anh, repo chỉ gọi API.
 - Ai có `app_secret` + `refresh_token` là gửi được tin nhắn dưới danh nghĩa OA của anh.
 - Nếu lỡ lộ: vào developers.zalo.me tạo lại secret key, rồi chạy lại `npm run token`.
