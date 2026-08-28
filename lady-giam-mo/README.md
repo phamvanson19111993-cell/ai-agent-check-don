@@ -24,7 +24,9 @@ Xem `HO-SO-CAN-ANH-GUI.md`. Bốn ô bắt buộc còn thiếu, nặng nhất l�
 | `HUONG-DAN-SUA.md` | Sửa giá, sửa nhãn, sửa nơi nhận đơn ở đâu |
 | `HO-SO-CAN-ANH-GUI.md` | Bốn ô bắt buộc anh cần gửi |
 | `tao-ma-qr.py` | Sinh mã VietQR cho từng mốc giá |
-| `kiem-trang.py` | Tự kiểm trên trình duyệt trước khi đẩy — 42 mục |
+| `kiem-trang.py` | Tự kiểm trên trình duyệt trước khi đẩy — 81 mục |
+| `tao-ban-xem-thu.py` | Dựng bản xem thử để đăng link cho anh Sơn xem |
+| `NOI-BO-lan-ranh-tu-van.md` | Lằn ranh tư vấn: tài liệu đào tạo nói gì, được nói gì |
 
 ## ⚠️ Một kho GitHub chỉ đăng được MỘT trang
 
