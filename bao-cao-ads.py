@@ -37,10 +37,33 @@ API = "https://graph.facebook.com/v21.0"
 
 TOKEN     = os.environ.get("FB_TOKEN", "")
 TAI_KHOAN = os.environ.get("FB_ACT", "2260044828113956")   # Phạm Sơn BM1.1
+PIXEL     = os.environ.get("FB_PIXEL", "1277743445418211")
 
 # Giá mỗi hộp, dùng để quy doanh thu ra mục tiêu 5%
 GIA_HOP   = 2890000
 MUC_TIEU  = 0.05          # chi phí quảng cáo tối đa = 5% doanh thu
+
+# Duong khach di tren trang. Ten su kien khop voi index.html
+#
+# CHIA HAI NHANH. Bai kiem tra la duong TU CHON - khach cuon thang xuong
+# bang gia ma khong lam bai van duoc. Gop chung mot bang thi ty le roi ra
+# so am, vo nghia.
+PHEU = [
+    ("PageView",         "Vào trang"),
+    ("DenCoChe",         "Tới phần cơ chế"),
+    ("DenHoSo",          "Tới phần giấy tờ"),
+    ("DenBangGia",       "Tới bảng giá"),
+    ("DenForm",          "Thấy biểu mẫu"),
+    ("InitiateCheckout", "Bắt đầu điền phiếu"),
+    ("Lead",             "Gửi đơn"),
+    ("Purchase",         "Báo đã chuyển khoản"),
+]
+
+PHEU_KIEM = [
+    ("DenBaiKiemTra",        "Cuộn tới bài kiểm tra"),
+    ("BatDauKiemTra",        "Bấm làm bài"),
+    ("CompleteRegistration", "Làm xong bài kiểm tra"),
+]
 
 
 def tien(x):
@@ -271,7 +294,85 @@ def main():
                 print("                  (ngưỡng 5%% của đơn %d hộp là %s)"
                       % (so_hop, tien(GIA_HOP * so_hop * MUC_TIEU)))
 
-    # ── 4. Khối copy gửi Phòng 7 ─────────────────────────────────
+    # ── 4. Phễu: khách đi tới đâu rồi bỏ ─────────────────────────
+    print("\n" + "─" * 62)
+    print("  4. PHỄU — KHÁCH ĐỌC TỚI ĐÂU RỒI BỎ")
+    print("─" * 62)
+
+    dem = {}
+    kq = goi("%s/stats" % PIXEL, {"aggregation": "event"})
+    if kq and kq.get("data"):
+        for muc in kq["data"]:
+            for hang in (muc.get("data") or []):
+                try:
+                    d = json.loads(hang) if isinstance(hang, str) else hang
+                    dem[d.get("value")] = dem.get(d.get("value"), 0) + int(d.get("count", 0))
+                except Exception:
+                    pass
+        if not dem:
+            for muc in kq["data"]:
+                v = muc.get("value")
+                if isinstance(v, dict):
+                    for k, n in v.items():
+                        dem[k] = dem.get(k, 0) + int(n)
+
+    if not dem:
+        print("  Chưa đọc được số sự kiện từ Pixel qua chương trình này.")
+        print("  Mở thẳng Trình quản lý sự kiện để xem:")
+        print("     https://business.facebook.com/events_manager2/list/pixel/%s" % PIXEL)
+        print("  Vào tab Sự kiện, chọn 7 ngày qua. Các mốc cần nhìn:")
+        for t, m in PHEU + PHEU_KIEM:
+            print("     %-22s %s" % (t, m))
+    else:
+        goc = dem.get("PageView", 0)
+
+        def bang(ten_bang, danh_sach, mau_so):
+            """In mot nhanh cua phe u. Tra ve cac chang bi roi."""
+            print("\n  %s" % ten_bang)
+            print("  %-24s %8s %9s %9s %8s" % ("Chặng", "Người", "Còn lại", "Rơi", "Mất"))
+            print("  " + "-" * 62)
+            ra, truoc = [], None
+            for ten, mo in danh_sach:
+                n = dem.get(ten, 0)
+                con = (100.0 * n / mau_so) if mau_so else 0
+                if truoc is None:
+                    print("  %-24s %8d %8.0f%%" % (mo, n, con))
+                else:
+                    mat = truoc - n
+                    roi = (100.0 * mat / truoc) if truoc else 0
+                    print("  %-24s %8d %8.0f%% %8.0f%% %8d" % (mo, n, con, roi, mat))
+                    if truoc >= 10 and mat > 0:
+                        ra.append((mo, roi, mat))
+                truoc = n
+            return ra
+
+        roi_chinh = bang("ĐƯỜNG CHÍNH — mọi khách đều đi qua", PHEU, goc)
+        bang("NHÁNH BÀI KIỂM TRA — đường tự chọn", PHEU_KIEM, goc)
+
+        print("\n  Độ sâu cuộn (trên tổng số người vào trang):")
+        for ten, nhan in [("Cuon25", "cuộn 25% trang"), ("Cuon50", "cuộn 50%"),
+                          ("Cuon75", "cuộn 75%"), ("Cuon90", "cuộn xuống đáy")]:
+            n = dem.get(ten, 0)
+            print("     %-18s %6d  %5.0f%%" % (nhan, n, (100.0 * n / goc) if goc else 0))
+
+        print("\n  Đọc lâu:")
+        for ten, nhan in [("Doc60Giay", "ở lại quá 1 phút"), ("Doc180Giay", "ở lại quá 3 phút")]:
+            n = dem.get(ten, 0)
+            print("     %-18s %6d  %5.0f%%" % (nhan, n, (100.0 * n / goc) if goc else 0))
+
+        if roi_chinh:
+            nhieu = max(roi_chinh, key=lambda x: x[2])   # mat nhieu nguoi nhat
+            gat   = max(roi_chinh, key=lambda x: x[1])   # roi gat nhat theo %
+            print("\n  ⛔ CHỖ MẤT NHIỀU NGƯỜI NHẤT: %s — mất %d người (%.0f%%)"
+                  % (nhieu[0], nhieu[2], nhieu[1]))
+            if gat[0] != nhieu[0]:
+                print("  ⛔ CHỖ RƠI GẮT NHẤT:         %s — rơi %.0f%% (mất %d người)"
+                      % (gat[0], gat[1], gat[2]))
+            print("\n     Sửa chỗ mất nhiều người trước — cứu được nhiều đơn hơn.")
+            print("     Chỗ rơi gắt là chỗ hỏng nặng, nhưng ít người tới đó thì")
+            print("     sửa nó cũng chưa đổi được bao nhiêu.")
+
+    # ── 5. Khối copy gửi Phòng 7 ─────────────────────────────────
     kq = goi("%s/insights" % act, {"fields": "spend,actions", "date_preset": "today"})
     d = (kq or {}).get("data") or [{}]
     r = d[0] if d else {}
@@ -281,7 +382,7 @@ def main():
                       so_tu_actions(acts, "onsite_conversion.lead_grouped"))
 
     print("\n" + "═" * 62)
-    print("  4. KHỐI BÁO CÁO — copy nguyên khối dưới đây gửi Phòng 7")
+    print("  5. KHỐI BÁO CÁO — copy nguyên khối dưới đây gửi Phòng 7")
     print("═" * 62)
     print("""
 BÁO CÁO ADS %s
