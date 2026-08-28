@@ -532,6 +532,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .qr-name{font-weight:700;font-size:.82rem;color:#12100E;letter-spacing:.02em}
 .qr-acc{font-family:"IBM Plex Mono",monospace;font-size:.92rem;color:#12100E}
 .qr{width:100%;height:auto;display:block;border-radius:3px}
+.qr-tai{display:block;text-align:center;font-size:.75rem;font-weight:600;white-space:nowrap;padding:.4rem 0 .1rem;color:inherit;text-decoration:underline;text-underline-offset:2px}
 .qr-bot{display:flex;justify-content:space-between;gap:.5rem;font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:#6A625B}
 .qr-cap{font-size:.76rem;color:var(--ink3)}
 .pay-info h3{margin-bottom:.6rem}
@@ -2261,8 +2262,8 @@ var FORM_GOOGLE = {
       + hang('Nội dung', nd, nd)
       + nutApp(TIEN_COC, 'ck-coc', false)
       + (haiCach ? nutApp(tong, 'ck-du', true) : '')
-      + khoiQR(QR_COC, 'Máy tính thì quét mã này bằng điện thoại — mã đã có sẵn ' + chamNghin(TIEN_COC) + 'đ.', 'ck-coc', false)
-      + (haiCach ? khoiQR(qrDu, 'Máy tính thì quét mã này bằng điện thoại — mã đã có sẵn ' + chamNghin(tong) + 'đ.', 'ck-du', true) : '')
+      + khoiQR(QR_COC, 'Mã đã có sẵn ' + chamNghin(TIEN_COC) + 'đ và số tài khoản. Đang dùng điện thoại thì <b>bấm giữ vào mã để lưu ảnh</b>, rồi mở app ngân hàng chọn quét mã từ thư viện ảnh.', 'ck-coc', false)
+      + (haiCach ? khoiQR(qrDu, 'Mã đã có sẵn ' + chamNghin(tong) + 'đ và số tài khoản. Đang dùng điện thoại thì <b>bấm giữ vào mã để lưu ảnh</b>, rồi mở app ngân hàng chọn quét mã từ thư viện ảnh.', 'ck-du', true) : '')
       + '<span class="ck-note ck-coc">'
       +   (con > 0 ? 'Còn lại <b>' + chamNghin(con) + 'đ</b> anh chị trả khi nhận hàng. ' : 'Phần còn lại anh chị trả khi nhận hàng. ')
       +   'Cọc xong chụp biên lai gửi kèm để bên em gửi hàng ngay. Chưa muốn cọc cũng được, nhân viên vẫn gọi lại xác nhận đơn.'
@@ -2328,6 +2329,46 @@ var FORM_GOOGLE = {
     });
   }
 
+  // Ma QR dang la SVG. Tren dien thoai KHONG bam giu luu anh SVG duoc —
+  // ma do la cach nhanh nhat de chuyen khoan: luu anh roi mo app ngan hang
+  // chon quet ma tu thu vien. Ve lai thanh PNG de bam giu luu duoc.
+  function noiQR(){
+    Array.prototype.slice.call(document.querySelectorAll('.qr-card')).forEach(function(the){
+      var svg = the.querySelector('svg.qr');
+      if(!svg || the.querySelector('img.qr')) return;
+      try{
+        var ma = new XMLSerializer().serializeToString(svg);
+        var im = new Image();
+        im.onload = function(){
+          try{
+            var C = 41, V = 12, D = 2, N = (C + D * 2) * V;   // vien trang quanh ma
+            var cv = document.createElement('canvas');
+            cv.width = cv.height = N;
+            var g = cv.getContext('2d');
+            g.fillStyle = '#fff'; g.fillRect(0, 0, N, N);
+            g.imageSmoothingEnabled = false;
+            g.drawImage(im, D * V, D * V, C * V, C * V);
+            var png = cv.toDataURL('image/png');
+
+            var anh = new Image();
+            anh.className = 'qr';
+            anh.src = png;
+            anh.alt = 'Mã QR chuyển khoản TPBank';
+            svg.parentNode.replaceChild(anh, svg);
+
+            var tai = document.createElement('a');
+            tai.className = 'qr-tai';
+            tai.href = png;
+            tai.download = 'chuyen-khoan-dilim.png';
+            tai.textContent = 'Lưu mã QR';
+            the.appendChild(tai);
+          }catch(e){}
+        };
+        im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(ma);
+      }catch(e){}
+    });
+  }
+
   function noiChep(){
     Array.prototype.slice.call(ok.querySelectorAll('.ck-hang')).forEach(function(h){
       h.addEventListener('click', function(){
@@ -2369,6 +2410,7 @@ var FORM_GOOGLE = {
       + '</span>'
       + (guiRoi ? '' : khoiTra(du));
     noiChep();
+    noiQR();
     noiChonTra();
     noiDaTra();
     noiBaoLienHe();
@@ -2425,6 +2467,10 @@ var FORM_GOOGLE = {
       body: JSON.stringify(du)
     });
   }
+
+  // Ma QR tinh o muc thanh toan cung doi sang PNG ngay khi mo trang,
+  // de khach chua dat don van bam giu luu ma ve duoc.
+  noiQR();
 
   f.addEventListener('submit', function(e){
     e.preventDefault();
