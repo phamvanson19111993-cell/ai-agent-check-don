@@ -55,3 +55,27 @@ Nên đổi: **anh Sơn chụp màn hình rồi gửi thẳng vào khung chat**,
 Lịch mỗi giờ sẽ đọc ảnh từ lịch sử trò chuyện.
 
 Thư mục Drive vẫn giữ lại, phòng khi sau này có công cụ OCR thật.
+
+---
+
+## Đã xử lý xong — 15h55
+
+**1. Lịch mỗi giờ đã đổi.**
+Routine `trig_01FD8wK6c2YRr71HHkoQJwc1`, đổi tên thành
+*"Báo cáo Q10 mỗi giờ · đọc ảnh Ads gửi trong chat"*.
+Bỏ hẳn bước quét thư mục Drive + `read_file_content` trên ảnh.
+Thay bằng: đọc ảnh Ads Manager trong lịch sử trò chuyện của phiên.
+Vẫn chạy phút 18 mỗi giờ, vẫn bám phiên `session_01NKVuC993sRBvHy3My1qzVp`.
+
+Trong lệnh mới có ghi rõ lý do bỏ Drive, để lần sau không ai bật lại nhầm.
+
+**2. Dọn thư mục Drive.**
+- Bỏ vào thùng rác 2 file thử OCR (`2026-08-28-MAU-THU-OCR.png`, `THU-OCR-CHUYEN-DOI`)
+- Bỏ file hướng dẫn cũ — nó bảo anh Sơn thả ảnh vào, mà đường đó không chạy
+- Thêm file `ĐỌC TRƯỚC — đừng thả ảnh vào đây nữa.txt`
+- Đổi tên thư mục thành `📊 ẢNH ADS Q10 (KHÔNG DÙNG — gửi ảnh thẳng trong chat)`
+
+Thư mục vẫn còn, không xoá. Nhưng ai mở ra cũng thấy ngay là đừng thả vào.
+
+**3. Việc còn lại của anh Sơn:** không có gì thêm.
+Từ giờ chụp màn hình Ads Manager rồi gửi thẳng vào khung chat — hết.
