@@ -17,6 +17,12 @@
           "lam": "tam_dung",
           "ten": "Doanh số mới 1",
           "ly_do": "TẮT QUẢNG CÁO SỐ 1 — kém hơn hẳn, không phải may rủi.\n    Số liệu ngày 27/08:\n      QC1: 11 lượt xem / 875 hiển thị = 1,26%  ·  1.541đ mỗi lượt\n      QC2: 26 lượt xem / 814 hiển thị = 3,19%  ·    706đ mỗi lượt\n      QC3: 198 lượt xem / 6.489 hiển thị = 3,05%  ·  954đ mỗi lượt\n    QC1 đắt gấp 2,2 lần QC2 trên mỗi lượt xem.\n    Kiểm định: z = 4,14, p < 0,0001 — chênh lệch là thật.\n    Tiền đang chảy vào mẫu kém nhất trong ba mẫu.\n    LƯU Ý: lệnh này khớp tên chiến dịch. Nếu 3 mẫu nằm chung một\n    chiến dịch thì chương trình sẽ không thấy — khi đó anh tắt tay\n    ở cấp Quảng cáo, gạt nút của dòng 'Quảng cáo Doanh số mới 1'."
+        },
+        {
+          "lam": "ngan_sach",
+          "ten": "Doanh số",
+          "ngan_sach": 190000,
+          "ly_do": "ĐẶT NGÂN SÁCH 190.000đ MỖI NGÀY cho đợt thử.\n    Tính ngược từ số thật ngày 27/08: 954đ mỗi lượt xem trang đích\n    (224.227đ chia 235 lượt).\n      Mốc quyết định : 1.000 lượt xem\n      Tiền cần       : 954.157đ\n      Chia 5 ngày    : 190.831đ → làm tròn 190.000đ\n    Tới 1.000 lượt mà vẫn 0 đơn thì chỉ còn 0,7% khả năng là may\n    rủi — nghĩa là trang hoặc lời chào hàng có vấn đề, đổ thêm\n    tiền không cứu được.\n    LƯU Ý: 188.912đ anh đặt hôm qua là ĐÚNG. Con số 150.000đ em\n    từng viết là em đặt bừa lúc chưa có dữ liệu, nay đã sửa.\n    Lệnh này đặt ở CẤP CHIẾN DỊCH. Nếu ngân sách đang nằm ở cấp\n    nhóm quảng cáo thì chương trình báo không sửa được — khi đó\n    anh sửa tay ở cấp Nhóm quảng cáo."
         }
       ]
     }
