@@ -97,6 +97,7 @@ tests/             18 kiểm thử, gồm cả việc soát lại các kịch b�
 ## Tài liệu
 
 - [10 hook mạnh nhất, dùng ngay được](docs/10-hook-manh-nhat.md)
+- [Bộ soát tuân thủ - hướng dẫn cho phòng khác](docs/dung-chung-bo-soat.md)
 - [Hướng dẫn sử dụng chi tiết](docs/huong-dan-su-dung.md)
 - [Quy tắc tuân thủ](docs/quy-tac-tuan-thu.md)
 - [Tài liệu bộ 3 sản phẩm](docs/bo-3-san-pham.md)

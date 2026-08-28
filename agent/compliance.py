@@ -19,6 +19,11 @@ def _norm(text: str) -> str:
     return re.sub(r"\s+", " ", text)
 
 
+# File tra cứu (bản thân nó liệt kê từ cấm làm ví dụ) đánh dấu dòng này ở đầu file
+# để bộ soát bỏ qua. Chỉ dùng cho tài liệu nội bộ, KHÔNG dùng cho nội dung đem đăng.
+BO_QUA_MARKER = "<!-- soat-tuan-thu: bo-qua -->"
+
+
 def _mask_allowed(norm_line: str, rules: dict) -> str:
     """Che các cụm hợp lệ (khuyến cáo bắt buộc, lời khuyên đi khám...) trước khi soát từ cấm."""
     out = norm_line
@@ -49,6 +54,7 @@ class Issue:
 class Report:
     dat: bool = True
     issues: list[Issue] = field(default_factory=list)
+    bo_qua: bool = False  # file tra cứu, có đánh dấu bỏ qua
 
     @property
     def blocking(self) -> list[Issue]:
@@ -59,6 +65,8 @@ class Report:
         return [i for i in self.issues if i.muc_do == "canh_bao"]
 
     def to_text(self) -> str:
+        if self.bo_qua:
+            return "File tra cứu (có đánh dấu bỏ qua) - không soát."
         if not self.issues:
             return "Không phát hiện lỗi tuân thủ. Vẫn nên đọc lại bằng mắt trước khi đăng."
         lines = [str(i) for i in self.issues]
@@ -105,6 +113,11 @@ def check(text: str, *, yeu_cau_khuyen_cao: bool = True) -> Report:
     """Soát một kịch bản và trả về báo cáo tuân thủ."""
     rules = kb.compliance()
     report = Report()
+
+    if BO_QUA_MARKER in text:
+        report.bo_qua = True
+        return report
+
     lines = text.splitlines()
     norm_lines = [_norm(line) for line in lines]
     norm_full = _norm(text)

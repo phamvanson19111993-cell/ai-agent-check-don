@@ -21,20 +21,33 @@ class Result:
     tu_choi: str | None = None  # lý do nếu model từ chối trả lời
 
 
-def _client():
+def _import_anthropic():
+    """Nạp SDK, báo lỗi tử tế nếu máy chưa cài.
+
+    Chỉ lệnh generate và batch mới cần. Các lệnh check, list, plan, hooks phải
+    chạy được trên máy không cài gì - đây là công cụ dùng chung giữa các phòng.
+    """
     try:
         import anthropic
-    except ImportError as exc:  # pragma: no cover
+    except ImportError as exc:
         raise SystemExit(
-            "Chưa cài thư viện anthropic. Chạy: pip install -r requirements.txt"
+            "Lệnh này cần thư viện anthropic mà máy chưa cài.\n"
+            "  Cài bằng: pip install -r requirements.txt\n"
+            "Nếu chỉ cần soát tuân thủ thì dùng lệnh check, không cần cài gì:\n"
+            "  python -m agent.cli check <file.md>"
         ) from exc
+    return anthropic
+
+
+def _client():
+    anthropic = _import_anthropic()
     # Tự lấy khoá theo thứ tự: ANTHROPIC_API_KEY -> ANTHROPIC_AUTH_TOKEN -> hồ sơ `ant auth login`
     return anthropic.Anthropic()
 
 
 def _call(client, system: str, messages: list[dict[str, Any]], *, dung_fallback: bool = True):
     """Một lượt gọi model. Dùng streaming vì kịch bản có thể dài."""
-    import anthropic
+    anthropic = _import_anthropic()
 
     system_blocks = [
         # Đánh dấu cache: phần system giữ nguyên giữa các lần gọi nên tái sử dụng được.
@@ -90,7 +103,7 @@ def generate(
     max_fix: int = 2,
 ) -> Result:
     """Sinh một kịch bản và tự sửa cho tới khi qua được bộ kiểm tra tuân thủ."""
-    import anthropic
+    anthropic = _import_anthropic()
 
     system = prompts.build_system()
     brief = prompts.build_brief(

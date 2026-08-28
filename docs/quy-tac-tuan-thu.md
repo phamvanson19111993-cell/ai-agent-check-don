@@ -1,3 +1,5 @@
+<!-- soat-tuan-thu: bo-qua -->
+
 # Quy tắc tuân thủ khi làm nội dung thực phẩm bảo vệ sức khoẻ
 
 Tài liệu này là bản diễn giải cho người làm nội dung. Nguồn luật tham chiếu: Luật Quảng cáo,

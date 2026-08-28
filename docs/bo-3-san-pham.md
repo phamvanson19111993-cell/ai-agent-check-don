@@ -1,3 +1,5 @@
+<!-- soat-tuan-thu: bo-qua -->
+
 # Bộ 3 sản phẩm - tài liệu cho người làm nội dung
 
 Đây là bản tóm tắt để biên kịch và người livestream nắm nhanh. Mọi công dụng nêu ở đây phải

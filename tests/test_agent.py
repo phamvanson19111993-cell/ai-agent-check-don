@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -69,6 +70,18 @@ class TestCompliance(unittest.TestCase):
         r = compliance.check("Ai mất ngủ thì gõ số 1 nhé.", yeu_cau_khuyen_cao=False)
         self.assertTrue(r.dat, r.to_text())
 
+    def test_danh_dau_bo_qua_thi_khong_soat(self):
+        text = compliance.BO_QUA_MARKER + "\nTài liệu này liệt kê từ chữa khỏi làm ví dụ."
+        r = compliance.check(text)
+        self.assertTrue(r.dat)
+        self.assertTrue(r.bo_qua)
+        self.assertEqual(r.issues, [])
+
+    def test_khong_danh_dau_thi_van_soat_binh_thuong(self):
+        r = compliance.check("Sản phẩm chữa khỏi mất ngủ.", yeu_cau_khuyen_cao=False)
+        self.assertFalse(r.dat)
+        self.assertFalse(r.bo_qua)
+
     def test_bat_sai_su_that_ve_gia(self):
         r = compliance.check("Mua nhiều rẻ hơn nhé cô chú.", yeu_cau_khuyen_cao=False)
         self.assertFalse(r.dat, r.to_text())
@@ -105,6 +118,35 @@ class TestKichBanCoSan(unittest.TestCase):
             with self.subTest(kich_ban=f.name):
                 r = compliance.check(f.read_text(encoding="utf-8"))
                 self.assertTrue(r.dat, f"{f.name}:\n{r.to_text()}")
+
+
+class TestChayDocLap(unittest.TestCase):
+    """Bộ soát là công cụ dùng chung - phải chạy được trên máy không cài anthropic."""
+
+    def test_cac_lenh_offline_khong_cham_toi_anthropic(self):
+        import subprocess
+
+        chan = (
+            "import sys, os;"
+            "sys.path.insert(0, os.getcwd());"
+            "\nclass C:\n"
+            "    def find_module(self, n, p=None):\n"
+            "        return self if n.split('.')[0] == 'anthropic' else None\n"
+            "    def load_module(self, n):\n"
+            "        raise ImportError(n)\n"
+            "sys.meta_path.insert(0, C())\n"
+            "import runpy; sys.argv = ['cli'] + sys.argv[1:];"
+            "runpy.run_module('agent.cli', run_name='__main__')"
+        )
+        goc = str(Path(__file__).resolve().parent.parent)
+        for args in (["list"], ["plan", "--so-ngay", "2"], ["hooks", "--so-luong", "3"]):
+            with self.subTest(lenh=args[0]):
+                r = subprocess.run(
+                    [sys.executable, "-c", chan, *args],
+                    cwd=goc, capture_output=True, text=True,
+                    env={"PATH": os.environ.get("PATH", "")},
+                )
+                self.assertEqual(r.returncode, 0, r.stderr[-500:])
 
 
 class TestPrompt(unittest.TestCase):
