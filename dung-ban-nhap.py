@@ -92,16 +92,181 @@ def bo_cau_nhan_vat_minh_hoa(s):
     return s
 
 
+def bit_cua_thoat(s):
+    """Bo cac lien ket dua khach RA KHOI trang, giu lai chu.
+
+    Giu nguyen hai lien ket Messenger — o Viet Nam do la duong chot don that,
+    khach nhan tin la mot buoc TIEN toi mua, khong phai buoc roi di.
+    Bon lien ket con lai (3 sang fanpage, 1 sang trang nha san xuat) chi de
+    tham khao: doi thanh chu thuong, thong tin van con nguyen, khach van tra
+    cuu duoc, nhung khong con cua bam mot phat la mat khach.
+    """
+    FB = "https://www.facebook.com/profile.php?id=61592861334561"
+
+    # 1. Nut to 'Xem phan hoi tren Facebook' — bo han, day la cua thoat to nhat
+    nut = ('<a class="btn btn-lg" href="' + FB + '" target="_blank"'
+           ' rel="noopener">Xem phản hồi trên Facebook</a>')
+    assert nut in s, "khong tim thay nut Xem phan hoi tren Facebook"
+    s = s.replace(nut, "", 1)
+
+    # 2. Ba cho con lai: bo the <a>, giu chu
+    for dia_chi, chu in [(FB, "trang Facebook của bên em"),
+                         (FB, "DiLiM Supplement"),
+                         ("https://www.ams-life.co.jp/", "ams-life.co.jp")]:
+        the = ('<a href="' + dia_chi + '" target="_blank" rel="noopener">'
+               + chu + '</a>')
+        assert the in s, "khong tim thay lien ket: " + chu
+        s = s.replace(the, '<span class="ngoai">' + chu + '</span>', 1)
+
+    neo = '.quote{overflow-x:auto'
+    s = s.replace(neo, '.ngoai{font-weight:600;color:var(--ink2)}\n' + neo, 1)
+
+    assert s.count('href="' + FB + '"') == 0, "van con lien ket sang fanpage"
+    assert s.count('ams-life.co.jp/"') == 0, "van con lien ket sang trang Nhat"
+    assert s.count('href="https://m.me/') == 2, "phai giu du hai lien ket Messenger"
+    return s
+
+
+def loi_tran_an_len_tren_nut(s):
+    """Dua cau 'bam gui chua phai tra dong nao' len TREN nut gui.
+
+    The CSS ten la .truoc-nut nhung trong ma no dang nam SAU nut, nen hien ra
+    ben DUOI nut. Khach doc nut roi quyet dinh luon, khong ai doc xuong duoi
+    moi bam. Loi tran an phai den TRUOC luc tay do xuong.
+    """
+    i = s.index('<div class="full btn-row">')
+    j = s.index('</div>', s.index('</button>', i)) + len('</div>')
+    nut = s[i:j]
+
+    k = s.index('<p class="truoc-nut">')
+    m = s.index('</p>', k) + len('</p>')
+    cau = s[k:m]
+
+    assert i < k, "cau tran an da nam tren nut roi"
+    s = s[:k] + s[m:]              # nhac cau ra
+    return s[:i] + cau + s[i:]     # dat lai ngay TRUOC nut
+
+
+COD_TIN_NHAN = """    if(du.cach_tra === 'cod'){
+      return t + '\\n\\nNHẬN HÀNG RỒI TRẢ TIỀN'
+             + '\\nKhách không chuyển gì trước.'
+             + '\\nTrả đủ cho người giao khi nhận hàng.';
+    }
+"""
+
+COD_MAN_HINH = """    if(du.cach_tra === 'cod'){
+      return '<span class="don-tra">'
+        + '<b>Anh chị không phải chuyển gì trước</b>'
+        + '<span class="ck-note">Nhân viên gọi xác nhận đơn rồi bên em gửi hàng. '
+        + 'Anh chị <b>mở hộp kiểm tra rồi mới trả tiền</b> cho người giao. '
+        + 'Uống hết hộp đầu không thấy khác, bên em nhận lại hộp còn nguyên.</span>'
+        + '</span>';
+    }
+"""
+
+
+def cam_ket_va_nhan_hang_tra_tien(s):
+    """Hai loi cam ket cua anh Son + lua chon COD trong o Cach thanh toan.
+
+    Nguyen van anh Son gui 29/08:
+      "Nhan hang, mo hop kiem tra roi moi tra tien."
+      "Uong het hop dau khong thay khac, ben em nhan lai hop con nguyen."
+    Day la CAM KET KINH DOANH cua anh Son, khong phai chu em tu nghi ra.
+    Sua chu o day = sua loi hua voi khach, chi anh Son moi duoc sua.
+    """
+    # 1. Them lua chon nhan hang tra tien, dat len dau va chon san
+    cu = ('<div class="tra-o" id="chon-tra-form">\n'
+          '<label class="hop-o on"><input type="radio" name="cach_tra" value="coc" checked>'
+          '<span class="h-t">Đặt cọc 200.000đ giữ hàng</span>'
+          '<span class="h-s">Phần còn lại trả khi nhận hàng</span></label>')
+    moi = ('<div class="tra-o" id="chon-tra-form">\n'
+           '<label class="hop-o on"><input type="radio" name="cach_tra" value="cod" checked>'
+           '<span class="h-t">Nhận hàng rồi trả tiền</span>'
+           '<span class="h-s">Mở hộp kiểm tra rồi mới trả — không trả trước đồng nào</span></label>\n'
+           '<label class="hop-o"><input type="radio" name="cach_tra" value="coc">'
+           '<span class="h-t">Đặt cọc 200.000đ giữ hàng</span>'
+           '<span class="h-s">Phần còn lại trả khi nhận hàng</span></label>')
+    assert cu in s, "khong tim thay o Cach thanh toan"
+    s = s.replace(cu, moi, 1)
+
+    # 2. Hai loi cam ket, dat ngay tren nut gui
+    khoi = ('<div class="cam-ket-mua">'
+            '<p><b>Nhận hàng, mở hộp kiểm tra rồi mới trả tiền.</b></p>'
+            '<p><b>Uống hết hộp đầu không thấy khác, bên em nhận lại hộp còn nguyên.</b></p>'
+            '</div>')
+    neo = '<p class="truoc-nut">'
+    i = s.index(neo)
+    s = s[:i] + khoi + s[i:]
+
+    css = ('.cam-ket-mua{grid-column:1/-1;margin:0 0 .7rem;padding:.75rem .9rem;'
+           'border:1px solid var(--jade);border-radius:var(--r);'
+           'background:var(--jade-soft)}'
+           '\n.cam-ket-mua p{margin:0;font-size:.88rem;line-height:1.5;color:var(--jade)}'
+           '\n.cam-ket-mua p+p{margin-top:.35rem}'
+           '\n.quote{overflow-x:auto')
+    s = s.replace('.quote{overflow-x:auto', css, 1)
+
+    # 3. Ba cho trong ma chi biet 'coc' va 'du' — khong sua thi khach chon
+    #    nhan hang tra tien ma don bao ve lai ghi "Dat coc 200.000d".
+    nhan = ("['Cách trả', du.cach_tra === 'du' ? 'Chuyển khoản đủ'"
+            " : 'Đặt cọc 200.000đ'],")
+    nhan_moi = ("['Cách trả', du.cach_tra === 'du' ? 'Chuyển khoản đủ'"
+                " : du.cach_tra === 'cod' ? 'Nhận hàng rồi trả tiền'"
+                " : 'Đặt cọc 200.000đ'],")
+    assert nhan in s, "khong tim thay nhan Cach tra"
+    s = s.replace(nhan, nhan_moi, 1)
+
+    tin = "  function tinNhan(du){\n    var t = tomTat(du);\n"
+    assert tin in s, "khong tim thay tinNhan"
+    s = s.replace(tin, tin + COD_TIN_NHAN, 1)
+
+    tra = "  function khoiTra(du){\n"
+    assert tra in s, "khong tim thay khoiTra"
+    s = s.replace(tra, tra + COD_MAN_HINH, 1)
+
+    return s
+
+
 THAY_DOI = [doi_cho_bao_gia, anh_canh_bang_gia, gia_moi_ngay_o_man_dau,
-             bo_cau_nhan_vat_minh_hoa]
+             bo_cau_nhan_vat_minh_hoa, bit_cua_thoat, loi_tran_an_len_tren_nut,
+             cam_ket_va_nhan_hang_tra_tien]
 
 BANG = ('<div style="position:sticky;top:0;z-index:99;background:#7A1030;color:#fff;'
         'padding:.55rem .9rem;font:600 13px/1.4 system-ui,sans-serif;text-align:center">'
         'BẢN XEM TRƯỚC — chưa lên trang chính. Pixel đã tắt, số liệu quảng cáo không bị ảnh hưởng.</div>')
 
 
+# Dau nhan: chuoi chi xuat hien SAU khi thay doi da duoc ap dung.
+# Nho no ma chay lai duoc nhieu lan — da ap dung roi thi bo qua, khong bao loi.
+DAU_NHAN = {
+    "doi_cho_bao_gia": None,          # so sanh vi tri, xu ly rieng
+    "anh_canh_bang_gia": 'class="bg-anh"',
+    "gia_moi_ngay_o_man_dau": "bằng hai cốc cà phê",
+    "bo_cau_nhan_vat_minh_hoa": None,
+    "bit_cua_thoat": None,
+    "loi_tran_an_len_tren_nut": None,
+    "cam_ket_va_nhan_hang_tra_tien": "cam-ket-mua",
+}
+
+
+def da_ap_dung(ten, s):
+    if ten == "doi_cho_bao_gia":
+        return s.index('id="dat-hang"') < s.index('id="phan-hoi"')
+    if ten == "bo_cau_nhan_vat_minh_hoa":
+        return "Nhân vật minh hoạ" not in s
+    if ten == "bit_cua_thoat":
+        return "facebook.com/profile" not in s
+    if ten == "loi_tran_an_len_tren_nut":
+        return s.index('<p class="truoc-nut">') < s.index('<div class="full btn-row">')
+    dn = DAU_NHAN.get(ten)
+    return bool(dn) and dn in s
+
+
 def ap_dung(s):
     for ham in THAY_DOI:
+        if da_ap_dung(ham.__name__, s):
+            print("  bo qua (da co san):", ham.__name__)
+            continue
         s = ham(s)
     return s
 

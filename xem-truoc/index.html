@@ -498,6 +498,10 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .neo-note b{color:var(--red)}
 
 /* pricing */
+.ngoai{font-weight:600;color:var(--ink2)}
+.cam-ket-mua{grid-column:1/-1;margin:0 0 .7rem;padding:.75rem .9rem;border:1px solid var(--jade);border-radius:var(--r);background:var(--jade-soft)}
+.cam-ket-mua p{margin:0;font-size:.88rem;line-height:1.5;color:var(--jade)}
+.cam-ket-mua p+p{margin-top:.35rem}
 .quote{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
 .bang-gia{display:flex;gap:1rem;align-items:flex-start}
 .bang-gia>.quote{flex:1 1 auto;min-width:0}
@@ -1200,13 +1204,14 @@ if(typeof window.qrcode !== 'function'){
 </div></div>
 <div class="field full"><label>Cách thanh toán</label>
 <div class="tra-o" id="chon-tra-form">
-<label class="hop-o on"><input type="radio" name="cach_tra" value="coc" checked><span class="h-t">Đặt cọc 200.000đ giữ hàng</span><span class="h-s">Phần còn lại trả khi nhận hàng</span></label>
+<label class="hop-o on"><input type="radio" name="cach_tra" value="cod" checked><span class="h-t">Nhận hàng rồi trả tiền</span><span class="h-s">Mở hộp kiểm tra rồi mới trả — không trả trước đồng nào</span></label>
+<label class="hop-o"><input type="radio" name="cach_tra" value="coc"><span class="h-t">Đặt cọc 200.000đ giữ hàng</span><span class="h-s">Phần còn lại trả khi nhận hàng</span></label>
 <label class="hop-o"><input type="radio" name="cach_tra" value="du"><span class="h-t">Chuyển khoản đủ</span><span class="h-s">Nhận hàng là xong, không phải trả thêm</span></label>
 </div></div>
-            <div class="full btn-row"><button class="btn btn-lg" type="submit">Đặt 6 hộp — 17.340.000đ</button><a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi ngay 0913.351.394</a></div>
+            <div class="cam-ket-mua"><p><b>Nhận hàng, mở hộp kiểm tra rồi mới trả tiền.</b></p><p><b>Uống hết hộp đầu không thấy khác, bên em nhận lại hộp còn nguyên.</b></p></div><p class="truoc-nut">Bấm gửi <b>chưa phải trả đồng nào</b>. Nhân viên gọi xác nhận đơn trước, anh chị muốn chuyển khoản hay không là quyền anh chị.</p><div class="full btn-row"><button class="btn btn-lg" type="submit">Đặt 6 hộp — 17.340.000đ</button><a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi ngay 0913.351.394</a></div>
           </form>
           <p class="ok-msg" id="ok-msg">Đã ghi nhận. Đây là bản demo giao diện nên thông tin chưa được gửi đi đâu cả — cần nối form vào hệ thống trước khi chạy quảng cáo.</p>
-          <p class="truoc-nut">Bấm gửi <b>chưa phải trả đồng nào</b>. Nhân viên gọi xác nhận đơn trước, anh chị muốn chuyển khoản hay không là quyền anh chị.</p><p class="form-note">Chỉ <b>họ tên</b> và <b>số điện thoại</b> là bắt buộc — anh chị bấm gửi được ngay. Địa chỉ điền luôn thì bên em giao nhanh hơn; chưa tiện thì nhân viên gọi lại hỏi cũng được. Thông tin chỉ dùng để liên hệ tư vấn và giao hàng, không chia sẻ cho bên thứ ba.</p>
+          <p class="form-note">Chỉ <b>họ tên</b> và <b>số điện thoại</b> là bắt buộc — anh chị bấm gửi được ngay. Địa chỉ điền luôn thì bên em giao nhanh hơn; chưa tiện thì nhân viên gọi lại hỏi cũng được. Thông tin chỉ dùng để liên hệ tư vấn và giao hàng, không chia sẻ cho bên thứ ba.</p>
         </div>
       </div>
       <div class="col">
@@ -1276,7 +1281,7 @@ if(typeof window.qrcode !== 'function'){
 
       <div class="col fb-cta">
         <div class="fb-btns">
-          <a class="btn btn-lg" href="https://www.facebook.com/profile.php?id=61592861334561" target="_blank" rel="noopener">Xem phản hồi trên Facebook</a>
+          
           <a class="btn btn-lg btn-ghost" href="https://m.me/61592861334561" target="_blank" rel="noopener">Nhắn tin hỏi trực tiếp</a>
         </div>
         <p class="note">Phản hồi và câu chuyện của khách đăng công khai trên trang Facebook của bên em, anh chị xem được toàn bộ chứ không phải bản đã cắt ghép.</p>
@@ -1597,7 +1602,7 @@ if(typeof window.qrcode !== 'function'){
           </div>
         </div>
         <p>Bao bì bán tại Việt Nam là bao bì Nhật nguyên bản, chữ Nhật in trực tiếp trên hộp và trên lọ, kèm tem nhãn phụ tiếng Việt do đơn vị nhập khẩu dán thêm. Anh chị cầm hộp lên là đối chiếu được ngay với ảnh trên trang này.</p>
-        <p>Nhà sản xuất công bố thông tin doanh nghiệp tại <a href="https://www.ams-life.co.jp/" target="_blank" rel="noopener">ams-life.co.jp</a> — trang này nêu rõ mảng sản xuất thực phẩm chức năng và tình trạng niêm yết trên sàn Tokyo.</p>
+        <p>Nhà sản xuất công bố thông tin doanh nghiệp tại <span class="ngoai">ams-life.co.jp</span> — trang này nêu rõ mảng sản xuất thực phẩm chức năng và tình trạng niêm yết trên sàn Tokyo.</p>
         
       </div>
     </div>
@@ -1677,7 +1682,7 @@ if(typeof window.qrcode !== 'function'){
         </details>
         <details>
           <summary>Muốn xem thêm phản hồi của người đã dùng thì xem ở đâu?</summary>
-          <p>Anh chị xem trên <a href="https://www.facebook.com/profile.php?id=61592861334561" target="_blank" rel="noopener">trang Facebook của bên em</a>, nơi phản hồi đăng công khai và còn nguyên hội thoại. Bên em không đăng ảnh chụp đã cắt ghép lên trang này.</p>
+          <p>Anh chị xem trên <span class="ngoai">trang Facebook của bên em</span>, nơi phản hồi đăng công khai và còn nguyên hội thoại. Bên em không đăng ảnh chụp đã cắt ghép lên trang này.</p>
         </details>
         <details>
           <summary>Làm sao biết hàng em nhận là hàng chính hãng?</summary>
@@ -1810,7 +1815,7 @@ if(typeof window.qrcode !== 'function'){
   <div class="co">
     <span><b>Nhà sản xuất:</b> AFC-HD AMS Life Science Co., Ltd — Second Factory, 2-4-3 Toyoda, Suruga-ku, Shizuoka 422-8027, Nhật Bản</span>
     <span><b>Thương nhân chịu trách nhiệm về sản phẩm:</b> Công ty Cổ phần 5SPRO — Số 431 Ngọc Thuỵ, phường Ngọc Thuỵ, quận Long Biên, Hà Nội</span>
-    <span><b>Facebook:</b> <a href="https://www.facebook.com/profile.php?id=61592861334561" target="_blank" rel="noopener">DiLiM Supplement</a></span>
+    <span><b>Facebook:</b> <span class="ngoai">DiLiM Supplement</span></span>
     <span><b>Hotline tư vấn:</b> <a href="tel:0913351394">0913.351.394</a></span>
     <span><b>Phân phối và quảng cáo:</b> Công ty Cổ phần Jinsei Vietnam — LK06-07 phố Hồng Tiến, phường Bồ Đề, Hà Nội · MST 0110613577 · Hotline 0932.731.555</span>
   </div>
@@ -2374,6 +2379,11 @@ var FORM_GOOGLE = {
 
   function tinNhan(du){
     var t = tomTat(du);
+    if(du.cach_tra === 'cod'){
+      return t + '\n\nNHẬN HÀNG RỒI TRẢ TIỀN'
+             + '\nKhách không chuyển gì trước.'
+             + '\nTrả đủ cho người giao khi nhận hàng.';
+    }
     // Ban tin gui sang Messenger/SMS phai khop dung cach tra khach da chon.
     // Truoc day luon ghi "DAT COC GIU HANG 200.000d" ke ca khi khach chon
     // chuyen khoan du - nhan vien doc Messenger se doi coc, sai y khach.
@@ -2398,6 +2408,14 @@ var FORM_GOOGLE = {
   // Khoi chuyen khoan: ma QR da co san dung so tien khach vua chon,
   // kem san noi dung chuyen khoan la ten va so dien thoai cua khach.
   function khoiTra(du){
+    if(du.cach_tra === 'cod'){
+      return '<span class="don-tra">'
+        + '<b>Anh chị không phải chuyển gì trước</b>'
+        + '<span class="ck-note">Nhân viên gọi xác nhận đơn rồi bên em gửi hàng. '
+        + 'Anh chị <b>mở hộp kiểm tra rồi mới trả tiền</b> cho người giao. '
+        + 'Uống hết hộp đầu không thấy khác, bên em nhận lại hộp còn nguyên.</span>'
+        + '</span>';
+    }
     var tong = du.so_tien ? Number(du.so_tien) : 0;
     var nd   = noiDungCK(du);
     var con  = tong - TIEN_COC;
@@ -2631,7 +2649,7 @@ var FORM_GOOGLE = {
       ['Điện thoại', du.sdt],
       ['Địa chỉ',   du.dia_chi],
       ['Số lượng',  du.soluong],
-      ['Cách trả', du.cach_tra === 'du' ? 'Chuyển khoản đủ' : 'Đặt cọc 200.000đ'],
+      ['Cách trả', du.cach_tra === 'du' ? 'Chuyển khoản đủ' : du.cach_tra === 'cod' ? 'Nhận hàng rồi trả tiền' : 'Đặt cọc 200.000đ'],
       ['Bài kiểm tra', du.tuKiem],
       ['Thời gian', du.thoi_gian]
     ];
