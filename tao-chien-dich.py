@@ -96,6 +96,27 @@ NGAN_SACH  = _HS.NGAN_SACH
 TEN_CD     = _HS.TEN_CD
 NHOM       = _HS.NHOM
 
+# --vao-chien-dich "Q10 · T9 · Tiếp cận mới"
+#   Nhét nhóm quảng cáo mới vào MỘT chiến dịch đã có sẵn, thay vì dựng chiến
+#   dịch riêng. Anh Sơn hỏi cách này để chạy giảm mỡ chung với Q10.
+#
+#   ĐÁNH ĐỔI phải biết trước: hai sản phẩm chung một chiến dịch thì cột số
+#   liệu cấp chiến dịch trộn làm một. Muốn biết riêng giảm mỡ tốn bao nhiêu,
+#   ra bao nhiêu đơn, phải tự lọc theo tên nhóm mỗi lần xem. Dựng chiến dịch
+#   riêng thì nhìn phát ra ngay. Facebook học theo từng NHÓM nên phần tối ưu
+#   không bị ảnh hưởng — chỉ khổ người đọc số.
+#
+#   Không ghi thì vẫn dựng chiến dịch riêng như cũ.
+VAO_CD = ''
+if '--vao-chien-dich' in sys.argv:
+    try:
+        VAO_CD = sys.argv[sys.argv.index('--vao-chien-dich') + 1].strip()
+    except IndexError:
+        sys.exit('--vao-chien-dich phai kem ten chien dich, dat trong nhay kep')
+    if not VAO_CD:
+        sys.exit('--vao-chien-dich phai kem ten chien dich, dat trong nhay kep')
+    TEN_CD = VAO_CD
+
 # --nhom 1      -> chi dung Nhom 1
 # --nhom 1,3    -> dung Nhom 1 va Nhom 3
 # khong ghi     -> dung het, y nhu truoc
@@ -352,6 +373,15 @@ def main():
         if len(trung) > 1:
             print("!! Đang có %d chiến dịch trùng tên này. Vào Ads Manager xoá bớt."
                   % len(trung))
+    elif VAO_CD:
+        # Anh Son bao nhet vao mot chien dich CO SAN. Khong tim thay ten do thi
+        # DUNG, chu khong duoc lang le dung mot chien dich moi trung ten —
+        # nhu vay la lam sai han thu anh yeu cau.
+        print("\nKHONG TIM THAY chien dich ten: %s" % VAO_CD)
+        print("Tren tai khoan nay dang co:")
+        for c in cu:
+            print("   · %s" % c.get("name"))
+        sys.exit("Chep dung y nguyen mot ten o tren, ke ca dau va khoang trang.")
     else:
         cd = goi("%s/campaigns" % act, {
             "name": TEN_CD,

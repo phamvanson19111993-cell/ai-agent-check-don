@@ -212,6 +212,25 @@ def main():
     can(not [g for g in fb.da_goi if not g[2] and g[3].get('status') == 'ACTIVE'],
         'không bật gì khi đang đụng trần')
 
+    print('\n13 · --vao-chien-dich thì nhét nhóm vào chiến dịch Q10 có sẵn')
+    fb = FBGia(cd_co=['Q10 · T9 · Tiếp cận mới'])
+    m, ra, _ = chay(C + ['--nhom', '1', '--vao-chien-dich', 'Q10 · T9 · Tiếp cận mới'], fb)
+    tao_cd = [g for g in fb.da_goi if g[0].endswith('/campaigns') and not g[2]]
+    can(not tao_cd, 'KHÔNG dựng chiến dịch mới', tao_cd)
+    can('DÙNG LẠI' in ra, 'nói rõ là dùng lại chiến dịch Q10')
+    ten = [g[1] for g in fb.da_goi if g[0].endswith('/adsets') and not g[2]]
+    can(ten == ['Nhom 1 · nu 30-55'], 'nhóm giảm mỡ nằm trong chiến dịch Q10', ten)
+
+    print('\n14 · gõ sai tên chiến dịch thì DỪNG, không lặng lẽ dựng cái trùng tên')
+    fb = FBGia(cd_co=['Q10 · T9 · Tiếp cận mới'])
+    m, ra, ma = chay(C + ['--nhom', '1', '--vao-chien-dich', 'Q10 T9'], fb)
+    can(not [g for g in fb.da_goi if g[0].endswith('/campaigns') and not g[2]],
+        'không dựng chiến dịch nào')
+    can(not [g for g in fb.da_goi if g[0].endswith('/adsets') and not g[2]],
+        'không dựng nhóm nào')
+    can('KHONG TIM THAY' in ra, 'báo không tìm thấy tên đó')
+    can('Q10 · T9 · Tiếp cận mới' in ra, 'liệt kê tên đang có để chép lại')
+
     print('\n' + '=' * 56)
     print('%d đạt, %d hỏng' % (dat, hong))
     sys.exit(1 if hong else 0)
