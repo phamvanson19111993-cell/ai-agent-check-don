@@ -280,6 +280,18 @@ Chỉ ra quyết định khi **đủ dữ liệu**. Chưa đủ thì nói rõ c�
 | **SỬA** | Điểm nghẽn nằm ngoài Ads: Landing Page, form, tốc độ gọi, kịch bản sale, offer |
 | **TẮT** | Đã tiêu đủ ngưỡng dữ liệu (tối thiểu ≈ 1× CAC hoà vốn mà chưa có đơn, hoặc ≈ 2× CAC hoà vốn mà CAC vẫn vượt ngưỡng) và không có tín hiệu cải thiện |
 
+**Ba lằn ranh — đừng lẫn mục tiêu phấn đấu với ngưỡng tắt máy** (bảng theo mốc: `playbook/11`):
+
+```
+CPA ≤ CPA giữ biên 30%        → GIỮ, đủ ổn định thì SCALE
+giữa biên 30% và trần CPA     → GIỮ nhưng KHÔNG scale
+CPA > trần CPA (ROAS hoà vốn) → TẮT hoặc SỬA, khi đã đủ ngưỡng dữ liệu
+```
+
+Mục tiêu "chi phí ads 5% doanh thu" = **ROAS 20**, chặt hơn hoà vốn 8,3–10 lần tuỳ mốc.
+Dùng nó để **xếp hạng ad**, tuyệt đối **không dùng làm ngưỡng tắt** — lấy ROAS 20 làm lằn ranh
+thì ngày đầu sẽ tắt sạch, kể cả chiến dịch đang lãi thật.
+
 **Scale có kiểm soát**: tăng ngân sách từng bước và theo dõi lại sau mỗi bước, hoặc nhân bản sang
 cấu trúc scale riêng khi đã đủ dữ liệu. **Không đưa một tỷ lệ scale cố định cho mọi tài khoản** —
 tốc độ tăng phụ thuộc độ ổn định CAC và khả năng xử lý lead của đội sale.

@@ -74,3 +74,44 @@ Có số nào thì điền số đó, ngưỡng siết lại ngay.
 
 Khi có hoá đơn nhập thật: sửa **một dòng giá vốn** ở file gốc bên Phòng Tổng Chỉ Huy,
 cập nhật bảng này và ô "Giá vốn 1 hộp" trong máy tính, rồi bỏ dòng cảnh báo giả định.
+
+---
+
+## BA LẰN RANH — trả lời MT-19 ("mục tiêu 5% chặt hơn hoà vốn ~10 lần")
+
+Tất cả **theo giả định giá vốn 50%**.
+
+Một chiến dịch cần **ba mốc khác nhau**, không phải một con số dùng cho mọi việc:
+
+| Mốc | Doanh thu | 🔴 Trần CPA — **lằn ranh tắt máy** | 🟢 CPA giữ biên 30% — **vùng làm việc** | ⭐ CPA nếu ép 5% doanh thu |
+|---|---|---|---|---|
+| 1 hộp | 2.890.000đ | **1.445.000đ** · ROAS 2,00 | 1.011.500đ · ROAS 2,86 | 144.500đ · ROAS 20 |
+| 2 hộp | 5.780.000đ | **2.890.000đ** · ROAS 2,00 | 2.023.000đ · ROAS 2,86 | 289.000đ · ROAS 20 |
+| 3 hộp | 8.670.000đ | **3.995.000đ** · ROAS 2,17 | 2.796.500đ · ROAS 3,10 | 433.500đ · ROAS 20 |
+| 5 hộp | 14.450.000đ | **6.730.000đ** · ROAS 2,15 | 4.711.000đ · ROAS 3,07 | 722.500đ · ROAS 20 |
+| 6 hộp | 17.340.000đ | **7.225.000đ** · ROAS 2,40 | 5.057.500đ · ROAS 3,43 | 867.000đ · ROAS 20 |
+
+Mục tiêu 5% chặt hơn hoà vốn **8,3 đến 10 lần** tuỳ mốc.
+
+### Quan điểm Phòng Ads
+
+**Đồng ý với đề xuất trong MT-19**, và nói rõ thêm vì sao:
+
+- **Không được dùng 5% làm lằn ranh tắt máy.** ROAS 20 trên phễu leadgen sản phẩm 2,89 triệu ở
+  traffic lạnh là mức gần như không chiến dịch nào chạm tới trong giai đoạn học. Lấy nó làm ngưỡng
+  tắt thì **ngày đầu tiên sẽ tắt sạch, kể cả chiến dịch đang lãi thật** — đúng rủi ro MT-19 nêu.
+- **Lằn ranh tắt máy là cột đỏ** — trần CPA của mốc đang bán. Vượt nó là lỗ thật, không phải lãi mỏng.
+- **Vùng làm việc là cột xanh** — CPA giữ biên 30%. Đây là chỗ ra quyết định giữ / test / scale hằng ngày.
+- **5% là mục tiêu phấn đấu và là thước xếp hạng** — dùng để so ad này với ad kia, để biết
+  ad nào đang tiến gần mục tiêu nhất. **Không dùng để tắt.**
+
+### Ba lằn ranh dùng thế nào
+
+```
+CPA ≤ cột xanh          → GIỮ, đủ ổn định thì SCALE
+cột xanh < CPA ≤ cột đỏ → GIỮ nhưng không scale; việc cần làm là tăng tỷ lệ chốt hoặc đẩy mốc combo cao hơn
+CPA > cột đỏ            → đã tiêu đủ ngưỡng dữ liệu thì TẮT hoặc SỬA
+```
+
+**Cảnh báo cuối:** cột đỏ mới trừ giá vốn hàng và quà tặng. Chưa trừ hoa hồng, vận chuyển, đổi trả.
+Ngưỡng thật **thấp hơn cột đỏ**. Vì vậy vùng giữa xanh và đỏ là vùng phải cẩn thận, không phải vùng an toàn.
