@@ -1,5 +1,12 @@
 # Phòng 7 · Lady Page — TỔNG KẾT NGÀY 29/08/2026
 
+> ⚠️ **ĐÍNH CHÍNH — thêm 00h ngày 30/08.** Dòng "0 lượt xem" trong báo cáo này **SAI**.
+> Phòng 7 suy đoán từ việc không thấy ảnh Ads trong chat, **không phải số đo được**.
+> Số thật ngày 29/08 (ảnh Trình quản lý quảng cáo anh Sơn gửi):
+> **chi 300.235đ · 163 lượt xem trang · 1.842đ mỗi lượt.**
+> Chi tiết: `bao-cao/2026-08-29-22h-so-that.md`.
+
+
 Ảnh báo cáo: `bao-cao/anh/2026-08-29-tong-ket.png` (`d4bc8fc`)
 
 ## SỐ CỦA NGÀY
