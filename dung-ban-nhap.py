@@ -302,10 +302,26 @@ def bo_dong_trong_trong_ban_tin(s):
     return s.replace(cu, moi, 1)
 
 
+def sua_chu_hop_con_nguyen(s):
+    """Doi 'nhan lai hop con nguyen' -> 'nhan lai so hop con nguyen'.
+
+    Anh Son duyet 29/08. Voi don nhieu hop, khach uong het hop dau ma khong
+    thay khac thi tra lai NHUNG HOP CHUA BOC. Cau cu de khach mua 1 hop hieu
+    nham la duoc hoan tien hop da uong het.
+    Xuat hien hai cho: khoi cam ket tren nut gui, va man hinh sau khi gui don
+    khi khach chon nhan hang tra tien.
+    """
+    cu = "nhận lại hộp còn nguyên"
+    moi = "nhận lại số hộp còn nguyên"
+    n = s.count(cu)
+    assert n == 2, "phai co dung 2 cho, dem duoc " + str(n)
+    return s.replace(cu, moi)
+
+
 THAY_DOI = [doi_cho_bao_gia, anh_canh_bang_gia, gia_moi_ngay_o_man_dau,
              bo_cau_nhan_vat_minh_hoa, bit_cua_thoat, loi_tran_an_len_tren_nut,
              cam_ket_va_nhan_hang_tra_tien, dia_chi_mot_o,
-             bo_dong_trong_trong_ban_tin]
+             bo_dong_trong_trong_ban_tin, sua_chu_hop_con_nguyen]
 
 BANG = ('<div style="position:sticky;top:0;z-index:99;background:#7A1030;color:#fff;'
         'padding:.55rem .9rem;font:600 13px/1.4 system-ui,sans-serif;text-align:center">'
@@ -324,6 +340,7 @@ DAU_NHAN = {
     "cam_ket_va_nhan_hang_tra_tien": "cam-ket-mua",
     "dia_chi_mot_o": 'name="dia_chi"',
     "bo_dong_trong_trong_ban_tin": "var d = [['Họ tên'",
+    "sua_chu_hop_con_nguyen": "nhận lại số hộp còn nguyên",
 }
 
 
