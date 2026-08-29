@@ -34,6 +34,8 @@ Và ghi vào mục 5 đơn báo cáo kỳ tới.
 
 1. **Cấm hỏi anh thứ mà phòng khác đã có.** Anh phải trả lời hai lần cùng một câu là hệ thống hỏng.
 2. **Cấm bịa để lấp chỗ trống.** Thiếu thì nói thiếu.
+   **Và cấm ghi "0" khi chưa đo** — không có số thì ghi "chưa có số". *"Không thấy"* khác
+   *"bằng không"*. Ghi 0 là khẳng định một phép đo mình chưa làm. (Thêm 29/08 sau MT-20.)
 3. **Cấm ngồi chờ.** Tổng Chỉ Huy không phải người đưa thư — phòng tự đi lấy.
 
 ## DANH BẠ — cần gì, lấy ở đâu

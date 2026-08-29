@@ -42,6 +42,19 @@ Phòng 6 theo lệnh khoá (an toàn hơn) và báo lên — **xử lý đúng**
 
 # ĐANG MỞ
 
+## 🔴 MT-20 · "Không thấy" bị ghi thành "bằng 0" — MỚI, lỗi quy trình
+
+Suốt 29/08 Phòng 7 báo **"0 lượt xem"**, Tổng Chỉ Huy chuyển nguyên lên anh Sơn hai kỳ.
+Thực tế quảng cáo **có chạy, tiêu 300.235đ, 163 lượt xem**.
+
+Nguồn sai: không thấy ảnh Ads trong chat → suy ra bằng 0. **Đó là suy đoán, không phải số đo.**
+
+**Luật bổ sung, áp cho mọi phòng:**
+> Không có số thì ghi **"chưa có số"**. **Cấm ghi "0"** khi chưa đo.
+> "Không thấy" khác "bằng không". Ghi 0 là khẳng định một phép đo mình chưa làm.
+
+Phòng 7 tự phát hiện và tự đính chính — xử lý đúng.
+
 ## 🔴 MT-16 · HAI PHÒNG CÙNG LÀM QUẢNG CÁO — MỚI, cần anh chốt
 
 Phòng Ads (12) phát hiện **Phòng 7 cũng có SOP set quảng cáo riêng**
