@@ -2595,7 +2595,7 @@ var FORM_GOOGLE = {
         var nut = h.querySelector('.ck-nut');
         try{
           if(navigator.clipboard && navigator.clipboard.writeText){
-            navigator.clipboard.writeText(h.getAttribute('data-chep'));
+            navigator.clipboard.writeText(h.getAttribute('data-chep')).catch(function(){});
           }
         }catch(e){}
         h.classList.add('xong');
@@ -2613,7 +2613,7 @@ var FORM_GOOGLE = {
     var tn = tinNhan(du);  // ban day du, dung de gui va de dan
     var q  = encodeURIComponent(tn);
     try{
-      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(tn);
+      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(tn).catch(function(){});
     }catch(e){}
     ok.classList.add('on');
     ok.classList.toggle('loi', !!loi);
@@ -2721,21 +2721,43 @@ var FORM_GOOGLE = {
     var than = cap.map(function(c){
       return 'entry.' + c[0] + '=' + encodeURIComponent(c[1] || '');
     }).join('&');
-    return fetch('https://docs.google.com/forms/d/e/' + g.ma + '/formResponse', {
+    var duong = 'https://docs.google.com/forms/d/e/' + g.ma + '/formResponse';
+    var kieu = 'application/x-www-form-urlencoded;charset=UTF-8';
+    // sendBeacon song sot khi trinh duyet bi day xuong nen (mo Messenger tren
+    // dien thoai la day trang xuong nen). fetch trong tinh huong do bi huy giua
+    // chung — don bien mat du Facebook da dem Lead. 28/08 Pixel dem 2 Lead
+    // nhung bang chi nhan 1 dong.
+    if(navigator.sendBeacon){
+      try{
+        if(navigator.sendBeacon(duong, new Blob([than], {type: kieu}))){
+          return Promise.resolve();
+        }
+      }catch(e){}
+    }
+    return fetch(duong, {
       method: 'POST',
       mode: 'no-cors',
-      headers: {'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+      headers: {'Content-Type': kieu},
       body: than
     });
   }
 
   function guiNoiNhan(du){
     if(!NOI_NHAN_DON) return null;
+    var than = JSON.stringify(du);
+    var kieu = 'text/plain;charset=utf-8';
+    if(navigator.sendBeacon){
+      try{
+        if(navigator.sendBeacon(NOI_NHAN_DON, new Blob([than], {type: kieu}))){
+          return Promise.resolve();
+        }
+      }catch(e){}
+    }
     return fetch(NOI_NHAN_DON, {
       method: 'POST',
       mode: 'no-cors',
-      headers: {'Content-Type':'text/plain;charset=utf-8'},
-      body: JSON.stringify(du)
+      headers: {'Content-Type': kieu},
+      body: than
     });
   }
 
@@ -2764,7 +2786,6 @@ var FORM_GOOGLE = {
     du.nguon     = location.href;
 
     baoFB('Lead', du.so_tien);
-    moMessenger(tinNhan(du));
 
     luuDon(du, 'dang-gui');
 
@@ -2772,6 +2793,10 @@ var FORM_GOOGLE = {
     // nua — mot duong hong la mat don. Gio duong nao song thi don van di.
     var duong = [guiNoiNhan(du), guiBieuMau(du)].filter(Boolean);
     var dangGui = duong.length ? Promise.all(duong) : null;
+
+    // Mo Messenger SAU khi don da day di. Truoc day mo truoc: tren dien thoai
+    // viec mo Messenger day trang xuong nen ngay lap tuc, don chua kip roi may.
+    moMessenger(tinNhan(du));
 
     if(!dangGui){
       danhDauKho('khong-co-duong-gui');
