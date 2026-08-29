@@ -27,10 +27,18 @@ thiếu quyền trong BM — là chặn ở tầng mạng. Nên phần bấm nú
 
 ## 1. Anh chạy hai lệnh này
 
+Anh chốt **chạy một nhóm trước** — đúng theo SOP. Nên thêm `--nhom 1`:
+
 ```bash
-python3 kiem-quang-cao.py giam-mo        # soát luật trước, ra "ĐẠT" mới đi tiếp
-python3 tao-chien-dich.py --san-pham giam-mo
+python3 kiem-quang-cao.py giam-mo                     # soát luật, ra "ĐẠT" mới đi tiếp
+python3 tao-chien-dich.py --san-pham giam-mo --nhom 1
 ```
+
+Chỉ dựng Nhóm 1 (nữ 30-45), 300.000đ/ngày. Hai nhóm kia **không được tạo ra** —
+không có cái công tắc nào nằm đó để gạt nhầm thành 900.000đ.
+
+Sau này muốn mở thêm thì chạy lại `--nhom 2`. Chương trình tìm lại chiến dịch cũ
+theo tên và thêm nhóm mới vào đó, không dựng thêm chiến dịch trùng tên.
 
 Lệnh thứ hai hỏi **mã token**, dán vào rồi Enter (chữ không hiện lên màn hình,
 đó là bình thường). Ba số còn lại đã điền sẵn trong file.
@@ -48,25 +56,52 @@ cho tới khi anh vào Ads Manager tự gạt nút. Cố ý như vậy để anh
 
 ```
 CHIẾN DỊCH  Giam mo · Ellagic Acid · Vong 1 · 2908      mục tiêu Doanh số
-├── NHÓM 1 · nữ 30-45   ·  300.000đ/ngày  ·  tối ưu cho Lead
-├── NHÓM 2 · nữ 45-60   ·  300.000đ/ngày  ·  tối ưu cho Lead
-└── NHÓM 3 · nam 30-50  ·  300.000đ/ngày  ·  tối ưu cho Lead
+└── NHÓM 1 · nữ 30-45   ·  300.000đ/ngày  ·  tối ưu cho Lead
+    └── QC · Nhom 1 · nu 30-45
 ```
+
+Bật phải gạt **đủ ba tầng**: chiến dịch → nhóm → quảng cáo. Thiếu một tầng là
+không đồng nào chạy, mà nhìn trên Ads Manager lại tưởng đã bật rồi. Lỗi này rất
+hay gặp vì chương trình dựng mọi thứ ở trạng thái tạm dừng.
 
 Toàn quốc · sở thích để trống (broad) · vị trí tự động · tắt Advantage+ creative
 (nó tự đổi chữ, dễ phá câu khuyến cáo bắt buộc).
 
-### Ngân sách — đọc kỹ chỗ này
+### Ngân sách
 
-Anh chốt **300.000đ một bài**. Bật cả ba nhóm là **900.000đ mỗi ngày**.
+**300.000đ/ngày, một nhóm, ba ngày không đụng vào.**
 
-SOP Phòng 7 mục 2A nói ngược lại: ngân sách test dưới ~1 triệu/ngày thì chỉ nên
-chạy **một nhóm**, vì chia ba thì không nhóm nào đủ số để kết luận gì.
-
-**Đề xuất: bật Nhóm 1 trước, 300.000đ/ngày, ba ngày không đụng vào.**
-Đối chiếu: Q10 trên cùng tài khoản đo được 849đ mỗi lượt xem trang đích (28/08).
+Đối chiếu để biết ba ngày đó mua được gì: Q10 trên cùng tài khoản, cùng Pixel,
+cùng tên miền đo được 849đ mỗi lượt xem trang đích (28/08).
 300.000đ ≈ 353 lượt/ngày → ba ngày ≈ 1.060 lượt, vừa đủ mốc quyết định 1.000 lượt.
-Bật cả ba là tiêu 900.000đ/ngày để lấy cùng ngần ấy dữ liệu, chia làm ba mảnh nhỏ.
+
+Tới 1.000 lượt mà vẫn 0 đơn thì chỉ còn khoảng 0,7% khả năng là do may rủi —
+nghĩa là trang hoặc lời chào hàng có vấn đề, đổ thêm tiền không cứu được.
+
+Đây đúng theo SOP Phòng 7 mục 2A: ngân sách test dưới ~1 triệu/ngày thì chạy
+**một nhóm**, vì chia nhỏ ra thì không nhóm nào đủ số để kết luận gì.
+
+---
+
+## 2b. CHẶN TRƯỚC MẮT — tài khoản đang đụng trần chi tiêu
+
+Ảnh Ads Manager 29/08 của anh Sơn ghi rõ:
+
+> *"Quảng cáo của bạn dừng chạy vì bạn đã đạt giới hạn chi tiêu của tài khoản
+> quảng cáo cho Phạm Sơn BM1.1"* — chiến dịch `Q10 · T9 · Tiếp cận mới` vẫn bật,
+> nhưng cột Phân phối là **"Đã đạt giới hạn chi tiêu"**.
+
+Nghĩa là **tài khoản đang không tiêu được đồng nào**, không riêng Q10. Dựng
+chiến dịch giảm mỡ lên rồi bật, nó cũng nằm im y như vậy — mà nhìn thì tưởng
+quảng cáo kém, tưởng trang không ra đơn.
+
+**Sửa trước khi làm gì khác:**
+Ads Manager → **Cài đặt thanh toán** → **Giới hạn chi tiêu tài khoản** →
+tăng hạn mức, hoặc bấm **Đặt lại số tiền đã chi**.
+
+`tao-chien-dich.py` nay tự đọc `spend_cap` và `amount_spent` của tài khoản.
+Đụng trần thì nó in cảnh báo và hỏi lại trước khi dựng, không lặng lẽ dựng xong
+để anh tưởng đã chạy.
 
 ---
 

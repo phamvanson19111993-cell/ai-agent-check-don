@@ -95,6 +95,30 @@ LINK       = _HS.LINK
 NGAN_SACH  = _HS.NGAN_SACH
 TEN_CD     = _HS.TEN_CD
 NHOM       = _HS.NHOM
+
+# --nhom 1      -> chi dung Nhom 1
+# --nhom 1,3    -> dung Nhom 1 va Nhom 3
+# khong ghi     -> dung het, y nhu truoc
+#
+# De chay thu mot nhom cho re thi dung co tao ca ba roi chi bat mot. Tao ba
+# nhom la ba cai cong tac nam san do; gat nham mot cai la ngan sach nhan ba.
+# Chay lai lenh nay voi --nhom 2 thi no TIM LAI chien dich cu theo ten va
+# them nhom moi vao do, khong dung them mot chien dich trung ten.
+def _chon_nhom(tat_ca):
+    if '--nhom' not in sys.argv:
+        return tat_ca
+    tho = sys.argv[sys.argv.index('--nhom') + 1]
+    try:
+        so = [int(x) for x in tho.replace(' ', '').split(',') if x]
+    except ValueError:
+        sys.exit("--nhom phai la so, vi du: --nhom 1  hoac  --nhom 1,3")
+    xau = [n for n in so if not 1 <= n <= len(tat_ca)]
+    if xau:
+        sys.exit("Ho so '%s' chi co %d nhom, khong co nhom %s"
+                 % (_TEN_SP, len(tat_ca), ', '.join(str(n) for n in xau)))
+    return [tat_ca[n - 1] for n in so]
+
+NHOM = _chon_nhom(NHOM)
 # ────────────────────────────────────────────────────────────────
 
 def goi(duong_dan, du_lieu=None, tep=None, lay=False):
@@ -241,7 +265,8 @@ def main():
     act = "act_%s" % TAI_KHOAN.replace("act_", "")
 
     # Xem tài khoản có sống không, và tiêu bằng tiền gì
-    tk = goi(act, {"fields": "name,currency,account_status,disable_reason"}, lay=True)
+    tk = goi(act, {"fields": "name,currency,account_status,disable_reason,"
+                             "spend_cap,amount_spent"}, lay=True)
     print("Tài khoản : %s" % tk.get("name"))
     print("Đơn vị    : %s" % tk.get("currency"))
     if tk.get("account_status") != 1:
@@ -253,6 +278,33 @@ def main():
               % tk.get("currency"))
         sys.exit(1)
 
+    # Giới hạn chi tiêu tài khoản — chỗ này đã chặn đứng chiến dịch Q10 ngày
+    # 29/08 ("Đã đạt giới hạn chi tiêu"). Dựng chiến dịch mới trên một tài khoản
+    # đang đụng trần thì bật lên nó vẫn nằm im, mà nhìn thì tưởng ads kém.
+    tran = tk.get("spend_cap")
+    da_tieu = tk.get("amount_spent")
+    if tran and str(tran) != "0":
+        tran, da_tieu = int(tran), int(da_tieu or 0)
+        con = tran - da_tieu
+        print("Giới hạn  : %s đ · đã tiêu %s đ · còn %s đ"
+              % (format(tran, ","), format(da_tieu, ","), format(con, ",")))
+        if con <= 0:
+            print("""
+╭────────────────────────────────────────────────────────────╮
+│  TÀI KHOẢN ĐÃ ĐỤNG TRẦN CHI TIÊU — dựng xong cũng không   │
+│  chạy được đồng nào.                                       │
+│                                                            │
+│  Sửa trước: Ads Manager → Cài đặt thanh toán →            │
+│  Giới hạn chi tiêu tài khoản → tăng hạn mức, hoặc          │
+│  Đặt lại số tiền đã chi.                                   │
+╰────────────────────────────────────────────────────────────╯""")
+            if input("Vẫn dựng chiến dịch để sẵn đó? (co/khong): ").strip().lower() \
+                    not in ("co", "có", "c", "y", "yes"):
+                sys.exit("Dung lai. Nang tran chi tieu roi chay lai lenh nay.")
+        elif con < NGAN_SACH * len(NHOM):
+            print("!! Chỗ còn lại (%s đ) không đủ một ngày ngân sách (%s đ)."
+                  % (format(con, ","), format(NGAN_SACH * len(NHOM), ",")))
+
     lo_pixel(act)
 
     # Ảnh dùng chung cho ba mẫu
@@ -261,17 +313,41 @@ def main():
     ma_anh = list(anh["images"].values())[0]["hash"]
     print("Ảnh       : đã tải lên")
 
-    # Tầng 1 — chiến dịch
-    cd = goi("%s/campaigns" % act, {
-        "name": TEN_CD,
-        "objective": "OUTCOME_SALES",
-        "status": "PAUSED",
-        "special_ad_categories": json.dumps([]),
-    })
-    print("\nChiến dịch: %s  (%s)" % (TEN_CD, cd["id"]))
+    # Tầng 1 — chiến dịch.
+    # Tìm lại theo tên trước đã. Chạy lệnh này lần hai với --nhom 2 thì nhóm
+    # mới phải rơi vào ĐÚNG chiến dịch cũ, không dựng thêm một cái trùng tên —
+    # hai chiến dịch cùng tên là ba ngày sau không ai đọc nổi số liệu.
+    cu = goi("%s/campaigns" % act,
+             {"fields": "id,name,status", "limit": 200}, lay=True).get("data", [])
+    trung = [c for c in cu if c.get("name") == TEN_CD]
+    if trung:
+        cd = trung[0]
+        print("\nChiến dịch: %s  (%s) — DÙNG LẠI cái đã có, không tạo trùng"
+              % (TEN_CD, cd["id"]))
+        if len(trung) > 1:
+            print("!! Đang có %d chiến dịch trùng tên này. Vào Ads Manager xoá bớt."
+                  % len(trung))
+    else:
+        cd = goi("%s/campaigns" % act, {
+            "name": TEN_CD,
+            "objective": "OUTCOME_SALES",
+            "status": "PAUSED",
+            "special_ad_categories": json.dumps([]),
+        })
+        print("\nChiến dịch: %s  (%s) — tạo mới" % (TEN_CD, cd["id"]))
 
+    # Nhóm nào đã dựng rồi thì bỏ qua, khỏi tiêu tiền hai lần cho một đối tượng.
+    da_co = {a.get("name") for a in
+             goi("%s/adsets" % act, {"fields": "name", "limit": 200},
+                 lay=True).get("data", [])}
+
+    dung = 0
     for n in NHOM:
         tuoi_min, tuoi_max = n["tuoi"]
+
+        if n["ten"] in da_co:
+            print("  %-24s đã có sẵn, bỏ qua" % n["ten"])
+            continue
 
         # Tầng 2 — nhóm quảng cáo
         nhom = goi("%s/adsets" % act, {
@@ -322,6 +398,7 @@ def main():
             "status": "PAUSED",
         })
 
+        dung += 1
         print("  %-24s tuổi %2d–%2d  %s đ/ngày   nhóm %s"
               % (n["ten"], tuoi_min, tuoi_max, format(NGAN_SACH, ","), nhom["id"]))
 
@@ -330,13 +407,14 @@ def main():
 │  XONG. Mọi thứ đang TẠM DỪNG, chưa tiêu đồng nào.          │
 │                                                            │
 │  Việc còn lại của anh:                                     │
-│   1. Mở Ads Manager, xem lại ba mẫu quảng cáo              │
+│   1. Mở Ads Manager, xem lại mẫu quảng cáo                 │
 │   2. Thay ảnh bằng video nếu đã quay xong                  │
-│   3. Gạt nút bật ở cả chiến dịch lẫn ba nhóm              │
-│                                                            │
-│  Bật đủ ba nhóm là tiêu 450.000đ mỗi ngày.                │
-╰────────────────────────────────────────────────────────────╯
-""")
+│   3. Gạt nút bật ĐỦ BA TẦNG: chiến dịch, nhóm, quảng cáo. │
+│      Thiếu một tầng là không đồng nào chạy, mà nhìn trên   │
+│      Ads Manager lại tưởng đã bật rồi.                     │
+╰────────────────────────────────────────────────────────────╯""")
+    print("Vừa dựng %d nhóm. Bật hết số nhóm đó là tiêu %s đ mỗi ngày.\n"
+          % (dung, format(NGAN_SACH * dung, ",")))
     print("Pixel dang dung: %s" % PIXEL)
     print("Neu so nay khac voi so tren web thi bao Claude doi lai.\n")
 
