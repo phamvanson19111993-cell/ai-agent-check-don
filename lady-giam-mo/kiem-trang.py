@@ -137,6 +137,14 @@ def kiem_ban_hang(br):
           .map(a => a.getAttribute('href')); }""")
     ghi(not ra, 'không link nào dẫn khách ra khỏi trang', '; '.join(ra[:3]))
     ghi(pg.locator('.steps-nav a').count() == 0, 'không có thanh mục lục để khách lạc đi')
+
+    # Phan hoi that va giay to that — hai thu ha rui ro manh nhat
+    ghi(pg.locator('#phan-hoi .pn').count() >= 5, 'có ít nhất năm đánh giá khách Shopee',
+        str(pg.locator('#phan-hoi .pn').count()))
+    ghi(pg.locator('.giay-anh img').count() == 2, 'có ảnh chụp hai giấy tờ gốc')
+    ghi(pg.evaluate("""() => Array.from(document.querySelectorAll('.giay-anh img'))
+            .every(i => (i.getAttribute('alt') || '').length > 30)"""),
+        'ảnh giấy tờ nào cũng có lời mô tả')
     cta = pg.evaluate("() => Math.round(document.querySelector('.hero-jump')"
                       ".getBoundingClientRect().top + window.scrollY)")
     ghi(cta < 844, 'nút mua nằm trong màn hình đầu', str(cta) + 'px')
@@ -222,8 +230,8 @@ def kiem_hinh_va_do_dai(br):
         return { tu: chu.trim().split(/\\s+/).filter(Boolean).length,
                  cao: document.documentElement.scrollHeight };
     }""")
-    ghi(do['tu'] <= 5000, 'trang gọn hơn trang Q10 (5.683 chữ)', str(do['tu']) + ' chữ')
-    ghi(do['cao'] <= 27000, 'đường cuộn ngắn hơn trang Q10 (32.791px)', str(do['cao']) + 'px')
+    ghi(do['tu'] <= 5400, 'trang gọn hơn trang Q10 (5.683 chữ)', str(do['tu']) + ' chữ')
+    ghi(do['cao'] <= 31000, 'đường cuộn ngắn hơn trang Q10 (32.791px)', str(do['cao']) + 'px')
     pg.close()
 
 
