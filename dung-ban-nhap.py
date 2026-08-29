@@ -227,9 +227,85 @@ def cam_ket_va_nhan_hang_tra_tien(s):
     return s
 
 
+def dia_chi_mot_o(s):
+    """Nam o dia chi gap lai gom thanh MOT o duy nhat — anh Son yeu cau 3 o.
+
+    Truoc: ten · so dien thoai · khoi gap chua 5 o (tinh/huyen/xa/thon/so nha)
+    Sau:   ten · so dien thoai · mot o dia chi
+
+    Khach tren dien thoai go dia chi lien mot mach quen hon la nhay qua nam o.
+    Doan JavaScript to sang khoi dia chi da co san "if(!kd) return;" nen bo
+    khoi di la no tu tat, khong loi.
+    """
+    i = s.index('<div class="field full"><details class="dia-chi">')
+    j = s.index('</details></div>', i) + len('</details></div>')
+    o_moi = ('<div class="field full"><label for="dia_chi">Địa chỉ nhận hàng</label>'
+             '<textarea id="dia_chi" name="dia_chi" rows="2" autocomplete="street-address"'
+             ' placeholder="Số nhà, thôn/xóm, xã/phường, huyện/quận, tỉnh/thành phố">'
+             '</textarea>'
+             '<span class="dc-ghi">Ghi càng chi tiết thì bưu tá càng giao đúng ngay lần đầu.'
+             '</span></div>')
+    s = s[:i] + o_moi + s[j:]
+
+    neo = '.field input,.field select{width:100%;max-width:100%;min-width:0;box-sizing:border-box}'
+    assert neo in s, "khong tim thay CSS o nhap"
+    css = (neo.replace('.field input,.field select',
+                       '.field input,.field select,.field textarea')
+           + '\n.field textarea{font:400 .95rem/1.5 "Be Vietnam Pro",sans-serif;'
+             'padding:.65rem .8rem;border:1px solid var(--line);border-radius:var(--r);'
+             'background:var(--paper);color:var(--ink);resize:vertical;min-height:64px}'
+             '\n.field textarea::placeholder{color:var(--ink3);opacity:.65}'
+             '\n.dc-ghi{display:block;margin-top:.3rem;font-size:.76rem;color:var(--ink3)}')
+    s = s.replace(neo, css, 1)
+
+    cu = ("    du.dia_chi = [du.sonha, du.thon, du.xa, du.huyen, du.tinh]\n"
+          "                   .filter(function(x){ return x && x.trim(); })\n"
+          "                   .join(', ');\n")
+    assert cu in s, "khong tim thay doan ghep dia chi 5 cap"
+    s = s.replace(cu, "    du.dia_chi = (du.dia_chi || '').trim();\n", 1)
+
+    # tieu de nhom 'DIA CHI NHAN HANG' truoc day gom 5 o nen can; nay mot o
+    # thi no lap lai chinh cai nhan ngay duoi no.
+    tieu_de = '<p class="fgroup">Địa chỉ nhận hàng</p>'
+    if tieu_de in s:
+        s = s.replace(tieu_de, "", 1)
+
+    assert 'class="dia-chi"' not in s, "van con khoi dia chi cu"
+    assert 'name="dia_chi"' in s, "thieu o dia chi moi"
+    return s
+
+
+def bo_dong_trong_trong_ban_tin(s):
+    """Don gui di khong con dong 'Dia chi:' bo trong.
+
+    Dia chi khong bat buoc, nen don khong co dia chi la binh thuong. Nhung
+    tomTat() luon in du nam dong, thanh ra nhan vien nhan duoc mot dong
+    'Dia chi:' trong khong — trong nhu don bi loi.
+    """
+    cu = """  function tomTat(du){
+    return 'ĐƠN HÀNG RICH COENZYME Q10'
+      + '\\nHọ tên: '     + (du.ten     || '')
+      + '\\nĐiện thoại: ' + (du.sdt     || '')
+      + '\\nĐịa chỉ: '    + (du.dia_chi || '')
+      + '\\nSố lượng: '   + (du.soluong || '')
+      + '\\nThời gian: '  + (du.thoi_gian || '');
+  }"""
+    moi = """  function tomTat(du){
+    var d = [['Họ tên', du.ten], ['Điện thoại', du.sdt], ['Địa chỉ', du.dia_chi],
+             ['Số lượng', du.soluong], ['Thời gian', du.thoi_gian]];
+    return 'ĐƠN HÀNG RICH COENZYME Q10\\n'
+      + d.filter(function(x){ return x[1] && String(x[1]).trim(); })
+         .map(function(x){ return x[0] + ': ' + x[1]; })
+         .join('\\n');
+  }"""
+    assert cu in s, "khong tim thay tomTat"
+    return s.replace(cu, moi, 1)
+
+
 THAY_DOI = [doi_cho_bao_gia, anh_canh_bang_gia, gia_moi_ngay_o_man_dau,
              bo_cau_nhan_vat_minh_hoa, bit_cua_thoat, loi_tran_an_len_tren_nut,
-             cam_ket_va_nhan_hang_tra_tien]
+             cam_ket_va_nhan_hang_tra_tien, dia_chi_mot_o,
+             bo_dong_trong_trong_ban_tin]
 
 BANG = ('<div style="position:sticky;top:0;z-index:99;background:#7A1030;color:#fff;'
         'padding:.55rem .9rem;font:600 13px/1.4 system-ui,sans-serif;text-align:center">'
@@ -246,6 +322,8 @@ DAU_NHAN = {
     "bit_cua_thoat": None,
     "loi_tran_an_len_tren_nut": None,
     "cam_ket_va_nhan_hang_tra_tien": "cam-ket-mua",
+    "dia_chi_mot_o": 'name="dia_chi"',
+    "bo_dong_trong_trong_ban_tin": "var d = [['Họ tên'",
 }
 
 

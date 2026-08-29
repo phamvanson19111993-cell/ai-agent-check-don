@@ -560,7 +560,10 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .price-note{font-size:.85rem;color:var(--ink3)}
 .form{display:grid;gap:.75rem;grid-template-columns:minmax(0,1fr)}
 .field{min-width:0}
-.field input,.field select{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+.field input,.field select,.field textarea{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+.field textarea{font:400 .95rem/1.5 "Be Vietnam Pro",sans-serif;padding:.65rem .8rem;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);color:var(--ink);resize:vertical;min-height:64px}
+.field textarea::placeholder{color:var(--ink3);opacity:.65}
+.dc-ghi{display:block;margin-top:.3rem;font-size:.76rem;color:var(--ink3)}
 @media(min-width:660px){.form{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.form .full{grid-column:1/-1}}
 .field{display:flex;flex-direction:column;gap:.3rem}
 .field label{font-size:.78rem;font-weight:600;color:var(--ink2)}
@@ -1185,14 +1188,10 @@ if(typeof window.qrcode !== 'function'){
             <div class="field"><label for="ten">Họ và tên</label><input id="ten" name="ten" type="text" autocomplete="name" placeholder="Nguyễn Văn A" required></div>
             <div class="field"><label for="sdt">Số điện thoại</label><input id="sdt" name="sdt" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" required></div>
 
-            <p class="fgroup">Địa chỉ nhận hàng</p>
+            
             <input id="tuKiem" name="tuKiem" type="hidden">
             
-            <div class="field full"><details class="dia-chi"><summary><span class="dc-t">Địa chỉ giao hàng</span><span class="dc-s">giao nhanh hơn — không bắt buộc</span><span class="dc-nhac">Bấm vào đây để điền địa chỉ</span></summary><div class="dc-o"><div class="field"><label for="tinh">Tỉnh / Thành phố <span class="tuy">không bắt buộc</span></label><input id="tinh" name="tinh" type="text" autocomplete="address-level1" placeholder="Nam Định"></div>
-<div class="field"><label for="huyen">Huyện / Quận / Thị xã <span class="tuy">không bắt buộc</span></label><input id="huyen" name="huyen" type="text" autocomplete="address-level2" placeholder="Huyện Hải Hậu"></div>
-<div class="field"><label for="xa">Xã / Phường / Thị trấn <span class="tuy">không bắt buộc</span></label><input id="xa" name="xa" type="text" autocomplete="address-level3" placeholder="Thị trấn Yên Định"></div>
-<div class="field"><label for="thon">Thôn / Xóm / Ấp / Tổ dân phố <span class="tuy">không bắt buộc</span></label><input id="thon" name="thon" type="text" autocomplete="address-level4" placeholder="Xóm 5"></div>
-<div class="field full"><label for="sonha">Số nhà, tên đường</label><input id="sonha" name="sonha" type="text" autocomplete="address-line1" placeholder="Số 12, đường Trần Hưng Đạo"></div></div></details></div>
+            <div class="field full"><label for="dia_chi">Địa chỉ nhận hàng</label><textarea id="dia_chi" name="dia_chi" rows="2" autocomplete="street-address" placeholder="Số nhà, thôn/xóm, xã/phường, huyện/quận, tỉnh/thành phố"></textarea><span class="dc-ghi">Ghi càng chi tiết thì bưu tá càng giao đúng ngay lần đầu.</span></div>
 <div class="field full"><label for="soluong">Số lượng muốn đặt</label>
 <div class="chon-hop" id="chon-hop">
 <label class="hop-o"><input type="radio" name="soluong" value="1 hộp — 2.890.000đ"><span class="h-t">1 hộp — 2.890.000đ</span><span class="h-s">Dùng 60 ngày · 48.167đ mỗi ngày</span></label>
@@ -2267,12 +2266,12 @@ var FORM_GOOGLE = {
   }
 
   function tomTat(du){
-    return 'ĐƠN HÀNG RICH COENZYME Q10'
-      + '\nHọ tên: '     + (du.ten     || '')
-      + '\nĐiện thoại: ' + (du.sdt     || '')
-      + '\nĐịa chỉ: '    + (du.dia_chi || '')
-      + '\nSố lượng: '   + (du.soluong || '')
-      + '\nThời gian: '  + (du.thoi_gian || '');
+    var d = [['Họ tên', du.ten], ['Điện thoại', du.sdt], ['Địa chỉ', du.dia_chi],
+             ['Số lượng', du.soluong], ['Thời gian', du.thoi_gian]];
+    return 'ĐƠN HÀNG RICH COENZYME Q10\n'
+      + d.filter(function(x){ return x[1] && String(x[1]).trim(); })
+         .map(function(x){ return x[0] + ': ' + x[1]; })
+         .join('\n');
   }
 
   // Luoi an toan: khi chua noi duoc voi noi nhan don, khong de mat don.
@@ -2751,9 +2750,7 @@ var FORM_GOOGLE = {
     new FormData(f).forEach(function(v,k){ du[k] = v; });
 
     // gop dia chi 5 cap thanh mot dong cho de doc trong bang
-    du.dia_chi = [du.sonha, du.thon, du.xa, du.huyen, du.tinh]
-                   .filter(function(x){ return x && x.trim(); })
-                   .join(', ');
+    du.dia_chi = (du.dia_chi || '').trim();
     if(du.moc && du.moc.trim()) du.dia_chi += ' (' + du.moc.trim() + ')';
 
     // tach so hop va so tien tu o chon so luong
