@@ -31,6 +31,8 @@ jobs:
           cp -r images _site/
           cp -r videos/cat _site/videos/cat
           cp CNAME _site/CNAME
+          # ban xem truoc cho anh Son duyet truoc khi doi trang chinh
+          [ -d xem-truoc ] && cp -r xem-truoc _site/xem-truoc || true
           touch _site/.nojekyll
           du -sh _site
 
