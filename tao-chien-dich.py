@@ -396,12 +396,17 @@ def main():
                 "pixel_id": PIXEL,
                 "custom_event_type": "LEAD",
             }),
-            "targeting": json.dumps({
-                "geo_locations": {"countries": ["VN"]},
-                "age_min": tuoi_min,
-                "age_max": tuoi_max,
-                "targeting_automation": {"advantage_audience": 0},
-            }),
+            # Gioi tinh: 1 = nam, 2 = nu. Ho so khong ghi thi de ca hai.
+            # Truoc day KHONG he dat o nay, nen nhom ten la "nu 30-45" van chay
+            # sang ca nam — bai viet xung ho "chi" ma dan ong doc, tien di khong.
+            "targeting": json.dumps(dict(
+                {"genders": [n["gioi"]]} if n.get("gioi") else {},
+                **{
+                    "geo_locations": {"countries": ["VN"]},
+                    "age_min": tuoi_min,
+                    "age_max": tuoi_max,
+                    "targeting_automation": {"advantage_audience": 0},
+                })),
         }))
 
         # Tầng 3 — mẫu quảng cáo

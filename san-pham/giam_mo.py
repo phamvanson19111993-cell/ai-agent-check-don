@@ -65,26 +65,63 @@ _GIAY_TO = (
 
 NHOM = [
     {
-        "ten":  "Nhom 1 · nu 30-45",
-        "tuoi": (30, 45),
+        # Anh Sơn chốt mở rộng 30–55 (trước là 30–45).
+        "ten":  "Nhom 1 · nu 30-55",
+        "tuoi": (30, 55),
+        "gioi": 2,          # 2 = nữ. Lời quảng cáo xưng "chị" nên phải khoá lại.
+        # Viết theo Ogilvy và Kotler. Bốn thứ mượn của hai ông:
+        #
+        # 1. Ogilvy: "Nếu tiêu đề có giá, nhiều người đọc hơn." Giá lọc khách
+        #    chứ không đuổi khách. Người bỏ đi khi thấy giá thì không có giá
+        #    họ cũng bỏ đi — chỉ khác là mình đã trả tiền cho cú bấm đó rồi.
+        # 2. Ogilvy: con số cụ thể thắng tính từ. Không "hiệu quả vượt trội",
+        #    mà "159mg chiết xuất, 1,5mg axit ellagic, một túi 60 viên đủ 30 ngày".
+        # 3. Kotler — khung tham chiếu: khách không định giá tuyệt đối, khách
+        #    so với thứ gần nhất trong đầu. 675.000đ đứng cạnh "một lần đi chợ";
+        #    22.500đ đứng cạnh "cốc cà phê". Cùng số tiền, khác cỡ quyết định.
+        # 4. Kotler — đảo ngược rủi ro: nói trước phần bất lợi cho mình, và
+        #    hạ mức phải làm xuống còn "đọc trang", không phải "để lại số".
+        #
+        # Ràng buộc không được vượt: giấy 1581/2024/XNQC-ATTP chỉ cho một câu
+        # công dụng. Nên lực kéo phải đến từ con số thật và sự thành thật,
+        # không đến từ lời hứa kết quả.
         "chu": (
             "Cái quần năm ngoái vẫn kéo lên được. Chỉ là lúc cài cúc phải hóp "
             "bụng vào một cái.\n\n"
-            "Nhiều chị 30–45 kể lại đúng chuyện đó: cân nặng nhích lên chậm tới mức "
+            "Nhiều chị 30–55 kể lại đúng chuyện đó: cân nặng nhích lên chậm tới mức "
             "không ai để ý, tới lúc để ý thì là cái quần nhắc chứ không phải cái cân.\n\n"
-            + _GIAY_TO + "\n\n"
-            "Uống 2 viên mỗi ngày với nước. Túi nhôm 60 viên, chia ra dùng được 30 ngày.\n\n"
-            "Bên em không hứa chị xuống bao nhiêu cân trong bao nhiêu ngày — "
-            "cái đó không ai hứa thật được. Bấm xem trang để đọc nhãn, thành phần "
-            "và bảng giá trước đã, thấy hợp thì hẵng để lại số."
+            "Đây là thứ bên em bán. Nói bằng con số, không nói bằng lời hứa:\n\n"
+            "• ELLAGIC ACID của AFC Nhật Bản, sản xuất tại nhà máy AFC-HD AMS "
+            "Life Science ở Shizuoka\n"
+            "• Mỗi viên 159mg chiết xuất xoài châu Phi (Irvingia gabonensis), "
+            "trong đó 1,5mg axit ellagic\n"
+            "• Ngày 2 viên với nước. Một túi nhôm 60 viên dùng đúng 30 ngày\n"
+            "• 675.000đ một túi — tính ra 22.500đ mỗi ngày, chưa bằng một cốc "
+            "cà phê ngoài quán\n"
+            "• Công dụng ghi trên nhãn: hỗ trợ giảm béo. Đúng một câu đó, "
+            "bên em không nói thêm câu nào\n"
+            "• Số tiếp nhận công bố 3993/2024/ĐKSP — gõ số này lên cổng Cục An "
+            "toàn thực phẩm là ra hồ sơ, không cần tin lời bên em\n\n"
+            "Bên em không nói chị sẽ xuống mấy cân trong mấy ngày. Ai nói được "
+            "câu đó là họ đang nói liều.\n\n"
+            "Và nói luôn phần bất lợi cho bên em: sản phẩm không dùng cho phụ nữ "
+            "có thai, phụ nữ đang cho con bú, và người đang có bệnh.\n\n"
+            "Bấm xem trang trước đã — trong đó có ảnh chụp hai giấy tờ gốc, bản "
+            "chép nguyên văn nhãn phụ, và bảng giá đủ bốn mốc. Đọc xong thấy hợp "
+            "thì hẵng để lại số. Không phải để lại số mới được xem."
             + _CUOI_BAI
         ),
-        "tieu_de": "Hỗ trợ giảm béo — AFC Nhật Bản",
-        "mo_ta":   "Túi nhôm 60 viên · công bố 3993/2024/ĐKSP · xem nhãn và giá trước khi mua",
+        # Ogilvy: tiêu đề ăn 80% số tiền, và tiêu đề có giá thì nhiều người đọc hơn.
+        "tieu_de": "22.500đ mỗi ngày · Hỗ trợ giảm béo",
+        "mo_ta":   "AFC Nhật Bản · túi nhôm 60 viên dùng 30 ngày · công bố 3993/2024/ĐKSP",
     },
     {
-        "ten":  "Nhom 2 · nu 45-60",
-        "tuoi": (45, 60),
+        # Đẩy lên 56–65 để KHÔNG chồng lấn với Nhóm 1 vừa mở rộng tới 55.
+        # Hai nhóm cùng nhắm một người là mình tự đấu giá với chính mình,
+        # đội giá lên mà vẫn ngần ấy người.
+        "ten":  "Nhom 2 · nu 56-65",
+        "tuoi": (56, 65),
+        "gioi": 2,
         "chu": (
             "Ăn vẫn bằng ngần ấy, đi bộ vẫn ngần ấy vòng, mà cái cân thì không "
             "chịu đi xuống như hồi bốn mươi.\n\n"
@@ -103,6 +140,7 @@ NHOM = [
     {
         "ten":  "Nhom 3 · nam 30-50",
         "tuoi": (30, 50),
+        "gioi": 1,          # 1 = nam
         "chu": (
             "Thắt lưng vẫn cái cũ, chỉ là dịch sang lỗ tiếp theo lúc nào không nhớ.\n\n"
             "Ngồi tám tiếng, bữa trưa ăn vội, tối mới rảnh để ăn cho ra bữa — "

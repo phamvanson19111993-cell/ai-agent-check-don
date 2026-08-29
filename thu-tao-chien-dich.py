@@ -6,6 +6,7 @@ Khong goi ra mang. Chi kiem: --nhom loc dung, chien dich trung ten thi dung
 lai chu khong tao them, nhom da co thi bo qua, va tran chi tieu thi chan lai.
 """
 import io
+import json
 import os
 import sys
 import types
@@ -108,7 +109,14 @@ def main():
     m, ra, _ = chay(C + ['--nhom', '1'], fb)
     adsets = [g for g in fb.da_goi if g[0].endswith('/adsets') and not g[2]]
     can(len(adsets) == 1, 'dựng đúng 1 nhóm quảng cáo', len(adsets))
-    can(adsets and adsets[0][1] == 'Nhom 1 · nu 30-45', 'đúng Nhóm 1', adsets)
+    can(adsets and adsets[0][1] == 'Nhom 1 · nu 30-55', 'đúng Nhóm 1', adsets)
+    nham = json.loads(adsets[0][3]['targeting']) if adsets else {}
+    can(nham.get('age_min') == 30 and nham.get('age_max') == 55,
+        'nhắm đúng tuổi 30–55', (nham.get('age_min'), nham.get('age_max')))
+    can(nham.get('genders') == [2],
+        'CHỈ nhắm nữ — lời quảng cáo xưng "chị"', nham.get('genders'))
+    can(not nham.get('interests') and not nham.get('flexible_spec'),
+        'sở thích để trống (broad), đúng SOP Phòng 7')
     can('300,000 đ mỗi ngày' in ra, 'báo đúng tổng tiền một ngày', ra[-200:])
 
     print('\n2 · không ghi --nhom thì dựng cả ba, y như trước')
@@ -122,21 +130,21 @@ def main():
     fb = FBGia()
     m, ra, _ = chay(C + ['--nhom', '1,3'], fb)
     ten = [g[1] for g in fb.da_goi if g[0].endswith('/adsets') and not g[2]]
-    can(ten == ['Nhom 1 · nu 30-45', 'Nhom 3 · nam 30-50'], 'đúng nhóm 1 và 3', ten)
+    can(ten == ['Nhom 1 · nu 30-55', 'Nhom 3 · nam 30-50'], 'đúng nhóm 1 và 3', ten)
 
     print('\n4 · chạy lần hai với --nhom 2 thì dùng lại chiến dịch cũ')
     fb = FBGia(cd_co=['Giam mo · Ellagic Acid · Vong 1 · 2908'],
-               nhom_co=['Nhom 1 · nu 30-45'])
+               nhom_co=['Nhom 1 · nu 30-55'])
     m, ra, _ = chay(C + ['--nhom', '2'], fb)
     tao_cd = [g for g in fb.da_goi if g[0].endswith('/campaigns') and not g[2]]
     can(not tao_cd, 'KHÔNG dựng thêm chiến dịch trùng tên', tao_cd)
     can('DÙNG LẠI' in ra, 'nói rõ là dùng lại cái cũ')
     ten = [g[1] for g in fb.da_goi if g[0].endswith('/adsets') and not g[2]]
-    can(ten == ['Nhom 2 · nu 45-60'], 'chỉ thêm Nhóm 2', ten)
+    can(ten == ['Nhom 2 · nu 56-65'], 'chỉ thêm Nhóm 2', ten)
 
     print('\n5 · nhóm đã có sẵn thì bỏ qua, không dựng trùng')
     fb = FBGia(cd_co=['Giam mo · Ellagic Acid · Vong 1 · 2908'],
-               nhom_co=['Nhom 1 · nu 30-45'])
+               nhom_co=['Nhom 1 · nu 30-55'])
     m, ra, _ = chay(C + ['--nhom', '1'], fb)
     ten = [g[1] for g in fb.da_goi if g[0].endswith('/adsets') and not g[2]]
     can(not ten, 'không dựng lại Nhóm 1', ten)
