@@ -4,8 +4,9 @@
 Số liệu trong đây đã chạy quảng cáo có tiền thật, đừng sửa nếu không có lý do.
 """
 
-ANH_QC     = "qc-vuong.jpg"                     # Tự tải về nếu chưa có
+ANH_QC     = "quang-cao/anh/qc-A-khong-gia.jpg"  # ảnh có thật trong kho
 LINK       = "https://sonsongkhoe.com"
+SO_CONG_BO = "4107/2024/ĐKSP"                    # giấy tiếp nhận công bố
 # NGÂN SÁCH — sửa 28/08/2026, số cũ 150.000đ là em đặt bừa khi chưa có dữ liệu.
 # Số mới tính ngược từ giá thật đo được ngày 27/08: 954đ mỗi lượt xem trang đích
 # (224.227đ chia cho 235 lượt, tài khoản 2260044828113956).
@@ -16,6 +17,10 @@ LINK       = "https://sonsongkhoe.com"
 # Chạy nhanh hơn 3 ngày thì Meta chưa kịp thoát giai đoạn học.
 NGAN_SACH  = 190000                             # đồng mỗi ngày, cho cả đợt thử
 TEN_CD     = "Q10 · T9 · Tiếp cận mới"
+
+CHONG_CHI_DINH = (
+    "Không dùng cho phụ nữ có thai, phụ nữ đang cho con bú và trẻ em. Người đang dùng thuốc nên hỏi ý kiến bác sĩ trước khi dùng."
+)
 
 KHUYEN_CAO = "Thực phẩm này không phải là thuốc và không có tác dụng thay thế thuốc chữa bệnh."
 
@@ -29,7 +34,8 @@ NHOM = [
             "Rich Coenzyme Q10 — hàng nội địa Nhật của AFC, 2 viên mỗi ngày. Giúp chống "
             "oxy hoá, giảm mệt mỏi.\n\n"
             "Trên trang có bài tự kiểm 30 giây: sáu câu hỏi, không hỏi tên, không hỏi số "
-            "điện thoại, trả lời xong có kết quả ngay.\n\n" + KHUYEN_CAO
+            "điện thoại, trả lời xong có kết quả ngay.\n\n"
+            "Giấy tiếp nhận công bố số 4107/2024/ĐKSP.\n\n" + CHONG_CHI_DINH + "\n" + KHUYEN_CAO
         ),
         "tieu_de": "Sáu câu hỏi, 30 giây, có kết quả ngay",
         "mo_ta": "Hàng nội địa Nhật · Số công bố 4107/2024/ĐKSP",
@@ -38,13 +44,14 @@ NHOM = [
         "ten": "Nhom 2 · 50-65",
         "tuoi": (50, 65),
         "chu": (
-            "Tim là cơ bắp duy nhất trong người không được phép nghỉ. Sau tuổi 50, nhiều "
+            "Tim là cơ bắp không bao giờ được phép nghỉ. Sau tuổi 50, nhiều "
             "người leo hai tầng cầu thang đã phải dừng lại thở.\n\n"
             "Coenzyme Q10 là chất tế bào dùng để tạo ra năng lượng, và cơ thể tự tạo ra "
             "ngày một ít đi theo tuổi.\n\n"
             "Rich Coenzyme Q10 của AFC Nhật Bản — hãng niêm yết trên sàn Tokyo, nhà máy "
             "đạt chuẩn GMP Nhật. Một lọ 120 viên dùng đúng hai tháng. Giúp chống oxy hoá, "
-            "giảm mệt mỏi; giúp giảm nguy cơ xơ vữa động mạch, tốt cho tim mạch.\n\n" + KHUYEN_CAO
+            "giảm mệt mỏi; giúp giảm nguy cơ xơ vữa động mạch, tốt cho tim mạch.\n\n"
+            "Giấy tiếp nhận công bố số 4107/2024/ĐKSP.\n\n" + CHONG_CHI_DINH + "\n" + KHUYEN_CAO
         ),
         "tieu_de": "Một lọ 120 viên, dùng đúng hai tháng",
         "mo_ta": "Giấy tờ tra được ngay trên trang",
@@ -57,7 +64,7 @@ NHOM = [
             "Rich Coenzyme Q10 — hàng nội địa Nhật của AFC, hãng ra đời năm 1969 và niêm "
             "yết trên sàn Tokyo. Một lọ 120 viên dùng đúng hai tháng, ngày 2 viên sau bữa sáng.\n\n"
             "Giấy tiếp nhận công bố số 4107/2024/ĐKSP, ảnh chụp giấy gốc và nhãn phụ đăng "
-            "ngay trên trang để nhà mình tự đối chiếu.\n\n" + KHUYEN_CAO
+            "ngay trên trang để nhà mình tự đối chiếu.\n\n" + CHONG_CHI_DINH + "\n" + KHUYEN_CAO
         ),
         "tieu_de": "Quà cho bố mẹ, hàng nội địa Nhật",
         "mo_ta": "Giao toàn quốc · Đặt cọc 200.000đ giữ hàng",
