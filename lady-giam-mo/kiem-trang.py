@@ -142,6 +142,17 @@ def kiem_ban_hang(br):
     ghi(pg.locator('#phan-hoi .pn').count() >= 5, 'có ít nhất năm đánh giá khách Shopee',
         str(pg.locator('#phan-hoi .pn').count()))
     ghi(pg.locator('.giay-anh img').count() == 2, 'có ảnh chụp hai giấy tờ gốc')
+
+    # Anh phai nam o file rieng, khong nhung base64 vao HTML. Nhung vao thi
+    # ca trang phai tai xong moi hien ra chu nao — loading="lazy" khong cuu
+    # duoc, vi anh nhung san nam trong HTML roi.
+    ghi(pg.locator('img[src^="data:"]').count() == 0,
+        'không ảnh nào nhúng thẳng vào HTML')
+    ghi(pg.evaluate("""() => Array.from(document.querySelectorAll('.giay-anh img, .anh-sp img'))
+            .every(i => i.getAttribute('loading') === 'lazy')"""),
+        'ảnh dưới trang đều để tải muộn')
+    kb = TRANG.stat().st_size / 1024
+    ghi(kb <= 200, 'HTML nhẹ, hiện được ngay', '%.0f KB' % kb)
     ghi(pg.evaluate("""() => Array.from(document.querySelectorAll('.giay-anh img'))
             .every(i => (i.getAttribute('alt') || '').length > 30)"""),
         'ảnh giấy tờ nào cũng có lời mô tả')

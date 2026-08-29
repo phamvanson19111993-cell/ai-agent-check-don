@@ -12,15 +12,36 @@ chi giu <title>, phong chu, <style> va phan than trang.
 Ra file xem-thu.html cung thu muc. File nay khong theo doi trong git —
 sinh lai bat cu luc nao tu index.html.
 
+Trang that de anh o thu muc images/ cho nhe. Ban xem thu la mot file gui
+di nen phai nhung anh vao trong, vi vay no nang hon trang that nhieu.
+
 Hai thu KHONG chay trong ban xem thu, nhung chay binh thuong tren trang that:
   · nut "Luu ma QR" — ben dang link khong cho trang tu tai file ve may
   · pixel Facebook  — ben dang link chan goi ra connect.facebook.net
 """
+import base64
 import pathlib
 import re
 import sys
 
 GOC = pathlib.Path(__file__).resolve().parent
+
+
+def nhung_anh(ra: str) -> str:
+    """Nhet anh vao thang trong file.
+
+    Trang that de anh o thu muc images/ cho nhe va cho trinh duyet nho anh.
+    Nhung ban xem thu chi la MOT file gui di, khong mang theo thu muc nao,
+    nen duong dan images/... se hong. Vi vay ban xem thu phai nhung anh vao."""
+    anh = GOC / 'images'
+    for f in sorted(anh.glob('*.webp')):
+        duong = 'images/' + f.name
+        if duong not in ra:
+            continue
+        uri = 'data:image/webp;base64,' + base64.b64encode(f.read_bytes()).decode()
+        ra = ra.replace(duong, uri)
+    assert 'images/' not in ra, 'con duong dan anh chua nhung duoc'
+    return ra
 
 
 def dung(trang: pathlib.Path) -> str:
@@ -33,6 +54,7 @@ def dung(trang: pathlib.Path) -> str:
     dau = re.sub(r'\s*<link rel="canonical"[^>]*>', '', dau)
 
     ra = dau.rstrip() + '\n' + than.strip() + '\n'
+    ra = nhung_anh(ra)
 
     thap = ra.lower()
     for the in ['<!doctype', '<html', '</html>', '<head>', '</head>', '<body', '</body>']:
