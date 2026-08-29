@@ -33,8 +33,13 @@ jobs:
           cp CNAME _site/CNAME
           # ban xem truoc cho anh Son duyet truoc khi doi trang chinh
           [ -d xem-truoc ] && cp -r xem-truoc _site/xem-truoc || true
+          # trang ban Ellagic Acid — thu muc con, KHONG de len trang Q10 o trang chu
+          [ -d giam-mo ] && cp -r giam-mo _site/giam-mo || true
           touch _site/.nojekyll
           du -sh _site
+          # Chan loi im lang: thieu mot trong hai trang la dung han, khong dang ban hong
+          test -s _site/index.html
+          test -s _site/giam-mo/index.html
 
       - uses: actions/configure-pages@v5
 
