@@ -119,6 +119,25 @@ def _chon_nhom(tat_ca):
     return [tat_ca[n - 1] for n in so]
 
 NHOM = _chon_nhom(NHOM)
+
+# --so-ngay 1  -> nhom quang cao TU HET HAN sau 1 ngay, khong can ai nho tat.
+#                 Voi ngan sach 300.000d/ngay thi tieu toi da khoang 300.000d.
+# khong ghi    -> chay lien tuc nhu cu (Q10 khong doi gi).
+#
+# Dat han o day chac chan hon la dinh bung "mai tat". Quen mot ngay la mat
+# them mot ngay tien, va quen la chuyen binh thuong.
+SO_NGAY = 0
+if '--so-ngay' in sys.argv:
+    try:
+        SO_NGAY = int(sys.argv[sys.argv.index('--so-ngay') + 1])
+    except (ValueError, IndexError):
+        sys.exit("--so-ngay phai la so ngay, vi du: --so-ngay 1")
+    if SO_NGAY < 1:
+        sys.exit("--so-ngay phai tu 1 tro len")
+
+# --bat -> dung xong bat luon ca ba tang: chien dich, nhom, quang cao.
+# Khong ghi thi moi thu nam o trang thai tam dung nhu tu truoc toi nay.
+BAT = '--bat' in sys.argv
 # ────────────────────────────────────────────────────────────────
 
 def goi(duong_dan, du_lieu=None, tep=None, lay=False):
@@ -283,7 +302,7 @@ def main():
     # đang đụng trần thì bật lên nó vẫn nằm im, mà nhìn thì tưởng ads kém.
     tran = tk.get("spend_cap")
     da_tieu = tk.get("amount_spent")
-    if tran and str(tran) != "0":
+    if tran and str(tran) != "0" and "--ke-ca-dung-tran" not in sys.argv:
         tran, da_tieu = int(tran), int(da_tieu or 0)
         con = tran - da_tieu
         print("Giới hạn  : %s đ · đã tiêu %s đ · còn %s đ"
@@ -298,6 +317,12 @@ def main():
 │  Giới hạn chi tiêu tài khoản → tăng hạn mức, hoặc          │
 │  Đặt lại số tiền đã chi.                                   │
 ╰────────────────────────────────────────────────────────────╯""")
+            # Chay tren may chu (GitHub Actions) thi khong ai o day ma tra loi.
+            # Mac dinh an toan la DUNG — dung im lang dung roi bat len,
+            # vi bat len no cung khong chay ma minh lai tuong da chay.
+            if not sys.stdin.isatty():
+                sys.exit("Dung lai (khong co nguoi tra loi). Nang tran chi tieu "
+                         "roi chay lai. Muon dung san de day thi them --ke-ca-dung-tran.")
             if input("Vẫn dựng chiến dịch để sẵn đó? (co/khong): ").strip().lower() \
                     not in ("co", "có", "c", "y", "yes"):
                 sys.exit("Dung lai. Nang tran chi tieu roi chay lai lenh nay.")
@@ -342,6 +367,7 @@ def main():
                  lay=True).get("data", [])}
 
     dung = 0
+    vua_dung = []     # (ten nhom, ma nhom, ma quang cao) — de con bat lai
     for n in NHOM:
         tuoi_min, tuoi_max = n["tuoi"]
 
@@ -350,7 +376,15 @@ def main():
             continue
 
         # Tầng 2 — nhóm quảng cáo
-        nhom = goi("%s/adsets" % act, {
+        han = {}
+        if SO_NGAY:
+            import datetime as _dt
+            bd = _dt.datetime.now(_dt.timezone.utc)
+            han = {"start_time": bd.isoformat(timespec="seconds"),
+                   "end_time": (bd + _dt.timedelta(days=SO_NGAY)).isoformat(
+                       timespec="seconds")}
+
+        nhom = goi("%s/adsets" % act, dict(han, **{
             "name": n["ten"],
             "campaign_id": cd["id"],
             "status": "PAUSED",
@@ -368,7 +402,7 @@ def main():
                 "age_max": tuoi_max,
                 "targeting_automation": {"advantage_audience": 0},
             }),
-        })
+        }))
 
         # Tầng 3 — mẫu quảng cáo
         mau = goi("%s/adcreatives" % act, {
@@ -399,8 +433,34 @@ def main():
         })
 
         dung += 1
+        vua_dung.append((n["ten"], nhom["id"], qc["id"]))
         print("  %-24s tuổi %2d–%2d  %s đ/ngày   nhóm %s"
               % (n["ten"], tuoi_min, tuoi_max, format(NGAN_SACH, ","), nhom["id"]))
+
+    if SO_NGAY and vua_dung:
+        print("\nHạn chạy  : %d ngày rồi tự hết hạn, không cần ai nhớ tắt."
+              % SO_NGAY)
+
+    if BAT:
+        if not vua_dung:
+            print("\nKhông có nhóm nào vừa dựng nên không bật gì cả.")
+        else:
+            # Phai bat DU BA TANG. Bat moi chien dich la khong du — thieu mot
+            # tang la khong dong nao chay, ma nhin Ads Manager lai tuong da bat.
+            print("\nĐang bật — chiến dịch, rồi nhóm, rồi quảng cáo:")
+            goi(cd["id"], {"status": "ACTIVE"})
+            print("  bật chiến dịch  %s" % cd["id"])
+            for ten_n, ma_nhom, ma_qc in vua_dung:
+                goi(ma_nhom, {"status": "ACTIVE"})
+                goi(ma_qc, {"status": "ACTIVE"})
+                print("  bật %-24s nhóm %s · quảng cáo %s"
+                      % (ten_n, ma_nhom, ma_qc))
+            print("\nĐANG CHẠY THẬT. Tiêu tối đa %s đ mỗi ngày%s."
+                  % (format(NGAN_SACH * len(vua_dung), ","),
+                     (", trong %d ngày" % SO_NGAY) if SO_NGAY else
+                     " cho tới khi anh tắt"))
+            print("Quảng cáo còn phải chờ Facebook duyệt mới hiển thị.")
+            return
 
     print("""
 ╭────────────────────────────────────────────────────────────╮

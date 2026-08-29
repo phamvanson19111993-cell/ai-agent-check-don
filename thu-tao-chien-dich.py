@@ -25,7 +25,8 @@ class FBGia:
 
     def __call__(self, duong_dan, du_lieu=None, tep=None, lay=False):
         self.dem += 1
-        self.da_goi.append((duong_dan, (du_lieu or {}).get('name'), lay))
+        self.da_goi.append((duong_dan, (du_lieu or {}).get('name'), lay,
+                            dict(du_lieu or {})))
         if lay and duong_dan.startswith('act_') and duong_dan.count('/') == 0:
             return {'name': 'Pham Son BM1.1', 'currency': 'VND',
                     'account_status': 1, 'spend_cap': str(self.tran),
@@ -59,10 +60,21 @@ def nap(argv, fb):
         sys.argv = cu_argv
 
 
-def chay(argv, fb):
+class KhongPhaiBanPhim:
+    """Gia lam dau vao cua may chu: khong co ai ngoi go phim."""
+    def isatty(self):
+        return False
+
+    def readline(self):
+        raise AssertionError('chuong trinh dang doi go phim tren may chu')
+
+
+def chay(argv, fb, may_chu=False):
     """Chay trong thu muc kho, vi ANH_QC la duong dan tuong doi."""
-    cu_cwd = os.getcwd()
+    cu_cwd, cu_in = os.getcwd(), sys.stdin
     os.chdir(KHO)
+    if may_chu:
+        sys.stdin = KhongPhaiBanPhim()
     try:
         m = nap(argv, fb)
         ra = io.StringIO()
@@ -74,6 +86,7 @@ def chay(argv, fb):
         return m, ra.getvalue(), 0
     finally:
         os.chdir(cu_cwd)
+        sys.stdin = cu_in
 
 
 def main():
@@ -142,6 +155,54 @@ def main():
         can(False, 'phải dừng vì không có nhóm 9')
     except SystemExit as e:
         can('chi co 3 nhom' in str(e.code), 'báo đúng lỗi', e.code)
+
+    print('\n8 · --so-ngay 1 thì nhóm tự hết hạn sau một ngày')
+    fb = FBGia()
+    m, ra, _ = chay(C + ['--nhom', '1', '--so-ngay', '1'], fb)
+    du = [g[3] for g in fb.da_goi if g[0].endswith('/adsets') and not g[2]][0]
+    can('start_time' in du and 'end_time' in du, 'có đặt mốc bắt đầu và kết thúc', du)
+    if 'end_time' in du:
+        import datetime as dt
+        cach = dt.datetime.fromisoformat(du['end_time']) \
+            - dt.datetime.fromisoformat(du['start_time'])
+        can(cach == dt.timedelta(days=1), 'cách nhau đúng 1 ngày', cach)
+    can('300,000 đ/ngày' in ra, 'ngân sách vẫn 300.000đ mỗi ngày')
+    can('tự hết hạn' in ra, 'nói rõ là tự hết hạn')
+
+    print('\n9 · không ghi --so-ngay thì không đặt hạn, y như trước')
+    fb = FBGia()
+    chay(C + ['--nhom', '1'], fb)
+    du = [g[3] for g in fb.da_goi if g[0].endswith('/adsets') and not g[2]][0]
+    can('end_time' not in du, 'không đặt hạn kết thúc', du)
+
+    print('\n10 · --bat thì bật đủ ba tầng, đúng thứ tự')
+    fb = FBGia()
+    m, ra, _ = chay(C + ['--nhom', '1', '--so-ngay', '1', '--bat'], fb)
+    bat = [(g[0], g[3].get('status')) for g in fb.da_goi
+           if not g[2] and g[3].get('status') == 'ACTIVE']
+    can(len(bat) == 3, 'bật đúng 3 thứ: chiến dịch, nhóm, quảng cáo', bat)
+    # Chien dich duoc dung o cu goi thu may, thi ma cua no la 'moi-<so do>'.
+    thu = [i for i, g in enumerate(fb.da_goi, 1)
+           if g[0].endswith('/campaigns') and not g[2]]
+    can(bat and thu and bat[0][0] == 'moi-%d' % thu[0],
+        'bật chiến dịch TRƯỚC, rồi mới tới nhóm và quảng cáo', bat)
+    can('ĐANG CHẠY THẬT' in ra, 'nói thẳng là đang tiêu tiền thật')
+    can('300,000 đ mỗi ngày, trong 1 ngày' in ra, 'báo đúng tiền và hạn', ra[-300:])
+
+    print('\n11 · không ghi --bat thì không bật gì — mặc định vẫn an toàn')
+    fb = FBGia()
+    m, ra, _ = chay(C + ['--nhom', '1'], fb)
+    bat = [g for g in fb.da_goi if not g[2] and g[3].get('status') == 'ACTIVE']
+    can(not bat, 'không bật thứ gì', bat)
+    can('TẠM DỪNG' in ra, 'vẫn báo mọi thứ đang tạm dừng')
+
+    print('\n12 · đụng trần mà chạy trên máy chủ thì dừng, không hỏi vào khoảng không')
+    fb = FBGia(tran=5000000, da_tieu=5000000)
+    m, ra, ma = chay(C + ['--nhom', '1', '--bat'], fb, may_chu=True)
+    can(isinstance(ma, str) and 'khong co nguoi tra loi' in ma,
+        'dừng với lời giải thích, không kẹt chờ gõ phím', ma)
+    can(not [g for g in fb.da_goi if not g[2] and g[3].get('status') == 'ACTIVE'],
+        'không bật gì khi đang đụng trần')
 
     print('\n' + '=' * 56)
     print('%d đạt, %d hỏng' % (dat, hong))
