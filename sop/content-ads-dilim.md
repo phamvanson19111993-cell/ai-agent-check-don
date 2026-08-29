@@ -371,3 +371,74 @@ Có thứ đó rồi thì em làm 5 việc này, xong trong một lượt:
 1. **Giấy xác nhận nội dung quảng cáo** đã có chưa, và ghi được nói những gì (mục A1 trong hồ sơ của anh).
 2. **File SĐT khách cũ** (tối thiểu 100 số) để tạo Lookalike cho AS3 — anh đã có sẵn trong Sheet.
 3. **Ngân sách/ngày** anh định chạy, để em chia theo bảng trên thành số cụ thể.
+
+---
+
+## PHẦN X — VIDEO PHẢN HỒI KHÁCH HÀNG: dùng ở đâu, không dùng ở đâu
+
+### 🔴 STOP — COMPLIANCE RISK
+
+**Video khách hàng kể mình dùng sản phẩm thấy đỡ — không được dùng làm quảng cáo thực phẩm bảo vệ sức khoẻ.**
+
+Hai tầng luật, tầng nào cũng chặn:
+
+**1. Luật Việt Nam.** Nghị định 15/2018/NĐ-CP về quảng cáo thực phẩm bảo vệ sức khoẻ cấm dùng
+*"thư cảm ơn của người bệnh"* và *"hình ảnh, tên, thư tín của đơn vị y tế, bác sĩ, dược sĩ, nhân viên y tế"* để quảng cáo.
+Video khách kể chuyện dùng thấy đỡ chính là "thư cảm ơn của người bệnh" ở dạng video.
+
+Cộng thêm: quảng cáo chỉ được nói **trong phạm vi giấy xác nhận nội dung quảng cáo** đã nộp Sở Y tế.
+Lời khách nói trong video gần như chắc chắn không nằm trong giấy đó.
+
+**2. Chính sách Meta.** Lời chứng ngụ ý kết quả sức khoẻ và nội dung ám chỉ tình trạng cơ thể người xem
+đều bị từ chối; lặp lại nhiều lần thì hạn chế tài khoản quảng cáo — mất luôn pixel và dữ liệu học của page.
+
+**Rủi ro không cân xứng:** được thêm vài chục lead, đổi lấy nguy cơ mất tài khoản quảng cáo và bị xử phạt hành chính.
+Ở tầm đơn 16,8 triệu, mất tài khoản đắt hơn nhiều so với cái lợi thu được.
+
+### ⚠️ Một điểm nữa phải kiểm trước
+
+Trong kho có thư mục **"Ghi âm Bs Sơn"** và **"QUY TRÌNH LẤY VIDEO PHẢN HỒI SẢN PHẨM CÙNG BÁC SƠN"**.
+
+- Nếu anh Sơn **không phải** bác sĩ → bỏ hẳn chữ "Bs"/"bác sĩ" khỏi mọi nội dung ra ngoài. Đây là mạo danh nghề y.
+- Nếu anh Sơn **là** bác sĩ thật → càng không được dùng hình ảnh, danh xưng bác sĩ để quảng cáo thực phẩm. Luật cấm thẳng.
+
+Cả hai hướng đều dẫn tới một việc: **danh xưng chuyên môn không được xuất hiện trong quảng cáo.**
+Anh Sơn xuất hiện với tư cách người bán hàng, người kể chuyện — được. Với tư cách bác sĩ — không.
+
+### ✅ Vậy dùng video phản hồi ở đâu thì được
+
+| Nơi dùng | Được không | Vì sao |
+|---|---|---|
+| **Ads trả tiền trên Meta** | ❌ Không | Vi phạm cả luật VN lẫn chính sách Meta |
+| **Đăng công khai lên page** | ⚠️ Vẫn rủi ro | Gắn với bán hàng thì luật vẫn coi là quảng cáo |
+| **Gửi 1-1 trong inbox/Zalo khi khách đang hỏi** | ✅ Được | Đây là tư vấn cho người đã hỏi, không phải quảng cáo đại chúng. **Và đây cũng là chỗ nó chuyển đổi mạnh nhất** |
+| **Tư liệu đào tạo sale nội bộ** | ✅ Được | Không phát ra ngoài |
+
+Nói cách khác: **video phản hồi là vũ khí của khâu chốt đơn, không phải của khâu quảng cáo.**
+Đưa nó vào đúng chỗ đó thì vừa an toàn vừa hiệu quả hơn — vì nó đến tay người đã quan tâm, chứ không rải cho người lạ.
+
+### ✅ Muốn ads có "chất người thật" thì lấy cái này thay vào
+
+Đổi loại bằng chứng: **không chứng minh công dụng, mà chứng minh hàng thật.**
+
+| Lấy từ kho | Cảnh dùng được | Thông điệp |
+|---|---|---|
+| `CHECK MÃ QR & KHUI SẢN PHẨM` | Quét mã QR, bóc tem, mở hộp | "Hàng có mã tra được" |
+| `12.RICH COQ10`, `Footage` | Cận nhãn, cận viên nang, giấy tờ | "Nguồn gốc rõ ràng" |
+| Cảnh đóng gói, giao hàng | Người thật, tay thật, không lời chứng | "Có người thật đứng sau" |
+| `Miễn Trừ Trách Nhiệm.mp4` | Chèn cuối mọi video | Bắt buộc |
+
+Cái này vẫn là social proof, vẫn có người thật, nhưng là **bằng chứng về tính chính hãng** chứ không phải
+**bằng chứng về công dụng**. Hợp pháp, và với nhóm khách đa nghi 45–65+ thì nó thuyết phục không kém.
+
+Ghép với Bài 3 ("21 tờ giấy chúng tôi mở ra trước khi mời anh chị mua") là một cặp mạnh.
+
+### Việc cần làm với 5 file trong `PHKH 14/7`
+
+Tên file hiện tại — `48707217172.mp4`, `1JQ386DSN_6NMR1C.mp4` — là tên máy đẻ ra, ba tuần nữa không ai biết file nào là gì.
+Đổi tên theo quy ước rồi hẵng dùng:
+
+```
+PHKH_[tên khách]_[sản phẩm]_[ngày].mp4      → dùng trong inbox/Zalo
+BROLL_[nội dung cảnh]_[ngày].mp4            → cắt ra để ghép vào ads
+```
