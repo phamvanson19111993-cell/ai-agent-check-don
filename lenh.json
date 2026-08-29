@@ -1,5 +1,5 @@
 {
-  "ghi_chu": "Lệnh của Phòng 7 · cập nhật 28/08/2026\nMỗi việc có lý do ghi rõ. Anh đọc lý do, không đồng ý thì gõ Enter bỏ qua.\nChạy thử trước:  python3 thuc-thi.py\nLàm thật:        python3 thuc-thi.py --lam\n\nCHƯA đổi sự kiện tối ưu. Pixel vừa được cắm thêm 3 sự kiện hôm nay,\ncần khoảng 50 sự kiện/tuần Meta mới học được. Đổi lúc này là đứng máy.",
+  "ghi_chu": "Lệnh của Phòng 7 · cập nhật 29/08/2026 — LỆNH CHẠY HÔM NAY\nMỗi việc có lý do ghi rõ. Anh đọc lý do, không đồng ý thì gõ Enter bỏ qua.\n\n  python3 thuc-thi.py         ← xem trước, KHÔNG đụng gì\n  python3 thuc-thi.py --lam   ← làm thật, vẫn hỏi lại từng việc, gõ CO mới chạy\n\nCần mã truy cập có quyền ads_management.\nLàm theo đúng thứ tự trong file: TẮT chỗ đang đốt tiền trước, BẬT chỗ cần chạy sau.\n\nCHƯA đổi sự kiện tối ưu. Pixel cần khoảng 50 sự kiện mỗi tuần Meta mới học được.\nĐổi lúc này là đứng máy.",
   "khoi": [
     {
       "tai_khoan": "1440077257813466",
@@ -23,6 +23,16 @@
           "ten": "Doanh số",
           "ngan_sach": 190000,
           "ly_do": "ĐẶT NGÂN SÁCH 190.000đ MỖI NGÀY cho đợt thử.\n    Tính ngược từ số thật ngày 27/08: 954đ mỗi lượt xem trang đích\n    (224.227đ chia 235 lượt).\n      Mốc quyết định : 1.000 lượt xem\n      Tiền cần       : 954.157đ\n      Chia 5 ngày    : 190.831đ → làm tròn 190.000đ\n    Tới 1.000 lượt mà vẫn 0 đơn thì chỉ còn 0,7% khả năng là may\n    rủi — nghĩa là trang hoặc lời chào hàng có vấn đề, đổ thêm\n    tiền không cứu được.\n    LƯU Ý: 188.912đ anh đặt hôm qua là ĐÚNG. Con số 150.000đ em\n    từng viết là em đặt bừa lúc chưa có dữ liệu, nay đã sửa.\n    Lệnh này đặt ở CẤP CHIẾN DỊCH. Nếu ngân sách đang nằm ở cấp\n    nhóm quảng cáo thì chương trình báo không sửa được — khi đó\n    anh sửa tay ở cấp Nhóm quảng cáo."
+        }
+      ]
+    },
+    {
+      "tai_khoan": "2260044828113956",
+      "viec": [
+        {
+          "lam": "bat",
+          "ten": "Q10",
+          "ly_do": "BẬT CHIẾN DỊCH Q10 TRÊN TÀI KHOẢN CỦA ANH (Pham Son BM1.1).\n    Khớp mọi chiến dịch đang tạm dừng có tên chứa 'Q10'\n    (tao-chien-dich.py đặt tên 'Q10 · T9 · Tiếp cận mới').\n\n    Bật CẢ BA TẦNG: chiến dịch → nhóm quảng cáo → từng mẫu quảng cáo.\n    Chỉ bật mỗi chiến dịch là không một đồng nào chạy, mà nhìn trên\n    Ads Manager lại tưởng đã bật rồi — lỗi này rất hay gặp.\n\n    TRƯỚC KHI GÕ CO, ANH KIỂM HAI ĐIỀU:\n    1. Đã tạo bảng trả lời Biểu mẫu chưa? Chưa thì đơn về không ai đọc được,\n       đúng như hôm 28/08 tiêu 387.420đ mà không biết 2 đơn đó của ai.\n    2. Chương trình in ra tổng ngân sách mỗi ngày — đọc kỹ con số đó.\n       Tiền bắt đầu chạy ngay sau khi bật.\n\n    Không thấy chiến dịch nào tên chứa 'Q10' nghĩa là chưa có.\n    Chạy trước:  python3 tao-chien-dich.py"
         }
       ]
     }

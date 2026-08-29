@@ -189,7 +189,51 @@ def viec_su_kien(act, v):
                 sua(nh["id"], t)
 
 
+
+def viec_bat(act, v):
+    """Bat chien dich dang tam dung — BAT CA BA TANG.
+
+    Bat moi chien dich la KHONG DU. tao-chien-dich.py dung moi thu o trang
+    thai tam dung, nen phai bat lan luot: chien dich -> nhom quang cao ->
+    tung mau quang cao. Thieu mot tang la khong mot dong nao chay, ma nhin
+    tren Ads Manager lai tuong da bat roi.
+    """
+    ten = v.get("ten", "")
+    cds = lay_het("%s/campaigns" % act,
+                  {"fields": "name,status,effective_status,daily_budget"})
+    hop = [c for c in (cds or [])
+           if khop(c.get("name"), ten) and c.get("status") != "ACTIVE"]
+    if not hop:
+        print("  Khong thay chien dich nao dang tam dung co ten chua %r." % ten)
+        print("  (Neu no da bat san roi thi khong phai lam gi.)")
+        return
+
+    for c in hop:
+        nhs = lay_het("%s/adsets" % c["id"], {"fields": "name,status,daily_budget"}) or []
+        tong = sum(float(n.get("daily_budget") or 0) for n in nhs) \
+               or float(c.get("daily_budget") or 0)
+        print("  Se BAT: %s" % c.get("name"))
+        print("     %d nhom quang cao · tong %s moi ngay" % (len(nhs), tien(tong)))
+        for n in nhs:
+            print("       · %s  (%s/ngay)" % (n.get("name"), tien(n.get("daily_budget") or 0)))
+        print("     TIEN BAT DAU CHAY NGAY SAU KHI BAT.")
+
+    if not hoi_lam(""):
+        return
+
+    for c in hop:
+        print("  Dang bat chien dich: %s" % c.get("name"))
+        sua(c["id"], {"status": "ACTIVE"})
+        for n in lay_het("%s/adsets" % c["id"], {"fields": "name,status"}) or []:
+            sua(n["id"], {"status": "ACTIVE"})
+            for q in lay_het("%s/ads" % n["id"], {"fields": "name,status"}) or []:
+                sua(q["id"], {"status": "ACTIVE"})
+        print("     Da bat ca ba tang: chien dich, nhom, mau quang cao.")
+
+
+
 VIEC = {
+    "bat":          viec_bat,
     "tam_dung_het": viec_tam_dung_het,
     "tam_dung":     viec_tam_dung,
     "ngan_sach":    viec_ngan_sach,
