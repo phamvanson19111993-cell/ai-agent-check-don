@@ -11,6 +11,7 @@ Chay file nay truoc, xanh het roi hay day.
 """
 import pathlib
 import sys
+import urllib.parse
 
 from playwright.sync_api import sync_playwright
 
@@ -187,12 +188,28 @@ def kiem_ban_hang(br):
 
     dien_phieu(pg)
     pg.evaluate('window.__fb = []; window.fbq = function(a,b,c){ window.__fb.push([a,b,c]); };')
+
+    # Chan cu goi don di, doc xem no mang gi — day la thu duy nhat chung minh
+    # don co cho ve that, chu khong phai chi hien loi cam on roi thoi.
+    goi_di = []
+    pg.route('**/formResponse*', lambda r: (goi_di.append(r.request.post_data or ''),
+                                            r.fulfill(status=200, body='')))
+    pg.route('**/exec*', lambda r: (goi_di.append(r.request.post_data or ''),
+                                    r.fulfill(status=200, body='')))
+
     pg.click('button[type="submit"]')
-    pg.wait_for_timeout(900)
+    pg.wait_for_timeout(1500)
     fb = pg.evaluate("window.__fb.filter(function(x){ return x[1] === 'Lead'; })")
     ghi(len(fb) == 1 and fb[0][2]['value'] == 6750000,
         'Lead báo đúng giá trị đơn', str(fb))
     ghi('10 gói — 6.750.000đ' in ban_tin(pg), 'đơn mang đúng mốc khách chọn')
+
+    than = urllib.parse.unquote_plus(' '.join(goi_di))
+    ghi(len(goi_di) == 1, 'đơn được gửi đi đúng một nơi nhận, không rơi', str(len(goi_di)))
+    ghi('ELLAGIC ACID' in than,
+        'đơn mang tên sản phẩm — đơn Q10 và đơn giảm mỡ chung một bảng, thiếu dòng này là giao nhầm hàng')
+    for o in ('Nguyễn', '0912', '10 gói'):
+        ghi(o in than, 'đơn gửi đi có %r' % o)
     pg.close()
 
 

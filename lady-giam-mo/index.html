@@ -1623,14 +1623,14 @@ body:has(.dock.on){padding-bottom:74px}
           <p>Bảng giá niêm yết 2026 chỉ có mốc 1 – 2 – 3 – 4 – 5 gói. Mốc 10 gói (6.750.000đ, mua 10 tặng 2) không có trong bảng gốc — cần thống nhất với công ty trước khi in ra ngoài. Lưu ý: mốc này ra 18.750đ mỗi ngày, đúng bằng mốc 5 gói, nên cột "mỗi ngày" không kéo khách lên được.</p>
         </div>
         <div class="td">
-          <span class="k">Cần nối</span>
+          <span class="k">Đã nối · tạm</span>
           <h3>Nơi nhận đơn</h3>
-          <p><code>NOI_NHAN_DON</code> và <code>FORM_GOOGLE</code> đang để trống — đơn hiện chỉ đi qua Messenger, Zalo, SMS và bộ nhớ tạm. Nối Apps Script hoặc Biểu mẫu Google trước khi chạy quảng cáo. Đừng dùng lại mã biểu mẫu của trang Q10.</p>
+          <p>Đơn đang chảy vào <b>biểu mẫu Google của trang Q10</b> — chung một bảng với đơn Q10. Mỗi đơn mang sẵn dòng <i>Sản phẩm: ELLAGIC ACID</i> ở đầu để nhân viên không giao nhầm. Đây là đường tạm cho khỏi rơi đơn; đường đúng là bảng riêng qua Apps Script, cần anh Sơn triển khai rồi điền <code>NOI_NHAN_DON</code>.</p>
         </div>
         <div class="td">
-          <span class="k">Cần quyết</span>
-          <h3>Kho riêng và tên miền riêng</h3>
-          <p>Một kho GitHub chỉ đăng được một trang. Kho hiện tại đang đăng sonsongkhoe.com. Trang này phải nằm ở kho khác, nếu không sẽ đè mất trang Q10.</p>
+          <span class="k">Đã xong</span>
+          <h3>Chỗ đứng trên tên miền</h3>
+          <p>Trang nằm ở <b>sonsongkhoe.com/giam-mo/</b>, là thư mục con — không đè lên trang Q10 ở trang chủ. Quy trình đăng chỉ chép thêm thư mục <code>giam-mo</code>, phần cũ giữ nguyên.</p>
         </div>
         <div class="td">
           <span class="k">Chưa có</span>
@@ -2214,6 +2214,12 @@ var PIXEL_ID = "1277743445418211";
       false = không tự mở, khách tự bấm nút. */
 var TU_MO_MESSENGER = true;
 
+/* 7 · TÊN SẢN PHẨM GẮN VÀO MỖI ĐƠN
+      Đơn của trang này và đơn của trang Q10 đang rơi chung một bảng.
+      Dòng này là thứ duy nhất phân biệt hai loại đơn — không được để trống,
+      để trống là nhân viên giao nhầm hàng. */
+var TEN_SAN_PHAM_DON = "ELLAGIC ACID (hỗ trợ giảm béo) — túi 60 viên";
+
 /* 6 · LIÊN HỆ */
 var LIEN_HE = {
   hotline    : "0913351394",
@@ -2264,10 +2270,16 @@ function baoFB(ten, so){
 /* Tien coc giu hang. Ma VietQR duoi day da nhung san dung 200.000d,
    khach quet la app ngan hang hien du so tai khoan va so tien. */
 var FORM_GOOGLE = {
-  ma      : "",   // chua co bieu mau rieng cho san pham nay
+  // Dung chung bieu mau Google dang chay cua trang Q10 — bieu mau cua chinh
+  // anh Son. Nho vay tu phut trang len song la don da co cho ve, khong roi.
+  // Don giam mo se nam CUNG bang voi don Q10, nen moi don deu mang dong
+  // "San pham: ..." o dau — do la thu duy nhat phan biet hai loai don.
+  // Khi anh Son trien khai Apps Script rieng va dua link /exec thi dien vao
+  // NOI_NHAN_DON o tren; duong do duoc uu tien, bieu mau nay lui ve du phong.
+  ma      : "1FAIpQLSfIOFZ5idbMz91nBJNb1oS84N8SEcUo6FRy2KcaCa_CTPAhGA",
 
   // Bieu mau hien co MOT o duy nhat: ca don ghi gon vao day.
-  gop     : "",
+  gop     : "322596292",
 
   // Neu sau nay tach bieu mau thanh 4 cau hoi rieng thi xoa "gop" o tren
   // va dien 4 ma o duoi day, don se vao 4 cot rieng.
@@ -2410,6 +2422,7 @@ var FORM_GOOGLE = {
   // Ban day du cua don, dung cho o gop chung
   function donDayDu(du){
     var d = [
+      ['Sản phẩm',  TEN_SAN_PHAM_DON],
       ['Họ tên',    du.ten],
       ['Điện thoại', du.sdt],
       ['Địa chỉ',   du.dia_chi],
