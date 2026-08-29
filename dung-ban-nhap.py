@@ -68,7 +68,32 @@ def gia_moi_ngay_o_man_dau(s):
     return s.replace(cu, moi, 1)
 
 
-THAY_DOI = [doi_cho_bao_gia, anh_canh_bang_gia, gia_moi_ngay_o_man_dau]
+def bo_cau_nhan_vat_minh_hoa(s):
+    """Bo dong chu thich duoi cau chuyen anh Tuan — anh Son yeu cau, da xac nhan lai.
+
+    Co HAI cho: ban tinh trong HTML, va ban do JavaScript dung lai khi bai tu kiem
+    doi cau chuyen. Bo mot cho thi cau kia van hien ra, nen phai bo ca hai.
+    """
+    cau = ('Nhân vật minh hoạ, dựng lại từ tình huống thường gặp.'
+           ' Không phải lời chứng thực về hiệu quả sản phẩm.')
+
+    tinh = '<p class="note">' + cau + '</p>'
+    assert tinh in s, "khong tim thay dong chu thich tinh"
+    s = s.replace(tinh, "", 1)
+
+    dong = """      var nt = document.createElement('p'); nt.className='note';
+      nt.textContent = '""" + cau + """';
+      elStory.appendChild(nt);
+"""
+    assert dong in s, "khong tim thay doan JavaScript dung lai dong chu thich"
+    s = s.replace(dong, "", 1)
+
+    assert cau not in s, "van con sot cau chu thich"
+    return s
+
+
+THAY_DOI = [doi_cho_bao_gia, anh_canh_bang_gia, gia_moi_ngay_o_man_dau,
+             bo_cau_nhan_vat_minh_hoa]
 
 BANG = ('<div style="position:sticky;top:0;z-index:99;background:#7A1030;color:#fff;'
         'padding:.55rem .9rem;font:600 13px/1.4 system-ui,sans-serif;text-align:center">'
