@@ -1,0 +1,108 @@
+# Dựng và bật chiến dịch quảng cáo, chạy trên máy chủ GitHub.
+#
+# VÌ SAO CẦN FILE NÀY: máy chạy Claude bị chặn toàn bộ đường ra Facebook
+# (graph.facebook.com trả 403 ở cổng mạng). Máy chủ GitHub thì không bị,
+# nên đây là chỗ duy nhất bấm được nút mà không cần anh Sơn mở máy tính.
+#
+# CẦN MỘT THỨ DUY NHẤT TỪ ANH SƠN: một Bí mật kho tên FB_TOKEN.
+#   GitHub → kho này → Settings → Secrets and variables → Actions
+#   → New repository secret → Name: FB_TOKEN → Secret: dán mã token
+# Token KHÔNG hiện ra trong nhật ký chạy, và không nằm trong mã nguồn.
+#
+# CHẠY: tab Actions → "Chay quang cao" → Run workflow.
+# Mặc định là DỰNG THÔI, tạm dừng, không tiêu đồng nào. Muốn tiêu tiền thật
+# thì phải tự tay gõ đúng chữ CHAY THAT vào ô xác nhận.
+name: Chay quang cao
+
+on:
+  workflow_dispatch:
+    inputs:
+      san_pham:
+        description: "Hồ sơ sản phẩm"
+        type: choice
+        options: [giam-mo, q10]
+        default: giam-mo
+      nhom:
+        description: "Nhóm nào — 1, hoặc 1,3. Để trống là cả ba."
+        type: string
+        default: "1"
+      so_ngay:
+        description: "Chạy mấy ngày rồi tự hết hạn (0 = chạy liên tục)"
+        type: string
+        default: "1"
+      bat:
+        description: "Bật luôn sau khi dựng? (tiêu tiền thật)"
+        type: boolean
+        default: false
+      xac_nhan:
+        description: "Muốn BẬT thì gõ đúng: CHAY THAT"
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quang-cao          # không bao giờ chạy hai lượt chồng lên nhau
+  cancel-in-progress: false
+
+jobs:
+  chay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Soat dau vao
+        env:
+          NHOM: ${{ inputs.nhom }}
+          SO_NGAY: ${{ inputs.so_ngay }}
+          BAT: ${{ inputs.bat }}
+          XAC_NHAN: ${{ inputs.xac_nhan }}
+        run: |
+          # Chi cho phep so va dau phay — dung noi thang chu nguoi go vao dong lenh
+          if [ -n "$NHOM" ] && ! printf '%s' "$NHOM" | grep -qE '^[0-9]+(,[0-9]+)*$'; then
+            echo "O 'nhom' chi duoc la so va dau phay, vi du: 1 hoac 1,3"; exit 1
+          fi
+          if ! printf '%s' "$SO_NGAY" | grep -qE '^[0-9]+$'; then
+            echo "O 'so_ngay' phai la so"; exit 1
+          fi
+          if [ "$BAT" = "true" ] && [ "$XAC_NHAN" != "CHAY THAT" ]; then
+            echo "Da chon BAT nhung o xac nhan khong phai 'CHAY THAT'."
+            echo "Khong bat gi ca. Chay lai va go dung chu do neu that su muon tieu tien."
+            exit 1
+          fi
+
+      - name: Soat luat quang cao
+        env:
+          SAN_PHAM: ${{ inputs.san_pham }}
+        run: python3 kiem-quang-cao.py "$SAN_PHAM"
+
+      - name: Thu lai bo tao chien dich
+        run: python3 thu-tao-chien-dich.py < /dev/null
+
+      - name: Dung chien dich
+        env:
+          FB_TOKEN: ${{ secrets.FB_TOKEN }}
+          SAN_PHAM: ${{ inputs.san_pham }}
+          NHOM: ${{ inputs.nhom }}
+          SO_NGAY: ${{ inputs.so_ngay }}
+          BAT: ${{ inputs.bat }}
+        run: |
+          if [ -z "$FB_TOKEN" ]; then
+            echo "Thieu Bi mat kho FB_TOKEN."
+            echo "Settings -> Secrets and variables -> Actions -> New repository secret"
+            echo "Name: FB_TOKEN"
+            exit 1
+          fi
+          set -- --san-pham "$SAN_PHAM"
+          if [ -n "$NHOM" ];        then set -- "$@" --nhom "$NHOM"; fi
+          if [ "$SO_NGAY" != "0" ]; then set -- "$@" --so-ngay "$SO_NGAY"; fi
+          if [ "$BAT" = "true" ];   then set -- "$@" --bat; fi
+          echo "Chay: tao-chien-dich.py $*"
+          python3 tao-chien-dich.py "$@" < /dev/null
