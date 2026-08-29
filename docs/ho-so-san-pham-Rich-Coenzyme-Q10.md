@@ -83,6 +83,24 @@ giấy tờ nào chứng minh**. **CSKH không được khẳng định** khi kh
 
 → Rồi báo lên để lấy ảnh giấy tờ. **Khách tra ra không khớp là mất uy tín cả trang.**
 
+### ⚠️ MT-10 — CÁCH NÓI "DẠNG KHỬ" CHO AN TOÀN
+
+Nhãn phụ và **hồ sơ công bố Việt Nam chỉ ghi "Coenzyme Q10 50mg"**, không ghi dạng.
+Nghị định 15/2018 yêu cầu quảng cáo **đúng nội dung đã công bố**. Nói "dạng khử" là
+**đúng sự thật** (chữ 還元型 in trên hộp gốc Nhật) nhưng là **thông tin ngoài hồ sơ công bố**.
+
+| ✅ Được nói | ❌ Chặn đăng |
+|---|---|
+| "Hộp gốc Nhật in 還元型 — nghĩa là dạng khử, anh/chị nhìn hộp là thấy" | "**Nhãn phụ ghi** ubiquinol" |
+| Dẫn nguồn là **chữ trên hộp Nhật** | Nói giấy tờ Việt Nam có ghi dạng |
+
+**Quy tắc cho CSKH: mỗi lần nhắc "dạng khử" phải kèm nguồn là hộp gốc Nhật.**
+Không bao giờ nói giấy tờ Việt Nam ghi dạng đó.
+
+> 🟡 Đang chờ hỏi đơn vị làm hồ sơ công bố xem có được nêu dạng hoạt chất trong quảng cáo không.
+> Nếu câu trả lời là không, phải chuyển điểm bán sang: **100mg/ngày đủ liều · nhập nguyên hộp
+> từ Nhật · nhà máy AFC-HD AMS Shizuoka**. CSKH cần sẵn sàng phương án này.
+
 > 🔑 **Điểm bán mạnh nhất — nói ngay ở bước tư vấn:**
 > CoQ10 tan trong dầu, và **dạng khử hấp thu tốt hơn dạng oxy hoá**. Đa số hàng rẻ ngoài
 > thị trường là dạng oxy hoá. Đây là lý do thật để giải thích chênh lệch giá — khách
@@ -224,9 +242,10 @@ Phụ nữ có thai / cho con bú · trẻ em · người sắp phẫu thuật �
 > Dạ cái anh/chị đang thiếu có thể là năng lượng ở mức tế bào ạ. CoQ10 là chất cơ thể mình
 > tự sản xuất, nhưng **càng lớn tuổi càng giảm dần**, nên nhiều người bổ sung thêm.
 >
-> Bên em là **Thực phẩm bảo vệ sức khỏe Rich Coenzyme Q10**, hàng Nhật, **dạng khử** —
-> tức là cùng dạng với CoQ10 trong cơ thể mình, nên hấp thu tốt hơn dạng oxy hoá mà hàng
-> rẻ ngoài thị trường hay dùng. Mỗi viên 50mg, uống 2 viên là **100mg/ngày** ạ.
+> Bên em là **Thực phẩm bảo vệ sức khỏe Rich Coenzyme Q10**, hàng Nhật ạ.
+> **Trên hộp gốc Nhật có in chữ 還元型 ngay dưới chữ RICH — nghĩa là dạng khử**, tức là cùng
+> dạng với CoQ10 trong cơ thể mình, hấp thu tốt hơn dạng oxy hoá mà hàng rẻ hay dùng.
+> Anh/chị nhận hàng nhìn hộp là thấy ạ. Mỗi viên 50mg, uống 2 viên là **100mg/ngày** ạ.
 > Trong đó còn có tảo Haematococcus và chiết xuất hạt tiêu đen giúp hấp thu tốt hơn ạ.
 > Sản xuất tại nhà máy AFC-HD AMS ở Shizuoka, Nhật Bản; công ty 5SPRO nhập về,
 > số công bố **4107/2024/ĐKSP** của Cục An toàn thực phẩm ạ.
