@@ -114,10 +114,34 @@ def kiem_ban_hang(br):
     ghi(not ljs, 'không lỗi JavaScript', '; '.join(ljs[:2]))
     ghi(pg.locator('#mua-nhanh .anh-goi').count() == 1, 'khối bán hàng có ảnh gói thật')
     ghi(pg.locator('#mua-nhanh .moc-nut').count() == 4, 'khối bán hàng có bốn nút mốc giá')
+
+    # Moc chon san phai la moc RE NHAT, khong phai moc dat nhat. Khach vao tu
+    # quang cao bam mot cai roi dien ba o la gui don — chon san moc 6,75 trieu
+    # thi thanh bay, khong phai ban hang.
+    ghi(pg.evaluate("() => document.querySelector('#chon-hop input:checked').value")
+        .startswith('1 gói'), 'phiếu chọn sẵn mốc 1 gói, không phải mốc đắt nhất',
+        pg.evaluate("() => document.querySelector('#chon-hop input:checked').value"))
+    ghi(pg.evaluate("() => document.querySelector('#chon-hop .h-tem')"
+                    ".closest('.hop-o').querySelector('.h-t').textContent").startswith('10 gói'),
+        'nhãn Lợi nhất vẫn nằm ở mốc 10 gói để kéo khách lên')
     ghi(pg.locator('#mua-nhanh').bounding_box()['y'] < pg.locator('#van-de').bounding_box()['y'],
         'khối bán hàng nằm trên bài kiểm tra — bán thẳng, không bắt đọc hết mới mua')
     ghi(pg.locator('#dat-hang').bounding_box()['y'] < pg.locator('#van-de').bounding_box()['y'],
         'phiếu đặt hàng nằm trên bài kiểm tra')
+
+    # Trang dich cho chien dich tra tien: khong duoc co link dan khach di
+    # cho khac. Moi link ra ngoai la mot phan tien quang cao bi mat.
+    ra = pg.evaluate("""() => { const nb = document.getElementById('noi-bo');
+        return Array.from(document.querySelectorAll('a[href^=\"http\"]'))
+          .filter(a => !nb.contains(a) && a.offsetParent !== null)
+          .map(a => a.getAttribute('href')); }""")
+    ghi(not ra, 'không link nào dẫn khách ra khỏi trang', '; '.join(ra[:3]))
+    ghi(pg.locator('.steps-nav a').count() == 0, 'không có thanh mục lục để khách lạc đi')
+    cta = pg.evaluate("() => Math.round(document.querySelector('.hero-jump')"
+                      ".getBoundingClientRect().top + window.scrollY)")
+    ghi(cta < 844, 'nút mua nằm trong màn hình đầu', str(cta) + 'px')
+    ghi(pg.locator('.hero-jump').inner_text().strip().startswith('Xem giá'),
+        'nút to nhất ở đầu trang là nút mua, không phải nút làm bài kiểm tra')
 
     bg = pg.locator('#bang-gia').inner_text()
     ghi(pg.locator('#bang-gia .quote table tbody tr').count() == 4, 'bảng báo giá đủ bốn mốc')

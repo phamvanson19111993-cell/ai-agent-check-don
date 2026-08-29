@@ -682,6 +682,12 @@ body:has(.dock.on){padding-bottom:74px}
 .dat-lai tr.it .n{color:var(--red);font-weight:700}
 
 /* anh chup that */
+/* khoi noi that ve chuyen chua co loi chung */
+.that-tha{border-left:3px solid var(--ink3);background:var(--sunk);border-radius:var(--r);padding:1.1rem 1.25rem;display:flex;flex-direction:column;gap:.6rem}
+.that-tha .tt-k{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.that-tha p{font-size:.9rem;color:var(--ink2)}
+.that-tha b{color:var(--ink)}
+
 /* khoi ban hang: anh mot ben, gia va nut mua mot ben */
 .mua{background:var(--card);border:2px solid var(--red);border-radius:var(--r);padding:clamp(1.2rem,3vw,2rem);box-shadow:var(--shadow)}
 .mua-grid{display:grid;gap:1.5rem}
@@ -763,13 +769,7 @@ body:has(.dock.on){padding-bottom:74px}
 <body>
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top"><b>DiLiM</b><span>Supplement · AFC Nhật Bản</span></a>
-    <nav class="steps-nav" id="steps-nav" aria-label="Mục lục">
-      <a href="#van-de">1 · Kiểm tra</a>
-      <a href="#nguyen-nhan">2 · Hỗ trợ</a>
-      <a href="#co-che">3 · Sản phẩm</a>
-      <a href="#dat-hang">Báo giá</a>
-    </nav>
+    <span class="brand"><b>DiLiM</b><span>Supplement · AFC Nhật Bản</span></span>
     <a class="hotline" href="tel:0913351394"><span class="ic" aria-hidden="true">☎</span><span class="no">0913.351.394</span></a>
     <a class="btn nav-buy" href="#dat-hang">Đặt hàng</a>
   </div>
@@ -788,60 +788,17 @@ body:has(.dock.on){padding-bottom:74px}
         </svg>
         <span class="logo-tx"><b>DiLiM</b><i>SUPPLEMENT</i></span>
       </div>
-      <p class="kicker">DiLiM · Vòng bụng · Mỡ nội tạng · Chuyển hoá</p>
+      <p class="kicker">DiLiM · AFC Nhật Bản · Hỗ trợ giảm béo</p>
       <h1>Cân nặng gần như cũ,<br>mà bụng <em>vẫn to lên</em>.</h1>
       <p class="hero-p">Cân điện tử báo con số không khác năm ngoái mấy. Nhưng cái quần cùng cỡ thì cài khó hơn, và ngồi xuống là thấy bụng chèn.</p>
-      <p class="hero-promise">Cân đo <i>tất cả</i> — xương, cơ, nước, mỡ — nên nó không báo gì. Trang này giúp anh chị <b>đo đúng chỗ</b>, chỉ ra <b>nhóm nguyên nhân</b>, rồi <b>sau cùng</b> mới nói tới sản phẩm.</p>
-
-      <div class="three">
-        <div class="one">
-          <span class="ring">
-            <svg viewBox="0 0 60 60" aria-hidden="true">
-              <ellipse cx="30" cy="32" rx="21" ry="16" fill="none" stroke="#DCA79A" stroke-width="2.2"></ellipse>
-              <ellipse cx="30" cy="32" rx="12" ry="9" fill="#BE1B10" opacity=".22"></ellipse>
-              <circle cx="30" cy="32" r="4.5" fill="#BE1B10"></circle>
-              <path d="M30 8v6M9 32h6M45 32h6" stroke="#DCA79A" stroke-width="2.2" stroke-linecap="round"></path>
-            </svg>
-          </span>
-          <h3>Mỡ nằm sâu bên trong</h3>
-          <p>Mỡ nội tạng bọc quanh gan và ruột, không bấu vào được như mỡ dưới da.</p>
-        </div>
-        <div class="one">
-          <span class="ring">
-            <svg viewBox="0 0 60 60" aria-hidden="true">
-              <path d="M8 44 L20 30 L30 36 L42 18 L52 24" fill="none" stroke="#BE1B10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path>
-              <circle cx="20" cy="30" r="2.6" fill="#DCA79A"></circle>
-              <circle cx="42" cy="18" r="2.6" fill="#DCA79A"></circle>
-              <path d="M8 50h44" stroke="#DCA79A" stroke-width="1.6"></path>
-            </svg>
-          </span>
-          <h3>Chuyển hoá chậm dần</h3>
-          <p>Sau tuổi 40 khối cơ hao đi, cùng bữa ăn cũ mà phần dư ra nhiều hơn.</p>
-        </div>
-        <div class="one">
-          <span class="ring">
-            <svg viewBox="0 0 60 60" aria-hidden="true">
-              <circle cx="30" cy="30" r="17" fill="none" stroke="#DCA79A" stroke-width="2.2"></circle>
-              <path d="M30 19v12l8 5" fill="none" stroke="#BE1B10" stroke-width="2.6" stroke-linecap="round"></path>
-              <circle cx="30" cy="30" r="2" fill="#BE1B10"></circle>
-            </svg>
-          </span>
-          <h3>Nếp sinh hoạt</h3>
-          <p>Ăn tối muộn, ngồi nhiều, ngủ ít, bia rượu — mỗi thứ góp một phần.</p>
-        </div>
-      </div>
+      <p class="hero-promise"><b>Ellagic Acid</b> — thực phẩm bảo vệ sức khoẻ của AFC Nhật Bản, công dụng ghi trên nhãn là <b>hỗ trợ giảm béo</b>, dành cho người lớn từ 18 tuổi muốn giảm béo. Nhập nguyên gói, số công bố tra được, trả tiền khi nhận hàng.</p>
 
       <div class="hero-cta2">
-        <a class="hero-jump" id="bat-dau" href="#van-de"><span class="pulse" aria-hidden="true"></span>Làm bài kiểm tra 30 giây</a>
-        <a class="hero-buy" href="#dat-hang">Đã biết mình cần — xem giá &amp; đặt hàng</a>
+        <a class="hero-jump" href="#dat-hang"><span class="pulse" aria-hidden="true"></span>Xem giá &amp; đặt hàng</a>
+        <a class="hero-buy" id="bat-dau" href="#van-de">Chưa chắc mình có cần — làm bài kiểm tra 30 giây</a>
       </div>
-      <p class="hero-vi">Làm bài trước cũng được — không phải mua gì.</p>
+      <p class="hero-vi">Giao toàn quốc · gọi xác nhận trước khi gửi · trả tiền khi nhận hàng.</p>
       <p class="hero-tel">Cần hỏi ngay: <a href="tel:0913351394">0913.351.394</a></p>
-      <div class="ba-so">
-        <div><b>90 · 80</b><span>Ngưỡng vòng eo tính bằng cm, cho nam và nữ người châu Á</span></div>
-        <div><b>6 câu · 30 giây</b><span>Bài tự kiểm, không hỏi tên, không hỏi số điện thoại</span></div>
-        <div><b>15 phút</b><span>Để lại số là được gọi lại, trong giờ hành chính</span></div>
-      </div>
     </div>
   </section>
 
@@ -871,6 +828,11 @@ body:has(.dock.on){padding-bottom:74px}
               <a class="btn btn-lg" href="#dat-hang" id="mua-ngay">Đặt hàng ngay</a>
               <a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ 0913.351.394</a>
             </div>
+            <div class="ba-so">
+        <div><b>90 · 80</b><span>Ngưỡng vòng eo tính bằng cm, cho nam và nữ người châu Á</span></div>
+        <div><b>6 câu · 30 giây</b><span>Bài tự kiểm, không hỏi tên, không hỏi số điện thoại</span></div>
+        <div><b>15 phút</b><span>Để lại số là được gọi lại, trong giờ hành chính</span></div>
+      </div>
             <p class="note">Chưa muốn mua thì <a href="#van-de">làm bài kiểm tra 30 giây</a> trước — không hỏi tên, không hỏi số điện thoại.</p>
           </div>
         </div>
@@ -945,6 +907,32 @@ body:has(.dock.on){padding-bottom:74px}
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- HẠ RỦI RO -->
+  <section class="sec" id="yen-tam">
+    <div class="wrap stack-lg">
+      <div class="col head">
+        <span class="eyebrow">Mua lần đầu thì lo gì</span>
+        <h2>Bốn điều anh chị kiểm được, không cần tin lời bên em</h2>
+      </div>
+      <div class="col">
+        <div class="camket">
+          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Không đưa tiền trước.</b> Nhân viên gọi xác nhận rồi mới gửi. Nhận hàng, xem gói, rồi mới trả tiền. Đổi ý trước khi nhận thì không mất gì.</p></div>
+          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Tự tra số công bố.</b> Gõ <b class="mono">3993/2024/ĐKSP</b> vào cổng tra cứu của Cục An toàn thực phẩm là ra hồ sơ, đứng tên Công ty Cổ phần 5SPRO. Không khớp thì đừng mua.</p></div>
+          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Có phiếu kiểm nghiệm chất cấm.</b> Hàng giảm cân là nhóm hay bị trộn chất cấm nhất. Bên em có phiếu kiểm nghiệm riêng cho việc này — anh chị hỏi, nhân viên gửi bản chụp.</p></div>
+          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Đối chiếu tem nhãn phụ.</b> Gói giao tới có tem tiếng Việt dán ngoài. Nội dung phải khớp từng dòng với khối chép nguyên văn ở dưới trang này.</p></div>
+        </div>
+      </div>
+      <div class="col stack">
+        <div class="that-tha">
+          <span class="tt-k">Nói thật một chuyện</span>
+          <p><b>Trang này chưa có lời chứng nào của khách.</b> Bên em mới đưa sản phẩm ra bán, chưa gom đủ phản hồi thật.</p>
+          <p>Bên em <b>không mượn lời khách của người khác</b>, không dùng ảnh trước–sau, không thuê người đóng vai. Với hàng giảm cân thì đó vừa là lừa khách, vừa là thứ bị xử trước tiên.</p>
+          <p>Khi nào có khách thật đồng ý cho quay, bên em đăng lên đây. Còn bây giờ, thứ anh chị dựa vào là bốn điều ở trên — <b>cái nào cũng tự kiểm được</b>.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1114,7 +1102,7 @@ body:has(.dock.on){padding-bottom:74px}
       </div>
       <div class="col">
         <div class="camket">
-          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Sản xuất — AFC-HD AMS Life Science Co., Ltd, Second Factory</b>, Shizuoka, Nhật Bản. Công ty <b>niêm yết sàn chứng khoán Tokyo, mã <span class="mono">2927</span></b> nên phải công bố báo cáo tài chính định kỳ. Cùng nhà máy làm ra Rich Coenzyme Q10 bên em đang bán ở <a href="https://sonsongkhoe.com" target="_blank" rel="noopener">sonsongkhoe.com</a>.</p></div>
+          <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Sản xuất — AFC-HD AMS Life Science Co., Ltd, Second Factory</b>, Shizuoka, Nhật Bản. Công ty <b>niêm yết sàn chứng khoán Tokyo, mã <span class="mono">2927</span></b> nên phải công bố báo cáo tài chính định kỳ. và chịu ràng buộc công bố thông tin.</p></div>
           <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Công bố và nhập khẩu — Công ty Cổ phần 5SPRO</b>, quận Long Biên, Hà Nội. Đứng tên trên Giấy tiếp nhận công bố.</p></div>
           <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Phân phối và quảng cáo — Công ty Cổ phần Jinsei Vietnam</b>, quận Long Biên, Hà Nội. Đứng tên trên Giấy xác nhận nội dung quảng cáo.</p></div>
           <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Bán hàng và tư vấn — DiLiM Supplement.</b> Người gọi lại cho anh chị là nhân viên bên em, số <a href="tel:0913351394">0913.351.394</a>.</p></div>
@@ -1215,6 +1203,44 @@ body:has(.dock.on){padding-bottom:74px}
         <h2>Cái cân không nhìn thấy chỗ mỡ nằm</h2>
         <p class="lede">Cùng một ký mỡ: nằm dưới da thì chỉ làm quần chật, nằm bọc quanh gan và ruột thì khác hẳn — vì lớp mỡ đó không nằm yên.</p>
       </div>
+      <div class="three">
+        <div class="one">
+          <span class="ring">
+            <svg viewBox="0 0 60 60" aria-hidden="true">
+              <ellipse cx="30" cy="32" rx="21" ry="16" fill="none" stroke="#DCA79A" stroke-width="2.2"></ellipse>
+              <ellipse cx="30" cy="32" rx="12" ry="9" fill="#BE1B10" opacity=".22"></ellipse>
+              <circle cx="30" cy="32" r="4.5" fill="#BE1B10"></circle>
+              <path d="M30 8v6M9 32h6M45 32h6" stroke="#DCA79A" stroke-width="2.2" stroke-linecap="round"></path>
+            </svg>
+          </span>
+          <h3>Mỡ nằm sâu bên trong</h3>
+          <p>Mỡ nội tạng bọc quanh gan và ruột, không bấu vào được như mỡ dưới da.</p>
+        </div>
+        <div class="one">
+          <span class="ring">
+            <svg viewBox="0 0 60 60" aria-hidden="true">
+              <path d="M8 44 L20 30 L30 36 L42 18 L52 24" fill="none" stroke="#BE1B10" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="20" cy="30" r="2.6" fill="#DCA79A"></circle>
+              <circle cx="42" cy="18" r="2.6" fill="#DCA79A"></circle>
+              <path d="M8 50h44" stroke="#DCA79A" stroke-width="1.6"></path>
+            </svg>
+          </span>
+          <h3>Chuyển hoá chậm dần</h3>
+          <p>Sau tuổi 40 khối cơ hao đi, cùng bữa ăn cũ mà phần dư ra nhiều hơn.</p>
+        </div>
+        <div class="one">
+          <span class="ring">
+            <svg viewBox="0 0 60 60" aria-hidden="true">
+              <circle cx="30" cy="30" r="17" fill="none" stroke="#DCA79A" stroke-width="2.2"></circle>
+              <path d="M30 19v12l8 5" fill="none" stroke="#BE1B10" stroke-width="2.6" stroke-linecap="round"></path>
+              <circle cx="30" cy="30" r="2" fill="#BE1B10"></circle>
+            </svg>
+          </span>
+          <h3>Nếp sinh hoạt</h3>
+          <p>Ăn tối muộn, ngồi nhiều, ngủ ít, bia rượu — mỗi thứ góp một phần.</p>
+        </div>
+      </div>
+
       <div class="chain">
         <div class="link">
           <span class="k">MẮT XÍCH 1</span>
@@ -1566,17 +1592,9 @@ body:has(.dock.on){padding-bottom:74px}
     <span><b>Nhà sản xuất:</b> AFC – HD AMS Life Science Co., Ltd Second Factory — 2-4-3 Toyoda, Suruga-ku, Shizuoka City, Shizuoka 422-8027, Nhật Bản</span>
     <span><b>Thương nhân chịu trách nhiệm về sản phẩm:</b> Công ty Cổ phần 5SPRO — Số 431 Ngọc Thuỵ, phường Ngọc Thuỵ, quận Long Biên, Hà Nội</span>
     <span><b>Phân phối và quảng cáo:</b> Công ty Cổ phần Jinsei Vietnam — Liền kề 06-07 phố Hồng Tiến, phường Bồ Đề, quận Long Biên, Hà Nội</span>
-    <span><b>Facebook:</b> <a href="https://www.facebook.com/profile.php?id=61592861334561" target="_blank" rel="noopener">DiLiM Supplement</a></span>
     <span><b>Hotline tư vấn:</b> <a href="tel:0913351394">0913.351.394</a></span>
   </div>
   <nav>
-    <a href="#van-de">Kiểm tra</a>
-    <a href="#nguyen-nhan">Nguyên nhân</a>
-    <a href="#co-che">Cơ chế</a>
-    <a href="#san-pham">Sản phẩm</a>
-    <a href="#chung-minh">Giấy tờ</a>
-    <a href="#dat-hang">Đặt hàng</a>
-    <button type="button" class="noi-bo" id="mo-noi-bo">Ghi chú nội bộ</button>
   </nav>
 </footer>
 
@@ -1910,7 +1928,7 @@ var VIEN_MOI_HOP  = 60;
    Mốc 10 gói KHÔNG có trong bảng niêm yết — anh Sơn quyết "mua 10 tặng 2".
    Muốn dựng lại mốc 3 hoặc 4, thêm một dòng vào mảng rồi sinh lại mã QR. */
 var BANG_GIA = [
-  { hop:1,  gia:675000,   nhan:'Mua thử 1 tháng' },
+  { hop:1,  gia:675000,   nhan:'Mua thử 1 tháng', chon_san:true },
   { hop:2,  gia:1269000,  nhan:'Tiết kiệm 81.000đ' },
   { hop:5,  gia:3375000,  ngay:180, nhan:'Trả tiền 5, nhận 6 gói',
             qua:'thêm 1 gói nữa', qua_tien:675000, tang:1 },
@@ -2046,9 +2064,9 @@ var BANG_GIA = [
   // 2 · the bam chon so luong trong phieu dat hang
   var t = '';
   BANG_GIA.forEach(function(m){
-    t += '<label class="hop-o' + (m.loi_nhat ? ' on' : '') + '">'
+    t += '<label class="hop-o' + (m.chon_san ? ' on' : '') + '">'
       +  (m.loi_nhat ? '<span class="h-tem">Lợi nhất</span>' : '')
-      +  '<input type="radio" name="soluong" value="' + nhanGia(m) + '"' + (m.loi_nhat ? ' checked' : '') + '>'
+      +  '<input type="radio" name="soluong" value="' + nhanGia(m) + '"' + (m.chon_san ? ' checked' : '') + '>'
       +  '<span class="h-t">' + m.hop + ' gói — ' + chamNghin(m.gia) + 'đ</span>'
       +  '<span class="h-s">' + (m.ngay ? 'Dùng ' + m.ngay + ' ngày · ' : '')
       +    (moiNgay(m) ? chamNghin(moiNgay(m)) + 'đ mỗi ngày' : '') + '</span>'
