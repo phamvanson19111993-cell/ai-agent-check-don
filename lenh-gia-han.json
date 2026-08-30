@@ -1,0 +1,16 @@
+{
+  "ghi_chu": "GIA HẠN QUẢNG CÁO Q10 — file lệnh riêng cho máy chủ GitHub.\n\nChỉ có ĐÚNG MỘT việc: kéo dài ngày hết hạn của nhóm quảng cáo Q10.\nCố ý KHÔNG dùng chung lenh.json, vì trong đó có tam_dung_het và bat —\nchạy nhầm không có người canh là hỏng to.\n\nGia hạn KHÔNG bật lại quảng cáo đang tắt. Hai mẫu kém vẫn nằm im.\nGia hạn cũng KHÔNG đổi ngân sách, không đổi nhắm đối tượng, không đổi\nnội dung — nên Facebook không phải học lại từ đầu.",
+  "khoi": [
+    {
+      "tai_khoan": "2260044828113956",
+      "viec": [
+        {
+          "lam": "gia_han",
+          "ten": "Q10",
+          "so_ngay": 3,
+          "ly_do": "GIA HẠN NHÓM QUẢNG CÁO Q10 THÊM 3 NGÀY.\n    Hạn hiện tại 1/9. Hôm nay 30/8 — còn hai ngày.\n    Không gia hạn thì sáng 2/9 đứng máy, và mẫu 'Doanh số mới'\n    (604đ mỗi lượt xem trang, rẻ nhất từ trước tới nay, đã qua\n    giai đoạn học) mất luôn phần Facebook đã học được. Dựng mẫu mới\n    là học lại từ đầu, đắt hơn nhiều lần.\n    Chọn 3 ngày chứ không phải chạy liên tục: có hạn thì quên cũng\n    không mất thêm tiền, và 3 ngày đủ để có số mà quyết tiếp."
+        }
+      ]
+    }
+  ]
+}
