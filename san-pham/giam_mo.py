@@ -65,9 +65,9 @@ _GIAY_TO = (
 
 NHOM = [
     {
-        # Anh Sơn chốt 45–60 "cho hiệu quả" (đi qua 30–45, 30–55, 35–55).
-        "ten":  "Nhom 1 · nu 45-60",
-        "tuoi": (45, 60),
+        # Anh Sơn chốt 40–55 (đi qua 30–45, 30–55, 35–55, 45–60).
+        "ten":  "Nhom 1 · nu 40-55",
+        "tuoi": (40, 55),
         "gioi": 2,          # 2 = nữ. Lời quảng cáo xưng "chị" nên phải khoá lại.
         # Viết theo Ogilvy và Kotler. Bốn thứ mượn của hai ông:
         #
@@ -88,7 +88,7 @@ NHOM = [
         "chu": (
             "Cái quần năm ngoái vẫn kéo lên được. Chỉ là lúc cài cúc phải hóp "
             "bụng vào một cái.\n\n"
-            "Nhiều chị 45–60 kể lại đúng chuyện đó: cân nặng nhích lên chậm tới mức "
+            "Nhiều chị 40–55 kể lại đúng chuyện đó: cân nặng nhích lên chậm tới mức "
             "không ai để ý, tới lúc để ý thì là cái quần nhắc chứ không phải cái cân.\n\n"
             "Đây là thứ bên em bán. Nói bằng con số, không nói bằng lời hứa:\n\n"
             "• ELLAGIC ACID của AFC Nhật Bản, sản xuất tại nhà máy AFC-HD AMS "
@@ -116,11 +116,11 @@ NHOM = [
         "mo_ta":   "AFC Nhật Bản · túi nhôm 60 viên dùng 30 ngày · công bố 3993/2024/ĐKSP",
     },
     {
-        # Đẩy lên 61–65 để KHÔNG chồng lấn với Nhóm 1 nay chạy tới 60.
+        # 56–65: nối liền ngay trên Nhóm 1 (hết ở 55), không chồng lấn, không hở.
         # Hai nhóm cùng nhắm một người là mình tự đấu giá với chính mình,
         # đội giá lên mà vẫn ngần ấy người.
-        "ten":  "Nhom 2 · nu 61-65",
-        "tuoi": (61, 65),
+        "ten":  "Nhom 2 · nu 56-65",
+        "tuoi": (56, 65),
         "gioi": 2,
         "chu": (
             "Ăn vẫn bằng ngần ấy, đi bộ vẫn ngần ấy vòng, mà cái cân thì không "
