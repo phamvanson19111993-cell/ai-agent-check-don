@@ -65,9 +65,9 @@ _GIAY_TO = (
 
 NHOM = [
     {
-        # Anh Sơn chốt mở rộng 30–55 (trước là 30–45).
-        "ten":  "Nhom 1 · nu 30-55",
-        "tuoi": (30, 55),
+        # Anh Sơn chốt 35–55 (đi qua 30–45 rồi 30–55).
+        "ten":  "Nhom 1 · nu 35-55",
+        "tuoi": (35, 55),
         "gioi": 2,          # 2 = nữ. Lời quảng cáo xưng "chị" nên phải khoá lại.
         # Viết theo Ogilvy và Kotler. Bốn thứ mượn của hai ông:
         #
@@ -88,7 +88,7 @@ NHOM = [
         "chu": (
             "Cái quần năm ngoái vẫn kéo lên được. Chỉ là lúc cài cúc phải hóp "
             "bụng vào một cái.\n\n"
-            "Nhiều chị 30–55 kể lại đúng chuyện đó: cân nặng nhích lên chậm tới mức "
+            "Nhiều chị 35–55 kể lại đúng chuyện đó: cân nặng nhích lên chậm tới mức "
             "không ai để ý, tới lúc để ý thì là cái quần nhắc chứ không phải cái cân.\n\n"
             "Đây là thứ bên em bán. Nói bằng con số, không nói bằng lời hứa:\n\n"
             "• ELLAGIC ACID của AFC Nhật Bản, sản xuất tại nhà máy AFC-HD AMS "
