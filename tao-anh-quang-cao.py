@@ -36,6 +36,10 @@ CAT = (100, 272, 605, 1045)   # trai, tren, phai, duoi
 
 DO = '#BE1B10'                # do lay tu chinh bao bi san pham
 
+# --doc  -> khổ 9:16 (1080×1920) cho Reels và Story, chiếm hết màn hình điện thoại
+# không ghi -> khổ 4:5 (1080×1350) cho bảng tin, y như ba ảnh Q10 của Phòng 7
+DOC = '--doc' in sys.argv
+
 # ── Chữ trên ảnh ────────────────────────────────────────────────────────────
 KICKER  = 'ELLAGIC ACID · AFC NHẬT BẢN'
 SO_TIEN = '22.500đ'
@@ -43,6 +47,18 @@ DUOI_SO = 'mỗi ngày'
 THAN_1  = 'Hỗ trợ giảm béo. Ngày hai viên với nước.'
 THAN_2  = 'Túi nhôm 60 viên, dùng đúng 30 ngày.'
 VIEN    = 'Xem nhãn và bảng giá trước khi mua'
+
+# Câu hook trên đầu ảnh dọc. Chỉ có ở khổ 9:16, vì khổ đó có chỗ.
+#
+# Ogilvy: "Nói sự thật, nhưng làm cho sự thật hấp dẫn." Cả ngách giảm cân đang
+# gào số cân và số ngày. Câu mạnh nhất còn lại — và là câu duy nhất mình được
+# phép nói — chính là NÓI THẬT. Nó vừa chặn đứng ngón tay đang lướt, vừa hợp
+# luật, vừa dựng sẵn lý do để tin phần còn lại của bài.
+#
+# Không dùng câu chỉ thẳng vào thân thể người xem ("bạn đang béo…") — Meta cấm.
+HOOK_1  = 'Không hứa'
+HOOK_2  = 'xuống mấy cân.'
+HOOK_3  = 'Nhãn ghi sao, bên em nói vậy.'
 
 
 def anh_nen_base64():
@@ -67,7 +83,7 @@ def anh_nen_base64():
                      tui[10:500, -22:].reshape(-1, 3)])
     nen = np.median(ria, axis=0)
 
-    cao, rong, vuot = 620, 1080, 70
+    cao, rong, vuot = (900 if DOC else 620), 1080, 70
     ty = cao / tui.shape[0]
     tui = cv2.resize(tui, (int(tui.shape[1] * ty), cao), interpolation=cv2.INTER_AREA)
 
@@ -121,15 +137,59 @@ TRANG = """<!doctype html><meta charset="utf-8"><style>
 </div>"""
 
 
+# Khổ 9:16 cho Reels và Story. Ba tầng: câu hook chặn ngón tay ở trên,
+# ảnh sản phẩm ở giữa, giá và lời mời ở dưới.
+# Chừa 14% trên và 20% dưới cho phần giao diện Reels che — theo SOP Phòng 7.
+TRANG_DOC = """<!doctype html><meta charset="utf-8"><style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1080px;height:1920px;background:#fff;
+       font-family:"Liberation Sans","DejaVu Sans",sans-serif;
+       -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+  .tren{height:490px;padding:150px 70px 0;text-align:center}
+  .hook{font-size:82px;font-weight:700;line-height:1.12;letter-spacing:-.02em;
+        color:#1A1A1A}
+  .hook em{font-style:normal;color:%s}
+  .hook-phu{font-size:38px;color:#6B6B6B;margin-top:26px;line-height:1.4}
+  .anh{width:1080px;height:900px;object-fit:cover;display:block;flex:0 0 auto}
+  .duoi{flex:1;display:flex;flex-direction:column;align-items:center;
+        justify-content:center;text-align:center;padding:40px 70px 190px}
+  .kicker{font-size:29px;font-weight:700;letter-spacing:.13em;color:#8A8A8A}
+  .so{font-size:132px;font-weight:700;color:#1A1A1A;line-height:1.05;
+      letter-spacing:-.02em;margin-top:14px}
+  .ngay{font-size:42px;color:#8A8A8A}
+  .than{font-size:36px;color:#1A1A1A;line-height:1.45;margin-top:22px}
+  .vien{margin-top:34px;background:%s;color:#fff;font-size:36px;font-weight:700;
+        padding:24px 50px;border-radius:999px}
+</style>
+<div class="tren">
+  <div class="hook">%s<br><em>%s</em></div>
+  <div class="hook-phu">%s</div>
+</div>
+<img class="anh" src="data:image/jpeg;base64,%s">
+<div class="duoi">
+  <div class="kicker">%s</div>
+  <div class="so">%s</div>
+  <div class="ngay">%s</div>
+  <div class="than">%s<br>%s</div>
+  <div class="vien">%s</div>
+</div>"""
+
+
 def main():
     from playwright.sync_api import sync_playwright
 
     ra = os.path.join(GOC, 'quang-cao', 'anh')
     os.makedirs(ra, exist_ok=True)
-    duong = os.path.join(ra, 'giam-mo-vuong.jpg')
+    duong = os.path.join(ra, 'giam-mo-doc.jpg' if DOC else 'giam-mo-vuong.jpg')
+    cao_khung = 1920 if DOC else 1350
 
-    html = TRANG % (DO, anh_nen_base64(), KICKER, SO_TIEN, DUOI_SO,
-                    THAN_1, THAN_2, VIEN)
+    nen64 = anh_nen_base64()
+    if DOC:
+        html = TRANG_DOC % (DO, DO, HOOK_1, HOOK_2, HOOK_3, nen64,
+                            KICKER, SO_TIEN, DUOI_SO, THAN_1, THAN_2, VIEN)
+    else:
+        html = TRANG % (DO, nen64, KICKER, SO_TIEN, DUOI_SO,
+                        THAN_1, THAN_2, VIEN)
     tam = os.path.join(ra, '_tam.html')
     with open(tam, 'w', encoding='utf-8') as f:
         f.write(html)
@@ -139,7 +199,7 @@ def main():
     with sync_playwright() as p:
         br = p.chromium.launch(**({'executable_path': CHROME}
                                   if os.path.exists(CHROME) else {}))
-        tr = br.new_page(viewport={'width': 1080, 'height': 1350},
+        tr = br.new_page(viewport={'width': 1080, 'height': cao_khung},
                          device_scale_factor=1)
         tr.goto('file://' + tam)
         tr.wait_for_timeout(400)
