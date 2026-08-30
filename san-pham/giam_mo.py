@@ -112,7 +112,7 @@ NHOM = [
             + _CUOI_BAI
         ),
         # Ogilvy: tiêu đề ăn 80% số tiền, và tiêu đề có giá thì nhiều người đọc hơn.
-        "tieu_de": "22.500đ mỗi ngày · Hỗ trợ giảm béo",
+        "tieu_de": "Hỗ trợ giảm béo — 22.500đ mỗi ngày",
         "mo_ta":   "AFC Nhật Bản · túi nhôm 60 viên dùng 30 ngày · công bố 3993/2024/ĐKSP",
     },
     {

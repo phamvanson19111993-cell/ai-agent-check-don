@@ -113,6 +113,53 @@ TRANG = """<!doctype html><meta charset="utf-8"><style>
 <div class="ghi">%s</div>"""
 
 
+# Khung Story / Reels. Khac bang tin: khong co chu, khong co the lien ket —
+# chi anh chiem tron man hinh, ten trang o tren, mot nut o duoi. Nen anh phai
+# la kho 9:16; anh 4:5 tha vao day se chua day khung, tren duoi tro nen trong.
+TRANG_STORY = """<!doctype html><meta charset="utf-8"><style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1080px;background:#F0F2F5;padding:36px;
+       font-family:"Liberation Sans","DejaVu Sans",sans-serif}
+  .may{width:1008px;height:1792px;margin:0 auto;border-radius:28px;
+       overflow:hidden;position:relative;background:#000;
+       box-shadow:0 4px 18px rgba(0,0,0,.22)}
+  .may img{width:100%%;height:100%%;object-fit:%s;display:block}
+  .thanh{position:absolute;left:0;right:0;top:0;height:8px;background:rgba(255,255,255,.5)}
+  .dau{position:absolute;top:34px;left:28px;right:28px;display:flex;
+       align-items:center;gap:14px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+  .ava{width:60px;height:60px;border-radius:50%%;background:#BE1B10;color:#fff;
+       font-size:26px;font-weight:700;display:flex;align-items:center;
+       justify-content:center;flex:0 0 auto;border:2px solid #fff}
+  .ten{font-size:26px;font-weight:700}
+  .qc{position:absolute;bottom:150px;left:28px;color:#fff;font-size:22px;
+      text-shadow:0 1px 4px rgba(0,0,0,.6)}
+  .nut{position:absolute;bottom:56px;left:50%%;transform:translateX(-50%%);
+       background:#fff;color:#111;font-size:30px;font-weight:600;
+       padding:20px 44px;border-radius:999px;white-space:nowrap;
+       box-shadow:0 3px 12px rgba(0,0,0,.3)}
+  .ghi{margin-top:26px;font-size:22px;color:#65676B;line-height:1.5}
+</style>
+<div class="may">
+  <img src="data:image/jpeg;base64,%s">
+  <div class="thanh"></div>
+  <div class="dau"><div class="ava">D</div><div class="ten">%s</div></div>
+  <div class="qc">Quảng cáo</div>
+  <div class="nut">🔗 Xem chi tiết</div>
+</div>
+<div class="ghi">%s</div>"""
+
+
+def lam_story(m, n, ten_sp):
+    """Dung khung Story voi anh doc, va them ban doi chieu dung anh 4:5."""
+    doc = os.path.join(GOC, 'quang-cao', 'anh', 'giam-mo-doc.jpg')
+    if not os.path.exists(doc):
+        sys.exit('Chua co anh doc. Chay truoc: python3 tao-anh-quang-cao.py --doc')
+    ghi = ('Khổ 9:16 — ảnh lấp kín khung, không còn mảng trống trên dưới.<br>'
+           '%s · nữ %d–%d tuổi · %s đ mỗi ngày'
+           % (n['ten'], n['tuoi'][0], n['tuoi'][1], format(m.NGAN_SACH, ',')))
+    return TRANG_STORY % ('cover', anh64(doc), html.escape(TEN_TRANG), ghi)
+
+
 def main():
     ten_sp = sys.argv[1] if len(sys.argv) > 1 else 'giam-mo'
     so = int(sys.argv[2]) if len(sys.argv) > 2 else 1
@@ -134,10 +181,13 @@ def main():
 
     ra = os.path.join(GOC, 'quang-cao', 'anh')
     os.makedirs(ra, exist_ok=True)
-    duong = os.path.join(ra, 'xem-truoc-%s-nhom%d.jpg' % (ten_sp, so))
+    story = '--story' in sys.argv
+    duong = os.path.join(ra, 'xem-truoc-%s-nhom%d%s.jpg'
+                         % (ten_sp, so, '-story' if story else ''))
     tam = duong.replace('.jpg', '.html')
     with open(tam, 'w', encoding='utf-8') as f:
-        f.write(TRANG % (html.escape(TEN_TRANG), than,
+        f.write(lam_story(m, n, ten_sp) if story else
+                TRANG % (html.escape(TEN_TRANG), than,
                          anh64(os.path.join(GOC, m.ANH_QC)),
                          html.escape(mien), html.escape(n['tieu_de']),
                          html.escape(n['mo_ta']), ghi))
