@@ -34,6 +34,7 @@ except ImportError:
 API   = "https://graph.facebook.com/v21.0"
 TOKEN = os.environ.get("FB_TOKEN", "")
 LAM_THAT = "--lam" in sys.argv
+KHONG_HOI = "--khong-hoi" in sys.argv and LAM_THAT
 
 
 def tien(x):
@@ -86,6 +87,12 @@ def hoi_lam(mo_ta):
     if not LAM_THAT:
         print("  → CHẠY THỬ, không đụng gì. Muốn làm thật thì thêm --lam")
         return False
+    # Tren may chu GitHub khong co ai go phim. --khong-hoi bo buoc go CO,
+    # nhung VAN phai co --lam, va quy trinh con bat go dung chu xac nhan
+    # truoc khi truyen co nay vao.
+    if KHONG_HOI:
+        print("  → --khong-hoi: LÀM LUÔN, không hỏi lại.")
+        return True
     tra = input("  Làm việc này? gõ CO rồi Enter (bỏ qua thì Enter luôn): ").strip()
     if tra.upper() in ("CO", "CÓ", "Y", "YES"):
         return True
@@ -232,8 +239,86 @@ def viec_bat(act, v):
 
 
 
+def viec_gia_han(act, v):
+    """Doi ngay het han cua NHOM quang cao — chi keo DAI ra, khong bao gio rut ngan.
+
+    Vi sao can: nhom quang cao dat han la den ngay do tu dung. Quen gia han la
+    sang hom sau dung may, va Facebook mat luon phan da hoc duoc ve nhom khach.
+    Dung bai moi la hoc lai tu dau, dat hon nhieu lan.
+
+    Doi han KHONG bat lai quang cao dang tat. Mau nao dang tat van nam im.
+    """
+    import datetime
+
+    ten    = v.get("ten", "")
+    so_ngay = int(v.get("so_ngay", 3))
+    if so_ngay < 1 or so_ngay > 30:
+        print("  so_ngay phai tu 1 den 30. Dang de %r nen bo qua." % v.get("so_ngay"))
+        return
+
+    cds = lay_het("%s/campaigns" % act, {"fields": "name,status"})
+    hop = [c for c in (cds or []) if khop(c.get("name"), ten)]
+    if not hop:
+        print("  Khong thay chien dich nao co ten chua %r." % ten)
+        for c in (cds or [])[:10]:
+            print("     dang co: %s" % c.get("name"))
+        return
+
+    bay_gio = datetime.datetime.now(datetime.timezone.utc)
+    viec = []
+    for c in hop:
+        nhs = lay_het("%s/adsets" % c["id"],
+                      {"fields": "name,status,end_time,daily_budget"}) or []
+        for n in nhs:
+            cu = n.get("end_time")
+            if not cu:
+                print("  · %s — khong dat han, chay lien tuc. Khong phai gia han."
+                      % n.get("name"))
+                continue
+            try:
+                moc = datetime.datetime.fromisoformat(cu.replace("Z", "+00:00"))
+            except ValueError:
+                print("  · %s — khong doc duoc ngay het han %r, bo qua."
+                      % (n.get("name"), cu))
+                continue
+            # Het han roi thi tinh tu bay gio. Con han thi noi them vao duoi.
+            goc = moc if moc > bay_gio else bay_gio
+            moi = goc + datetime.timedelta(days=so_ngay)
+            viec.append((c, n, moc, moi))
+
+    if not viec:
+        print("  Khong co nhom quang cao nao can gia han.")
+        return
+
+    tong = 0.0
+    print("  SE GIA HAN THEM %d NGAY:" % so_ngay)
+    for c, n, moc, moi in viec:
+        ns = float(n.get("daily_budget") or 0)
+        tong += ns * so_ngay
+        qcs = lay_het("%s/ads" % n["id"], {"fields": "name,status"}) or []
+        bat = [q for q in qcs if q.get("status") == "ACTIVE"]
+        print("   · %s / %s" % (c.get("name"), n.get("name")))
+        print("       han cu : %s" % moc.strftime("%d/%m/%Y %H:%M"))
+        print("       han moi: %s" % moi.strftime("%d/%m/%Y %H:%M"))
+        print("       ngan sach %s/ngay · %d mau dang BAT tren %d mau"
+              % (tien(ns), len(bat), len(qcs)))
+        for q in qcs:
+            print("         %s %s" % ("BAT " if q.get("status") == "ACTIVE" else "tat ",
+                                      q.get("name")))
+    print("  TOI DA TIEU THEM: %s (%d ngay x ngan sach ngay)" % (tien(tong), so_ngay))
+    print("  Mau dang tat van nam im — doi han khong bat lai gi ca.")
+
+    if not hoi_lam(""):
+        return
+
+    for c, n, moc, moi in viec:
+        print("  Dang doi han: %s" % n.get("name"))
+        sua(n["id"], {"end_time": moi.strftime("%Y-%m-%dT%H:%M:%S+0000")})
+
+
 VIEC = {
     "bat":          viec_bat,
+    "gia_han":      viec_gia_han,
     "tam_dung_het": viec_tam_dung_het,
     "tam_dung":     viec_tam_dung,
     "ngan_sach":    viec_ngan_sach,
@@ -250,9 +335,19 @@ def main():
           % ("LÀM THẬT (vẫn hỏi từng việc)" if LAM_THAT else "CHẠY THỬ, không đụng gì"))
     print("═" * 62)
 
+    # --lenh <file>: chay mot file lenh khac. Can cho may chu GitHub — o do
+    # chi duoc lam DUNG MOT viec, khong duoc quet ca lenh.json (trong do co
+    # tam_dung_het va bat, chay nham la hong to).
     duong_lenh = "lenh.json"
+    if "--lenh" in sys.argv:
+        i = sys.argv.index("--lenh")
+        if i + 1 >= len(sys.argv):
+            sys.exit("Thiếu tên file sau --lenh")
+        duong_lenh = sys.argv[i + 1]
+        if os.path.sep in duong_lenh or duong_lenh.startswith("."):
+            sys.exit("Tên file lệnh phải nằm ngay cạnh chương trình, không có đường dẫn.")
     if not os.path.exists(duong_lenh):
-        sys.exit("Không thấy file lenh.json cạnh chương trình này.")
+        sys.exit("Không thấy file %s cạnh chương trình này." % duong_lenh)
     lenh = json.load(io.open(duong_lenh, encoding="utf-8"))
 
     print("\n  Ghi chú của Phòng 7:")
@@ -260,6 +355,11 @@ def main():
         print("    %s" % d)
 
     if not TOKEN:
+        # Tren may chu khong co ban phim. Bao ro chu khong de getpass no ra
+        # mot dong loi Python kho hieu.
+        if not sys.stdin.isatty():
+            sys.exit("Không có FB_TOKEN, mà ở đây cũng không gõ tay được. "
+                     "Đặt biến môi trường FB_TOKEN rồi chạy lại.")
         print("\nDán mã truy cập rồi Enter (cần quyền ads_management).")
         print("Gõ vào sẽ KHÔNG hiện lên màn hình — đó là cố ý.")
         TOKEN = getpass("  Mã truy cập: ").strip()
