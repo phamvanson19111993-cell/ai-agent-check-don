@@ -1,0 +1,32 @@
+CÔNG THỨC TÁCH ĐƠN THÀNH CỘT — bảng trả lời Biểu mẫu Q10
+==========================================================
+
+VÌ SAO CẦN: trang đã tự đẩy đơn vào bảng, nhưng cả đơn nằm gọn trong MỘT ô.
+Nhìn không ra, không giao hàng được, không đếm được. Công thức này tách ra
+10 cột, và tự chạy cho mọi đơn về sau — không phải làm lại lần nào nữa.
+
+AN TOÀN: dán vào một TAB MỚI. Tab gốc của Biểu mẫu không bị đụng tới.
+Xoá tab mới đi thì mọi thứ về như cũ.
+
+LÀM 4 BƯỚC
+  1. Mở bảng trả lời. Dưới đáy bấm dấu + để thêm tab mới. Đặt tên "ĐƠN".
+  2. Bấm vào ô A1 của tab ĐƠN.
+  3. Chép nguyên khối công thức bên dưới, dán vào, Enter.
+  4. Cho dễ đọc: bấm góc trên trái chọn cả bảng → cỡ chữ 14 →
+     bấm hàng 1 → in đậm → menu Xem → Cố định → 1 hàng.
+
+BÁO LỖI #REF? Tên tab gốc không phải "Câu trả lời biểu mẫu 1".
+Nhìn tên tab thật ở đáy bảng, Ctrl+H thay hết cụm đó, rồi dán lại.
+
+CỘT "LOẠI": dòng nào mang số 0966611104 thì ghi "ĐƠN THỬ".
+Đó là số anh dùng bấm thử. Đơn khách thật ghi "KHÁCH".
+Nhìn cột này là biết ngay hôm nay có đơn thật hay không.
+
+CỘT "PHẢI THU KHI GIAO": số tiền người giao hàng cầm về.
+  Chuyển khoản đủ    -> 0
+  Đặt cọc 200.000đ   -> tổng tiền trừ 200.000đ
+  Nhận hàng trả tiền -> nguyên tổng tiền
+
+===================== CHÉP TỪ ĐÂY =====================
+={"Giờ gửi","Loại","Họ tên","Điện thoại","Địa chỉ","Số hộp","Số tiền","Cách trả","Tình trạng","Phải thu khi giao";ARRAYFORMULA({IF(LEN('Câu trả lời biểu mẫu 1'!A2:A),TEXT('Câu trả lời biểu mẫu 1'!A2:A,"dd/MM  HH:mm"),""),IF(LEN('Câu trả lời biểu mẫu 1'!B2:B),IF(REGEXMATCH('Câu trả lời biểu mẫu 1'!B2:B,"966611104"),"ĐƠN THỬ","KHÁCH"),""),IFERROR(REGEXEXTRACT('Câu trả lời biểu mẫu 1'!B2:B,"Họ tên:\s*(.*?)\s*Điện thoại:"),""),IFERROR(REGEXEXTRACT('Câu trả lời biểu mẫu 1'!B2:B,"Điện thoại:\s*(.*?)\s*Địa chỉ:"),""),IFERROR(REGEXEXTRACT('Câu trả lời biểu mẫu 1'!B2:B,"Địa chỉ:\s*(.*?)\s*Số lượng:"),""),IFERROR(VALUE(REGEXEXTRACT('Câu trả lời biểu mẫu 1'!B2:B,"(\d+)\s*hộp")),""),IFERROR(VALUE(SUBSTITUTE(REGEXEXTRACT('Câu trả lời biểu mẫu 1'!B2:B,"([\d\.]+)đ"),".","")),""),IFERROR(REGEXEXTRACT('Câu trả lời biểu mẫu 1'!B2:B,"Cách trả:\s*(.*?)\s*Thời gian:"),""),IFERROR(REGEXEXTRACT('Câu trả lời biểu mẫu 1'!B2:B,"Tình trạng:\s*(.*?)\s*Thời gian:"),""),IFERROR(IF(REGEXMATCH('Câu trả lời biểu mẫu 1'!B2:B,"Chuyển khoản đủ"),0,IF(REGEXMATCH('Câu trả lời biểu mẫu 1'!B2:B,"Đặt cọc"),VALUE(SUBSTITUTE(REGEXEXTRACT('Câu trả lời biểu mẫu 1'!B2:B,"([\d\.]+)đ"),".",""))-200000,VALUE(SUBSTITUTE(REGEXEXTRACT('Câu trả lời biểu mẫu 1'!B2:B,"([\d\.]+)đ"),".","")))),"")})}
+====================== HẾT ======================
