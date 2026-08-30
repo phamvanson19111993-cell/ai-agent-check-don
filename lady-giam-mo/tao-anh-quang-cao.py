@@ -152,14 +152,15 @@ TRANG_DOC = """<!doctype html><meta charset="utf-8"><style>
   .hook-phu{font-size:38px;color:#6B6B6B;margin-top:26px;line-height:1.4}
   .anh{width:1080px;height:900px;object-fit:cover;display:block;flex:0 0 auto}
   .duoi{flex:1;display:flex;flex-direction:column;align-items:center;
-        justify-content:center;text-align:center;padding:40px 70px 190px}
+        justify-content:center;text-align:center;padding:40px 70px 260px}
   .kicker{font-size:29px;font-weight:700;letter-spacing:.13em;color:#8A8A8A}
   .so{font-size:132px;font-weight:700;color:#1A1A1A;line-height:1.05;
       letter-spacing:-.02em;margin-top:14px}
   .ngay{font-size:42px;color:#8A8A8A}
   .than{font-size:36px;color:#1A1A1A;line-height:1.45;margin-top:22px}
-  .vien{margin-top:34px;background:%s;color:#fff;font-size:36px;font-weight:700;
-        padding:24px 50px;border-radius:999px}
+  /* Khong ve nut o kho doc. Story va Reels da co san nut "Xem chi tiet" cua
+     Facebook o dung cho do — ve them nut cua minh la hai cai dam vao nhau,
+     va SOP Phong 7 muc 1 cam ve nut gia dang nut bam cua Facebook. */
 </style>
 <div class="tren">
   <div class="hook">%s<br><em>%s</em></div>
@@ -171,7 +172,6 @@ TRANG_DOC = """<!doctype html><meta charset="utf-8"><style>
   <div class="so">%s</div>
   <div class="ngay">%s</div>
   <div class="than">%s<br>%s</div>
-  <div class="vien">%s</div>
 </div>"""
 
 
@@ -185,8 +185,8 @@ def main():
 
     nen64 = anh_nen_base64()
     if DOC:
-        html = TRANG_DOC % (DO, DO, HOOK_1, HOOK_2, HOOK_3, nen64,
-                            KICKER, SO_TIEN, DUOI_SO, THAN_1, THAN_2, VIEN)
+        html = TRANG_DOC % (DO, HOOK_1, HOOK_2, HOOK_3, nen64,
+                            KICKER, SO_TIEN, DUOI_SO, THAN_1, THAN_2)
     else:
         html = TRANG % (DO, nen64, KICKER, SO_TIEN, DUOI_SO,
                         THAN_1, THAN_2, VIEN)
