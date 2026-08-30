@@ -1,0 +1,99 @@
+# GIA HAN QUANG CAO — keo dai ngay het han cua nhom quang cao.
+#
+# VI SAO CAN: may chay Claude bi chan duong ra Facebook (graph.facebook.com
+# tra 000 o cong mang). May chu GitHub thi khong bi chan.
+#
+# CAN MOT THU DUY NHAT TU ANH SON: Bi mat kho ten FB_TOKEN, quyen ads_management.
+#   GitHub -> kho nay -> Settings -> Secrets and variables -> Actions
+#   -> New repository secret -> Name: FB_TOKEN -> Secret: dan ma token
+# Token KHONG hien trong nhat ky chay, khong nam trong ma nguon.
+#
+# CHAY: tab Actions -> "Gia han quang cao" -> Run workflow.
+# MAC DINH LA XEM TRUOC — chi doc va in ra, khong doi gi, khong ton dong nao.
+# Muon doi that thi phai tu tay go dung chu  GIA HAN THAT  vao o xac nhan.
+#
+# Gia han KHONG bat lai quang cao dang tat, KHONG doi ngan sach, KHONG doi
+# nham doi tuong hay noi dung — nen Facebook khong phai hoc lai tu dau.
+name: Gia han quang cao
+
+on:
+  workflow_dispatch:
+    inputs:
+      so_ngay:
+        description: "Gia hạn thêm mấy ngày (1–30)"
+        type: string
+        default: "3"
+      xac_nhan:
+        description: "Muốn ĐỔI THẬT thì gõ đúng: GIA HAN THAT"
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quang-cao          # dung chung khoa voi quy trinh dung chien dich
+  cancel-in-progress: false
+
+jobs:
+  gia-han:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Kiem Bi mat kho
+        env:
+          FB_TOKEN: ${{ secrets.FB_TOKEN }}
+        run: |
+          if [ -z "$FB_TOKEN" ]; then
+            echo "::error::Thieu Bi mat kho FB_TOKEN."
+            echo "Vao Settings -> Secrets and variables -> Actions"
+            echo "-> New repository secret -> Name: FB_TOKEN"
+            exit 1
+          fi
+          echo "Co FB_TOKEN. Do dai: ${#FB_TOKEN} ky tu."
+
+      - name: Kiem so ngay
+        run: |
+          N='${{ inputs.so_ngay }}'
+          case "$N" in
+            ''|*[!0-9]*) echo "::error::so_ngay phai la so."; exit 1 ;;
+          esac
+          if [ "$N" -lt 1 ] || [ "$N" -gt 30 ]; then
+            echo "::error::so_ngay phai tu 1 den 30."; exit 1
+          fi
+          python3 - "$N" <<'PY'
+          import io, json, sys
+          n = int(sys.argv[1])
+          d = json.load(io.open('lenh-gia-han.json', encoding='utf-8'))
+          d['khoi'][0]['viec'][0]['so_ngay'] = n
+          io.open('lenh-gia-han.json', 'w', encoding='utf-8').write(
+              json.dumps(d, ensure_ascii=False, indent=2))
+          print('Da dat so_ngay =', n)
+          PY
+
+      - name: Tu kiem truoc khi dung toi tai khoan that
+        run: python3 thu-gia-han.py
+
+      - name: XEM TRUOC — doc va in ra, khong doi gi
+        env:
+          FB_TOKEN: ${{ secrets.FB_TOKEN }}
+        run: python3 thuc-thi.py --lenh lenh-gia-han.json
+
+      - name: DOI THAT
+        if: ${{ inputs.xac_nhan == 'GIA HAN THAT' }}
+        env:
+          FB_TOKEN: ${{ secrets.FB_TOKEN }}
+        run: python3 thuc-thi.py --lenh lenh-gia-han.json --lam --khong-hoi
+
+      - name: Nhac neu chi xem truoc
+        if: ${{ inputs.xac_nhan != 'GIA HAN THAT' }}
+        run: |
+          echo "Vua roi CHI LA XEM TRUOC. Han chua doi."
+          echo "Muon doi that: chay lai, o xac_nhan go dung chu GIA HAN THAT"
