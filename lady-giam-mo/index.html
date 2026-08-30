@@ -2267,6 +2267,106 @@ function baoFB(ten, so){
   }catch(e){}
 }
 
+// Su kien rieng cua minh (khong phai su kien chuan cua Facebook).
+// Hien trong Trinh quan ly su kien o muc "Su kien tuy chinh".
+function baoRieng(ten, kem){
+  try{
+    if(!window.fbq) return;
+    fbq('trackCustom', ten, kem || {});
+  }catch(e){}
+}
+
+/* ĐO KHÁCH ĐỌC TỚI ĐÂU
+   ---------------------
+   Trang dài 28.000px. Không đo thì chỉ biết "có 73 người vào", không biết
+   73 người đó bỏ đi ở chỗ nào — mà đúng chỗ họ bỏ đi mới là chỗ cần sửa.
+
+   Mỗi mốc chỉ báo MỘT lần cho mỗi lượt xem, kể cả khách cuộn lên cuộn xuống.
+   Dùng IntersectionObserver chứ không nghe sự kiện cuộn: nhẹ hơn, và không
+   làm giật trang trên điện thoại yếu.
+
+   Tên sự kiện để chữ không dấu, vì bảng của Facebook hay hỏng dấu tiếng Việt. */
+(function(){
+  if(!window.IntersectionObserver) return;
+
+  // Mốc theo PHẦN TRĂM chiều dài trang — trả lời "đọc được bao xa".
+  var MOC_SAU = [25, 50, 75, 90];
+  // Mốc theo KHỐI cụ thể — trả lời "có tới được chỗ quan trọng không".
+  var MOC_KHOI = [
+    ['#mua-nhanh',  'ThayKhoiBanHang'],   // khối bán hàng ngay dưới màn đầu
+    ['#bang-gia',   'ThayBangGia'],       // bảng giá đủ bốn mốc
+    ['#lead-form',  'ThayPhieuDat'],      // phiếu điền tên và địa chỉ
+    ['#phan-hoi',   'ThayPhanHoi'],       // đánh giá khách
+    ['#chung-minh', 'ThayGiayTo']         // ảnh chụp giấy tờ gốc
+  ];
+
+  var daBao = {};
+  function bao(ten, kem){
+    if(daBao[ten]) return;
+    daBao[ten] = true;
+    baoRieng(ten, kem);
+  }
+
+  // ── Mốc phần trăm ─────────────────────────────────────────────────────
+  // Tính thẳng từ vị trí cuộn, KHÔNG dùng mốc vô hình đặt sẵn.
+  //
+  // Vì sao: mốc vô hình chỉ báo khi nó lọt vào màn hình. Khách bấm nút nhảy
+  // thẳng xuống bảng giá — mà trang này có ba nút như vậy — thì nhảy vọt qua
+  // hết các mốc giữa, và không mốc nào báo. Đo bằng vị trí cuộn thì nhảy kiểu
+  // gì cũng tính đúng.
+  //
+  // Gom vào requestAnimationFrame để cuộn không bị giật trên điện thoại yếu.
+  var dangCho = false;
+  function doSau(){
+    dangCho = false;
+    var cao = document.documentElement.scrollHeight - window.innerHeight;
+    if(cao <= 0) return;
+    var p = (window.pageYOffset || document.documentElement.scrollTop) / cao * 100;
+    for(var i = 0; i < MOC_SAU.length; i++){
+      if(p >= MOC_SAU[i]) bao('Doc' + MOC_SAU[i], {phan_tram: MOC_SAU[i]});
+    }
+  }
+  function nghe(){
+    if(dangCho) return;
+    dangCho = true;
+    requestAnimationFrame(doSau);
+  }
+  window.addEventListener('scroll', nghe, {passive: true});
+  window.addEventListener('resize', nghe, {passive: true});
+  nghe();   // khách mở trang giữa chừng (bấm link có #) cũng tính đúng
+
+  // ── Mốc theo khối ─────────────────────────────────────────────────────
+  // rootMargin cắt bớt một phần tư trên và dưới màn hình: khối phải vào tới
+  // vùng giữa mới tính là "đã thấy", lướt vụt qua mép không tính.
+  //
+  // Không dùng threshold theo phần trăm diện tích, vì khối giấy tờ cao hơn
+  // cả màn hình — 40% của nó không bao giờ hiện ra cùng lúc, nên sẽ không
+  // bao giờ báo.
+  var doiKhoi = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      bao(e.target.dataset.tenSuKien);
+      doiKhoi.unobserve(e.target);
+    });
+  }, {rootMargin: '-25% 0px -25% 0px'});
+
+  MOC_KHOI.forEach(function(c){
+    var o = document.querySelector(c[0]);
+    if(!o) return;                 // đổi tên khối thì bỏ qua, không làm hỏng trang
+    o.dataset.tenSuKien = c[1];
+    doiKhoi.observe(o);
+  });
+
+  // ── Thời gian ở lại ───────────────────────────────────────────────────
+  // Khách đọc kỹ 3 phút khác hẳn khách mở rồi bỏ. Báo một lần ở mốc 30 giây
+  // và 3 phút, chỉ khi tab đang được nhìn.
+  [[30000, 'OLai30Giay'], [180000, 'OLai3Phut']].forEach(function(m){
+    setTimeout(function(){
+      if(!document.hidden) bao(m[1]);
+    }, m[0]);
+  });
+})();
+
 /* Tien coc giu hang. Ma VietQR duoi day da nhung san dung 200.000d,
    khach quet la app ngan hang hien du so tai khoan va so tien. */
 var FORM_GOOGLE = {

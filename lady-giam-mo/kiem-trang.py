@@ -263,6 +263,52 @@ def kiem_hinh_va_do_dai(br):
     pg.close()
 
 
+def kiem_do_doc(br):
+    """Trang co bao ve Facebook la khach doc toi dau khong.
+
+    Khong do thi chi biet 'co 73 nguoi vao', khong biet 73 nguoi do bo di o
+    cho nao — ma dung cho ho bo di moi la cho can sua.
+    """
+    print('\n=== ĐO KHÁCH ĐỌC TỚI ĐÂU ===')
+    pg = br.new_page(viewport={'width': 390, 'height': 900})
+    # Cai fbq gia TRUOC khi trang chay, de bat duoc ca su kien ban som nhat
+    pg.add_init_script('window.__fb = [];'
+                       'window.fbq = function(){ window.__fb.push([].slice.call(arguments)); };')
+    pg.goto(TRANG.as_uri(), wait_until='load')
+    pg.wait_for_timeout(700)
+
+    def da_ban():
+        return [x[1] for x in pg.evaluate('window.__fb') if x and len(x) > 1]
+
+    ghi('PageView' in da_ban(), 'mở trang là báo PageView')
+
+    for o, ten in (('#mua-nhanh',  'ThayKhoiBanHang'),
+                   ('#bang-gia',   'ThayBangGia'),
+                   ('#lead-form',  'ThayPhieuDat'),
+                   ('#phan-hoi',   'ThayPhanHoi'),
+                   ('#chung-minh', 'ThayGiayTo')):
+        pg.eval_on_selector(o, 'e => e.scrollIntoView({block:"center"})')
+        pg.wait_for_timeout(450)
+        ghi(ten in da_ban(), 'cuộn tới %-12s thì báo %s' % (o, ten))
+
+    # Cuon het trang: phai an du bon moc phan tram
+    pg.evaluate('window.scrollTo(0, document.body.scrollHeight)')
+    pg.wait_for_timeout(900)
+    ban = da_ban()
+    for p in (25, 50, 75, 90):
+        ghi('Doc%d' % p in ban, 'cuộn hết trang thì báo mốc %d%%' % p)
+
+    # Moi moc chi duoc bao MOT lan, du khach cuon len cuon xuong
+    pg.evaluate('window.scrollTo(0, 0)')
+    pg.wait_for_timeout(300)
+    pg.evaluate('window.scrollTo(0, document.body.scrollHeight)')
+    pg.wait_for_timeout(600)
+    ban = da_ban()
+    lap = [t for t in ('Doc25', 'ThayBangGia') if ban.count(t) != 1]
+    ghi(not lap, 'cuộn lên cuộn xuống cũng chỉ báo một lần mỗi mốc', str(lap))
+    pg.close()
+
+
 def main():
     with sync_playwright() as pw:
         br = mo(pw)
@@ -270,6 +316,7 @@ def main():
         kiem_trang(br, 1280)
         kiem_ban_hang(br)
         kiem_hinh_va_do_dai(br)
+        kiem_do_doc(br)
         br.close()
     print('\n===== %d đạt, %d hỏng =====' % (len(dat), len(loi)))
     for x in loi:
