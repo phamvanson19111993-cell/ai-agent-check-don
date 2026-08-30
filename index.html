@@ -1200,12 +1200,6 @@ if(typeof window.qrcode !== 'function'){
 <label class="hop-o on"><span class="h-tem">Lợi nhất</span><input type="radio" name="soluong" value="6 hộp — 17.340.000đ (tặng thêm 1 hộp)" checked><span class="h-t">6 hộp — 17.340.000đ</span><span class="h-s">Trả tiền 6 hộp, nhận 7 hộp · 420 ngày</span><span class="h-p">tặng thêm 1 hộp</span></label>
 <label class="hop-o rong"><input type="radio" name="soluong" value="Chưa quyết, nhờ tư vấn thêm"><span class="h-t">Chưa quyết, nhờ tư vấn thêm</span><span class="h-s">Nhân viên gọi lại hỏi kỹ rồi mới tư vấn liệu trình</span></label>
 </div></div>
-<div class="field full"><label>Cách thanh toán</label>
-<div class="tra-o" id="chon-tra-form">
-<label class="hop-o on"><input type="radio" name="cach_tra" value="cod" checked><span class="h-t">Nhận hàng rồi trả tiền</span><span class="h-s">Mở hộp kiểm tra rồi mới trả — không trả trước đồng nào</span></label>
-<label class="hop-o"><input type="radio" name="cach_tra" value="coc"><span class="h-t">Đặt cọc 200.000đ giữ hàng</span><span class="h-s">Phần còn lại trả khi nhận hàng</span></label>
-<label class="hop-o"><input type="radio" name="cach_tra" value="du"><span class="h-t">Chuyển khoản đủ</span><span class="h-s">Nhận hàng là xong, không phải trả thêm</span></label>
-</div></div>
             <div class="cam-ket-mua"><p><b>Nhận hàng, mở hộp kiểm tra rồi mới trả tiền.</b></p><p><b>Uống hết hộp đầu không thấy khác, bên em nhận lại số hộp còn nguyên.</b></p></div><p class="truoc-nut">Bấm gửi <b>chưa phải trả đồng nào</b>. Nhân viên gọi xác nhận đơn trước, anh chị muốn chuyển khoản hay không là quyền anh chị.</p><div class="full btn-row"><button class="btn btn-lg" type="submit">Đặt 6 hộp — 17.340.000đ</button><a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi ngay 0913.351.394</a></div>
           </form>
           <p class="ok-msg" id="ok-msg">Đã ghi nhận. Đây là bản demo giao diện nên thông tin chưa được gửi đi đâu cả — cần nối form vào hệ thống trước khi chạy quảng cáo.</p>
@@ -2771,6 +2765,12 @@ var FORM_GOOGLE = {
     var du = {};
     new FormData(f).forEach(function(v,k){ du[k] = v; });
 
+    // Anh Son bo o chon cach thanh toan khoi bieu mau. Moi don gio la nhan hang
+    // roi tra tien. Phai dat cung o day: bo qua thi du.cach_tra rong, ma cac
+    // nhanh ben duoi coi rong la 'dat coc' — man hinh sau khi gui se hien ma QR
+    // doi 200.000d, trai nguoc voi cau hua ngay tren nut.
+    du.cach_tra = 'cod';
+
     // gop dia chi 5 cap thanh mot dong cho de doc trong bang
     du.dia_chi = (du.dia_chi || '').trim();
     if(du.moc && du.moc.trim()) du.dia_chi += ' (' + du.moc.trim() + ')';
@@ -2819,7 +2819,7 @@ var FORM_GOOGLE = {
         true);
       f.reset();
       // reset() khong ban su kien change, phai tu dong bo lai vien sang cua the bam
-      ['chon-hop','chon-tra-form'].forEach(function(id){
+      ['chon-hop'].forEach(function(id){
         var o = document.getElementById(id);
         if(o) o.dispatchEvent(new Event('change'));
       });
@@ -2884,7 +2884,7 @@ var FORM_GOOGLE = {
 
   // Chon so hop va cach tra bang the bam duoc
   (function(){
-    ['chon-hop','chon-tra-form'].forEach(function(id){
+    ['chon-hop'].forEach(function(id){
       var o = document.getElementById(id); if(!o) return;
       o.addEventListener('change', function(){
         Array.prototype.slice.call(o.querySelectorAll('.hop-o')).forEach(function(l){
