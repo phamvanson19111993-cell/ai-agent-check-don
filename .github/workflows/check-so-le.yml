@@ -1,0 +1,37 @@
+name: Soat vai so le ve Telegram
+
+# Ghi so vao so_can_check.txt roi day len -> tu soat va gui Telegram.
+# Dung khi can kiem tra mot vai so cu the, khong phai quet ca Sheet.
+
+on:
+  push:
+    branches: [claude/telegram-duplicate-order-bot-ayyubm]
+    paths:
+      - "so_can_check.txt"
+      - "check_so_le.py"
+  workflow_dispatch:
+
+concurrency:
+  group: check-so-le
+  cancel-in-progress: false
+
+jobs:
+  soat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: claude/telegram-duplicate-order-bot-ayyubm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Cai thu vien
+        run: python -m pip install -q requests openpyxl
+
+      - name: Soat so va gui Telegram
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+        run: python check_so_le.py
