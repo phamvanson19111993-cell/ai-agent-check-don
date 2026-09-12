@@ -20,6 +20,7 @@ Sheet phai chia se: Bat ky ai co link -> Nguoi xem.
 Chay lan dau: 12/09/2026 — sau khi da dat TG_TOKEN va TG_CHAT.
 """
 
+import json
 import os
 import sys
 from datetime import datetime, timedelta, timezone
@@ -44,6 +45,9 @@ TG_CHAT = os.environ.get("TG_CHAT", "")
 VN = timezone(timedelta(hours=7))
 TAI_VE = "https://docs.google.com/spreadsheets/d/%s/export?format=xlsx" % SHEET_ID
 FILE_TAM = "/tmp/don_hang.xlsx"
+
+# Nho cac so DA BAO roi, de moi gio chay lai khong bao lap
+FILE_TRANG_THAI = os.path.join(os.path.dirname(os.path.abspath(__file__)), "da_bao.json")
 
 # Toi da moi tin Telegram (that ra 4096, tru hao cho an toan)
 GIOI_HAN = 3800
@@ -99,33 +103,47 @@ def quet(duong_dan):
     return danh_ba
 
 
+def doc_da_bao():
+    """Danh sach so da bao lan truoc. Mat file thi coi nhu chua bao gi."""
+    try:
+        with open(FILE_TRANG_THAI, encoding="utf-8") as f:
+            return set(json.load(f).get("da_bao", []))
+    except Exception:
+        return set()
+
+
+def ghi_da_bao(tat_ca):
+    with open(FILE_TRANG_THAI, "w", encoding="utf-8") as f:
+        json.dump({"da_bao": sorted(tat_ca),
+                   "cap_nhat": datetime.now(VN).isoformat()},
+                  f, ensure_ascii=False, indent=1)
+
+
 def de_doc(khoa):
     s = "0" + khoa
     return "%s %s %s" % (s[:4], s[4:7], s[7:])
 
 
-def dung_bao_cao(danh_ba):
-    """Tra ve danh sach cac manh tin, moi manh du ngan de gui Telegram."""
+def dung_bao_cao(danh_ba, da_bao):
+    """Chi bao cac so TRUNG MOI (chua bao lan nao). Tra ve list manh tin."""
     trung = {k: v for k, v in danh_ba.items() if len(v) > 1}
+    moi = {k: v for k, v in trung.items() if k not in da_bao}
     gio = datetime.now(VN).strftime("%H:%M %d/%m/%Y")
 
-    if not trung:
-        return ["✅ <b>KHÔNG CÓ ĐƠN TRÙNG</b>\n"
-                "Đã quét %d số trong Sheet đơn hàng.\n"
-                "🕐 %s" % (len(danh_ba), gio)]
+    if not moi:
+        return []  # khong co gi moi -> im lang, khong lam phien
 
-    ba_lan = sum(1 for v in trung.values() if len(v) > 2)
-    dau = ["🔔 <b>CẢNH BÁO TRÙNG ĐƠN — DiLi Supplement</b>",
+    ba_lan = sum(1 for v in moi.values() if len(v) > 2)
+    dau = ["🔔 <b>TRÙNG ĐƠN MỚI — DiLi Supplement</b>",
            "🕐 %s" % gio,
            "",
-           "Đã quét <b>%d</b> số trong Sheet đơn hàng" % len(danh_ba),
-           "Phát hiện <b>%d SỐ TRÙNG</b> (từ 2 dòng trở lên)" % len(trung)]
+           "Đã quét <b>%d</b> số trong Sheet" % len(danh_ba),
+           "<b>%d SỐ TRÙNG MỚI</b> (chưa báo lần nào)" % len(moi)]
     if ba_lan:
         dau.append("Trong đó <b>%d số trùng từ 3 lần</b>" % ba_lan)
     dau.append("")
 
-    # trung nhieu lan truoc, roi den ten/ngu canh khac nhau
-    sap = sorted(trung.items(), key=lambda kv: len(kv[1]), reverse=True)
+    sap = sorted(moi.items(), key=lambda kv: len(kv[1]), reverse=True)
 
     manh, hien_tai = [], "\n".join(dau)
     for thu_tu, (khoa, cho) in enumerate(sap, 1):
@@ -167,14 +185,23 @@ def main():
 
     print("Dang quet...")
     danh_ba = quet(duong_dan)
-    trung = {k: v for k, v in danh_ba.items() if len(v) > 1}
-    print("Tong so khac nhau: %d | So trung: %d" % (len(danh_ba), len(trung)))
+    trung = {k for k, v in danh_ba.items() if len(v) > 1}
+    da_bao = doc_da_bao()
+    moi = trung - da_bao
+    print("Tong so: %d | Trung: %d | Da bao truoc: %d | MOI: %d"
+          % (len(danh_ba), len(trung), len(da_bao), len(moi)))
 
-    manh = dung_bao_cao(danh_ba)
+    manh = dung_bao_cao(danh_ba, da_bao)
+    if not manh:
+        print("Khong co ca trung moi — khong gui gi. XONG.")
+        return
+
     for i, m in enumerate(manh, 1):
         gui_telegram(m)
         print("Da gui manh %d/%d (%d ky tu)" % (i, len(manh), len(m)))
 
+    ghi_da_bao(trung | da_bao)
+    print("Da ghi trang thai: %d so." % len(trung | da_bao))
     print("XONG.")
 
 

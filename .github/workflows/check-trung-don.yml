@@ -1,25 +1,30 @@
 name: Check trung don ve Telegram
 
 # Chay tren may chu GitHub, KHONG phai may Mac cua anh Son.
-# May tat, ngu, mat dien, hay Tampermonkey hong — bao cao van chay.
+# May tat, ngu, mat dien, hay Tampermonkey hong — van chay.
 #
-# Chi can HAI ma bi mat: TG_TOKEN va TG_CHAT.
-# Dat tai: Settings > Secrets and variables > Actions > New repository secret
+# Quet 10 phut mot lan, nhung CHI NHAN TIN KHI CO CA TRUNG MOI.
+# Ca da bao roi thi thoi, khong lam phien nua (nho trong da_bao.json).
+#
+# Can hai ma bi mat: TG_TOKEN va TG_CHAT.
 
 on:
   push:
     branches: [claude/telegram-duplicate-order-bot-ayyubm]
-    paths:                      # day ma len la quet va gui ngay
+    paths:                      # sua ma la quet lai ngay
       - "check_trung_don_cloud.py"
       - "phone_utils.py"
       - ".github/workflows/check-trung-don.yml"
   schedule:
-    - cron: "0 1 * * *"        # 08:00 gio Viet Nam moi ngay (chi chay khi da len nhanh chinh)
-  workflow_dispatch:            # nut "Run workflow" de bam tay bat cu luc nao
+    - cron: "*/10 * * * *"      # moi 10 phut
+  workflow_dispatch:
 
 concurrency:
   group: check-trung-don
   cancel-in-progress: false
+
+permissions:
+  contents: write               # de ghi lai da_bao.json
 
 jobs:
   quet:
@@ -47,8 +52,6 @@ jobs:
           if [ -n "$thieu" ]; then
             echo "::error::Chua dien ma bi mat:$thieu"
             echo "Vao: Settings > Secrets and variables > Actions > New repository secret"
-            echo "  TG_TOKEN   ma bot Telegram (@BotFather)"
-            echo "  TG_CHAT    ma nhom/cuoc tro chuyen (go /id trong nhom)"
             exit 1
           fi
           echo "Du hai ma."
@@ -58,3 +61,16 @@ jobs:
           TG_TOKEN: ${{ secrets.TG_TOKEN }}
           TG_CHAT: ${{ secrets.TG_CHAT }}
         run: python check_trung_don_cloud.py
+
+      - name: Ghi nho cac ca da bao
+        run: |
+          if [ -n "$(git status --porcelain da_bao.json)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add da_bao.json
+            git commit -m "Cap nhat danh sach ca trung da bao [skip ci]"
+            git push
+            echo "Da luu trang thai."
+          else
+            echo "Khong co gi moi de luu."
+          fi
