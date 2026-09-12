@@ -16,6 +16,8 @@ CAN HAI MA BI MAT (dat trong Settings > Secrets and variables > Actions):
   TG_CHAT    ma cuoc tro chuyen/nhom, lay tu @userinfobot hoac go /id
 
 Sheet phai chia se: Bat ky ai co link -> Nguoi xem.
+
+Chay lan dau: 12/09/2026 — sau khi da dat TG_TOKEN va TG_CHAT.
 """
 
 import os
