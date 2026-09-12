@@ -567,6 +567,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 @media(min-width:660px){.form{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.form .full{grid-column:1/-1}}
 .field{display:flex;flex-direction:column;gap:.3rem}
 .field label{font-size:.78rem;font-weight:600;color:var(--ink2)}
+.field label .khong-bat-buoc{font-weight:500;color:var(--ink3);font-size:.72rem}
 .field input[readonly]{background:var(--sunk);color:var(--ink2)}
 .field input,.field select{font:400 .95rem/1.4 "Be Vietnam Pro",sans-serif;padding:.65rem .8rem;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);color:var(--ink)}
 .form-note{font-size:.8rem;color:var(--ink3)}
@@ -1191,7 +1192,7 @@ if(typeof window.qrcode !== 'function'){
             
             <input id="tuKiem" name="tuKiem" type="hidden">
             
-            <div class="field full"><label for="dia_chi">Địa chỉ nhận hàng</label><textarea id="dia_chi" name="dia_chi" rows="2" autocomplete="street-address" placeholder="Số nhà, thôn/xóm, xã/phường, huyện/quận, tỉnh/thành phố"></textarea><span class="dc-ghi">Ghi càng chi tiết thì bưu tá càng giao đúng ngay lần đầu.</span></div>
+            <div class="field full"><label for="dia_chi">Địa chỉ nhận hàng <span class="khong-bat-buoc">không bắt buộc</span></label><textarea id="dia_chi" name="dia_chi" rows="2" autocomplete="street-address" placeholder="Số nhà, thôn/xóm, xã/phường, huyện/quận, tỉnh/thành phố"></textarea><span class="dc-ghi">Ghi càng chi tiết thì bưu tá càng giao đúng ngay lần đầu.</span></div>
 <div class="field full"><label for="soluong">Số lượng muốn đặt</label>
 <div class="chon-hop" id="chon-hop">
 <label class="hop-o"><input type="radio" name="soluong" value="1 hộp — 2.890.000đ"><span class="h-t">1 hộp — 2.890.000đ</span><span class="h-s">Dùng 60 ngày · 48.167đ mỗi ngày</span></label>
