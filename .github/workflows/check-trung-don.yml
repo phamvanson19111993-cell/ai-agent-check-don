@@ -7,8 +7,14 @@ name: Check trung don ve Telegram
 # Dat tai: Settings > Secrets and variables > Actions > New repository secret
 
 on:
+  push:
+    branches: [claude/telegram-duplicate-order-bot-ayyubm]
+    paths:                      # day ma len la quet va gui ngay
+      - "check_trung_don_cloud.py"
+      - "phone_utils.py"
+      - ".github/workflows/check-trung-don.yml"
   schedule:
-    - cron: "0 1 * * *"        # 08:00 gio Viet Nam moi ngay
+    - cron: "0 1 * * *"        # 08:00 gio Viet Nam moi ngay (chi chay khi da len nhanh chinh)
   workflow_dispatch:            # nut "Run workflow" de bam tay bat cu luc nao
 
 concurrency:
