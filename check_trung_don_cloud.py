@@ -104,7 +104,13 @@ def quet(duong_dan):
 
 
 def doc_da_bao():
-    """Danh sach so da bao lan truoc. Mat file thi coi nhu chua bao gi."""
+    """Danh sach so da bao lan truoc. Mat file thi coi nhu chua bao gi.
+
+    Dat BAO_TAT_CA=1 de bo qua tri nho va bao lai toan bo — dung khi
+    muon xem lai day du danh sach, khong phai cho ca moi.
+    """
+    if os.environ.get("BAO_TAT_CA") == "1":
+        return set()
     try:
         with open(FILE_TRANG_THAI, encoding="utf-8") as f:
             return set(json.load(f).get("da_bao", []))
