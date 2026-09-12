@@ -1,0 +1,54 @@
+name: Check trung don ve Telegram
+
+# Chay tren may chu GitHub, KHONG phai may Mac cua anh Son.
+# May tat, ngu, mat dien, hay Tampermonkey hong — bao cao van chay.
+#
+# Chi can HAI ma bi mat: TG_TOKEN va TG_CHAT.
+# Dat tai: Settings > Secrets and variables > Actions > New repository secret
+
+on:
+  schedule:
+    - cron: "0 1 * * *"        # 08:00 gio Viet Nam moi ngay
+  workflow_dispatch:            # nut "Run workflow" de bam tay bat cu luc nao
+
+concurrency:
+  group: check-trung-don
+  cancel-in-progress: false
+
+jobs:
+  quet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: claude/telegram-duplicate-order-bot-ayyubm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Cai thu vien
+        run: python -m pip install -q requests openpyxl
+
+      - name: Kiem hai ma bi mat
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+        run: |
+          thieu=""
+          [ -z "$TG_TOKEN" ] && thieu="$thieu TG_TOKEN"
+          [ -z "$TG_CHAT" ] && thieu="$thieu TG_CHAT"
+          if [ -n "$thieu" ]; then
+            echo "::error::Chua dien ma bi mat:$thieu"
+            echo "Vao: Settings > Secrets and variables > Actions > New repository secret"
+            echo "  TG_TOKEN   ma bot Telegram (@BotFather)"
+            echo "  TG_CHAT    ma nhom/cuoc tro chuyen (go /id trong nhom)"
+            exit 1
+          fi
+          echo "Du hai ma."
+
+      - name: Quet trung don va gui Telegram
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+        run: python check_trung_don_cloud.py
