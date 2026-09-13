@@ -611,25 +611,6 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .som-tran{margin:0;font-size:.86rem;line-height:1.55;color:var(--ink2)}
 .truoc-nut{margin:.15rem 0 .7rem;font-size:.9rem;line-height:1.55;color:var(--ink2)}
 .truoc-nut b{color:var(--ink)}
-.dia-chi{border:1.5px dashed var(--line);border-radius:var(--r);background:var(--paper);transition:border-color .2s ease,background .2s ease}
-.dia-chi:hover{border-color:var(--red)}
-.dia-chi.moi{border:1.5px solid var(--red);background:var(--red-soft);box-shadow:0 0 0 3px rgba(214,36,110,.14)}
-.dia-chi.moi .dc-t{color:var(--red)}
-.dia-chi.moi>summary::after{background:var(--red);color:#fff;border-color:var(--red)}
-.dia-chi[open]{border-style:solid}
-.dia-chi>summary{list-style:none;cursor:pointer;padding:.6rem .8rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.1rem .45rem}
-.dia-chi>summary::-webkit-details-marker{display:none}
-.dia-chi>summary::after{content:"+";margin-left:auto;align-self:center;flex:0 0 auto;width:28px;height:28px;border:1.5px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.15rem;line-height:1;color:var(--ink2);transition:background .2s ease,color .2s ease}
-.dia-chi[open]>summary::after{content:"\2013"}
-.dc-nhac{display:none;font-size:.8rem;font-weight:600;color:var(--red);flex:1 0 100%;margin-top:.1rem}
-.dia-chi.moi .dc-nhac{display:block}
-.dia-chi>summary:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
-.dc-t{font-weight:600;font-size:.98rem}
-.dc-s{font-size:.82rem;color:var(--ink3);flex:1 1 auto}
-.dc-o{display:none}
-.dia-chi[open]>.dc-o{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;padding:0 1rem 1rem}
-@media (max-width:560px){.dia-chi[open]>.dc-o{grid-template-columns:1fr}}
-.dc-o .field.full{grid-column:1/-1}
 .tuy{font-weight:400;font-size:.82em;opacity:.6;letter-spacing:.01em}
 .ok-msg{display:none;border:1px solid var(--jade);background:var(--jade-soft);color:var(--jade);border-radius:var(--r);padding:.85rem 1rem;font-size:.9rem;font-weight:500}
 .ok-msg.on{display:block}
@@ -2857,30 +2838,6 @@ var FORM_GOOGLE = {
       if(e.target && e.target.name === 'soluong') doiChuNut();
     });
     doiChuNut();
-  })();
-
-  // Lam khoi dia chi noi len DUNG LUC khach can bam: khi da co ten va so dien
-  // thoai ma dia chi van dong va van trong. Xong viec thi tat den di, khong
-  // de mot cai vien do nhap nhay suot buoi.
-  (function(){
-    var f  = document.getElementById('lead-form');
-    if(!f) return;
-    var kd = f.querySelector('.dia-chi');
-    if(!kd) return;
-    var ten = f.querySelector('[name="ten"]'), sdt = f.querySelector('[name="sdt"]');
-
-    function coChu(o){ return o && o.value && o.value.trim().length > 1; }
-    function daDienDiaChi(){
-      return Array.prototype.slice.call(kd.querySelectorAll('input'))
-        .some(function(o){ return o.value && o.value.trim(); });
-    }
-    function xet(){
-      kd.classList.toggle('moi',
-        coChu(ten) && coChu(sdt) && !kd.open && !daDienDiaChi());
-    }
-    f.addEventListener('input', xet);
-    kd.addEventListener('toggle', xet);
-    xet();
   })();
 
   // Chon so hop va cach tra bang the bam duoc
