@@ -29,7 +29,9 @@ Ba dòng đầu là **trang**. Bốn dòng sau là **lời chào hàng và biể
 **Sửa:**
 1. Đổi câu mở. Câu hiện tại nói về triệu chứng — thử câu nói về **kết quả xét nghiệm bình thường mà vẫn mệt**, vì đó là nghịch lý khiến người ta phải đọc tiếp.
 2. Đưa **một bằng chứng lên ngay màn hình đầu** — ảnh hộp thật hoặc số công bố.
-3. Kiểm tốc độ tải: trang 344KB, nếu mạng 3G chậm thì khách thoát trước khi thấy chữ.
+3. Kiểm tốc độ tải. 19/09: gỡ một ảnh nhúng base64 trùng lặp, HTML 384KB → 342KB.
+   Còn ~125KB ảnh nhúng base64 (1 ảnh màn hình đầu + 3 ảnh bìa video) — chưa gỡ, ảnh màn
+   hình đầu nhúng là đúng; ba bìa video thì đáng xem lại nếu chặng này vẫn rơi.
 
 ### ▸ Cuộn 25% → Tới phần cơ chế rơi mạnh
 **Nghĩa:** giai đoạn 1 quá dài, khách chán trước khi tới phần sản phẩm.
