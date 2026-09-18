@@ -573,6 +573,9 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .form-note{font-size:.8rem;color:var(--ink3)}
 .fgroup{grid-column:1/-1;font-family:"IBM Plex Mono",monospace;font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);border-bottom:1px solid var(--line2);padding-bottom:.4rem;margin-top:.5rem}
 .fgroup:first-child{margin-top:0}
+/* Dong mo dau bieu mau — ha thap cam ket. Bang tra quang-cao/soat-theo-chi-so.md,
+   chang "Thay bieu mau -> Bat dau dien", viec so 1. Doc nhu mot cau, khong IN HOA. */
+.fgroup.fgroup-mo{font-family:inherit;font-size:.92rem;letter-spacing:0;text-transform:none;color:var(--ink2);font-weight:600;line-height:1.5}
 .field input::placeholder{color:var(--ink3);opacity:.65}
 .opt-lbl{font-weight:400;color:var(--ink3);font-size:.72rem;margin-left:.3rem}
 .ck-cam-on{display:flex;flex-direction:column;gap:.55rem;margin-top:.9rem;padding:.95rem 1.05rem;border:1px solid var(--jade);background:var(--jade-soft);border-radius:var(--r)}
@@ -1166,7 +1169,7 @@ if(typeof window.qrcode !== 'function'){
             <span class="price-note">Đơn giá 1 hộp · lọ 120 viên · dùng 60 ngày.<br>Mua nhiều có ưu đãi, anh chị chọn số lượng ở ô bên dưới.</span>
           </div>
           <form class="form" id="lead-form">
-            <p class="fgroup">Người nhận hàng</p>
+            <p class="fgroup fgroup-mo">Để lại số, nhân viên gọi lại tư vấn — chưa cần quyết định mua.</p>
             <div class="field"><label for="ten">Họ và tên</label><input id="ten" name="ten" type="text" autocomplete="name" placeholder="Nguyễn Văn A" required></div>
             <div class="field"><label for="sdt">Số điện thoại</label><input id="sdt" name="sdt" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" required></div>
 
