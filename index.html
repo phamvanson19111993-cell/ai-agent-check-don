@@ -2814,6 +2814,35 @@ var FORM_GOOGLE = {
   });
 })();
 
+  // Ban phim dien thoai day nut "Dat hang" xuong duoi mep man hinh: khach dien
+  // xong so dien thoai thi khong con thay nut nao de bam nua, nen bo di. Bang tra
+  // quang-cao/soat-theo-chi-so.md, chang "Bat dau dien -> Gui don", viec so 2.
+  (function(){
+    var f  = document.getElementById('lead-form');
+    var vv = window.visualViewport;
+    if(!f || !vv) return;
+    var hang = f.querySelector('.btn-row');
+    if(!hang) return;
+
+    function dangDien(){
+      var a = document.activeElement;
+      return !!(a && f.contains(a) && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName));
+    }
+
+    function keoNutLen(){
+      if(!dangDien()) return;
+      var day = vv.offsetTop + vv.height;   // mep duoi phan man hinh con nhin thay
+      var o   = hang.getBoundingClientRect();
+      if(o.bottom <= day - 8) return;       // nut van thay duoc, khong dung vao
+      window.scrollBy({ top: o.bottom - day + 16, behavior: 'smooth' });
+    }
+
+    // Ban phim mo ra thi visualViewport co lai — doi no co xong roi moi do.
+    vv.addEventListener('resize', function(){ setTimeout(keoNutLen, 120); });
+    f.addEventListener('focusin', function(){ setTimeout(keoNutLen, 320); });
+  })();
+
+
   // Nut gui phai noi dung viec no lam. Truoc day nut ghi "Gui thong tin, nhan
   // tu van" — nguoi vua chon 6 hop 17.340.000d lai duoc moi di nghe tu van.
   // Chang "thay bieu mau -> bat dau dien" mat 77% chinh o cho lech nay.
