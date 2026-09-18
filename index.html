@@ -477,7 +477,8 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 
 /* cam ket */
 .camket{display:grid;gap:.75rem;margin-bottom:1.25rem}
-@media(min-width:700px){.camket{grid-template-columns:1fr 1fr}}
+@media(min-width:700px){.camket{grid-template-columns:1fr 1fr}.camket .ck-dau{grid-column:1/-1}}
+/* Loi hua doi tra chiem tron mot hang tren cung — doc truoc bon dong con lai. */
 .ck{display:flex;gap:.7rem;align-items:flex-start}
 .ck-i{width:20px;height:20px;border-radius:50%;background:var(--jade-soft);border:1px solid var(--jade);flex:none;margin-top:.2rem;position:relative}
 .ck-i::after{content:"";position:absolute;left:5px;top:6px;width:8px;height:4px;border-left:2px solid var(--jade);border-bottom:2px solid var(--jade);transform:rotate(-45deg)}
@@ -1156,6 +1157,10 @@ if(typeof window.qrcode !== 'function'){
       </div>
       <div class="col">
         <div class="camket">
+          <!-- Chang "Toi bang gia -> Thay bieu mau" (cho soc gia). Loi hua doi tra von chi
+               nam trong bieu mau, o duoi bang gia — khach bo di truoc khi cuon toi do.
+               Dua len ngay canh gia, chep nguyen van cau anh Son da viet, khong che them. -->
+          <div class="ck ck-dau"><span class="ck-i" aria-hidden="true"></span><p><b>Nhận hàng, mở hộp kiểm tra rồi mới trả tiền.</b> Uống hết hộp đầu không thấy khác, bên em nhận lại số hộp còn nguyên.</p></div>
           <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Gọi lại xác nhận trước khi giao.</b> Không có chuyện hàng tự nhiên tới cửa rồi bắt nhận.</p></div>
           <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Hàng có tem nhãn phụ tiếng Việt.</b> Số công bố 4107/2024/ĐKSP tra được trên cổng của Cục An toàn thực phẩm.</p></div>
           <div class="ck"><span class="ck-i" aria-hidden="true"></span><p><b>Hết liệu trình là dừng.</b> Bên em không tự động gửi hàng kỳ sau, không gọi giục mua tiếp.</p></div>

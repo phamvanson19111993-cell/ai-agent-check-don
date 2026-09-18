@@ -54,7 +54,8 @@ Ba dòng đầu là **trang**. Bốn dòng sau là **lời chào hàng và biể
 **Nghĩa:** khách thấy 2.890.000đ và bỏ đi. **Chặng này thường là chỗ mất nhiều tiền nhất.**
 **Sửa, theo thứ tự đáng làm:**
 1. **Đưa giá theo ngày lên TRƯỚC tổng giá.** `48.167đ mỗi ngày` đọc trước, `2.890.000đ` đọc sau.
-2. **Thêm khối bảo hành / đổi trả** — hiện trang CHƯA CÓ. Đây là thứ Ogilvy gọi là mạnh nhất
+2. **Thêm khối bảo hành / đổi trả** — 19/09: đã đưa hai câu hứa (mở hộp kiểm tra rồi mới trả tiền ·
+   nhận lại hộp còn nguyên) lên ngay cạnh bảng giá. Còn thiếu số ngày đổi trả và ai trả phí ship về. Đây là thứ Ogilvy gọi là mạnh nhất
    trong một mẩu quảng cáo. Cần anh Sơn cho chính sách: đổi trả mấy ngày, ai trả phí ship về,
    có cho mở hộp kiểm tra trước khi trả tiền không.
 3. Nhấn mạnh **đặt cọc 200.000đ** ngay tại bảng giá, không đợi xuống biểu mẫu.
