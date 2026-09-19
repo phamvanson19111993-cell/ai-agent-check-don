@@ -508,6 +508,15 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .cam-ket-mua p{margin:0;font-size:.88rem;line-height:1.5;color:var(--jade)}
 .cam-ket-mua p+p{margin-top:.35rem}
 .quote{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
+/* Tren dien thoai 390px, bang gia rong 645px trong khung 352px: cot "Giá" va
+   "Ưu đãi" nam ngoai man hinh ma khong co dau hieu gi bao phai vuot ngang.
+   Them dong nhac + vien mo ben phai; vuot het thi ca hai tu tat. */
+.quote-boc{position:relative}
+.quote-boc::after{content:"";position:absolute;top:1px;right:1px;bottom:1px;width:34px;pointer-events:none;border-radius:0 var(--r) var(--r) 0;background:linear-gradient(90deg,transparent,var(--card));opacity:1;transition:opacity .2s ease}
+.quote-boc.het-vuot::after{opacity:0}
+.quote-nhac{display:none;margin:.45rem 0 0;font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.quote-boc.co-vuot .quote-nhac{display:block}
+.quote-boc.het-vuot .quote-nhac{opacity:.35}
 .bang-gia{display:flex;gap:1rem;align-items:flex-start}
 .bang-gia>.quote{flex:1 1 auto;min-width:0}
 .bg-anh{flex:0 0 132px;margin:0;text-align:center;padding:.6rem .4rem;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
@@ -1138,7 +1147,7 @@ if(typeof window.qrcode !== 'function'){
           <p class="neo-note">Mua 6 hộp thì xuống còn <b>41.286đ mỗi ngày</b> — rẻ hơn một cốc cà phê rưỡi.</p>
         </div>
       </div>
-      <div class="bang-gia"><figure class="bg-anh"><img src="images/san-pham-tach-nen.webp" width="621" height="673" loading="lazy" decoding="async" alt="Hộp AFC Rich Coenzyme Q10 chính hãng Nhật Bản"><figcaption>Rich Coenzyme Q10<span>lọ 120 viên · dùng 60 ngày</span></figcaption></figure><div class="quote">
+      <div class="bang-gia"><figure class="bg-anh"><img src="images/san-pham-tach-nen.webp" width="621" height="673" loading="lazy" decoding="async" alt="Hộp AFC Rich Coenzyme Q10 chính hãng Nhật Bản"><figcaption>Rich Coenzyme Q10<span>lọ 120 viên · dùng 60 ngày</span></figcaption></figure><div class="quote-boc"><div class="quote">
         <table>
           <thead>
             <tr><th>Số lượng</th><th>Mỗi ngày</th><th>Giá</th><th>Ưu đãi</th></tr>
@@ -1176,6 +1185,8 @@ if(typeof window.qrcode !== 'function'){
             </tr>
           </tbody>
         </table>
+      </div>
+      <p class="quote-nhac">↔ Vuốt ngang bảng để xem giá và ưu đãi</p>
       </div></div>
       <div class="col stack">
         <p class="note">Mỗi hộp là 1 lọ 120 viên, uống 2 viên mỗi ngày nên dùng được 60 ngày. Từ 3 đến 5 hộp, anh chị chọn một trong hai phương án: nhận quà tặng hoặc giảm tiền mặt, không áp dụng đồng thời. Quà tặng là sản phẩm chính hãng trong danh mục, giá trị ghi theo giá niêm yết.</p>
@@ -2789,6 +2800,21 @@ var FORM_GOOGLE = {
   // Ma QR tinh o muc thanh toan cung doi sang PNG ngay khi mo trang,
   // de khach chua dat don van bam giu luu ma ve duoc.
   noiQR();
+
+  // Bang gia rong hon khung tren dien thoai — bao cho khach biet con cot ben phai.
+  (function(){
+    var boc = document.querySelector('.quote-boc');
+    var khung = boc && boc.querySelector('.quote');
+    if(!boc || !khung) return;
+    function dodo(){
+      var thua = khung.scrollWidth - khung.clientWidth;
+      boc.classList.toggle('co-vuot', thua > 8);
+      boc.classList.toggle('het-vuot', thua <= 8 || khung.scrollLeft >= thua - 8);
+    }
+    khung.addEventListener('scroll', dodo, {passive:true});
+    window.addEventListener('resize', dodo);
+    dodo();
+  })();
 
   f.addEventListener('submit', function(e){
     e.preventDefault();
