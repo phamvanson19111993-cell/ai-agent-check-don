@@ -90,7 +90,9 @@ Ba dòng đầu là **trang**. Bốn dòng sau là **lời chào hàng và biể
 1. Mã QR đã sửa lưu được về máy (28/08). Xem chặng này có đỡ không.
 2. Thêm **nút riêng cho từng ngân hàng** — bỏ được bước VietQR hỏi chọn ngân hàng.
    Chưa làm vì chưa chắc mã định danh từng app; phải tra cho chắc.
-3. Nhớ: **chặng này không phản ánh doanh số thật.** Nhiều khách chuyển khoản mà không
+3. 19/09: bịt lỗ mất đơn khi máy tắt JavaScript — trước đó nút gửi vẫn hiện nhưng đơn
+   không đi đâu cả. Nay ẩn nút, hiện số điện thoại.
+4. Nhớ: **chặng này không phản ánh doanh số thật.** Nhiều khách chuyển khoản mà không
    bấm nút báo. Đối chiếu với sao kê ngân hàng mới ra số thật.
 
 ---

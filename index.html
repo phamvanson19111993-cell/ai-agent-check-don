@@ -618,6 +618,11 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .som-nut{display:block;text-align:center;margin-top:.35rem}
 .som-tran{margin:0;font-size:.86rem;line-height:1.55;color:var(--ink2)}
 .truoc-nut{margin:.15rem 0 .7rem;font-size:.9rem;line-height:1.55;color:var(--ink2)}
+/* Máy tắt JavaScript thì nút Gửi KHÔNG gửi được đơn đi đâu cả — biểu mẫu không có
+   action, toàn bộ việc gửi nằm trong JS. Truoc day nut van hien, khach bam xong
+   trang tai lai va don bien mat. Nay giau nut di, hien so dien thoai thay vao. */
+.khong-js{grid-column:1/-1;margin:.2rem 0 .6rem;padding:.85rem 1rem;border:1px solid var(--red);border-radius:var(--r);background:var(--red-soft);font-size:.92rem;line-height:1.55;color:var(--ink)}
+.khong-js b{font-weight:700}
 .truoc-nut b{color:var(--ink)}
 .tuy{font-weight:400;font-size:.82em;opacity:.6;letter-spacing:.01em}
 .ok-msg{display:none;border:1px solid var(--jade);background:var(--jade-soft);color:var(--jade);border-radius:var(--r);padding:.85rem 1rem;font-size:.9rem;font-weight:500}
@@ -1206,7 +1211,7 @@ if(typeof window.qrcode !== 'function'){
 <label class="hop-o on"><span class="h-tem">Lợi nhất</span><input type="radio" name="soluong" value="6 hộp — 17.340.000đ (tặng thêm 1 hộp)" checked><span class="h-t">6 hộp — 17.340.000đ</span><span class="h-s">Trả tiền 6 hộp, nhận 7 hộp · 420 ngày</span><span class="h-p">tặng thêm 1 hộp</span></label>
 <label class="hop-o rong"><input type="radio" name="soluong" value="Chưa quyết, nhờ tư vấn thêm"><span class="h-t">Chưa quyết, nhờ tư vấn thêm</span><span class="h-s">Nhân viên gọi lại hỏi kỹ rồi mới tư vấn liệu trình</span></label>
 </div></div>
-            <div class="cam-ket-mua"><p><b>Nhận hàng, mở hộp kiểm tra rồi mới trả tiền.</b></p><p><b>Uống hết hộp đầu không thấy khác, bên em nhận lại số hộp còn nguyên.</b></p></div><p class="truoc-nut">Bấm gửi <b>chưa phải trả đồng nào</b>. Nhân viên gọi xác nhận đơn trước, anh chị muốn chuyển khoản hay không là quyền anh chị.</p><div class="full btn-row"><button class="btn btn-lg" type="submit">Đặt 6 hộp — 17.340.000đ</button><a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi ngay 0913.351.394</a></div>
+            <div class="cam-ket-mua"><p><b>Nhận hàng, mở hộp kiểm tra rồi mới trả tiền.</b></p><p><b>Uống hết hộp đầu không thấy khác, bên em nhận lại số hộp còn nguyên.</b></p></div><p class="truoc-nut">Bấm gửi <b>chưa phải trả đồng nào</b>. Nhân viên gọi xác nhận đơn trước, anh chị muốn chuyển khoản hay không là quyền anh chị.</p><noscript><style>#lead-form .btn-row button[type="submit"]{display:none}</style><div class="khong-js"><b>Máy anh chị đang tắt JavaScript nên nút gửi đơn không chạy được.</b> Anh chị gọi thẳng <a href="tel:0913351394">0913.351.394</a> để bên em ghi đơn giúp — hoặc bật JavaScript rồi tải lại trang.</div></noscript><div class="full btn-row"><button class="btn btn-lg" type="submit">Đặt 6 hộp — 17.340.000đ</button><a class="btn btn-lg btn-ghost" href="tel:0913351394">☎ Gọi ngay 0913.351.394</a></div>
           </form>
           <p class="ok-msg" id="ok-msg">Đã ghi nhận đơn của anh chị. Nhân viên tư vấn sẽ gọi lại trong 15 phút, trong giờ hành chính.</p>
           <p class="form-note">Chỉ <b>họ tên</b> và <b>số điện thoại</b> là bắt buộc — anh chị bấm gửi được ngay. Địa chỉ điền luôn thì bên em giao nhanh hơn; chưa tiện thì nhân viên gọi lại hỏi cũng được. Thông tin chỉ dùng để liên hệ tư vấn và giao hàng, không chia sẻ cho bên thứ ba.</p>
