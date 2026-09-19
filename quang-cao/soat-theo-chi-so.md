@@ -51,6 +51,7 @@ Ba dòng đầu là **trang**. Bốn dòng sau là **lời chào hàng và biể
 **Nghĩa:** phần giấy tờ dài mà không thuyết phục.
 **Sửa:**
 1. **Ảnh giấy tờ lên trước chữ.** Người ta tin ảnh hơn tin đoạn văn.
+   19/09: xong. Ảnh chụp giấy tờ gốc nay đứng trước bảng 4 con số.
 2. Rút bảng "chép nguyên nhãn phụ" xuống dạng gập lại, ai muốn đọc thì mở.
    19/09: xong, trang ngắn bớt 1.593px. Câu tuân thủ tách ra ngoài, luôn hiện.
 
