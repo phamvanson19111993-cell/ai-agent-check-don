@@ -518,7 +518,7 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .quote-boc.co-vuot .quote-nhac{display:block}
 .quote-boc.het-vuot .quote-nhac{opacity:.35}
 .bang-gia{display:flex;gap:1rem;align-items:flex-start}
-.bang-gia>.quote{flex:1 1 auto;min-width:0}
+.bang-gia>.quote,.bang-gia>.quote-boc{flex:1 1 auto;min-width:0}
 .bg-anh{flex:0 0 132px;margin:0;text-align:center;padding:.6rem .4rem;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
 .bg-anh img{display:block;width:100%;height:auto}
 .bg-anh figcaption{margin-top:.4rem;font-size:.72rem;line-height:1.35;font-weight:700;color:var(--ink2)}
@@ -547,6 +547,27 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .quote .opt.c{color:var(--jade);background:var(--jade-soft)}
 .quote .tag{font-family:"IBM Plex Mono",monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red);border:1px solid var(--red);border-radius:2px;padding:.1rem .35rem;margin-left:.5rem;white-space:nowrap}
 .quote td .sub{display:block;font-size:.8rem;color:var(--ink3);font-weight:400}
+/* Dien thoai: bang 4 cot khong the vua 352px (174+118+123+230=645). Vuot ngang thi
+   khach mat cot Gia va cot Qua. Nen tren man hinh hep, moi dong thanh MOT THE doc,
+   khong con vuot ngang. Cac o tu no da noi ro nghia (co "/ngay", co "d", co "Tang...")
+   nen bo dong tieu de di van doc duoc. */
+@media(max-width:600px){
+  .quote{overflow-x:visible}
+  .quote table{min-width:0;width:100%;display:block}
+  .quote thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .quote tbody,.quote tr,.quote td{display:block;width:auto}
+  .quote tr{padding:.7rem .8rem;border-bottom:1px solid var(--line2)}
+  .quote tr:last-child{border-bottom:0}
+  .quote tr.alt td{border-bottom-style:none}
+  .quote td{padding:.1rem 0;border:0}
+  .quote td.w{font-size:1.05rem;white-space:normal}
+  .quote td.p,.quote td.per{text-align:left;display:inline-block;margin-right:.9rem}
+  .quote td.per i{margin-left:.1rem}
+  .quote td.gift{min-width:0;margin-top:.25rem}
+  .quote tr.best{border-top:2px solid var(--red);border-bottom:2px solid var(--red)}
+  .quote tr.best td{background:none;border-top:0;border-bottom:0}
+  .quote .tag{display:inline-block;margin:.25rem 0 0 .4rem}
+}
 
 /* payment */
 .pay{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.2rem,3vw,1.7rem);display:grid;gap:1.4rem}
