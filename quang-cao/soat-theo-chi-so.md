@@ -52,6 +52,7 @@ Ba dòng đầu là **trang**. Bốn dòng sau là **lời chào hàng và biể
 **Sửa:**
 1. **Ảnh giấy tờ lên trước chữ.** Người ta tin ảnh hơn tin đoạn văn.
 2. Rút bảng "chép nguyên nhãn phụ" xuống dạng gập lại, ai muốn đọc thì mở.
+   19/09: xong, trang ngắn bớt 1.593px. Câu tuân thủ tách ra ngoài, luôn hiện.
 
 ### ▸ Tới bảng giá → Thấy biểu mẫu rơi mạnh  ⚠️ ĐÂY LÀ CHỖ SỐC GIÁ
 **Nghĩa:** khách thấy 2.890.000đ và bỏ đi. **Chặng này thường là chỗ mất nhiều tiền nhất.**

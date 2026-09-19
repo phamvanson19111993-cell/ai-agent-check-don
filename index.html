@@ -661,6 +661,15 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";margin-left:auto;color:var(--red);font-family:"IBM Plex Mono",monospace}
 .faq details[open] summary::after{content:"–"}
+/* Bang chep nguyen nhan phu gap lai — bang tra quang-cao/soat-theo-chi-so.md,
+   chang "Toi ho so -> Toi bang gia", viec 2. Cau tuan thu (.luu-y) GIU NGUYEN
+   ben ngoai, khong bao gio gap vao. */
+.nhan-gap{border:1px solid var(--line2);border-radius:var(--r);padding:0 .9rem;margin-bottom:.9rem}
+.nhan-gap summary{cursor:pointer;padding:.9rem 0;font-weight:600;font-size:.9rem;display:flex;gap:1rem;align-items:baseline;list-style:none}
+.nhan-gap summary::-webkit-details-marker{display:none}
+.nhan-gap summary::after{content:"+";margin-left:auto;color:var(--red);font-family:"IBM Plex Mono",monospace}
+.nhan-gap[open] summary::after{content:"–"}
+.nhan-gap .nhan-phu{padding-bottom:.6rem}
 .faq p{padding-bottom:1.15rem;color:var(--ink2);font-size:.94rem}
 
 /* legal */
@@ -1466,7 +1475,9 @@ if(typeof window.qrcode !== 'function'){
       <div class="col stack">
         <h3 class="nh3">Chép nguyên từ bản công bố và nhãn phụ</h3>
         <p class="lede-s">Không phải lời quảng cáo của bên em. Đây là chữ trên hồ sơ đã được Cục An toàn thực phẩm tiếp nhận, mã hồ sơ <b>23.11.10.278247.DKCB</b>.</p>
-        <dl class="nhan-phu">
+        <details class="nhan-gap">
+          <summary>Xem bản chép nguyên văn — thành phần, phụ liệu, quy cách, nhà sản xuất</summary>
+          <dl class="nhan-phu">
           <div><dt>Thành phần mỗi viên nang mềm</dt><dd>Coenzyme Q10: 50mg · Tảo Heamatococcus <i>(Haematococcus pluvialis)</i>: 10mg · Chiết xuất hạt tiêu đen <i>(Piper nigrum)</i>: 2,5mg · Dạng bào chế: viên nang mềm</dd></div>
           <div><dt>Phụ liệu</dt><dd>Dung môi (dầu ăn), chất nhũ hoá (este acid béo glycerin), chất chống oxy hoá (D-alpha-tocopherol — vitamin E), vỏ nang gelatin, nước tinh khiết, chất làm ẩm (glycerin), chất tạo màu tổng hợp (Caramen IV)</dd></div>
           <div><dt>Công dụng</dt><dd>Giúp bổ sung Coenzyme Q10 cho cơ thể, chống oxy hoá, giảm mệt mỏi, giúp giảm nguy cơ xơ vữa động mạch, tốt cho tim mạch.</dd></div>
@@ -1475,8 +1486,10 @@ if(typeof window.qrcode !== 'function'){
           <div><dt>Quy cách đóng gói</dt><dd>Hộp 1 lọ. Lọ 120 viên.</dd></div><div><dt>Khối lượng trung bình 1 viên</dt><dd>200mg ± 6mg (dịch trong nang) · 350mg ± 23mg (bao gồm cả vỏ nang)</dd></div>
           <div><dt>Hạn dùng · bảo quản</dt><dd>02 năm kể từ ngày sản xuất. Tránh nhiệt độ cao, độ ẩm cao và ánh nắng trực tiếp, bảo quản ở nơi mát mẻ. Ngày sản xuất xem trên bao bì sản phẩm.</dd></div>
           <div><dt>Nhà sản xuất</dt><dd>AFC-HD AMS Life Science Co., Ltd — Second Factory · 2-4-3 Toyoda, Suruga-ku, Shizuoka 422-8027, Nhật Bản · Tiêu chuẩn nhà sản xuất số 01B ngày 07/03/2024</dd></div>
-          <div><dt>Công bố và nhập khẩu</dt><dd>Công ty Cổ phần 5SPRO · Số 431 Ngọc Thuỵ, phường Ngọc Thuỵ, quận Long Biên, Hà Nội · MST 0104104405 · ĐT 02438728688<span class="ghi-them">Nhãn phụ in trên hộp mới ghi địa chỉ là <b>phường Bồ Đề, thành phố Hà Nội</b> — vẫn đúng địa chỉ này, chỉ là ghi theo tên phường sau khi sáp nhập và bỏ cấp quận.</span></dd></div><div><dt>Số đăng ký sản phẩm</dt><dd>4107/2024/ĐKSP</dd></div><div class="luu-y"><dt>Lưu ý</dt><dd><b>Thực phẩm này không phải là thuốc, không có tác dụng thay thế thuốc chữa bệnh.</b> Dừng uống khi phát hiện bất thường. Không sử dụng cho người mẫn cảm với bất cứ thành phần nào của sản phẩm. Nếu bạn dị ứng thực phẩm, đang dùng thuốc hoặc đang điều trị tại bệnh viện hoặc đang mang thai, vui lòng tham khảo ý kiến bác sĩ trước khi dùng. Để xa tầm tay trẻ em. Đóng túi ngay sau khi sử dụng.</dd></div>
+          <div><dt>Công bố và nhập khẩu</dt><dd>Công ty Cổ phần 5SPRO · Số 431 Ngọc Thuỵ, phường Ngọc Thuỵ, quận Long Biên, Hà Nội · MST 0104104405 · ĐT 02438728688<span class="ghi-them">Nhãn phụ in trên hộp mới ghi địa chỉ là <b>phường Bồ Đề, thành phố Hà Nội</b> — vẫn đúng địa chỉ này, chỉ là ghi theo tên phường sau khi sáp nhập và bỏ cấp quận.</span></dd></div><div><dt>Số đăng ký sản phẩm</dt><dd>4107/2024/ĐKSP</dd></div>
         </dl>
+        </details>
+        <dl class="nhan-phu"><div class="luu-y"><dt>Lưu ý</dt><dd><b>Thực phẩm này không phải là thuốc, không có tác dụng thay thế thuốc chữa bệnh.</b> Dừng uống khi phát hiện bất thường. Không sử dụng cho người mẫn cảm với bất cứ thành phần nào của sản phẩm. Nếu bạn dị ứng thực phẩm, đang dùng thuốc hoặc đang điều trị tại bệnh viện hoặc đang mang thai, vui lòng tham khảo ý kiến bác sĩ trước khi dùng. Để xa tầm tay trẻ em. Đóng túi ngay sau khi sử dụng.</dd></div></dl>
         
       </div>
     </div>
