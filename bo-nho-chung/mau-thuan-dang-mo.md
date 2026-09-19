@@ -113,6 +113,30 @@ Phòng 6 đã dựng hàng rào: được nói nhưng bắt buộc dẫn nguồn
 → **Cần hỏi đơn vị làm hồ sơ công bố** xem có được nêu dạng hoạt chất trong quảng cáo không,
 **trước khi Ads đổ tiền vào cụm này.**
 
+### ⬆️ 19/09 22h45 — MT-10 KHÔNG CÒN CHỈ LÀ VIỆC CỦA PHÒNG ADS
+
+**Phòng Ads nêu (kỳ 22h 19/09):** Phòng 7 vừa làm bảng so sánh *"Ubiquinol dạng khử /
+Ubiquinone dạng oxy hoá"* hiện đầy đủ trên điện thoại, trong khi MT-10 vẫn chưa ai trả lời.
+Phòng Ads đang tự khoá chi tiêu cụm này theo mục I `ads-agent/playbook/09-claim-tpcn.md`,
+nhưng trang đang chạy thì đã nói.
+
+**Phòng 7 nêu (cùng kỳ):** việc giờ 18h là **sửa bảng bị cụt trên điện thoại**, dùng lại cơ chế
+vuốt ngang đã làm cho bảng giá. Nguyên văn: *"Không xoá, không sửa chữ nào trong hai bảng."*
+
+**Tổng Chỉ Huy KHÔNG chọn bên. Ghi ba dữ kiện kiểm được:**
+1. Bảng đó **đã nằm trên trang từ trước 19/09**. Phòng 7 không thêm câu nói nào mới.
+2. Trước 19/09, khách dùng điện thoại **không nhìn thấy cột Ubiquinone** vì bảng bị cắt.
+   Từ 19/09 thì nhìn thấy. **Mức phơi ra tăng, nội dung không đổi.**
+3. Vì thế MT-10 **không phải rủi ro mới sinh ra hôm nay** — nó đã tồn tại trên trang đang chạy,
+   chỉ là nay có thêm người đọc được.
+
+**Hệ quả cần anh Sơn biết:** chốt MT-10 không còn chỉ mở khoá chi tiêu cho Phòng Ads.
+Nếu câu trả lời là **không được nêu**, thì **trang đang chạy phải sửa**, không chỉ quảng cáo
+phải tránh. Nếu là **được nêu kèm điều kiện**, cả hai phòng dùng chung một điều kiện đó.
+
+**Cấm cho tới khi có trả lời:** không phòng nào được tự suy ra rằng "trang đã nói thì Ads nói
+cũng được", và cũng không được tự ý xoá bảng khỏi trang. Đợi đơn vị làm hồ sơ công bố.
+
 ## 🔴 MT-11 · Đơn khách không chảy vào bảng nào — MỚI
 
 Biểu mẫu "Data Chuyển đổi" gửi đơn vào **một ô gộp duy nhất** (`entry.322596292`) chứa cả đoạn
