@@ -34,6 +34,11 @@
 }
 *{box-sizing:border-box}
 [hidden]{display:none !important}
+/* Thanh dieu huong dinh tren cao 59px. Bam vao muc luc thi tieu de muc bi nap
+   chui xuong duoi thanh — do duoc: "Tu kiem tra trong 30 giay" (dich den cua nut
+   chinh o man hinh dau) dung o 56px, thap hon mep duoi thanh 59px. Chua 72px de
+   moi dich den deu nam duoi thanh, ke ca nhung neo them sau nay. */
+html{scroll-padding-top:72px}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:"Be Vietnam Pro",system-ui,sans-serif;margin:0;line-height:1.13;text-wrap:balance;font-weight:600}
 h1{font-size:clamp(2.05rem,5.4vw,3.5rem);font-weight:700}
