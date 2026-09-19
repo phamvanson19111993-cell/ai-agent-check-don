@@ -569,6 +569,21 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
   #khac-biet td.hi[data-nhan]{border-left-color:var(--red)}
   #khac-biet td.hi[data-nhan]::before{color:var(--red)}
 }
+/* Bang "Cach da thu" cung 4 cot, o kho 390px thua 370px — xep doc y het bang tren. */
+@media(max-width:600px){
+  #giai-phap-cu .tablewrap{overflow-x:visible}
+  #giai-phap-cu table{min-width:0;width:100%;display:block}
+  #giai-phap-cu thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  #giai-phap-cu tbody,#giai-phap-cu tr,#giai-phap-cu td{display:block;width:auto}
+  #giai-phap-cu tr{padding:.75rem .85rem;border-bottom:1px solid var(--line2)}
+  #giai-phap-cu tr:last-child{border-bottom:0}
+  #giai-phap-cu td{padding:.15rem 0;border:0}
+  #giai-phap-cu td.w{font-size:1.02rem;font-weight:700;white-space:normal;margin-bottom:.3rem}
+  #giai-phap-cu td[data-nhan]{margin-top:.35rem}
+  #giai-phap-cu td[data-nhan]::before{content:attr(data-nhan) ": ";
+    font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--ink3)}
+}
 @media(max-width:600px){
   .quote{overflow-x:visible}
   .quote table{min-width:0;width:100%;display:block}
@@ -1061,11 +1076,11 @@ if(typeof window.qrcode !== 'function'){
             <tr><th>Cách đã thử</th><th>Có đỡ không</th><th>Đỡ được bao lâu</th><th>Vì sao chưa tới gốc</th></tr>
           </thead>
           <tbody>
-            <tr><td class="w">Cà phê, nước tăng lực</td><td><span class="mark part">Đỡ nhanh</span></td><td>2 – 4 tiếng</td><td>Vay năng lượng bằng cách kích thích thần kinh, không tạo thêm năng lượng cho tế bào. Hết thuốc là sụp.</td></tr>
-            <tr><td class="w">Ngủ bù cuối tuần</td><td><span class="mark part">Đỡ ít</span></td><td>1 – 2 ngày</td><td>Bù được giấc, không bù được nguyên liệu mà ty thể đang thiếu.</td></tr>
-            <tr><td class="w">Vitamin tổng hợp</td><td><span class="mark part">Đỡ nhẹ</span></td><td>Không rõ</td><td>Vitamin nhóm B hỗ trợ chuyển hoá, nhưng hầu như không chứa Coenzyme Q10.</td></tr>
-            <tr><td class="w">Ăn nhiều cá, thịt đỏ</td><td><span class="mark no">Gần như không</span></td><td>—</td><td>Muốn đủ 100mg phải ăn 1,56kg cá mòi hoặc 3kg thịt bò mỗi ngày. Không ai ăn nổi.</td></tr>
-            <tr><td class="w">CoQ10 giá rẻ dạng ubiquinone</td><td><span class="mark part">Tuỳ người</span></td><td>Chậm</td><td>Đây là dạng oxy hoá, vào cơ thể còn phải chuyển hoá thêm một bước — bước mà người lớn tuổi làm càng lúc càng kém.</td></tr>
+            <tr><td class="w">Cà phê, nước tăng lực</td><td data-nhan="Có đỡ không"><span class="mark part">Đỡ nhanh</span></td><td data-nhan="Đỡ được bao lâu">2 – 4 tiếng</td><td data-nhan="Vì sao chưa tới gốc">Vay năng lượng bằng cách kích thích thần kinh, không tạo thêm năng lượng cho tế bào. Hết thuốc là sụp.</td></tr>
+            <tr><td class="w">Ngủ bù cuối tuần</td><td data-nhan="Có đỡ không"><span class="mark part">Đỡ ít</span></td><td data-nhan="Đỡ được bao lâu">1 – 2 ngày</td><td data-nhan="Vì sao chưa tới gốc">Bù được giấc, không bù được nguyên liệu mà ty thể đang thiếu.</td></tr>
+            <tr><td class="w">Vitamin tổng hợp</td><td data-nhan="Có đỡ không"><span class="mark part">Đỡ nhẹ</span></td><td data-nhan="Đỡ được bao lâu">Không rõ</td><td data-nhan="Vì sao chưa tới gốc">Vitamin nhóm B hỗ trợ chuyển hoá, nhưng hầu như không chứa Coenzyme Q10.</td></tr>
+            <tr><td class="w">Ăn nhiều cá, thịt đỏ</td><td data-nhan="Có đỡ không"><span class="mark no">Gần như không</span></td><td data-nhan="Đỡ được bao lâu">—</td><td data-nhan="Vì sao chưa tới gốc">Muốn đủ 100mg phải ăn 1,56kg cá mòi hoặc 3kg thịt bò mỗi ngày. Không ai ăn nổi.</td></tr>
+            <tr><td class="w">CoQ10 giá rẻ dạng ubiquinone</td><td data-nhan="Có đỡ không"><span class="mark part">Tuỳ người</span></td><td data-nhan="Đỡ được bao lâu">Chậm</td><td data-nhan="Vì sao chưa tới gốc">Đây là dạng oxy hoá, vào cơ thể còn phải chuyển hoá thêm một bước — bước mà người lớn tuổi làm càng lúc càng kém.</td></tr>
           </tbody>
         </table>
       </div>
