@@ -46,6 +46,7 @@ Ba dòng đầu là **trang**. Bốn dòng sau là **lời chào hàng và biể
 **Sửa:**
 1. Thay đoạn văn bằng **bảng so sánh** dạng khử với dạng oxy hoá.
 2. Đưa chữ `還元型` trên hộp Nhật lên **sớm hơn** — đó là bằng chứng khách tự kiểm được.
+   19/09: xong. Chuyển từ phần 07 Hồ sơ lên phần 06 Cơ chế, 22.713px → 18.476px.
 
 ### ▸ Tới hồ sơ → Tới bảng giá rơi mạnh
 **Nghĩa:** phần giấy tờ dài mà không thuyết phục.
