@@ -551,6 +551,24 @@ td.hi{background:color-mix(in srgb,var(--red-soft) 45%,transparent)}
    khach mat cot Gia va cot Qua. Nen tren man hinh hep, moi dong thanh MOT THE doc,
    khong con vuot ngang. Cac o tu no da noi ro nghia (co "/ngay", co "d", co "Tang...")
    nen bo dong tieu de di van doc duoc. */
+/* Bang so sanh Ubiquinol / Ubiquinone: tren dien thoai cot thu ba (Ubiquinone)
+   nam ngoai man hinh. Xep doc lai, moi o co nhan cot di kem nen khong lan lon. */
+@media(max-width:600px){
+  #khac-biet .tablewrap{overflow-x:visible}
+  #khac-biet table{min-width:0;width:100%;display:block}
+  #khac-biet thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  #khac-biet tbody,#khac-biet tr,#khac-biet td{display:block;width:auto}
+  #khac-biet tr{padding:.75rem .85rem;border-bottom:1px solid var(--line2)}
+  #khac-biet tr:last-child{border-bottom:0}
+  #khac-biet td{padding:.15rem 0;border:0}
+  #khac-biet td.w{font-size:1.02rem;font-weight:700;white-space:normal;margin-bottom:.35rem}
+  #khac-biet td[data-nhan]{padding-left:.7rem;border-left:2px solid var(--line2);margin-top:.4rem}
+  #khac-biet td[data-nhan]::before{content:attr(data-nhan);display:block;
+    font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink3);margin-bottom:.1rem}
+  #khac-biet td.hi[data-nhan]{border-left-color:var(--red)}
+  #khac-biet td.hi[data-nhan]::before{color:var(--red)}
+}
 @media(max-width:600px){
   .quote{overflow-x:visible}
   .quote table{min-width:0;width:100%;display:block}
@@ -1578,11 +1596,11 @@ if(typeof window.qrcode !== 'function'){
             <tr><th>Tiêu chí</th><th class="hi">Ubiquinol — dạng khử</th><th>Ubiquinone — dạng oxy hoá</th></tr>
           </thead>
           <tbody>
-            <tr class="row-key"><td class="w">Khả năng hấp thu <span class="badge">Khác biệt cốt lõi</span></td><td class="hi"><b>Dùng được trực tiếp</b>, không cần cơ thể chuyển hoá thêm bước nào</td><td>Hấp thu kém hơn, cơ thể phải chuyển thành ubiquinol trước</td></tr>
-            <tr><td class="w">Hiệu quả chống oxy hoá</td><td class="hi">Mạnh hơn, bảo vệ tế bào tốt hơn</td><td>Yếu hơn</td></tr>
-            <tr><td class="w">Phù hợp với ai</td><td class="hi">Mọi lứa tuổi, kể cả người lớn tuổi hoặc kém hấp thu</td><td>Thường chỉ người trẻ, tiêu hoá khoẻ mới dùng hiệu quả</td></tr>
-            <tr><td class="w">Mức độ phổ biến</td><td class="hi">Ít gặp hơn vì chi phí sản xuất cao</td><td>Rất phổ biến trên thị trường</td></tr>
-            <tr><td class="w">Giá thành</td><td class="hi">Cao hơn do công nghệ phức tạp</td><td>Rẻ hơn</td></tr>
+            <tr class="row-key"><td class="w">Khả năng hấp thu <span class="badge">Khác biệt cốt lõi</span></td><td class="hi" data-nhan="Ubiquinol — dạng khử"><b>Dùng được trực tiếp</b>, không cần cơ thể chuyển hoá thêm bước nào</td><td data-nhan="Ubiquinone — dạng oxy hoá">Hấp thu kém hơn, cơ thể phải chuyển thành ubiquinol trước</td></tr>
+            <tr><td class="w">Hiệu quả chống oxy hoá</td><td class="hi" data-nhan="Ubiquinol — dạng khử">Mạnh hơn, bảo vệ tế bào tốt hơn</td><td data-nhan="Ubiquinone — dạng oxy hoá">Yếu hơn</td></tr>
+            <tr><td class="w">Phù hợp với ai</td><td class="hi" data-nhan="Ubiquinol — dạng khử">Mọi lứa tuổi, kể cả người lớn tuổi hoặc kém hấp thu</td><td data-nhan="Ubiquinone — dạng oxy hoá">Thường chỉ người trẻ, tiêu hoá khoẻ mới dùng hiệu quả</td></tr>
+            <tr><td class="w">Mức độ phổ biến</td><td class="hi" data-nhan="Ubiquinol — dạng khử">Ít gặp hơn vì chi phí sản xuất cao</td><td data-nhan="Ubiquinone — dạng oxy hoá">Rất phổ biến trên thị trường</td></tr>
+            <tr><td class="w">Giá thành</td><td class="hi" data-nhan="Ubiquinol — dạng khử">Cao hơn do công nghệ phức tạp</td><td data-nhan="Ubiquinone — dạng oxy hoá">Rẻ hơn</td></tr>
           </tbody>
         </table>
       </div>

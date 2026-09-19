@@ -46,6 +46,8 @@ Ba dòng đầu là **trang**. Bốn dòng sau là **lời chào hàng và biể
 **Nghĩa:** không tin phần giải thích, hoặc phần đó khô quá.
 **Sửa:**
 1. Thay đoạn văn bằng **bảng so sánh** dạng khử với dạng oxy hoá.
+   19/09: bảng đã có sẵn nhưng trên điện thoại cột Ubiquinone bị che hoàn toàn.
+   Nay xếp dọc, mỗi vế có nhãn cột — đọc đủ, không phải vuốt.
 2. Đưa chữ `還元型` trên hộp Nhật lên **sớm hơn** — đó là bằng chứng khách tự kiểm được.
    19/09: xong. Chuyển từ phần 07 Hồ sơ lên phần 06 Cơ chế, 22.713px → 18.476px.
 
