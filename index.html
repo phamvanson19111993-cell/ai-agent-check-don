@@ -1036,6 +1036,7 @@ if(typeof window.qrcode !== 'function'){
         <h2>Vì sao mấy cách cũ chỉ đỡ được một đoạn</h2>
         <p class="lede">Không cách nào dưới đây là sai. Chúng chỉ đang chạm vào những mắt xích khác, không phải mắt xích thiếu hụt.</p>
       </div>
+      <div class="quote-boc">
       <div class="tablewrap">
         <table>
           <thead>
@@ -1049,6 +1050,8 @@ if(typeof window.qrcode !== 'function'){
             <tr><td class="w">CoQ10 giá rẻ dạng ubiquinone</td><td><span class="mark part">Tuỳ người</span></td><td>Chậm</td><td>Đây là dạng oxy hoá, vào cơ thể còn phải chuyển hoá thêm một bước — bước mà người lớn tuổi làm càng lúc càng kém.</td></tr>
           </tbody>
         </table>
+      </div>
+      <p class="quote-nhac">↔ Vuốt ngang để xem hết bảng</p>
       </div>
     </div>
   </section>
@@ -1568,6 +1571,7 @@ if(typeof window.qrcode !== 'function'){
         <h2>Ubiquinol khác ubiquinone ở chỗ nào</h2>
         <p class="lede">Đây là điểm khác biệt cốt lõi, và cũng là lý do giá không thể bằng hàng phổ thông. Cùng gọi là “CoQ10” nhưng hai dạng này không như nhau.</p>
       </div>
+      <div class="quote-boc">
       <div class="tablewrap">
         <table>
           <thead>
@@ -1581,6 +1585,8 @@ if(typeof window.qrcode !== 'function'){
             <tr><td class="w">Giá thành</td><td class="hi">Cao hơn do công nghệ phức tạp</td><td>Rẻ hơn</td></tr>
           </tbody>
         </table>
+      </div>
+      <p class="quote-nhac">↔ Vuốt ngang để xem hết bảng</p>
       </div>
       <div class="col">
         <p>Ngoài dạng hoạt chất, Rich Coenzyme Q10 còn khác ở chỗ không đi một mình: astaxanthin từ tảo Haematococcus lo phần chống oxy hoá, piperine từ hạt tiêu đen lo phần hấp thu. Hầu hết sản phẩm cùng phân khúc chỉ có mỗi Coenzyme Q10.</p>
@@ -2824,17 +2830,20 @@ var FORM_GOOGLE = {
 
   // Bang gia rong hon khung tren dien thoai — bao cho khach biet con cot ben phai.
   (function(){
-    var boc = document.querySelector('.quote-boc');
-    var khung = boc && boc.querySelector('.quote');
-    if(!boc || !khung) return;
-    function dodo(){
-      var thua = khung.scrollWidth - khung.clientWidth;
-      boc.classList.toggle('co-vuot', thua > 8);
-      boc.classList.toggle('het-vuot', thua <= 8 || khung.scrollLeft >= thua - 8);
-    }
-    khung.addEventListener('scroll', dodo, {passive:true});
-    window.addEventListener('resize', dodo);
-    dodo();
+    var ds = [];
+    Array.prototype.forEach.call(document.querySelectorAll('.quote-boc'), function(boc){
+      var khung = boc.querySelector('.quote, .tablewrap');
+      if(!khung) return;
+      function dodo(){
+        var thua = khung.scrollWidth - khung.clientWidth;
+        boc.classList.toggle('co-vuot', thua > 8);
+        boc.classList.toggle('het-vuot', thua <= 8 || khung.scrollLeft >= thua - 8);
+      }
+      khung.addEventListener('scroll', dodo, {passive:true});
+      ds.push(dodo); dodo();
+    });
+    if(!ds.length) return;
+    window.addEventListener('resize', function(){ ds.forEach(function(f){ f(); }); });
   })();
 
   f.addEventListener('submit', function(e){
