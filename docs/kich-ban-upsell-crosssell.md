@@ -116,6 +116,7 @@ Ví dụ **Rich Coenzyme Q10** — giá mỗi hộp **phẳng 2.890.000đ ở m�
 | Mốc | Mỗi ngày | Có rẻ hơn không? |
 |---|---|---|
 | 1 hộp · 2.890.000đ | 48.167đ | — |
+| **2 hộp · 5.780.000đ** | 48.167đ | ❌ **bằng nhau**, và **không kèm quà** |
 | 3 hộp · 8.670.000đ | 48.167đ | ❌ **bằng nhau** |
 | 5 hộp · 14.450.000đ | 48.167đ | ❌ **bằng nhau** |
 | 6 hộp · 17.340.000đ *(tặng 1 → 7 hộp)* | 41.286đ | ✅ **rẻ hơn 6.881đ/ngày** |
@@ -123,6 +124,14 @@ Ví dụ **Rich Coenzyme Q10** — giá mỗi hộp **phẳng 2.890.000đ ở m�
 → Với sản phẩm này, **chỉ mốc 6 hộp mới được nói là rẻ hơn**, và lý do là **tặng thêm
 hộp thứ 7**, không phải giảm giá. Mốc 3–5 hộp bán bằng **quà tặng**, không bán bằng giá —
 và khách **chọn một**: quà tặng **hoặc** giảm tiền mặt, không được cả hai.
+
+> ⛔ **Mốc 2 hộp không có gì cả** — không rẻ hơn, không quà, không giảm tiền mặt.
+> Đây là mốc CSKH hay mời nhất khi khách hết hộp đầu (xem kịch bản ② ngay dưới), nên
+> cũng là chỗ dễ lỡ miệng nhất. Mời 2 hộp thì chỉ được nói **một lý do duy nhất: đỡ bị
+> đứt quãng giữa đợt**. Tuyệt đối không gợi ý có ưu đãi ở mốc này.
+>
+> **Mức "giảm tiền mặt" ở mốc 3 và 5 hộp: CHƯA CÓ NGUỒN.** Khách hỏi thì trả lời
+> *"cái này em xin phép hỏi lại rồi báo anh/chị ngay ạ"* — **không phòng nào được tự đoán con số.**
 
 > ⛔ **Cũng không được nói "một hộp chưa kịp thấy gì"** khi một hộp đã dùng được 60 ngày —
 > vượt xa mốc 4–8 tuần cần để thấy kết quả. Đó là nói sai để đẩy gói lớn.
