@@ -29,6 +29,7 @@ Ba dòng đầu là **trang**. Bốn dòng sau là **lời chào hàng và biể
 **Sửa:**
 1. Đổi câu mở. Câu hiện tại nói về triệu chứng — thử câu nói về **kết quả xét nghiệm bình thường mà vẫn mệt**, vì đó là nghịch lý khiến người ta phải đọc tiếp.
 2. Đưa **một bằng chứng lên ngay màn hình đầu** — ảnh hộp thật hoặc số công bố.
+   19/09: xong. Khối Shizuoka · số công bố · sàn Tokyo chuyển từ 2.211px lên 232px.
 3. Kiểm tốc độ tải. 19/09: gỡ hai ảnh nhúng base64, HTML 384KB → 294KB.
    Còn ~77KB base64: ảnh màn hình đầu (nhúng là đúng) + 3 bìa video (thẻ `poster` không hoãn
    tải được, gỡ ra thành 3 lượt tải — chỉ làm nếu đo thấy chặng này vẫn rơi).
